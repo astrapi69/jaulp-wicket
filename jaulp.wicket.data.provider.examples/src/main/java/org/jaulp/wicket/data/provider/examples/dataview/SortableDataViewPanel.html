@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+
+<wicket:panel>
+
+      <table>
+        <thead>
+          <tr>
+            <td colspan="3">
+              <span wicket:id="label"></span>
+              <span wicket:id="topNavigator"></span>
+            </td>
+          </tr>
+          <tr>
+            <th wicket:id="orderByFirstname">First name</th>
+            <th wicket:id="orderByLastname">Last name</th>
+            <th wicket:id="orderByDateOfBirth">Date of birth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr wicket:id="dataView">
+            <td><span wicket:id="firstname"></span></td>
+            <td><span wicket:id="lastname"></span></td>
+            <td><span wicket:id="dateOfBirth"></span></td>
+          </tr>
+        </tbody>
+      </table>
+	<div wicket:id="footernavigator" />
+
+</wicket:panel>
+</body>
+</html>

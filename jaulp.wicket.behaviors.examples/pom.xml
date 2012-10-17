@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>jaulp.wicket</artifactId>
+		<groupId>org.jaulp</groupId>
+		<version>6.1.0</version>
+	</parent>
+	
+	<artifactId>jaulp.wicket.behaviors.examples</artifactId>
+	<packaging>war</packaging>
+	<name>jaulp.wicket.behaviors.examples</name>
+	
+	<properties>	
+    	<commons-lang3.version>3.0.1</commons-lang3.version>
+	</properties>
+
+	<developers>
+
+		<developer>
+			<id>astrapi69</id>
+			<name>Asterios Raptis</name>
+			<email>astrapi69 at users.sf.net</email>
+			<timezone>Berlin</timezone>
+			<roles>
+				<role>Project manager</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+
+	</developers>
+
+	<description>
+		Demonstrates how to use the dialogs from the
+	  	'jaulp.wicket.dialogs' project.
+	</description>
+	
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jaulp</groupId>
+			<artifactId>jaulp.wicket.behaviors</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+		
+    <dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+    	<version>${commons-lang3.version}</version>
+    </dependency>
+    
+	</dependencies>
+	
+	<build>
+
+		<resources>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+
+
+			<resource>
+				<directory>src/main/webapp</directory>
+			</resource>
+
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+
+		</resources>
+
+		<testResources>
+
+			<testResource>
+				<filtering>false</filtering>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+
+		</testResources>
+
+		<plugins>
+
+			<plugin>
+				<!-- NOTE: We don't need a groupId specification because the group is 
+					org.apache.maven.plugins ...which is assumed by default. -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<!-- this is used for inheritance merges -->
+						<phase>package</phase>
+						<!-- append to the packaging phase. -->
+						<goals>
+							<goal>attached</goal>
+							<!-- goals == mojos -->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<repositories>
+		<repository>
+			<id>Apache Nexus</id>
+			<url>https://repository.apache.org/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	</project>

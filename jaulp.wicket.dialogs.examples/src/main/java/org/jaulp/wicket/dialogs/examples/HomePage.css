@@ -1,0 +1,13 @@
+div.modalwindow a {
+  float: right;
+  margin: 10;
+  padding: 0 0 0 15px;
+  text-decoration: none;
+}
+
+div.modalwindow a span {
+  float: right;
+  display: block;
+  padding: 5px 15px 4px 6px;
+  color: #24618E;
+}
