@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>jaulp.wicket</artifactId>
 		<groupId>org.jaulp</groupId>
-		<version>6.1.0</version>
+		<version>6.1.1</version>
 	</parent>
 
 	<artifactId>jaulp.wicket.dialogs</artifactId>
@@ -53,44 +53,5 @@
 		</dependency>
 
 	</dependencies>
-
-	<build>
-
-		<resources>
-
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/resources</directory>
-			</resource>
-
-			<resource>
-				<filtering>false</filtering>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-
-		</resources>
-
-		<testResources>
-
-			<testResource>
-				<filtering>false</filtering>
-				<directory>src/test/java</directory>
-				<includes>
-					<include>**</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</testResource>
-
-		</testResources>
-
-	</build>
 
 </project>
