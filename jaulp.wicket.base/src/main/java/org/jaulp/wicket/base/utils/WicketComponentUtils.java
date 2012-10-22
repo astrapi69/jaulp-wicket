@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.StringHeaderItem;
 import org.apache.wicket.protocol.http.RequestUtils;
 import org.apache.wicket.request.Request;
@@ -119,7 +121,7 @@ public final class WicketComponentUtils {
 	}
 
 	/**
-	 * Helper method for the migration from wicket-version 1.5.x to 6.1.0.
+	 * Helper method for the migration from wicket-version 1.5.x to 6.x.
 	 * 
 	 * @param relativePagePath
 	 *            the relative page path
@@ -146,12 +148,17 @@ public final class WicketComponentUtils {
             for ( final PackageResourceReferenceWrapper packageResourceReference: headerContributors ) {
             	if(packageResourceReference.getType().equals(ResourceReferenceType.JS)){
             		JavaScriptResourceReference reference = new JavaScriptResourceReference(componentClass, packageResourceReference.getPackageResourceReference().getName());
-            		response.render(JavaScriptHeaderItem.forReference(reference ));
+            		if(!response.wasRendered(reference)){
+            			JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem.forReference(reference );
+            			response.render(headerItem);
+            		}
             	}
             	if(packageResourceReference.getType().equals(ResourceReferenceType.CSS)){
             		CssResourceReference reference = new CssResourceReference(componentClass, packageResourceReference.getPackageResourceReference().getName());
-            		CssHeaderItem.forReference(reference);
-            		response.render(CssHeaderItem.forReference(reference));
+            		if(!response.wasRendered(reference)){
+            			CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(reference);
+            			response.render(headerItem);
+            		}
             	}
             }
         }

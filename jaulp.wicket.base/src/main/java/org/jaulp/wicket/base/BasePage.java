@@ -76,6 +76,7 @@ public class BasePage extends WebPage {
      * {@inheritDoc}
      */
     public void renderHead(IHeaderResponse response) {
+    	super.renderHead(response);
     	WicketComponentUtils.renderHeaderResponse(response, this.getClass());
     }
 

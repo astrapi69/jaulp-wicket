@@ -3,7 +3,7 @@ package org.jaulp.wicket.annotated.header.contributors.examples;
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 
-import org.jaulp.wicket.base.BasePage;
+import org.jaulp.wicket.annotated.header.contributors.abase.BasePage;
 import org.jaulp.wicket.annotated.header.contributors.examples.panels.footer.FooterPanel;
 import org.jaulp.wicket.annotated.header.contributors.examples.panels.home.HomePanel;
 

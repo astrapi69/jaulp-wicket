@@ -117,9 +117,9 @@ public class PackageResourceReferences {
 
         while ( null != superClass ) {
             if ( Component.class.isAssignableFrom( superClass ) ) {
-
-                packageResourceReference = addPackageResourceReferenceFromInterfaces(
-                        packageResourceReference, componentClass );
+//
+//                packageResourceReference = addPackageResourceReferenceFromInterfaces(
+//                        packageResourceReference, componentClass );
 
                 packageResourceReference = addFoundPackageResourceReferences(
                         packageResourceReference, superClass );
