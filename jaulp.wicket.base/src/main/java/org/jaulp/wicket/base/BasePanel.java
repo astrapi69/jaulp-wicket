@@ -37,6 +37,7 @@ public class BasePanel extends Panel {
      * {@inheritDoc}
      */
     public void renderHead(IHeaderResponse response) {
+    	super.renderHead(response);
     	WicketComponentUtils.renderHeaderResponse(response, this.getClass());
     }
 
