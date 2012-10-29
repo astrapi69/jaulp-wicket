@@ -1,0 +1,9 @@
+* { margin: 0; padding: 0; }
+
+body {
+        margin: 0px;
+        padding: 0px;
+        font-family: "URW Gothic L", "Century Gothic", "Lucida Sans Regular", "Trebuchet MS", sans-serif;
+		/*font-family: "Lucida Grande","Lucida Sans Unicode","Eras Medium ITC","DejaVu Sans",Helvetica,Verdana,sans-serif;*/
+		font-size: 10pt;
+}
