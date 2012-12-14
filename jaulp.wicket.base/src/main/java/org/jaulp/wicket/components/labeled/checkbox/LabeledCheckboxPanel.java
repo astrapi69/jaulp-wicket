@@ -1,25 +1,17 @@
-package org.jaulp.wicket.components.checkbox;
+package org.jaulp.wicket.components.labeled.checkbox;
 
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
-import org.apache.wicket.markup.html.form.FormComponentPanel;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+import org.jaulp.wicket.components.labeled.LabeledFormComponentPanel;
 
-public class LabeledCheckboxPanel extends FormComponentPanel<Boolean> {
+public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
 	private Boolean checked;
 	
 	private CheckBox checkBox;
-	@SuppressWarnings("unused")
-	private Label label;
-	
 
 	public LabeledCheckboxPanel(String id) {
 		this(id, null);
@@ -27,10 +19,13 @@ public class LabeledCheckboxPanel extends FormComponentPanel<Boolean> {
 
 	public LabeledCheckboxPanel(String id, IModel<Boolean> model) {
 		super(id, model);
-		add(label = new Label("label", model));
 		PropertyModel<Boolean> checkBoxModel = new PropertyModel<Boolean>(this, "checked");
-		
         add(checkBox = new CheckBox("checkbox", checkBoxModel));
+
+		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
+
+		String markupId = checkBox.getMarkupId();
+		add(label = newLabel("label", markupId, model));
   
 	}
 	
