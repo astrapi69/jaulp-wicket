@@ -5,16 +5,38 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.labeled.LabeledFormComponentPanel;
 
+/**
+ * Convenience class for labeled TextArea.
+ *
+ * @param <T> the generic type
+ */
 public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The text. */
 	@SuppressWarnings("unused")
 	private T text;
+	
+	/** The text area. */
 	private TextArea<T> textArea;
 
+	/**
+	 * Instantiates a new labeled text area panel.
+	 *
+	 * @param id the id
+	 */
 	public LabeledTextAreaPanel(String id) {
 		this(id, null);
 	}
 
+	/**
+	 * Instantiates a new labeled text area panel.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 */
 	public LabeledTextAreaPanel(String id, IModel<T> model) {
 		super(id, model);
 
@@ -27,20 +49,38 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 		add(label = newLabel("label", markupId, model));
 	}
 
+	/**
+	 * Factory method for creating the TextArea. This method is invoked in the
+	 * constructor from this class and can be overridden so users can
+	 * provide their own version of a TextArea.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @return the text area
+	 */
 	protected TextArea<T> newTextArea(String id, PropertyModel<T> model) {
 		TextArea<T> textArea = new TextArea<T>(id, model);
 		textArea.setOutputMarkupId(true);
 		return textArea;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getInput() {
 		return textArea.getInput();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	protected void convertInput() {
 		setConvertedInput(textArea.getConvertedInput());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	protected void onBeforeRender() {
 		text = (T) getModelObject();
 		textArea.setRequired(isRequired());

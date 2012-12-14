@@ -8,25 +8,77 @@ import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T> {
+/**
+ * The LabeledFormComponentPanel is base class for labeled components.
+ * 
+ * @param <T>
+ *            the generic type
+ * @see FormComponentPanel
+ */
+public abstract class LabeledFormComponentPanel<T> extends
+		FormComponentPanel<T> {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** The Label component. */
 	protected Label label;
+
+	/** The ComponentFeedbackPanel for validation information. */
 	protected ComponentFeedbackPanel feedback;
 
-    public LabeledFormComponentPanel(String id) {
-        super(id);
-    }
+	/**
+	 * Instantiates a new LabeledFormComponentPanel object.
+	 * 
+	 * @param id
+	 *            the id
+	 */
+	public LabeledFormComponentPanel(String id) {
+		super(id);
+	}
 
-    public LabeledFormComponentPanel(String id, IModel<T> model) {
-        super(id, model);
-    }
+	/**
+	 * Instantiates a new LabeledFormComponentPanel object.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public LabeledFormComponentPanel(String id, IModel<T> model) {
+		super(id, model);
+	}
 
+	/**
+	 * Factory method for creating the Label. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Label.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param forId
+	 *            the for id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
 	protected Label newLabel(String id, String forId, IModel<T> model) {
 		Label label = new Label(id, model);
 		label.add(new AttributeAppender("for", Model.of(forId), " "));
 		return label;
 	}
 
+	/**
+	 * Factory method for creating the ComponentFeedbackPanel. This method is
+	 * invoked in the constructor from the derived classes and can be overridden
+	 * so users can provide their own version of a ComponentFeedbackPanel.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param filter
+	 *            the filter
+	 * @return the component feedback panel
+	 */
 	protected ComponentFeedbackPanel newComponentFeedbackPanel(String id,
 			Component filter) {
 		ComponentFeedbackPanel feedbackPanel = new ComponentFeedbackPanel(id,
