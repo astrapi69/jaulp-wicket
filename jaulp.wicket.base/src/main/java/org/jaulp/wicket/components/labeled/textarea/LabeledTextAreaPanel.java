@@ -28,7 +28,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	 * @param id the id
 	 */
 	public LabeledTextAreaPanel(String id) {
-		this(id, null);
+		this(id, null, null);
 	}
 
 	/**
@@ -37,8 +37,8 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	 * @param id the id
 	 * @param model the model
 	 */
-	public LabeledTextAreaPanel(String id, IModel<T> model) {
-		super(id, model);
+	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel) {
+		super(id, model, labelModel);
 
 		PropertyModel<T> textAreaModel = new PropertyModel<T>(this, "text");
 		add(textArea = newTextArea("textArea", textAreaModel));
@@ -46,7 +46,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 		add(feedback = newComponentFeedbackPanel("feedback", textArea));
 
 		String markupId = textArea.getMarkupId();
-		add(label = newLabel("label", markupId, model));
+		add(label = newLabel("label", markupId, this.labelModel));
 	}
 
 	/**

@@ -26,6 +26,8 @@ public abstract class LabeledFormComponentPanel<T> extends
 
 	/** The ComponentFeedbackPanel for validation information. */
 	protected ComponentFeedbackPanel feedback;
+	
+	protected IModel<String> labelModel;
 
 	/**
 	 * Instantiates a new LabeledFormComponentPanel object.
@@ -45,8 +47,9 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 * @param model
 	 *            the model
 	 */
-	public LabeledFormComponentPanel(String id, IModel<T> model) {
+	public LabeledFormComponentPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model);
+		this.labelModel = labelModel;
 	}
 
 	/**
@@ -62,7 +65,7 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<T> model) {
+	protected Label newLabel(String id, String forId, IModel<String> model) {
 		Label label = new Label(id, model);
 		label.add(new AttributeAppender("for", Model.of(forId), " "));
 		return label;

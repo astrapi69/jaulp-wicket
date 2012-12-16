@@ -7,7 +7,7 @@
 	<parent>
 		<artifactId>jaulp.wicket</artifactId>
 		<groupId>org.jaulp</groupId>
-		<version>6.1.1</version>
+		<version>6.2.0</version>
 	</parent>
 
 	<artifactId>jaulp.wicket.base.examples</artifactId>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.base</artifactId>
-			<version>6.1.1</version>
+			<version>6.2.0</version>
 		</dependency>
 
 	</dependencies>

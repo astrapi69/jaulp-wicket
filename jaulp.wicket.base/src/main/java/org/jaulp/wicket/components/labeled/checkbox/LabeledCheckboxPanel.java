@@ -26,7 +26,7 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 	 * @param id the id
 	 */
 	public LabeledCheckboxPanel(String id) {
-		this(id, null);
+		this(id, null, null);
 	}
 
 	/**
@@ -35,15 +35,15 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 	 * @param id the id
 	 * @param model the model
 	 */
-	public LabeledCheckboxPanel(String id, IModel<Boolean> model) {
-		super(id, model);
+	public LabeledCheckboxPanel(String id, IModel<Boolean> model, IModel<String> labelModel) {
+		super(id, model, labelModel);
 		PropertyModel<Boolean> checkBoxModel = new PropertyModel<Boolean>(this, "checked");
         add(checkBox = newCheckBox("checkbox", checkBoxModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
 
 		String markupId = checkBox.getMarkupId();
-		add(label = newLabel("label", markupId, model));
+		add(label = newLabel("label", markupId, this.labelModel));
   
 	}
 	
