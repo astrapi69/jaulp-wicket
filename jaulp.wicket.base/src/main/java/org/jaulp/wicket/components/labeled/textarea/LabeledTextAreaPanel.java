@@ -14,11 +14,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/** The text. */
-	@SuppressWarnings("unused")
-	private T text;
-	
+		
 	/** The text area. */
 	private TextArea<T> textArea;
 
@@ -40,7 +36,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
 
-		PropertyModel<T> textAreaModel = new PropertyModel<T>(this, "text");
+		PropertyModel<T> textAreaModel = new PropertyModel<T>(model.getObject(), id);
 		add(textArea = newTextArea("textArea", textAreaModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", textArea));
@@ -82,7 +78,6 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	 * {@inheritDoc}
 	 */
 	protected void onBeforeRender() {
-		text = (T) getModelObject();
 		textArea.setRequired(isRequired());
 		super.onBeforeRender();
 	}

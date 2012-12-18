@@ -17,8 +17,28 @@ public class Person implements Serializable {
 
     /** The gender. */
     String gender;
+    
+    String about;
+    
+    Boolean married;
 
-    /**
+    public Boolean getMarried() {
+		return married;
+	}
+
+	public void setMarried(Boolean married) {
+		this.married = married;
+	}
+
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
+
+	/**
      * Instantiates a new person.
      */
     public Person() {
@@ -68,7 +88,7 @@ public class Person implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", gender=" + gender + "]";
+		return "Person [name=" + name + ", gender=" + gender + ", about:"+about+" Married:"+married+"]";
 	}
 
 }

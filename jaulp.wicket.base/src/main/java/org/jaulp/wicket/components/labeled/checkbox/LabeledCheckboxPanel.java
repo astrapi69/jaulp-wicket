@@ -12,11 +12,7 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/** The checked flag. */
-	@SuppressWarnings("unused")
-	private Boolean checked;
-	
+		
 	/** The CheckBox component. */
 	private CheckBox checkBox;
 
@@ -37,7 +33,7 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 	 */
 	public LabeledCheckboxPanel(String id, IModel<Boolean> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
-		PropertyModel<Boolean> checkBoxModel = new PropertyModel<Boolean>(this, "checked");
+		PropertyModel<Boolean> checkBoxModel = new PropertyModel<Boolean>(model.getObject(), id);
         add(checkBox = newCheckBox("checkbox", checkBoxModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
@@ -80,7 +76,6 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 	 * {@inheritDoc}
 	 */
 	protected void onBeforeRender() {
-		checked = (Boolean) getModelObject();
 		checkBox.setRequired(isRequired());
 		super.onBeforeRender();
 	}

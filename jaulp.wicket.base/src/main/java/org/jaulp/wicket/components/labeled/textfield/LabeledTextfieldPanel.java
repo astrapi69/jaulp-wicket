@@ -14,11 +14,7 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/** The text. */
-	@SuppressWarnings("unused")
-	private T text;
-	
+		
 	/** The text field. */
 	private TextField<T> textField;
 
@@ -39,7 +35,8 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 */
 	public LabeledTextfieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
-		PropertyModel<T> textFieldModel = new PropertyModel<T>(this, "text");
+		// TODO check if not cpm set pm.		
+		PropertyModel<T> textFieldModel = new PropertyModel<T>(model.getObject(), id);
 		add(textField = newTextField("textField", textFieldModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", textField));
@@ -81,7 +78,6 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 * {@inheritDoc}
 	 */
 	protected void onBeforeRender() {
-		text = (T) getModelObject();
 		textField.setRequired(isRequired());
 		super.onBeforeRender();
 	}
