@@ -24,10 +24,12 @@ public class LabeledHomePage extends BasePage {
 	person = new Person();
 	person.setGender("");
 	person.setName("");
+	person.setAbout("");
+	person.setMarried(false);
 
 
 
-	final IModel<Person> cpModel = new CompoundPropertyModel<Person>(
+	final CompoundPropertyModel<Person> cpModel = new CompoundPropertyModel<Person>(
 			person);
 
 	final Form<Person> form = 
@@ -48,11 +50,13 @@ public class LabeledHomePage extends BasePage {
 
 	model = new PropertyModel<Person>(this, "person.about");
 	
-	LabeledTextAreaPanel<Person> about = new LabeledTextAreaPanel<Person>("about", model,  Model.of("About:"));
+	LabeledTextAreaPanel<Person> about = new LabeledTextAreaPanel<Person>("about", cpModel,  Model.of("About:"));
 	form.add(about);
 	
-	PropertyModel<Boolean> marriedModel = new PropertyModel<Boolean>(this, "person.married");
-	LabeledCheckboxPanel married = new LabeledCheckboxPanel("married", marriedModel, Model.of("Married:"));
+	PropertyModel<Boolean> marriedModel = new PropertyModel<Boolean>(cpModel, "married");
+	cpModel.bind("married");
+	LabeledCheckboxPanel married = new LabeledCheckboxPanel("married", cpModel, Model.of("Married:"));
+	
 	form.add(married);
 
 	// Create submit button for the form

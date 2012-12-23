@@ -35,7 +35,6 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	 */
 	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
-
 		PropertyModel<T> textAreaModel = new PropertyModel<T>(model.getObject(), id);
 		add(textArea = newTextArea("textArea", textAreaModel));
 

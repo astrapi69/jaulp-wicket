@@ -8,7 +8,7 @@ import org.jaulp.wicket.components.labeled.LabeledFormComponentPanel;
 /**
  * Convenience class for labeled checkbox.
  */
-public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
+public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -31,10 +31,10 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 	 * @param id the id
 	 * @param model the model
 	 */
-	public LabeledCheckboxPanel(String id, IModel<Boolean> model, IModel<String> labelModel) {
+	public LabeledCheckboxPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
-		PropertyModel<Boolean> checkBoxModel = new PropertyModel<Boolean>(model.getObject(), id);
-        add(checkBox = newCheckBox("checkbox", checkBoxModel));
+		PropertyModel<Boolean> propertyModel = new PropertyModel<Boolean>(model.getObject(), id);
+        add(checkBox = newCheckBox("checkBox", propertyModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
 
@@ -52,7 +52,7 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 	 * @param model the model
 	 * @return the created CheckBox
 	 */
-	protected CheckBox newCheckBox(String id, PropertyModel<Boolean> model) {
+	protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
 		CheckBox checkBox = new CheckBox(id, model);
 		checkBox.setOutputMarkupId(true);
 		return checkBox;
@@ -69,7 +69,7 @@ public class LabeledCheckboxPanel extends LabeledFormComponentPanel<Boolean> {
 	 * {@inheritDoc}
 	 */
 	protected void convertInput() {
-		setConvertedInput(checkBox.getConvertedInput());
+		// TODO...setConvertedInput(checkBox.getConvertedInput());
 	}
 
 	/**
