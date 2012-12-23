@@ -4,10 +4,9 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.test.objects.Person;
 import org.jaulp.wicket.base.mainbase.BasePage;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import org.jaulp.wicket.components.labeled.textarea.LabeledTextAreaPanel;
@@ -22,7 +21,6 @@ public class LabeledHomePage extends BasePage {
 	super(parameters);	
 	
 	person = new Person();
-	person.setGender("");
 	person.setName("");
 	person.setAbout("");
 	person.setMarried(false);
@@ -36,26 +34,15 @@ public class LabeledHomePage extends BasePage {
 	        new Form<Person>("form", cpModel);
 
 	add(form);
-	PropertyModel<Person> model = new PropertyModel<Person>(this, "person.name");
 
 	LabeledTextfieldPanel<Person> nameTextField = new LabeledTextfieldPanel<Person>("name", cpModel, Model.of("Name:"));
 
 	form.add(nameTextField);
-	
-	model = new PropertyModel<Person>(this, "person.gender");
-
-	LabeledTextfieldPanel<Person> genderTextField = new LabeledTextfieldPanel<Person>("gender", cpModel, Model.of("Gender:"));
-
-	form.add(genderTextField);
-
-	model = new PropertyModel<Person>(this, "person.about");
-	
+		
 	LabeledTextAreaPanel<Person> about = new LabeledTextAreaPanel<Person>("about", cpModel,  Model.of("About:"));
 	form.add(about);
 	
-	PropertyModel<Boolean> marriedModel = new PropertyModel<Boolean>(cpModel, "married");
-	cpModel.bind("married");
-	LabeledCheckboxPanel married = new LabeledCheckboxPanel("married", cpModel, Model.of("Married:"));
+	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpModel, Model.of("Married:"));
 	
 	form.add(married);
 
