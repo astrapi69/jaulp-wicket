@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Person;
 import org.jaulp.wicket.base.mainbase.BasePage;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
@@ -21,6 +22,7 @@ public class LabeledHomePage extends BasePage {
 	super(parameters);	
 	
 	person = new Person();
+	person.setGender(Gender.UNDEFINED);
 	person.setName("");
 	person.setAbout("");
 	person.setMarried(false);
