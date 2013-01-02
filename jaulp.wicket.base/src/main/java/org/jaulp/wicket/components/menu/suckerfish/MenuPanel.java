@@ -12,7 +12,6 @@ import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 
 @ImportResources(resources = {
-		@ImportResource(resourceName = "MenuPanel.css", resourceType = "css"),
 		@ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
 public class MenuPanel extends BasePanel {
 
