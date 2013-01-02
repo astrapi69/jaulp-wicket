@@ -6,7 +6,6 @@ import net.sourceforge.jaulp.io.annotations.ImportResources;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.jaulp.wicket.base.BasePanel;
@@ -15,7 +14,7 @@ import org.jaulp.wicket.components.menu.suckerfish.MenuPanel;
 import org.jaulp.wicket.components.menu.suckerfish.MenuUtils;
 
 
-@ImportResources(resources = {
+@ImportResources(resources = { // This css file is currently loaded...
 		@ImportResource(resourceName = "MenubarPanel.css", resourceType = "css") })
 public class MenubarPanel extends BasePanel {
 
