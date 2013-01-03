@@ -14,6 +14,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.StringHeaderItem;
 import org.apache.wicket.protocol.http.RequestUtils;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -132,6 +133,23 @@ public final class WicketComponentUtils {
 				.get().getRequest()).getContainerRequest();
 		return RequestUtils.toAbsolutePath(req.getRequestURL().toString(),
 				relativePagePath);
+	}
+	
+
+	/**
+	 * Gets the context path from the given WebApplication.
+	 * 
+	 * @param application
+	 *            the appl
+	 * @return the context path
+	 */
+	public static String getContextPath(
+			final WebApplication application) {
+		String contextPath = application.getServletContext().getContextPath();
+			if (null != contextPath && !contextPath.isEmpty()) {
+				return contextPath;
+			}		
+		return "";
 	}
 
 
