@@ -3,7 +3,7 @@
   <parent>
     <artifactId>jaulp.wicket</artifactId>
     <groupId>org.jaulp</groupId>
-    <version>6.4.0</version>
+    <version>6.5.0</version>
     <relativePath>..</relativePath>
   </parent>
   <artifactId>jaulp.wicket.base</artifactId>
@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
-			<version>6.4.0</version>
+			<version>6.5.0</version>
 		</dependency>
 		
 	</dependencies>
