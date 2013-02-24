@@ -1,0 +1,7 @@
+/.settings
+/target
+/.classpath
+/.project
+/bin
+/test-output
+/wicket.xslt.examples.iml
