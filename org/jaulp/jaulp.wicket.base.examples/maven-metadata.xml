@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.jaulp</groupId>
+  <artifactId>jaulp.wicket.base.examples</artifactId>
+  <versioning>
+    <release>6.5.0</release>
+    <versions>
+      <version>6.5.0</version>
+    </versions>
+    <lastUpdated>20130301235159</lastUpdated>
+  </versioning>
+</metadata>
