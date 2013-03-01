@@ -189,8 +189,8 @@
 		</repository>
 
 	</repositories>
-	
-	
+
+
 	<distributionManagement>
 
 		<repository>
@@ -202,7 +202,7 @@
 	</distributionManagement>
 
 	<profiles>
-	
+
 		<profile>
 			<id>deploy-on-github</id>
 			<activation>
@@ -347,6 +347,6 @@
 			</build>
 		</profile>
 
-	</profiles>	
+	</profiles>
 
 </project>
