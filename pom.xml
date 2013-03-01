@@ -31,12 +31,17 @@
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 			<distribution>repo</distribution>
 		</license>
-	</licenses>
+	</licenses>	
+
+	<scm>
+		<url>https://github.com/astrapi69/jaulp.wicket.git</url>
+	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>7.6.3.v20120416</jetty.version>
 		<wicket.version>${project.version}</wicket.version>
+		<github.global.server>github</github.global.server>
 	</properties>
 
 	<dependencies>
