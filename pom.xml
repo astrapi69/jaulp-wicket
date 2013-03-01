@@ -39,17 +39,13 @@
 		<wicket.version>${project.version}</wicket.version>
 	</properties>
 
-
-
 	<dependencies>
 		<!-- WICKET DEPENDENCIES -->
-
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -62,7 +58,6 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 		</dependency>
-
 		<!-- JETTY DEPENDENCIES FOR TESTING -->
 		<dependency>
 			<groupId>org.eclipse.jetty.aggregate</groupId>
@@ -70,7 +65,6 @@
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<!-- JUNIT DEPENDENCY FOR TESTING -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -80,7 +74,6 @@
 		</dependency>
 
 	</dependencies>
-
 
 	<build>
 
@@ -178,29 +171,6 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<!-- NOTE: We don't need a groupId specification because the group is 
-					org.apache.maven.plugins ...which is assumed by default. -->
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<!-- this is used for inheritance merges -->
-						<phase>package</phase>
-						<!-- append to the packaging phase. -->
-						<goals>
-							<goal>attached</goal>
-							<!-- goals == mojos -->
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 		</plugins>
 
 	</build>
@@ -219,5 +189,164 @@
 		</repository>
 
 	</repositories>
+	
+	
+	<distributionManagement>
+
+		<repository>
+			<id>internal.repo</id>
+			<name>Temporary Staging Repository</name>
+			<url>file://${project.build.directory}/mvn-repo</url>
+		</repository>
+
+	</distributionManagement>
+
+	<profiles>
+	
+		<profile>
+			<id>deploy-on-github</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Configuring Maven Source Plugin: To attach source artifacts to 
+						your build we execute the source:jar goal from the source plugin during the 
+						package phase. -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>${maven-source-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>com.github.github</groupId>
+						<artifactId>site-maven-plugin</artifactId>
+						<version>0.7</version>
+						<configuration>
+							<message>Maven artifacts for ${project.version}</message>
+							<!-- git commit message -->
+							<noJekyll>true</noJekyll>
+							<!-- disable webpage processing -->
+							<merge>true</merge>
+							<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+							<!-- matches distribution management repository url above -->
+							<branch>refs/heads/mvn-repo</branch>
+							<!-- remote branch name -->
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<repositoryName>jaulp.wicket</repositoryName>
+							<!-- github repo name -->
+							<repositoryOwner>astrapi69</repositoryOwner>
+							<!-- github username -->
+						</configuration>
+						<executions>
+							<!-- run site-maven-plugin's 'site' target as part of the build's 
+								normal 'deploy' phase -->
+							<execution>
+								<goals>
+									<goal>site</goal>
+								</goals>
+								<phase>deploy</phase>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>release-javadoc-jar-with-dependencies</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Configuring Maven Javadoc Plugin: To attach javadoc artifacts to 
+						your build we execute the javadoc:jar goal from the javadoc plugin. -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<!-- NOTE: We don't need a groupId specification because the group 
+							is org.apache.maven.plugins ...which is assumed by default. -->
+						<artifactId>maven-assembly-plugin</artifactId>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+						<executions>
+							<execution>
+								<id>make-assembly</id>
+								<!-- this is used for inheritance merges -->
+								<phase>package</phase>
+								<!-- append to the packaging phase. -->
+								<goals>
+									<goal>attached</goal>
+									<!-- goals == mojos -->
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>	
 
 </project>
