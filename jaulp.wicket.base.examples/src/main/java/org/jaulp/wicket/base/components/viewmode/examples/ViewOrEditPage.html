@@ -1,0 +1,26 @@
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<body>
+	<wicket:extend>
+		<form wicket:id="form">
+			<section>
+				<div class="fieldset"><label>Name:</label> <span wicket:id="name"></span></div>
+				
+<div class="fieldset"><label>About:</label> <div>
+							<textarea type="text" wicket:id="about"/>
+						</div></div>
+
+				<div wicket:id="married"></div>
+
+
+				<div>
+					<a wicket:id="submitButton"  href="#">send</a>
+					
+				</div>
+
+			</section>
+		</form>
+		<div wicket:id="feedbackpanel"></div>
+	</wicket:extend>
+</body>
+</html>
