@@ -16,12 +16,11 @@ import org.jaulp.wicket.components.labeled.textfield.LabeledTextfieldPanel;
 public class LabeledHomePage extends BasePage {
 	private static final long serialVersionUID = 1L;
 	
-	private Person person;
 
     public LabeledHomePage(final PageParameters parameters) {
 	super(parameters);	
 	
-	person = new Person();
+	final Person person = new Person();
 	person.setGender(Gender.UNDEFINED);
 	person.setName("");
 	person.setAbout("");
@@ -29,22 +28,22 @@ public class LabeledHomePage extends BasePage {
 
 
 
-	final CompoundPropertyModel<Person> cpModel = new CompoundPropertyModel<Person>(
+	final CompoundPropertyModel<Person> cpm = new CompoundPropertyModel<Person>(
 			person);
 
 	final Form<Person> form = 
-	        new Form<Person>("form", cpModel);
+	        new Form<Person>("form", cpm);
 
 	add(form);
 
-	LabeledTextfieldPanel<Person> nameTextField = new LabeledTextfieldPanel<Person>("name", cpModel, Model.of("Name:"));
+	LabeledTextfieldPanel<Person> nameTextField = new LabeledTextfieldPanel<Person>("name", cpm, Model.of("Name:"));
 
 	form.add(nameTextField);
 		
-	LabeledTextAreaPanel<Person> about = new LabeledTextAreaPanel<Person>("about", cpModel,  Model.of("About:"));
+	LabeledTextAreaPanel<Person> about = new LabeledTextAreaPanel<Person>("about", cpm,  Model.of("About:"));
 	form.add(about);
 	
-	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpModel, Model.of("Married:"));
+	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm, Model.of("Married:"));
 	
 	form.add(married);
 

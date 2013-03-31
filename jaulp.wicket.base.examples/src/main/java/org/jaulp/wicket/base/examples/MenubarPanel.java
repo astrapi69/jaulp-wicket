@@ -9,6 +9,8 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.jaulp.wicket.base.BasePanel;
+import org.jaulp.wicket.base.components.labeled.examples.LabeledHomePage;
+import org.jaulp.wicket.base.components.viewmode.examples.ViewOrEditPage;
 import org.jaulp.wicket.components.menu.suckerfish.MenuItem;
 import org.jaulp.wicket.components.menu.suckerfish.MenuPanel;
 import org.jaulp.wicket.components.menu.suckerfish.MenuUtils;
@@ -73,6 +75,15 @@ public class MenubarPanel extends BasePanel {
 		MenuItem subMenuFromMiAnother =  MenuUtils.createMenuItem(
 				SubmenuPage.class, "top.menu.sub.another.overview", this);
 		miAnother.addMenu(subMenuFromMiAnother);
+
+		MenuItem miViewOrEdit = MenuUtils.createMenuItem(
+				ViewOrEditPage.class, "top.menu.viewmode", this);
+		menuBar.addMenu(miViewOrEdit);
+		
+		MenuItem miLabeled = MenuUtils.createMenuItem(
+				LabeledHomePage.class, "top.menu.labeled", this);
+
+		menuBar.addMenu(miLabeled);
 	}
 
 	/**

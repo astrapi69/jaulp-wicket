@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The Class GenericThreeDropDownChoicesModel.
+ * The Class ThreeDropDownChoicesModel.
  *
  * @param <T> the generic type
  * @author Asterios Raptis
  */
-public class GenericThreeDropDownChoicesModel< T > extends
-        GenericTwoDropDownChoicesModel< T > {
+public class ThreeDropDownChoicesModel< T > extends
+        TwoDropDownChoicesModel< T > {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ public class GenericThreeDropDownChoicesModel< T > extends
      * @param modelsMap the models map
      * @param selectedValuesChoices the selected values choices
      */
-    public GenericThreeDropDownChoicesModel( final T selectedOption,
+    public ThreeDropDownChoicesModel( final T selectedOption,
             final Map< T, List< T >> modelsMap,
             final List< T > selectedValuesChoices ) {
         super( selectedOption, modelsMap );

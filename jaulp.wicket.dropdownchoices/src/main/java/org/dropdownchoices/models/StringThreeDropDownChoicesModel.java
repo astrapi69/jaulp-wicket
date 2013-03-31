@@ -9,7 +9,7 @@ import java.util.Map;
  * @author Asterios Raptis
  */
 public class StringThreeDropDownChoicesModel extends
-        GenericThreeDropDownChoicesModel< String > {
+        ThreeDropDownChoicesModel< String > {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;

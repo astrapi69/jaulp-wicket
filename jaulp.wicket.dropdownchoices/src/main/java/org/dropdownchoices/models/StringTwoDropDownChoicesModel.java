@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Asterios Raptis
  */
 public class StringTwoDropDownChoicesModel extends
-        GenericTwoDropDownChoicesModel< String > {
+        TwoDropDownChoicesModel< String > {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;

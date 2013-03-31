@@ -22,11 +22,11 @@ import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class GenericTwoDropDownChoicesModel.
+ * The Class TwoDropDownChoicesModel.
  *
  * @param <T> the generic type
  */
-public class GenericTwoDropDownChoicesModel< T > implements IClusterable {
+public class TwoDropDownChoicesModel< T > implements IClusterable {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
@@ -52,7 +52,7 @@ public class GenericTwoDropDownChoicesModel< T > implements IClusterable {
      * @param selectedOption the selected option
      * @param modelsMap the models map
      */
-    public GenericTwoDropDownChoicesModel( final T selectedOption,
+    public TwoDropDownChoicesModel( final T selectedOption,
             final Map< T, List< T >> modelsMap ) {
         this.modelsMap = modelsMap;
 
@@ -63,8 +63,8 @@ public class GenericTwoDropDownChoicesModel< T > implements IClusterable {
             @Override
             public List< T > getObject() {
                 Set< T > keys = modelsMap.keySet();
-                List< T > list = new ArrayList< T >( keys );
-                return list;
+                List< T > keysList = new ArrayList< T >( keys );
+                return keysList;
             }
 
         };
