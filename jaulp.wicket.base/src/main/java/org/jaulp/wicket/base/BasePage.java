@@ -20,7 +20,7 @@ import org.jaulp.wicket.base.utils.WicketComponentUtils;
 /**
  * The Class BasePage.
  */
-public class BasePage extends WebPage {
+public abstract class BasePage extends WebPage {
 
     /**
      * Instantiates a new base page with an IModel object.
