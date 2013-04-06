@@ -8,7 +8,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Person;
-import org.jaulp.wicket.base.mainbase.BasePage;
+import org.jaulp.wicket.base.BasePage;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import org.jaulp.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 import org.jaulp.wicket.components.labeled.textfield.LabeledTextfieldPanel;
@@ -66,4 +66,5 @@ public class LabeledHomePage extends BasePage {
 	
 	
     }
+
 }

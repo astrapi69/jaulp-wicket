@@ -15,8 +15,8 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.jaulp.wicket.PackageResourceReferenceWrapper;
 import org.jaulp.wicket.PackageResourceReferences;
+import org.jaulp.wicket.base.BasePage;
 import org.jaulp.wicket.base.enums.ResourceReferenceType;
-import org.jaulp.wicket.base.parent.BaseMainPage;
 
 /**
  * The Class BasePage.
@@ -24,9 +24,9 @@ import org.jaulp.wicket.base.parent.BaseMainPage;
  * @author Asterios Raptis
  */
 @ImportResources(resources = {
-		@ImportResource(resourceName = "BasePage.js", resourceType = "js"),
-		@ImportResource(resourceName = "BasePage.css", resourceType = "css") })
-public abstract class BasePage extends BaseMainPage {
+		@ImportResource(resourceName = "BaseMainPage.js", resourceType = "js"),
+		@ImportResource(resourceName = "BaseMainPage.css", resourceType = "css") })
+public abstract class BaseMainPage extends BasePage {
 
 	/**
 	 * The serialVersionUID.
@@ -37,7 +37,7 @@ public abstract class BasePage extends BaseMainPage {
 	/**
 	 * Instantiates a new base page.
 	 */
-	public BasePage() {
+	public BaseMainPage() {
 		super();
 	}
 
@@ -47,7 +47,7 @@ public abstract class BasePage extends BaseMainPage {
 	 * @param parameters
 	 *            the parameters
 	 */
-	public BasePage(final PageParameters parameters) {
+	public BaseMainPage(final PageParameters parameters) {
 		super(parameters);
 	}
 
@@ -57,13 +57,13 @@ public abstract class BasePage extends BaseMainPage {
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
-				.getInstance().getPackageResourceReference(BasePage.class);
+				.getInstance().getPackageResourceReference(BaseMainPage.class);
 		if (null != headerContributors && !headerContributors.isEmpty()) {
 			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors) {
 				if (packageResourceReference.getType().equals(
 						ResourceReferenceType.JS)) {
 					JavaScriptResourceReference reference = new JavaScriptResourceReference(
-							BasePage.class, packageResourceReference
+							BaseMainPage.class, packageResourceReference
 									.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference)) {
 						JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
@@ -74,7 +74,7 @@ public abstract class BasePage extends BaseMainPage {
 				if (packageResourceReference.getType().equals(
 						ResourceReferenceType.CSS)) {
 					CssResourceReference reference = new CssResourceReference(
-							BasePage.class, packageResourceReference
+							BaseMainPage.class, packageResourceReference
 									.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference)) {
 						CssReferenceHeaderItem headerItem = CssHeaderItem

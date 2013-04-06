@@ -28,7 +28,7 @@ import org.jaulp.wicket.base.enums.ResourceReferenceType;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "BasePage.js", resourceType = "js"),
 		@ImportResource(resourceName = "BasePage.css", resourceType = "css") })
-public abstract class BasePage extends org.jaulp.wicket.base.BasePage {
+public abstract class BasePage extends org.jaulp.wicket.base.AbstractBasePage {
 
 	/**
 	 * The serialVersionUID.

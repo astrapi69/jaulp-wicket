@@ -9,7 +9,7 @@ import org.jaulp.wicket.PackageResourceReferences;
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
  * 
- * @see org.jaulp.wicket.base.examples.Start#main(String[])
+ * @see org.jaulp.wicket.base.examples.StartBase#main(String[])
  */
 public class WicketApplication extends WebApplication
 {    	

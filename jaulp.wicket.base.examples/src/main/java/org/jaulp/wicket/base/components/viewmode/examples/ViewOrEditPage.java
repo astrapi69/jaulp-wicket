@@ -13,7 +13,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Person;
-import org.jaulp.wicket.base.mainbase.BasePage;
+import org.jaulp.wicket.base.BasePage;
 import org.jaulp.wicket.components.editable.textarea.EditableTextArea;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import org.jaulp.wicket.components.viewmode.ViewOrEdit;
@@ -37,7 +37,6 @@ public class ViewOrEditPage extends BasePage {
 
 	final CompoundPropertyModel<Person> cpm = new CompoundPropertyModel<Person>(
 			person);
-	setDefaultModel(cpm);
 
 	final Form<Person> form = 
 	        new Form<Person>("form", cpm);

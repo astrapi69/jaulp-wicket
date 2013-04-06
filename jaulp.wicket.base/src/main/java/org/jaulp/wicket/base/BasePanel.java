@@ -7,7 +7,7 @@ import org.jaulp.wicket.base.utils.WicketComponentUtils;
 /**
  * The Class BasePanel.
  */
-public class BasePanel extends Panel {
+public abstract class BasePanel extends Panel {
 
     /**
      * The serialVersionUID.
