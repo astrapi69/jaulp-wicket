@@ -48,3 +48,8 @@
 # Binaries generated files #
 ############################
 /bin
+
+###########################
+# eclipse generated files #
+###########################
+*.shapshot
