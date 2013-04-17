@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.wicket.components.link.LinkUtils;
 
 /**
  * The Class MenuUtils.
@@ -32,12 +33,7 @@ public class MenuUtils {
 	public static BookmarkablePageLink<String> createBookmarkablePageLink(
 			String linkId, Class<? extends Page> pageClass, String labelId,
 			String resourceModelKey, Component component) {
-		final BookmarkablePageLink<String> searchEventsLink = new BookmarkablePageLink<String>(
-				linkId, pageClass);
-
-		searchEventsLink.add(new Label(labelId,
-				new StringResourceModel(resourceModelKey, component, null)));
-		return searchEventsLink;
+		return LinkUtils.createBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey, component);
 	}
 
 	/**
