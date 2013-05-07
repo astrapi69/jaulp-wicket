@@ -20,14 +20,14 @@ import org.jaulp.wicket.base.utils.WicketComponentUtils;
 /**
  * The Class BasePage.
  */
-public abstract class GenericBasePage<T> extends GenericWebPage<T> {
+public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T> {
 
     /**
      * Instantiates a new base page with an IModel object.
      *
      * @param model the model
      */
-    public GenericBasePage(IModel<T> model) {
+    public AbstractGenericBasePage(IModel<T> model) {
 		super(model);
 	}
 
@@ -39,7 +39,7 @@ public abstract class GenericBasePage<T> extends GenericWebPage<T> {
 	/**
      * Instantiates a new base page with no parameters.
      */
-    public GenericBasePage() {
+    public AbstractGenericBasePage() {
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class GenericBasePage<T> extends GenericWebPage<T> {
      *
      * @param parameters the parameters
      */
-    public GenericBasePage( final PageParameters parameters ) {
+    public AbstractGenericBasePage( final PageParameters parameters ) {
         super( parameters );
     }
 

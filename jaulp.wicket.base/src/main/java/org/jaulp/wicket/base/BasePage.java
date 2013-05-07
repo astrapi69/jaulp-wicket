@@ -18,7 +18,7 @@ public abstract class BasePage extends AbstractBasePage {
 	private static final long serialVersionUID = 1L;
 
 	/** The title. */
-	private IModel<String> title;
+	private final IModel<String> title;
 
 	/**
 	 * Instantiates a new base page.
@@ -35,13 +35,26 @@ public abstract class BasePage extends AbstractBasePage {
 	 */
 	public BasePage(final PageParameters parameters) {
 		super(parameters);
-		title = newTitle();
-		add(new Label("title", title));
+		add(new Label("title", title = newTitle()));
 	}
 	
+	/**
+	 * Factory method that can be overwritten for new page title.
+	 *
+	 * @return the i model
+	 */
 	protected IModel<String> newTitle(){
 		return new StringResourceModel("page.title", this, null, "Home page");
 		
+	}
+
+	/**
+	 * Gets the page title.
+	 *
+	 * @return the page title
+	 */
+	public IModel<String> getTitle() {
+		return title;
 	}
 
 }
