@@ -16,11 +16,12 @@ import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
- * The Class BasePage.
+ * The Class GenericBasePage.
  * 
- * @author Asterios Raptis
+ * @param <T>
+ *            the generic type
  */
-public abstract class BasePage extends AbstractBasePage {
+public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T> {
 
 	/**
 	 * The serialVersionUID.
@@ -33,7 +34,7 @@ public abstract class BasePage extends AbstractBasePage {
 	/**
 	 * Instantiates a new base page.
 	 */
-	public BasePage() {
+	public GenericBasePage() {
 		this(new PageParameters());
 	}
 
@@ -43,24 +44,24 @@ public abstract class BasePage extends AbstractBasePage {
 	 * @param parameters
 	 *            the parameters
 	 */
-	public BasePage(final PageParameters parameters) {
+	public GenericBasePage(final PageParameters parameters) {
 		super(parameters);
 		add(new Label("title", title = newTitle()));
 	}
-	
+
 	/**
 	 * Factory method that can be overwritten for new page title.
-	 *
+	 * 
 	 * @return the i model
 	 */
-	protected IModel<String> newTitle(){
+	protected IModel<String> newTitle() {
 		return new StringResourceModel("page.title", this, null, "Home page");
-		
+
 	}
 
 	/**
 	 * Gets the page title.
-	 *
+	 * 
 	 * @return the page title
 	 */
 	public IModel<String> getTitle() {
