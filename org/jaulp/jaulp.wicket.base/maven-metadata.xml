@@ -3,10 +3,10 @@
   <groupId>org.jaulp</groupId>
   <artifactId>jaulp.wicket.base</artifactId>
   <versioning>
-    <release>6.6.0</release>
+    <release>6.7.0</release>
     <versions>
-      <version>6.6.0</version>
+      <version>6.7.0</version>
     </versions>
-    <lastUpdated>20130424130529</lastUpdated>
+    <lastUpdated>20130507145854</lastUpdated>
   </versioning>
 </metadata>
