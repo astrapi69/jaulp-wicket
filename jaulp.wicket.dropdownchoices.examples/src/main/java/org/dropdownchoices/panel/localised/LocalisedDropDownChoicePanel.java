@@ -12,9 +12,9 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
-import org.dropdownchoices.components.LocalisedDropDownChoice;
 import org.dropdownchoices.models.OptionModel;
 import org.dropdownchoices.renderers.LocalisedChoiceRenderer;
+import org.jaulp.wicket.components.dropdownchoice.LocalisedDropDownChoice;
 
 /**
  * The Class LocalisedDropDownChoicePanel.

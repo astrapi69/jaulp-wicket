@@ -4,28 +4,21 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
+import net.sourceforge.jaulp.io.annotations.ImportResource;
+import net.sourceforge.jaulp.io.annotations.ImportResources;
 
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import  org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.dropdownchoices.models.StringTwoDropDownChoicesModel;
 import org.dropdownchoices.panel.TrademarksModelsPanel;
 import org.dropdownchoices.panels.TwoDropDownChoicesPanel;
 import org.dropdownchoices.renderers.PropertiesChoiceRenderer;
-import org.jaulp.wicket.PackageResourceReferenceWrapper;
-import org.jaulp.wicket.PackageResourceReferences;
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
-import org.jaulp.wicket.base.enums.ResourceReferenceType;
 import org.jaulp.wicket.base.utils.WicketComponentUtils;
 
 /**
@@ -33,7 +26,6 @@ import org.jaulp.wicket.base.utils.WicketComponentUtils;
  *
  * @author Asterios Raptis
  */
-@SuppressWarnings("deprecation")
 @ImportResources( resources =
 {@ImportResource( resourceName = "TwoDropDownChoicesPage.css", resourceType = "css" )})
 public class TwoDropDownChoicesPage extends WebPage {

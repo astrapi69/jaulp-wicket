@@ -76,9 +76,9 @@ public class MenubarPanel extends BasePanel {
 				SubmenuPage.class, "top.menu.sub.another.overview", this);
 		miAnother.addMenu(subMenuFromMiAnother);
 
-		MenuItem miViewOrEdit = MenuUtils.createMenuItem(
-				ViewOrEditPage.class, "top.menu.viewmode", this);
-		menuBar.addMenu(miViewOrEdit);
+//		MenuItem miViewOrEdit = MenuUtils.createMenuItem(
+//				ViewOrEditPage.class, "top.menu.viewmode", this);
+//		menuBar.addMenu(miViewOrEdit);
 		
 		MenuItem miLabeled = MenuUtils.createMenuItem(
 				LabeledHomePage.class, "top.menu.labeled", this);

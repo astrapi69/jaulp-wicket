@@ -73,9 +73,9 @@ public class ViewOrEditPage extends BasePage {
 	form.add(about);
 	
 	
-	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm, Model.of("Married:"));
+//	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm, Model.of("Married:"));
 	
-	form.add(married);
+//	form.add(married);
 
 	// Create submit button for the form
 	final Link<String> submitButton = new Link<String>("submitButton") {

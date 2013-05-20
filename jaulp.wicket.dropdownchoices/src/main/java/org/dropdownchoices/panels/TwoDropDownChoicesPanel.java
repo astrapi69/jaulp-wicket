@@ -15,8 +15,8 @@ import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
-import org.dropdownchoices.components.LocalisedDropDownChoice;
 import org.dropdownchoices.models.StringTwoDropDownChoicesModel;
+import org.jaulp.wicket.components.dropdownchoice.LocalisedDropDownChoice;
 
 /**
  * The Class TwoDropDownChoicesPanel.

@@ -43,7 +43,7 @@ public class LabeledHomePage extends BasePage {
 	LabeledTextAreaPanel<Person> about = new LabeledTextAreaPanel<Person>("about", cpm,  Model.of("About:"));
 	form.add(about);
 	
-	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm, Model.of("Married:"));
+	LabeledCheckboxPanel married = new LabeledCheckboxPanel("married", cpm, Model.of("Married:"));
 	
 	form.add(married);
 

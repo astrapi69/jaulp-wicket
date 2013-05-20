@@ -1,14 +1,4 @@
-/**
- * Copyright (C) 2007 Asterios Raptis
- *
- * This program is open source software; you can redistribute it and/or modify
- * it under the terms of the Apache License V2.0 as published by
- * the Apache Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY.
- */
-package org.dropdownchoices.components;
+package org.jaulp.wicket.components.dropdownchoice;
 
 import java.util.List;
 
@@ -17,7 +7,7 @@ import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class LocaledDropDownChoice extends the DropDownChoice. It overwrites the
+ * The Class LocalisedDropDownChoice extends the DropDownChoice. It overwrites the
  * method localizeDisplayValues to get the values from the appropriate
  * properties file. You can set the flag 'defaultChoice' to true to overwrite
  * the default behavior and showing 'choose'.

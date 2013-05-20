@@ -25,4 +25,11 @@
 
   </licenses>
 
+  <dependencies>
+  	<dependency>
+  		<groupId>org.jaulp</groupId>
+  		<artifactId>jaulp.wicket.base</artifactId>
+  		<version>6.7.0</version>
+  	</dependency>
+  </dependencies>
 </project>
