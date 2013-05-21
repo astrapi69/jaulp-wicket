@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.dropdownchoices.models.SelectOptionModel;
-import org.jaulp.wicket.components.dropdownchoice.LocalisedDropDownChoice;
+import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
 /**
  *

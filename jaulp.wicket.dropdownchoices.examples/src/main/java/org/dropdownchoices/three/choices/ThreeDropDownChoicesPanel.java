@@ -16,7 +16,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.dropdownchoices.models.StringThreeDropDownChoicesModel;
 import org.dropdownchoices.renderers.PropertiesChoiceRenderer;
 import org.dropdownchoices.renderers.SelectedValuesChoiceRenderer;
-import org.jaulp.wicket.components.dropdownchoice.LocalisedDropDownChoice;
+import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
 /**
  * The Class TwoDropDownChoicesPanel.

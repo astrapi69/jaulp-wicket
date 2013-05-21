@@ -1,4 +1,4 @@
-package org.jaulp.wicket.components.dropdownchoice;
+package org.jaulp.wicket.components.i18n.dropdownchoice;
 
 import java.util.List;
 

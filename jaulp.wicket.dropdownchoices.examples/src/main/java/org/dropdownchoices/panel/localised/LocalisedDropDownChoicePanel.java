@@ -14,7 +14,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.dropdownchoices.models.OptionModel;
 import org.dropdownchoices.renderers.LocalisedChoiceRenderer;
-import org.jaulp.wicket.components.dropdownchoice.LocalisedDropDownChoice;
+import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
 /**
  * The Class LocalisedDropDownChoicePanel.
