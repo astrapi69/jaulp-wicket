@@ -8,15 +8,15 @@ import java.util.Map;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.dropdownchoices.models.StringTwoDropDownChoicesModel;
 import org.dropdownchoices.panel.TrademarksModelsPanel;
 import org.dropdownchoices.panel.WicketWikiExamplePanel;
 import org.dropdownchoices.panel.base.BaseDropDownChoicePanel;
 import org.dropdownchoices.panel.localised.LocalisedDropDownChoicePanel;
 import org.dropdownchoices.panel.simple.SimpleDropDownChoicePanel;
-import org.dropdownchoices.panels.TwoDropDownChoicesPanel;
-import org.dropdownchoices.renderers.PropertiesChoiceRenderer;
 import org.dropdownchoices.three.choices.ThreeDropDownChoicesPanel;
+import org.jaulp.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
+import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
+import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**
  * @author Asterios Raptis

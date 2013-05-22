@@ -10,8 +10,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.dropdownchoices.models.StringTwoDropDownChoicesModel;
 import org.dropdownchoices.pages.TwoDropDownChoicesPage;
+import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**
  * Homepage

@@ -8,7 +8,7 @@
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY.
  */
-package org.dropdownchoices.models;
+package org.jaulp.wicket.model.dropdownchoices;
 import java.util.List;
 import java.util.Map;
 

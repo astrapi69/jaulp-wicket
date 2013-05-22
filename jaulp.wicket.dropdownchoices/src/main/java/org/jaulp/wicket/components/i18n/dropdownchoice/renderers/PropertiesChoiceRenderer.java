@@ -1,4 +1,4 @@
-package org.dropdownchoices.renderers;
+package org.jaulp.wicket.components.i18n.dropdownchoice.renderers;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;

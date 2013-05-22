@@ -8,15 +8,15 @@
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY.
  */
-package org.dropdownchoices.panels;
+package org.jaulp.wicket.components.i18n.dropdownchoice.panels;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
-import org.dropdownchoices.models.StringTwoDropDownChoicesModel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
+import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**
  * The Class TwoDropDownChoicesPanel.

@@ -11,8 +11,8 @@
 package org.dropdownchoices.panel;
 
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
-import org.dropdownchoices.models.StringTwoDropDownChoicesModel;
-import org.dropdownchoices.panels.TwoDropDownChoicesPanel;
+import org.jaulp.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
+import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**
  * The Class TrademarksModelsPanel.

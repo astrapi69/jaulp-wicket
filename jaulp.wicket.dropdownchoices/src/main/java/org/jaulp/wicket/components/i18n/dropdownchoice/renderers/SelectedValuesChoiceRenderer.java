@@ -1,22 +1,18 @@
-package org.dropdownchoices.renderers;
-
+package org.jaulp.wicket.components.i18n.dropdownchoice.renderers;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.StringResourceModel;
 
 /**
- * The Class LocalisedChoiceRenderer.
+ * The Class SelectedValuesChoiceRenderer.
  * 
  * @author Asterios Raptis
  */
-public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
+public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-
-	/** The properties key prefix. */
-	private String propertiesKeyPrefix;
 
 	/** The relative component used for lookups. */
 	private Component component;
@@ -25,18 +21,15 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
 	private Class<?> componentClass;
 
 	/**
-	 * Instantiates a new localised choice renderer.
+	 * Instantiates a new selected values choice renderer.
 	 * 
-	 * @param propertiesKeyPrefix
-	 *            the properties key prefix
 	 * @param component
 	 *            the component
 	 * @param componentClass
 	 *            the component class
 	 */
-	public LocalisedChoiceRenderer(final String propertiesKeyPrefix,
-			final Component component, final Class<?> componentClass) {
-		this.propertiesKeyPrefix = propertiesKeyPrefix;
+	public SelectedValuesChoiceRenderer(final Component component,
+			final Class<?> componentClass) {
 		this.component = component;
 		this.componentClass = componentClass;
 	}
@@ -51,11 +44,23 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
 	 */
 	@Override
 	public Object getDisplayValue(final String object) {
-		StringResourceModel resourceModel = new StringResourceModel(
-				propertiesKeyPrefix + "." + object, component,  null);
-		String value = resourceModel.getObject();
-		return value;
-
+		String splitString = "=>";
+		String[] splittedValue = object.split(splitString);
+		StringBuffer sb = new StringBuffer();
+		if (splittedValue.length == 1) {
+			StringResourceModel resourceModel = new StringResourceModel(
+					splittedValue[0], component, null);
+			sb.append(resourceModel.getObject());
+		} else {
+			StringResourceModel resourceModel = new StringResourceModel(
+					splittedValue[0], component, null);
+			sb.append(resourceModel.getObject());
+			sb.append(splitString);
+			resourceModel = new StringResourceModel(splittedValue[1],
+					component,  null);
+			sb.append(resourceModel.getObject());
+		}
+		return sb.toString();
 	}
 
 	/**
@@ -73,4 +78,6 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
 	public String getIdValue(final String object, final int index) {
 		return object;
 	}
+
 }
+

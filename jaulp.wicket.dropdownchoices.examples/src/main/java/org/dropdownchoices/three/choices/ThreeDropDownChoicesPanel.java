@@ -13,10 +13,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
-import org.dropdownchoices.models.StringThreeDropDownChoicesModel;
-import org.dropdownchoices.renderers.PropertiesChoiceRenderer;
-import org.dropdownchoices.renderers.SelectedValuesChoiceRenderer;
 import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
+import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
+import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.SelectedValuesChoiceRenderer;
+import org.jaulp.wicket.model.dropdownchoices.StringThreeDropDownChoicesModel;
 
 /**
  * The Class TwoDropDownChoicesPanel.
