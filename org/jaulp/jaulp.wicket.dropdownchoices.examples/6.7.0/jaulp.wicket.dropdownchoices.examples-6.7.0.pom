@@ -12,7 +12,7 @@
 
 	<artifactId>jaulp.wicket.dropdownchoices.examples</artifactId>
 	<packaging>war</packaging>
-	<name>org.jaulp.dropdownchoices.examples</name>
+	<name>jaulp.wicket.dropdownchoices.examples</name>
 
 	<description></description>
 
