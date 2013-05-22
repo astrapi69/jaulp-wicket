@@ -1,21 +1,21 @@
-package org.dropdownchoices.examples;
+package org.jaulp.wicket.dropdownchoices.examples;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.dropdownchoices.panel.TrademarksModelsPanel;
-import org.dropdownchoices.panel.WicketWikiExamplePanel;
-import org.dropdownchoices.panel.base.BaseDropDownChoicePanel;
-import org.dropdownchoices.panel.localised.LocalisedDropDownChoicePanel;
-import org.dropdownchoices.panel.simple.SimpleDropDownChoicePanel;
-import org.dropdownchoices.three.choices.ThreeDropDownChoicesPanel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
+import org.jaulp.wicket.dropdownchoices.panel.TrademarksModelsPanel;
+import org.jaulp.wicket.dropdownchoices.panel.WicketWikiExamplePanel;
+import org.jaulp.wicket.dropdownchoices.panel.base.BaseDropDownChoicePanel;
+import org.jaulp.wicket.dropdownchoices.panel.localised.LocalisedDropDownChoicePanel;
+import org.jaulp.wicket.dropdownchoices.panel.simple.SimpleDropDownChoicePanel;
+import org.jaulp.wicket.dropdownchoices.three.choices.ThreeDropDownChoicesPanel;
 import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**

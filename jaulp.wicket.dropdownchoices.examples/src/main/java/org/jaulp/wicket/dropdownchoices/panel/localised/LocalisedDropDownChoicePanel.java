@@ -1,4 +1,4 @@
-package org.dropdownchoices.panel.localised;
+package org.jaulp.wicket.dropdownchoices.panel.localised;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,9 +12,9 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
-import org.dropdownchoices.models.OptionModel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.LocalisedChoiceRenderer;
+import org.jaulp.wicket.dropdownchoices.models.OptionModel;
 
 /**
  * The Class LocalisedDropDownChoicePanel.

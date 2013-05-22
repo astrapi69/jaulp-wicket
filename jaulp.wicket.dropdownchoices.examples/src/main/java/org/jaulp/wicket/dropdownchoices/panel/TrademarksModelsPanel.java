@@ -8,7 +8,7 @@
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY.
  */
-package org.dropdownchoices.panel;
+package org.jaulp.wicket.dropdownchoices.panel;
 
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.jaulp.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;

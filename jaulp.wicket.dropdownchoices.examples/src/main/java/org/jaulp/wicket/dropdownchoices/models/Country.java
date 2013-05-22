@@ -1,4 +1,4 @@
-package org.dropdownchoices.models;
+package org.jaulp.wicket.dropdownchoices.models;
 
 public class Country {
     private String digraph;

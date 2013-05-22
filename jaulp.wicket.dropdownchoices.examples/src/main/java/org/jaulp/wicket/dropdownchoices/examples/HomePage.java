@@ -1,4 +1,4 @@
-package org.dropdownchoices.examples;
+package org.jaulp.wicket.dropdownchoices.examples;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.wicket.Session;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.dropdownchoices.pages.TwoDropDownChoicesPage;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.wicket.dropdownchoices.pages.TwoDropDownChoicesPage;
 import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**

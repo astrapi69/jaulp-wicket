@@ -1,4 +1,4 @@
-package org.dropdownchoices.examples;
+package org.jaulp.wicket.dropdownchoices.examples;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

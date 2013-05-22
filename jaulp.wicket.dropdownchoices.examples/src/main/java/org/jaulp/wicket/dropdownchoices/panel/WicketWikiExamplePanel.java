@@ -1,4 +1,4 @@
-package org.dropdownchoices.panel;
+package org.jaulp.wicket.dropdownchoices.panel;
 
 import java.util.Arrays;
 

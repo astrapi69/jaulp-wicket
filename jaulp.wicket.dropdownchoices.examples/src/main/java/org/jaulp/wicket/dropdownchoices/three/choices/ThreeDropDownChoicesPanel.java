@@ -1,4 +1,4 @@
-package org.dropdownchoices.three.choices;
+package org.jaulp.wicket.dropdownchoices.three.choices;
 
 import java.util.ArrayList;
 import java.util.Arrays;

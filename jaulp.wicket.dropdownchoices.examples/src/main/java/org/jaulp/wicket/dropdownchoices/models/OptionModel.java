@@ -1,4 +1,4 @@
-package org.dropdownchoices.models;
+package org.jaulp.wicket.dropdownchoices.models;
 
 import org.apache.wicket.util.io.IClusterable;
 
