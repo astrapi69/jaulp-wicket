@@ -58,7 +58,7 @@ public class LabeledDateTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 * {@inheritDoc}
 	 */
 	protected void convertInput() {
-		super.convertInput();
+		setConvertedInput(getModel().getObject());
 	}
 
 	/**

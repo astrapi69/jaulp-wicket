@@ -69,7 +69,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	 * {@inheritDoc}
 	 */
 	protected void convertInput() {
-		//setConvertedInput(checkBox.getConvertedInput());
+		setConvertedInput(getModel().getObject());
 	}
 
 	/**
