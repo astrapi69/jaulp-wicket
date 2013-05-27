@@ -14,7 +14,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	private static final long serialVersionUID = 1L;
 		
 	/** The CheckBox component. */
-	private final CheckBox checkBox;
+	private CheckBox checkBox;
 
 	/**
 	 * Instantiates a new LabeledCheckboxPanel object.
@@ -69,7 +69,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	 * {@inheritDoc}
 	 */
 	protected void convertInput() {
-//		setConvertedInput(checkBox.getConvertedInput());
+		//setConvertedInput(checkBox.getConvertedInput());
 	}
 
 	/**
