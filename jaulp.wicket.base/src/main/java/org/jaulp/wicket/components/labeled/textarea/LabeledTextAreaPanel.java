@@ -41,7 +41,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 		add(feedback = newComponentFeedbackPanel("feedback", textArea));
 
 		String markupId = textArea.getMarkupId();
-		add(label = newLabel("label", markupId, this.labelModel));
+		add(label = newLabel("label", markupId, getLabel()));
 	}
 
 	/**

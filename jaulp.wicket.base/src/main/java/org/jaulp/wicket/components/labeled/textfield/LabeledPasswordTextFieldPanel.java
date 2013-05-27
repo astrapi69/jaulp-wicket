@@ -47,7 +47,7 @@ public class LabeledPasswordTextFieldPanel extends
 		add(feedback = newComponentFeedbackPanel("feedback", passwordTextField));
 
 		String markupId = passwordTextField.getMarkupId();
-		add(label = newLabel("label", markupId, this.labelModel));
+		add(label = newLabel("label", markupId, getLabel()));
 	}
 
 	/**

@@ -39,7 +39,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
 
 		String markupId = checkBox.getMarkupId();
-		add(label = newLabel("label", markupId, this.labelModel));
+		add(label = newLabel("label", markupId, getLabel()));
   
 	}
 	
@@ -69,7 +69,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	 * {@inheritDoc}
 	 */
 	protected void convertInput() {
-		//setConvertedInput(checkBox.getConvertedInput());
+//		setConvertedInput(checkBox.getConvertedInput());
 	}
 
 	/**

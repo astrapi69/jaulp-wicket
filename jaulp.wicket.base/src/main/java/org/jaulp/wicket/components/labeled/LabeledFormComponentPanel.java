@@ -26,8 +26,6 @@ public abstract class LabeledFormComponentPanel<T> extends
 
 	/** The ComponentFeedbackPanel for validation information. */
 	protected ComponentFeedbackPanel feedback;
-	
-	protected IModel<String> labelModel;
 
 	/**
 	 * Instantiates a new LabeledFormComponentPanel object.
@@ -41,33 +39,22 @@ public abstract class LabeledFormComponentPanel<T> extends
 
 	/**
 	 * Instantiates a new LabeledFormComponentPanel object.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @param labelModel the label model
 	 */
 	public LabeledFormComponentPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model);
-		this.labelModel = labelModel;
+		setLabel(labelModel);
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param forId
-	 *            the for id
-	 * @param model
-	 *            the model
-	 * @return the label
+	 * Gets the label component.
+	 *
+	 * @return the label component
 	 */
-	protected Label newLabel(String id, String forId, IModel<String> model) {
-		Label label = new Label(id, model);
-		label.add(new AttributeAppender("for", Model.of(forId), " "));
+	public Label getLabelComponent() {
 		return label;
 	}
 
@@ -88,5 +75,24 @@ public abstract class LabeledFormComponentPanel<T> extends
 				filter);
 		feedbackPanel.setOutputMarkupId(true);
 		return feedbackPanel;
+	}
+
+	/**
+	 * Factory method for creating the Label. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Label.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param forId
+	 *            the for id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
+	protected Label newLabel(String id, String forId, IModel<String> model) {
+		Label label = new Label(id, model);
+		label.add(new AttributeAppender("for", Model.of(forId), " "));
+		return label;
 	}
 }

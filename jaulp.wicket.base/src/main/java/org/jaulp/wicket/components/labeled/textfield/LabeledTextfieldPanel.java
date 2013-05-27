@@ -16,7 +16,7 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	private static final long serialVersionUID = 1L;
 		
 	/** The text field. */
-	private TextField<T> textField;
+	private final TextField<T> textField;
 
 	/**
 	 * Instantiates a new LabeledTextfieldPanel.
@@ -32,17 +32,41 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 *
 	 * @param id the id
 	 * @param model the model
+	 * @param labelModel the label model
 	 */
 	public LabeledTextfieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
-		// TODO check if not cpm set pm.		
+		
 		PropertyModel<T> textFieldModel = new PropertyModel<T>(model.getObject(), id);
 		add(textField = newTextField("textField", textFieldModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", textField));
 
 		String markupId = textField.getMarkupId();
-		add(label = newLabel("label", markupId, this.labelModel));
+		add(label = newLabel("label", markupId, getLabel()));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	protected void convertInput() {
+		setConvertedInput(textField.getConvertedInput());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getInput() {
+		return textField.getInput();
+	}
+
+	/**
+	 * Gets the text field.
+	 *
+	 * @return the text field
+	 */
+	public TextField<T> getTextField() {
+		return textField;
 	}
 
 	/**
@@ -58,20 +82,6 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 		TextField<T> textField = new TextField<T>(id, model);
 		textField.setOutputMarkupId(true);
 		return textField;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getInput() {
-		return textField.getInput();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void convertInput() {
-		setConvertedInput(textField.getConvertedInput());
 	}
 
 	/**
