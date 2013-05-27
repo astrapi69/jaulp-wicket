@@ -14,7 +14,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	private static final long serialVersionUID = 1L;
 		
 	/** The CheckBox component. */
-	private CheckBox checkBox;
+	private final CheckBox checkBox;
 
 	/**
 	 * Instantiates a new LabeledCheckboxPanel object.

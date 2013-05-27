@@ -23,6 +23,10 @@ public class LabeledDateTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	/** The text field. */
 	private final DateTextField dateTextField;
 	
+	public DateTextField getDateTextField() {
+		return dateTextField;
+	}
+
 	/**
 	 * Instantiates a new LabeledDateTextfieldPanel.
 	 *

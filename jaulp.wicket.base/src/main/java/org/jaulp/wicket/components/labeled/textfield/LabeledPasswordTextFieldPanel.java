@@ -16,7 +16,7 @@ public class LabeledPasswordTextFieldPanel extends
 	private static final long serialVersionUID = 1L;
 
 	/** The text field. */
-	private PasswordTextField passwordTextField;
+	private final PasswordTextField passwordTextField;
 
 	/**
 	 * Instantiates a new LabeledPasswordTextFieldPanel.

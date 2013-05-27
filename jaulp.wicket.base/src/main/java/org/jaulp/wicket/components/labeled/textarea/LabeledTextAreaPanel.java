@@ -16,7 +16,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	private static final long serialVersionUID = 1L;
 		
 	/** The text area. */
-	private TextArea<T> textArea;
+	private final TextArea<T> textArea;
 
 	/**
 	 * Instantiates a new labeled text area panel.
