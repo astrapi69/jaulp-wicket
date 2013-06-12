@@ -1,11 +1,9 @@
 package org.jaulp.wicket.base.components.viewmode.examples;
 
 
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextArea;
+import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
@@ -73,27 +71,28 @@ public class ViewOrEditPage extends BasePage {
 	form.add(about);
 	
 	
-//	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm, Model.of("Married:"));
+	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm, Model.of("Married:"));
 	
-//	form.add(married);
+	form.add(married);
 
 	// Create submit button for the form
-	final Link<String> submitButton = new Link<String>("submitButton") {
+	final SubmitLink submitButton = new SubmitLink("submitButton") {
 		/**
 		 * The serialVersionUID.
 		 */
 		private static final long serialVersionUID = 1L;
 
 		@Override
-		public void onClick() {
+		public void onSubmit() {
 			info("Person:"+getDefaultModelObjectAsString());
 			enableFields = !enableFields;
-//			about.setEditable(enableFields);
+			about.setEditable(enableFields);
+			
 			
 		}
 	};
 
-	form.add(submitButton);
+	add(submitButton);
 	
 	add(new FeedbackPanel("feedbackpanel"));
 	

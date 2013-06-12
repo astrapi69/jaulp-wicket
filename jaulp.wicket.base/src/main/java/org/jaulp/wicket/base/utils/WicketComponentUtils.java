@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -13,6 +14,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.StringHeaderItem;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.protocol.http.RequestUtils;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
@@ -181,4 +183,34 @@ public final class WicketComponentUtils {
             }
         }
 	}
+	
+    /**
+     * Gets the image.
+     * 
+     * @param imageId the image id
+     * @param contentType the content type
+     * @param data the data
+     * @return the image
+     */
+    public static Image getImage( final String imageId,
+            final String contentType, final byte [] data ) {
+        return new Image( imageId,
+                new DatabaseImageResource( contentType, data ) );
+    }
+    
+
+
+    /**
+     * Gets the image.
+     * 
+     * @param imageId the image id
+     * @param contentType the content type
+     * @param data the data
+     * @return the image
+     */
+    public static Image getImage( final String imageId,
+            final String contentType, final Byte [] data ) {
+    	byte [] byteArrayData =ArrayUtils.toPrimitive( data );
+        return getImage(imageId, contentType,  byteArrayData);
+    }
 }
