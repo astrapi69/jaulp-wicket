@@ -32,6 +32,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	 *
 	 * @param id the id
 	 * @param model the model
+	 * @param labelModel the label model
 	 */
 	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
@@ -42,6 +43,29 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 
 		String markupId = textArea.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	protected void convertInput() {
+		setConvertedInput(textArea.getConvertedInput());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getInput() {
+		return textArea.getInput();
+	}
+
+	/**
+	 * Gets the text area.
+	 *
+	 * @return the text area
+	 */
+	public TextArea<T> getTextArea() {
+		return textArea;
 	}
 
 	/**
@@ -57,20 +81,6 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 		TextArea<T> textArea = new TextArea<T>(id, model);
 		textArea.setOutputMarkupId(true);
 		return textArea;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getInput() {
-		return textArea.getInput();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void convertInput() {
-		setConvertedInput(textArea.getConvertedInput());
 	}
 
 	/**
