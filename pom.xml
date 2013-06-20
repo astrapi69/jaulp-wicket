@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	<name>jaulp.wicket</name>
 
-	<description>Parent project for all apache wicket project in the jaulp.core.</description>
+	<description>Parent project for all apache wicket project in the jaulp.wicket.</description>
 
 	<modules>
 		<module>jaulp.wicket.annotated.header.contributors</module>
