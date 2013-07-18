@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -15,7 +14,6 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.StringHeaderItem;
-import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.protocol.http.IRequestLogger;
 import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.RequestUtils;
@@ -32,7 +30,6 @@ import org.jaulp.wicket.PackageResourceReferenceWrapper;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.enums.ResourceReferenceType;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WicketComponentUtils is a helper class for the migration from
  * wicket-version 1.5.x to 6.1.0.
@@ -187,36 +184,7 @@ public final class WicketComponentUtils {
             }
         }
 	}
-	
-    /**
-     * Gets the image.
-     * 
-     * @param wicketId the id from the image for the html template.
-     * @param contentType the content type
-     * @param data the data
-     * @return the image
-     */
-    public static Image getImage( final String wicketId,
-            final String contentType, final byte [] data ) {
-        return new Image( wicketId,
-                new DatabaseImageResource( contentType, data ) );
-    }
-    
 
-
-    /**
-     * Gets the image.
-     * 
-     * @param wicketId the id from the image for the html template.
-     * @param contentType the content type
-     * @param data the data
-     * @return the image
-     */
-    public static Image getImage( final String wicketId,
-            final String contentType, final Byte [] data ) {
-    	byte [] byteArrayData =ArrayUtils.toPrimitive( data );
-        return getImage(wicketId, contentType,  byteArrayData);
-    }
     
     /**
      * Gets the request logger of the current WebApplication.
