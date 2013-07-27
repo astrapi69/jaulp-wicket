@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	<name>jaulp.wicket</name>
 
-	<description>Parent project for all apache wicket project in the jaulp.core.</description>
+	<description>Parent project for all apache wicket project in the jaulp.wicket.</description>
 
 	<modules>
 		<module>jaulp.wicket.annotated.header.contributors</module>
@@ -150,13 +150,20 @@
 					<optimize>true</optimize>
 					<debug>true</debug>
 				</configuration>
-			</plugin>
+			</plugin>			
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.7</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
+					<additionalBuildcommands>
+						<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
+					</additionalProjectnatures>
 				</configuration>
 			</plugin>
 
