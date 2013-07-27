@@ -59,13 +59,15 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.test.objects</artifactId>
-			<version>1.3.2.5</version>
+			<version>1.4.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-velocity</artifactId>
 			<version>6.9.0</version>
 		</dependency>
+		
 	</dependencies>
 
 </project>
