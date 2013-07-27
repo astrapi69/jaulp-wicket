@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>jaulp.wicket</artifactId>
+		<groupId>org.jaulp</groupId>
+		<version>6.8.0</version>
+	</parent>
+
+	<artifactId>jaulp.wicket.dialogs.examples</artifactId>
+	<packaging>war</packaging>
+	<name>jaulp.wicket.dialogs.examples</name>
+
+	<developers>
+
+		<developer>
+			<id>astrapi69</id>
+			<name>Asterios Raptis</name>
+			<email>astrapi69 at users.sf.net</email>
+			<timezone>Berlin</timezone>
+			<roles>
+				<role>Project manager</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+
+	</developers>
+
+	<description>
+		Demonstrates how to use the dialogs from the
+	  	'jaulp.wicket.dialogs' project.
+	</description>
+
+	<licenses>
+
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+
+	</licenses>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jaulp</groupId>
+			<artifactId>jaulp.wicket.dialogs</artifactId>
+			<version>6.8.0</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
