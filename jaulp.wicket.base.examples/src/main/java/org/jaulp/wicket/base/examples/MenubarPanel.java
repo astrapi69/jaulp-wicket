@@ -11,6 +11,7 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.components.labeled.examples.LabeledHomePage;
 import org.jaulp.wicket.base.components.viewmode.examples.ViewOrEditPage;
+import org.jaulp.wicket.base.examples.velocity.DynamicPage;
 import org.jaulp.wicket.components.menu.suckerfish.MenuItem;
 import org.jaulp.wicket.components.menu.suckerfish.MenuPanel;
 import org.jaulp.wicket.components.menu.suckerfish.MenuUtils;
@@ -71,10 +72,14 @@ public class MenubarPanel extends BasePanel {
 				AnotherPage.class, "top.menu.another", this);
 
 		menuBar.addMenu(miAnother);
-		
+
 		MenuItem subMenuFromMiAnother =  MenuUtils.createMenuItem(
 				SubmenuPage.class, "top.menu.sub.another.overview", this);
 		miAnother.addMenu(subMenuFromMiAnother);
+
+		MenuItem subMenuDynamic =  MenuUtils.createMenuItem(
+				DynamicPage.class, "top.menu.sub.dynamic.overview", this);
+		miAnother.addMenu(subMenuDynamic);
 
 		MenuItem miViewOrEdit = MenuUtils.createMenuItem(
 				ViewOrEditPage.class, "top.menu.viewmode", this);
