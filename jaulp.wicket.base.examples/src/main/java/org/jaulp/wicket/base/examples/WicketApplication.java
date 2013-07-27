@@ -1,18 +1,10 @@
 package org.jaulp.wicket.base.examples;
 
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import net.sourceforge.jaulp.xml.tag.Tag;
 
 import org.apache.log4j.Logger;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.jaulp.wicket.PackageResourceReferences;
-import org.jaulp.wicket.components.velocity.WicketField;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
