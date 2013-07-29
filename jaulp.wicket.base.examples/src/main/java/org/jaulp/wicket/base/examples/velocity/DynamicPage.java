@@ -1,12 +1,13 @@
 package org.jaulp.wicket.base.examples.velocity;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -27,37 +28,72 @@ public class DynamicPage extends WebPage {
 		super(parameters);
 		add(new MenubarPanel("menubarPanel"));
 		init();
-		IModel<List<WicketField<?>>> m = new CompoundPropertyModel<List<WicketField<?>>>(fields);
-		VelocityFieldsPanel velocityFieldsPanel = new VelocityFieldsPanel("velocityFieldsPanel", m);
+		IModel<List<WicketField<?>>> model = new CompoundPropertyModel<List<WicketField<?>>>(fields);
+		VelocityFieldsPanel velocityFieldsPanel = new VelocityFieldsPanel("velocityFieldsPanel", model);
 		add(velocityFieldsPanel);
 	}
 
 	public void init() {
 		fields = new ArrayList<WicketField<?>>();
-		Map<String, String> labelAttributes = new LinkedHashMap<String, String>();
-		labelAttributes.put(WICKET_ID, "textLabel");
+		WicketField<Form<Void>> formWicketField = new WicketField<Form<Void>>();
+		fields.add(formWicketField);
+		formWicketField.addAttribute(WICKET_ID, "form");
+		final Form<Void> form = new Form<Void>(formWicketField.getAttributes().get(WICKET_ID));
+		formWicketField.setComponent(form);
+		formWicketField.setName("form");
+		formWicketField.setContent("");
+		formWicketField.setEndTag(true);
 
 		WicketField<Label> labelWicketField = new WicketField<Label>();
-		labelWicketField.setAttributes(labelAttributes);
+		labelWicketField.addAttribute(WICKET_ID, "textLabel");
 		Label label = new Label(labelWicketField.getAttributes().get(WICKET_ID)	);
 		labelWicketField.setComponent(label);
 		labelWicketField.getComponent().setDefaultModel(Model.of("Name:"));
 		labelWicketField.setName("label");
 		labelWicketField.setEndTag(true);
-		fields.add(labelWicketField);
+		formWicketField.addChild(labelWicketField);
 
-		Map<String, String> inputAttributes = new LinkedHashMap<String, String>();
-		inputAttributes.put(WICKET_ID, "inputLabel");
-		inputAttributes.put("type", "text");
-
-		WicketField<TextField<String>> textWicketField = new WicketField<TextField<String>>();
-		textWicketField.setAttributes(inputAttributes);
+		final WicketField<TextField<String>> textWicketField = new WicketField<TextField<String>>();
+		textWicketField.addAttribute(WICKET_ID, "inputLabel");
+		textWicketField.addAttribute("type", "text");
 		textWicketField.setComponent(new TextField<String>(textWicketField
 				.getAttributes().get(WICKET_ID)));
 		textWicketField.getComponent().setDefaultModel(Model.of(""));
 		textWicketField.setName("input");
 		textWicketField.setEndTag(false);
-		fields.add(textWicketField);
+		formWicketField.addChild(textWicketField);
+		
+		WicketField<AjaxButton> buttonWicketField = new WicketField<AjaxButton>();
+		buttonWicketField.addAttribute(WICKET_ID, "button");
+		buttonWicketField.setName("button");
+		buttonWicketField.setEndTag(true);
+		AjaxButton ajaxButton = new AjaxButton(buttonWicketField.getWicketId()) {
 
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onSubmit(AjaxRequestTarget target, Form<?> f) {
+				// TODO Auto-generated method stub
+				System.out.println(textWicketField.getComponent().getDefaultModelObjectAsString());
+				super.onSubmit(target, form);
+			}
+			
+		};
+		buttonWicketField.setContent("");
+		buttonWicketField.setComponent(ajaxButton);		
+		formWicketField.addChild(buttonWicketField);
+		
+
+		WicketField<Label> buttonLabelWicketField = new WicketField<Label>();
+		buttonLabelWicketField.addAttribute(WICKET_ID, "textLabel");
+		Label buttonLabel = new Label(labelWicketField.getAttributes().get(WICKET_ID)	);
+		buttonLabelWicketField.setComponent(buttonLabel);
+		buttonLabelWicketField.getComponent().setDefaultModel(Model.of("Send"));
+		buttonLabelWicketField.setName("span");
+		buttonLabelWicketField.setEndTag(true);
+		buttonWicketField.addChild(buttonLabelWicketField);
 	}
 }
