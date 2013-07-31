@@ -15,7 +15,6 @@ import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.velocity.markup.html.VelocityPanel;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class VelocityFieldsPanel.
  */
@@ -65,7 +64,7 @@ public class VelocityFieldsPanel extends Panel {
 	}
 	
 	/**
-	 * Adds the child component.
+	 * Adds recursive the child components.
 	 *
 	 * @param parent the parent
 	 */
