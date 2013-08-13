@@ -13,12 +13,22 @@ import org.apache.wicket.model.LoadableDetachableModel;
  */
 public class SimpleDropDownChoicePanel extends Panel {
 
-    public SimpleDropDownChoicePanel( final String id ) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public SimpleDropDownChoicePanel( final String id ) {
         super( id );
-        IModel countries = new LoadableDetachableModel() {
-            @Override
-            public Object load() {
-                List l = new ArrayList();
+        IModel<List<String>> countries = new LoadableDetachableModel<List<String>>() {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+            public List<String> load() {
+                List<String> l = new ArrayList<String>();
                 l.add( "Argentina" );
                 l.add( "Brazil" );
                 l.add( "Chile" );
