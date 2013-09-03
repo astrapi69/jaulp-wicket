@@ -1,6 +1,6 @@
 package org.jaulp.wicket.components.velocity;
 
-import net.sourceforge.jaulp.xml.tag.Tag;
+import net.sourceforge.jaulp.xml.tag.SimpleTag;
 
 import org.apache.wicket.Component;
 
@@ -12,7 +12,7 @@ import org.apache.wicket.Component;
  * @param <C>
  *            the generic type for the Component
  */
-public class WicketField<C extends Component> extends Tag {
+public class WicketField<C extends Component> extends SimpleTag {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;

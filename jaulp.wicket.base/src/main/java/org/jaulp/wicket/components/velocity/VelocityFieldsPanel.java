@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sourceforge.jaulp.xml.tag.Tag;
+import net.sourceforge.jaulp.xml.tag.SimpleTag;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
@@ -35,7 +35,7 @@ public class VelocityFieldsPanel extends Panel {
 		map.put("fields", model.getObject());
 		StringBuilder sb = new StringBuilder();
 
-		for (Tag tag : model.getObject()) {
+		for (SimpleTag tag : model.getObject()) {
 			sb.append(tag.toString());
 		}
 		String tmp = sb.toString();
@@ -70,7 +70,7 @@ public class VelocityFieldsPanel extends Panel {
 	 */
 	public void addChildComponent(WicketField<?> parent) {
 		if(parent.getChildren() != null && !parent.getChildren().isEmpty()){
-			for (Tag iterable_element : parent.getChildren()) {
+			for (SimpleTag iterable_element : parent.getChildren()) {
 				WicketField<?> field = (WicketField<?>) iterable_element;
 				Component c = parent.getComponent();
 				if(c instanceof MarkupContainer) {
