@@ -24,17 +24,6 @@ public class WicketField<C extends Component> extends SimpleTag {
 	private C component;
 
 	/**
-	 * Adds the child.
-	 * 
-	 * @param child
-	 *            the child
-	 * @return true, if successful
-	 */
-	public boolean addChild(WicketField<?> child) {
-		return super.addChild(child);
-	}
-
-	/**
 	 * Gets the component.
 	 * 
 	 * @return the component
@@ -50,17 +39,6 @@ public class WicketField<C extends Component> extends SimpleTag {
 	 */
 	public String getWicketId() {
 		return getAttributes().get(WICKET_ID);
-	}
-
-	/**
-	 * Removes the child.
-	 * 
-	 * @param child
-	 *            the child
-	 * @return true, if successful
-	 */
-	public boolean removeChild(WicketField<?> child) {
-		return super.removeChild(child);
 	}
 
 	/**
