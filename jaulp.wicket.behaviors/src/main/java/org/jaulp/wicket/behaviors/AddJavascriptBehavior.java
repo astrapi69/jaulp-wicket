@@ -27,9 +27,9 @@ public class AddJavascriptBehavior extends Behavior {
 	 * Instantiates a new adds the javascript behavior.
 	 * 
 	 * @param javascript
-	 *            the javascript
+	 *            javascript content to be add.
 	 * @param id
-	 *            the id
+	 *            unique id for the javascript element. 
 	 */
 	public AddJavascriptBehavior(CharSequence javascript, String id) {
 		super();
