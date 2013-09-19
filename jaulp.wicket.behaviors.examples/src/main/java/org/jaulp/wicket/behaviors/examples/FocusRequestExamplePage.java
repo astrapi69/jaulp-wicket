@@ -3,15 +3,11 @@ package org.jaulp.wicket.behaviors.examples;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
 import org.jaulp.wicket.behaviors.FocusRequestBehavior;
-import org.jaulp.wicket.behaviors.WicketComponentTreeBehavior;
-import org.jaulp.wicket.behaviors.components.MailtoLabel;
-import org.jaulp.wicket.behaviors.models.MailtoModel;
 /**
- * Homepage
+ * FocusRequestExamplePage
  */
 public class FocusRequestExamplePage extends WebPage {
 
@@ -26,7 +22,7 @@ public class FocusRequestExamplePage extends WebPage {
 	 *            Page parameters
 	 */
     public FocusRequestExamplePage(final PageParameters parameters) {
-
+    	add(new AddJavascriptBehavior("alert('foo bar');", "xy"));
     	// message field
 		final TextField<String> messageField = new TextField<String>("message");
 		messageField.add(new FocusRequestBehavior());

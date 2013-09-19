@@ -34,8 +34,8 @@
 	</developers>
 
 	<description>
-		Demonstrates how to use the dialogs from the
-	  	'jaulp.wicket.dialogs' project.
+		Demonstrates how to use the behaviors from the
+	  	'jaulp.wicket.behaviors' project.
 	</description>
 
 	<licenses>
