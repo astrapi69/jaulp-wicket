@@ -53,5 +53,19 @@ public class PackageResourceReferenceWrapper {
 	public ResourceReferenceType getType() {
 		return type;
 	}
+	
+    /**
+     * {@inheritDoc}
+     */
+	public String toString() {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("[PackageResourceReferenceWrapper:");
+		buffer.append(" packageResourceReference: ");
+		buffer.append(packageResourceReference);
+		buffer.append(" type: ");
+		buffer.append(type);
+		buffer.append("]");
+		return buffer.toString();
+	}
 
 }
