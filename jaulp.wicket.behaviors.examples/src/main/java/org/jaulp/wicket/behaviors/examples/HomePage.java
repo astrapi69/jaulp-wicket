@@ -8,7 +8,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
 import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
-import org.jaulp.wicket.behaviors.WicketComponentTreeBehavior;
 import org.jaulp.wicket.behaviors.components.MailtoLabel;
 import org.jaulp.wicket.behaviors.models.MailtoModel;
 /**
@@ -31,8 +30,8 @@ public class HomePage extends WebPage {
     	StringResourceModel mailtoViewModel = new StringResourceModel("mailtoViewModel.value", this, null);
     	MailtoModel mailtoModel = new MailtoModel(mailtoAddresModel, mailtoViewModel );
     	
-    	add(new MailtoLabel("mailtoLabel", mailtoModel).add(new WicketComponentTreeBehavior()) );
-    	add(new WicketComponentTreeBehavior());
+    	add(new MailtoLabel("mailtoLabel", mailtoModel) );
+    	
     	Button button = new Button("button"){
 
 			/**
