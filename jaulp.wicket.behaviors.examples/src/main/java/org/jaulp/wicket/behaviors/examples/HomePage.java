@@ -6,6 +6,8 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
+import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
+import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.WicketComponentTreeBehavior;
 import org.jaulp.wicket.behaviors.components.MailtoLabel;
 import org.jaulp.wicket.behaviors.models.MailtoModel;
@@ -44,7 +46,7 @@ public class HomePage extends WebPage {
 			}
     		
     	};
-    	add(new AddJavascriptBehavior("alert('foo bar');", "xy"));
+    	 add(new AddJavascriptBehavior("alert('foo bar');", "xy"));
     	
     	add(new Link<String>("focusRequestExamplePage") {
 
@@ -55,11 +57,13 @@ public class HomePage extends WebPage {
 
 			@Override
 			public void onClick() {
-				setResponsePage(FocusRequestExamplePage.class);
+				 setResponsePage(FocusRequestExamplePage.class);
 			}
 		});
 
     	add(button);
+    	add(new FaviconBehavior());
+    	add(new AddJsResourceReferenceBehavior(this.getClass(), "functions.js", "func"));
     	
     }
 }

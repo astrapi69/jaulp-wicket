@@ -5,6 +5,7 @@
 		<title>Apache Wicket Quickstart</title>
 		<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold' rel='stylesheet' type='text/css' />
 		<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Stylesheet" />
+		
 	</head>
 	<body>
 		<br/>
@@ -24,11 +25,12 @@
 		<br/>	
 		<br/>
 		<br/>
-		<div class="colorbox">	
+		<div class="colorbox displaynone">	
 		<a wicket:id="focusRequestExamplePage">FocusRequestBehavior Example</a>		
 		<br/>
 		<br/>			
-		<button wicket:id="button">push</button>
+		<button wicket:id="button" onClick="alertnow();">push</button>
 		</div>
+		<div class="colorbox"><span class="red">this shell not displayed </span></div>
 	</body>
 </html>
