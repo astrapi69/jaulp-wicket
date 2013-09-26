@@ -15,22 +15,6 @@
 
 	<name>jaulp.wicket.base.examples</name>
 	
-
-	<developers>
-
-		<developer>
-			<id>astrapi69</id>
-			<name>Asterios Raptis</name>
-			<email>astrapi69 at users.sf.net</email>
-			<timezone>Berlin</timezone>
-			<roles>
-				<role>Project manager</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-
-	</developers>
-
 	<description>
 	  	Demonstrates how to use the functionality from the
 	  	'jaulp.wicket.base' project.

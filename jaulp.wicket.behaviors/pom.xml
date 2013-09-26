@@ -9,33 +9,8 @@
 	</parent>
 	<artifactId>jaulp.wicket.behaviors</artifactId>
 	<packaging>jar</packaging>
-	<!-- TODO project name -->
+	
 	<name>jaulp.wicket.behaviors</name>
-
-	<developers>
-
-		<developer>
-			<id>astrapi69</id>
-			<name>Asterios Raptis</name>
-			<email>astrapi69 at users.sf.net</email>
-			<timezone>Berlin</timezone>
-			<roles>
-				<role>Project manager</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-
-	</developers>
-
-	<!-- TODO <organization> <name>company name</name> <url>company url</url> 
-		</organization> -->
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
 
 	<dependencies>
 		<dependency>
@@ -44,4 +19,5 @@
 			<version>${wicket.version}</version>
 		</dependency>
 	</dependencies>
+	
 </project>

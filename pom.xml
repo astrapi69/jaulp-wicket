@@ -32,6 +32,21 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>	
+	
+	<developers>
+
+		<developer>
+			<id>astrapi69</id>
+			<name>Asterios Raptis</name>
+			<email>astrapi69 at users.sf.net</email>
+			<timezone>Berlin</timezone>
+			<roles>
+				<role>Project manager</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+
+	</developers>
 
 	<scm>
 		<url>https://github.com/astrapi69/jaulp.wicket.git</url>

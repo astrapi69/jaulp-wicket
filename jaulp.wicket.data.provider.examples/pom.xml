@@ -14,48 +14,23 @@
 	<packaging>war</packaging>
 	<name>jaulp.wicket.data.provider.examples</name>
 
-	<developers>
-
-		<developer>
-			<id>astrapi69</id>
-			<name>Asterios Raptis</name>
-			<email>astrapi69 at users.sf.net</email>
-			<timezone>Berlin</timezone>
-			<roles>
-				<role>Project manager</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-
-	</developers>
-
 	<description>
 		Demonstrates how to use the dialogs from the
 	  	'jaulp.wicket.dialogs' project.
 	</description>
 
-	<licenses>
-
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-
-	</licenses>
-
 	<dependencies>
-
-		<dependency>
-			<groupId>org.jaulp</groupId>
-			<artifactId>jaulp.file</artifactId>
-			<version>3.6.5</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.data.provider</artifactId>
 			<version>${wicket.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jaulp</groupId>
+			<artifactId>jaulp.file</artifactId>
+			<version>3.6.5</version>
 		</dependency>
 
 	</dependencies>
