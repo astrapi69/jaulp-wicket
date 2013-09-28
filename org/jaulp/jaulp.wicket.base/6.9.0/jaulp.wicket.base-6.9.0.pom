@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -9,47 +10,23 @@
   <artifactId>jaulp.wicket.base</artifactId>
   
   <name>jaulp.wicket.base</name>
-  
-	<developers>
-
-		<developer>
-			<id>astrapi69</id>
-			<name>Asterios Raptis</name>
-			<email>astrapi69 at users.sf.net</email>
-			<timezone>Berlin</timezone>
-			<roles>
-				<role>Project manager</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-
-	</developers>
 
 	<description>
 	  	This project contains components that can be used widely for wicket applications.
     </description>
-	<licenses>
-
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-
-	</licenses>
 
 	<dependencies>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
-			<version>6.9.0</version>
+			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-datetime</artifactId>
-			<version>6.9.0</version>
+			<version>${wicket.version}</version>
 		</dependency>
 		
 
@@ -58,17 +35,19 @@
 			<artifactId>wicket-extensions</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-velocity</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.xml</artifactId>
 			<version>1.3.4</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-velocity</artifactId>
-			<version>6.9.0</version>
-		</dependency>
 	</dependencies>
 
 </project>
