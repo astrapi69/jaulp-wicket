@@ -4,7 +4,7 @@
   <parent>
     <artifactId>jaulp.wicket</artifactId>
     <groupId>org.jaulp</groupId>
-    <version>6.10.0</version>
+    <version>6.9.0</version>
     <relativePath>..</relativePath>
   </parent>
   <artifactId>jaulp.wicket.base</artifactId>
