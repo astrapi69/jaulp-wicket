@@ -15,57 +15,29 @@
 
 	<name>jaulp.wicket.base.examples</name>
 	
-
-	<developers>
-
-		<developer>
-			<id>astrapi69</id>
-			<name>Asterios Raptis</name>
-			<email>astrapi69 at users.sf.net</email>
-			<timezone>Berlin</timezone>
-			<roles>
-				<role>Project manager</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-
-	</developers>
-
 	<description>
 	  	Demonstrates how to use the functionality from the
 	  	'jaulp.wicket.base' project.
     </description>
-
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 
 	<dependencies>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.base</artifactId>
-			<version>6.9.0</version>
+			<version>${wicket.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-velocity</artifactId>
+			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.test.objects</artifactId>
 			<version>1.4.0</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-velocity</artifactId>
-			<version>6.9.0</version>
 		</dependency>
 		
 	</dependencies>
