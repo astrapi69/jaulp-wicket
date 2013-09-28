@@ -5,6 +5,7 @@
 	<groupId>org.jaulp</groupId>
 	<artifactId>jaulp.wicket</artifactId>
 	<version>6.10.0</version>
+	<inceptionYear>2010</inceptionYear>
 	<packaging>pom</packaging>
 	<name>jaulp.wicket</name>
 
@@ -68,7 +69,7 @@
 		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>		
 		<maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
-		<maven-license-plugin.version>1.10.b1</maven-license-plugin.version>		
+		<license-maven-plugin.version>2.5</license-maven-plugin.version>	
 		<github.global.server>github</github.global.server>
 	</properties>
 
@@ -402,10 +403,11 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<profile>
 		<!-- This profile is for generate or update the license header from source files.
 			 for generate or update the license header you have to run this profile with this
 			 goal license:format. -->
-		<profile>
 			<id>update-license-header</id>
 			<activation>
 				<property>
@@ -415,18 +417,24 @@
 			</activation>
 			<build>
 				<plugins>
+				
 					<plugin>
-						<groupId>com.mycila.maven-license-plugin</groupId>
-						<artifactId>maven-license-plugin</artifactId>
-						<version>${maven-license-plugin.version}</version>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<version>${license-maven-plugin.version}</version>
 						<configuration>
 							<header>src/main/resources/LICENSE.txt</header>
 							<properties>
 								<owner>Asterios Raptis</owner>
-								<year>2007</year>
+								<year>${project.inceptionYear}</year>
 								<email>asterios.raptis@gmx.net</email>
-								<strictCheck>true</strictCheck>
 							</properties>
+							<excludes>
+								<exclude>**/README</exclude>
+								<exclude>**/pom.xml</exclude>
+								<exclude>src/test/resources/**</exclude>
+								<exclude>src/main/resources/**</exclude>
+							</excludes>
 						</configuration>
 						<executions>
 							<execution>
@@ -436,6 +444,7 @@
 							</execution>
 						</executions>
 					</plugin>
+				
 				</plugins>
 			</build>
 
