@@ -212,19 +212,19 @@ import java.util.Map;
  * The Class OnlineUsers holds the mapping between the users that are online 
  * and can be applied to get the functionality how many users are online.
  *
- * @param <USERS> the generic type for the users object.
+ * @param <USER> the generic type for the users object.
  * @param <ID> the generic type for the id the references to the user object.
  */
-public class OnlineUsers<USERS, ID> implements Serializable {
+public class OnlineUsers<USER, ID> implements Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** This map holds the users objects that are online. */
-	private final Map<USERS, ID> usersOnline = new HashMap<USERS, ID>();
+	private final Map<USER, ID> usersOnline = new HashMap<USER, ID>();
 
 	/** This map holds which session id references to which user. */
-	private final Map<ID, USERS> sessionIdToUser = new HashMap<ID, USERS>();
+	private final Map<ID, USER> sessionIdToUser = new HashMap<ID, USER>();
 
 	/**
 	 * Adds the user online.
@@ -235,7 +235,7 @@ public class OnlineUsers<USERS, ID> implements Serializable {
 	 *            the session id
 	 * @return the string
 	 */
-	public synchronized ID addUserOnline(USERS user, ID sessionId) {
+	public synchronized ID addOnline(USER user, ID sessionId) {
 		sessionIdToUser.put(sessionId, user);
 		return usersOnline.put(user, sessionId);
 	}
@@ -247,7 +247,7 @@ public class OnlineUsers<USERS, ID> implements Serializable {
 	 *            the user
 	 * @return the string
 	 */
-	public synchronized ID removeUserOnline(USERS user) {
+	public synchronized ID removeOnline(USER user) {
 		ID sessionId = usersOnline.remove(user);
 		if (sessionId != null) {
 			sessionIdToUser.remove(sessionId);
@@ -262,7 +262,7 @@ public class OnlineUsers<USERS, ID> implements Serializable {
 	 *            the user
 	 * @return true, if the user is online
 	 */
-	public boolean isOnline(USERS user) {
+	public boolean isOnline(USER user) {
 		return usersOnline.containsKey(user);
 	}
 
@@ -273,7 +273,7 @@ public class OnlineUsers<USERS, ID> implements Serializable {
 	 *            the session id
 	 * @return the user
 	 */
-	public USERS getUser(ID sessionId) {
+	public USER getUser(ID sessionId) {
 		return sessionIdToUser.get(sessionId);
 	}
 
