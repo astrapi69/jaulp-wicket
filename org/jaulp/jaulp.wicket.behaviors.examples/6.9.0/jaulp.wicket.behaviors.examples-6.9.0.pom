@@ -18,40 +18,17 @@
 		<commons-lang3.version>3.0.1</commons-lang3.version>
 	</properties>
 
-	<developers>
-
-		<developer>
-			<id>astrapi69</id>
-			<name>Asterios Raptis</name>
-			<email>astrapi69 at users.sf.net</email>
-			<timezone>Berlin</timezone>
-			<roles>
-				<role>Project manager</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-
-	</developers>
-
 	<description>
 		Demonstrates how to use the behaviors from the
 	  	'jaulp.wicket.behaviors' project.
 	</description>
-
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
 
 	<dependencies>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.behaviors</artifactId>
-			<version>6.9.0</version>
+			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
