@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>jaulp.wicket</artifactId>
+		<groupId>org.jaulp</groupId>
+		<version>6.10.0</version>	
+	</parent>
+
+	<artifactId>jaulp.wicket.annotated.header.contributors.examples</artifactId>
+	<packaging>war</packaging>
+	<name>jaulp.wicket.annotated.header.contributors.examples</name>
+
+	<description>
+	  	Demonstrates how to use the functionality from the
+	  	'jaulp.wicket.annotated.header.contributors' project.
+    </description>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jaulp</groupId>
+			<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jaulp</groupId>
+			<artifactId>jaulp.wicket.base</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+		
+	</dependencies>
+
+</project>
