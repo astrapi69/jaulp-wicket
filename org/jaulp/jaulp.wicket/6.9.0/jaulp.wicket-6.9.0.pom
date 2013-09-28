@@ -5,6 +5,7 @@
 	<groupId>org.jaulp</groupId>
 	<artifactId>jaulp.wicket</artifactId>
 	<version>6.9.0</version>
+	<inceptionYear>2010</inceptionYear>
 	<packaging>pom</packaging>
 	<name>jaulp.wicket</name>
 
@@ -32,6 +33,21 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>	
+	
+	<developers>
+
+		<developer>
+			<id>astrapi69</id>
+			<name>Asterios Raptis</name>
+			<email>astrapi69 at users.sf.net</email>
+			<timezone>Berlin</timezone>
+			<roles>
+				<role>Project manager</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+
+	</developers>
 
 	<scm>
 		<url>https://github.com/astrapi69/jaulp.wicket.git</url>
@@ -41,6 +57,19 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>7.6.3.v20120416</jetty.version>
 		<wicket.version>${project.version}</wicket.version>
+		<slf4j.version>1.6.4</slf4j.version>
+		<log4j.version>1.2.16</log4j.version>
+		<testng.version>6.8.7</testng.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.source.version>1.6</maven-compiler-plugin.source.version>
+		<maven-compiler-plugin.target.version>1.6</maven-compiler-plugin.target.version>
+		<maven-compiler-plugin.encoding>UTF-8</maven-compiler-plugin.encoding>
+		<maven-compiler-plugin.optimize>true</maven-compiler-plugin.optimize>
+		<maven-compiler-plugin.debug>true</maven-compiler-plugin.debug>
+		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>		
+		<maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
+		<license-maven-plugin.version>2.5</license-maven-plugin.version>	
 		<github.global.server>github</github.global.server>
 	</properties>
 
@@ -51,17 +80,30 @@
 			<artifactId>wicket-core</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
+		<!-- LOGGING DEPENDENCIES -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.4</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 
 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<!-- LOGGING DEPENDENCIES - LOG4J -->
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- JETTY DEPENDENCIES FOR TESTING -->
 		<dependency>
@@ -69,13 +111,6 @@
 			<artifactId>jetty-all-server</artifactId>
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
-		</dependency>
-		<!-- JUNIT DEPENDENCY FOR TESTING -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -139,31 +174,18 @@
 					</connectors>
 				</configuration>
 			</plugin>
-
+		
 			<plugin>
 				<inherited>true</inherited>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<optimize>true</optimize>
-					<debug>true</debug>
-				</configuration>
-			</plugin>			
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.7</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<additionalBuildcommands>
-						<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
-					</additionalBuildcommands>
-					<additionalProjectnatures>
-						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
-					</additionalProjectnatures>
+					<source>${maven-compiler-plugin.source.version}</source>
+					<target>${maven-compiler-plugin.target.version}</target>
+					<encoding>${maven-compiler-plugin.encoding}</encoding>
+					<optimize>${maven-compiler-plugin.optimize}</optimize>
+					<debug>${maven-compiler-plugin.debug}</debug>
 				</configuration>
 			</plugin>
 
@@ -173,6 +195,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -183,6 +206,22 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>${maven-eclipse-plugin.version}</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<additionalBuildcommands>
+						<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
+					</additionalProjectnatures>
+					<downloadSources>true</downloadSources>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 
 	</build>
@@ -359,6 +398,92 @@
 								</goals>
 							</execution>
 						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+		<!-- This profile is for generate or update the license header from source files.
+			 for generate or update the license header you have to run this profile with this
+			 goal license:format. -->
+			<id>update-license-header</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+				
+					<plugin>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<version>${license-maven-plugin.version}</version>
+						<configuration>
+							<header>src/main/resources/LICENSE.txt</header>
+							<properties>
+								<owner>Asterios Raptis</owner>
+								<year>${project.inceptionYear}</year>
+								<email>asterios.raptis@gmx.net</email>
+							</properties>
+							<excludes>
+								<exclude>**/README</exclude>
+								<exclude>**/pom.xml</exclude>
+								<exclude>src/test/resources/**</exclude>
+								<exclude>src/main/resources/**</exclude>
+							</excludes>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>format</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				
+				</plugins>
+			</build>
+
+		</profile>
+		
+		<profile>
+			<id>generate-reports</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Configuring Maven Javadoc Plugin: To attach javadoc artifacts to 
+						your build we execute the javadoc:jar goal from the javadoc plugin. -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${maven-surefire-plugin.version}</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
 					</plugin>
 
 				</plugins>
