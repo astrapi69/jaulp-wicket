@@ -24,6 +24,7 @@
 		<module>jaulp.wicket.dropdownchoices</module>
 		<module>jaulp.wicket.dropdownchoices.examples</module>
 		<module>jaulp.wicket.base.examples</module>
+		<module>jaulp.wicket.components</module>
 	</modules>
 
 	<licenses>

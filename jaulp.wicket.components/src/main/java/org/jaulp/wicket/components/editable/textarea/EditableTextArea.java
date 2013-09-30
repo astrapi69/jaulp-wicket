@@ -204,8 +204,6 @@
  */
 package org.jaulp.wicket.components.editable.textarea;
 
-import net.sourceforge.jaulp.io.annotations.ImportResources;
-
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -213,7 +211,7 @@ import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.CssResourceReference;
-import org.jaulp.wicket.base.utils.RemoveCssClass;
+import org.jaulp.wicket.behaviors.css.RemoveCssClass;
 
 /**
  * Multi-row text editing component that can be switched to a viewable component so it can be not editable.
@@ -223,7 +221,6 @@ import org.jaulp.wicket.base.utils.RemoveCssClass;
  * @param <T>
  *            The model object type
  */
-@ImportResources(resources = {})
 public class EditableTextArea<T> extends TextArea<T> {
 	@Override
 	public void renderHead(IHeaderResponse response) {
