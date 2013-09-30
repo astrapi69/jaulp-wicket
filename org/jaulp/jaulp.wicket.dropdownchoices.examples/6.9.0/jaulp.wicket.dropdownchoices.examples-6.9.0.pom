@@ -26,7 +26,7 @@
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
-			<artifactId>jaulp.wicket.base</artifactId>
+			<artifactId>jaulp.wicket.components</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
 
