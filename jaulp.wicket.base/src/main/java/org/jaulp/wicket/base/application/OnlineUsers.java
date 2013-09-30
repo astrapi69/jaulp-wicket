@@ -241,7 +241,8 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	}
 
 	/**
-	 * Removes the user from the map.
+	 * Removes the user from the map. This method shell be invoked when the session is unbounded from the Application.
+	 * In wicket is the best way to do that in the {@code WebApplication#sessionUnbound(String)}.
 	 * 
 	 * @param user
 	 *            the user
@@ -257,9 +258,8 @@ public class OnlineUsers<USER, ID> implements Serializable {
 
 	/**
 	 * Removes the user from the map with the session id.
-	 * 
-	 * @param user
-	 *            the session id
+	 *
+	 * @param sessionId the session id
 	 * @return the user
 	 */
 	public synchronized USER remove(ID sessionId) {
@@ -280,6 +280,16 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	 */
 	public boolean isOnline(USER user) {
 		return usersOnline.containsKey(user);
+	}
+	
+	/**
+	 * Gets the session id.
+	 *
+	 * @param user the user
+	 * @return the session id
+	 */
+	public ID getSessionId(USER user){
+		return usersOnline.get(user);
 	}
 
 	/**
