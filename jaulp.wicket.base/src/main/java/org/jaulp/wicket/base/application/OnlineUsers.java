@@ -245,7 +245,7 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	 * 
 	 * @param user
 	 *            the user
-	 * @return the string
+	 * @return the session id
 	 */
 	public synchronized ID removeOnline(USER user) {
 		ID sessionId = usersOnline.remove(user);
@@ -253,6 +253,22 @@ public class OnlineUsers<USER, ID> implements Serializable {
 			sessionIdToUser.remove(sessionId);
 		}
 		return sessionId;
+	}
+
+	/**
+	 * Removes the user from the map with the session id.
+	 * 
+	 * @param user
+	 *            the session id
+	 * @return the user
+	 */
+	public synchronized USER remove(ID sessionId) {
+		USER user = getUser(sessionId);
+		if (user != null) {
+			sessionIdToUser.remove(sessionId);
+			usersOnline.remove(user);
+		}
+		return user;
 	}
 
 	/**
