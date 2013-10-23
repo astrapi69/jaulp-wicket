@@ -240,6 +240,15 @@
 			</snapshots>
 		</repository>
 
+		<repository>
+			<id>jaulp.core-mvn-repo</id>
+			<url>https://raw.github.com/astrapi69/jaulp.core/mvn-repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+
 	</repositories>
 
 
