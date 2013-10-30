@@ -398,6 +398,27 @@ public final class WicketComponentUtils {
     public static IRequestLogger getRequestLogger() {
 		return getRequestLogger(null);
 	}
+	
+
+	
+	/**
+	 * Gets the real path corresponding to the given virtual path from the given WebApplication.
+	 * This method gets decorated the method of the {@link javax.servlet.ServletContext#getRealPath(String)}. 
+	 * 
+	 * @param application
+	 *            the wicket application
+	 * @param path 
+	 * 			  the virtual path to be translated to a real path  
+	 * @return the real path, or null if the translation cannot be performed
+	 */
+
+	public static String getRealPath(final WebApplication application, String path) {
+		String realPath = application.getServletContext().getRealPath(path);
+		if (null != realPath && !realPath.isEmpty()) {
+			return realPath;
+		}
+		return "";
+	}
 
     /**
      * Gets the request logger from the given WebApplication.
