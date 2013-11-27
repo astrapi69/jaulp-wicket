@@ -221,22 +221,31 @@ import org.jaulp.wicket.data.provider.examples.data.provider.SortablePersonDataP
 
 /**
  * The Class SortableDataViewPanel.
- *
+ * 
  * @author admin
  */
 public class SortableDataViewPanel extends Panel {
 
 	/**
 	 * Instantiates a new sortable data view panel.
-	 *
-	 * @param id the id
+	 * 
+	 * @param id
+	 *            the id
 	 */
 	public SortableDataViewPanel(String id) {
 		super(id);
 		List<Person> persons = getPersons();
 
 		SortablePersonDataProvider dataProvider = new SortablePersonDataProvider(
-				persons);
+				persons) {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public List<Person> getData() {
+				return getPersons();
+			}
+		};
 
 		dataProvider.setSort("firstname", SortOrder.ASCENDING);
 
@@ -260,18 +269,17 @@ public class SortableDataViewPanel extends Panel {
 		dataView.setItemsPerPage(10);
 		add(dataView);
 
-		add(new OrderByBorder("orderByFirstname", "firstname", dataProvider));
-		add(new OrderByBorder("orderByLastname", "lastname", dataProvider));
-		add(new OrderByBorder("orderByDateOfBirth", "dateOfBirth", dataProvider));
+		add(new OrderByBorder<String>("orderByFirstname", "firstname", dataProvider));
+		add(new OrderByBorder<String>("orderByLastname", "lastname", dataProvider));
+		add(new OrderByBorder<String>("orderByDateOfBirth", "dateOfBirth", dataProvider));
 		add(new NavigatorLabel("label", dataView));
 		add(new PagingNavigator("topNavigator", dataView));
 		add(new PagingNavigator("footernavigator", dataView));
 	}
 
-
 	/**
 	 * Gets the persons.
-	 *
+	 * 
 	 * @return the persons
 	 */
 	private List<Person> getPersons() {
