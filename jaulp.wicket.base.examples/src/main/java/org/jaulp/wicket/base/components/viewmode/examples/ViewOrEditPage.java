@@ -205,11 +205,13 @@
 package org.jaulp.wicket.base.components.viewmode.examples;
 
 
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -231,7 +233,7 @@ public class ViewOrEditPage extends BasePage {
 	final Person person = new Person();
 	person.setGender(Gender.UNDEFINED);
 	person.setName("");
-	person.setAbout("");
+	person.setAbout("bla");
 	person.setMarried(false);
 	setDefaultModel(Model.of(person));
 
@@ -244,34 +246,9 @@ public class ViewOrEditPage extends BasePage {
 	        new Form<Person>("form", cpm);
 
 	add(form);
-	
-	form.add(new ViewOrEdit<String>("name", new TextField<String>(ViewOrEdit.COMP_ID, new PropertyModel<String>(cpm, "name") ){
-		 
-             /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
 
-			@Override
-             public boolean isEnabled() {
-                 return enableFields;
-             }
-	}));
-	
-//	form.add(new ViewOrEdit<String>("about", new TextArea<String>(ViewOrEdit.COMP_ID, new PropertyModel<String>(cpm, "about") ){
-//		 
-//        /**
-//	 * 
-//	 */
-//	private static final long serialVersionUID = 1L;
-//
-//		@Override
-//        public boolean isEnabled() {
-//            return enableFields;
-//        }	
-//	}));
-	
-	final EditableTextArea<String> about = new EditableTextArea<String>("about");
+	IModel<String> taModel = new PropertyModel<String>(person, "about");
+	final EditableTextArea about = new EditableTextArea("about", taModel);
 	form.add(about);
 	
 	
@@ -280,7 +257,7 @@ public class ViewOrEditPage extends BasePage {
 	form.add(married);
 
 	// Create submit button for the form
-	final SubmitLink submitButton = new SubmitLink("submitButton") {
+	final Button submitButton = new Button("submitButton") {
 		/**
 		 * The serialVersionUID.
 		 */
@@ -296,7 +273,7 @@ public class ViewOrEditPage extends BasePage {
 		}
 	};
 
-	add(submitButton);
+	form.add(submitButton);
 	
 	add(new FeedbackPanel("feedbackpanel"));
 	
