@@ -283,22 +283,7 @@ public class EditableTextArea extends Panel {
 		textArea.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		return textArea;
 	}
-
-
-	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param forId
-	 *            the for id
-	 * @param model
-	 *            the model
-	 * @return the label
-	 */
-
+	
 	/**
 	 * Factory method for creating the MultiLineLabel. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can
