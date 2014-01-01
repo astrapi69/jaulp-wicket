@@ -15,12 +15,22 @@ public class EditableTextField extends Panel {
 
 	/** The flag editable. */
 	private boolean editable;
-	
+
 	/** The Label component. */
 	private final Label label;
 
 	/** The text field. */
 	private final TextField<String> textField;
+
+	/**
+	 * Sets the editable.
+	 * 
+	 * @param editable
+	 *            the new editable
+	 */
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
 
 	/**
 	 * Checks if is editable.
@@ -33,51 +43,35 @@ public class EditableTextField extends Panel {
 
 	/**
 	 * Instantiates a new editable text field.
-	 *
-	 * @param id the id
-	 * @param model the model
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
 	public EditableTextField(String id, IModel<String> model) {
 		super(id, model);
+		this.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
+		editable = true;
 		add(label = newLabel("label", model));
 		add(textField = newTextField("textField", model));
 	}
-	
-	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a MultiLineLabel.
-	 *
-	 * @param id the id
-	 * @param model the model
-	 * @return the MultiLineLabel
-	 */
-	protected Label newLabel(String id, IModel<String> model) {
-		Label label = new Label(id, model){
-			private static final long serialVersionUID = 1L;
-			@Override
-			public boolean isVisible() {
-				return !isEditable();
-			}
-		};
-		label.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		return label;
-	}
-	
-
 
 	/**
 	 * Factory method for creating the TextField. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a TextField.
-	 *
-	 * @param id the id
-	 * @param model the model
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text field
 	 */
 	protected TextField<String> newTextField(String id, IModel<String> model) {
-		TextField<String> textField = new TextField<String>(id, model){
+		TextField<String> textField = new TextField<String>(id, model) {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isVisible() {
 				return isEditable();
@@ -88,8 +82,32 @@ public class EditableTextField extends Panel {
 	}
 
 	/**
+	 * Factory method for creating the MultiLineLabel. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users
+	 * can provide their own version of a MultiLineLabel.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the MultiLineLabel
+	 */
+	protected Label newLabel(String id, IModel<String> model) {
+		Label label = new Label(id, model) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isVisible() {
+				return !isEditable();
+			}
+		};
+		label.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
+		return label;
+	}
+
+	/**
 	 * Gets the label.
-	 *
+	 * 
 	 * @return the label
 	 */
 	public Label getLabel() {
@@ -98,7 +116,7 @@ public class EditableTextField extends Panel {
 
 	/**
 	 * Gets the text field.
-	 *
+	 * 
 	 * @return the text field
 	 */
 	public TextField<String> getTextField() {

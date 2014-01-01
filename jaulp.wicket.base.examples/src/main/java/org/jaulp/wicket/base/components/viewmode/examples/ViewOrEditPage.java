@@ -219,6 +219,7 @@ import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Person;
 import org.jaulp.wicket.base.BasePage;
 import org.jaulp.wicket.components.editable.textarea.EditableTextArea;
+import org.jaulp.wicket.components.editable.textfield.EditableTextField;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import org.jaulp.wicket.components.viewmode.ViewOrEdit;
 
@@ -246,7 +247,8 @@ public class ViewOrEditPage extends BasePage {
 	        new Form<Person>("form", cpm);
 
 	add(form);
-
+	final EditableTextField nameTextField = new EditableTextField("name", new PropertyModel<String>(person, "name"));
+	form.add(nameTextField);
 	IModel<String> taModel = new PropertyModel<String>(person, "about");
 	final EditableTextArea about = new EditableTextArea("about", taModel);
 	form.add(about);
@@ -268,6 +270,7 @@ public class ViewOrEditPage extends BasePage {
 			info("Person:"+getDefaultModelObjectAsString());
 			enableFields = !enableFields;
 			about.setEditable(enableFields);
+			nameTextField.setEditable(enableFields);
 			
 			
 		}
