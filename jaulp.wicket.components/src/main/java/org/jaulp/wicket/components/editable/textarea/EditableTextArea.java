@@ -276,9 +276,9 @@ public class EditableTextArea extends Panel {
 		TextArea<String> textArea = new TextArea<String>(id, model){
 			private static final long serialVersionUID = 1L;
 			@Override
-			public boolean isVisible() {
-				return isEditable();
-			}
+		    protected void onConfigure() {
+		        setVisibilityAllowed(isEditable());
+		    }
 		};
 		textArea.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		return textArea;
@@ -297,9 +297,9 @@ public class EditableTextArea extends Panel {
 		MultiLineLabel multiLineLabel = new MultiLineLabel(id, model){
 			private static final long serialVersionUID = 1L;
 			@Override
-			public boolean isVisible() {
-				return !isEditable();
-			}
+		    protected void onConfigure() {
+		        setVisibilityAllowed(!isEditable());
+		    }
 		};
 		multiLineLabel.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		return multiLineLabel;

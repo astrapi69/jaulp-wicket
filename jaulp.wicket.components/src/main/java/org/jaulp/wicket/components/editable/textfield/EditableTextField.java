@@ -71,11 +71,9 @@ public class EditableTextField extends Panel {
 	protected TextField<String> newTextField(String id, IModel<String> model) {
 		TextField<String> textField = new TextField<String>(id, model) {
 			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean isVisible() {
-				return isEditable();
-			}
+		    protected void onConfigure() {
+		        setVisibilityAllowed(isEditable());
+		    }
 		};
 		textField.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		return textField;
@@ -95,11 +93,10 @@ public class EditableTextField extends Panel {
 	protected Label newLabel(String id, IModel<String> model) {
 		Label label = new Label(id, model) {
 			private static final long serialVersionUID = 1L;
-
 			@Override
-			public boolean isVisible() {
-				return !isEditable();
-			}
+		    protected void onConfigure() {
+		        setVisibilityAllowed(!isEditable());
+		    }
 		};
 		label.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		return label;
