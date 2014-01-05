@@ -204,16 +204,17 @@
  */
 package org.jaulp.wicket.behaviors.models;
 
+import java.io.Serializable;
+
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
-import org.apache.wicket.util.io.IClusterable;
 
 /**
  * The Class MailtoModel.
  * 
  * @author Asterios Raptis
  */
-public class MailtoModel implements IClusterable {
+public class MailtoModel implements Serializable {
 
 	/**
 	 * The serialVersionUID.
