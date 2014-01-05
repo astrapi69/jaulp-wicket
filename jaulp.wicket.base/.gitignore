@@ -53,3 +53,10 @@
 # eclipse generated files #
 ###########################
 *.shapshot
+
+################
+# gradle files #
+################
+/build
+/.gradle
+/gradle
