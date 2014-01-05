@@ -1,0 +1,7 @@
+
+description = 'jaulp.wicket.data.provider'
+dependencies {
+    compile group: 'org.apache.wicket', name: 'wicket-extensions', version:'6.9.0'
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version:'1.8.3'
+    compile group: 'commons-collections', name: 'commons-collections', version:'3.2.1'
+}

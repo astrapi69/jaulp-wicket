@@ -1,0 +1,8 @@
+
+apply plugin: 'war'
+
+description = 'jaulp.wicket.dropdownchoices.examples'
+dependencies {
+  compile project(':jaulp.wicket.dropdownchoices')
+  compile project(':jaulp.wicket.components')
+}

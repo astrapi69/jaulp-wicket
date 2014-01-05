@@ -1,0 +1,5 @@
+
+description = 'jaulp.wicket.behaviors'
+dependencies {
+  compile project(':jaulp.wicket.base')
+}

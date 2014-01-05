@@ -1,0 +1,5 @@
+
+description = 'jaulp.wicket.dialogs'
+dependencies {
+    compile group: 'org.apache.wicket', name: 'wicket-extensions', version:'6.9.0'
+}

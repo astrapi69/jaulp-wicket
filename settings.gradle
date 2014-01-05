@@ -1,0 +1,28 @@
+rootProject.name = 'jaulp.wicket'
+include ':jaulp.wicket.annotated.header.contributors'
+include ':jaulp.wicket.annotated.header.contributors.examples'
+include ':jaulp.wicket.base'
+include ':jaulp.wicket.behaviors'
+include ':jaulp.wicket.behaviors.examples'
+include ':jaulp.wicket.data.provider'
+include ':jaulp.wicket.data.provider.examples'
+include ':jaulp.wicket.dialogs'
+include ':jaulp.wicket.dialogs.examples'
+include ':jaulp.wicket.dropdownchoices'
+include ':jaulp.wicket.dropdownchoices.examples'
+include ':jaulp.wicket.base.examples'
+include ':jaulp.wicket.components'
+
+project(':jaulp.wicket.annotated.header.contributors').projectDir = "$rootDir/jaulp.wicket.annotated.header.contributors" as File
+project(':jaulp.wicket.annotated.header.contributors.examples').projectDir = "$rootDir/jaulp.wicket.annotated.header.contributors.examples" as File
+project(':jaulp.wicket.base').projectDir = "$rootDir/jaulp.wicket.base" as File
+project(':jaulp.wicket.behaviors').projectDir = "$rootDir/jaulp.wicket.behaviors" as File
+project(':jaulp.wicket.behaviors.examples').projectDir = "$rootDir/jaulp.wicket.behaviors.examples" as File
+project(':jaulp.wicket.data.provider').projectDir = "$rootDir/jaulp.wicket.data.provider" as File
+project(':jaulp.wicket.data.provider.examples').projectDir = "$rootDir/jaulp.wicket.data.provider.examples" as File
+project(':jaulp.wicket.dialogs').projectDir = "$rootDir/jaulp.wicket.dialogs" as File
+project(':jaulp.wicket.dialogs.examples').projectDir = "$rootDir/jaulp.wicket.dialogs.examples" as File
+project(':jaulp.wicket.dropdownchoices').projectDir = "$rootDir/jaulp.wicket.dropdownchoices" as File
+project(':jaulp.wicket.dropdownchoices.examples').projectDir = "$rootDir/jaulp.wicket.dropdownchoices.examples" as File
+project(':jaulp.wicket.base.examples').projectDir = "$rootDir/jaulp.wicket.base.examples" as File
+project(':jaulp.wicket.components').projectDir = "$rootDir/jaulp.wicket.components" as File

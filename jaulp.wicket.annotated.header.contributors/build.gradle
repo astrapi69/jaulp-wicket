@@ -1,0 +1,5 @@
+
+description = 'jaulp.wicket.annotated.header.contributors'
+dependencies {
+    compile group: 'org.jaulp', name: 'jaulp.lang', version:'2.3.9'
+}

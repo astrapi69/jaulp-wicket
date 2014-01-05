@@ -1,0 +1,10 @@
+
+apply plugin: 'war'
+
+description = 'jaulp.wicket.base.examples'
+dependencies {
+  compile project(':jaulp.wicket.base')
+  compile project(':jaulp.wicket.components')
+    compile group: 'org.apache.wicket', name: 'wicket-velocity', version:'6.9.0'
+    compile group: 'org.jaulp', name: 'jaulp.test.objects', version:'1.4.0'
+}
