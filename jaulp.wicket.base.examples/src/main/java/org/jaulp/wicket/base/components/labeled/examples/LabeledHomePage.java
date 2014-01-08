@@ -272,32 +272,32 @@ public class LabeledHomePage extends BasePage {
 	LabeledDateTextfieldPanel<Member> dateofbirth = new LabeledDateTextfieldPanel<Member>("dateofbirth", cpm, Model.of("Date of birth:"));
 	form.add(dateofbirth);
 	
-	LabeledAutoCompleteTextfieldPanel<Member> actf = new LabeledAutoCompleteTextfieldPanel<Member>("", cpm, Model.of("city")) {
-
-		@Override
-		protected AutoCompleteTextField<Member> newAutoCompleteTextField(
-				String id, IModel<Member> model) {
-			return new DefaultCssAutoCompleteTextField<Member>(id, model) {
-				/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-
-				@Override
-				protected Iterator<Member> getChoices(String input) {
-					if (Strings.isEmpty(input)) {
-						List<Member> emptyList = Collections.emptyList();
-						return emptyList.iterator();
-					}
-
-					List<Member> choices = new ArrayList<Member>(10);
-
-					// TODO return a list of Members...
-					return null;
-				}
-			};
-		}
-	};
+//	LabeledAutoCompleteTextfieldPanel<Member> actf = new LabeledAutoCompleteTextfieldPanel<Member>("", cpm, Model.of("city")) {
+//
+//		@Override
+//		protected AutoCompleteTextField<Member> newAutoCompleteTextField(
+//				String id, IModel<Member> model) {
+//			return new DefaultCssAutoCompleteTextField<Member>(id, model) {
+//				/**
+//				 * 
+//				 */
+//				private static final long serialVersionUID = 1L;
+//
+//				@Override
+//				protected Iterator<Member> getChoices(String input) {
+//					if (Strings.isEmpty(input)) {
+//						List<Member> emptyList = Collections.emptyList();
+//						return emptyList.iterator();
+//					}
+//
+//					List<Member> choices = new ArrayList<Member>(10);
+//
+//					// TODO return a list of Members...
+//					return null;
+//				}
+//			};
+//		}
+//	};
 
 	// Create submit button for the form
 	final Button submitButton = new Button("submitButton") {

@@ -239,10 +239,9 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 * @param labelModel the label model
 	 */
 	public LabeledTextfieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
-		super(id, model, labelModel);
+		super(id, model, labelModel);		
 		
-		PropertyModel<T> textFieldModel = new PropertyModel<T>(model.getObject(), id);
-		add(textField = newTextField("textField", textFieldModel));
+		add(textField = newTextField("textField", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", textField));
 
@@ -283,7 +282,8 @@ public class LabeledTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 * @return the text field
 	 */
 	protected TextField<T> newTextField(String id, IModel<T> model) {
-		TextField<T> textField = new TextField<T>(id, model);
+		PropertyModel<T> textFieldModel = new PropertyModel<T>(model.getObject(), getId());
+		TextField<T> textField = new TextField<T>(id, textFieldModel);
 		textField.setOutputMarkupId(true);
 		return textField;
 	}

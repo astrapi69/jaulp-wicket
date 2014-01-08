@@ -243,10 +243,9 @@ public class LabeledPasswordTextFieldPanel extends
 	public LabeledPasswordTextFieldPanel(String id, IModel<String> model,
 			IModel<String> labelModel) {
 		super(id, model, labelModel);
-		PropertyModel<String> passwordTextFieldModel = new PropertyModel<String>(
-				model.getObject(), id);
+		
 		add(passwordTextField = newPasswordTextField("passwordTextField",
-				passwordTextFieldModel));
+				model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", passwordTextField));
 
@@ -267,7 +266,9 @@ public class LabeledPasswordTextFieldPanel extends
 	 */
 	protected PasswordTextField newPasswordTextField(String id,
 			IModel<String> model) {
-		PasswordTextField passwordTextField = new PasswordTextField(id, model);
+		PropertyModel<String> passwordTextFieldModel = new PropertyModel<String>(
+				model.getObject(), getId());
+		PasswordTextField passwordTextField = new PasswordTextField(id, passwordTextFieldModel);
 		passwordTextField.setOutputMarkupId(true);
 		return passwordTextField;
 	}

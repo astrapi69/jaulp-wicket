@@ -249,8 +249,7 @@ public class LabeledDateTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 */
 	public LabeledDateTextfieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);		
-		PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), id);
-		add(dateTextField = newDateTextField("dateTextField", textFieldModel));
+		add(dateTextField = newDateTextField("dateTextField", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dateTextField));
 
@@ -281,9 +280,10 @@ public class LabeledDateTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 * @param model the model
 	 * @return the text field
 	 */
-	protected DateTextField newDateTextField(String id, IModel<Date> model) {
+	protected DateTextField newDateTextField(String id, IModel<T> model) {
+		PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());
 		
-		DateTextField dateTextField = new DateTextField(id, model,new StyleDateConverter("S-", true)) {
+		DateTextField dateTextField = new DateTextField(id, textFieldModel ,new StyleDateConverter("S-", true)) {
 			/**
 			 * The serialVersionUID.
 			 */

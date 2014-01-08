@@ -206,7 +206,6 @@ package org.jaulp.wicket.components.labeled.textfield;
 
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
@@ -241,8 +240,7 @@ public abstract class LabeledAutoCompleteTextfieldPanel<T> extends LabeledFormCo
 	public LabeledAutoCompleteTextfieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
 		
-		PropertyModel<T> textFieldModel = new PropertyModel<T>(model.getObject(), id);
-		add(autoCompleteTextField = newAutoCompleteTextField("autoCompleteTextField", textFieldModel));
+		add(autoCompleteTextField = newAutoCompleteTextField("autoCompleteTextField", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", autoCompleteTextField));
 
