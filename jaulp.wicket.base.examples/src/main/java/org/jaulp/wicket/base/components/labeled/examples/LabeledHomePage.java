@@ -227,9 +227,9 @@ import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePage;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import org.jaulp.wicket.components.labeled.textarea.LabeledTextAreaPanel;
-import org.jaulp.wicket.components.labeled.textfield.LabeledAutoCompleteTextfieldPanel;
-import org.jaulp.wicket.components.labeled.textfield.LabeledDateTextfieldPanel;
-import org.jaulp.wicket.components.labeled.textfield.LabeledTextfieldPanel;
+import org.jaulp.wicket.components.labeled.textfield.LabeledAutoCompleteTextFieldPanel;
+import org.jaulp.wicket.components.labeled.textfield.LabeledDateTextFieldPanel;
+import org.jaulp.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.DefaultCssAutoCompleteTextField;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "jquery-1.5.2.js", resourceType = "js", index=1),
@@ -258,7 +258,7 @@ public class LabeledHomePage extends BasePage {
 
 	add(form);
 
-	LabeledTextfieldPanel<Member> nameTextField = new LabeledTextfieldPanel<Member>("name", cpm, Model.of("Name:"));
+	LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>("name", cpm, Model.of("Name:"));
 
 	form.add(nameTextField);
 		
@@ -269,7 +269,7 @@ public class LabeledHomePage extends BasePage {
 	
 	form.add(married);
 	
-	LabeledDateTextfieldPanel<Member> dateofbirth = new LabeledDateTextfieldPanel<Member>("dateofbirth", cpm, Model.of("Date of birth:"));
+	LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>("dateofbirth", cpm, Model.of("Date of birth:"));
 	form.add(dateofbirth);
 	
 //	LabeledAutoCompleteTextfieldPanel<Member> actf = new LabeledAutoCompleteTextfieldPanel<Member>("", cpm, Model.of("city")) {

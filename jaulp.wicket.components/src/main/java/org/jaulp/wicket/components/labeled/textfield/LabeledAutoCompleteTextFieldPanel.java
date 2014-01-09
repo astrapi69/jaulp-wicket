@@ -213,7 +213,7 @@ import org.jaulp.wicket.components.labeled.LabeledFormComponentPanel;
  *
  * @param <T> the generic type
  */
-public abstract class LabeledAutoCompleteTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
+public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormComponentPanel<T> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -226,7 +226,7 @@ public abstract class LabeledAutoCompleteTextfieldPanel<T> extends LabeledFormCo
 	 *
 	 * @param id the id
 	 */
-	public LabeledAutoCompleteTextfieldPanel(String id) {
+	public LabeledAutoCompleteTextFieldPanel(String id) {
 		this(id, null, null);
 	}
 
@@ -237,7 +237,7 @@ public abstract class LabeledAutoCompleteTextfieldPanel<T> extends LabeledFormCo
 	 * @param model the model
 	 * @param labelModel the label model
 	 */
-	public LabeledAutoCompleteTextfieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
+	public LabeledAutoCompleteTextFieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);
 		
 		add(autoCompleteTextField = newAutoCompleteTextField("autoCompleteTextField", model));

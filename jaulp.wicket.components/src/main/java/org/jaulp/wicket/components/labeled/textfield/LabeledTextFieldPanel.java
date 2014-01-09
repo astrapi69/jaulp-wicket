@@ -204,56 +204,48 @@
  */
 package org.jaulp.wicket.components.labeled.textfield;
 
-import java.util.Date;
-import java.util.Locale;
-
-import org.apache.wicket.datetime.StyleDateConverter;
-import org.apache.wicket.datetime.markup.html.form.DateTextField;
-import org.apache.wicket.extensions.yui.calendar.DatePicker;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
- * Convenience class for labeled DateTextfield.
+ * Convenience class for labeled TextField.
  *
  * @param <T> the generic type
  */
-public class LabeledDateTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
+public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 		
 	/** The text field. */
-	private final DateTextField dateTextField;
-	
-	public DateTextField getDateTextField() {
-		return dateTextField;
-	}
+	private final TextField<T> textField;
 
 	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
+	 * Instantiates a new LabeledTextfieldPanel.
 	 *
 	 * @param id the id
 	 */
-	public LabeledDateTextfieldPanel(String id) {
+	public LabeledTextFieldPanel(String id) {
 		this(id, null, null);
 	}
 
 	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
+	 * Instantiates a new LabeledTextfieldPanel.
 	 *
 	 * @param id the id
 	 * @param model the model
 	 * @param labelModel the label model
 	 */
-	public LabeledDateTextfieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
+	public LabeledTextFieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);		
-		add(dateTextField = newDateTextField("dateTextField", model));
+		
+		add(textField = newTextField("textField", model));
 
-		add(feedback = newComponentFeedbackPanel("feedback", dateTextField));
+		add(feedback = newComponentFeedbackPanel("feedback", textField));
 
-		String markupId = dateTextField.getMarkupId();
+		String markupId = textField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 	}
 
@@ -261,51 +253,46 @@ public class LabeledDateTextfieldPanel<T> extends LabeledFormComponentPanel<T> {
 	 * {@inheritDoc}
 	 */
 	protected void convertInput() {
-		setConvertedInput(getModel().getObject());
+		setConvertedInput(textField.getConvertedInput());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getInput() {
-		return dateTextField.getInput();
+		return textField.getInput();
 	}
 
 	/**
-	 * Factory method for creating the DateTextField. This method is invoked in the
+	 * Gets the text field.
+	 *
+	 * @return the text field
+	 */
+	public TextField<T> getTextField() {
+		return textField;
+	}
+
+	/**
+	 * Factory method for creating the TextField. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a DateTextField.
+	 * provide their own version of a TextField.
 	 *
 	 * @param id the id
 	 * @param model the model
 	 * @return the text field
 	 */
-	protected DateTextField newDateTextField(String id, IModel<T> model) {
-		PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());
-		
-		DateTextField dateTextField = new DateTextField(id, textFieldModel ,new StyleDateConverter("S-", true)) {
-			/**
-			 * The serialVersionUID.
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public Locale getLocale() {
-				return getSession().getLocale();
-			}
-		};
-		DatePicker datePicker = new DatePicker();
-		datePicker.setShowOnFieldClick(true);
-		dateTextField.add(datePicker);
-		dateTextField.setOutputMarkupId(true);
-		return dateTextField;
+	protected TextField<T> newTextField(String id, IModel<T> model) {
+		PropertyModel<T> textFieldModel = new PropertyModel<T>(model.getObject(), getId());
+		TextField<T> textField = new TextField<T>(id, textFieldModel);
+		textField.setOutputMarkupId(true);
+		return textField;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	protected void onBeforeRender() {
-		dateTextField.setRequired(isRequired());
+		textField.setRequired(isRequired());
 		super.onBeforeRender();
 	}
 }
