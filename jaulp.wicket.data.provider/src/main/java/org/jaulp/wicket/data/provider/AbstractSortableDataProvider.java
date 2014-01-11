@@ -276,8 +276,10 @@ public class AbstractSortableDataProvider<T, S> extends SortableDataProvider<T, 
 	 */
 	@Override
 	public Iterator<? extends T> iterator(long first, long count) {
-		SortParam sortParam = getSort();
-		SortCollectionUtils.sortList(getData(), (String)sortParam.getProperty(), sortParam.isAscending());
+		SortParam<S> sortParam = getSort();
+		String property = (String)sortParam.getProperty();
+		boolean ascending = sortParam.isAscending();
+		SortCollectionUtils.sortList(getData(), property, ascending);
 		long index = first + count;
 		if(size() < index){
 			index = size();

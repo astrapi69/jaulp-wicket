@@ -237,7 +237,9 @@ public abstract class AbstractDynamicDataProvider<T, S> extends SortableDataProv
 	 */
 	public Iterator<? extends T> iterator(long first, long count) {
 		SortParam<S> sortParam = getSort();
-		SortCollectionUtils.sortList(getData(), (String)sortParam.getProperty(), sortParam.isAscending());
+		String property = (String)sortParam.getProperty();
+		boolean ascending = sortParam.isAscending();
+		SortCollectionUtils.sortList(getData(), property, ascending);
 		long index = first + count;
 		if(size() < index){
 			index = size();
