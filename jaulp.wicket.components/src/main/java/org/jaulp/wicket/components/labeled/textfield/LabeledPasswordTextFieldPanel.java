@@ -213,14 +213,23 @@ import org.jaulp.wicket.components.labeled.LabeledFormComponentPanel;
  * Convenience class for labeled PasswordTextField.
  * 
  */
-public class LabeledPasswordTextFieldPanel extends
-		LabeledFormComponentPanel<String> {
+public class LabeledPasswordTextFieldPanel<T> extends
+		LabeledFormComponentPanel<T> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The text field. */
 	private final PasswordTextField passwordTextField;
+
+	/**
+	 * Gets the password text field.
+	 *
+	 * @return the password text field
+	 */
+	public PasswordTextField getPasswordTextField() {
+		return passwordTextField;
+	}
 
 	/**
 	 * Instantiates a new LabeledPasswordTextFieldPanel.
@@ -234,13 +243,12 @@ public class LabeledPasswordTextFieldPanel extends
 
 	/**
 	 * Instantiates a new LabeledPasswordTextFieldPanel.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @param labelModel the label model
 	 */
-	public LabeledPasswordTextFieldPanel(String id, IModel<String> model,
+	public LabeledPasswordTextFieldPanel(String id, IModel<T> model,
 			IModel<String> labelModel) {
 		super(id, model, labelModel);
 		
@@ -265,7 +273,7 @@ public class LabeledPasswordTextFieldPanel extends
 	 * @return the text field
 	 */
 	protected PasswordTextField newPasswordTextField(String id,
-			IModel<String> model) {
+			IModel<T> model) {
 		PropertyModel<String> passwordTextFieldModel = new PropertyModel<String>(
 				model.getObject(), getId());
 		PasswordTextField passwordTextField = new PasswordTextField(id, passwordTextFieldModel);
@@ -284,7 +292,7 @@ public class LabeledPasswordTextFieldPanel extends
 	 * {@inheritDoc}
 	 */
 	protected void convertInput() {
-		setConvertedInput(passwordTextField.getConvertedInput());
+		setConvertedInput(getModel().getObject());
 	}
 
 	/**
