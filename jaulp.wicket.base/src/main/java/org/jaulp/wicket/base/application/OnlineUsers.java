@@ -239,6 +239,21 @@ public class OnlineUsers<USER, ID> implements Serializable {
 		sessionIdToUser.put(sessionId, user);
 		return usersOnline.put(user, sessionId);
 	}
+	
+	/**
+	 * Replace the given old session id with the new one.
+	 *
+	 * @param user the user
+	 * @param oldSessionId the old session id
+	 * @param newSessionId the new session id
+	 * @return the new session id that is assosiated with the given user.
+	 */
+	public synchronized ID replaceSessionId(USER user, ID oldSessionId, ID newSessionId) {		
+		sessionIdToUser.remove(oldSessionId);		
+		usersOnline.remove(user);
+		sessionIdToUser.put(newSessionId, user);
+		return usersOnline.put(user, newSessionId);
+	}
 
 	/**
 	 * Removes the user from the map. This method shell be invoked when the session is unbounded from the Application.
