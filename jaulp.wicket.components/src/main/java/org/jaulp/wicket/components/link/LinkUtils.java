@@ -208,6 +208,8 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.StringResourceModel;
 
 /**
@@ -235,12 +237,30 @@ public class LinkUtils {
 	public static BookmarkablePageLink<String> createBookmarkablePageLink(
 			String linkId, Class<? extends Page> pageClass, String labelId,
 			String resourceModelKey, Component component) {
-		final BookmarkablePageLink<String> searchEventsLink = new BookmarkablePageLink<String>(
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
 				linkId, pageClass);
 
-		searchEventsLink.add(new Label(labelId,
+		bookmarkablePageLink.add(new Label(labelId,
 				new StringResourceModel(resourceModelKey, component, null)));
-		return searchEventsLink;
+		return bookmarkablePageLink;
+	}
+	
+	/**
+	 * Creates an external link from the given parameters.
+	 *
+	 * @param linkId the link id
+	 * @param url the external url
+	 * @param labelId the label id
+	 * @param resourceModelKey the resource model key
+	 * @param component the component
+	 * @return the external link
+	 */
+	public static ExternalLink createExternalLink(String linkId, String url, String labelId,
+			String resourceModelKey, Component component){
+		ExternalLink externalLink = new ExternalLink(linkId, Model.of(url));
+		externalLink.add(new Label(labelId,
+				new StringResourceModel(resourceModelKey, component, null)));
+		return externalLink;
 	}
 	
 }
