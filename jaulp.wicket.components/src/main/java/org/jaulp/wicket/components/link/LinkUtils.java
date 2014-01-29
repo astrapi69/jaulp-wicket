@@ -263,4 +263,23 @@ public class LinkUtils {
 		return externalLink;
 	}
 	
+	/**
+	 * Creates an external link from the given parameters.
+	 *
+	 * @param linkId the link id
+	 * @param url the external url
+	 * @param labelId the label id
+	 * @param resourceModelKey the resource model key
+	 * @param defaultValue a default value
+	 * @param component the component
+	 * @return the external link
+	 */
+	public static ExternalLink createExternalLink(String linkId, String url, String labelId,
+			String resourceModelKey, String defaultValue, Component component){
+		ExternalLink externalLink = new ExternalLink(linkId, Model.of(url));
+		externalLink.add(new Label(labelId,
+				new StringResourceModel(resourceModelKey,  component, null, defaultValue)));
+		return externalLink;
+	}
+	
 }
