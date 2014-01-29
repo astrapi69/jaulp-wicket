@@ -55,6 +55,7 @@ public abstract class BasePage extends AbstractBasePage {
 		add(new Label("keywords", "").add(new AttributeAppender("content", keywords = newKeywords(), " ")));
 	    // set content attribute of the <meta name="description"> tag
 		add(new Label("description", "").add(new AttributeAppender("content", description = newDescription(), " ")));
+	    super.onBeforeRender();
 	}
 
 	/**
