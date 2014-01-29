@@ -215,7 +215,6 @@ import java.util.Set;
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResourcesUtils;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import org.jaulp.wicket.base.enums.ResourceReferenceType;
 
@@ -306,18 +305,8 @@ public class PackageResourceReferences {
 	public Set<PackageResourceReferenceWrapper> getPackageResourceReference(Class<?> componentClass) {
 		Set< PackageResourceReferenceWrapper > packageResourceReference = PackageResourceReferences.getInstance()
 		.getPackageResourceReferenceMap().get( componentClass );
-
         packageResourceReference = addPackageResourceReferenceFromInterfaces(
                 packageResourceReference, componentClass );
-        Class< ? > superClass = componentClass.getSuperclass();
-
-        while ( null != superClass ) {
-            if ( Component.class.isAssignableFrom( superClass ) ) {
-                packageResourceReference = addFoundPackageResourceReferences(
-                        packageResourceReference, superClass );
-            }
-            superClass = superClass.getSuperclass();
-        }
 		return packageResourceReference;
 	}
 
@@ -341,6 +330,7 @@ public class PackageResourceReferences {
             final Set< PackageResourceReferenceWrapper > packageResourceReferences = new LinkedHashSet< PackageResourceReferenceWrapper >();
             for ( int i = 0; i < value.length; i++ ) {
                 final ImportResource importResource = value[ i ];
+                
                 if ( importResource.resourceType().equalsIgnoreCase( "js" ) ) {
                 	PackageResourceReference t =  new PackageResourceReference(key,
                     		importResource.resourceName());
