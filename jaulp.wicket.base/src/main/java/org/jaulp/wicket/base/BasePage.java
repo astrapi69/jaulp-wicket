@@ -50,11 +50,11 @@ public abstract class BasePage extends AbstractBasePage {
 	@Override
 	protected void onBeforeRender() {
 	    // set content of the <title> tag
-		add(new Label("title", title = newTitle()));
+		addOrReplace(new Label("title", title = newTitle()));
 	    // set content attribute of the <meta name="keywords"> tag
-		add(new Label("keywords", "").add(new AttributeAppender("content", keywords = newKeywords(), " ")));
+		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content", keywords = newKeywords(), " ")));
 	    // set content attribute of the <meta name="description"> tag
-		add(new Label("description", "").add(new AttributeAppender("content", description = newDescription(), " ")));
+		addOrReplace(new Label("description", "").add(new AttributeAppender("content", description = newDescription(), " ")));
 	    super.onBeforeRender();
 	}
 
