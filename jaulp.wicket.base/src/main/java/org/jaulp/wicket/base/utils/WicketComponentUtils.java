@@ -32,7 +32,7 @@ import org.jaulp.wicket.base.enums.ResourceReferenceType;
 
 /**
  * The Class WicketComponentUtils is a helper class for the migration from
- * wicket-version 1.5.x to 6.1.0.
+ * wicket-version 1.4.x to 1.5.x or 1.5.x to 6.1.0.
  * 
  * @author Asterios Raptis
  */
@@ -55,6 +55,16 @@ public final class WicketComponentUtils {
 	 */
 	public static HttpServletRequest getHttpServletRequest() {
 		Request request = RequestCycle.get().getRequest();
+		return getHttpServletRequest(request);
+	}
+
+	/**
+	 * Gets the http servlet request.
+	 *
+	 * @param request the request
+	 * @return the http servlet request
+	 */
+	public static HttpServletRequest getHttpServletRequest(Request request) {
 		WebRequest webRequest = (WebRequest) request;
 		HttpServletRequest httpServletRequest = (HttpServletRequest) webRequest
 				.getContainerRequest();
@@ -68,10 +78,46 @@ public final class WicketComponentUtils {
 	 */
 	public static HttpServletResponse getHttpServletResponse() {
 		Response response = RequestCycle.get().getResponse();
+		return getHttpServletResponse(response);
+	}
+
+	/**
+	 * Gets the http servlet response.
+	 *
+	 * @param response the response
+	 * @return the http servlet response
+	 */
+	public static HttpServletResponse getHttpServletResponse(Response response) {
 		WebResponse webResponse = (WebResponse) response;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) webResponse
 				.getContainerResponse();
 		return httpServletResponse;
+	}
+	
+	/**
+	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
+	 *
+	 * @param request the request
+	 * @param parameterName the parameter name
+	 * @return the parameter value
+	 */
+	public static String getParameter(Request request, String parameterName) {
+		String parameterValue = request.getQueryParameters().getParameterValue(parameterName).toString();
+		if(parameterValue == null || parameterValue.isEmpty()) {
+			parameterValue = request.getPostParameters().getParameterValue(parameterName).toString();
+		}
+		return parameterValue;		
+	}
+	
+	/**
+	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
+	 *
+	 * @param parameterName the parameter name
+	 * @return the parameter value
+	 */
+	public static String getParameter(String parameterName){
+		Request request = RequestCycle.get().getRequest();
+		return getParameter(request, parameterName);		
 	}
 
 	/**
@@ -81,6 +127,16 @@ public final class WicketComponentUtils {
 	 */
 	public static String getIpAddress() {
 		String ipAddress = getHttpServletRequest().getRemoteHost();
+		return ipAddress;
+	}
+
+	/**
+	 * Gets the remote addr.
+	 *
+	 * @return the remote addr
+	 */
+	public static String getRemoteAddr() {
+		String ipAddress = getHttpServletRequest().getRemoteAddr();
 		return ipAddress;
 	}
 
