@@ -125,11 +125,7 @@ public class WicketUrlUtils {
 	 * @return the url as string
 	 */
 	public static String getUrlAsString(WebPage page) {
-		Url pageUrl = getPageUrl(page);
-		Url url = getBaseUrl(page);
-		url.resolveRelative(pageUrl);
-		String contextPath = getContextPath(page);
-		return String.format("%s/%s", contextPath, url);
+		return getUrlAsString(page.getClass());
 	}
 
 	/**
@@ -180,7 +176,7 @@ public class WicketUrlUtils {
 				getBaseUrl().toString());
 		if(0 <indexOf){
 			domainUrl = WicketComponentUtils.getRequestURL().substring(0,
-					indexOf-1);
+					indexOf);
 		}
 		return domainUrl;
 	}
