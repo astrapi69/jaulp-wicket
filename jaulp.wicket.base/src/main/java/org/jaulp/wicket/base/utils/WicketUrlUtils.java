@@ -3,6 +3,7 @@ package org.jaulp.wicket.base.utils;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.cycle.RequestCycle;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
  * The Class WicketUrlUtils.
@@ -17,8 +18,18 @@ public class WicketUrlUtils {
 	 * @return the page url
 	 */
 	public static Url getPageUrl(WebPage page) {
-		String url = page.urlFor(page.getClass(), null).toString();
-		return Url.parse(url);
+		return getPageUrl(page.getClass());
+	}
+	
+	/**
+	 * Gets the page url.
+	 *
+	 * @param page the page
+	 * @param parameters the parameters
+	 * @return the page url
+	 */
+	public static Url getPageUrl(WebPage page, PageParameters parameters) {
+		return getPageUrl(page.getClass(), parameters);
 	}
 
 	/**
@@ -29,7 +40,18 @@ public class WicketUrlUtils {
 	 * @return the page url
 	 */
 	public static Url getPageUrl(Class<? extends WebPage> pageClass) {
-		String url = RequestCycle.get().urlFor(pageClass, null).toString();
+		return getPageUrl(pageClass, null);
+	}
+	
+	/**
+	 * Gets the page url.
+	 *
+	 * @param pageClass the page class
+	 * @param parameters the parameters
+	 * @return the page url
+	 */
+	public static Url getPageUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+		String url = RequestCycle.get().urlFor(pageClass, parameters).toString();
 		return Url.parse(url);
 	}
 
@@ -55,7 +77,16 @@ public class WicketUrlUtils {
 		return RequestCycle.get().mapUrlFor(pageClass, null);
 	}
 	
-
+	/**
+	 * Gets the base url.
+	 *
+	 * @param pageClass the page class
+	 * @param parameters the parameters
+	 * @return the base url
+	 */
+	public static Url getBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+		return RequestCycle.get().mapUrlFor(pageClass, parameters);
+	}
 
 	/**
 	 * Gets the base Url.
