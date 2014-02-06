@@ -60,8 +60,9 @@ public final class WicketComponentUtils {
 
 	/**
 	 * Gets the http servlet request.
-	 *
-	 * @param request the request
+	 * 
+	 * @param request
+	 *            the request
 	 * @return the http servlet request
 	 */
 	public static HttpServletRequest getHttpServletRequest(Request request) {
@@ -83,8 +84,9 @@ public final class WicketComponentUtils {
 
 	/**
 	 * Gets the http servlet response.
-	 *
-	 * @param response the response
+	 * 
+	 * @param response
+	 *            the response
 	 * @return the http servlet response
 	 */
 	public static HttpServletResponse getHttpServletResponse(Response response) {
@@ -93,31 +95,38 @@ public final class WicketComponentUtils {
 				.getContainerResponse();
 		return httpServletResponse;
 	}
-	
+
 	/**
-	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 *
-	 * @param request the request
-	 * @param parameterName the parameter name
+	 * Gets the parameter value from given parameter name. Looks in the query
+	 * and post parameters.
+	 * 
+	 * @param request
+	 *            the request
+	 * @param parameterName
+	 *            the parameter name
 	 * @return the parameter value
 	 */
 	public static String getParameter(Request request, String parameterName) {
-		String parameterValue = request.getQueryParameters().getParameterValue(parameterName).toString();
-		if(parameterValue == null || parameterValue.isEmpty()) {
-			parameterValue = request.getPostParameters().getParameterValue(parameterName).toString();
+		String parameterValue = request.getQueryParameters()
+				.getParameterValue(parameterName).toString();
+		if (parameterValue == null || parameterValue.isEmpty()) {
+			parameterValue = request.getPostParameters()
+					.getParameterValue(parameterName).toString();
 		}
-		return parameterValue;		
+		return parameterValue;
 	}
-	
+
 	/**
-	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 *
-	 * @param parameterName the parameter name
+	 * Gets the parameter value from given parameter name. Looks in the query
+	 * and post parameters.
+	 * 
+	 * @param parameterName
+	 *            the parameter name
 	 * @return the parameter value
 	 */
-	public static String getParameter(String parameterName){
+	public static String getParameter(String parameterName) {
 		Request request = RequestCycle.get().getRequest();
-		return getParameter(request, parameterName);		
+		return getParameter(request, parameterName);
 	}
 
 	/**
@@ -132,7 +141,7 @@ public final class WicketComponentUtils {
 
 	/**
 	 * Gets the remote addr.
-	 *
+	 * 
 	 * @return the remote addr
 	 */
 	public static String getRemoteAddr() {
@@ -193,7 +202,6 @@ public final class WicketComponentUtils {
 		return RequestUtils.toAbsolutePath(req.getRequestURL().toString(),
 				relativePagePath);
 	}
-	
 
 	/**
 	 * Gets the context path from the given WebApplication.
@@ -202,69 +210,77 @@ public final class WicketComponentUtils {
 	 *            the appl
 	 * @return the context path
 	 */
-	public static String getContextPath(
-			final WebApplication application) {
+	public static String getContextPath(final WebApplication application) {
 		String contextPath = application.getServletContext().getContextPath();
-			if (null != contextPath && !contextPath.isEmpty()) {
-				return contextPath;
-			}		
+		if (null != contextPath && !contextPath.isEmpty()) {
+			return contextPath;
+		}
 		return "";
 	}
 
-
 	/**
 	 * Render header response.
-	 *
-	 * @param response the response
-	 * @param componentClass the component class
+	 * 
+	 * @param response
+	 *            the response
+	 * @param componentClass
+	 *            the component class
 	 */
-	public static void renderHeaderResponse(IHeaderResponse response, Class<?> componentClass) {
-		Set< PackageResourceReferenceWrapper > headerContributors = PackageResourceReferences
-        .getInstance().getPackageResourceReference( componentClass );
-    	if ( null != headerContributors && !headerContributors.isEmpty() ) {
-            for ( final PackageResourceReferenceWrapper packageResourceReference: headerContributors ) {
-            	if(packageResourceReference.getType().equals(ResourceReferenceType.JS)){
-            		JavaScriptResourceReference reference = new JavaScriptResourceReference(componentClass, packageResourceReference.getPackageResourceReference().getName());
-            		if(!response.wasRendered(reference)){
-            			JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem.forReference(reference );
-            			response.render(headerItem);
-            		}
-            	}
-            	if(packageResourceReference.getType().equals(ResourceReferenceType.CSS)){
-            		CssResourceReference reference = new CssResourceReference(componentClass, packageResourceReference.getPackageResourceReference().getName());
-            		if(!response.wasRendered(reference)){
-            			CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(reference);
-            			response.render(headerItem);
-            		}
-            	}
-            }
-        }
+	public static void renderHeaderResponse(IHeaderResponse response,
+			Class<?> componentClass) {
+		Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
+				.getInstance().getPackageResourceReference(componentClass);
+		if (null != headerContributors && !headerContributors.isEmpty()) {
+			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors) {
+				if (packageResourceReference.getType().equals(
+						ResourceReferenceType.JS)) {
+					JavaScriptResourceReference reference = new JavaScriptResourceReference(
+							componentClass, packageResourceReference
+									.getPackageResourceReference().getName());
+					if (!response.wasRendered(reference)) {
+						JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
+								.forReference(reference);
+						response.render(headerItem);
+					}
+				}
+				if (packageResourceReference.getType().equals(
+						ResourceReferenceType.CSS)) {
+					CssResourceReference reference = new CssResourceReference(
+							componentClass, packageResourceReference
+									.getPackageResourceReference().getName());
+					if (!response.wasRendered(reference)) {
+						CssReferenceHeaderItem headerItem = CssHeaderItem
+								.forReference(reference);
+						response.render(headerItem);
+					}
+				}
+			}
+		}
 	}
 
-    
-    /**
-     * Gets the request logger of the current WebApplication.
-     *
-     * @return the request logger
-     */
-    public static IRequestLogger getRequestLogger() {
+	/**
+	 * Gets the request logger of the current WebApplication.
+	 * 
+	 * @return the request logger
+	 */
+	public static IRequestLogger getRequestLogger() {
 		return getRequestLogger(null);
 	}
-	
 
-	
 	/**
-	 * Gets the real path corresponding to the given virtual path from the given WebApplication.
-	 * This method gets decorated the method of the {@link javax.servlet.ServletContext#getRealPath(String)}. 
+	 * Gets the real path corresponding to the given virtual path from the given
+	 * WebApplication. This method gets decorated the method of the
+	 * {@link javax.servlet.ServletContext#getRealPath(String)}.
 	 * 
 	 * @param application
 	 *            the wicket application
-	 * @param path 
-	 * 			  the virtual path to be translated to a real path  
+	 * @param path
+	 *            the virtual path to be translated to a real path
 	 * @return the real path, or null if the translation cannot be performed
 	 */
 
-	public static String getRealPath(final WebApplication application, String path) {
+	public static String getRealPath(final WebApplication application,
+			String path) {
 		String realPath = application.getServletContext().getRealPath(path);
 		if (null != realPath && !realPath.isEmpty()) {
 			return realPath;
@@ -272,18 +288,19 @@ public final class WicketComponentUtils {
 		return "";
 	}
 
-    /**
-     * Gets the request logger from the given WebApplication.
-     *
-     * @param webApplication the web application
-     * @return the request logger
-     */
-    public static IRequestLogger getRequestLogger(WebApplication webApplication) {
-    	if (webApplication == null) {
-    		webApplication = (WebApplication)Application.get();
+	/**
+	 * Gets the request logger from the given WebApplication.
+	 * 
+	 * @param webApplication
+	 *            the web application
+	 * @return the request logger
+	 */
+	public static IRequestLogger getRequestLogger(WebApplication webApplication) {
+		if (webApplication == null) {
+			webApplication = (WebApplication) Application.get();
 		}
 		IRequestLogger requestLogger = webApplication.getRequestLogger();
-		if (requestLogger == null){
+		if (requestLogger == null) {
 			requestLogger = new RequestLogger();
 		}
 		return requestLogger;

@@ -207,6 +207,7 @@ package org.jaulp.wicket.base.examples;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.jaulp.wicket.PackageResourceReferences;
 
@@ -270,5 +271,14 @@ public class WicketApplication extends WebApplication
 			IOException {
 		PackageResourceReferences prr = PackageResourceReferences.getInstance();
     	prr.initializeResources("org.jaulp.wicket");
+	}
+
+	/**
+	 * Gets the WicketApplication.
+	 * 
+	 * @return the WicketApplication object.
+	 */
+	public static WicketApplication get() {
+		return ((WicketApplication) Application.get());
 	}
 }
