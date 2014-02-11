@@ -207,6 +207,7 @@ package org.jaulp.wicket.base.utils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.image.NonCachingImage;
+import org.jaulp.wicket.base.util.DatabaseImageResource;
 
 /**
  * The Class WicketImageUtils is helper class for create wicket Image objects.

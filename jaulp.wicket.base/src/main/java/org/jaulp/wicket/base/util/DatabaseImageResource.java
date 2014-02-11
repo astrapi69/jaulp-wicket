@@ -202,7 +202,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.jaulp.wicket.base.utils;
+package org.jaulp.wicket.base.util;
 
 import org.apache.wicket.request.resource.ByteArrayResource;
 

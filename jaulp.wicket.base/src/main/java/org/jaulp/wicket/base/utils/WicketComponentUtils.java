@@ -1,5 +1,6 @@
 package org.jaulp.wicket.base.utils;
 
+import java.io.IOException;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,10 +26,14 @@ import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.util.file.File;
+import org.apache.wicket.util.file.Files;
+import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.time.Time;
 import org.jaulp.wicket.PackageResourceReferenceWrapper;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.enums.ResourceReferenceType;
+import org.jaulp.wicket.base.util.resource.ByteArrayResourceStreamWriter;
 
 /**
  * The Class WicketComponentUtils is a helper class for the migration from
@@ -286,6 +291,34 @@ public final class WicketComponentUtils {
 			return realPath;
 		}
 		return "";
+	}
+	
+	/**
+	 * Gets the resource stream from the given parameters.
+	 *
+	 * @param application the application
+	 * @param path the path
+	 * @param contentType the content type
+	 * @return the resource stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public static IResourceStream getResourceStream(final WebApplication application,
+			final String path, final String contentType) throws IOException {
+    	return new ByteArrayResourceStreamWriter() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public String getContentType() {
+				return contentType;
+			}
+			@Override
+			protected byte[] load() throws IOException {
+				byte[] data = null;
+				final String realPath = WicketComponentUtils.getRealPath(application, path);		    	
+				final File file = new File(realPath);				
+				data = Files.readBytes(file);				
+				return data;
+			}    		
+    	};
 	}
 
 	/**
