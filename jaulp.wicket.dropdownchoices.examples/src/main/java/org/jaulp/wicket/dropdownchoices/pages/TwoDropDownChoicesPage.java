@@ -219,7 +219,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.utils.WicketComponentUtils;
+import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
 import org.jaulp.wicket.dropdownchoices.panel.TrademarksModelsPanel;

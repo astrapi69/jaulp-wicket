@@ -211,7 +211,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
-import org.jaulp.wicket.base.utils.WicketComponentUtils;
+import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 // TODO: Auto-generated Javadoc
 /**

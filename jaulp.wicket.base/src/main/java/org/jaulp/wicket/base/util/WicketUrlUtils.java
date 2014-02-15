@@ -1,4 +1,4 @@
-package org.jaulp.wicket.base.utils;
+package org.jaulp.wicket.base.util;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.Url;

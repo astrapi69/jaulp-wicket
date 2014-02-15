@@ -8,7 +8,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.utils.WicketComponentUtils;
+import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
  * The Class BasePage.

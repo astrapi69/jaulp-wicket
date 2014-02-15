@@ -9,8 +9,8 @@ import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
 import org.jaulp.wicket.base.examples.WicketApplication;
-import org.jaulp.wicket.base.utils.WicketComponentUtils;
-import org.jaulp.wicket.base.utils.WicketUrlUtils;
+import org.jaulp.wicket.base.util.WicketComponentUtils;
+import org.jaulp.wicket.base.util.WicketUrlUtils;
 
 public class WicketUrlPage extends WebPage {
 	private static final long serialVersionUID = 1L;

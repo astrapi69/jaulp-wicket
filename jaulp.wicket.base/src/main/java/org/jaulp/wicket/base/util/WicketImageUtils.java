@@ -202,12 +202,12 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.jaulp.wicket.base.utils;
+package org.jaulp.wicket.base.util;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.image.NonCachingImage;
-import org.jaulp.wicket.base.util.DatabaseImageResource;
+import org.jaulp.wicket.base.util.resource.DatabaseImageResource;
 
 /**
  * The Class WicketImageUtils is helper class for create wicket Image objects.

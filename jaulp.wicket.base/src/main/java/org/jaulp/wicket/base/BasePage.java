@@ -44,6 +44,16 @@ public abstract class BasePage extends AbstractBasePage {
 		super(parameters);
 	}
 
+	/**
+	 * Instantiates a new BasePage.
+	 * 
+	 * @param model
+	 *            the model
+	 */
+	public BasePage(IModel<?> model) {
+		super(model);
+	}
+
     /**
      * {@inheritDoc}
      */
