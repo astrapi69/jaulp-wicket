@@ -1,14 +1,14 @@
 package org.jaulp.wicket.base;
 
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
  * The Class BasePanel.
  */
-public abstract class BasePanel extends Panel {
+public abstract class BasePanel<T> extends GenericPanel<T> {
 
     /**
      * The serialVersionUID.
@@ -30,7 +30,7 @@ public abstract class BasePanel extends Panel {
      * @param id the id
      * @param model the model
      */
-    public BasePanel( final String id, final IModel< ? > model ) {
+    public BasePanel( final String id, final IModel< T > model ) {
         super( id, model );
     }
 
