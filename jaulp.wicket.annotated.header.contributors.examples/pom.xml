@@ -12,7 +12,7 @@
 
 	<artifactId>jaulp.wicket.annotated.header.contributors.examples</artifactId>
 	<packaging>war</packaging>
-	<name>jaulp.wicket.annotated.header.contributors.examples</name>
+	<name>${project.artifactId}</name>
 
 	<description>
 	  	Demonstrates how to use the functionality from the

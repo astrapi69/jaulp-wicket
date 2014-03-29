@@ -12,7 +12,7 @@
 
 	<artifactId>jaulp.wicket.dialogs</artifactId>
 	<packaging>jar</packaging>
-	<name>jaulp.wicket.dialogs</name>
+	<name>${project.artifactId}</name>
 
 	<description>
 		Abstracts the dialogs from wicket. To see how it works see

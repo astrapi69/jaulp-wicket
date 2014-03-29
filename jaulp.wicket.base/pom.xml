@@ -9,7 +9,7 @@
   </parent>
   <artifactId>jaulp.wicket.base</artifactId>
   
-  <name>jaulp.wicket.base</name>
+  <name>${project.artifactId}</name>
 
 	<description>
 	  	This project contains components that can be used widely for wicket applications.
@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.xml</artifactId>
-			<version>1.3.4</version>
+			<version>${jaulp.xml.version}</version>
 		</dependency>
 		
 	</dependencies>

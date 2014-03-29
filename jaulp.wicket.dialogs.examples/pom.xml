@@ -12,7 +12,7 @@
 
 	<artifactId>jaulp.wicket.dialogs.examples</artifactId>
 	<packaging>war</packaging>
-	<name>jaulp.wicket.dialogs.examples</name>
+	<name>${project.artifactId}</name>
 
 	<description>
 		Demonstrates how to use the dialogs from the

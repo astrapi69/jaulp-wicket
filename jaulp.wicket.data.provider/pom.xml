@@ -12,7 +12,7 @@
 
 	<artifactId>jaulp.wicket.data.provider</artifactId>
 	<packaging>jar</packaging>
-	<name>jaulp.wicket.data.provider</name>
+	<name>${project.artifactId}</name>
 
 	<description></description>
 
@@ -27,13 +27,13 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.8.3</version>
+			<version>${commons-beanutils.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<version>3.2.1</version>
+			<version>${commons-collections.version}</version>
 		</dependency>
 
 	</dependencies>

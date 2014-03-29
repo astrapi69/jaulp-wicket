@@ -12,7 +12,7 @@
 
 	<artifactId>jaulp.wicket.dropdownchoices.examples</artifactId>
 	<packaging>war</packaging>
-	<name>jaulp.wicket.dropdownchoices.examples</name>
+	<name>${project.artifactId}</name>
 
 	<description></description>
 

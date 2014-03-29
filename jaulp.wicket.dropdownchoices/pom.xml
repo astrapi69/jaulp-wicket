@@ -11,7 +11,7 @@
 
   <artifactId>jaulp.wicket.dropdownchoices</artifactId>
   <packaging>jar</packaging>
-  <name>jaulp.wicket.dropdownchoices</name>
+  <name>${project.artifactId}</name>
 
   <dependencies>
 

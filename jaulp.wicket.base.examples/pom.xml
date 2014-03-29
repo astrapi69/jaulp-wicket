@@ -13,7 +13,7 @@
 	<artifactId>jaulp.wicket.base.examples</artifactId>
 	<packaging>war</packaging>
 
-	<name>jaulp.wicket.base.examples</name>
+	<name>${project.artifactId}</name>
 	<description>
 	  	Demonstrates how to use the functionality from the
 	  	'jaulp.wicket.base' project.
@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.test.objects</artifactId>
-			<version>1.4.0</version>
+			<version>${jaulp.test.objects.version}</version>
 		</dependency>
 
 	</dependencies>

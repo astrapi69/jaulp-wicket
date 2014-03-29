@@ -12,11 +12,7 @@
 
 	<artifactId>jaulp.wicket.behaviors.examples</artifactId>
 	<packaging>war</packaging>
-	<name>jaulp.wicket.behaviors.examples</name>
-
-	<properties>
-		<commons-lang3.version>3.0.1</commons-lang3.version>
-	</properties>
+	<name>${project.artifactId}</name>
 
 	<description>
 		Demonstrates how to use the behaviors from the

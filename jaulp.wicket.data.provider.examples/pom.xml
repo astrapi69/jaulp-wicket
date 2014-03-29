@@ -12,11 +12,11 @@
 
 	<artifactId>jaulp.wicket.data.provider.examples</artifactId>
 	<packaging>war</packaging>
-	<name>jaulp.wicket.data.provider.examples</name>
+	<name>${project.artifactId}</name>
 
 	<description>
 		Demonstrates how to use the dialogs from the
-	  	'jaulp.wicket.dialogs' project.
+	  	'jaulp.wicket.data.provider' project.
 	</description>
 
 	<dependencies>
@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.file</artifactId>
-			<version>3.6.5</version>
+			<version>${jaulp.file.version}</version>
 		</dependency>
 
 	</dependencies>
