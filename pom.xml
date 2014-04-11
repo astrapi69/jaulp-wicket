@@ -11,21 +11,9 @@
 
 	<description>Parent project for all apache wicket project in the jaulp.wicket.</description>
 
-	<modules>
-		<module>jaulp.wicket.annotated.header.contributors</module>
-		<module>jaulp.wicket.annotated.header.contributors.examples</module>
-		<module>jaulp.wicket.base</module>
-		<module>jaulp.wicket.base.examples</module>
-		<module>jaulp.wicket.behaviors</module>
-		<module>jaulp.wicket.behaviors.examples</module>
-		<module>jaulp.wicket.components</module>
-		<module>jaulp.wicket.data.provider</module>
-		<module>jaulp.wicket.data.provider.examples</module>
-		<module>jaulp.wicket.dialogs</module>
-		<module>jaulp.wicket.dialogs.examples</module>
-		<module>jaulp.wicket.dropdownchoices</module>
-		<module>jaulp.wicket.dropdownchoices.examples</module>
-	</modules>
+	<scm>
+		<url>https://github.com/astrapi69/jaulp.wicket.git</url>
+	</scm>
 
 	<licenses>
 		<license>
@@ -50,9 +38,22 @@
 
 	</developers>
 
-	<scm>
-		<url>https://github.com/astrapi69/jaulp.wicket.git</url>
-	</scm>
+	<modules>
+		<module>jaulp.wicket.annotated.header.contributors</module>
+		<module>jaulp.wicket.annotated.header.contributors.examples</module>
+		<module>jaulp.wicket.base</module>
+		<module>jaulp.wicket.base.examples</module>
+		<module>jaulp.wicket.behaviors</module>
+		<module>jaulp.wicket.behaviors.examples</module>
+		<module>jaulp.wicket.components</module>
+		<module>jaulp.wicket.data.provider</module>
+		<module>jaulp.wicket.data.provider.examples</module>
+		<module>jaulp.wicket.dialogs</module>
+		<module>jaulp.wicket.dialogs.examples</module>
+		<module>jaulp.wicket.dropdownchoices</module>
+		<module>jaulp.wicket.dropdownchoices.examples</module>
+	</modules>
+
 
 	<properties>
 		<!-- PROJECT encoding -->
@@ -90,43 +91,183 @@
 		<github.global.server>github</github.global.server>
 	</properties>
 
+	<dependencyManagement>
+
+		<dependencies>
+			<!-- WICKET DEPENDENCIES -->
+			<dependency>
+				<groupId>org.apache.wicket</groupId>
+				<artifactId>wicket-core</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.wicket</groupId>
+				<artifactId>wicket-datetime</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.wicket</groupId>
+				<artifactId>wicket-extensions</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.wicket</groupId>
+				<artifactId>wicket-velocity</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+			<!-- LOGGING DEPENDENCIES -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<!-- LOGGING DEPENDENCIES - LOG4J -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+			</dependency>
+			<!-- JETTY DEPENDENCIES FOR TESTING -->
+			<dependency>
+				<groupId>org.eclipse.jetty.aggregate</groupId>
+				<artifactId>jetty-all-server</artifactId>
+				<version>${jetty.version}</version>
+			</dependency>
+			<!-- JAULP DEPENDENCIES -->
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.lang</artifactId>
+				<version>${jaulp.lang.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.xml</artifactId>
+				<version>${jaulp.xml.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.test.objects</artifactId>
+				<version>${jaulp.test.objects.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.file</artifactId>
+				<version>${jaulp.file.version}</version>
+			</dependency>
+			<!-- JAULP WICKET DEPENDENCIES -->
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.wicket.base</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.wicket.components</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.wicket.behaviors</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.wicket.data.provider</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.wicket.dialogs</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jaulp</groupId>
+				<artifactId>jaulp.wicket.dropdownchoices</artifactId>
+				<version>${wicket.version}</version>
+			</dependency>
+			<!-- EXTERNAL LIBRARIES DEPENDENCIES -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${commons-beanutils.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
 	<dependencies>
 		<!-- WICKET DEPENDENCIES -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 		<!-- LOGGING DEPENDENCIES -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- JETTY DEPENDENCIES FOR TESTING -->
 		<dependency>
 			<groupId>org.eclipse.jetty.aggregate</groupId>
 			<artifactId>jetty-all-server</artifactId>
-			<version>${jetty.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -169,7 +310,59 @@
 
 		</testResources>
 
-		<plugins>
+		<pluginManagement>
+
+			<plugins>
+
+				<plugin>
+					<inherited>true</inherited>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<source>${maven-compiler-plugin.source.version}</source>
+						<target>${maven-compiler-plugin.target.version}</target>
+						<encoding>${maven-compiler-plugin.encoding}</encoding>
+						<optimize>${maven-compiler-plugin.optimize}</optimize>
+						<debug>${maven-compiler-plugin.debug}</debug>
+						<showWarnings>true</showWarnings>
+					</configuration>
+				</plugin>
+
+				<!-- Configuring Maven Source Plugin: To attach source artifacts to your 
+					build we execute the source:jar goal from the source plugin during the package 
+					phase. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${maven-eclipse-plugin.version}</version>
+					<configuration>
+						<additionalBuildcommands>
+							<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
+						</additionalBuildcommands>
+						<additionalProjectnatures>
+							<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
+							<projectnature>org.springsource.ide.eclipse.gradle.core.nature</projectnature>
+						</additionalProjectnatures>
+						<downloadSources>true</downloadSources>
+					</configuration>
+				</plugin>
+
+			</plugins>
 
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
@@ -192,51 +385,29 @@
 				</configuration>
 			</plugin>
 
+		</pluginManagement>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+			</plugin>
+
 			<plugin>
 				<inherited>true</inherited>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>${maven-compiler-plugin.source.version}</source>
-					<target>${maven-compiler-plugin.target.version}</target>
-					<encoding>${maven-compiler-plugin.encoding}</encoding>
-					<optimize>${maven-compiler-plugin.optimize}</optimize>
-					<debug>${maven-compiler-plugin.debug}</debug>
-				</configuration>
 			</plugin>
 
-			<!-- Configuring Maven Source Plugin: To attach source artifacts to your 
-				build we execute the source:jar goal from the source plugin during the package 
-				phase. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>${maven-eclipse-plugin.version}</version>
-				<configuration>
-					<additionalBuildcommands>
-						<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
-					</additionalBuildcommands>
-					<additionalProjectnatures>
-						<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
-						<projectnature>org.springsource.ide.eclipse.gradle.core.nature</projectnature>
-					</additionalProjectnatures>
-					<downloadSources>true</downloadSources>
-				</configuration>
 			</plugin>
 
 		</plugins>
@@ -515,7 +686,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 	</profiles>
 
 </project>

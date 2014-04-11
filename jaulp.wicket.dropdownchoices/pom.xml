@@ -18,7 +18,6 @@
   	<dependency>
   		<groupId>org.jaulp</groupId>
   		<artifactId>jaulp.wicket.components</artifactId>
-  		<version>${wicket.version}</version>
   	</dependency>
   	
   </dependencies>

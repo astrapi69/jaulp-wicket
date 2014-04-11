@@ -20,26 +20,22 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-datetime</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 		
 
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-extensions</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.xml</artifactId>
-			<version>${jaulp.xml.version}</version>
 		</dependency>
 		
 	</dependencies>

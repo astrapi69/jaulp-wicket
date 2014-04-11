@@ -21,13 +21,11 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.dropdownchoices</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.components</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 
 	</dependencies>

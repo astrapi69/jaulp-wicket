@@ -22,11 +22,9 @@
 
 	<dependencies>
 		<!-- JAULP DEPENDENCIES -->
-
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.lang</artifactId>
-			<version>${jaulp.lang.version}</version>
 		</dependency>
 	</dependencies>
 

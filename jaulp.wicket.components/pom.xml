@@ -14,13 +14,11 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.behaviors</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-velocity</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 	</dependencies>
 </project>

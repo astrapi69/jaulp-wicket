@@ -24,13 +24,11 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.base</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 		
 	</dependencies>

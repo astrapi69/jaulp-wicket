@@ -24,13 +24,11 @@
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.wicket.data.provider</artifactId>
-			<version>${wicket.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jaulp</groupId>
 			<artifactId>jaulp.file</artifactId>
-			<version>${jaulp.file.version}</version>
 		</dependency>
 
 	</dependencies>
