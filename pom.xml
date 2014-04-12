@@ -13,6 +13,8 @@
 
 	<scm>
 		<url>https://github.com/astrapi69/jaulp.wicket.git</url>
+		<connection>scm:git:git://github.com/astrapi69/jaulp.wicket.git</connection>
+		<developerConnection>scm:git:git@github.com:astrapi69/jaulp.wicket.git</developerConnection>
 	</scm>
 
 	<licenses>
