@@ -331,7 +331,6 @@
 						<optimize>${maven-compiler-plugin.optimize}</optimize>
 						<debug>${maven-compiler-plugin.debug}</debug>
 						<showWarnings>true</showWarnings>
-						<optimize>true</optimize>
 					</configuration>
 				</plugin>
 				<!-- Configuring Maven Source Plugin: To attach source artifacts to your 
