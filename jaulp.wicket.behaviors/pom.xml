@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>jaulp.wicket</artifactId>
-		<groupId>org.jaulp</groupId>
+		<groupId>de.alpharogroup</groupId>
 		<version>6.9.0</version>
 	</parent>
 	<artifactId>jaulp.wicket.behaviors</artifactId>
@@ -14,7 +14,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jaulp</groupId>
+			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.wicket.base</artifactId>
 		</dependency>
 	</dependencies>

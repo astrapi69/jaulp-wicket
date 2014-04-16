@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jaulp</groupId>
+	<groupId>de.alpharogroup</groupId>
 	<artifactId>jaulp.wicket</artifactId>
 	<version>6.9.0</version>
 	<inceptionYear>2010</inceptionYear>
@@ -156,67 +156,67 @@
 			</dependency>
 			<!-- JAULP DEPENDENCIES -->
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.lang</artifactId>
 				<version>${jaulp.lang.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.xml</artifactId>
 				<version>${jaulp.xml.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.test.objects</artifactId>
 				<version>${jaulp.test.objects.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.file</artifactId>
 				<version>${jaulp.file.version}</version>
 			</dependency>
 			<!-- JAULP WICKET DEPENDENCIES -->
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.base</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.components</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.behaviors</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.data.provider</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.dialogs</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>org.jaulp</groupId>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.dropdownchoices</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
