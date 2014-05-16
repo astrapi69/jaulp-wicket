@@ -242,6 +242,12 @@ public class BaseDropDownChoicePanel extends Panel {
                 Country c = ( Country ) obj;
                 return c.getDigraph();
             }
+
+			@Override
+			public Object getObject(String id, IModel choices) {
+				// TODO Auto-generated method stub
+				return null;
+			}
         };
 
         DropDownChoice country = new DropDownChoice( "country", countries );

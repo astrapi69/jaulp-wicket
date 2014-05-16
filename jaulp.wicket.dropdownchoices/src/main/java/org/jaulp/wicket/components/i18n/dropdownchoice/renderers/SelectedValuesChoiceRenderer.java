@@ -204,8 +204,11 @@
  */
 package org.jaulp.wicket.components.i18n.dropdownchoice.renderers;
 
+import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
 
 /**
@@ -281,6 +284,13 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 	@Override
 	public String getIdValue(final String object, final int index) {
 		return object;
+	}
+
+	@Override
+	public String getObject(String id,
+			IModel<? extends List<? extends String>> choices) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
