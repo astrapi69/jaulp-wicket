@@ -260,7 +260,7 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String> {
 		return object;
 	}
 
-	@Override
+	
 	public String getObject(String id,
 			IModel<? extends List<? extends String>> choices) {
 		// TODO Auto-generated method stub

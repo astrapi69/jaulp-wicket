@@ -225,7 +225,11 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 	private Component component;
 
 	/** The component class. */
-	private Class<?> componentClass;
+	private final Class<?> componentClass;
+
+	public Class<?> getComponentClass() {
+		return componentClass;
+	}
 
 	/**
 	 * Instantiates a new selected values choice renderer.
@@ -286,10 +290,9 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 		return object;
 	}
 
-	@Override
+	
 	public String getObject(String id,
-			IModel<? extends List<? extends String>> choices) {
-		// TODO Auto-generated method stub
+			IModel<? extends List<? extends String>> choices) {				
 		return null;
 	}
 

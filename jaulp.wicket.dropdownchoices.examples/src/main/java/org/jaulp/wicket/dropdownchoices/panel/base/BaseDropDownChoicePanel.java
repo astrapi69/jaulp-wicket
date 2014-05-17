@@ -243,9 +243,7 @@ public class BaseDropDownChoicePanel extends Panel {
                 return c.getDigraph();
             }
 
-			@Override
 			public Object getObject(String id, IModel choices) {
-				// TODO Auto-generated method stub
 				return null;
 			}
         };
