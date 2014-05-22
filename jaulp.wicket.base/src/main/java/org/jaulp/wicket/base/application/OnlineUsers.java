@@ -42,13 +42,11 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	 * @param user the user
 	 * @param oldSessionId the old session id
 	 * @param newSessionId the new session id
-	 * @return the new session id that is assosiated with the given user.
+	 * @return the new session id that is associated with the given user.
 	 */
 	public synchronized ID replaceSessionId(USER user, ID oldSessionId, ID newSessionId) {		
-		sessionIdToUser.remove(oldSessionId);		
-		usersOnline.remove(user);
-		sessionIdToUser.put(newSessionId, user);
-		return usersOnline.put(user, newSessionId);
+		remove(oldSessionId);		
+		return addOnline(user, newSessionId);
 	}
 
 	/**
@@ -76,9 +74,9 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	public synchronized USER remove(ID sessionId) {
 		USER user = getUser(sessionId);
 		if (user != null) {
-			sessionIdToUser.remove(sessionId);
 			usersOnline.remove(user);
 		}
+		sessionIdToUser.remove(sessionId);
 		return user;
 	}
 
