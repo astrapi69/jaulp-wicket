@@ -89,7 +89,7 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends
 	}
 
 	/**
-	 * Gets the session.
+	 * Gets the session from the given session id.
 	 *
 	 * @param sessionId
 	 *            the session id
@@ -97,6 +97,17 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends
 	 */
 	public synchronized SESSION getSession(ID sessionId) {
 		return sessionIdToSession.get(sessionId);
+	}
+
+	/**
+	 * Gets the session from the given user.
+	 *
+	 * @param user
+	 *            the user
+	 * @return the session
+	 */
+	public synchronized SESSION get(USER user) {
+		return sessionIdToSession.get(getSessionId(user));
 	}
 
 }

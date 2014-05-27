@@ -205,8 +205,8 @@
 package org.jaulp.wicket.behaviors.examples;
 
 import org.apache.wicket.util.tester.WicketTester;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  * Simple test using the WicketTester
@@ -215,7 +215,7 @@ public class TestHomePage
 {
 	private WicketTester tester;
 
-	@Before
+	@BeforeMethod
 	public void setUp()
 	{
 		tester = new WicketTester(new WicketApplication());
