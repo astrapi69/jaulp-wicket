@@ -269,7 +269,7 @@ public class AddJsResourceReferenceBehavior extends Behavior {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("url", WicketUrlUtils.getUrlAsString(pageClass));
 		ResourceReference resourceReference = new TextTemplateResourceReference(
-				pageClass, this.filename, Model.ofMap(map));
+				pageClass, this.filename, "text/javascript", Model.ofMap(map));
 		return resourceReference;
 	}
 
