@@ -233,17 +233,17 @@ public final class MenuItemFragment extends Fragment {
 		} else {
 			add(new TextFragment(menuItem.getLabel(), markupProvider));
 		}
-		final WebMarkupContainer menuitemul = new WebMarkupContainer(
+		final WebMarkupContainer menuitemlist = new WebMarkupContainer(
 				"menuitemlist");
-		add(menuitemul);
+		add(menuitemlist);
 		// Hide the <ul> tag if there are no submenus
-		menuitemul.setVisible(menuItem.getChildren().size() > 0);
+		menuitemlist.setVisible(menuItem.getChildren().size() > 0);
 		// Add a down or right arrow icon if there are children
 		if (menuItem.getChildren().size() > 0) {
 			menuItem.getLabel().add(MenuPanel.menuHasSubmenuAppender);
 		}
 		// Add the submenus
-		menuitemul.add(new SubMenuListView("menuitemlinks", menuItem
+		menuitemlist.add(new SubMenuListView("menuitemlinks", menuItem
 				.getChildren(), markupProvider));
 	}
 }
