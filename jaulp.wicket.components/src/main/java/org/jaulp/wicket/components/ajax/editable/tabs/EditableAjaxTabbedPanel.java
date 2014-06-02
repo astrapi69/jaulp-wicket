@@ -45,7 +45,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	 * @param target the target
 	 * @param tab the tab
 	 */
-	protected void onNewTab(final AjaxRequestTarget target, final T tab) {
+	public void onNewTab(final AjaxRequestTarget target, final T tab) {
 		getTabs().add(tab);
 		setSelectedTab(getTabs().size() - 1);
 		target.add(this);
@@ -58,7 +58,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	 * @param tab the tab
 	 * @param index the index
 	 */
-	protected void onNewTab(final AjaxRequestTarget target, final T tab,
+	public void onNewTab(final AjaxRequestTarget target, final T tab,
 			final int index) {
 		if ((index < 0) || (index >= getTabs().size())) {
 			throw new IndexOutOfBoundsException();
@@ -69,12 +69,12 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	}
 
 	/**
-	 * On remove tab.
+	 * On remove tab removes the tab of the given index.
 	 *
 	 * @param target the target
 	 * @param index the index
 	 */
-	protected void onRemoveTab(final AjaxRequestTarget target, final int index) {
+	public void onRemoveTab(final AjaxRequestTarget target, final int index) {
 		int tabSize = getTabs().size();
 		// there have to be at least one tab on the ajaxTabbedPanel...
 		if (2 <= tabSize && index < tabSize) {
@@ -85,12 +85,12 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	}
 
 	/**
-	 * On remove tab.
+	 * On remove tab removes the given tab if it does exists.
 	 *
 	 * @param target the target
 	 * @param tab the tab
 	 */
-	protected void onRemoveTab(final AjaxRequestTarget target, final T tab) {
+	public void onRemoveTab(final AjaxRequestTarget target, final T tab) {
 		final int index = getTabs().indexOf(tab);
 		if (0 <= index) {
 			onRemoveTab(target, index);
