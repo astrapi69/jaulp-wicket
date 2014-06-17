@@ -17,6 +17,9 @@ public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T> {
      */
     public AbstractGenericBasePage(IModel<T> model) {
 		super(model);
+        if(model != null) {
+        	setModel(model);
+        }
 	}
 
 	/**

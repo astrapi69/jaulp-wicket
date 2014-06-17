@@ -32,6 +32,9 @@ public abstract class BasePanel<T> extends GenericPanel<T> {
      */
     public BasePanel( final String id, final IModel< T > model ) {
         super( id, model );
+        if(model != null) {
+        	setModel(model);
+        }
     }
 
     /**
