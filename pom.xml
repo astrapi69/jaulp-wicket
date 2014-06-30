@@ -640,6 +640,9 @@
 							<excludes>
 								<exclude>**/README</exclude>
 								<exclude>**/*.xml</exclude>
+								<exclude>**/*.xsl</exclude>
+								<exclude>**/*.xsd</exclude>
+								<exclude>**/*.dtd</exclude>
 								<exclude>**/*.html</exclude>
 								<exclude>**/*.properties</exclude>
 								<exclude>**/*.bat</exclude>
