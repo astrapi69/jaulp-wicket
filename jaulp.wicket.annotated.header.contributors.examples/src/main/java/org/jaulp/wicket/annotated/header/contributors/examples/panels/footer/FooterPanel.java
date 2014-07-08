@@ -25,7 +25,7 @@ import net.sourceforge.jaulp.io.annotations.ImportResources;
  * @author admin
  */
 @ImportResources( resources = {@ImportResource( resourceName = "FooterPanel.css", resourceType = "css", index = 0 )})
-public class FooterPanel extends BasePanel {
+public class FooterPanel extends BasePanel<Object> {
 
 	/**
 	 * 

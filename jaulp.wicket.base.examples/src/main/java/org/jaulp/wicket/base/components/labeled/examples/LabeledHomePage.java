@@ -15,33 +15,24 @@
  */
 package org.jaulp.wicket.base.components.labeled.examples;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 
-import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.util.string.Strings;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePage;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import org.jaulp.wicket.components.labeled.textarea.LabeledTextAreaPanel;
-import org.jaulp.wicket.components.labeled.textfield.LabeledAutoCompleteTextFieldPanel;
 import org.jaulp.wicket.components.labeled.textfield.LabeledDateTextFieldPanel;
 import org.jaulp.wicket.components.labeled.textfield.LabeledTextFieldPanel;
-import org.apache.wicket.extensions.ajax.markup.html.autocomplete.DefaultCssAutoCompleteTextField;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "jquery-1.5.2.js", resourceType = "js", index=1),
 		@ImportResource(resourceName = "wrapLabeledFormElements.js", resourceType = "js", index=2)})

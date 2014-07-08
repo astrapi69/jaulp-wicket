@@ -16,7 +16,7 @@
 package org.jaulp.wicket.base.examples;
 
 import org.apache.wicket.util.time.Duration;
-import org.eclipse.jetty.http.ssl.SslContextFactory;
+import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.bio.SocketConnector;
 import org.eclipse.jetty.server.ssl.SslSocketConnector;

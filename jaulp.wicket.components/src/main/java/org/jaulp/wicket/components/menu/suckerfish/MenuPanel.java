@@ -28,7 +28,7 @@ import org.jaulp.wicket.base.BasePanel;
 
 @ImportResources(resources = {
 		@ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
-public class MenuPanel extends BasePanel {
+public class MenuPanel extends BasePanel<Object> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 0L;

@@ -54,7 +54,8 @@ public abstract class AbstractDataProvider< F, S, M extends Serializable >
     private List< M > list;
 
     /** The sort state. */
-    private ISortState sortState = new SingleSortState();
+    @SuppressWarnings("rawtypes")
+	private ISortState sortState = new SingleSortState();
 
     /**
      * Instantiates a new abstract data provider.
@@ -111,7 +112,8 @@ public abstract class AbstractDataProvider< F, S, M extends Serializable >
      * @return the sort state
      * @see org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortStateLocator#getSortState()
      */
-    @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
     public ISortState getSortState() {
         return sortState;
     }
@@ -180,7 +182,8 @@ public abstract class AbstractDataProvider< F, S, M extends Serializable >
      * @param state the new sort state
      * @see org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortStateLocator#setSortState(org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState)
      */
-    public void setSortState( final ISortState state ) {
+    @SuppressWarnings("rawtypes")
+	public void setSortState( final ISortState state ) {
         sortState = state;
     }
 

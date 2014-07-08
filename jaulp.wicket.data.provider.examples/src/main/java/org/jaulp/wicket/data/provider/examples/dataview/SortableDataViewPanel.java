@@ -80,9 +80,9 @@ public class SortableDataViewPanel extends Panel {
         dataView.setItemsPerPage( 10 );
         add(dataView);
 
-		add(new OrderByBorder("orderByFirstname", "firstname", dataProvider));
-		add(new OrderByBorder("orderByLastname", "lastname", dataProvider));
-		add(new OrderByBorder("orderByDateOfBirth", "dateOfBirth", dataProvider));
+		add(new OrderByBorder<String>("orderByFirstname", "firstname", dataProvider));
+		add(new OrderByBorder<String>("orderByLastname", "lastname", dataProvider));
+		add(new OrderByBorder<String>("orderByDateOfBirth", "dateOfBirth", dataProvider));
 		add(new PagingNavigator("topNavigator", dataView));
 add(new NavigatorLabel( "label", dataView )
 );

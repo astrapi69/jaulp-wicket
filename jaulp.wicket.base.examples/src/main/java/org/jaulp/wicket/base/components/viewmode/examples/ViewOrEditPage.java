@@ -18,8 +18,6 @@ package org.jaulp.wicket.base.components.viewmode.examples;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.SubmitLink;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -32,7 +30,6 @@ import org.jaulp.wicket.base.BasePage;
 import org.jaulp.wicket.components.editable.textarea.EditableTextArea;
 import org.jaulp.wicket.components.editable.textfield.EditableTextField;
 import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
-import org.jaulp.wicket.components.viewmode.ViewOrEdit;
 
 public class ViewOrEditPage extends BasePage {
 	private static final long serialVersionUID = 1L;

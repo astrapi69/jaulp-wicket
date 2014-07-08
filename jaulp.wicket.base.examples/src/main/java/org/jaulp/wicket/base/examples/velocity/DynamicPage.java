@@ -42,13 +42,13 @@ public class DynamicPage extends WebPage {
 	public DynamicPage(final PageParameters parameters) {
 		super(parameters);
 		add(new MenubarPanel("menubarPanel"));
-		init();
+		initialize();
 		IModel<List<WicketField<?>>> model = new CompoundPropertyModel<List<WicketField<?>>>(fields);
 		VelocityFieldsPanel velocityFieldsPanel = new VelocityFieldsPanel("velocityFieldsPanel", model);
 		add(velocityFieldsPanel);
 	}
 
-	public void init() {
+	public void initialize() {
 		fields = new ArrayList<WicketField<?>>();
 		WicketField<Form<Void>> formWicketField = new WicketField<Form<Void>>();
 		fields.add(formWicketField);

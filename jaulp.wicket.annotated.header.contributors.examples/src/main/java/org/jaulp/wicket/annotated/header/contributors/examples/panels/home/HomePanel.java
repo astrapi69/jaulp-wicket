@@ -28,7 +28,7 @@ import net.sourceforge.jaulp.io.annotations.ImportResources;
         @ImportResource( resourceName = "HomePanel.css", resourceType = "css", index = 0 ),
         @ImportResource( resourceName = "HomePanel.js", resourceType = "js", index = 1 ),
         @ImportResource( resourceName = "HomePanel-new.js", resourceType = "js", index = 2 ) } )
-public class HomePanel extends BasePanel {
+public class HomePanel extends BasePanel<Object> {
 
 	/**
 	 * The serialVersionUID.

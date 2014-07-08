@@ -95,7 +95,11 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
 	
 	public String getObject(String id,
 			IModel<? extends List<? extends String>> choices) {
-		// TODO Auto-generated method stub
+		// override this method...
 		return null;
+	}
+
+	public Class<?> getComponentClass() {
+		return componentClass;
 	}
 }

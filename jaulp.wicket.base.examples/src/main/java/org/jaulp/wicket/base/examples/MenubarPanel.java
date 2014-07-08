@@ -33,10 +33,12 @@ import org.jaulp.wicket.components.menu.suckerfish.MenuPanel;
 import org.jaulp.wicket.components.menu.suckerfish.MenuUtils;
 
 
+@SuppressWarnings("rawtypes")
 @ImportResources(resources = { // This css file is currently loaded...
 		@ImportResource(resourceName = "MenubarPanel.css", resourceType = "css") })
 public class MenubarPanel extends BasePanel {
 
+	private static final long serialVersionUID = 1L;
 	
 	public MenubarPanel(String id) {
 		super(id);
@@ -47,7 +49,7 @@ public class MenubarPanel extends BasePanel {
 	}
 	
 	public MenubarPanel(String id, IModel<?> model) {
-		super(id, model);
+		super(id);
 		// Another way to load your css file is to override the renderHead method...
 		MenuPanel menuBar = new MenuPanel("menuBar"){
 			/**
@@ -109,12 +111,6 @@ public class MenubarPanel extends BasePanel {
 				LabeledHomePage.class, "top.menu.labeled", this);
 
 		menuBar.addMenu(miLabeled);
-	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+	}	
 
 }
