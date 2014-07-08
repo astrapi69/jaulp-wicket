@@ -15,72 +15,121 @@
  */
 package org.jaulp.wicket.components.i18n.dropdownchoice.panels;
 
+import java.util.List;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**
- * The Class TwoDropDownChoicesPanel.
+ * The Class TwoDropDownChoicesPanel contains two dropdowns with a root and a child dropdown.
  *
  * @author Asterios Raptis
  */
-public abstract class TwoDropDownChoicesPanel extends Panel {
+public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDropDownChoicesModel> {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
+    /** The root choice. */
     private final LocalisedDropDownChoice< String > rootChoice;
 
+    /** The child choice. */
     private final LocalisedDropDownChoice< String > childChoice;
 
 	/**
-     * Instantiates a new two drop down choices panel.
-     *
-     * @param id the id
-     */
+	 * Instantiates a new two drop down choices panel.
+	 *
+	 * @param id the id
+	 * @param stringTwoDropDownChoicesModel the string two drop down choices model
+	 * @param rootRenderer the root renderer
+	 * @param childRenderer the child renderer
+	 */
     public TwoDropDownChoicesPanel( final String id,
             final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel,
             IChoiceRenderer< String > rootRenderer,
             IChoiceRenderer< String > childRenderer  ) {
         super( id );
-
-        rootChoice = new LocalisedDropDownChoice< String >(
+        setModel(Model.of(stringTwoDropDownChoicesModel));
+        rootChoice = newRootChoice(
                 "rootChoice", new PropertyModel< String >(
                         stringTwoDropDownChoicesModel, "selectedRootOption" ),
                 stringTwoDropDownChoicesModel.getRootChoices(),
                 rootRenderer );
 
-        childChoice = new LocalisedDropDownChoice< String >(
+        childChoice = newChildChoice(
                 "childChoice", new PropertyModel< String >(
                         stringTwoDropDownChoicesModel, "selectedChildOption" ),
                 stringTwoDropDownChoicesModel.getChildChoices(),
-                childRenderer );
-
+                childRenderer);
         childChoice.setOutputMarkupId( true );
 
-        add( rootChoice );
-        add( childChoice );
-
-        rootChoice.add( new AjaxFormComponentUpdatingBehavior( "onchange" ) {
-
+        rootChoice.add(new AjaxFormComponentUpdatingBehavior( "onchange" ) {
             /** The Constant serialVersionUID. */
             private static final long serialVersionUID = 1L;
-
             @Override
             protected void onUpdate( final AjaxRequestTarget target ) {
                 target.add( childChoice );
             }
-        } );
+        });
+        add( rootChoice );
+        add( childChoice );
     }
+    
+	/**
+	 * Factory method for the root choice.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @param choices the choices
+	 * @param renderer the renderer
+	 * @return the localised drop down choice< string>
+	 */
+	protected LocalisedDropDownChoice<String> newRootChoice(
+			final String id,
+			final IModel<String> model,
+			final IModel<? extends List<? extends String>> choices,
+			final IChoiceRenderer<? super String> renderer) {
+		return new LocalisedDropDownChoice<String>(id, model, choices, renderer);
+	}
+    
+	/**
+	 * Factory method for the  child choice.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @param choices the choices
+	 * @param renderer the renderer
+	 * @return the localised drop down choice< string>
+	 */
+	protected LocalisedDropDownChoice<String> newChildChoice(
+			final String id,
+			final IModel<String> model,
+			final IModel<? extends List<? extends String>> choices,
+			final IChoiceRenderer<? super String> renderer) {
+		return new LocalisedDropDownChoice<String>(id, model, choices, renderer);
+	}
 
+	/**
+	 * Gets the child choice.
+	 *
+	 * @return the child choice
+	 */
 	public LocalisedDropDownChoice<String> getChildChoice() {
 		return childChoice;
 	}
 
+    /**
+     * Gets the root choice.
+     *
+     * @return the root choice
+     */
     public LocalisedDropDownChoice<String> getRootChoice() {
 		return rootChoice;
 	}
