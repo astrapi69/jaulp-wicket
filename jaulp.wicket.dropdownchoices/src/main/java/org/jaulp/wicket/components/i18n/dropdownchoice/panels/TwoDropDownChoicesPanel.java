@@ -56,7 +56,9 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
             IChoiceRenderer< String > rootRenderer,
             IChoiceRenderer< String > childRenderer  ) {
         super( id );
+        
         setModel(Model.of(stringTwoDropDownChoicesModel));
+        
         rootChoice = newRootChoice(
                 "rootChoice", new PropertyModel< String >(
                         stringTwoDropDownChoicesModel, "selectedRootOption" ),
@@ -68,16 +70,7 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
                         stringTwoDropDownChoicesModel, "selectedChildOption" ),
                 stringTwoDropDownChoicesModel.getChildChoices(),
                 childRenderer);
-        childChoice.setOutputMarkupId( true );
 
-        rootChoice.add(new AjaxFormComponentUpdatingBehavior( "onchange" ) {
-            /** The Constant serialVersionUID. */
-            private static final long serialVersionUID = 1L;
-            @Override
-            protected void onUpdate( final AjaxRequestTarget target ) {
-                target.add( childChoice );
-            }
-        });
         add( rootChoice );
         add( childChoice );
     }
@@ -96,7 +89,16 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 			final IModel<String> model,
 			final IModel<? extends List<? extends String>> choices,
 			final IChoiceRenderer<? super String> renderer) {
-		return new LocalisedDropDownChoice<String>(id, model, choices, renderer);
+		LocalisedDropDownChoice<String> rc = new LocalisedDropDownChoice<String>(id, model, choices, renderer);
+		rc.add(new AjaxFormComponentUpdatingBehavior( "onchange" ) {
+            /** The Constant serialVersionUID. */
+            private static final long serialVersionUID = 1L;
+            @Override
+            protected void onUpdate( final AjaxRequestTarget target ) {
+                target.add( childChoice );
+            }
+        });
+		return rc;
 	}
     
 	/**
@@ -113,7 +115,9 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 			final IModel<String> model,
 			final IModel<? extends List<? extends String>> choices,
 			final IChoiceRenderer<? super String> renderer) {
-		return new LocalisedDropDownChoice<String>(id, model, choices, renderer);
+		LocalisedDropDownChoice<String> cc = new LocalisedDropDownChoice<String>(id, model, choices, renderer);
+		cc.setOutputMarkupId(true);
+		return cc;
 	}
 
 	/**
