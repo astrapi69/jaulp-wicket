@@ -53,13 +53,13 @@ public class WicketWikiExample extends WebPage {
 
         add( simpleDropDownChoicePanel );
 
-        BaseDropDownChoicePanel baseDropDownChoicePanel = new BaseDropDownChoicePanel(
-                "baseDropDownChoicePanel" );
+        BaseDropDownChoicePanel baseDropDownChoicePanel = 
+        		new BaseDropDownChoicePanel("baseDropDownChoicePanel");
 
         add( baseDropDownChoicePanel );
 
-        WicketWikiExamplePanel wicketWikiExamplePanel = new WicketWikiExamplePanel(
-                "wicketWikiExamplePanel" );
+        WicketWikiExamplePanel wicketWikiExamplePanel = 
+        		new WicketWikiExamplePanel("wicketWikiExamplePanel");
 
         add( wicketWikiExamplePanel );
 

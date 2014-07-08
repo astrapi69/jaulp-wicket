@@ -30,36 +30,37 @@ import org.jaulp.wicket.dropdownchoices.models.Country;
  * @author Asterios Raptis
  */
 public class BaseDropDownChoicePanel extends Panel {
+	private static final long serialVersionUID = 1L;
 
     public BaseDropDownChoicePanel( final String id ) {
         super( id );
-        IModel countries = new LoadableDetachableModel() {
-            @Override
-            public Object load() {
-                List l = new ArrayList();
+        IModel<List<Country>> countries = new LoadableDetachableModel<List<Country>>() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+            public List<Country> load() {
+                List<Country> l = new ArrayList<>();
                 l.add( new Country( "ar", "Argentina" ) );
                 l.add( new Country( "br", "Brazil" ) );
                 l.add( new Country( "cl", "Chile" ) );
                 return l;
             }
         };
-        IChoiceRenderer renderer = new IChoiceRenderer() {
-            public Object getDisplayValue( final Object obj ) {
-                Country c = ( Country ) obj;
-                return c.getName();
-            }
+        IChoiceRenderer<Country> renderer = new IChoiceRenderer<Country>() {
+			private static final long serialVersionUID = 1L;
 
-            public String getIdValue( final Object obj, final int index ) {
-                Country c = ( Country ) obj;
-                return c.getDigraph();
-            }
+			@Override
+			public Object getDisplayValue(Country object) {
+              return object.getName();
+			}
 
-			public Object getObject(String id, IModel choices) {
-				return null;
+			@Override
+			public String getIdValue(Country object, int index) {
+				return object.getDigraph();
 			}
         };
 
-        DropDownChoice country = new DropDownChoice( "country", countries );
+        DropDownChoice<Country> country = new DropDownChoice<Country>( "country", countries );
         add( country );
         country.setChoiceRenderer( renderer );
 

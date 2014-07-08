@@ -51,7 +51,7 @@ public class SimpleDropDownChoicePanel extends Panel {
             }
         };
 
-        DropDownChoice country = new DropDownChoice( "country", countries );
+        DropDownChoice<String> country = new DropDownChoice<String>( "country", countries );
         add( country );
     }
 
