@@ -68,10 +68,11 @@
 		<testng.version>6.8.8</testng.version>
 		<jetty.version>8.1.12.v20130726</jetty.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<jaulp.file.version>3.7.0</jaulp.file.version>
-		<jaulp.lang.version>2.4.0</jaulp.lang.version>
-		<jaulp.xml.version>1.4.0</jaulp.xml.version>
-		<jaulp.test.objects.version>1.6.0</jaulp.test.objects.version>
+		<jaulp.core.version>3.8.0-SNAPSHOT</jaulp.core.version>
+		<jaulp.file.version>${jaulp.core.version}</jaulp.file.version>
+		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
+		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
+		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
 		<!-- APACHE COMMONS LIBRARIES versions -->
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
