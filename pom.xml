@@ -88,12 +88,13 @@
 		<maven-compiler-plugin.debug>true</maven-compiler-plugin.debug>
 		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
-		<maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<license-maven-plugin.version>2.5</license-maven-plugin.version>
 		<maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
-		<site-maven-plugin.version>0.7</site-maven-plugin.version>
+		<site-maven-plugin.version>0.9</site-maven-plugin.version>
 		<org.eclipse.egit.github.core.version>2.0.3</org.eclipse.egit.github.core.version>
 		<maven-war-plugin.version>2.4</maven-war-plugin.version>
+		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<!-- GITHUB VARIABLE FOR MAVEN PLUGIN com.github.github. Github maven repository. -->
 		<github.global.server>github</github.global.server>
 	</properties>
@@ -341,6 +342,7 @@
 					build we execute the source:jar goal from the source plugin during the package 
 					phase. -->
 				<plugin>
+					<inherited>true</inherited>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${maven-source-plugin.version}</version>
 					<executions>
@@ -354,6 +356,7 @@
 				</plugin>
 
 				<plugin>
+					<inherited>true</inherited>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<configuration>
 						<descriptorRefs>
@@ -389,6 +392,7 @@
 				</plugin>
 
 				<plugin>
+					<inherited>true</inherited>
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<version>${maven-eclipse-plugin.version}</version>
 					<configuration>
@@ -404,6 +408,7 @@
 				</plugin>
 
 				<plugin>
+					<inherited>true</inherited>
 					<artifactId>maven-gpg-plugin</artifactId>
 					<executions>
 						<execution>
@@ -454,7 +459,7 @@
 						<includes>
 							<include>**/*</include>
 						</includes>
-						<repositoryName>${project.artifactId}</repositoryName>
+						<repositoryName>jaulp.wicket</repositoryName>
 						<!-- github repo name -->
 						<repositoryOwner>astrapi69</repositoryOwner>
 						<!-- github username -->
@@ -477,7 +482,13 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-
+				
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin.version}</version>
+				</plugin>
+				
 			</plugins>
 
 		</pluginManagement>
