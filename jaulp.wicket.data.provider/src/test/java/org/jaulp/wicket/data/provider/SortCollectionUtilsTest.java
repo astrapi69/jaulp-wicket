@@ -63,6 +63,15 @@ public class SortCollectionUtilsTest {
         AssertJUnit.assertTrue("Index of person 'asterix' should be <0> but was <" +persons.indexOf(asterix) + ">.", persons.indexOf(asterix) == 0);
         AssertJUnit.assertTrue("Index of person 'miraculix' should be <1> but was <" +persons.indexOf(miraculix) + ">.", persons.indexOf(miraculix) == 1);
         AssertJUnit.assertTrue("Index of person 'obelix' should be <2> but was <" +persons.indexOf(obelix) + ">.", persons.indexOf(obelix) == 2);
+        // set a null value...
+        asterix.setName(null);
+        
+        SortCollectionUtils.sortList(persons, "name", true);
+        // Sorted Persons by name in ascending order with a null value...
+        AssertJUnit.assertTrue("Index of person 'obelix' should be <0> but was <" +persons.indexOf(obelix) + ">.", persons.indexOf(obelix) == 0);
+        AssertJUnit.assertTrue("Index of person 'miraculix' should be <1> but was <" +persons.indexOf(miraculix) + ">.", persons.indexOf(miraculix) == 1);
+        AssertJUnit.assertTrue("Index of person 'asterix' should be <2> but was <" +persons.indexOf(asterix) + ">.", persons.indexOf(asterix) == 2);
+
 	}
 
 }
