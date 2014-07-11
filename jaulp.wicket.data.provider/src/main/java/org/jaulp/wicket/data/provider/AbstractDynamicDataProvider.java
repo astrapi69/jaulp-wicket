@@ -18,7 +18,6 @@ package org.jaulp.wicket.data.provider;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -47,10 +46,10 @@ public abstract class AbstractDynamicDataProvider<T, S> extends SortableDataProv
 	 * {@inheritDoc}
 	 */
 	public Iterator<? extends T> iterator(long first, long count) {
-		SortParam<S> sortParam = getSort();
-		String property = (String)sortParam.getProperty();
-		boolean ascending = sortParam.isAscending();
-		SortCollectionUtils.sortList(getData(), property, ascending);
+//		SortParam<S> sortParam = getSort();
+//		String property = (String)sortParam.getProperty();
+//		boolean ascending = sortParam.isAscending();
+//		SortCollectionUtils.sortList(getData(), property, ascending);
 		long index = first + count;
 		if(size() < index){
 			index = size();
