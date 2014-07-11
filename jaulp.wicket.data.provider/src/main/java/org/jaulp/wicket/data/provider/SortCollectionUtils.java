@@ -38,7 +38,7 @@ public final class SortCollectionUtils {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static<T> void sortList(List<T> list, String property, boolean ascending) {
-		Comparator comparator = new BeanComparator(property, new ComparableComparator(){
+		Comparator comparator = new BeanComparator(property, new ComparableComparator() {
 			private static final long serialVersionUID = -1000742387095425456L;
 			@Override
 			public int compare(Object object, Object compareWithObject) {
