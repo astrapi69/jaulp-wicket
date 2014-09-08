@@ -45,6 +45,10 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener {
 	 */
 	@Override
 	public CharSequence getBeforeHandler(Component component) {
+		return null;
+	}
+
+	private String getJsScript(Component component) {
 		StringBuilder sb = new StringBuilder();
 		if(this.value != null) {
 			sb.append("component.value=\""
@@ -64,18 +68,7 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener {
 	 */
 	@Override
 	public CharSequence getBeforeSendHandler(Component component) {
-		StringBuilder sb = new StringBuilder();
-		if(this.value != null && !this.value.isEmpty()) {
-			sb.append("component.value=\""
-					+ this.value
-					+ "\";");
-		}
-		String jsscript = "var component = document.getElementById(\""
-				+ component.getMarkupId()
-				+ "\");"
-				+ "component.disabled=true;"
-				+ sb.toString();
-		return jsscript;
+		return getJsScript(component);
 	}
 
 	/* (non-Javadoc)

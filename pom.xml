@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.alpharogroup</groupId>
 	<artifactId>jaulp.wicket</artifactId>
-	<version>6.9.0</version>
+	<version>6.17.0</version>
 	<inceptionYear>2010</inceptionYear>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
@@ -68,7 +68,7 @@
 		<testng.version>6.8.8</testng.version>
 		<jetty.version>8.1.12.v20130726</jetty.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<jaulp.core.version>3.8.0-SNAPSHOT</jaulp.core.version>
+		<jaulp.core.version>3.8.0</jaulp.core.version>
 		<jaulp.file.version>${jaulp.core.version}</jaulp.file.version>
 		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
