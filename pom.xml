@@ -69,6 +69,7 @@
 		<jetty.version>8.1.12.v20130726</jetty.version>
 		<!-- EXTERNAL LIBRARIES versions -->
 		<jaulp.core.version>3.8.0</jaulp.core.version>
+		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.file.version>${jaulp.core.version}</jaulp.file.version>
 		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
@@ -157,6 +158,12 @@
 				<version>${jetty.version}</version>
 			</dependency>
 			<!-- JAULP DEPENDENCIES -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.collections</artifactId>
+				<version>${jaulp.collections.version}</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.lang</artifactId>

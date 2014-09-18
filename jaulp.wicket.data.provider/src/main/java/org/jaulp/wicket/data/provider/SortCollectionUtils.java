@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.ComparatorUtils;
-import org.apache.commons.collections.comparators.ComparableComparator;
+import net.sourceforge.jaulp.comparators.ComparableComparator;
 
 public final class SortCollectionUtils {
 
@@ -38,24 +38,7 @@ public final class SortCollectionUtils {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static<T> void sortList(List<T> list, String property, boolean ascending) {
-		Comparator comparator = new BeanComparator(property, new ComparableComparator() {
-			private static final long serialVersionUID = -1000742387095425456L;
-			@Override
-			public int compare(Object object, Object compareWithObject) {
-				// Check if one of the objects are null
-				if ((object != null) && (compareWithObject == null)) {
-					return 1;// compareWithObject is null so its bigger
-				}  
-				if ((object == null) && (compareWithObject != null)) {
-					return -1; // object is null so its smaller
-				}  
-				if (object == compareWithObject) {
-					return 0;// it is the same Object
-				}
-				// Null check completed so we can compare the objects 
-				return super.compare(object, compareWithObject);
-			}
-		});
+		Comparator comparator = new BeanComparator(property, new ComparableComparator());
 		if(ascending) {
 			comparator = ComparatorUtils.reversedComparator(comparator);
 		}
