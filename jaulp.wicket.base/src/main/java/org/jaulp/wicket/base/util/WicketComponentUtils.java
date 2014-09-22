@@ -140,8 +140,17 @@ public final class WicketComponentUtils {
 		}
 		return parameterValue;
 	}
-	
 
+	/**
+	 * Gets a map with all parameters. Looks in the query
+	 * and post parameters. Migration method from 1.4.* to 1.5.*.
+	 * 
+	 * @return a map with all parameters.
+	 */
+	public static Map<String, String[]> getParameterMap() {
+		Request request = RequestCycle.get().getRequest();
+		return getParameterMap(request);
+	}
 
 	/**
 	 * Gets a map with all parameters. Looks in the query
@@ -167,7 +176,7 @@ public final class WicketComponentUtils {
 		}
 		return map;
 	}
-
+	
 	/**
 	 * Gets the parameter value from given parameter name. Looks in the query
 	 * and post parameters.
@@ -385,4 +394,5 @@ public final class WicketComponentUtils {
 		}
 		return requestLogger;
 	}
+
 }
