@@ -33,7 +33,7 @@ public class StartBase {
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
-        connector.setPort(9090);
+        connector.setPort(8080);
         server.addConnector(connector);
 
 		// check if a keystore for a SSL certificate is available, and

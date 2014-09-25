@@ -18,6 +18,7 @@ package org.jaulp.wicket.base.examples.urls;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.Url;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
 import org.jaulp.wicket.base.examples.WicketApplication;
@@ -31,12 +32,21 @@ public class WicketUrlPage extends WebPage {
 	super(parameters);
 	
 	add(new MenubarPanel("menubarPanel"));
-
+	Url url = WicketUrlUtils.getBaseUrl();
+	boolean full = url.isFull();
+	add(new Label("baseUrl", Model.of(WicketUrlUtils.getBaseUrl())));
+	url = WicketUrlUtils.getBaseUrl(this);
+	full = url.isFull();
 	add(new Label("baseUrlPage", Model.of(WicketUrlUtils.getBaseUrl(this))));
+	url = WicketUrlUtils.getBaseUrl(WicketUrlPage.class);
+	full = url.isFull();
 	add(new Label("baseUrlClass", Model.of(WicketUrlUtils.getBaseUrl(WicketUrlPage.class))));
 	add(new Label("contextPath", Model.of(WicketUrlUtils.getContextPath())));
 	add(new Label("contextPathPage", Model.of(WicketUrlUtils.getContextPath(this))));
+	url = WicketUrlUtils.getPageUrl(WicketUrlPage.class);
+	full = url.isFull();
 	add(new Label("pageUrlClass", Model.of(WicketUrlUtils.getPageUrl(WicketUrlPage.class))));
+	add(new Label("canonicalPageUrlClass", Model.of(WicketUrlUtils.getCanonicalPageUrl(WicketUrlPage.class))));
 	add(new Label("urlClass", Model.of(WicketUrlUtils.getPageUrl(this))));
 	add(new Label("urlAsStringClass", Model.of(WicketUrlUtils.getUrlAsString(WicketUrlPage.class))));
 	add(new Label("urlAsStringPage", Model.of(WicketUrlUtils.getUrlAsString(this))));

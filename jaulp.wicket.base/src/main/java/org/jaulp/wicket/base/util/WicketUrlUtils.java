@@ -69,6 +69,36 @@ public class WicketUrlUtils {
 		String url = RequestCycle.get().urlFor(pageClass, parameters).toString();
 		return Url.parse(url);
 	}
+	
+	/**
+	 * Gets the canonical page url. Try to reduce url by eliminating '..' and
+	 * '.' from the path where appropriate (this is somehow similar to
+	 * {@link java.io.File#getCanonicalPath()}).
+	 * @see Url#canonical()
+	 *
+	 * @param pageClass
+	 *            the page class
+	 * @return the page url
+	 */
+	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass) {
+		return getCanonicalPageUrl(pageClass, null);
+	}
+	
+	/**
+	 * Gets the canonical page url. Try to reduce url by eliminating '..' and
+	 * '.' from the path where appropriate (this is somehow similar to
+	 * {@link java.io.File#getCanonicalPath()}).
+	 * @see Url#canonical()
+	 *
+	 * @param pageClass
+	 *            the page class
+	 * @param parameters
+	 *            the parameters
+	 * @return the page url
+	 */
+	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+		return getPageUrl(pageClass, parameters).canonical();
+	}
 
 	/**
 	 * Gets the base url from the given WebPage.
@@ -89,7 +119,7 @@ public class WicketUrlUtils {
 	 * @return the base url
 	 */
 	public static Url getBaseUrl(Class<? extends WebPage> pageClass) {
-		return RequestCycle.get().mapUrlFor(pageClass, null);
+		return getBaseUrl(pageClass, null);
 	}
 	
 	/**
