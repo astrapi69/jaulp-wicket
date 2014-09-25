@@ -35,6 +35,7 @@ public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModel> {
 	
 	protected Label newLabel(String id, IModel<GooglePlusShareModel> model) {
 		Label googleScriptLabel = new Label(id, Model.of("{lang: '"+ model.getObject().getLocale()+"'}"));
+		googleScriptLabel.setEscapeModelStrings(false);
 		googleScriptLabel.add(new AttributeModifier("src", model.getObject().getScriptSrc()));
 		return googleScriptLabel;
 	}
