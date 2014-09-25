@@ -1,0 +1,6 @@
+<div
+  class="fb-like"
+  data-share="$data-share"
+  data-width="$data-width"
+  data-show-faces="$data-show-faces">
+</div>
