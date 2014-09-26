@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,7 @@ import org.apache.wicket.request.Response;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.file.File;
@@ -175,6 +177,21 @@ public final class WicketComponentUtils {
 			map.put(parameterName, stringArray);
 		}
 		return map;
+	}
+
+	/**
+	 * Converts the given Map to a {@link PageParameters} object.
+	 * 
+	 * @param parameters
+	 *            the  {@link Map} with the parameters to set.
+	 * @return the {@link PageParameters}
+	 */
+	public static PageParameters toPageParameters(Map<String, String> parameters) {
+		PageParameters param = new PageParameters();
+		for (Entry<String, String> parameter : parameters.entrySet()) {
+			param.add(parameter.getKey(), parameter.getValue());
+		}
+		return param;
 	}
 	
 	/**
