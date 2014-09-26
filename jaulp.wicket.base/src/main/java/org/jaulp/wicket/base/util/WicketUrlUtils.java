@@ -26,6 +26,59 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 public class WicketUrlUtils {
 
 	/**
+	 * Returns the absolute url for the given page without the server port.
+	 * 
+	 * @param <C>
+	 *            the generic type
+	 * @param page
+	 *            the page
+	 * @return the string
+	 */
+	public static <C extends WebPage> String absoluteUrlFor(Class<C> page) {
+		return absoluteUrlFor(page, null, false);
+	}
+
+	/**
+	 * Returns the absolute url for the given page and
+	 * optionally with the server port.
+	 * 
+	 * @param <C>
+	 *            the generic type
+	 * @param page
+	 *            the page
+	 * @param withServerPort
+	 *            the with server port
+	 * @return the string
+	 */
+	public static <C extends WebPage> String absoluteUrlFor(Class<C> page,
+			 boolean withServerPort) {
+		return absoluteUrlFor(page, null, withServerPort);
+	}
+
+	/**
+	 * Returns the absolute url for the given page with the parameters and
+	 * optionally with the server port.
+	 * 
+	 * @param <C>
+	 *            the generic type
+	 * @param page
+	 *            the page
+	 * @param parameters
+	 *            the parameters
+	 * @param withServerPort
+	 *            the with server port
+	 * @return the string
+	 */
+	public static <C extends WebPage> String absoluteUrlFor(Class<C> page,
+			PageParameters parameters, boolean withServerPort) {
+		StringBuilder url = new StringBuilder();
+		url.append(WicketUrlUtils.getDomainUrl(withServerPort));
+		url.append(WicketUrlUtils.getBaseUrl(page, parameters).canonical()
+				.toString());
+		return url.toString();
+	}
+
+	/**
 	 * Gets the page url as Url object from the given WebPage.
 	 * 
 	 * @param page
