@@ -61,6 +61,8 @@
 		<!-- PROJECT encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<wicket.version>${project.version}</wicket.version>
+		<!-- WICKET EXTENSION LIBRARIES versions -->
+		<wicketstuff.version>${wicket.version}</wicketstuff.version>
 		<!-- LOGGING versions -->
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
@@ -126,6 +128,18 @@
 				<groupId>org.apache.wicket</groupId>
 				<artifactId>wicket-velocity</artifactId>
 				<version>${wicket.version}</version>
+			</dependency>
+			<!-- WICKETSTUFF DEPENDENCIES -->
+			<dependency>
+				<groupId>org.wicketstuff</groupId>
+				<artifactId>wicketstuff-annotation</artifactId>
+				<version>${wicketstuff.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.wicket</groupId>
+						<artifactId>wicket</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<!-- LOGGING DEPENDENCIES -->
 			<dependency>

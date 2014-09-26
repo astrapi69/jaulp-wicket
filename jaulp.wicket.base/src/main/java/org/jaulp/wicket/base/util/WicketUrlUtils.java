@@ -216,13 +216,42 @@ public class WicketUrlUtils {
 	 * @return the domain url
 	 */
 	public static String getDomainUrl() {
-		String domainUrl = "";
-		int indexOf = WicketComponentUtils.getRequestURL().indexOf(
-				getBaseUrl().toString());
-		if(0 <indexOf){
-			domainUrl = WicketComponentUtils.getRequestURL().substring(0,
-					indexOf);
+
+		return getDomainUrl(true);
+	}
+
+	/**
+	 * Gets the domain url.
+	 * 
+	 * @param withServerPort
+	 *            the with server port
+	 * @return the domain url
+	 */
+	public static String getDomainUrl(boolean withServerPort) {
+		return getDomainUrl(withServerPort, true);
+	}
+
+	/**
+	 * Gets the domain url.
+	 *
+	 * @param withServerPort the with server port
+	 * @param withSlashAtTheEnd the with slash at the end
+	 * @return the domain url
+	 */
+	public static String getDomainUrl(boolean withServerPort, boolean withSlashAtTheEnd) {
+		StringBuilder domainUrl = new StringBuilder();
+		domainUrl.append(WicketComponentUtils.getHttpServletRequest()
+				.getScheme());
+		domainUrl.append("://");
+		domainUrl.append(WicketUrlUtils.getServerName());
+		if (withServerPort) {
+			domainUrl.append(":");
+			domainUrl.append(WicketComponentUtils.getHttpServletRequest()
+					.getServerPort());
 		}
-		return domainUrl;
+		if(withSlashAtTheEnd) {
+			domainUrl.append("/");
+		}
+		return domainUrl.toString();
 	}
 }

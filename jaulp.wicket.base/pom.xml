@@ -38,6 +38,11 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.xml</artifactId>
 		</dependency>
+		<!-- WICKETSTUFF -->
+		<dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>wicketstuff-annotation</artifactId>
+		</dependency>
 
 	</dependencies>
 

@@ -19,7 +19,9 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.mainbase.BaseMainPage;
+import org.wicketstuff.annotation.mount.MountPath;
 
+@MountPath("/home")
 public class HomePage extends BaseMainPage {
 	private static final long serialVersionUID = 1L;
 

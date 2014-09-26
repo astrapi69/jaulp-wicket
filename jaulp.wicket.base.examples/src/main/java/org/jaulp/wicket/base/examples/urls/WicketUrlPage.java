@@ -21,10 +21,12 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
-import org.jaulp.wicket.base.examples.WicketApplication;
+import org.jaulp.wicket.base.examples.application.WicketApplication;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.WicketUrlUtils;
+import org.wicketstuff.annotation.mount.MountPath;
 
+@MountPath("/urlpageexample")
 public class WicketUrlPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 

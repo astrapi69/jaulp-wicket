@@ -16,6 +16,7 @@
 package org.jaulp.wicket.base.examples;
 
 import org.apache.wicket.util.tester.WicketTester;
+import org.jaulp.wicket.base.examples.application.WicketApplication;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

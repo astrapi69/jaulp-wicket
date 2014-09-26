@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jaulp.wicket.base.examples;
+package org.jaulp.wicket.base.examples.application;
 
 import java.io.IOException;
 
@@ -21,6 +21,8 @@ import org.apache.log4j.Logger;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.jaulp.wicket.PackageResourceReferences;
+import org.jaulp.wicket.base.examples.HomePage;
+import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -50,7 +52,12 @@ public class WicketApplication extends WebApplication
 	{
 		super.init();
 		initializeAllHeaderContributors();
+		new AnnotatedMountScanner().scanPackage(getPackageToScan()).mount(this);
 		// add your configuration here
+	}
+	
+	public String getPackageToScan() {
+		return "org.jaulp.wicket.base";
 	}
 	
 	/**
@@ -81,7 +88,7 @@ public class WicketApplication extends WebApplication
 	public void initializeResources() throws ClassNotFoundException,
 			IOException {
 		PackageResourceReferences prr = PackageResourceReferences.getInstance();
-    	prr.initializeResources("org.jaulp.wicket");
+    	prr.initializeResources(getPackageToScan());
 	}
 
 	/**

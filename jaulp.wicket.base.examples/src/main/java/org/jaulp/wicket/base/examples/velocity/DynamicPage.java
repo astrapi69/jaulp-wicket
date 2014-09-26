@@ -31,7 +31,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
 import org.jaulp.wicket.components.velocity.VelocityFieldsPanel;
 import org.jaulp.wicket.components.velocity.WicketField;
+import org.wicketstuff.annotation.mount.MountPath;
 
+@MountPath("/velocity")
 public class DynamicPage extends WebPage {
 	private static final String WICKET_ID = "wicket:id";
 
