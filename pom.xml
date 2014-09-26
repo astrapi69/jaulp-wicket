@@ -670,6 +670,7 @@
 								<exclude>**/*.txt</exclude>
 								<exclude>**/*.css</exclude>
 								<exclude>**/*.js</exclude>
+								<exclude>**/*.vm</exclude>
 								<exclude>src/test/resources/**</exclude>
 								<exclude>src/main/resources/**</exclude>
 							</excludes>
