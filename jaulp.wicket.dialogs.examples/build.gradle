@@ -1,7 +1,0 @@
-
-apply plugin: 'war'
-
-description = 'jaulp.wicket.dialogs.examples'
-dependencies {
-  compile project(':jaulp.wicket.dialogs')
-}

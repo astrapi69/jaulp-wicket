@@ -1,5 +1,0 @@
-
-description = 'jaulp.wicket.dropdownchoices'
-dependencies {
-  compile project(':jaulp.wicket.components')
-}

@@ -1,8 +1,0 @@
-
-apply plugin: 'war'
-
-description = 'jaulp.wicket.annotated.header.contributors.examples'
-dependencies {
-  compile project(':jaulp.wicket.annotated.header.contributors')
-  compile project(':jaulp.wicket.base')
-}

@@ -1,8 +1,0 @@
-
-apply plugin: 'war'
-
-description = 'jaulp.wicket.data.provider.examples'
-dependencies {
-  compile project(':jaulp.wicket.data.provider')
-    compile group: 'org.jaulp', name: 'jaulp.file', version:'3.6.5'
-}

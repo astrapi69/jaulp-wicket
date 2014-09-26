@@ -1,6 +1,0 @@
-
-description = ''
-dependencies {
-  compile project(':jaulp.wicket.behaviors')
-    compile group: 'org.apache.wicket', name: 'wicket-velocity', version:'6.9.0'
-}
