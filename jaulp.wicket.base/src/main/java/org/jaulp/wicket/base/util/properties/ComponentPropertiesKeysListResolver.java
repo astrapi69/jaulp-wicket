@@ -3,6 +3,7 @@ package org.jaulp.wicket.base.util.properties;
 import java.util.List;
 
 import net.sourceforge.jaulp.locale.PropertiesKeysListResolver;
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
@@ -13,13 +14,15 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
  * from the given list with the given prefix and optionally a suffix. This class
  * is usefull for get Properties that have a properties key prefix for instance:
  * properties key prefix='infringement.list.entry' and the properties key prefix='label'.
- * The values list contains the String object '1' and '2'.
+ * The values list contains:
+ * a ResourceBundleKey object with the key '1' and with parameters '7'
+ * and a second ResourceBundleKey object with the key '2' with no parameters.
  * The properties file could look something like this: 
- * infringement.list.entry.1.label = foo
+ * infringement.list.entry.1.label = foo {0}
  * infringement.list.entry.2.label = bar
  */
 public class ComponentPropertiesKeysListResolver extends
-		PropertiesKeysListResolver {
+		PropertiesKeysListResolver<ResourceBundleKey> {
 
 	/** The relative component used for lookups. */
 	private Component component;
@@ -35,7 +38,7 @@ public class ComponentPropertiesKeysListResolver extends
 	 *            the values
 	 */
 	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix,
-			Component component, List<String> values) {
+			Component component, List<ResourceBundleKey> values) {
 		this(propertiesKeyPrefix, null, component, values);
 	}
 
@@ -52,7 +55,7 @@ public class ComponentPropertiesKeysListResolver extends
 	 *            the values
 	 */
 	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix,
-			String propertiesKeySuffix, Component component, List<String> values) {
+			String propertiesKeySuffix, Component component, List<ResourceBundleKey> values) {
 		super(propertiesKeyPrefix, propertiesKeySuffix, values);
 		this.component = component;
 	}
@@ -64,9 +67,23 @@ public class ComponentPropertiesKeysListResolver extends
 	 *            the object
 	 * @return the display value
 	 */
-	public String getDisplayValue(final String object) {
-		IModel<String> resourceModel = ResourceModelFactory.newResourceModel(
-				getPropertiesKey(object), component);
+	public String getDisplayValue(final ResourceBundleKey object) {
+		IModel<String> resourceModel;
+		String resourceKey = getPropertiesKey(object.getKey());
+		String defaultValue = object.getDefaultValue();
+		if(object.getParameters() != null && object.getParameters().length>0) {
+			if(defaultValue != null && !defaultValue.isEmpty()){
+				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, defaultValue, component, object.getParameters());				
+			} else {
+				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, component, object.getParameters());
+			}
+		} else {
+			if(defaultValue != null && !defaultValue.isEmpty()){
+				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue);				
+			} else {
+				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, component);				
+			}
+		}
 		String value = resourceModel.getObject();
 		return value;
 	}
