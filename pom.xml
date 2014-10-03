@@ -70,7 +70,7 @@
 		<testng.version>6.8.8</testng.version>
 		<jetty.version>8.1.12.v20130726</jetty.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<jaulp.core.version>3.8.0</jaulp.core.version>
+		<jaulp.core.version>3.9.0-SNAPSHOT</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.file.version>${jaulp.core.version}</jaulp.file.version>
 		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
