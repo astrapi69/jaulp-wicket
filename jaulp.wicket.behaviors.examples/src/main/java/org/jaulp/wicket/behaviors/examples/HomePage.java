@@ -15,9 +15,6 @@
  */
 package org.jaulp.wicket.behaviors.examples;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
@@ -25,7 +22,6 @@ import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
 import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
-import org.jaulp.wicket.behaviors.ComponentDecorator;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.components.MailtoLabel;
 import org.jaulp.wicket.behaviors.models.MailtoModel;
@@ -66,13 +62,6 @@ public class HomePage extends WebPage {
     	};
     	 add(new AddJavascriptBehavior("alert('foo bar');", "xy"));
 
- 		Map<String, String> attributes = new LinkedHashMap<String, String>();
- 		attributes.put("class", "foo");
- 		attributes.put("style", "display: inline;");
- 		ComponentDecorator decorator = new ComponentDecorator("div", attributes);
- 		Map<String, String> attributes2 = new LinkedHashMap<String, String>();
- 		attributes2.put("class", "bar");
- 		ComponentDecorator decorator2 = new ComponentDecorator("span", attributes2);
     	add(new Link<String>("focusRequestExamplePage") {
 
 			/**
@@ -84,7 +73,7 @@ public class HomePage extends WebPage {
 			public void onClick() {
 				 setResponsePage(FocusRequestExamplePage.class);
 			}
-		}.add(decorator, decorator2));
+		});
 
     	add(button);
     	add(new FaviconBehavior());
