@@ -21,7 +21,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class MenuUtils.
@@ -45,14 +45,13 @@ public class LinkUtils {
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> createBookmarkablePageLink(
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(
 			String linkId, Class<? extends Page> pageClass, String labelId,
 			String resourceModelKey, Component component) {
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
 				linkId, pageClass);
-
 		bookmarkablePageLink.add(new Label(labelId,
-				new StringResourceModel(resourceModelKey, component, null)));
+				ResourceModelFactory.newResourceModel(resourceModelKey, component)));
 		return bookmarkablePageLink;
 	}
 	
@@ -71,14 +70,13 @@ public class LinkUtils {
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> createBookmarkablePageLink(
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(
 			String linkId, Class<? extends Page> pageClass, String labelId,
 			String resourceModelKey, String defaultValue, Component component) {
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
 				linkId, pageClass);
-
 		bookmarkablePageLink.add(new Label(labelId,
-				new StringResourceModel(resourceModelKey, component, null, defaultValue)));
+				ResourceModelFactory.newResourceModel(resourceModelKey, component, defaultValue)));
 		return bookmarkablePageLink;
 	}
 	
@@ -92,11 +90,11 @@ public class LinkUtils {
 	 * @param component the component
 	 * @return the external link
 	 */
-	public static ExternalLink createExternalLink(String linkId, String url, String labelId,
+	public static ExternalLink newExternalLink(String linkId, String url, String labelId,
 			String resourceModelKey, Component component){
 		ExternalLink externalLink = new ExternalLink(linkId, Model.of(url));
 		externalLink.add(new Label(labelId,
-				new StringResourceModel(resourceModelKey, component, null)));
+				ResourceModelFactory.newResourceModel(resourceModelKey, component)));
 		return externalLink;
 	}
 	
@@ -111,11 +109,11 @@ public class LinkUtils {
 	 * @param component the component
 	 * @return the external link
 	 */
-	public static ExternalLink createExternalLink(String linkId, String url, String labelId,
+	public static ExternalLink newExternalLink(String linkId, String url, String labelId,
 			String resourceModelKey, String defaultValue, Component component){
 		ExternalLink externalLink = new ExternalLink(linkId, Model.of(url));
 		externalLink.add(new Label(labelId,
-				new StringResourceModel(resourceModelKey,  component, null, defaultValue)));
+				ResourceModelFactory.newResourceModel(resourceModelKey, component, defaultValue)));
 		return externalLink;
 	}
 	

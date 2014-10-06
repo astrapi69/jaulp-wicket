@@ -6,7 +6,6 @@ import net.sourceforge.jaulp.locale.PropertiesKeysListResolver;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
@@ -55,7 +54,8 @@ public class ComponentPropertiesKeysListResolver extends
 	 *            the values
 	 */
 	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix,
-			String propertiesKeySuffix, Component component, List<ResourceBundleKey> values) {
+			String propertiesKeySuffix, Component component,
+			List<ResourceBundleKey> values) {
 		super(propertiesKeyPrefix, propertiesKeySuffix, values);
 		this.component = component;
 	}
@@ -63,28 +63,16 @@ public class ComponentPropertiesKeysListResolver extends
 	/**
 	 * Gets the display value.
 	 * 
-	 * @param object
-	 *            the object
+	 * @param resourceBundleKey
+	 *            the {@link ResourceBundleKey} object
 	 * @return the display value
 	 */
-	public String getDisplayValue(final ResourceBundleKey object) {
-		IModel<String> resourceModel;
-		String resourceKey = getPropertiesKey(object.getKey());
-		String defaultValue = object.getDefaultValue();
-		if(object.getParameters() != null && object.getParameters().length>0) {
-			if(defaultValue != null && !defaultValue.isEmpty()){
-				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, defaultValue, component, object.getParameters());				
-			} else {
-				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, component, object.getParameters());
-			}
-		} else {
-			if(defaultValue != null && !defaultValue.isEmpty()){
-				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue);				
-			} else {
-				resourceModel = ResourceModelFactory.newResourceModel(resourceKey, component);				
-			}
-		}
-		String value = resourceModel.getObject();
-		return value;
+	public String getDisplayValue(final ResourceBundleKey resourceBundleKey) {
+		return ResourceModelFactory.newResourceModel(
+				getPropertiesKey(resourceBundleKey.getKey()), 
+				resourceBundleKey.getParameters(),
+				component, 
+				resourceBundleKey.getDefaultValue())
+				.getObject();
 	}
 }

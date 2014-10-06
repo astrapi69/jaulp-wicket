@@ -47,7 +47,7 @@ public class MenuUtils {
 	public static BookmarkablePageLink<String> createBookmarkablePageLink(
 			String linkId, Class<? extends Page> pageClass, String labelId,
 			String resourceModelKey, Component component) {
-		return LinkUtils.createBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey, component);
+		return LinkUtils.newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey, component);
 	}
 
 	/**
