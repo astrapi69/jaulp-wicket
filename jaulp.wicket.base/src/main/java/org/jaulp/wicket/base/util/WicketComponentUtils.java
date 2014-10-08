@@ -82,6 +82,7 @@ public final class WicketComponentUtils {
 	 */
 	public static HttpServletRequest getHttpServletRequest() {
 		Request request = RequestCycle.get().getRequest();
+		
 		return getHttpServletRequest(request);
 	}
 

@@ -15,10 +15,20 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.wicket.behaviors</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.random</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-velocity</artifactId>
 		</dependency>
+			<!-- CAPTCHA DEPENDENCIES -->
+			<dependency>
+				<groupId>net.tanesha.recaptcha4j</groupId>
+				<artifactId>recaptcha4j</artifactId>
+			</dependency>
 	</dependencies>
 </project>

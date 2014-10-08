@@ -75,8 +75,10 @@
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.file.version>${jaulp.core.version}</jaulp.file.version>
 		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
+		<jaulp.random.version>${jaulp.core.version}</jaulp.random.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
 		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
+		<recaptcha4j.version>0.0.7</recaptcha4j.version>
 		<!-- APACHE COMMONS LIBRARIES versions -->
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
@@ -199,6 +201,12 @@
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.random</artifactId>
+				<version>${jaulp.random.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.xml</artifactId>
 				<version>${jaulp.xml.version}</version>
 			</dependency>
@@ -273,6 +281,12 @@
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
 				<version>${commons-collections.version}</version>
+			</dependency>
+			<!-- CAPTCHA DEPENDENCIES -->
+			<dependency>
+				<groupId>net.tanesha.recaptcha4j</groupId>
+				<artifactId>recaptcha4j</artifactId>
+				<version>${recaptcha4j.version}</version>
 			</dependency>
 
 		</dependencies>
