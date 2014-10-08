@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>jaulp.wicket.behaviors</artifactId>
 	<packaging>jar</packaging>
-	
+
 	<name>${project.artifactId}</name>
 
 	<dependencies>
@@ -17,6 +17,11 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.wicket.base</artifactId>
 		</dependency>
+		<!-- WIQUERY DEPENDENCIES -->
+		<dependency>
+			<groupId>org.odlabs.wiquery</groupId>
+			<artifactId>wiquery-core</artifactId>
+		</dependency>
 	</dependencies>
-	
+
 </project>
