@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment />
+
+	<entry key="imprint.disclaimer.label">
+		Haftungshinweis:
+	</entry>
+	<entry key="imprint.disclaimer.content">
+		Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für
+		die Inhalte externer Links.
+		Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber
+		verantwortlich.
+	</entry>
+	<entry key="imprint.disclaimer.link.label">
+		Um Informationen über den Datenschutzerklärung zu lesen folgen Sie einfach diesen Link
+	</entry>
+</properties>
