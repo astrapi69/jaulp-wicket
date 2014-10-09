@@ -15,10 +15,13 @@
  */
 package org.jaulp.wicket.components.i18n.label;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class LocalizedLabel initializes the Label with a StringResourceModel.
@@ -110,8 +113,18 @@ public class LocalizedLabel extends Label {
 	 * @param stringResourceModel the string resource model
 	 */
 	public LocalizedLabel(final String id, final StringResourceModel stringResourceModel) {
+		super(id, stringResourceModel);
+	}
+	
+	/**
+	 * Instantiates a new localized label.
+	 *
+	 * @param id the id
+	 * @param resourceBundleKey the resourceBundleKey
+	 */
+	public LocalizedLabel(final String id, final ResourceBundleKey resourceBundleKey) {
 		super(id);
-		setDefaultModel(stringResourceModel);
+		setDefaultModel(ResourceModelFactory.newResourceModel(resourceBundleKey, getParent()));
 	}
 
 }
