@@ -16,6 +16,10 @@ public class ContentPanel extends BasePanel<ContentModel> {
 	private final Component header;
 	private final Component content;
 
+	public ContentPanel(String id) {
+		this(id, null);
+	}
+
 	public ContentPanel(String id, IModel<ContentModel> model) {
 		super(id, model);
 		add(header = newHeaderLabel("header", newHeaderModel()));
