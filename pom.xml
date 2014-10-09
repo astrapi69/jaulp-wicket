@@ -156,72 +156,6 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!-- LOGGING DEPENDENCIES -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<!-- LOGGING DEPENDENCIES - LOG4J -->
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>${log4j.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.testng</groupId>
-				<artifactId>testng</artifactId>
-				<version>${testng.version}</version>
-			</dependency>
-			<!-- JETTY DEPENDENCIES FOR TESTING -->
-			<dependency>
-				<groupId>org.eclipse.jetty.aggregate</groupId>
-				<artifactId>jetty-all-server</artifactId>
-				<version>${jetty.version}</version>
-			</dependency>
-			<!-- JAULP DEPENDENCIES -->
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jaulp.collections</artifactId>
-				<version>${jaulp.collections.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jaulp.lang</artifactId>
-				<version>${jaulp.lang.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jaulp.random</artifactId>
-				<version>${jaulp.random.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jaulp.xml</artifactId>
-				<version>${jaulp.xml.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jaulp.test.objects</artifactId>
-				<version>${jaulp.test.objects.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>jaulp.file</artifactId>
-				<version>${jaulp.file.version}</version>
-			</dependency>
 			<!-- JAULP WICKET DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -264,6 +198,42 @@
 				<artifactId>jaulp.wicket.dropdownchoices</artifactId>
 				<version>${wicket.version}</version>
 			</dependency>
+			<!-- JAULP DEPENDENCIES -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.collections</artifactId>
+				<version>${jaulp.collections.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.lang</artifactId>
+				<version>${jaulp.lang.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.random</artifactId>
+				<version>${jaulp.random.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.xml</artifactId>
+				<version>${jaulp.xml.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.test.objects</artifactId>
+				<version>${jaulp.test.objects.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.file</artifactId>
+				<version>${jaulp.file.version}</version>
+			</dependency>
 			<!-- EXTERNAL LIBRARIES DEPENDENCIES -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -288,6 +258,36 @@
 				<artifactId>recaptcha4j</artifactId>
 				<version>${recaptcha4j.version}</version>
 			</dependency>
+			<!-- JETTY DEPENDENCIES FOR TESTING -->
+			<dependency>
+				<groupId>org.eclipse.jetty.aggregate</groupId>
+				<artifactId>jetty-all-server</artifactId>
+				<version>${jetty.version}</version>
+			</dependency>
+			<!-- LOGGING DEPENDENCIES -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<!-- LOGGING DEPENDENCIES - LOG4J -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+			</dependency>
 
 		</dependencies>
 
@@ -298,6 +298,12 @@
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
+		</dependency>
+		<!-- JETTY DEPENDENCIES FOR TESTING -->
+		<dependency>
+			<groupId>org.eclipse.jetty.aggregate</groupId>
+			<artifactId>jetty-all-server</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<!-- LOGGING DEPENDENCIES -->
 		<dependency>
@@ -319,12 +325,6 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<!-- JETTY DEPENDENCIES FOR TESTING -->
-		<dependency>
-			<groupId>org.eclipse.jetty.aggregate</groupId>
-			<artifactId>jetty-all-server</artifactId>
-			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
@@ -530,13 +530,13 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-				
+
 				<plugin>
 					<inherited>true</inherited>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>${maven-install-plugin.version}</version>
 				</plugin>
-				
+
 			</plugins>
 
 		</pluginManagement>
