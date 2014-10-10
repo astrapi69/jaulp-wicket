@@ -64,6 +64,7 @@
 		<!-- WICKET EXTENSION LIBRARIES versions -->
 		<wicketstuff.version>${wicket.version}</wicketstuff.version>
 		<wiquery-core.version>6.9.1</wiquery-core.version>
+		<wicket-modelfactory.version>0.9.4</wicket-modelfactory.version>
 		<!-- LOGGING versions -->
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
@@ -155,6 +156,12 @@
 						<artifactId>wicket</artifactId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+			<!-- WICKET-MODELFACTORY DEPENDENCIES -->
+			<dependency>
+				<groupId>org.wicketeer</groupId>
+				<artifactId>wicket-modelfactory</artifactId>
+				<version>${wicket-modelfactory.version}</version>
 			</dependency>
 			<!-- JAULP WICKET DEPENDENCIES -->
 			<dependency>
