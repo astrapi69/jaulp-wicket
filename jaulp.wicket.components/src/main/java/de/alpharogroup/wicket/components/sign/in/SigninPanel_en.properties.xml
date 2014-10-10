@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment />
+	<entry key="global.email.label">Email</entry>
+	<entry key="global.enter.your.email.label">Enter your email</entry>
+	<entry key="global.password.label">Password</entry>
+	<entry key="global.enter.your.password.label">Enter your password</entry>
+</properties>

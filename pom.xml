@@ -71,14 +71,23 @@
 		<!-- UNIT TEST versions -->
 		<testng.version>6.8.8</testng.version>
 		<jetty.version>8.1.12.v20130726</jetty.version>
-		<!-- EXTERNAL LIBRARIES versions -->
+		<!-- JAULP versions -->
 		<jaulp.core.version>3.9.0-SNAPSHOT</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
+		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
+		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
 		<jaulp.file.version>${jaulp.core.version}</jaulp.file.version>
+		<jaulp.generic.tree.version>${jaulp.core.version}</jaulp.generic.tree.version>
 		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
+		<jaulp.net.version>${jaulp.core.version}</jaulp.net.version>
 		<jaulp.random.version>${jaulp.core.version}</jaulp.random.version>
-		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
+		<jaulp.security.version>${jaulp.core.version}</jaulp.security.version>
+		<jaulp.swing.version>${jaulp.core.version}</jaulp.swing.version>
 		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
+		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
+		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
+		<mystic.crypt.version>${jaulp.core.version}</mystic.crypt.version>
+		<!-- EXTERNAL LIBRARIES versions -->
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
 		<!-- APACHE COMMONS LIBRARIES versions -->
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
@@ -222,6 +231,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.random</artifactId>
 				<version>${jaulp.random.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.security</artifactId>
+				<version>${jaulp.security.version}</version>
 			</dependency>
 
 			<dependency>

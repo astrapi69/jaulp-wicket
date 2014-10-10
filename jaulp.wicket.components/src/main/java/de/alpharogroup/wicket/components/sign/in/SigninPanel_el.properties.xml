@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment />
+	<entry key="global.email.label">Εμαιλ</entry>
+	<entry key="global.enter.your.email.label">Πληκτρολόγησε εδώ το εμαιλ</entry>
+	<entry key="global.password.label">Κωδικός πρόσβασης</entry>
+	<entry key="global.enter.your.password.label">Πληκτρολόγησε εδώ τον κωδικό πρόσβασης</entry>
+	<entry key="global.button.sign.in.label">Είσοδος</entry>
+</properties>
