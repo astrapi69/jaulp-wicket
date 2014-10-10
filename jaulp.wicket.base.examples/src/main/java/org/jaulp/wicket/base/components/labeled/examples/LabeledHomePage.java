@@ -29,10 +29,10 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePage;
-import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
-import org.jaulp.wicket.components.labeled.textarea.LabeledTextAreaPanel;
-import org.jaulp.wicket.components.labeled.textfield.LabeledDateTextFieldPanel;
-import org.jaulp.wicket.components.labeled.textfield.LabeledTextFieldPanel;
+import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
+import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
+import de.alpharogroup.wicket.components.labeled.textfield.LabeledDateTextFieldPanel;
+import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "jquery-1.5.2.js", resourceType = "js", index=1),
 		@ImportResource(resourceName = "wrapLabeledFormElements.js", resourceType = "js", index=2)})

@@ -27,9 +27,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Person;
 import org.jaulp.wicket.base.BasePage;
-import org.jaulp.wicket.components.editable.textarea.EditableTextArea;
-import org.jaulp.wicket.components.editable.textfield.EditableTextField;
-import org.jaulp.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
+import de.alpharogroup.wicket.components.editable.textarea.EditableTextArea;
+import de.alpharogroup.wicket.components.editable.textfield.EditableTextField;
+import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 
 public class ViewOrEditPage extends BasePage {
 	private static final long serialVersionUID = 1L;

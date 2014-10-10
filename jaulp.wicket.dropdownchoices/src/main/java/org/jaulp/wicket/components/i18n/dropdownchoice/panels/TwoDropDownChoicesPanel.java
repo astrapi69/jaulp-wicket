@@ -24,7 +24,7 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
-import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
+import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 /**

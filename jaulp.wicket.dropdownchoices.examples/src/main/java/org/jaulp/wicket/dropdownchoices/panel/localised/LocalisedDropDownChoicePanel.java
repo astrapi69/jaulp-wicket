@@ -25,9 +25,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
-import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.LocalisedChoiceRenderer;
 import org.jaulp.wicket.dropdownchoices.models.OptionModel;
+
+import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
 /**
  * The Class LocalisedDropDownChoicePanel.

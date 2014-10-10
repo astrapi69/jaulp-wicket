@@ -19,8 +19,9 @@ import java.util.Arrays;
 
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.jaulp.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import org.jaulp.wicket.model.dropdownchoices.SelectOptionModel;
+
+import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
 
 public class WicketWikiExamplePanel extends Panel {
