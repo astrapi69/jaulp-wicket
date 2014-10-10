@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment />
+	<entry key="global.username.label">Όνομα χρήστη</entry>
+	<entry key="global.enter.your.username.label">Πληκτρολόγησε εδώ το όνομα χρήστη</entry>	
+	<entry key="global.repeat.password.label">Επανάληψη του κωδικού προσβάσεως</entry>
+	<entry key="global.enter.your.password.again.label">Πληκτρολόγησε εδώ ξανά τον κωδικό πρόσβασης</entry>
+</properties>
