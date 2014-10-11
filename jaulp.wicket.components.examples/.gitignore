@@ -16,6 +16,7 @@
 /.project
 /.classpath
 /.settings
+/.tern-project
 
 #########################
 # maven generated files #
