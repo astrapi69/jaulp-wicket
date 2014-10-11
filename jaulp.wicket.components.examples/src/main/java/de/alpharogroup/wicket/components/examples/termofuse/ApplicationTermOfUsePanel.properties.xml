@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment/>
+	<entry key="term.of.use.main.head.label">
+	Allgemeine Geschäftsbedingungen dieser Webseite
+	</entry>
+	<entry key="term.of.use.main.head.content.paragraph.first.label">
+	Folgende rechtliche Hinweise regeln den Zugang und die Nutzung der Dienstleistungen der Webseite {0} (nachfolgend die "Webseite"). 
+	Die angebotenen Dienstleistungen werden für alle Benutzer zur Verfügung gestellt(nachfolgend die "Nutzer") die sich flirten, feste Beziehung oder Abenteuer interessieren.
+	</entry>
+	<entry key="term.of.use.main.head.content.paragraph.second.label">
+	Mit der Registrierung auf dieser Webseite erklären sich die Benutzer mit den hier aufgeführten Nutzungsbedingungen einverstanden. 
+	Die Nutzung der Dienstleistungen dieser Webseite erfordern eine Registrierung. Der Nutzer erhält einen Benutzernamen und ein Passwort und verpflichtet sich, 
+	dieses stets zu schützen und mit großer Sorgfalt zu nutzen. Der Nutzer ist verantwortlich für die Geheimhaltung seines Passworts.
+	</entry>
+	<entry key="term.of.use.legal.references.head.label">
+	1. Gegenstand der Bedingungen
+	</entry>
+	<entry key="term.of.use.legal.references.content.paragraph.first.label">
+	Diese Webseite bietet ein wicket Komponenten an.
+	Die einfache Mitgliedschaft ist kostenlos. Die premium Mitgliedschaft ist kostenpflichtig.
+	Dienste die kostenpflichtig sind, werden explizit gekennzeichnet und ausdrücklich darauf hingewiesen.
+	Der Nutzer verpflichtet sich seine Daten auf den aktuellen Stand zu halten. Zugangsdaten des Nutzers sind geheim zu halten.
+	</entry>
+	<entry key="term.of.use.legal.references.content.paragraph.second.label">
+	Wenn der Nutzer Minderjährig ist darf dieser nur mit Einwilligung seiner gesetzlichen Vertreter sich registrieren. 
+	Diese Webseite bei einer Registrierung durch Minderjährige davon aus, das die Einwilligung seiner gesetzlichen Vertreter vorliegt. 
+	Die gesetzlichen Vertreter des Minderjährigen akzeptieren damit die Verantwortlichkeit für jegliches Verhalten des Minderjährigen auf diese Webseite. 
+	Die gesetzlichen Vertreter des Minderjährigen sind sich bewusst, dass manche Inhalte dieser Webseite nicht für Minderjährige geeignet sind.
+	</entry>
+	<entry key="term.of.use.contract.head.label">
+	2. Vertragsabschluss
+	</entry>
+	<entry key="term.of.use.contract.content.paragraph.first.label">
+	Ein Vertrag zwischen den Nutzer und dieser Webseite kommt erst zustande, wenn der Nutzer sich erfolgreich registriert hat.
+	Die Webseite ist berechtigt, die Daten des Nutzers zu überprüfen in jeglicher Form.
+	</entry>
+	<entry key="term.of.use.data.protection.head.label">
+	3. Datenschutz
+	</entry>	
+	<entry key="term.of.use.data.protection.head.content.paragraph.first.label">
+	Mit der Registrierung des Nutzers erklärt er sich damit einverstanden, dass seine personenbezogenen Daten von dieser Webseite 
+	zum Zwecke der Leistungserbringung in elektronischer Form gespeichert, verarbeitet und genutzt werden. 
+	Unter anderem willigt der Nutzer ein, dass alle Daten seines Profils, für andere Nutzer sichtbar sind. 
+	Ausnahme bilden hier email-Adresse und Passwort.
+	Haftungshinweis:
+	Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. 
+	Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+	</entry>	
+	<entry key="term.of.use.copyright.head.label">
+	4. Urheberrechte
+	</entry>
+	<entry key="term.of.use.copyright.paragraph.first.label">
+	Jegliches Material(z.B. Texte, source code,) innerhalb dieser Webseite und deren Netzwerk, 
+	ist urheberrechtlich geschützt und ist den Nutzern ausschließlich für den privaten Gebrauch erlaubt.
+	</entry>
+	<entry key="term.of.use.cancellation.head.label">	
+	5. Kündigung
+	</entry>
+	<entry key="term.of.use.cancellation.content.paragraph.first.label">
+	Der Nutzer ist berechtigt, jederzeit sich zu de-registrieren(endgültig von dieser Webseite abzumelden). 
+	Mit der Deregistrierung des Nutzers ist das Vertragsverhältnis mit dieser Webseite beendet.
+	</entry>
+	<entry key="term.of.use.cancellation.content.paragraph.second.label">
+	Wenn der Nutzer die kostenpflichtige Premium Dienste in Anspruch gebucht hat und de-registriert sich von dieser Webseite, 
+	verzichtet der Nutzer mit der  Deregistrierung auf die Nutzung der noch nicht in Anspruch genommenen kostenpflichtigen Premium Dienste, 
+	und somit erhält der Nutzer keine Rückerstattung von geleisteten Zahlungen.
+	</entry>
+	<entry key="term.of.use.cancellation.content.paragraph.third.label">
+	Die Webseite ist dazu berechtigt die Mitgliedschaft ohne Wahrung einer Kündigungsfrist außerordentlich zu kündigen, 
+	wenn der Nutzer falsche Angaben bei der Registrierung oder zu einem späteren Zeitpunkt gemacht hat. 
+	In diesen Fall werden die bereits bezahlten Mitgliedsbeiträge des Nutzers nicht rückerstattet.
+	</entry>
+	<entry key="term.of.use.liability.head.label">
+	6. Haftung
+	</entry>
+	<entry key="term.of.use.liability.content.paragraph.first.label">
+	Diese Webseite übernimmt keine Haftung für Schäden oder Verluste jeglicher Art, die auf fehlende Genauigkeit, Aktualität, 
+	Ausführlichkeit oder auf Fehler für die Inhalte und Informationen der Nutzer.
+	</entry>
+	<entry key="term.of.use.liability.content.paragraph.second.label">
+	Diese Webseite übernimmt keinerlei Verpflichtung die Inhalte und Informationen der Nutzer zu überprüfen oder zu überwachen.
+	</entry>
+	<entry key="term.of.use.liability.content.paragraph.third.label">
+	Diese Webseite übernimmt keine Haftung für Störungen und Übertragungswege innerhalb des Internets und garantiert nicht die 
+	Verfügbarkeit oder unterbrechungs- und ausfallfreien Betrieb. Diese Webseite haftet nicht  für keine Schäden oder Verluste 
+	die durch unbefugten Zugriff auf die Daten dieser Webseite.
+	</entry>
+	<entry key="term.of.use.liability.content.paragraph.fourth.label">
+	Diese Webseite haftet für keine Schäden oder Verluste jeglicher Art, die auf Leistungen zurückgehen, 
+	die von Dritten auf dieser Webseite erbracht werden. Diese Webseite haftet nicht für Schäden die von Nutzern verursacht werden.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.head.label">
+	7. Pflichten und Rechte der Nutzer
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.introduction.label">
+	Alle bereitgestellte Inhalte und Informationen die der Nutzer bei der Registrierung und dessen Profil, ist der Nutzer allein verantwortlich.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.to.satisfy.label">
+	Bei veröffentlichen von einem Profil, Meinungen und anderen Inhalten und Informationen sind folgende Regeln einzuhalten:
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.first.label">
+	Die Inhalte und Informationen sollten nicht gegen der Gesetzgebung des jeweiligen Staates verstoßen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.second.label">
+	Die Inhalte und Informationen sollten nicht gegen der Gemeinde oder auf internationaler Ebene unrechtmäßig sein.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.third.label">
+	Die Inhalte und Informationen sollten nicht den guten Namen und Ruf dieser Webseite nicht zu schädigen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.fourth.label">
+	Die Inhalte und Informationen sollten nicht strafbare Inhalte aufweisen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.fifth.label">
+	Die Inhalte und Informationen sollten nicht eine unanständige, anstößige, obszöne oder vulgäre Wortwahl enthalten.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.sixth.label">
+	Die Inhalte und Informationen sollten nicht gegen die Grundrechte der Menschen verstoßen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.seventh.label">
+	Die Inhalte und Informationen sollten nicht Glaubensrichtungen die politische oder religiöse Stellung beziehen, angreifen oder lächerlich machen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.eighth.label">
+	Die Inhalte und Informationen sollten nicht gegen den Schutz von Minderjährigen verstoßen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.ninth.label">
+	Die Inhalte und Informationen sollten nicht gegen den Schutz der Menschenrechte verstoßen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.tenth.label">
+	Die Inhalte und Informationen sollten nicht gegen den Schutz der Privatsphäre verstoßen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.paragraph.eleventh.lable">
+	Die Inhalte und Informationen sollten nicht gegen die Schutzrechte auf geistiges Eigentum verstoßen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.closure.paragraph.first.label">
+	Diese Webseite behält sich das Recht vor, Inhalte und Informationen nicht zu veröffentlichen die nicht den Richtlinien der Webseite entsprechen.
+	</entry>
+	<entry key="term.of.use.rights.and.duties.of.the.user.content.closure.paragraph.second.label">
+	Der Nutzer verpflichtet sich, diese Webseite von jeglicher Haftung, Ansprüchen und Verpflichtungen, 
+	die sich aus Schäden wegen der oben beschriebenen Regeln oder sonstiger Rechte ergeben, freizustellen.
+	</entry>
+	<entry key="term.of.use.modifications.clause.head.label">
+	8. Änderungen der AGB
+	</entry>
+	<entry key="term.of.use.modifications.clause.content.paragraph.first.label">
+	Diese Webseite behält sich das Recht vor, die allgemeinen Geschäftsbedingungen zu ändern oder diese neu zu verfassen.
+	</entry>
+	<entry key="term.of.use.modifications.clause.content.paragraph.second.label">
+	Der Nutzer erklärt sich einverstanden, mit den geänderten allgemeinen Geschäftsbedingungen, wenn diese Webseite den Nutzer informiert, 
+	dass eine Änderung der allgemeinen Geschäftsbedingungen stattgefunden hat. Der Nutzer hat das Recht innerhalb einer Frist von drei Wochen 
+	beginnend vom dem Zeitpunkt mit dem versenden die Nachricht, Widerspruch einzureichen oder zu kündigen.
+	</entry>
+	<entry key="term.of.use.modifications.clause.content.paragraph.third.label">
+	Die Nachricht für die geänderten allgemeinen Geschäftsbedingungen kann per E-Mail an der angegebenen E-Mail Adresse des Nutzers versendet werden.
+	</entry>	
+	<entry key="term.of.use.salvatorius.clause.head.label">
+	9. Salvatorische Klausel
+	</entry>
+	<entry key="term.of.use.salvatorius.clause.content.paragraph.first.label">
+	Sollte eine der getroffenen Vereinbarungen nichtig sein, so bleibt der Vertrag im Übrigen wirksam.
+	</entry>
+	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.head.label">
+	10. Erfüllungsort, Gerichtsstand und sonstige Bestimmungen
+	</entry>
+	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel">
+	Erfüllungsort und Gerichtstand ist die Stadt Stuttgart. Alle Änderungen, Nebenabreden und Ergänzungen bedürfen der Schriftform.
+	</entry>
+</properties>

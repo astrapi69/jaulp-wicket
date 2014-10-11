@@ -55,6 +55,7 @@
 		<module>jaulp.wicket.dropdownchoices</module>
 		<module>jaulp.wicket.dropdownchoices.examples</module>
 		<module>wicket.xslt.examples</module>
+		<module>jaulp.wicket.components.examples</module>
 	</modules>
 
 

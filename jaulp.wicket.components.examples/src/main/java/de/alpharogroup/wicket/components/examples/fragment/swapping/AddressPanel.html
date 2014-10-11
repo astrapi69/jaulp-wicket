@@ -1,0 +1,59 @@
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<a href="#" wicket:id="addressEditLink">edit</a>
+	<div wicket:id="group"></div>
+
+	<wicket:fragment wicket:id="view">
+		<table class="dataview">
+			<tr>
+				<th colspan="2">Address</th>
+			</tr>
+			<tr>
+				<td>street</td>
+				<td wicket:id="street">[street]</td>
+			</tr>
+			<tr>
+				<td>localNumber</td>
+				<td wicket:id="localNumber">[localNumber]</td>
+			</tr>
+			<tr>
+				<td>city</td>
+				<td wicket:id="city">[city]</td>
+			</tr>
+			<tr>
+				<td>code</td>
+				<td wicket:id="code">[code]</td>
+			</tr>
+		</table>
+	</wicket:fragment>
+
+	<wicket:fragment wicket:id="edit">
+		<form wicket:id="editAddressForm">
+			<table class="dataview">
+				<tr>
+					<th colspan="2">Edit address</th>
+				</tr>
+				<tr>
+					<td>street</td>
+					<td><input type="text" wicket:id="street" value="" size="30" /></td>
+				</tr>
+				<tr>
+					<td>localNumber</td>
+					<td><input type="text" wicket:id="localNumber" value=""
+						size="30" /></td>
+				</tr>
+				<tr>
+					<td>city</td>
+					<td><input type="text" wicket:id="city" value="" size="30" /></td>
+				</tr>
+				<tr>
+					<td>code</td>
+					<td><input type="text" wicket:id="code" value="" size="6" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="save"
+						wicket:id="save" /></td>
+				</tr>
+			</table>
+		</form>
+	</wicket:fragment>
+</wicket:panel>

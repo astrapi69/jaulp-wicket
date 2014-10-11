@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.alpharogroup</groupId>
+		<artifactId>jaulp.wicket</artifactId>
+		<version>6.17.0</version>
+	</parent>
+	<artifactId>jaulp.wicket.components.examples</artifactId>
+	<packaging>war</packaging>
+
+	<name>${project.artifactId}</name>
+	<description>
+	  	Demonstrates how to use the functionality from the
+	  	'jaulp.wicket.components' project.
+    </description>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.wicket.base</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.wicket.components</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-velocity</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.test.objects</artifactId>
+		</dependency>
+		<!-- WICKETSTUFF -->
+		<dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>wicketstuff-annotation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket.bootstrap2</artifactId>
+			<version>6.17.0</version>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>turbo.sansa.wicket.components</artifactId>
+			<version>6.17.0</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
