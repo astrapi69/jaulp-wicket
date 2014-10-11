@@ -16,9 +16,10 @@
 package org.jaulp.wicket.xslt.examples;
 
 import org.apache.wicket.util.tester.WicketTester;
-import org.jaulp.wicket.xslt.examples.pages.WicketStartHomePage;
-import org.junit.Before;
-import org.junit.Test;
+import org.jaulp.wicket.xslt.examples.pages.HomePage;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  * Simple test using the WicketTester
@@ -27,7 +28,7 @@ public class TestHomePage
 {
 	private WicketTester tester;
 
-	@Before
+	@BeforeMethod
 	public void setUp()
 	{
 		tester = new WicketTester(new WicketApplication());
@@ -37,9 +38,9 @@ public class TestHomePage
 	public void homepageRendersSuccessfully()
 	{
 		//start and render the test page
-		tester.startPage(WicketStartHomePage.class);
+		tester.startPage(HomePage.class);
 
 		//assert rendered page class
-		tester.assertRenderedPage(WicketStartHomePage.class);
+		tester.assertRenderedPage(HomePage.class);
 	}
 }

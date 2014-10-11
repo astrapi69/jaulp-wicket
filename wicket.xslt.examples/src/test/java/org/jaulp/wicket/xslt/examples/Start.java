@@ -24,7 +24,7 @@ import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class Start {
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
         int timeout = (int) Duration.ONE_HOUR.getMilliseconds();
 
         Server server = new Server();
@@ -50,7 +50,7 @@ public class Start {
             SslContextFactory factory = new SslContextFactory();
             factory.setKeyStoreResource(keystore);
             factory.setKeyStorePassword("wicket");
-            factory.setTrustStore(keystore);
+            factory.setTrustStoreResource(keystore);
             factory.setKeyManagerPassword("wicket");
             SslSocketConnector sslConnector = new SslSocketConnector(factory);
             sslConnector.setMaxIdleTime(timeout);
