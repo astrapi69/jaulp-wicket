@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment />
+	<entry key="header.label">Upps! An error occured.</entry>
+	<entry key="description.label">Please provide here any useful information</entry>
+	<entry key="global.enter.your.description.label">Enter here any useful information</entry>
+</properties>
