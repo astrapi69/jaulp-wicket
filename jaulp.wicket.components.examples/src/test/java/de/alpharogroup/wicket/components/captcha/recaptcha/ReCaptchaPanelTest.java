@@ -19,17 +19,16 @@ public class ReCaptchaPanelTest {
     @Test
     public void testRender() throws Exception {
         tester.startComponentInPage(new ReCaptchaPanel("panel"){
-
+			private static final long serialVersionUID = 1L;
+			private final static String PUBLIC_KEY = "6LcqB-4SABBBAB6MSipNmWQP6mCZ5HAEudHkF9Ra";
+			private final static String PRIVATE_KEY = "6LcqB-4SABBBAFxigQz5wkWu1_lQnn8CtoCAmujA";
 			@Override
 			public String getPublicKey() {
-				// TODO Auto-generated method stub
-				return null;
+				return PUBLIC_KEY;
 			}
-
 			@Override
 			public String getPrivateKey() {
-				// TODO Auto-generated method stub
-				return null;
+				return PRIVATE_KEY;
 			}
         	
         });

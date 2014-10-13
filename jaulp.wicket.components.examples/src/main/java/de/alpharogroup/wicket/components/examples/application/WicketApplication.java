@@ -73,7 +73,7 @@ public class WicketApplication extends WicketBootstrapApplication
 	}
 	
 	public String getDomainName() {
-		return "base-wicket-components.com";
+		return "jaulp-wicket-components.com";
 	}
 
 
@@ -88,7 +88,7 @@ public class WicketApplication extends WicketBootstrapApplication
 	public void initializeResources() throws ClassNotFoundException,
 			IOException {
 		PackageResourceReferences prr = PackageResourceReferences.getInstance();
-		prr.initializeResources("org.base");
+		prr.initializeResources(getPackageToScan());
 	}
 
 	/**
@@ -101,6 +101,6 @@ public class WicketApplication extends WicketBootstrapApplication
 	}
 
 	public String getPackageToScan() {
-		return "org.base.components.examples";
+		return "de.alpharogroup.wicket.components.examples";
 	}
 }

@@ -70,11 +70,13 @@ public abstract class ReCaptchaPanel extends Panel {
 	private ReCaptcha newReCaptcha(String publicKey, String privateKey, boolean includeNoscript) {
 		Page page = ComponentFinder.getCurrentPage();
 		if(AnnotationUtils.isAnnotationPresentInSuperClassesOrInterfaces(page.getClass(), RequireHttps.class)) {
-			return ReCaptchaFactory
-			.newSecureReCaptcha(getPublicKey(), getPrivateKey(), false);
+			ReCaptcha reCaptcha = ReCaptchaFactory
+					.newSecureReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);
+			((ReCaptchaImpl) reCaptcha).setRecaptchaServer("https://www.google.com/recaptcha/api");
+			return reCaptcha;
 		}
 		return ReCaptchaFactory
-				.newReCaptcha(getPublicKey(), getPrivateKey(), false);		
+				.newReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);		
 	}
 	
 	public abstract String getPublicKey();

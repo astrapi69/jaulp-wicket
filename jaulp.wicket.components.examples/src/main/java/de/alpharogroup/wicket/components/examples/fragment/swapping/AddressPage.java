@@ -1,13 +1,20 @@
 package de.alpharogroup.wicket.components.examples.fragment.swapping;
 
-import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-public class AddressPage extends WebPage {
+import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
+public class AddressPage  extends PubliclyBasePage<Object> {
 	private static final long serialVersionUID = 1L;
 
-	public AddressPage() {
-		add(new AddressPanel("addressPanel", Model.of(new HomeAddress())));
+	public AddressPage(final PageParameters parameters) {
+		super(parameters);
+	}
+
+	@Override
+	public Component getContainerPanel() {
+		return new AddressPanel(CONTAINER_PANEL_ID, Model.of(new HomeAddress()));				
 	}
 }

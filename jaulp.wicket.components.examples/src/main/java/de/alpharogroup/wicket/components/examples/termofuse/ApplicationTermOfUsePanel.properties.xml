@@ -7,7 +7,7 @@
 	</entry>
 	<entry key="term.of.use.main.head.content.paragraph.first.label">
 	Folgende rechtliche Hinweise regeln den Zugang und die Nutzung der Dienstleistungen der Webseite {0} (nachfolgend die "Webseite"). 
-	Die angebotenen Dienstleistungen werden für alle Benutzer zur Verfügung gestellt(nachfolgend die "Nutzer") die sich flirten, feste Beziehung oder Abenteuer interessieren.
+	Die angebotenen Dienstleistungen werden für alle Benutzer zur Verfügung gestellt(nachfolgend die "Nutzer") die sich für die Wicket Komponenten interessieren.
 	</entry>
 	<entry key="term.of.use.main.head.content.paragraph.second.label">
 	Mit der Registrierung auf dieser Webseite erklären sich die Benutzer mit den hier aufgeführten Nutzungsbedingungen einverstanden. 
@@ -19,7 +19,7 @@
 	</entry>
 	<entry key="term.of.use.legal.references.content.paragraph.first.label">
 	Diese Webseite bietet ein wicket Komponenten an.
-	Die einfache Mitgliedschaft ist kostenlos. Die premium Mitgliedschaft ist kostenpflichtig.
+	Die einfache Mitgliedschaft ist kostenlos.
 	Dienste die kostenpflichtig sind, werden explizit gekennzeichnet und ausdrücklich darauf hingewiesen.
 	Der Nutzer verpflichtet sich seine Daten auf den aktuellen Stand zu halten. Zugangsdaten des Nutzers sind geheim zu halten.
 	</entry>
@@ -53,7 +53,7 @@
 	</entry>
 	<entry key="term.of.use.copyright.paragraph.first.label">
 	Jegliches Material(z.B. Texte, source code,) innerhalb dieser Webseite und deren Netzwerk, 
-	ist urheberrechtlich geschützt und ist den Nutzern ausschließlich für den privaten Gebrauch erlaubt.
+	ist urheberrechtlich geschützt und unterliegt der Apache 2 Lizenz.
 	</entry>
 	<entry key="term.of.use.cancellation.head.label">	
 	5. Kündigung
@@ -70,7 +70,6 @@
 	<entry key="term.of.use.cancellation.content.paragraph.third.label">
 	Die Webseite ist dazu berechtigt die Mitgliedschaft ohne Wahrung einer Kündigungsfrist außerordentlich zu kündigen, 
 	wenn der Nutzer falsche Angaben bei der Registrierung oder zu einem späteren Zeitpunkt gemacht hat. 
-	In diesen Fall werden die bereits bezahlten Mitgliedsbeiträge des Nutzers nicht rückerstattet.
 	</entry>
 	<entry key="term.of.use.liability.head.label">
 	6. Haftung
