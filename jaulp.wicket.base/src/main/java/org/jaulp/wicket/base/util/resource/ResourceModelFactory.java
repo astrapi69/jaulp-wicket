@@ -51,19 +51,19 @@ public final class ResourceModelFactory {
 			String defaultValue) {
 		if (parameters != null && parameters.length > 0) {
 			if (defaultValue != null && !defaultValue.isEmpty()) {
-				return ResourceModelFactory.newResourceModel(
-						resourceKey, defaultValue, component, parameters);
+				return ResourceModelFactory.newResourceModel(resourceKey,
+						defaultValue, component, parameters);
 			} else {
-				return ResourceModelFactory.newResourceModel(
-						resourceKey, component, parameters);
+				return ResourceModelFactory.newResourceModel(resourceKey,
+						component, parameters);
 			}
 		} else {
 			if (defaultValue != null && !defaultValue.isEmpty()) {
-				return ResourceModelFactory.newResourceModel(
-						resourceKey, component, defaultValue);
+				return ResourceModelFactory.newResourceModel(resourceKey,
+						component, defaultValue);
 			} else {
-				return ResourceModelFactory.newResourceModel(
-						resourceKey, component);
+				return ResourceModelFactory.newResourceModel(resourceKey,
+						component);
 			}
 		}
 	}
@@ -214,6 +214,13 @@ public final class ResourceModelFactory {
 	public static IModel<String> newResourceModel(final String resourceKey,
 			final Component component, final IModel<?> model,
 			final String defaultValue, final Object... parameters) {
+		for (int i = 0; i < parameters.length; i++) {
+			if (parameters[i] != null && parameters[i] instanceof ResourceBundleKey) {
+				ResourceBundleKey parameter = (ResourceBundleKey) parameters[i];
+				IModel<String> parameterValue = newResourceModel(parameter, component);
+				parameters[i] = parameterValue.getObject();
+			}
+		}
 		return new StringResourceModel(resourceKey, component, model,
 				defaultValue, parameters);
 	}
