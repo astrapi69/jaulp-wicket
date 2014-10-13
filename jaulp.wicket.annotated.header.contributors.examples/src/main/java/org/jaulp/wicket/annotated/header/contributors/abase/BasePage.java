@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.wicket.base.AbstractBasePage;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
@@ -33,7 +34,7 @@ import org.jaulp.wicket.base.util.WicketComponentUtils;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "BasePage.js", resourceType = "js"),
 		@ImportResource(resourceName = "BasePage.css", resourceType = "css") })
-public abstract class BasePage extends org.jaulp.wicket.base.AbstractBasePage {
+public abstract class BasePage extends AbstractBasePage {
 
 	/**
 	 * The serialVersionUID.
