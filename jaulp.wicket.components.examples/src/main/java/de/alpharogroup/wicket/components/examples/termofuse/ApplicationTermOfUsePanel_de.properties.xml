@@ -163,7 +163,10 @@
 	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.head.label">
 	10. Erfüllungsort, Gerichtsstand und sonstige Bestimmungen
 	</entry>
+	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.current.place.label">
+	Stuttgart
+	</entry>
 	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel">
-	Erfüllungsort und Gerichtstand ist die Stadt Stuttgart. Alle Änderungen, Nebenabreden und Ergänzungen bedürfen der Schriftform.
+	Erfüllungsort und Gerichtstand ist die Stadt {0}. Alle Änderungen, Nebenabreden und Ergänzungen bedürfen der Schriftform.
 	</entry>
 </properties>

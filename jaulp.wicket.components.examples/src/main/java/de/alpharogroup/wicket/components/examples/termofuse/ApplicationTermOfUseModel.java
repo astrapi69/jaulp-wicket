@@ -57,11 +57,7 @@ public final class ApplicationTermOfUseModel implements Serializable {
 			.build();
 	
 	public static final ResourceBundleKey FULFILMENT_PLACE_HEADER_RESOURCE_KEY = ResourceBundleKey.builder().key("term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.head.label").build();
-	
-	public static final ImmutableList<ResourceBundleKey> FULFILMENT_PLACE_CONTENT_RESOURCE_KEYS = new ImmutableList.Builder<ResourceBundleKey>()
-			.add(ResourceBundleKey.builder().key("term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel").build())
-			.build();
-	
+		
 	public static final ResourceBundleKey GENERAL_TERMS_HEADER_RESOURCE_KEY = ResourceBundleKey.builder().key("term.of.use.main.head.label").build();
 
 	
@@ -130,8 +126,17 @@ public final class ApplicationTermOfUseModel implements Serializable {
 	}
 
 	private void init() {
+		ResourceBundleKey parameter = ResourceBundleKey.builder().key("term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.current.place.label").build();
+		ImmutableList<ResourceBundleKey> fulfilmentPlaceContentResourceKeys = new ImmutableList.Builder<ResourceBundleKey>()
+				.add(ResourceBundleKey.builder()
+						.key("term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel")
+						.parameters(ListUtils.toObjectArray(parameter))
+						.build())
+				.build();
+		
 		ImmutableList<ResourceBundleKey> generalTermsAndConditionsContentResourceKeys = new ImmutableList.Builder<ResourceBundleKey>()
-				.add( ResourceBundleKey.builder().key("term.of.use.main.head.content.paragraph.first.label")
+				.add( ResourceBundleKey.builder()
+						.key("term.of.use.main.head.content.paragraph.first.label")
 						.parameters(ListUtils.toObjectArray("www." + WicketApplication.get().getDomainName()))
 						.build())
 				.add(ResourceBundleKey.builder().key("term.of.use.main.head.content.paragraph.second.label")
@@ -142,7 +147,7 @@ public final class ApplicationTermOfUseModel implements Serializable {
 						.contractModel(HeaderContentListModel.builder().headerResourceKey(CONTRACT_HEADER_RESOURCE_KEY).contentResourceKeys(CONTRACT_CONTENT_RESOURCE_KEYS).build())
 						.copyrightModel(HeaderContentListModel.builder().headerResourceKey(COPYRIGHT_HEADER_RESOURCE_KEY).contentResourceKeys(COPYRIGHT_CONTENT_RESOURCE_KEYS).build())
 						.dataProtectionModel(HeaderContentListModel.builder().headerResourceKey(DATA_PROTECTION_HEADER_RESOURCE_KEY).contentResourceKeys(DATA_PROTECTION_CONTENT_RESOURCE_KEYS).build())
-						.fulfilmentAndJurisdictionPlaceModel(HeaderContentListModel.builder().headerResourceKey(FULFILMENT_PLACE_HEADER_RESOURCE_KEY).contentResourceKeys(FULFILMENT_PLACE_CONTENT_RESOURCE_KEYS).build())
+						.fulfilmentAndJurisdictionPlaceModel(HeaderContentListModel.builder().headerResourceKey(FULFILMENT_PLACE_HEADER_RESOURCE_KEY).contentResourceKeys(fulfilmentPlaceContentResourceKeys).build())
 						.generalTermsAndConditionsModel(HeaderContentListModel.builder().headerResourceKey(GENERAL_TERMS_HEADER_RESOURCE_KEY).contentResourceKeys(generalTermsAndConditionsContentResourceKeys).build())
 						.legalReferencesModel(HeaderContentListModel.builder().headerResourceKey(LEGAL_REFS_HEADER_RESOURCE_KEY).contentResourceKeys(LEGAL_REFS_CONTENT_RESOURCE_KEYS).build())
 						.liabilityModel(HeaderContentListModel.builder().headerResourceKey(LIABILITY_HEADER_RESOURCE_KEY).contentResourceKeys(LIABILITY_CONTENT_RESOURCE_KEYS).build())

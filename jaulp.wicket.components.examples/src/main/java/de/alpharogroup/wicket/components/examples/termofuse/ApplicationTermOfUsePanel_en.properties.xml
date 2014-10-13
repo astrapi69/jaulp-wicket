@@ -171,7 +171,10 @@
 	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.head.label">
 	10. Place of fulfilment and of jurisdiction and other regulations
 	</entry>
+	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.current.place.label">
+	Stuttgart
+	</entry>
 	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel">
-	Place of fulfilment and of jurisdiction is the city Stuttgart. Every changes, subsidiary agreements, and complements requires the written form.
+	Place of fulfilment and of jurisdiction is the city {0}. Every changes, subsidiary agreements, and complements requires the written form.
 	</entry>
 </properties>
