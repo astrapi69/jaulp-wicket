@@ -20,12 +20,25 @@ public final class PageParametersUtils {
 	 */
 	public static String getParameter(final PageParameters parameters,
 			String name) {
-		StringValue value = parameters.get(name);
+		return getString(parameters.get(name));
+	}
+	/**
+	 * Gets the {@link String} object from the {@link StringValue} or returns null if the given {@link StringValue} is null.
+	 *
+	 * @param parameters
+	 *            the parameters
+	 * @param name
+	 *            the name
+	 * @return the parameter
+	 */
+	public static String getString(StringValue value) {
 		if (isNotNullOrEmpty(value)) {
 			return value.toString();
 		}
 		return null;
 	}
+	
+	
 
 	/**
 	 * Gets the Integer object or returns null if the given StringValue is null
