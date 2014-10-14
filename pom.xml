@@ -116,6 +116,7 @@
 		<!-- GITHUB VARIABLE FOR MAVEN PLUGIN com.github.github. Github maven repository. -->
 		<github.global.server>github</github.global.server>
 		<junit.version>4.11</junit.version>
+		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
