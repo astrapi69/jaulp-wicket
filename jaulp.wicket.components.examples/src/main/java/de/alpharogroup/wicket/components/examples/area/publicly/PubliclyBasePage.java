@@ -32,10 +32,12 @@ import de.alpharogroup.wicket.components.examples.ajaxtabs.addtab.EditableAjaxTa
 import de.alpharogroup.wicket.components.examples.alerts.AlertsPage;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePage;
-import de.alpharogroup.wicket.components.examples.captcha.KaptchaPage;
+import de.alpharogroup.wicket.components.examples.captcha.ReCaptchaPage;
+import de.alpharogroup.wicket.components.examples.captcha.SslReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
+import de.alpharogroup.wicket.components.examples.labeled.LabeledComponentsPage;
 import de.alpharogroup.wicket.components.examples.pdfdownload.PdfDownloadPage;
 import de.alpharogroup.wicket.components.examples.sign.in.SigninPage;
 import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
@@ -186,8 +188,10 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
     	final IModel<String> signUpModel = ResourceModelFactory.newResourceModel("global.menu.sign.up.label", this);
     	final IModel<String> downloadFileModel = ResourceModelFactory.newResourceModel("global.menu.download.pdf.label", this);
     	final IModel<String> recaptchaModel = ResourceModelFactory.newResourceModel("global.menu.recaptcha.label", this);
+    	final IModel<String> sslRecaptchaModel = ResourceModelFactory.newResourceModel("global.menu.ssl.recaptcha.label", this);
     	final IModel<String> wicketUrlsModel = ResourceModelFactory.newResourceModel("global.menu.wicket.urls.label", this);
     	final IModel<String> alertsModel = ResourceModelFactory.newResourceModel("global.menu.alerts.label", this);
+    	final IModel<String> labeledModel = ResourceModelFactory.newResourceModel("global.menu.labeled.label", this);
     	   return new NavbarDropDownButton(featuresMainModel) {
 			private static final long serialVersionUID = 1L;
 
@@ -204,12 +208,16 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
                 		SignupPage.class, signUpModel).setIconType(IconType.zoomin));
                 subMenu.add(new MenuBookmarkablePageLink<PdfDownloadPage>(
                 		PdfDownloadPage.class, downloadFileModel).setIconType(IconType.download));
-                subMenu.add(new MenuBookmarkablePageLink<KaptchaPage>(
-                		KaptchaPage.class, recaptchaModel).setIconType(IconType.check));
+                subMenu.add(new MenuBookmarkablePageLink<ReCaptchaPage>(
+                		ReCaptchaPage.class, recaptchaModel).setIconType(IconType.check));
+                subMenu.add(new MenuBookmarkablePageLink<SslReCaptchaPage>(
+                		SslReCaptchaPage.class, sslRecaptchaModel).setIconType(IconType.bullhorn));
                 subMenu.add(new MenuBookmarkablePageLink<WicketUrlPage>(
                 		WicketUrlPage.class, wicketUrlsModel).setIconType(IconType.file));
                 subMenu.add(new MenuBookmarkablePageLink<AlertsPage>(
-                		AlertsPage.class, alertsModel).setIconType(IconType.file));
+                		AlertsPage.class, alertsModel).setIconType(IconType.bell));
+                subMenu.add(new MenuBookmarkablePageLink<LabeledComponentsPage>(
+                		LabeledComponentsPage.class, labeledModel).setIconType(IconType.leaf));
                 
                 return subMenu;
             }

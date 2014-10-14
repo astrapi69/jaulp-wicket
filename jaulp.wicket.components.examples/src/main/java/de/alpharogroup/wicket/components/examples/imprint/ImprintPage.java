@@ -1,32 +1,22 @@
 package de.alpharogroup.wicket.components.examples.imprint;
-import org.apache.wicket.markup.html.WebPage;
 
-import de.alpharogroup.wicket.components.imprint.ImprintPanel;
+import org.apache.wicket.Component;
+import org.wicketstuff.annotation.mount.MountPath;
 
-//import wicket.app.base.components.panels.imprint.ImprintPanel;
+import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 /**
  * The Class ImprintPage.
  * 
  * @author Asterios Raptis
  */
-public class ImprintPage extends WebPage {
-
-	/**
-	 * The serialVersionUID.
-	 */
+@MountPath("public/imprint")
+public class ImprintPage extends PubliclyBasePage<Object> {
 	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void onInitialize() {
-		super.onInitialize();
-		add(
-				new ApplicationImprintPanel("imprint") {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public String getDomainName() {
-				return "lessonslearning.com";
-			}			
-		});
+	public Component getContainerPanel() {
+		return new ApplicationImprintPanel(CONTAINER_PANEL_ID);
 	}
 
 }

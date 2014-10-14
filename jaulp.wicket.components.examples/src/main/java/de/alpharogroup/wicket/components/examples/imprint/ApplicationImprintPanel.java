@@ -1,5 +1,6 @@
 package de.alpharogroup.wicket.components.examples.imprint;
 
+import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.imprint.ImprintPanel;
 
 public class ApplicationImprintPanel extends ImprintPanel {
@@ -12,8 +13,7 @@ public class ApplicationImprintPanel extends ImprintPanel {
 
 	@Override
 	protected String getDomainName() {
-		// Get domain name...
-		return "lessonslearning.com";
+		return WicketApplication.get().getDomainName();
 	}
 
 }

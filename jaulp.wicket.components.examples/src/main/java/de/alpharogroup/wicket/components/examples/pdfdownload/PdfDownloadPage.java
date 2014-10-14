@@ -4,6 +4,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.download.DownloadModel;
 import de.alpharogroup.wicket.components.download.DownloadPanel;
@@ -11,6 +12,7 @@ import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 
+@MountPath("public/download/pdf")
 public class PdfDownloadPage extends PubliclyBasePage<Object> {
 	private static final long serialVersionUID = 1L;
 

@@ -6,10 +6,12 @@ import net.sourceforge.jaulp.auth.models.SignInModel;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.sign.in.form.SinginFormPanel;
 
+@MountPath("public/signin")
 public class SigninPage  extends PubliclyBasePage<Object> {
 	private static final long serialVersionUID = 1L;
 

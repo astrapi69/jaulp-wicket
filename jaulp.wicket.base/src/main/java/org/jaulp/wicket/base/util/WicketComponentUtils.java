@@ -25,6 +25,8 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sourceforge.jaulp.lang.AnnotationUtils;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -38,6 +40,7 @@ import org.apache.wicket.protocol.http.IRequestLogger;
 import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.RequestUtils;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.protocol.https.RequireHttps;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
@@ -81,8 +84,7 @@ public final class WicketComponentUtils {
 	 * @return the http servlet request
 	 */
 	public static HttpServletRequest getHttpServletRequest() {
-		Request request = RequestCycle.get().getRequest();
-		
+		Request request = RequestCycle.get().getRequest();		
 		return getHttpServletRequest(request);
 	}
 
@@ -236,12 +238,10 @@ public final class WicketComponentUtils {
 	public static Behavior getHeaderContributorForFavicon() {
 		return new Behavior() {
 			private static final long serialVersionUID = 1L;
-
 			@Override
 			public void renderHead(Component component, IHeaderResponse response) {
 				response.render(new StringHeaderItem(
 						"<link type=\"image/x-icon\" rel=\"shortcut icon\" href=\"favicon.ico\" />"));
-
 			}
 		};
 	}
@@ -260,8 +260,7 @@ public final class WicketComponentUtils {
 	 */
 	public static void disableCaching(WebResponse response) {
 		response.setLastModifiedTime(Time.now());
-
-		HttpServletResponse httpServletResponse = getHttpServletResponse();
+		HttpServletResponse httpServletResponse = getHttpServletResponse(response);
 		if (httpServletResponse != null) {
 			httpServletResponse.addHeader("Cache-Control", "max-age=0");
 			httpServletResponse.setDateHeader("Expires", 0);
@@ -412,5 +411,28 @@ public final class WicketComponentUtils {
 		}
 		return requestLogger;
 	}
+
+	/**
+	 * Checks if the given component has as parent a page that is annotated with {@link RequireHttps}.
+	 * 
+	 * @param component
+	 *            the component to check
+	 * @return true if the component is inside a page that require https, otherwise false
+	 */
+	public static boolean isSecure(Component component) {
+		if(AnnotationUtils.isAnnotationPresentInSuperClassesOrInterfaces(component.getClass(), RequireHttps.class)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Checks if the current request has the scheme 'https'.
+	 * @return true if the current request has the scheme 'https', otherwise false
+	 */
+	public static boolean isHttps() {
+		return WicketComponentUtils.getHttpServletRequest()
+				.getScheme().equalsIgnoreCase("https");
+	}	
 
 }

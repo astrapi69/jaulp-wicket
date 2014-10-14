@@ -1,25 +1,22 @@
 package de.alpharogroup.wicket.components.examples.urls;
 
-import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.Model;
+import org.apache.wicket.Component;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.util.WicketComponentUtils;
+import org.wicketstuff.annotation.mount.MountPath;
 
-import de.alpharogroup.wicket.util.WicketUrlResolver;
+import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 
-public class WicketUrlPage extends WebPage {
+@MountPath("public/wicketurls")
+public class WicketUrlPage extends PubliclyBasePage<Object> {
 	private static final long serialVersionUID = 1L;
+
+	@Override
+	public Component getContainerPanel() {
+		return new WicketUrlPanel(CONTAINER_PANEL_ID);
+	}
 
     public WicketUrlPage(final PageParameters parameters) {
 	super(parameters);
-
-	add(new Label("urlForForgottenPassword", Model.of(WicketUrlResolver.getUrlForForgottenPassword("bla", "1HE23WE", WicketUrlPage.class, true))));
-	add(new Label("urlForForgottenPassword2", Model.of(WicketUrlResolver.getUrlForForgottenPassword("bla", "1HE23WE", WicketUrlPage.class, false))));
-	add(new Label("urlForForgottenPassword3", Model.of(WicketUrlResolver.getUrlForForgottenPassword(WicketComponentUtils.getRequestURL(), "bla", "1HE23WE", WicketUrlPage.class))));
-	
-	add(new Label("toFullUrl", Model.of(WicketUrlResolver.toFullUrl(false))));
-	add(new Label("toFullUrl1", Model.of(WicketUrlResolver.toFullUrl(true))));
     }
 }

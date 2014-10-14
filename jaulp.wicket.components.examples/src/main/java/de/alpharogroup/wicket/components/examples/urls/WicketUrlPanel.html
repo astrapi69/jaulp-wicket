@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html xmlns:wicket="http://wicket.apache.org">
-<head>
-<meta charset="utf-8" />
-<title>Apache Wicket Menu example</title>
-
-</head>
-<body>
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
 	<div id="hd">
 		<div id="logo">
 			<h1>Apache Wicket url example</h1>
 		</div>
 	</div>
 
-	<br><br>
+	<br>
+	<br>
 	WicketUrlResolver.getUrlForForgottenPassword("bla", "1HE23WE", WicketUrlPage.class, true):<br>
 	<span wicket:id="urlForForgottenPassword"></span>
-	<br><br>
+	<br>
+	<br>
 	WicketUrlResolver.getUrlForForgottenPassword("bla", "1HE23WE", WicketUrlPage.class, false):<br>
 	<span wicket:id="urlForForgottenPassword2"></span>
-	<br><br>
+	<br>
+	<br>
 	WicketUrlResolver.getUrlForForgottenPassword(WicketComponentUtils.getRequestURL(), "bla", "1HE23WE", WicketUrlPage.class):<br>
 	<span wicket:id="urlForForgottenPassword3"></span>
-	<br><br>
-	WicketUrlResolver.toFullUrl(false):<br><span wicket:id="toFullUrl"></span>	
-	<br><br>
-	WicketUrlResolver.toFullUrl(true):<br><span wicket:id="toFullUrl1"></span>	
-</body>
-</html>
+	<br>
+	<br>
+	WicketUrlResolver.toFullUrl(false):<br>
+	<span wicket:id="toFullUrl"></span>
+	<br>
+	<br>
+	WicketUrlResolver.toFullUrl(true):<br>
+	<span wicket:id="toFullUrl1"></span>
+</wicket:panel>

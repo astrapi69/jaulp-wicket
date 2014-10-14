@@ -19,7 +19,6 @@ import org.jaulp.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.bootstrap2.components.tabs.BootstrapAjaxTabbedPanel;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.AbstractContentTab;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.ICloseableTab;
-import de.alpharogroup.wicket.components.examples.ajaxtabs.dynamic.UpdatingTextField;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabModel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanelOne;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanelThree;

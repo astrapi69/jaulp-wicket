@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<style>
+.feedbackPanelINFO {
+	color: green;
+}
+
+.feedbackPanelERROR {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<wicket:panel xmlns:wicket="http://wicket.apache.org">
+		<h1>Wicket + recaptcha integration example</h1>
+		<div wicket:id="feedback"></div>
+		<form wicket:id="form">
+
+			<div wicket:id="reCaptchaPanel"></div>
+			<input type="submit" value="Submit" />
+		</form>
+	</wicket:panel>
+</body>
+</html>

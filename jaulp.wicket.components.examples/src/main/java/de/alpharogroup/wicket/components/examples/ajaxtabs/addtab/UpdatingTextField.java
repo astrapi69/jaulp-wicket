@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.examples.ajaxtabs.dynamic;
+package de.alpharogroup.wicket.components.examples.ajaxtabs.addtab;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;

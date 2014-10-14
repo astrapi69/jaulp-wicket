@@ -2,20 +2,17 @@ package de.alpharogroup.wicket.components.captcha.recaptcha;
 
 import java.io.Serializable;
 
-import net.sourceforge.jaulp.lang.AnnotationUtils;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import net.tanesha.recaptcha.ReCaptcha;
 import net.tanesha.recaptcha.ReCaptchaFactory;
 import net.tanesha.recaptcha.ReCaptchaImpl;
 import net.tanesha.recaptcha.ReCaptchaResponse;
 
-import org.apache.wicket.Page;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.protocol.https.RequireHttps;
 import org.jaulp.wicket.base.util.ComponentFinder;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
@@ -68,8 +65,7 @@ public abstract class ReCaptchaPanel extends Panel {
 	}
 	
 	private ReCaptcha newReCaptcha(String publicKey, String privateKey, boolean includeNoscript) {
-		Page page = ComponentFinder.getCurrentPage();
-		if(AnnotationUtils.isAnnotationPresentInSuperClassesOrInterfaces(page.getClass(), RequireHttps.class)) {
+		if(WicketComponentUtils.isSecure(ComponentFinder.getCurrentPage())) {
 			ReCaptcha reCaptcha = ReCaptchaFactory
 					.newSecureReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);
 			((ReCaptchaImpl) reCaptcha).setRecaptchaServer("https://www.google.com/recaptcha/api");
