@@ -174,7 +174,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 						HomePage.class, overviewModel)
 						.setIconType(IconType.home),										
 						newFeaturesDropDownButton(),
-						newLegalDropDownButton())
+						newLegalDropDownButton(),
+						newNavbarDropDownButton())
 						);
 
 		return navbar;

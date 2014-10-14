@@ -14,6 +14,7 @@ import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.time.Duration;
 import org.jaulp.wicket.base.GenericBasePage;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
+import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.GoogleAnalyticsBehavior;
@@ -127,35 +128,38 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
         configureTheme(getPageParameters());
     }
 
-    /**
-     * sets the theme for the current user.
-     *
-     * @param pageParameters current page parameters
-     */
-    private void configureTheme(PageParameters pageParameters) {
-        newTheme(pageParameters.get("theme"));
-    }
+	/**
+	 * sets the theme for the current user.
+	 *
+	 * @param pageParameters
+	 *            current page parameters
+	 */
+	private void configureTheme(PageParameters pageParameters) {
+		newTheme(pageParameters.get("theme"));
+	}
 
 	/**
 	 * New theme.
 	 *
-	 * @param theme the theme
+	 * @param theme
+	 *            the theme
 	 */
 	protected void newTheme(StringValue theme) {
-		if (!theme.isNull() && !theme.isEmpty()) {
-			String themeParameter = theme.toString();
-            changeTheme(themeParameter);
-        }
+		changeTheme(PageParametersUtils.getString(theme));
 	}
 
 	/**
 	 * Change theme.
 	 *
-	 * @param themeParameter the theme parameter
+	 * @param themeParameter
+	 *            the theme parameter
 	 */
 	protected void changeTheme(String themeParameter) {
-		IBootstrapSettings settings = Bootstrap.getSettings(getWicketApplication());
-		settings.getActiveThemeProvider().setActiveTheme(themeParameter);
+		if (themeParameter != null && !themeParameter.isEmpty()) {
+			IBootstrapSettings settings = Bootstrap
+					.getSettings(getWicketApplication());
+			settings.getActiveThemeProvider().setActiveTheme(themeParameter);
+		}
 	}
 
 	/**
