@@ -8,6 +8,8 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.protocol.https.HttpsConfig;
+import org.apache.wicket.protocol.https.HttpsMapper;
 import org.jaulp.wicket.PackageResourceReferences;
 
 import de.alpharogroup.wicket.bootstrap2.application.WicketBootstrapApplication;
@@ -52,7 +54,10 @@ public class WicketApplication extends WicketBootstrapApplication
 				return new JavaScriptFilteredIntoFooterHeaderResponse(response,
 						FOOTER_FILTER_NAME);
 			}
-		});	
+		});
+		// set up ports for http and https...
+		setRootRequestMapper(new HttpsMapper(getRootRequestMapper(),
+				new HttpsConfig(8080, 8443)));	
 	}
 
 	/**
