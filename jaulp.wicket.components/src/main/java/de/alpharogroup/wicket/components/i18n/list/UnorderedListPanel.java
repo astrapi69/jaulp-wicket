@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.i18n.list;
 
+import java.util.List;
+
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
@@ -9,23 +11,25 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
+import de.alpharogroup.wicket.components.listview.ListViewPanel;
+
 /**
- * The Class ContentListPanel takes a {@link ListView} of {@link ResourceBundleKey}s
+ * The Class UnorderedListPanel takes a {@link ListView} of {@link ResourceBundleKey}s
  * content resource keys that should be in a resource bundle for i18n.
  */
-public abstract class UnorderedListPanel extends ResourceBundleKeysListPanel {
+public abstract class UnorderedListPanel  extends ListViewPanel<ResourceBundleKey> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new header content list panel.
+	 * Instantiates a new unordered list panel.
 	 *
-	 * @param id
-	 *            the id
+	 * @param id the id
+	 * @param list the list
 	 */
-	public UnorderedListPanel(String id) {
-		this(id, null);
+	public UnorderedListPanel(String id, List<? extends ResourceBundleKey> list) {
+		super(id, list);
 	}
 
 	/**
@@ -36,7 +40,7 @@ public abstract class UnorderedListPanel extends ResourceBundleKeysListPanel {
 	 * @param model
 	 *            the model
 	 */
-	public UnorderedListPanel(String id, IModel<ContentListModel> model) {
+	public UnorderedListPanel(String id, IModel<List<? extends ResourceBundleKey>> model) {
 		super(id, model);
 	}
 

@@ -10,60 +10,59 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * The abstract Class ListViewPanel.
+ * The Class ListModelPanel takes a {@link ListView} of a generic type.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
 public abstract class ListViewPanel<T> extends Panel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The list view. */
 	private final ListView<T> listView;
 
 	/**
-	 * Gets the list view.
+	 * Instantiates a new {@link ListViewPanel}.
 	 *
-	 * @return the list view
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
-	public ListView<T> getListView() {
-		return listView;
+	public ListViewPanel(String id, List<? extends T> list) {
+		this(id, Model.ofList(list));
 	}
 
 	/**
-	 * Instantiates a new list view panel.
+	 * Instantiates a new {@link ListViewPanel}.
 	 *
-	 * @param id the id
-	 * @param list the list
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
-	public ListViewPanel(final String id, final List<? extends T> list) {
-		this(id, Model.ofList(list));
-	}
-	
-	/**
-	 * Instantiates a new list view panel.
-	 *
-	 * @param id the id
-	 * @param model the model
-	 */
-	public ListViewPanel(String id, IModel<? extends List<? extends T>> model) {
+	public ListViewPanel(String id, IModel<List<? extends T>> model) {
 		super(id, model);
+		if (model == null) {
+			throw new IllegalArgumentException("Argument 'model' may not be null.");
+		}
 		add(listView = newListView("listView", model));
 	}
 
 	/**
 	 * New list view.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the list view
 	 */
-	protected ListView<T> newListView(String id, IModel<? extends List<? extends T>> model) {
+	protected ListView<T> newListView(String id, IModel<List<? extends T>> model) {
 		ListView<T> listView = new ListView<T>(id, model) {
-			/**
-			 * The serialVersionUID.
-			 */
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			protected void populateItem(ListItem<T> item) {
@@ -77,10 +76,21 @@ public abstract class ListViewPanel<T> extends Panel {
 	/**
 	 * New list component.
 	 *
-	 * @param id the id
-	 * @param item the item
+	 * @param id
+	 *            the id
+	 * @param item
+	 *            the item
 	 * @return the component
 	 */
 	protected abstract Component newListComponent(String id, ListItem<T> item);
+
+	/**
+	 * Gets the list view.
+	 *
+	 * @return the list view
+	 */
+	public ListView<T> getListView() {
+		return listView;
+	}
 
 }

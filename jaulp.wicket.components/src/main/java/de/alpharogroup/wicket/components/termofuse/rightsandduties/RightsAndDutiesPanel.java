@@ -41,7 +41,7 @@ public class RightsAndDutiesPanel extends Panel {
 			}
 		});
 		
-		add(new UnorderedListPanel("list", Model.of(model.getObject().getListModel())) {
+		add(new UnorderedListPanel("list", Model.ofList(model.getObject().getListModel().getContentResourceKeys())) {
 			
 			private static final long serialVersionUID = 1L;
 
@@ -51,7 +51,7 @@ public class RightsAndDutiesPanel extends Panel {
 			}
 		});
 		
-		add(new DivListPanel("summary", Model.of(model.getObject().getSummaryModel())) {
+		add(new DivListPanel("summary", Model.ofList(model.getObject().getSummaryModel().getContentResourceKeys())) {
 			
 			private static final long serialVersionUID = 1L;
 
