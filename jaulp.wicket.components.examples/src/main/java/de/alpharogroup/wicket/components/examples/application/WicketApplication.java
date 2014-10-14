@@ -38,6 +38,18 @@ public class WicketApplication extends WicketBootstrapApplication
 	{
 		return HomePage.class;
 	}
+	
+	/**
+	 * Factory method for set the default theme of the application. This method
+	 * is invoked in the {@code WicketBootstrapApplication.configureBootstrap()}
+	 * method and can be overridden from the derived classes so users can
+	 * provide their own version of the default theme of the application.
+	 *
+	 * @return the default theme as string.
+	 */
+	protected String newDefaultTheme() {
+		return "wicket";
+	}
 
 	/**
 	 * @see org.apache.wicket.Application#init()
