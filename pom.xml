@@ -115,11 +115,19 @@
 		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<!-- GITHUB VARIABLE FOR MAVEN PLUGIN com.github.github. Github maven repository. -->
 		<github.global.server>github</github.global.server>
+		<junit.version>4.11</junit.version>
 	</properties>
 
 	<dependencyManagement>
 
 		<dependencies>
+
+			<!-- JUNIT DEPENDENCY FOR TESTING -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
 			<!-- WICKET DEPENDENCIES -->
 			<dependency>
 				<groupId>org.apache.wicket</groupId>
@@ -511,6 +519,19 @@
 								<keyPassword>wicket</keyPassword>
 							</connector>
 						</connectors>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>${tomcat7-maven-plugin.version}</version>
+					<configuration>
+						<path>/</path>
+						<port>8080</port>
+						<httpsPort>8443</httpsPort>
+						<keystoreFile>${project.build.directory}/test-classes/keystore</keystoreFile>
+						<keystorePass>wicket</keystorePass>
 					</configuration>
 				</plugin>
 
