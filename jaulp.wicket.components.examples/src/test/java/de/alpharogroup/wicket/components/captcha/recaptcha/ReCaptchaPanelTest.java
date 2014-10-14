@@ -20,8 +20,8 @@ public class ReCaptchaPanelTest {
     public void testRender() throws Exception {
         tester.startComponentInPage(new ReCaptchaPanel("panel"){
 			private static final long serialVersionUID = 1L;
-			private final static String PUBLIC_KEY = "6LcqB-4SABBBAB6MSipNmWQP6mCZ5HAEudHkF9Ra";
-			private final static String PRIVATE_KEY = "6LcqB-4SABBBAFxigQz5wkWu1_lQnn8CtoCAmujA";
+			private final static String PUBLIC_KEY = "6LdVBfwSAAAAAMz07R7X5rmdn3sNiHG2UfM_5IUl";
+			private final static String PRIVATE_KEY = "6LdVBfwSAAAAAKsMpZcDlpl_F1pji5JcnmNt-Hon";
 			@Override
 			public String getPublicKey() {
 				return PUBLIC_KEY;
