@@ -1,14 +1,24 @@
 package de.alpharogroup.wicket.components.examples.basepage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.time.Duration;
@@ -16,24 +26,32 @@ import org.jaulp.wicket.base.GenericBasePage;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+import org.jaulp.wicket.behaviors.AddJsQueryStatementsBehavior;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.GoogleAnalyticsBehavior;
+import org.odlabs.wiquery.core.javascript.DefaultChainableStatement;
+import org.odlabs.wiquery.core.javascript.JsUtils;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
+import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
+import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
 import de.alpharogroup.wicket.components.footer.FooterMenuPanel;
 import de.alpharogroup.wicket.components.footer.FooterPanel;
+import de.alpharogroup.wicket.components.i18n.list.LinkListPanel;
+import de.alpharogroup.wicket.components.link.LinkModel;
 
 /**
  * The Class ApplicationBasePage.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
 @ImportResources(resources = {
-		@ImportResource(resourceName = "main.css", resourceType = "css", index=1),
+		@ImportResource(resourceName = "main.css", resourceType = "css", index = 1),
 		@ImportResource(resourceName = "bootstrap_alert.js", resourceType = "js", index = 2) })
 public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 
@@ -51,7 +69,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 
 	/** The Constant FOOTER_PANEL_ID. */
 	protected static final String FOOTER_PANEL_ID = "footer";
-	
+
 	/** The feedback. */
 	protected FeedbackPanel feedback;
 
@@ -74,21 +92,23 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 	/**
 	 * Instantiates a new application base page.
 	 *
-	 * @param parameters the parameters
+	 * @param parameters
+	 *            the parameters
 	 */
 	public ApplicationBasePage(PageParameters parameters) {
 		super(parameters);
-		initializeComponents();		
+		initializeComponents();
 	}
 
 	/**
 	 * Instantiates a new application base page.
 	 *
-	 * @param model the model
+	 * @param model
+	 *            the model
 	 */
 	public ApplicationBasePage(IModel<T> model) {
 		super(model);
-		initializeComponents();	
+		initializeComponents();
 	}
 
 	/**
@@ -104,11 +124,12 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 				WicketApplication.FOOTER_FILTER_NAME);
 		add(headerResponseContainer);
 	}
-	
+
 	/**
 	 * New feedback panel.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return the feedback panel
 	 */
 	protected FeedbackPanel newFeedbackPanel(String id) {
@@ -122,11 +143,11 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-    @Override
-    protected void onConfigure() {
-        super.onConfigure();
-        configureTheme(getPageParameters());
-    }
+	@Override
+	protected void onConfigure() {
+		super.onConfigure();
+		configureTheme(getPageParameters());
+	}
 
 	/**
 	 * sets the theme for the current user.
@@ -176,33 +197,102 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 	 * @return the new <code>IModel<code>
 	 */
 	protected IModel<String> newKeywords() {
-		return ResourceModelFactory.newResourceModel(
-				"page.meta.keywords", 
-				this, 
-				"wicket, components, examples");
+		return ResourceModelFactory.newResourceModel("page.meta.keywords",
+				this, "wicket, components, examples");
 	}
 
 	/**
-	 * Factory method that can be overwritten for new meta tag content for the title.
+	 * Factory method that can be overwritten for new meta tag content for the
+	 * title.
 	 * 
 	 * @return the new <code>IModel<code>
 	 */
 	protected IModel<String> newTitle() {
-		return ResourceModelFactory.newResourceModel("page.title", this, "jaulp.wicket.components");
+		return ResourceModelFactory.newResourceModel("page.title", this,
+				"jaulp.wicket.components");
 	}
 
 	/**
 	 * Gets the Footer panel.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return 's the Footer panel.
 	 */
 	protected Panel newFooterPanel(String id) {
-		return new FooterPanel("footer") {
+		return new FooterPanel(id) {
 			private static final long serialVersionUID = 1L;
 			@Override
-			protected FooterMenuPanel newFooterMenuPanel(String id) {
-				return new ApplicationFooterMenuPanel(id);
+			protected Component newFooterMenuPanel(String id) {
+				List<LinkModel> linkModel = new ArrayList<LinkModel>();
+				linkModel
+						.add(LinkModel
+								.builder()
+								.url("http://www.alpharogroup.de/")
+								.resourceModelKey(
+										ResourceBundleKey
+												.builder()
+												.key("main.footer.copyright.label")
+												.defaultValue(
+														"\u0040 copyright 2012 Design by Alpha Ro Group")
+												.build()).build());
+				linkModel.add(LinkModel
+						.builder()
+						.pageClass(ImprintPage.class)
+						.resourceModelKey(
+								ResourceBundleKey.builder()
+										.key("main.global.menu.masthead.label")
+										.defaultValue("Imprint").build())
+						.build());
+				linkModel
+						.add(LinkModel
+								.builder()
+								.pageClass(TermOfUsePage.class)
+								.resourceModelKey(
+										ResourceBundleKey
+												.builder()
+												.key("main.global.menu.term.of.use.label")
+												.defaultValue("AGBs").build())
+								.build());
+				FooterMenuPanel footerMenu = new FooterMenuPanel(id, linkModel) {
+					private static final long serialVersionUID = 1L;
+					@Override
+					protected Component newLinkListPanel(String id,
+							IModel<List<? extends LinkModel>> model) {
+						LinkListPanel listPanel = new LinkListPanel(id, model) {
+							private static final long serialVersionUID = 1L;
+
+							@Override
+							protected Component newListComponent(String id,
+									ListItem<LinkModel> item) {
+								LinkModel model = item.getModelObject();
+								item.add(new AttributeAppender("class", "btn"));
+								Label itemLinkLabel = new Label(
+										"itemLinkLabel",
+										ResourceModelFactory.newResourceModel(
+												model.getResourceModelKey(),
+												this));
+								itemLinkLabel.add(new AttributeAppender(
+										"class", "a"));
+								if (model.getUrl() != null) {
+									return new ExternalLink(id, Model.of(model
+											.getUrl())).add(itemLinkLabel);
+								}
+								return new BookmarkablePageLink<String>(id,
+										model.getPageClass())
+										.add(itemLinkLabel);
+							}
+						};
+
+						return listPanel;
+					}
+				};
+				// Add bootstrap class to ul element...
+				add(
+						new AddJsQueryStatementsBehavior()
+						.add(new DefaultChainableStatement("find", JsUtils.quotes("ul") ))
+						.add(new DefaultChainableStatement("addClass", JsUtils.quotes("nav text-center"))));
+				return footerMenu;
 			}
 		};
 	}
@@ -212,9 +302,10 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 	 */
 	@Override
 	public void renderHead(IHeaderResponse response) {
-    	super.renderHead(response);
+		super.renderHead(response);
 		Bootstrap.renderHead(response);
-    	WicketComponentUtils.renderHeaderResponse(response, ApplicationBasePage.class);
+		WicketComponentUtils.renderHeaderResponse(response,
+				ApplicationBasePage.class);
 	}
 
 	/**
