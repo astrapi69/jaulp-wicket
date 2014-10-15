@@ -1,5 +1,6 @@
 package de.alpharogroup.wicket.components.footer;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.panel.Panel;
 
 public abstract class FooterPanel extends Panel {
@@ -9,16 +10,16 @@ public abstract class FooterPanel extends Panel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private FooterMenuPanel footerMenuPanel;
+	private Component footerMenuPanel;
 
 	public FooterPanel(String id) {
 		super(id);
 		add(footerMenuPanel = newFooterMenuPanel("footerMenuPanel"));
 	}
 
-	protected abstract FooterMenuPanel newFooterMenuPanel(String id);
+	protected abstract Component newFooterMenuPanel(String id);
 
-	public FooterMenuPanel getFooterMenuPanel() {
+	public Component getFooterMenuPanel() {
 		return footerMenuPanel;
 	}
 
