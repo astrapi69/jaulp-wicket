@@ -27,6 +27,7 @@ import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.AddJsQueryStatementsBehavior;
+import org.jaulp.wicket.behaviors.BuildableChainableStatement;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.GoogleAnalyticsBehavior;
 import org.odlabs.wiquery.core.javascript.DefaultChainableStatement;
@@ -222,6 +223,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 	protected Panel newFooterPanel(String id) {
 		return new FooterPanel(id) {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected Component newFooterMenuPanel(String id) {
 				List<LinkModel> linkModel = new ArrayList<LinkModel>();
@@ -256,6 +258,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 								.build());
 				FooterMenuPanel footerMenu = new FooterMenuPanel(id, linkModel) {
 					private static final long serialVersionUID = 1L;
+
 					@Override
 					protected Component newLinkListPanel(String id,
 							IModel<List<? extends LinkModel>> model) {
@@ -283,14 +286,16 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 										.add(itemLinkLabel);
 							}
 						};
-
 						return listPanel;
 					}
 				};
 				// Add bootstrap class to ul element...
 				add(
 						new AddJsQueryStatementsBehavior()
-						.add(new DefaultChainableStatement("find", JsUtils.quotes("ul") ))
+						.add(new BuildableChainableStatement.Builder()
+										.label("find")
+										.args(JsUtils.quotes("ul"))
+										.build())
 						.add(new DefaultChainableStatement("addClass", JsUtils.quotes("nav text-center"))));
 				return footerMenu;
 			}

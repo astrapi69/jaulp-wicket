@@ -9,7 +9,7 @@ import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.util.lang.Args;
-import org.odlabs.wiquery.core.javascript.DefaultChainableStatement;
+import org.odlabs.wiquery.core.javascript.ChainableStatement;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 
 public class AddJsQueryStatementsBehavior extends Behavior {
@@ -19,14 +19,15 @@ public class AddJsQueryStatementsBehavior extends Behavior {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	List<DefaultChainableStatement> chainableStatement;
-	
+
+	List<ChainableStatement> chainableStatement;
+
 	public AddJsQueryStatementsBehavior() {
-		this.chainableStatement = new ArrayList<DefaultChainableStatement>();
+		this.chainableStatement = new ArrayList<ChainableStatement>();
 	}
-	
-	public AddJsQueryStatementsBehavior(List<DefaultChainableStatement> chainableStatement) {
+
+	public AddJsQueryStatementsBehavior(
+			List<ChainableStatement> chainableStatement) {
 		Args.notNull(chainableStatement, "chainableStatement");
 		this.chainableStatement = chainableStatement;
 	}
@@ -36,18 +37,19 @@ public class AddJsQueryStatementsBehavior extends Behavior {
 		LOGGER.info(renderedStatement);
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
-	
-	public AddJsQueryStatementsBehavior add(DefaultChainableStatement defaultChainableStatement) {
+
+	public AddJsQueryStatementsBehavior add(
+			ChainableStatement defaultChainableStatement) {
 		this.chainableStatement.add(defaultChainableStatement);
 		return this;
 	}
-	
+
 	public CharSequence createRenderedStatement(Component component) {
 		component.setOutputMarkupId(true);
 		JsStatement statement = new JsStatement().$(component);
-		for (DefaultChainableStatement defaultChainableStatement : chainableStatement) {
-			statement.chain(defaultChainableStatement);		
+		for (ChainableStatement defaultChainableStatement : chainableStatement) {
+			statement.chain(defaultChainableStatement);
 		}
-		return statement.render();		
+		return statement.render();
 	}
 }
