@@ -1,8 +1,17 @@
 package de.alpharogroup.wicket.components.footer;
 
+import java.util.List;
+
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
+import org.odlabs.wiquery.core.javascript.DefaultChainableStatement;
+import org.odlabs.wiquery.core.javascript.JsQuery;
+import org.odlabs.wiquery.core.javascript.JsStatement;
+
+import de.alpharogroup.wicket.components.link.LinkModel;
 
 public abstract class FooterMenuPanel extends Panel {
 
@@ -11,38 +20,21 @@ public abstract class FooterMenuPanel extends Panel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Component copyrightLink;	
-	private Component imprintLink;
-	private Component termOfUseLink;
+	private Component linkListPanel;	
 
-	public FooterMenuPanel(final String id) {
-		super(id);		
-		add(copyrightLink = newCopyrightLink("copyrightLink"));
-		add(imprintLink = newImprintLink("imprintLink"));
-		add(termOfUseLink = newTermOfUseLink("termOfUseLink"));
+	public Component getLinkListPanel() {
+		return linkListPanel;
 	}
-	protected abstract Component newCopyrightLink(String id);
-	protected abstract Component newImprintLink(String id);
-	protected abstract Component newTermOfUseLink(String id);
+
+	public FooterMenuPanel(final String id, List<? extends LinkModel> list) {
+		this(id, Model.ofList(list));		
+	}
+
+	public FooterMenuPanel(final String id, IModel<List<? extends LinkModel>> model) {
+		super(id);
+		add(linkListPanel = newLinkListPanel("linkListPanel", model));
+	}
 	
-	protected abstract String getCopyrightDefaultValue();
-
-	protected abstract Class<? extends WebPage> getImprintPageClass();
-	
-	protected abstract Class<? extends WebPage> getTermOfUsePageClass();
-
-	protected abstract String getCopyrightUrl(); 
-
-	public Component getCopyrightLink() {
-		return copyrightLink;
-	}
-
-	public Component getImprintLink() {
-		return imprintLink;
-	}
-
-	public Component getTermOfUseLink() {
-		return termOfUseLink;
-	}
+	protected abstract Component newLinkListPanel(final String id, IModel<List<? extends LinkModel>> model);
 
 }
