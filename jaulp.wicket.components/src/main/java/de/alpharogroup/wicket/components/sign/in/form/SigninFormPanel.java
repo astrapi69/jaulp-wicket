@@ -16,7 +16,7 @@ import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 /**
  * The Class SinginFormPanel.
  */
-public abstract class SinginFormPanel extends Panel {
+public abstract class SigninFormPanel extends Panel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public abstract class SinginFormPanel extends Panel {
 	 * @param id the id
 	 * @param model the model
 	 */
-	public SinginFormPanel(String id, final IModel<? extends SignInModel> model) {
+	public SigninFormPanel(String id, final IModel<? extends SignInModel> model) {
 		super(id, model);		
 		add(form = newForm("form", model));
 		form.add(signinPanel = new SigninPanel("signinPanel", model));

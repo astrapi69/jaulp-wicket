@@ -9,7 +9,7 @@ import org.apache.wicket.model.IModel;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import de.alpharogroup.wicket.components.sign.in.form.SinginFormPanel;
+import de.alpharogroup.wicket.components.sign.in.form.SigninFormPanel;
 
 @MountPath("public/signin")
 public class SigninPage  extends PubliclyBasePage<Object> {
@@ -21,7 +21,7 @@ public class SigninPage  extends PubliclyBasePage<Object> {
 
 		final IModel<SignInModel> cpm = new CompoundPropertyModel<SignInModel>(
 				model);
-		SinginFormPanel signFormPanel = new SinginFormPanel(CONTAINER_PANEL_ID, cpm) {
+		SigninFormPanel signFormPanel = new SigninFormPanel(CONTAINER_PANEL_ID, cpm) {
 			private static final long serialVersionUID = 1L;
 			@Override
 			protected void onSignin() {
