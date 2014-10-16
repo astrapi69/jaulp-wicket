@@ -32,6 +32,7 @@ import de.alpharogroup.wicket.components.examples.ajaxtabs.addtab.EditableAjaxTa
 import de.alpharogroup.wicket.components.examples.alerts.AlertsPage;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePage;
+import de.alpharogroup.wicket.components.examples.buttons.ButtonsPage;
 import de.alpharogroup.wicket.components.examples.captcha.ReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.captcha.SslReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
@@ -193,6 +194,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
     	final IModel<String> wicketUrlsModel = ResourceModelFactory.newResourceModel("global.menu.wicket.urls.label", this);
     	final IModel<String> alertsModel = ResourceModelFactory.newResourceModel("global.menu.alerts.label", this);
     	final IModel<String> labeledModel = ResourceModelFactory.newResourceModel("global.menu.labeled.label", this);
+    	final IModel<String> buttonsModel = ResourceModelFactory.newResourceModel("global.menu.buttons.label", this);
     	   return new NavbarDropDownButton(featuresMainModel) {
 			private static final long serialVersionUID = 1L;
 
@@ -219,6 +221,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
                 		AlertsPage.class, alertsModel).setIconType(IconType.bell));
                 subMenu.add(new MenuBookmarkablePageLink<LabeledComponentsPage>(
                 		LabeledComponentsPage.class, labeledModel).setIconType(IconType.leaf));
+                subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(
+                		ButtonsPage.class, buttonsModel).setIconType(IconType.book));
                 
                 return subMenu;
             }
