@@ -45,6 +45,7 @@ public abstract class ActionButtonPanel extends Panel {
 	 */
 	public ActionButtonPanel(String id, IModel<String> labelModel) {
 		super(id);
+		this.setOutputMarkupId(true);
 		add(button = newButton("button"));
 		button.add(label = newLabel("label", labelModel));
 	}
