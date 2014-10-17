@@ -61,7 +61,7 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel {
 			protected void onSubmit(final AjaxRequestTarget target,
 					final Form<?> form) {
 				target.add(form);
-				onSubmit(target, form);
+				AjaxIndicatingButtonPanel.this.onSubmit(target, form);
 			}
 
 			@Override
