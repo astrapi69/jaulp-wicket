@@ -1,5 +1,6 @@
 package org.jaulp.wicket.base.util.properties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.sourceforge.jaulp.locale.PropertiesKeysListResolver;
@@ -74,5 +75,20 @@ public class ComponentPropertiesKeysListResolver extends
 				component, 
 				resourceBundleKey.getDefaultValue())
 				.getObject();
+	}
+	
+	/**
+	 * Gets the display values with the full properties keys as a List of {@link ResourceBundleKey}.
+	 *
+	 * @return the display values
+	 */
+	public List<ResourceBundleKey> getDisplayValues() {
+		List<ResourceBundleKey> rbk = new ArrayList<ResourceBundleKey>();
+		for(ResourceBundleKey key : getValues()) {
+			ResourceBundleKey clone = (ResourceBundleKey) key.clone();
+			clone.setKey(getPropertiesKey(key.getKey()));
+			rbk.add(clone);
+		}
+		return rbk;		
 	}
 }
