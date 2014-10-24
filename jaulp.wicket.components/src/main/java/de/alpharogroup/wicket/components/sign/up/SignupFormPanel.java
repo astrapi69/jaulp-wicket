@@ -16,16 +16,20 @@ public abstract class SignupFormPanel extends
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
-	private final Label buttonLabel;
+	private Label buttonLabel;
 
-	private final Button submitButton;
+	private Button submitButton;
 
-	private final Form<BaseUsernameSignUpModel> form;
+	private Form<?> form;
 	
-	private final Component signupPanel;
+	private Component signupPanel;
 
 	public SignupFormPanel(String id) {
 		super(id);
+		initComponent();
+	}
+
+	protected void initComponent() {
 		BaseUsernameSignUpModel modelObject = new BaseUsernameSignUpModel();
 		modelObject.setEmail("");
 		IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<BaseUsernameSignUpModel>(
@@ -51,7 +55,7 @@ public abstract class SignupFormPanel extends
 	 *            the model
 	 * @return the SignupPanel
 	 */
-	protected Component newSignupPanel(String id,IModel<BaseUsernameSignUpModel> model) {
+	protected Component newSignupPanel(String id, IModel<BaseUsernameSignUpModel> model) {
 				return new SignupPanel(id, model);		
 	}
 
@@ -64,9 +68,10 @@ public abstract class SignupFormPanel extends
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<BaseUsernameSignUpModel> newForm(String id,
-			IModel<BaseUsernameSignUpModel> model) {
-		return new Form<BaseUsernameSignUpModel>(id, model);
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected Form<?> newForm(String id,
+			IModel<? extends BaseUsernameSignUpModel> model) {
+		return new Form(id, model);
 	}
 
 	/**
@@ -126,7 +131,7 @@ public abstract class SignupFormPanel extends
 		return buttonLabel;
 	}
 
-	public Form<BaseUsernameSignUpModel> getForm() {
+	public Form<?> getForm() {
 		return form;
 	}
 }

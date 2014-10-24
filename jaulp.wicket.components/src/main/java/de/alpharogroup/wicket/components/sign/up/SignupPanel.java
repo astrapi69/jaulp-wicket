@@ -54,11 +54,12 @@ public class SignupPanel extends Panel {
 	 * @param id the id
 	 * @param model the model
 	 */
-	public SignupPanel(String id, final IModel<BaseUsernameSignUpModel> model) {
+	@SuppressWarnings("unchecked")
+	public SignupPanel(String id, final IModel<? extends BaseUsernameSignUpModel> model) {
 		super(id, model);
-		add(username = newUsernameTextField("username", model));
+		add(username = newUsernameTextField("username",(IModel<BaseUsernameSignUpModel>)model));
 		add(signinPanel = newSigninPanel("signinPanel", model));
-		add(repeatPassword = newRepeatPasswordTextField("repeatPassword", model));
+		add(repeatPassword = newRepeatPasswordTextField("repeatPassword", (IModel<BaseUsernameSignUpModel>)model));
 	}
 	
 	/**
@@ -70,7 +71,7 @@ public class SignupPanel extends Panel {
 	 * @param model the model
 	 * @return the Component
 	 */
-	protected Component newSigninPanel(String id, final IModel<BaseUsernameSignUpModel> model) {
+	protected Component newSigninPanel(String id, final IModel<? extends BaseUsernameSignUpModel> model) {
 		return new SigninPanel(id, model);
 	}
 	
@@ -91,7 +92,6 @@ public class SignupPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 
 			@SuppressWarnings({ "rawtypes", "unchecked" })
-			@Override
 			protected TextField newTextField(String id,
 					IModel<BaseUsernameSignUpModel> modelSuper) {
 				TextField<String> textField = new TextField<String>(id, model(from(model).getUsername()));
