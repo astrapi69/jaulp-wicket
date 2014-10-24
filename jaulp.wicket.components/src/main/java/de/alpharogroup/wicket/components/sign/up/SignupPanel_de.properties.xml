@@ -3,6 +3,7 @@
 <properties>
 	<comment />
 	<entry key="global.username.label">Benutzername</entry>
+	<entry key="global.button.sign.up.label">Registrieren</entry>
 	<entry key="global.enter.your.username.label">Gib dein Benutzernamen ein</entry>	
 	<entry key="global.repeat.password.label">Passwort wiederholen</entry>
 	<entry key="global.enter.your.password.again.label">Gib dein Passwort nochmal ein</entry>

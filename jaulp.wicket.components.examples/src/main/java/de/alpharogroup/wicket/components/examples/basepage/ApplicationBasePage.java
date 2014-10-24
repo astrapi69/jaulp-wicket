@@ -30,7 +30,6 @@ import org.jaulp.wicket.behaviors.AddJsQueryStatementsBehavior;
 import org.jaulp.wicket.behaviors.BuildableChainableStatement;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.GoogleAnalyticsBehavior;
-import org.odlabs.wiquery.core.javascript.DefaultChainableStatement;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
 import de.agilecoders.wicket.core.Bootstrap;
@@ -296,7 +295,12 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 										.label("find")
 										.args(JsUtils.quotes("ul"))
 										.build())
-						.add(new DefaultChainableStatement("addClass", JsUtils.quotes("nav text-center"))));
+						.add(new BuildableChainableStatement.Builder()
+						.label("addClass")
+						.args(JsUtils.quotes("nav text-center"))
+						.build()
+								
+								));
 				return footerMenu;
 			}
 		};
