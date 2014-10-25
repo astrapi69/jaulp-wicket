@@ -2,6 +2,7 @@ package de.alpharogroup.wicket.components.report;
 
 import net.sourceforge.jaulp.exception.ExceptionUtils;
 
+import org.apache.log4j.Logger;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
@@ -25,6 +26,9 @@ public abstract class ReportThrowablePanel extends Panel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	/** The Constant logger. */
+	private static final Logger LOGGER = Logger
+			.getLogger(ReportThrowablePanel.class.getName());
 	
 	/** The header. */
 	private final Label header;
@@ -78,6 +82,7 @@ public abstract class ReportThrowablePanel extends Panel {
 		form.add(submitButton = newSubmitButton("submitButton"));
 
 		form.add(stackTrace = newHiddenField("stackTrace"));
+		LOGGER.error(reportThrowableModel.getStackTrace());
 	}
 
 	/**
