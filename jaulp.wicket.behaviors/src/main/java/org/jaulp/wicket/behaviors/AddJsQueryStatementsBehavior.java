@@ -14,7 +14,7 @@ import org.odlabs.wiquery.core.javascript.JsStatement;
 
 public class AddJsQueryStatementsBehavior extends Behavior {
 	/** The Constant logger. */
-	private static final Logger LOGGER = Logger
+	protected static final Logger LOGGER = Logger
 			.getLogger(AddJsQueryStatementsBehavior.class.getName());
 
 	/** The Constant serialVersionUID. */
@@ -34,7 +34,6 @@ public class AddJsQueryStatementsBehavior extends Behavior {
 
 	public void renderHead(Component component, IHeaderResponse response) {
 		CharSequence renderedStatement = createRenderedStatement(component);
-		LOGGER.info(renderedStatement);
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
 
