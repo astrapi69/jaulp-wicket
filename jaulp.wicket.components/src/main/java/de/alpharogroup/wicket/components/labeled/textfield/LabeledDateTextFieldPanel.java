@@ -105,7 +105,16 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T> {
 				return getSession().getLocale();
 			}
 		};
-		DatePicker datePicker = new DatePicker();
+		DatePicker datePicker = new DatePicker() {
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
+
+			protected boolean enableMonthYearSelection() {
+				return true;
+			}
+		};
 		datePicker.setShowOnFieldClick(true);
 		dateTextField.add(datePicker);
 		dateTextField.setOutputMarkupId(true);
