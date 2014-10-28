@@ -40,7 +40,7 @@ public abstract class SignupFormPanel extends
 		
 		form.addOrReplace(submitButton = newButton("signupButton"));
 		submitButton.add(buttonLabel = newButtonLabel("buttonLabel",
-				"global.button.sign.up.label", "Sign up", this));
+				"global.button.sign.up.label", "Sign up"));
 		form.add(submitButton);
 	}
 
@@ -60,7 +60,9 @@ public abstract class SignupFormPanel extends
 	}
 
 	/**
-	 * New form.
+	 * Factory method for creating the Form. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -75,11 +77,13 @@ public abstract class SignupFormPanel extends
 	}
 
 	/**
-	 * New button.
+	 * Factory method for creating the Button. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Button.
 	 * 
 	 * @param id
-	 *            the id
-	 * @return the component
+	 *            the wicket id
+	 * @return the Button
 	 */
 	protected Button newButton(String id) {
 		return new Button(id) {
@@ -94,7 +98,7 @@ public abstract class SignupFormPanel extends
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
+	 * Factory method for creating the Button Label. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a Label.
 	 * 
@@ -104,14 +108,12 @@ public abstract class SignupFormPanel extends
 	 *            the resource key
 	 * @param defaultValue
 	 *            the default value
-	 * @param component
-	 *            the component
 	 * @return the label
 	 */
 	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue, final Component component) {
+			final String defaultValue) {
 		final IModel<String> labelModel = ResourceModelFactory
-				.newResourceModel(resourceKey, component, defaultValue);
+				.newResourceModel(resourceKey, this, defaultValue);
 		Label label = new Label(id, labelModel);
 		label.setOutputMarkupId(true);
 		return label;

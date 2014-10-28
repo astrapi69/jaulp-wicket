@@ -73,7 +73,7 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 		// Create submit button for the form
 		submitButton = newButton("submitButton");
 		buttonLabel = newButtonLabel("buttonLabel",
-				"global.button.send.email.label", "Send email", this);
+				"global.button.send.email.label", "Send email");
 		submitButton.add(buttonLabel);
 		form.add(submitButton);
 	}
@@ -174,11 +174,13 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	}
 
 	/**
-	 * New button.
+	 * Factory method for creating the Button. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Button.
 	 * 
 	 * @param id
-	 *            the id
-	 * @return the component
+	 *            the wicket id
+	 * @return the Button
 	 */
 	protected Button newButton(String id) {
 		return new Button(id) {
@@ -195,9 +197,9 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the button Label. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users
+	 * can provide their own version of a button Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -205,14 +207,12 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the resource key
 	 * @param defaultValue
 	 *            the default value
-	 * @param component
-	 *            the component
 	 * @return the label
 	 */
 	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue, final Component component) {
+			final String defaultValue) {
 		Label label = new Label(id, ResourceModelFactory.newResourceModel(
-				resourceKey, component, defaultValue));
+				resourceKey, this, defaultValue));
 		label.setOutputMarkupId(true);
 		return label;
 	}
@@ -254,7 +254,9 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	}
 
 	/**
-	 * New form.
+	 * Factory method for creating the Form. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id

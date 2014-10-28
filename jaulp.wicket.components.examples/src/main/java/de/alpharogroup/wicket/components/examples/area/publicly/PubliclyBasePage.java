@@ -35,6 +35,7 @@ import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePage;
 import de.alpharogroup.wicket.components.examples.buttons.ButtonsPage;
 import de.alpharogroup.wicket.components.examples.captcha.ReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.captcha.SslReCaptchaPage;
+import de.alpharogroup.wicket.components.examples.deregistration.DeregistrationPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
@@ -195,9 +196,9 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
     	final IModel<String> alertsModel = ResourceModelFactory.newResourceModel("global.menu.alerts.label", this);
     	final IModel<String> labeledModel = ResourceModelFactory.newResourceModel("global.menu.labeled.label", this);
     	final IModel<String> buttonsModel = ResourceModelFactory.newResourceModel("global.menu.buttons.label", this);
+    	final IModel<String> deregistrationModel = ResourceModelFactory.newResourceModel("global.menu.deregistration.label", this);
     	   return new NavbarDropDownButton(featuresMainModel) {
 			private static final long serialVersionUID = 1L;
-
 			@Override
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
@@ -223,6 +224,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
                 		LabeledComponentsPage.class, labeledModel).setIconType(IconType.leaf));
                 subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(
                 		ButtonsPage.class, buttonsModel).setIconType(IconType.book));
+                subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
+                		DeregistrationPage.class, deregistrationModel).setIconType(IconType.book));
                 
                 return subMenu;
             }

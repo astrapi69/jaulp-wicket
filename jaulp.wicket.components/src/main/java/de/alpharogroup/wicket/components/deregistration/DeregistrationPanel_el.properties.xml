@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment />
+	<entry key="sem.main.info.frame.deregistration.user.label">Θέλετε να διαγράψετε το λογαριασμό χρήστη σας στο {0}?</entry>
+	<entry key="sem.main.global.deregistration.user.label">Επιβεβαιώστε την διαγραφή λογαριασμού</entry>
+	<entry key="sem.main.header.deregistration.user.label">Παρακαλώ επιβεβεώστε την διαγραφή άπο τον λογαριασμό
+		σας {0}.</entry>
+	<entry key="sem.main.feedback.deregistration.user.label">Η γνώμη σου είναι σημαντική για μας. Πες μας πιο ήταν
+		το κινητρο για την διαγραφή του λογαριασμό σου από το {0}.</entry>
+	<entry key="global.enter.your.deregistration.motivation.label">Πληκτρολόγησε εδώ τον λόγο για την διαγραφή
+		λογαριασμού</entry>
+</properties>

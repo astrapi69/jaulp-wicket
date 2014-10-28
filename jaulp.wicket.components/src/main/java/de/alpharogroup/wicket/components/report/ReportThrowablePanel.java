@@ -109,10 +109,14 @@ public abstract class ReportThrowablePanel extends Panel {
 	}
 
 	/**
-	 * New form.
-	 *
-	 * @param id the id
-	 * @param model the model
+	 * Factory method for creating the Form. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Form.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the form
 	 */
 	protected Form<?> newForm(String id, IModel<?> model) {

@@ -46,7 +46,7 @@ public abstract class SigninFormPanel extends Panel {
 		submitButton = newButton("submitButton");			
 		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", 
 				"global.button.sign.in.label",
-				"Sign In", this));	
+				"Sign In"));	
 		form.add(submitButton);
 	}
 
@@ -86,13 +86,15 @@ public abstract class SigninFormPanel extends Panel {
 	public Button getSubmitButton() {
 		return submitButton;
 	}
-
+	
 	/**
-	 * New button.
+	 * Factory method for creating the Button. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Button.
 	 * 
 	 * @param id
-	 *            the id
-	 * @return the component
+	 *            the wicket id
+	 * @return the Button
 	 */
 	protected Button newButton(String id) {
 		return new Button(id) {
@@ -109,9 +111,9 @@ public abstract class SigninFormPanel extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the button Label. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users
+	 * can provide their own version of a button Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -119,22 +121,21 @@ public abstract class SigninFormPanel extends Panel {
 	 *            the resource key
 	 * @param defaultValue
 	 *            the default value
-	 * @param component
-	 *            the component
 	 * @return the label
 	 */
 	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue, final Component component) {
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue);		
+			final String defaultValue) {
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, this, defaultValue);		
 		
 		Label label = new Label(id, labelModel);
 		label.setOutputMarkupId(true);
 		return label;
 	}
 
-
 	/**
-	 * New form.
+	 * Factory method for creating the Form. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
