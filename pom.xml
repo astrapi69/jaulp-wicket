@@ -72,7 +72,7 @@
 		<log4j.version>1.2.16</log4j.version>
 		<!-- UNIT TEST versions -->
 		<testng.version>6.8.8</testng.version>
-		<jetty.version>8.1.12.v20130726</jetty.version>
+		<jetty.version>8.1.14.v20131031</jetty.version>
 		<!-- JAULP versions -->
 		<jaulp.core.version>3.9.0-SNAPSHOT</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
