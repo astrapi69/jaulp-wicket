@@ -9,63 +9,41 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.util.ComponentFinder;
 
-import de.alpharogroup.wicket.bootstrap2.components.tabs.BootstrapAjaxTabbedPanel;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.AbstractContentTab;
+import de.alpharogroup.wicket.components.ajax.editable.tabs.AjaxCloseableTabbedPanel;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.ICloseableTab;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabModel;
-import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanelOne;
-import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanelThree;
-import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanelTwo;
+import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanel;
+import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabbedPanelModels;
 
 
 public class EditableAjaxTabbedPanelDecorator extends Panel {
 	private static final long serialVersionUID = 1L;
 	private final List<ICloseableTab> tabs = new ArrayList<>();
-	private final BootstrapAjaxTabbedPanel<ICloseableTab> ajaxTabbedPanel;
-	@SuppressWarnings("unchecked")
-	public EditableAjaxTabbedPanelDecorator(String id, IModel<TabbedPanelModel> model) {
+	private final AjaxCloseableTabbedPanel<ICloseableTab> ajaxTabbedPanel;
+	
+	public EditableAjaxTabbedPanelDecorator(final String id, final IModel<TabbedPanelModels<String>> model) {
 		super(id, model);
-		final TabModel<String> firstTabModel = new TabModel<>(
-				Model.of("tab one"), Model.of("tabOne"), Model.of("x"));
-		final TabModel<String> secondTabModel = new TabModel<>(
-				Model.of("tab two"), Model.of("tabTwo"), Model.of("x"));
-		final TabModel<String> thirdTabModel = new TabModel<>(
-				Model.of("tab three"), Model.of("tabThree"), Model.of("x"));
-		setDefaultModel(new CompoundPropertyModel<TabbedPanelModel>(model));
+		setDefaultModel(new CompoundPropertyModel<TabbedPanelModels<String>>(model));
+		List<TabModel<String>> tabModels = model.getObject().getTabModels();
+		for (int i = 0; i < tabModels.size(); i++) {			
+			tabs.add(new AbstractContentTab<TabModel<String>>(tabModels.get(i)
+					.getTitle(), Model.of(tabModels.get(i)) , Model.of("x")) {
+				private static final long serialVersionUID = 1L;
+				public Panel getPanel(String panelId) {
+					Panel p = new TabPanel(panelId, getContent().getObject().getContent());
+					return p;
+				}
+			});
+		}
 
-		tabs.add(new AbstractContentTab<TabbedPanelModel>(firstTabModel
-				.getTitle(), (IModel<TabbedPanelModel>) getDefaultModel(), Model.of("x")) {
-			private static final long serialVersionUID = 1L;
-			public Panel getPanel(String panelId) {
-				Panel p = new TabPanelOne(panelId, getContent());
-				TextField<String> field = new UpdatingTextField<>(firstTabModel
-						.getContent().getObject());
-				p.add(field);
-				return p;
-			}
-		});
-
-		tabs.add(new AbstractContentTab<TabbedPanelModel>(secondTabModel
-				.getTitle(), (IModel<TabbedPanelModel>) getDefaultModel(), Model.of("x")) {
-			private static final long serialVersionUID = 1L;
-
-			public Panel getPanel(String panelId) {
-				Panel p = new TabPanelTwo(panelId, getContent());
-				TextField<String> field = new UpdatingTextField<>(
-						secondTabModel.getContent().getObject());
-				p.add(field);
-				return p;
-			}
-		});
-
-		add(ajaxTabbedPanel = new BootstrapAjaxTabbedPanel<ICloseableTab>("tabs", tabs) {
+		add(ajaxTabbedPanel = new AjaxCloseableTabbedPanel<ICloseableTab>("tabs", tabs) {
 			private static final long serialVersionUID = 1L;
 			protected WebMarkupContainer newCloseLink(final String linkId, final int index) {
 				WebMarkupContainer wmc = super.newCloseLink(linkId, index);
@@ -84,24 +62,30 @@ public class EditableAjaxTabbedPanelDecorator extends Panel {
 		AjaxLink<Void> addTabLink = new AjaxLink<Void>("addTabLink") {
 			private static final long serialVersionUID = 1L;
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public void onClick(AjaxRequestTarget target) {
 				if(target == null) {
 					target = ComponentFinder.findAjaxRequestTarget();
 				}
 				target.add(ajaxTabbedPanel);
-				AbstractContentTab<TabbedPanelModel> tab = new AbstractContentTab<TabbedPanelModel>(thirdTabModel.getTitle(),
-						(IModel<TabbedPanelModel>) getDefaultModel(), Model.of("x")) {
+				int tabNumber = tabs.size()+1;
+				final TabModel<String> thirdTabModel = new TabModel<>(
+						Model.of("tab "+tabNumber), Model.of("TAB_"+tabNumber), Model.of("x"));
+				
+				AbstractContentTab<TabModel<String>> tab = new AbstractContentTab<TabModel<String>>(thirdTabModel.getTitle(),
+						Model.of(thirdTabModel), Model.of("x")) {
 					private static final long serialVersionUID = 1L;
 
 					public Panel getPanel(String panelId) {
-						Panel p = new TabPanelThree(panelId, getContent());
-						TextField<String> field = new UpdatingTextField<>(thirdTabModel
-								.getContent().getObject());
-						p.add(field);
+						Panel p = new TabPanel(panelId, getContent().getObject().getContent());
 						return p;
 					}
 				};
+				Object object = EditableAjaxTabbedPanelDecorator.this.getDefaultModelObject();
+				TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>) object;
+				List<TabModel<String>> tabModels = tabbedModel.getTabModels();
+				tabModels.add(thirdTabModel);
 				ajaxTabbedPanel.onNewTab(target, tab);
 			}
 		};
@@ -129,16 +113,12 @@ public class EditableAjaxTabbedPanelDecorator extends Panel {
 		ajaxTabbedPanel.onNewTab(target, tab, index);
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void onRemoveTab(final AjaxRequestTarget target, final int index) {
-//		int tabSize = ajaxTabbedPanel.getTabs().size();
-//		// there have to be at least one tab on the ajaxTabbedPanel...
-//		if (2 <= tabSize
-//				&& index < tabSize
-//				) {
-//			ajaxTabbedPanel.setSelectedTab(index);
-//			ajaxTabbedPanel.getTabs().remove(index);
-//			target.add(ajaxTabbedPanel);
-//		}
+		Object object = EditableAjaxTabbedPanelDecorator.this.getDefaultModelObject();
+		TabbedPanelModels<String> tabbedModel = ((TabbedPanelModels<String>) object);
+		List<TabModel<String>> tabModels = tabbedModel.getTabModels();
+		tabModels.remove(index);
 		ajaxTabbedPanel.onRemoveTab(target, index);
 	}
 

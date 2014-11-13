@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.examples.ajaxtabs.addtab;
 
+import java.util.ArrayList;
+
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 
@@ -7,6 +9,8 @@ import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabModel;
+import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabbedPanelModels;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 
@@ -20,8 +24,17 @@ public class EditableAjaxTabbedPage  extends PubliclyBasePage<Object> {
 
 
 	@Override
-	public Component getContainerPanel() {		
-		return new EditableAjaxTabbedPanelDecorator(CONTAINER_PANEL_ID, Model.of(new TabbedPanelModel()));
+	public Component getContainerPanel() {
+		TabbedPanelModels<String> tabmodels = new TabbedPanelModels<String>();		
+		tabmodels.setTabModels(new ArrayList<TabModel<String>>());
+		TabModel<String> firstTabModel = new TabModel<>(
+				Model.of("tab 1"), Model.of("TAB_1"), Model.of("x"));
+		TabModel<String> secondTabModel = new TabModel<>(
+				Model.of("tab 2"), Model.of("TAB_2"), Model.of("x"));
+		TabModel<String> thirdTabModel = new TabModel<>(
+				Model.of("tab 3"), Model.of("TAB_3"), Model.of("x"));
+		tabmodels.add(firstTabModel).add(secondTabModel).add(thirdTabModel);
+		return new EditableAjaxTabbedPanelDecorator(CONTAINER_PANEL_ID, Model.of(tabmodels));
 	}
 
 }

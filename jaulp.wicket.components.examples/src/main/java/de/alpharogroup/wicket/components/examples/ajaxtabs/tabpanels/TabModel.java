@@ -8,6 +8,7 @@ public class TabModel<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private IModel<String> title;
+	private IModel<T> content;
 	private IModel<String> closeTitle;
 	public IModel<String> getCloseTitle() {
 		return closeTitle;
@@ -15,7 +16,6 @@ public class TabModel<T> implements Serializable {
 	public void setCloseTitle(IModel<String> closeTitle) {
 		this.closeTitle = closeTitle;
 	}
-	private IModel<T> content;
 	public TabModel() {
 	}
 	public TabModel(IModel<String> title, IModel<T> content, final IModel<String> closeTitle) {

@@ -118,7 +118,6 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 		add(new FaviconBehavior());
 		add(new GoogleAnalyticsBehavior(ApplicationBasePage.class));
 		add(new BootstrapBaseBehavior());
-		feedback = newFeedbackPanel("feedback");
 		HeaderResponseContainer headerResponseContainer = new HeaderResponseContainer(
 				WicketApplication.FOOTER_FILTER_NAME,
 				WicketApplication.FOOTER_FILTER_NAME);
@@ -289,8 +288,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 					}
 				};
 				// Add bootstrap class to ul element...
-				add(
-						new AddJsQueryStatementsBehavior()
+				add(new AddJsQueryStatementsBehavior()
 						.add(new BuildableChainableStatement.Builder()
 										.label("find")
 										.args(JsUtils.quotes("ul"))
@@ -298,9 +296,8 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 						.add(new BuildableChainableStatement.Builder()
 						.label("addClass")
 						.args(JsUtils.quotes("nav text-center"))
-						.build()
-								
-								));
+						.build())
+						);
 				return footerMenu;
 			}
 		};

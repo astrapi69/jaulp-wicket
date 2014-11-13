@@ -93,7 +93,6 @@ public class WicketApplication extends WicketBootstrapApplication
 		return "jaulp-wicket-components.com";
 	}
 
-
 	/**
 	 * Initialize resources.
 	 * 

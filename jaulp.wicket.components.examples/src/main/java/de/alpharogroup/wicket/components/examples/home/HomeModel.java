@@ -3,5 +3,4 @@ import java.io.Serializable;
 
 public class HomeModel implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 }

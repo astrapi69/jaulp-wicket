@@ -19,8 +19,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.lang.Args;
 
-
-
 /**
  * The Class AjaxCloseableTabbedPanel adds functionality to add or remove tabs from the TabbedPanel.
  *
@@ -39,6 +37,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	private int currentTab = -1;
 
 	private transient VisibilityCache visibilityCache;
+	
 	private WebMarkupContainer tabsUlContainer;
 	
 	public WebMarkupContainer getTabsUlContainer() {

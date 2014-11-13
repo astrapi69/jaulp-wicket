@@ -12,6 +12,8 @@ import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
+import de.alpharogroup.wicket.components.labeled.label.LabeledEnumLabelPanel;
+import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledDateTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
@@ -23,7 +25,7 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 		super(id);
 		final Member person = new Member();
 		person.setGender(Gender.UNDEFINED);
-		person.setName("");
+		person.setName("foo");
 		person.setAbout("");
 		person.setMarried(false);
 		person.setDateofbirth(new Date());
@@ -37,9 +39,14 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 		        new Form<Member>("form", cpm);
 
 		add(form);
-
-		LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>("name", cpm, Model.of("Name:"));
-
+		
+		LabeledEnumLabelPanel<Member> genderLabel = new LabeledEnumLabelPanel<Member>("gender", cpm, Model.of("Gender:"));
+		form.add(genderLabel);
+		
+		LabeledLabelPanel<Member> nameLabel = new LabeledLabelPanel<Member>("name", cpm, Model.of("Name:"));
+		form.add(nameLabel);
+		
+		LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>("nickname", cpm, Model.of("Input your nickname:"));
 		form.add(nameTextField);
 			
 		LabeledTextAreaPanel<Member> about = new LabeledTextAreaPanel<Member>("about", cpm,  Model.of("About:"));
