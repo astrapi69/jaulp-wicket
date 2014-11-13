@@ -1,0 +1,25 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+<style type="text/css">
+th.last-name *, td.last-name {
+font-weight: bold;
+color: #AA0000;
+}
+th.numeric, td.numeric {
+text-align: right !important;
+}
+</style>
+</wicket:head>
+<body>
+<wicket:panel xmlns:wicket="http://wicket.apache.org">
+	<form wicket:id="filterForm">
+		<fieldset style="display: inline-block;">
+			 <legend>Born date</legend>
+			<span style="float: right;">from: <input wicket:id="dateFrom"/></span> <br/>
+			<span style="float: right;">to: <input wicket:id="dateTo"/></span>
+		</fieldset>
+		<table class="dataview" wicket:id="tableWithFilterForm"></table>
+	</form>
+</wicket:panel>
+</body>
+</html>

@@ -16,11 +16,12 @@
 package org.jaulp.wicket.data.provider.examples.data.provider;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Person implements Serializable {
 
 
-    public Person(String firstname, String lastname, String dateOfBirth) {
+    public Person(String firstname, String lastname, Date dateOfBirth) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -36,13 +37,13 @@ public class Person implements Serializable {
 
 	private String lastname;
 
-	private String dateOfBirth;
+	private Date dateOfBirth;
 
 	public Person() {
 		super();
 	}
 
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -54,7 +55,7 @@ public class Person implements Serializable {
 		return lastname;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

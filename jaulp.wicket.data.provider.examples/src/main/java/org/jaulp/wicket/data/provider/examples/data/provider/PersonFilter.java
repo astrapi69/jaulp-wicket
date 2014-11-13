@@ -15,9 +15,10 @@
  */
 package org.jaulp.wicket.data.provider.examples.data.provider;
 
-import org.apache.wicket.util.io.IClusterable;
+import java.io.Serializable;
+import java.util.Date;
 
-public class PersonFilter implements IClusterable {
+public class PersonFilter implements Serializable {
 
     /**
      * The serialVersionUID.
@@ -28,10 +29,28 @@ public class PersonFilter implements IClusterable {
 
 	private String lastname;
 
+	 private Date dateFrom;
+	 private Date dateTo;
 
 	public PersonFilter() {
 		super();
 	}
+	 public Date getDateFrom()
+	 {
+	 return dateFrom;
+	 }
+	 public void setDateFrom(Date dateFrom)
+	 {
+	 this.dateFrom = dateFrom;
+	 }
+	 public Date getDateTo()
+	 {
+	 return dateTo;
+	 }
+	 public void setDateTo(Date dateTo)
+	 {
+	 this.dateTo = dateTo;
+	 }
 
 	public String getFirstname() {
 		return firstname;

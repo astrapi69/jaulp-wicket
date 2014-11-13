@@ -31,6 +31,16 @@
 			<artifactId>jaulp.file</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.time</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
 	</dependencies>
 
 

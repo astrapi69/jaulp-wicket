@@ -94,6 +94,7 @@
 		<!-- APACHE COMMONS LIBRARIES versions -->
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
+		<guava.version>18.0</guava.version>
 		<commons-lang3.version>3.3.1</commons-lang3.version>
 		<!-- MAVEN PLUGIN versions -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
@@ -267,6 +268,12 @@
 				<artifactId>jaulp.file</artifactId>
 				<version>${jaulp.file.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.time</artifactId>
+				<version>${jaulp.time.version}</version>
+			</dependency>
 			<!-- EXTERNAL LIBRARIES DEPENDENCIES -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -284,6 +291,11 @@
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
 				<version>${commons-collections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
 			</dependency>
 			<!-- CAPTCHA DEPENDENCIES -->
 			<dependency>

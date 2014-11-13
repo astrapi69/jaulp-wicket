@@ -15,6 +15,7 @@
  */
 package org.jaulp.wicket.data.provider;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class AbstractSortableDataProvider<T, S> extends SortableDataProvider<T, 
 	 * @param data the data
 	 */
 	public AbstractSortableDataProvider(){
-		super();
+		this(new ArrayList<T>());
 	}
 
 	/**

@@ -13,23 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jaulp.wicket.data.provider.examples;
+package org.jaulp.wicket.data.provider.examples.pages.listview;
 
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
-import org.jaulp.wicket.data.provider.examples.data.view.SortableDataViewPanel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.data.provider.examples.listview.ListViewPanel;
 
-/**
- * Homepage
- */
-public class HomePage extends WebPage {
+
+public class ListViewPage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 
-	// TODO Add any page properties or variables here
-
-	public HomePage(){
+	public ListViewPage(){
 		super();
 
         initLayout();
@@ -41,7 +36,7 @@ public class HomePage extends WebPage {
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public HomePage(final PageParameters parameters) {
+    public ListViewPage(final PageParameters parameters) {
     	super(parameters);
 
         initLayout();
@@ -50,11 +45,6 @@ public class HomePage extends WebPage {
     }
 
 	private void initLayout() {
-
-        // Add sortable DataView...
-        SortableDataViewPanel sortableDataViewPanel = new SortableDataViewPanel("sortableDataViewPanel");
-        add(sortableDataViewPanel);
-
         // Add the ListView...
         add(new ListViewPanel("listViewPanel"));
 	}
