@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sourceforge.jaulp.lang.AnnotationUtils;
 
-import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -36,8 +35,6 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.StringHeaderItem;
-import org.apache.wicket.protocol.http.IRequestLogger;
-import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.RequestUtils;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.https.RequireHttps;
@@ -285,8 +282,9 @@ public final class WicketComponentUtils {
 	 * Gets the context path from the given WebApplication.
 	 * 
 	 * @param application
-	 *            the appl
+	 *            the WebApplication
 	 * @return the context path
+	 * @deprecated use instead {@link ApplicationUtils#getContextPath(WebApplication)} 
 	 */
 	public static String getContextPath(final WebApplication application) {
 		String contextPath = application.getServletContext().getContextPath();
@@ -337,15 +335,6 @@ public final class WicketComponentUtils {
 	}
 
 	/**
-	 * Gets the request logger of the current WebApplication.
-	 * 
-	 * @return the request logger
-	 */
-	public static IRequestLogger getRequestLogger() {
-		return getRequestLogger(null);
-	}
-
-	/**
 	 * Gets the real path corresponding to the given virtual path from the given
 	 * WebApplication. This method gets decorated the method of the
 	 * {@link javax.servlet.ServletContext#getRealPath(String)}.
@@ -355,8 +344,8 @@ public final class WicketComponentUtils {
 	 * @param path
 	 *            the virtual path to be translated to a real path
 	 * @return the real path, or null if the translation cannot be performed
+	 * @deprecated use instead {@link ApplicationUtils#getRealPath(WebApplication, String)} 
 	 */
-
 	public static String getRealPath(final WebApplication application,
 			String path) {
 		String realPath = application.getServletContext().getRealPath(path);
@@ -374,6 +363,7 @@ public final class WicketComponentUtils {
 	 * @param contentType the content type
 	 * @return the resource stream
 	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @deprecated use instead {@link ApplicationUtils#getResourceStream(WebApplication, String, String)} 
 	 */
 	public static IResourceStream getResourceStream(final WebApplication application,
 			final String path, final String contentType) throws IOException {
@@ -392,24 +382,6 @@ public final class WicketComponentUtils {
 				return data;
 			}    		
     	};
-	}
-
-	/**
-	 * Gets the request logger from the given WebApplication.
-	 * 
-	 * @param webApplication
-	 *            the web application
-	 * @return the request logger
-	 */
-	public static IRequestLogger getRequestLogger(WebApplication webApplication) {
-		if (webApplication == null) {
-			webApplication = (WebApplication) Application.get();
-		}
-		IRequestLogger requestLogger = webApplication.getRequestLogger();
-		if (requestLogger == null) {
-			requestLogger = new RequestLogger();
-		}
-		return requestLogger;
 	}
 
 	/**
