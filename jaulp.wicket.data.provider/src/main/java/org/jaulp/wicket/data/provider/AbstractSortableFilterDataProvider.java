@@ -49,8 +49,8 @@ public abstract class AbstractSortableFilterDataProvider< T extends Serializable
     /** The filter. */
     private F filterState;
 
-    /** The data for this DataProvider. */
-    private final List< T > data;
+    /** The data. */
+    private List< T > data;
 
     /** The sort state. */
 	private final SingleSortState<S> sortState = new SingleSortState<S>();
@@ -68,7 +68,7 @@ public abstract class AbstractSortableFilterDataProvider< T extends Serializable
      * @param data the data
      */
     public AbstractSortableFilterDataProvider( final List< T > data ) {
-    	this.data = data;
+    	setData(data);
     }
 
 	/**
@@ -211,8 +211,7 @@ public abstract class AbstractSortableFilterDataProvider< T extends Serializable
      * @param data the new data
      */
     protected void setData( final List< T > data ) {
-        this.data.clear();
-        this.data.addAll(data);
+        this.data = data;
     }
 
     /**

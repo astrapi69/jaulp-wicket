@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
-import org.jaulp.wicket.data.provider.SortableFilterDataProvider;
+import org.jaulp.wicket.data.provider.AbstractSortFilterDataProvider;
 
 public class SortableFilterPersonDataProvider extends
-		SortableFilterDataProvider<Person, String, PersonFilter> {
+		AbstractSortFilterDataProvider<Person, String, PersonFilter> {
 
 	/**
 	 * The serialVersionUID
