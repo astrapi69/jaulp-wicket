@@ -30,15 +30,15 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 /**
- * The Class AbstractDataProvider is an abstract generic implementation for the
+ * The Class AbstractSortableFilterDataProvider is an abstract generic implementation for the
  * ISortableDataProvider and the IFilterStateLocator interface.
  *
  * @author Asterios Raptis
- * @param <M> the generic type for the Model.
+ * @param <T> the generic type of the Model for the DataProvider.
  * @param <S> the generic type for the SortState. 
  * @param <F> the generic type for the Filter.
  */
-public abstract class SortableFilterDataProvider< T extends Serializable, S, F extends Serializable >
+public abstract class AbstractSortableFilterDataProvider< T extends Serializable, S, F extends Serializable >
         implements ISortableDataProvider< T, S >, IFilterStateLocator< F > {
 
     /**
@@ -49,16 +49,16 @@ public abstract class SortableFilterDataProvider< T extends Serializable, S, F e
     /** The filter. */
     private F filterState;
 
-    /** The data. */
-    private List< T > data;
+    /** The data for this DataProvider. */
+    private final List< T > data;
 
     /** The sort state. */
-	private final SingleSortState<S> state = new SingleSortState<S>();
+	private final SingleSortState<S> sortState = new SingleSortState<S>();
 
     /**
      * Default constructor.
      */
-    public SortableFilterDataProvider() {
+    public AbstractSortableFilterDataProvider() {
         this(new ArrayList<T>());
     }
 
@@ -67,8 +67,8 @@ public abstract class SortableFilterDataProvider< T extends Serializable, S, F e
      *
      * @param data the data
      */
-    public SortableFilterDataProvider( final List< T > data ) {
-    	setData(data);
+    public AbstractSortableFilterDataProvider( final List< T > data ) {
+    	this.data = data;
     }
 
 	/**
@@ -79,7 +79,7 @@ public abstract class SortableFilterDataProvider< T extends Serializable, S, F e
 	 */
 	public final ISortState<S> getSortState()
 	{
-		return state;
+		return sortState;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public abstract class SortableFilterDataProvider< T extends Serializable, S, F e
 	 */
 	public SortParam<S> getSort()
 	{
-		return state.getSort();
+		return sortState.getSort();
 	}
 
 	/**
@@ -99,7 +99,7 @@ public abstract class SortableFilterDataProvider< T extends Serializable, S, F e
 	 */
 	public void setSort(final SortParam<S> param)
 	{
-		state.setSort(param);
+		sortState.setSort(param);
 	}
 
 	/**
@@ -110,7 +110,7 @@ public abstract class SortableFilterDataProvider< T extends Serializable, S, F e
 	 */
 	public void setSort(final S property, final SortOrder order)
 	{
-		state.setPropertySortOrder(property, order);
+		sortState.setPropertySortOrder(property, order);
 	}
     
     /**
@@ -211,7 +211,8 @@ public abstract class SortableFilterDataProvider< T extends Serializable, S, F e
      * @param data the new data
      */
     protected void setData( final List< T > data ) {
-        this.data = data;
+        this.data.clear();
+        this.data.addAll(data);
     }
 
     /**
