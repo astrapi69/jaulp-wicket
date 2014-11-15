@@ -10,6 +10,7 @@ import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -20,6 +21,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.settings.IJavaScriptLibrarySettings;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.time.Duration;
 import org.jaulp.wicket.base.GenericBasePage;
@@ -309,6 +311,10 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
+		IJavaScriptLibrarySettings javaScriptSettings =          
+                getApplication().getJavaScriptLibrarySettings();
+		response.render(JavaScriptHeaderItem.
+				forReference(javaScriptSettings.getJQueryReference()));
 		Bootstrap.renderHead(response);
 		WicketComponentUtils.renderHeaderResponse(response,
 				ApplicationBasePage.class);
