@@ -69,7 +69,4 @@ public class CheckboxImageListViewPanel extends BasePanel {
 		listView.setReuseItems(true);
 		add(listView);
 	}
-	
-	
-
 }
