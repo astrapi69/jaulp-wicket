@@ -12,7 +12,7 @@ import org.odlabs.wiquery.core.javascript.JsUtils;
 
 public class AddJsQueryBehavior extends Behavior {
 	/** The Constant logger. */
-	private static final Logger LOGGER = Logger
+	protected static final Logger LOGGER = Logger
 			.getLogger(AddJsQueryBehavior.class.getName());
 
 	/** The Constant serialVersionUID. */
@@ -30,7 +30,6 @@ public class AddJsQueryBehavior extends Behavior {
 
 	public void renderHead(Component component, IHeaderResponse response) {
 		CharSequence renderedStatement = createRenderedStatement(component);
-		LOGGER.info(renderedStatement);
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
 	
