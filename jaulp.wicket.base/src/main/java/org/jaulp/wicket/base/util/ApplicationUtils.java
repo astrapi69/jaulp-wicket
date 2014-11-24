@@ -3,10 +3,16 @@ package org.jaulp.wicket.base.util;
 import java.io.IOException;
 
 import org.apache.wicket.Application;
+import org.apache.wicket.javascript.DefaultJavaScriptCompressor;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
+import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.protocol.http.IRequestLogger;
 import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.settings.IExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -140,10 +146,81 @@ public final class ApplicationUtils {
 	/**
 	 * Gets the default jquery reference from the current application.
 	 *
-	 * @param application the application
 	 * @return the default jquery reference
 	 */
 	public static ResourceReference getJQueryReference() {
 		return getJQueryReference(Application.get());
+	}
+	
+	/**
+	 * Sets an {@link IHeaderResponseDecorator} for the given application to use to decorate
+	 * header responses.
+	 *
+	 * @param application the application
+	 * @param footerFilterName the footer filter name
+	 */
+	public static void setHeaderResponseDecorator(final Application application, final String footerFilterName) {
+		application.setHeaderResponseDecorator(new IHeaderResponseDecorator() {
+			public IHeaderResponse decorate(IHeaderResponse response) {
+				return new JavaScriptFilteredIntoFooterHeaderResponse(response,
+						footerFilterName);
+			}
+		});
+	}
+
+	/**
+	 * Sets the debug settings for development mode for the given application.
+	 *
+	 * @param application the new debug settings for development
+	 */
+	public static void setDebugSettingsForDevelopment(final Application application) {
+		application.getDebugSettings().setComponentUseCheck(true);
+		application.getDebugSettings().setOutputMarkupContainerClassName(true);
+		application.getDebugSettings().setLinePreciseReportingOnAddComponentEnabled(true);
+		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(true);
+		application.getDebugSettings().setAjaxDebugModeEnabled(true);
+		application.getDebugSettings().setDevelopmentUtilitiesEnabled(true);
+		application.getDebugSettings().setOutputComponentPath(true);
+	}
+	
+	/**
+	 * Sets the settings for deployment mode for the given application.
+	 *
+	 * @param application the new settings for deployment
+	 */
+	public static void setSettingsForDeployment(final Application application) {
+		// The resources are polled every second. This are properties, html,
+		// css, js files.
+		application.getResourceSettings().setResourcePollFrequency(null);
+		application.getDebugSettings().setComponentUseCheck(false);
+		application.getDebugSettings().setAjaxDebugModeEnabled(false);
+		application.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
+		application.getMarkupSettings().setStripComments(true);
+		application.getResourceSettings().setJavaScriptCompressor(new DefaultJavaScriptCompressor());
+	}
+	
+	/**
+	 * Sets the deployment exception settings for the given application.
+	 *
+	 * @param application the application
+	 * @param applicationRequestCycleListener the application request cycle listener
+	 */
+	public static void setExceptionSettingsForDeployment(final Application application, final AbstractRequestCycleListener applicationRequestCycleListener) {
+		// show the exception page from us...
+		application.getExceptionSettings().setUnexpectedExceptionDisplay(
+				IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+		// In case of unhandled exception redirect it to a custom page
+		application.getRequestCycleListeners().add(applicationRequestCycleListener);
+	}
+
+	/**
+	 * Sets the exception settings for development mode for the given application.
+	 *
+	 * @param application the new exception settings for development
+	 */
+	public static void setExceptionSettingsForDevelopment(final Application application) {
+		// show the exception page from wicket...
+		application.getExceptionSettings().setUnexpectedExceptionDisplay(
+				IExceptionSettings.SHOW_EXCEPTION_PAGE);
 	}
 }
