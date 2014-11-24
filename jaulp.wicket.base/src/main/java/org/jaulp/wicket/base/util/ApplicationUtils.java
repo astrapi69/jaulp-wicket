@@ -6,6 +6,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.IRequestLogger;
 import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -124,5 +125,25 @@ public final class ApplicationUtils {
 				return data;
 			}    		
     	};
+	}
+	
+	/**
+	 * Gets the default jquery reference from the given application.
+	 *
+	 * @param application the application
+	 * @return the default jquery reference
+	 */
+	public static ResourceReference getJQueryReference(final Application application) {
+		return application.getJavaScriptLibrarySettings().getJQueryReference();
+	}
+	
+	/**
+	 * Gets the default jquery reference from the current application.
+	 *
+	 * @param application the application
+	 * @return the default jquery reference
+	 */
+	public static ResourceReference getJQueryReference() {
+		return getJQueryReference(Application.get());
 	}
 }
