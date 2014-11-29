@@ -22,6 +22,7 @@ import org.jaulp.wicket.data.provider.examples.pages.datatable.DataTablePage;
 import org.jaulp.wicket.data.provider.examples.pages.datatable.DefaultDataTablePage;
 import org.jaulp.wicket.data.provider.examples.pages.dataview.DataViewPage;
 import org.jaulp.wicket.data.provider.examples.pages.listview.ListViewPage;
+import org.jaulp.wicket.data.provider.examples.pages.refreshingview.RefreshingViewPage;
 
 /**
  * Homepage
@@ -79,6 +80,13 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = 1L;
 			public void onClick() {
 				setResponsePage(DefaultDataTablePage.class);				
+			}
+		});
+		
+		add(new Link<Void>("refreshingViewLink") {
+			private static final long serialVersionUID = 1L;
+			public void onClick() {
+				setResponsePage(RefreshingViewPage.class);				
 			}
 		});
 		

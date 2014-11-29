@@ -39,7 +39,7 @@ public class ListViewPanel extends Panel {
 	public ListViewPanel(String id) {
 		super(id);
 		List<Person> persons =  getPersons();
-		ListView<Person> listView = new ListView<Person>("listView", persons){
+		ListView<Person> listView = new ListView<Person>("listView", persons) {
 
 			private static final long serialVersionUID = 1L;
 

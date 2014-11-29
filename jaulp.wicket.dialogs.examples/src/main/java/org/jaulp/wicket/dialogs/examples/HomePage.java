@@ -20,17 +20,19 @@ import java.util.List;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.core.util.lang.WicketObjects;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.core.util.lang.WicketObjects;
 import org.jaulp.wicket.dialogs.ajax.modal.BaseModalWindow;
+import org.jaulp.wicket.dialogs.examples.panel.ModalDialogWithStylePanel;
 
 /**
  * Homepage.
@@ -81,6 +83,7 @@ public class HomePage extends WebPage {
 			}
 
 		};
+		modalWindow.setCssClassName(ModalWindow.CSS_CLASS_GRAY);
 		modalWindow.setResizable(false);
 		add(modalWindow);
 
@@ -138,5 +141,8 @@ public class HomePage extends WebPage {
 
         };
         add(showUploadPage);
+        
+        add(new ModalDialogWithStylePanel("modalDialogWithStylePanel"));
+   
 	}
 }
