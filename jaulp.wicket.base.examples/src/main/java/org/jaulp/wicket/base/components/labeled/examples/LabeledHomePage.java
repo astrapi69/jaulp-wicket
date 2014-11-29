@@ -29,9 +29,11 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePage;
+
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledDateTextFieldPanel;
+import de.alpharogroup.wicket.components.labeled.textfield.LabeledDateTimeFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "jquery-1.5.2.js", resourceType = "js", index=1),
@@ -49,6 +51,7 @@ public class LabeledHomePage extends BasePage {
 	person.setAbout("");
 	person.setMarried(false);
 	person.setDateofbirth(new Date());
+	person.setDateofMarriage(new Date());
 
 
 
@@ -70,9 +73,12 @@ public class LabeledHomePage extends BasePage {
 	LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<Member>("married", cpm, Model.of("Married:"));
 	
 	form.add(married);
-	
+
 	LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>("dateofbirth", cpm, Model.of("Date of birth:"));
 	form.add(dateofbirth);
+
+	LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>("dateofMarriage", cpm, Model.of("Date of marriage:"));
+	form.add(dateofMarriage);
 	
 //	LabeledAutoCompleteTextfieldPanel<Member> actf = new LabeledAutoCompleteTextfieldPanel<Member>("", cpm, Model.of("city")) {
 //
