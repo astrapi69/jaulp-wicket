@@ -37,7 +37,7 @@ public abstract class LabeledFormComponentPanel<T> extends
 	private static final long serialVersionUID = 1L;
 
 	/** The Label component. */
-	protected Label label;
+	protected Component label;
 
 	/** The ComponentFeedbackPanel for validation information. */
 	protected ComponentFeedbackPanel feedback;
@@ -69,7 +69,7 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 *
 	 * @return the label component
 	 */
-	public Label getLabelComponent() {
+	public Component getLabelComponent() {
 		return label;
 	}
 
@@ -105,9 +105,10 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<String> model) {
+	protected Component newLabel(String id, String forId, IModel<String> model) {
 		Label label = new Label(id, model);
 		label.add(new AttributeAppender("for", Model.of(forId), " "));
+		label.setOutputMarkupId(true);
 		return label;
 	}
 }
