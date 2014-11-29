@@ -24,7 +24,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class LinkBehavior adds the ability to a component to act as a link, </br> i.e.
  * like a tablerow tag( &lt;tr&gt; ) or a list item (&lt;li&gt;) the ability to act as a link. </br>For instance
