@@ -7,6 +7,8 @@ import org.apache.wicket.javascript.DefaultJavaScriptCompressor;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
+import org.apache.wicket.markup.html.IPackageResourceGuard;
+import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.IRequestLogger;
 import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -222,5 +224,23 @@ public final class ApplicationUtils {
 		// show the exception page from wicket...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
 				IExceptionSettings.SHOW_EXCEPTION_PAGE);
+	}
+
+
+	/**
+	 * Adds the given file patterns to package resource guard from the given application.
+	 *
+	 * @param application the application
+	 * @param patterns the patterns
+	 */
+	public static void addFilePatternsToPackageResourceGuard(final Application application, String... patterns) {
+		IPackageResourceGuard packageResourceGuard = application.getResourceSettings()
+				.getPackageResourceGuard();
+		if (packageResourceGuard instanceof SecurePackageResourceGuard) {
+			SecurePackageResourceGuard guard = (SecurePackageResourceGuard) packageResourceGuard;
+			for (String pattern : patterns) {
+				guard.addPattern(pattern);
+			}
+		}
 	}
 }
