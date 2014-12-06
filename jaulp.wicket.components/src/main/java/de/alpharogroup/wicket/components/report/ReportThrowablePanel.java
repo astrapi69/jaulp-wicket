@@ -3,9 +3,13 @@ package de.alpharogroup.wicket.components.report;
 import net.sourceforge.jaulp.exception.ExceptionUtils;
 
 import org.apache.log4j.Logger;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.HiddenField;
@@ -13,9 +17,11 @@ import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+
 
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 
@@ -79,10 +85,52 @@ public abstract class ReportThrowablePanel extends Panel {
 
 		form.add(description = newDescription("description", cpm));
 
+		final MultiLineLabel toReplace = new MultiLineLabel("toReplace", Model.of(""));
+		toReplace.setOutputMarkupId(true);
+		form.add(toReplace);
+		AjaxLink<Void> link = new AjaxLink<Void>("link")
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick(AjaxRequestTarget target)
+			{
+				toReplace.setDefaultModelObject(reportThrowableModel.getStackTrace());
+				Effects.replace(target, toReplace);
+				
+			}
+		};
+		form.add(link);		
+
 		form.add(submitButton = newSubmitButton("submitButton"));
 
 		form.add(stackTrace = newHiddenField("stackTrace"));
 		LOGGER.error(reportThrowableModel.getStackTrace());
+	}
+
+	private static class Effects {
+
+		private static void replace(AjaxRequestTarget target, Component component) {
+			component.add(new DisplayNoneBehavior());
+
+//			target.prependJavaScript("notify|jQuery('#"+component.getMarkupId()+"').slideUp(1000, notify);");
+			target.add(component);
+			target.appendJavaScript("jQuery('#"+component.getMarkupId()+"').slideDown(100);");
+		}
+	}
+	private static class DisplayNoneBehavior extends AttributeModifier {
+		private static final long serialVersionUID = 1L;
+
+		private DisplayNoneBehavior()
+		{
+			super("style", Model.of("display: none"));
+		}
+
+		@Override
+		public boolean isTemporary(Component component)
+		{
+			return true;
+		}
 	}
 
 	/**

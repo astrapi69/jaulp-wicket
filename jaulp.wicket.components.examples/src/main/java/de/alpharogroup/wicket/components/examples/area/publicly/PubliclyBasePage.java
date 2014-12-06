@@ -37,6 +37,7 @@ import de.alpharogroup.wicket.components.examples.captcha.ReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.captcha.SslReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.checkboxes.CheckboxesPage;
 import de.alpharogroup.wicket.components.examples.deregistration.DeregistrationPage;
+import de.alpharogroup.wicket.components.examples.exceptions.ExceptionPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
@@ -199,6 +200,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
     	final IModel<String> buttonsModel = ResourceModelFactory.newResourceModel("global.menu.buttons.label", this);
     	final IModel<String> checkboxesModel = ResourceModelFactory.newResourceModel("global.menu.checkboxes.label", this);
     	final IModel<String> deregistrationModel = ResourceModelFactory.newResourceModel("global.menu.deregistration.label", this);
+    	final IModel<String> exceptionModel = ResourceModelFactory.newResourceModel("global.menu.exception.label", this);
     	   return new NavbarDropDownButton(featuresMainModel) {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -230,6 +232,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
                 		CheckboxesPage.class, checkboxesModel).setIconType(IconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
                 		DeregistrationPage.class, deregistrationModel).setIconType(IconType.book));
+                subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(
+                		ExceptionPage.class, exceptionModel).setIconType(IconType.fire));
                 
                 return subMenu;
             }

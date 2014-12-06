@@ -22,6 +22,10 @@ public class ExceptionPage extends PubliclyBasePage<Exception> {
 		this.exception = exception;
 	}
 
+	public ExceptionPage() {
+		this(new IllegalArgumentException("exception example..."));
+	}
+
 	@Override
 	public Panel getContainerPanel() {
 
