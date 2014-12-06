@@ -12,7 +12,14 @@ import org.apache.wicket.protocol.https.HttpsConfig;
 import org.apache.wicket.protocol.https.HttpsMapper;
 import org.jaulp.wicket.PackageResourceReferences;
 
+import de.agilecoders.wicket.core.settings.ThemeProvider;
+import de.agilecoders.wicket.themes.markup.html.bootstrap3.Bootstrap3Theme;
+import de.agilecoders.wicket.themes.markup.html.google.GoogleTheme;
+import de.agilecoders.wicket.themes.markup.html.metro.MetroTheme;
+import de.agilecoders.wicket.themes.markup.html.wicket.WicketTheme;
+import de.agilecoders.wicket.themes.settings.BootswatchThemeProvider;
 import de.alpharogroup.wicket.bootstrap2.application.WicketBootstrapApplication;
+import de.alpharogroup.wicket.bootstrap2.themes.CustomTheme;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 
 
@@ -70,6 +77,10 @@ public class WicketApplication extends WicketBootstrapApplication
 		// set up ports for http and https...
 		setRootRequestMapper(new HttpsMapper(getRootRequestMapper(),
 				new HttpsConfig(8080, 8443)));	
+	}
+
+	protected void configureBootstrap() {		
+		configureBootstrap(new CustomTheme());
 	}
 
 	/**
