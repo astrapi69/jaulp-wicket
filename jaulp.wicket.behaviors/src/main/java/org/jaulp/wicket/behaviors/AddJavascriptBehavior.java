@@ -52,12 +52,8 @@ public class AddJavascriptBehavior extends Behavior {
 		this.id = id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.behavior.Behavior#renderHead(org.apache.wicket.Component
-	 * , org.apache.wicket.markup.head.IHeaderResponse)
+	/**
+	 * {@inheritDoc}
 	 */
 	public void renderHead(Component component, IHeaderResponse response) {
 		response.render(JavaScriptHeaderItem
