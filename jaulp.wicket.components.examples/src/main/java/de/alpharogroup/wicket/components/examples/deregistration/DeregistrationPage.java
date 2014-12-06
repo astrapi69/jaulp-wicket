@@ -1,4 +1,5 @@
 package de.alpharogroup.wicket.components.examples.deregistration;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -26,9 +27,9 @@ public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel> {
 			@Override
 			public void onDeregistration() {
 				// TODO action...
-				IModel m = getModel();
+				IModel<DeregistrationModel> m = getModel();
 				Object mo = getModelObject();
-				System.out.println(mo);
+				System.out.println(mo + m.toString());
 			}
 
 			@Override

@@ -145,6 +145,7 @@ public abstract class ReportThrowablePanel extends Panel {
 
 	/**
 	 * Hook method for submitting the error when the submit button is clicked.
+	 * Implement here everything what to do when the user submits the form.
 	 */
 	protected abstract void onSubmitError();
 
