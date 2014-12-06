@@ -2,11 +2,14 @@ package de.alpharogroup.wicket.components.examples.labeled;
 
 import java.util.Date;
 
+import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePanel;
@@ -62,7 +65,17 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 		form.add(dateofbirth);
 
 
-		LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>("dateofMarriage", cpm, Model.of("Date of marriage:"));
+		LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>("dateofMarriage", cpm, Model.of("Date of marriage:")){
+			private static final long serialVersionUID = 1L;
+			@Override
+			protected DateTimeField newDateTimeField(String id,
+					IModel<Member> model) {
+				PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());		
+				DateTimeField dateTextField = new DateTimeField(id, textFieldModel );
+				return dateTextField;
+			}
+			
+		};
 		form.add(dateofMarriage);
 
 		// Create submit button for the form
