@@ -15,11 +15,17 @@
  */
 package org.jaulp.wicket.behaviors.examples;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.wicket.base.util.ApplicationUtils;
 import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
 import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
@@ -60,7 +66,8 @@ public class HomePage extends WebPage {
 			}
     		
     	};
-    	 add(new AddJavascriptBehavior("alert('foo bar');", "xy"));
+    	add(new AddJsResourceReferenceBehavior(this.getClass(), "functions.js", "func"));
+    	 add(new AddJavascriptBehavior("alertnow();", "xy"));
 
     	add(new Link<String>("focusRequestExamplePage") {
 
@@ -77,7 +84,35 @@ public class HomePage extends WebPage {
 
     	add(button);
     	add(new FaviconBehavior());
-    	add(new AddJsResourceReferenceBehavior(this.getClass(), "functions.js", "func"));
+
+    	AjaxLink<Void> link01 = new AjaxLink<Void>("link01") {
+			private static final long serialVersionUID = 1L;
+
+			public void onClick(AjaxRequestTarget target) {
+		 				 		
+			}
+		};
+		link01.add(new AttributeAppender(
+				"class", "navbarlink"));
+		add(link01);
+		AjaxLink<Void> link02 = new AjaxLink<Void>("link02") {
+			private static final long serialVersionUID = 1L;
+
+			public void onClick(AjaxRequestTarget target) {
+		 				 		
+			}
+		};
+		add(link02);
     	
     }
+
+	@Override
+	public void renderHead(IHeaderResponse response) {
+		super.renderHead(response);
+		response.render(JavaScriptHeaderItem
+				.forReference(ApplicationUtils.getJQueryReference()));
+		
+	}
+    
+    
 }
