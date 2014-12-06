@@ -23,6 +23,8 @@ import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
 /**
  * The LabeledFormComponentPanel is base class for labeled components.
  * 
@@ -86,10 +88,7 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 */
 	protected ComponentFeedbackPanel newComponentFeedbackPanel(String id,
 			Component filter) {
-		ComponentFeedbackPanel feedbackPanel = new ComponentFeedbackPanel(id,
-				filter);
-		feedbackPanel.setOutputMarkupId(true);
-		return feedbackPanel;
+		return ComponentFactory.newComponentFeedbackPanel(id, filter);
 	}
 
 	/**
@@ -106,9 +105,6 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 * @return the label
 	 */
 	protected Component newLabel(String id, String forId, IModel<String> model) {
-		Label label = new Label(id, model);
-		label.add(new AttributeAppender("for", Model.of(forId), " "));
-		label.setOutputMarkupId(true);
-		return label;
+		return ComponentFactory.newLabel(id, forId, model);
 	}
 }

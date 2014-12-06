@@ -1,11 +1,11 @@
 package de.alpharogroup.wicket.components.labeled.label;
 
-import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * Convenience class for labeled Label for form uneditable components.
@@ -60,9 +60,8 @@ public class LabeledLabelPanel<T> extends Panel {
 		add(label = newLabel("label", markupId, labelModel));
 	}
 
-	protected Label newLabel(String string, PropertyModel<T> viewableLabelModel) {
-		Label label = new Label(string, viewableLabelModel);
-		return label;
+	protected Label newLabel(String id, PropertyModel<T> viewableLabelModel) {
+		return ComponentFactory.newLabel(id, viewableLabelModel);
 	}
 
 	/**
@@ -79,8 +78,6 @@ public class LabeledLabelPanel<T> extends Panel {
 	 * @return the label
 	 */
 	protected Label newLabel(String id, String forId, IModel<String> model) {
-		Label label = new Label(id, model);
-		label.add(new AttributeAppender("for", Model.of(forId), " "));
-		return label;
+		return ComponentFactory.newLabel(id, forId, model);
 	}
 }
