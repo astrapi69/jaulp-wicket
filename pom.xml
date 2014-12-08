@@ -97,7 +97,7 @@
 		<guava.version>18.0</guava.version>
 		<commons-lang3.version>3.3.1</commons-lang3.version>
 		<!-- MAVEN PLUGIN versions -->
-		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
 		<maven-compiler-plugin.source.version>1.7</maven-compiler-plugin.source.version>
 		<maven-compiler-plugin.target.version>1.7</maven-compiler-plugin.target.version>
 		<maven-compiler-plugin.compilerVersion>1.7</maven-compiler-plugin.compilerVersion>

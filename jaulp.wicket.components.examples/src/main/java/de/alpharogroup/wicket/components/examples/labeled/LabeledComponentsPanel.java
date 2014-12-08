@@ -24,7 +24,7 @@ import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel
 
 public class LabeledComponentsPanel extends BasePanel<Object> {
 	private static final long serialVersionUID = 1L;
-
+	private FeedbackPanel feedbackPanel;
 	public LabeledComponentsPanel(String id) {
 		super(id);
 		final Member person = new Member();
@@ -77,7 +77,7 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 			
 		};
 		form.add(dateofMarriage);
-
+		
 		// Create submit button for the form
 		final Button submitButton = new Button("submitButton") {
 			/**
@@ -91,8 +91,9 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 			}
 		};
 
-		form.add(submitButton);
+		form.add(submitButton);		
 		
-		add(new FeedbackPanel("feedbackpanel"));
+		add(feedbackPanel=new FeedbackPanel("feedbackpanel"));
+		feedbackPanel.setOutputMarkupId(true);
 	}
 }
