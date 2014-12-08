@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.https.HttpsConfig;
 import org.apache.wicket.protocol.https.HttpsMapper;
 import org.jaulp.wicket.PackageResourceReferences;
+import org.jaulp.wicket.base.util.ApplicationUtils;
 
 import de.alpharogroup.wicket.bootstrap2.application.WicketBootstrapApplication;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
@@ -69,7 +70,9 @@ public class WicketApplication extends WicketBootstrapApplication
 		});
 		// set up ports for http and https...
 		setRootRequestMapper(new HttpsMapper(getRootRequestMapper(),
-				new HttpsConfig(8080, 8443)));	
+				new HttpsConfig(8080, 8443)));
+		
+		ApplicationUtils.setExceptionSettingsForDeployment(this, new ApplicationRequestCycleListener());
 	}
 
 	/**
