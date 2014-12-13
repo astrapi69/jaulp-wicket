@@ -2,6 +2,8 @@ package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
 import java.util.List;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -37,18 +39,12 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	private int currentTab = -1;
 
 	private transient VisibilityCache visibilityCache;
-	
+	@Getter
 	private WebMarkupContainer tabsUlContainer;
-	
-	public WebMarkupContainer getTabsUlContainer() {
-		return tabsUlContainer;
-	}
-
-	public WebMarkupContainer getTabsContainer() {
-		return tabsContainer;
-	}
+	@Getter
 	private WebMarkupContainer tabsContainer;
-
+	@Getter
+	private Loop tabsLoop;
 
 	/**
 	 * Constructor
@@ -73,15 +69,13 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 * @param model
 	 *            model holding the index of the selected tab
 	 */
-	public AjaxCloseableTabbedPanel(final String id, final List<T> tabs, IModel<Integer> model)
-	{
+	public AjaxCloseableTabbedPanel(final String id, final List<T> tabs, IModel<Integer> model)	{
 		super(id, model);
 		setOutputMarkupId(true);
 		setVersioned(false);
 		this.tabs = Args.notNull(tabs, "tabs");
 
-		final IModel<Integer> tabCount = new AbstractReadOnlyModel<Integer>()
-		{
+		final IModel<Integer> tabCount = new AbstractReadOnlyModel<Integer>() {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -96,9 +90,14 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 		tabsUlContainer = newTabsContainer("tabs-ul-container");
 		tabsContainer.add(tabsUlContainer);
-
 		// add the loop used to generate tab names
-		tabsUlContainer.add(new Loop("tabs", tabCount)
+		tabsUlContainer.add(tabsLoop = newTabsLoop("tabs", tabCount));
+
+		add(newPanel());
+	}	
+	
+	protected Loop newTabsLoop(String id, final IModel<Integer> model) {
+		Loop tabsLoop = new Loop(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -126,9 +125,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 			{
 				return newTabContainer(iteration);
 			}
-		});
-
-		add(newPanel());
+		};
+		return tabsLoop;
 	}
 
 	/**

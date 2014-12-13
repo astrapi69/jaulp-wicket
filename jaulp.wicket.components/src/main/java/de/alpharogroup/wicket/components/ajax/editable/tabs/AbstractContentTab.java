@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
+import lombok.Getter;
+
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
@@ -18,6 +20,7 @@ public abstract class AbstractContentTab<T> extends CloseableTab {
 	private static final long serialVersionUID = 1L;
 
 	/** The content. */
+	@Getter
 	private final IModel<T> content;
 
 	/**
@@ -32,15 +35,6 @@ public abstract class AbstractContentTab<T> extends CloseableTab {
 	public AbstractContentTab(final IModel<String> title, final IModel<T> content, final IModel<String> closeTitle) {
 		super(title, closeTitle);
 		this.content = content;
-	}
-
-	/**
-	 * Gets the content.
-	 *
-	 * @return the content
-	 */
-	public IModel<T> getContent() {
-		return content;
 	}
 
 	/**

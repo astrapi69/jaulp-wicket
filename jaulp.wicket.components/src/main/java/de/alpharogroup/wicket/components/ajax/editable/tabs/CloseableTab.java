@@ -1,17 +1,21 @@
 package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
 public abstract class CloseableTab implements ICloseableTab {
 	private static final long serialVersionUID = 1L;
 
+
+	/** The title of the tab. */
+	@Getter
 	IModel<String> title;
 	
+	/** The close title. */
+	@Getter
 	IModel<String> closeTitle;
-	public IModel<String> getCloseTitle() {
-		return closeTitle;
-	}
 
 	/**
 	 * Constructor
@@ -23,15 +27,6 @@ public abstract class CloseableTab implements ICloseableTab {
 	{
 		this.title = title;
 		this.closeTitle = closeTitle;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public IModel<String> getTitle()
-	{
-		return title;
 	}
 
 	/**
