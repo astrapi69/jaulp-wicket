@@ -17,7 +17,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	 *
 	 * @return the fragment
 	 */
-	protected Fragment newFragmentView(final String id) {
+	protected Fragment newViewFragment(final String id) {
 		Fragment viewFragment = new Fragment(id, "view", this, getModel());
 		viewFragment.setOutputMarkupPlaceholderTag(true);
 		viewFragment.add(newViewComponent("viewPanel", getModel()));
@@ -31,7 +31,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	 *
 	 * @return the fragment
 	 */
-	protected Fragment newFragmentEdit(final String id) {
+	protected Fragment newEditFragment(final String id) {
 		Fragment editFragment = new Fragment(id, "edit", this,
 				getDefaultModel());
 		editFragment.setOutputMarkupPlaceholderTag(true);

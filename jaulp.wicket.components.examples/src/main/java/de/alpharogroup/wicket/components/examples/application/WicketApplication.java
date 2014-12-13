@@ -13,7 +13,8 @@ import org.apache.wicket.protocol.https.HttpsMapper;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.util.ApplicationUtils;
 
-import de.alpharogroup.wicket.bootstrap2.application.WicketBootstrapApplication;
+import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrapApplication;
+import de.alpharogroup.wicket.bootstrap3.themes.CustomTheme;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 
 
@@ -39,17 +40,11 @@ public class WicketApplication extends WicketBootstrapApplication
 	{
 		return HomePage.class;
 	}
-	
-	/**
-	 * Factory method for set the default theme of the application. This method
-	 * is invoked in the {@code WicketBootstrapApplication.configureBootstrap()}
-	 * method and can be overridden from the derived classes so users can
-	 * provide their own version of the default theme of the application.
-	 *
-	 * @return the default theme as string.
-	 */
-	protected String newDefaultTheme() {
-		return "wicket";
+
+
+	protected void configureBootstrap() {
+		CustomTheme theme = new CustomTheme();
+		configureBootstrap(theme);
 	}
 
 	/**

@@ -21,7 +21,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDown
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuBookmarkablePageLink;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuDivider;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.MenuHeader;
-import de.agilecoders.wicket.core.markup.html.bootstrap.image.IconType;
+import de.agilecoders.wicket.core.markup.html.bootstrap.image.GlyphIconType;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarButton;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarComponents;
@@ -39,6 +39,7 @@ import de.alpharogroup.wicket.components.examples.checkboxes.CheckboxesPage;
 import de.alpharogroup.wicket.components.examples.deregistration.DeregistrationPage;
 import de.alpharogroup.wicket.components.examples.exceptions.ExceptionPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
+import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonPage;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
 import de.alpharogroup.wicket.components.examples.labeled.LabeledComponentsPage;
@@ -172,11 +173,11 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 		IModel<String> overviewModel = ResourceModelFactory.newResourceModel(
 				"global.menu.overview.label", this);
 		// show brand name
-		navbar.brandName(brandNameModel);
+		navbar.setBrandName(brandNameModel);
 		navbar.addComponents(NavbarComponents.transform(
 				Navbar.ComponentPosition.LEFT, new NavbarButton<HomePage>(
 						HomePage.class, overviewModel)
-						.setIconType(IconType.home),										
+						.setIconType(GlyphIconType.home),										
 						newFeaturesDropDownButton(),
 						newLegalDropDownButton(),
 						newNavbarDropDownButton())
@@ -188,6 +189,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 	protected Component newFeaturesDropDownButton() {	
     	final IModel<String> featuresMainModel = ResourceModelFactory.newResourceModel("global.menu.features.label", this);
     	final IModel<String> swapModel = ResourceModelFactory.newResourceModel("global.menu.swap.label", this);
+    	final IModel<String> swapPersonModel = ResourceModelFactory.newResourceModel("global.menu.swap.person.label", this);
     	final IModel<String> tabsModel = ResourceModelFactory.newResourceModel("global.menu.tabs.label", this);
     	final IModel<String> signInModel = ResourceModelFactory.newResourceModel("global.menu.sign.in.label", this);
     	final IModel<String> signUpModel = ResourceModelFactory.newResourceModel("global.menu.sign.up.label", this);
@@ -207,37 +209,41 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
                 subMenu.add(new MenuBookmarkablePageLink<AddressPage>(
-                		AddressPage.class, swapModel).setIconType(IconType.eyeopen));
+                		AddressPage.class, swapModel).setIconType(GlyphIconType.eyeopen));
+                subMenu.add(new MenuBookmarkablePageLink<PersonPage>(
+                		PersonPage.class, swapPersonModel).setIconType(GlyphIconType.eyeopen));
                 subMenu.add(new MenuBookmarkablePageLink<EditableAjaxTabbedPage>(
-                		EditableAjaxTabbedPage.class, tabsModel).setIconType(IconType.picture));
+                		EditableAjaxTabbedPage.class, tabsModel).setIconType(GlyphIconType.picture));
                 subMenu.add(new MenuBookmarkablePageLink<SigninPage>(
-                		SigninPage.class, signInModel).setIconType(IconType.lock));
+                		SigninPage.class, signInModel).setIconType(GlyphIconType.lock));
                 subMenu.add(new MenuBookmarkablePageLink<SignupPage>(
-                		SignupPage.class, signUpModel).setIconType(IconType.zoomin));
+                		SignupPage.class, signUpModel).setIconType(GlyphIconType.zoomin));
                 subMenu.add(new MenuBookmarkablePageLink<PdfDownloadPage>(
-                		PdfDownloadPage.class, downloadFileModel).setIconType(IconType.download));
+                		PdfDownloadPage.class, downloadFileModel).setIconType(GlyphIconType.download));
                 subMenu.add(new MenuBookmarkablePageLink<ReCaptchaPage>(
-                		ReCaptchaPage.class, recaptchaModel).setIconType(IconType.check));
+                		ReCaptchaPage.class, recaptchaModel).setIconType(GlyphIconType.check));
                 subMenu.add(new MenuBookmarkablePageLink<SslReCaptchaPage>(
-                		SslReCaptchaPage.class, sslRecaptchaModel).setIconType(IconType.bullhorn));
+                		SslReCaptchaPage.class, sslRecaptchaModel).setIconType(GlyphIconType.bullhorn));
                 subMenu.add(new MenuBookmarkablePageLink<WicketUrlPage>(
-                		WicketUrlPage.class, wicketUrlsModel).setIconType(IconType.file));
+                		WicketUrlPage.class, wicketUrlsModel).setIconType(GlyphIconType.file));
                 subMenu.add(new MenuBookmarkablePageLink<AlertsPage>(
-                		AlertsPage.class, alertsModel).setIconType(IconType.bell));
+                		AlertsPage.class, alertsModel).setIconType(GlyphIconType.bell));
                 subMenu.add(new MenuBookmarkablePageLink<LabeledComponentsPage>(
-                		LabeledComponentsPage.class, labeledModel).setIconType(IconType.leaf));
+                		LabeledComponentsPage.class, labeledModel).setIconType(GlyphIconType.leaf));
                 subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(
-                		ButtonsPage.class, buttonsModel).setIconType(IconType.book));
+                		ButtonsPage.class, buttonsModel).setIconType(GlyphIconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(
-                		CheckboxesPage.class, checkboxesModel).setIconType(IconType.book));
+                		CheckboxesPage.class, checkboxesModel).setIconType(GlyphIconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
-                		DeregistrationPage.class, deregistrationModel).setIconType(IconType.book));
+                		DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(
-                		ExceptionPage.class, exceptionModel).setIconType(IconType.fire));
+                		ExceptionPage.class, exceptionModel).setIconType(GlyphIconType.fire));
                 
                 return subMenu;
             }
-        }.setIconType(IconType.folderopen).setInverted(true);
+        }.setIconType(GlyphIconType.folderopen)
+//        .setInverted(true)
+        ;
     }
 	
 	protected Component newLegalDropDownButton() {	
@@ -252,15 +258,17 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
             protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
                 final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
                 subMenu.add(new MenuBookmarkablePageLink<ImprintPage>(
-                		ImprintPage.class, imprintModel).setIconType(IconType.eyeopen));
+                		ImprintPage.class, imprintModel).setIconType(GlyphIconType.eyeopen));
                 subMenu.add(new MenuBookmarkablePageLink<TermOfUsePage>(
-                		TermOfUsePage.class, termOfUseModel).setIconType(IconType.picture));
+                		TermOfUsePage.class, termOfUseModel).setIconType(GlyphIconType.picture));
                 subMenu.add(new MenuBookmarkablePageLink<ImprintPage>(
-                		ImprintPage.class, copyrightModel).setIconType(IconType.lock));
+                		ImprintPage.class, copyrightModel).setIconType(GlyphIconType.lock));
                 
                 return subMenu;
             }
-        }.setIconType(IconType.folderopen).setInverted(true);
+        }.setIconType(GlyphIconType.folderopen)
+//        .setInverted(true)
+        ;
     }
 
 	/**
@@ -298,7 +306,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 				}
 				return subMenu;
 			}
-		}.setIconType(IconType.book);
+		}.setIconType(GlyphIconType.book);
 		return dropdown;
 	}
 
