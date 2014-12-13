@@ -61,7 +61,7 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M> extends
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(getModel().getObject());
 	}
 

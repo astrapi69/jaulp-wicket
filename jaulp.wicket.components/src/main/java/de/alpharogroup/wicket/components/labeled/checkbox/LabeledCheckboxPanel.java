@@ -19,6 +19,7 @@ import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
@@ -31,15 +32,6 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 		
 	/** The CheckBox component. */
 	private CheckBox checkBox;
-
-	/**
-	 * Instantiates a new LabeledCheckboxPanel object.
-	 *
-	 * @param id the id
-	 */
-	public LabeledCheckboxPanel(String id) {
-		this(id, null, null);
-	}
 
 	/**
 	 * Instantiates a new LabeledCheckboxPanel object.
@@ -69,9 +61,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	 * @return the created CheckBox
 	 */
 	protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
-		CheckBox checkBox = new CheckBox(id, model);
-		checkBox.setOutputMarkupId(true);
-		return checkBox;
+		return ComponentFactory.newCheckBox(id, model);
 	}
 
 	/**
@@ -84,7 +74,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(getModel().getObject());
 	}
 

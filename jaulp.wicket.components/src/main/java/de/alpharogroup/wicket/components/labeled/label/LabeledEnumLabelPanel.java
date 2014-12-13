@@ -1,12 +1,14 @@
 package de.alpharogroup.wicket.components.labeled.label;
 
-import org.apache.wicket.behavior.AttributeAppender;
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.basic.EnumLabel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * Convenience class for labeled EnumLabel.
@@ -21,9 +23,11 @@ public class LabeledEnumLabelPanel<T> extends Panel {
 
 	/** The right side label. */
 	@SuppressWarnings("rawtypes")
+	@Getter
 	private final EnumLabel enumLabel;
 
 	/** The left side Label component. */
+	@Getter
 	private final Label label;
 
 	/**
@@ -49,46 +53,16 @@ public class LabeledEnumLabelPanel<T> extends Panel {
 	}
 
 	/**
-	 * Gets the enum label.
-	 *
-	 * @return the enum label
-	 */
-	@SuppressWarnings("rawtypes")
-	public EnumLabel getEnumLabel() {
-		return enumLabel;
-	}
-
-	/**
-	 * Gets the label.
-	 *
-	 * @return the label
-	 */
-	public Label getLabel() {
-		return label;
-	}
-
-	/**
 	 * New enum label.
 	 *
 	 * @param id the id
 	 * @param viewableLabelModel the viewable label model
 	 * @return the enum label
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "rawtypes" })
 	protected EnumLabel newEnumLabel(final String id,
 			PropertyModel<T> viewableLabelModel) {
-		EnumLabel enumLabel = new EnumLabel(id, viewableLabelModel) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected String resourceKey(Enum value) {
-				return value.name();
-			}
-		};
-		return enumLabel;
+		return ComponentFactory.newEnumLabel(id, viewableLabelModel);
 	}
 
 	/**
@@ -105,8 +79,6 @@ public class LabeledEnumLabelPanel<T> extends Panel {
 	 * @return the label
 	 */
 	protected Label newLabel(String id, String forId, IModel<String> model) {
-		Label label = new Label(id, model);
-		label.add(new AttributeAppender("for", Model.of(forId), " "));
-		return label;
+		return ComponentFactory.newLabel(id, forId, model);
 	}
 }

@@ -63,7 +63,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T> 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(getModel().getObject());
 	}
 

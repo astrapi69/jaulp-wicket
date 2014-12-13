@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.labeled.checkbox.img;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -7,14 +9,18 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.resource.IResource;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
 public class LabeledImageCheckboxPanel extends Panel {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 		
 	/** The CheckBox component. */
+	@Getter
 	private CheckBox checkBox;
 	/** The image. */
+	@Getter
 	private Image image;
 
 	public LabeledImageCheckboxPanel(String id, IModel<LabeledImageCheckboxModel> model) {
@@ -34,9 +40,7 @@ public class LabeledImageCheckboxPanel extends Panel {
 	 * @return the created Image
 	 */
 	protected Image newImage(final String id, final IResource imageResource) {
-		Image image = new Image("search_icon", imageResource);
-		return image;
-		
+		return ComponentFactory.newImage(id, imageResource);		
 	}
 	
 	/** 
@@ -49,9 +53,7 @@ public class LabeledImageCheckboxPanel extends Panel {
 	 * @return the created CheckBox
 	 */
 	protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
-		CheckBox checkBox = new CheckBox(id, model);
-		checkBox.setOutputMarkupId(true);
-		return checkBox;
+		return ComponentFactory.newCheckBox(id, model);
 	}
 
 }

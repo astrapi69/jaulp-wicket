@@ -102,7 +102,7 @@ public class LabeledPasswordTextFieldPanel<T> extends
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(getModel().getObject());
 	}
 

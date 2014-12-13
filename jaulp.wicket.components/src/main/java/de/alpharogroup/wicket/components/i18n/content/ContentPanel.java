@@ -3,11 +3,11 @@ package de.alpharogroup.wicket.components.i18n.content;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 public class ContentPanel extends BasePanel<ContentModel> {
 
@@ -35,8 +35,7 @@ public class ContentPanel extends BasePanel<ContentModel> {
 	}
 
 	protected Component newHeaderLabel(String id, IModel<String> model) {
-		Label label = new Label(id, model);
-		return label;
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	protected IModel<String> newHeaderModel() {
@@ -48,8 +47,7 @@ public class ContentPanel extends BasePanel<ContentModel> {
 	}
 
 	protected Component newContentLabel(String id, IModel<String> model) {
-		MultiLineLabel multiLineLabel = new MultiLineLabel(id, model);
-		return multiLineLabel;
+		return ComponentFactory.newMultiLineLabel(id, model);
 	}
 
 	protected IModel<String> newContentModel() {

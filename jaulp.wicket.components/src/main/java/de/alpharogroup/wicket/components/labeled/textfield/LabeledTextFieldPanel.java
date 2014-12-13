@@ -63,7 +63,7 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(textField.getConvertedInput());
 	}
 

@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.labeled.label;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
@@ -19,23 +21,12 @@ public class LabeledLabelPanel<T> extends Panel {
 	private static final long serialVersionUID = 1L;
 
 	/** The left side Label component. */
+	@Getter
 	private final Label label;
 
-	/**
-	 * Gets the label.
-	 *
-	 * @return the label
-	 */
-	public Label getLabel() {
-		return label;
-	}
-
 	/** The right side label. */
+	@Getter
 	private final Label viewableLabel;
-
-	public Label getViewableLabel() {
-		return viewableLabel;
-	}
 
 	/**
 	 * Instantiates a new LabeledDateTextfieldPanel.

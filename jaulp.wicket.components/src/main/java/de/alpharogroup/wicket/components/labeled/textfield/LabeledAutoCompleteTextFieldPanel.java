@@ -62,7 +62,7 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(autoCompleteTextField.getConvertedInput());
 	}
 

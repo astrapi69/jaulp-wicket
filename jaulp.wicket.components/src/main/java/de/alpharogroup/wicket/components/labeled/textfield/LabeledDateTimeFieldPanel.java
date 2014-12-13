@@ -69,7 +69,7 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(getModel().getObject());
 	}
 

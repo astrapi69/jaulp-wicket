@@ -18,6 +18,8 @@ package de.alpharogroup.wicket.components.labeled.textarea;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
@@ -63,7 +65,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(textArea.getConvertedInput());
 	}
 
@@ -93,9 +95,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	 * @return the text area
 	 */
 	protected TextArea<T> newTextArea(String id, PropertyModel<T> model) {
-		TextArea<T> textArea = new TextArea<T>(id, model);
-		textArea.setOutputMarkupId(true);
-		return textArea;
+		return ComponentFactory.newTextArea(id, model);
 	}
 
 	/**

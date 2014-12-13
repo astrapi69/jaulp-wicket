@@ -1,5 +1,6 @@
 package de.alpharogroup.wicket.components.report;
 
+import lombok.Getter;
 import net.sourceforge.jaulp.exception.ExceptionUtils;
 
 import org.apache.log4j.Logger;
@@ -12,7 +13,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.HiddenField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -22,7 +22,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
-
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 
 /**
@@ -37,28 +37,25 @@ public abstract class ReportThrowablePanel extends Panel {
 			.getLogger(ReportThrowablePanel.class.getName());
 	
 	/** The header. */
+	@Getter
 	private final Label header;
 
 	/** The form. */
+	@Getter
 	private final Form<?> form;
 
 	/** The description. */
+	@Getter
 	private final LabeledTextAreaPanel<ReportThrowableModel> description;
 
 	/** The submit button. */
+	@Getter
 	private final Button submitButton;
 
 	/** The stack trace. */
+	@Getter
 	private final Component stackTrace;
 
-	/**
-	 * Gets the stack trace.
-	 *
-	 * @return the stack trace
-	 */
-	public Component getStackTrace() {
-		return stackTrace;
-	}
 
 	/** The report model. */
 	private final ReportThrowableModel reportThrowableModel;
@@ -140,8 +137,7 @@ public abstract class ReportThrowablePanel extends Panel {
 	 * @return the component
 	 */
 	protected Component newHiddenField(String id) {
-		HiddenField<String> hiddenField = new HiddenField<String>(id);
-		return hiddenField;
+		return ComponentFactory.newHiddenField(id);
 	}
 
 	/**
@@ -152,8 +148,7 @@ public abstract class ReportThrowablePanel extends Panel {
 	 * @return the label
 	 */
 	protected Label newHeaderLabel(String id, IModel<String> model) {
-		Label label = new Label(id, model);
-		return label;
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**
@@ -168,7 +163,7 @@ public abstract class ReportThrowablePanel extends Panel {
 	 * @return the form
 	 */
 	protected Form<?> newForm(String id, IModel<?> model) {
-		return new Form<Void>(id);
+		return ComponentFactory.newForm(id, model);
 	}
 
 	/**
@@ -262,41 +257,5 @@ public abstract class ReportThrowablePanel extends Panel {
 	 * @return the string
 	 */
 	protected abstract String newAffectedUsername();
-
-	/**
-	 * Gets the header.
-	 *
-	 * @return the header
-	 */
-	public Label getHeader() {
-		return header;
-	}
-
-	/**
-	 * Gets the form.
-	 *
-	 * @return the form
-	 */
-	public Form<?> getForm() {
-		return form;
-	}
-
-	/**
-	 * Gets the description.
-	 *
-	 * @return the description
-	 */
-	public LabeledTextAreaPanel<ReportThrowableModel> getDescription() {
-		return description;
-	}
-
-	/**
-	 * Gets the submit button.
-	 *
-	 * @return the submit button
-	 */
-	public Button getSubmitButton() {
-		return submitButton;
-	}
 
 }

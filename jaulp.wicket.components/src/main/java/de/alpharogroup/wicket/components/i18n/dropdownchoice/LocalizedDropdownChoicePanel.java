@@ -47,7 +47,7 @@ public class LocalizedDropdownChoicePanel<T> extends
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void convertInput() {
+	public void convertInput() {
 		setConvertedInput(dropdownChoice.getConvertedInput());
 	}
 
