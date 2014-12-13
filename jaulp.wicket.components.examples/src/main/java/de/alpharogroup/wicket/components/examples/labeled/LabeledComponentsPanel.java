@@ -14,6 +14,7 @@ import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.wicket.components.examples.radiochoices.RadioChoicePanel;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledEnumLabelPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;
@@ -34,8 +35,6 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 		person.setMarried(false);
 		person.setDateofbirth(new Date());
 		person.setDateofMarriage(new Date());
-
-
 
 		final CompoundPropertyModel<Member> cpm = new CompoundPropertyModel<Member>(
 				person);
@@ -91,7 +90,9 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 			}
 		};
 
-		form.add(submitButton);		
+		form.add(submitButton);	
+		
+		add(new RadioChoicePanel("radioChoicePanel", null));
 		
 		add(feedbackPanel=new FeedbackPanel("feedbackpanel"));
 		feedbackPanel.setOutputMarkupId(true);
