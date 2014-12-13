@@ -2,6 +2,7 @@ package de.alpharogroup.wicket.components.sign.in;
 
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
+import lombok.Getter;
 import net.sourceforge.jaulp.auth.models.SignInModel;
 
 import org.apache.wicket.Component;
@@ -25,9 +26,9 @@ public class SigninPanel extends Panel {
 
 	protected static final Logger LOGGER = LoggerFactory
 			.getLogger(SigninPanel.class);
-
+	@Getter
 	private Component email;
-
+	@Getter
 	private Component password;
 	
 	@SuppressWarnings("unchecked")
@@ -95,14 +96,6 @@ public class SigninPanel extends Panel {
 			}
 		};
 		return pwTextField;
-	}
-
-	public Component getEmail() {
-		return email;
-	}
-
-	public Component getPassword() {
-		return password;
 	}
 
 }

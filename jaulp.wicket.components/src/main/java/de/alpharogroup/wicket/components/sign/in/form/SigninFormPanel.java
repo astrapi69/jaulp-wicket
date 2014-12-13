@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 
 
@@ -127,9 +128,7 @@ public abstract class SigninFormPanel extends Panel {
 			final String defaultValue) {
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, this, defaultValue);		
 		
-		Label label = new Label(id, labelModel);
-		label.setOutputMarkupId(true);
-		return label;
+		return ComponentFactory.newLabel(id, labelModel);
 	}
 
 	/**
@@ -143,10 +142,8 @@ public abstract class SigninFormPanel extends Panel {
 	 *            the model
 	 * @return the form
 	 */
-	@SuppressWarnings("unchecked")
 	protected Form<?> newForm(String id, IModel<?> model) {
-		return new Form<SignInModel>(id,
-				(IModel<SignInModel>) model);
+		return ComponentFactory.newForm(id, model);
 	}
 
 	

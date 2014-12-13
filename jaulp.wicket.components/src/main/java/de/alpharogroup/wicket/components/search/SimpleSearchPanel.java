@@ -1,14 +1,16 @@
 package de.alpharogroup.wicket.components.search;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.BasePanel;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel> {
 	
@@ -18,10 +20,13 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel> {
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
+	@Getter
 	private final Label buttonLabel;
+	@Getter
 	private final Form<?> form;
+	@Getter
 	private final Component searchtext;
-
+	@Getter
 	private final Button searchButton;
 
 	public SimpleSearchPanel(final String id) {
@@ -46,7 +51,7 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel> {
 	 * @return the TextField
 	 */
 	protected Component newTextField(String id) {
-		return new TextField<String>(id);
+		return ComponentFactory.newTextField(id);
 	}
 
 	/**
@@ -60,10 +65,9 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel> {
 	 *            the model
 	 * @return the form
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Form<?> newForm(String id,
 			IModel<? extends SimpleSearchModel> model) {
-		return new Form(id, model);
+		return ComponentFactory.newForm(id, model);
 	}
 
 	/**
@@ -102,27 +106,7 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel> {
 	 */
 	protected Label newButtonLabel(String id, final String resourceKey,
 			final String defaultValue) {
-		final IModel<String> labelModel = ResourceModelFactory
-				.newResourceModel(resourceKey, this, defaultValue);
-		Label label = new Label(id, labelModel);
-		label.setOutputMarkupId(true);
-		return label;
-	}
-
-	public Label getButtonLabel() {
-		return buttonLabel;
-	}
-
-	public Form<?> getForm() {
-		return form;
-	}
-
-	public Component getSearchtext() {
-		return searchtext;
-	}
-
-	public Button getSearchButton() {
-		return searchButton;
+		return ComponentFactory.newLabel(id, resourceKey, defaultValue, this);
 	}
 
 	protected abstract void onSearch();

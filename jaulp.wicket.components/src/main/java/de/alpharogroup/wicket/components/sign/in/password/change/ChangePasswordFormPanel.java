@@ -1,11 +1,15 @@
 package de.alpharogroup.wicket.components.sign.in.password.change;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordModel> {
 
@@ -15,10 +19,13 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
+	@Getter
 	private Label buttonLabel;
 
+	@Getter
 	private Button submitButton;
 
+	@Getter
 	private Form<?> form;
 
 	public ChangePasswordFormPanel(String id, IModel<ChangePasswordModel> model) {
@@ -45,10 +52,8 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	 *            the model
 	 * @return the form
 	 */
-	@SuppressWarnings("unchecked")
 	protected Form<?> newForm(String id, IModel<?> model) {
-		return new Form<ChangePasswordModel>(id,
-				(IModel<ChangePasswordModel>) model);
+		return ComponentFactory.newForm(id, model);
 	}
 
 	/**
@@ -87,22 +92,8 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	 */
 	protected Label newButtonLabel(String id, final String resourceKey,
 			final String defaultValue) {
-		final IModel<String> labelModel = ResourceModelFactory
-				.newResourceModel(resourceKey, this, defaultValue);
-		Label label = new Label(id, labelModel);
-		label.setOutputMarkupId(true);
-		return label;
-	}
-	public Label getButtonLabel() {
-		return buttonLabel;
-	}
-
-	public Button getSubmitButton() {
-		return submitButton;
-	}
-
-	public Form<?> getForm() {
-		return form;
+		return ComponentFactory.newLabel(id, ResourceModelFactory
+				.newResourceModel(resourceKey, this, defaultValue));
 	}
 	
 	protected abstract void onChangePassword();

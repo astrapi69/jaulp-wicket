@@ -2,6 +2,7 @@ package de.alpharogroup.wicket.components.sign.in.password.forgotten;
 
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
+import lombok.Getter;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -12,9 +13,9 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 
 /**
@@ -30,21 +31,27 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
+	@Getter
 	private final Label buttonLabel;
 
 	/** The captcha panel. */
+	@Getter
 	private final Component captchaPanel;
 
 	/** The email. */
+	@Getter
 	private final Component email;
 
 	/** The form. */
+	@Getter
 	private final Form<?> form;
 
 	/** The header. */
+	@Getter
 	private final Label header;
 
 	/** The submit button. */
+	@Getter
 	private final Button submitButton;
 
 	/**
@@ -120,60 +127,6 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	}
 
 	/**
-	 * Gets the button label.
-	 *
-	 * @return the button label
-	 */
-	public Label getButtonLabel() {
-		return buttonLabel;
-	}
-
-	/**
-	 * Gets the captcha panel.
-	 * 
-	 * @return the captcha panel
-	 */
-	public Component getCaptchaPanel() {
-		return captchaPanel;
-	}
-
-	/**
-	 * Gets the email.
-	 * 
-	 * @return the email
-	 */
-	public Component getEmail() {
-		return email;
-	}
-
-	/**
-	 * Gets the form.
-	 * 
-	 * @return the form
-	 */
-	public Form<?> getForm() {
-		return form;
-	}
-
-	/**
-	 * Gets the header.
-	 * 
-	 * @return the header
-	 */
-	public Label getHeader() {
-		return header;
-	}
-
-	/**
-	 * Gets the submit button.
-	 * 
-	 * @return the submit button
-	 */
-	public Button getSubmitButton() {
-		return submitButton;
-	}
-
-	/**
 	 * Factory method for creating the Button. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a Button.
@@ -211,10 +164,7 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 */
 	protected Label newButtonLabel(String id, final String resourceKey,
 			final String defaultValue) {
-		Label label = new Label(id, ResourceModelFactory.newResourceModel(
-				resourceKey, this, defaultValue));
-		label.setOutputMarkupId(true);
-		return label;
+		return ComponentFactory.newLabel(id, resourceKey, defaultValue, this);
 	}
 
 	/**
@@ -246,11 +196,8 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	protected Label newEmailLabel(String id, String forId,
 			final String resourceKey, final String defaultValue,
 			final Component component) {
-		Label label = new Label(id, ResourceModelFactory.newResourceModel(
+		return ComponentFactory.newLabel(id, forId, ResourceModelFactory.newResourceModel(
 				resourceKey, component, defaultValue));
-		label.add(new AttributeAppender("for", Model.of(forId), " "));
-		label.setOutputMarkupId(true);
-		return label;
 	}
 
 	/**
@@ -264,10 +211,8 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the model
 	 * @return the form
 	 */
-	@SuppressWarnings("unchecked")
 	protected Form<?> newForm(String id, IModel<?> model) {
-		return new Form<PasswordForgottenModel>(id,
-				(IModel<PasswordForgottenModel>) model);
+		return ComponentFactory.newForm(id, model);
 	}
 
 	/**
@@ -285,10 +230,8 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 */
 	protected Label newHeaderLabel(String id, final String resourceKey,
 			final String defaultValue, final Component component) {
-		Label label = new Label(id, ResourceModelFactory.newResourceModel(
+		return ComponentFactory.newLabel(id, ResourceModelFactory.newResourceModel(
 				resourceKey, component, defaultValue));
-		label.setOutputMarkupId(true);
-		return label;
 	}
 
 	// Hook method for implement the action...
