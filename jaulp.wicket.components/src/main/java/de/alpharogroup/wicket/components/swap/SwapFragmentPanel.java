@@ -15,26 +15,58 @@
  */
 package de.alpharogroup.wicket.components.swap;
 
-import org.apache.wicket.markup.html.panel.Fragment;
-import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.IModel;
+import lombok.Getter;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.Fragment;
+import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.util.lang.Args;
 
 /**
  * The abstract class SwapFragmentPanel holds to Fragment that can be swapped.
  *
- * @param <MODELOBJECT> the generic type of the model object.
+ * @param <T> the generic type of the model object.
  */
-public abstract class SwapFragmentPanel<MODELOBJECT> extends Panel {
+public abstract class SwapFragmentPanel<T>  extends GenericPanel<T> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
 	/** The view fragment. */
-	protected Fragment view;
 	
-	/** The view fragment. */
-	protected Fragment edit;
+	/**
+	 * Gets the view.
+	 *
+	 * @return the view
+	 */
+	@Getter
+	private Fragment view;
+	
+	/** The edit fragment. */
+	
+	/**
+	 * Gets the edits the.
+	 *
+	 * @return the edits the
+	 */
+	@Getter
+	private Fragment edit;
+	
+	/** The ModeContext shows if the view mode or edit mode is visible. */
+	
+	/**
+	 * Gets the mode context.
+	 *
+	 * @return the mode context
+	 */
+	@Getter
+	private ModeContext modeContext = ModeContext.VIEW_MODE;
+
+	/** The id for the placeholder where to swap the fragments. */
+	private static final String FRAGMENT_ID = "fragment-placeholder";
 	
 	/**
 	 * Instantiates a new swap fragment panel.
@@ -42,14 +74,19 @@ public abstract class SwapFragmentPanel<MODELOBJECT> extends Panel {
 	 * @param id the id
 	 * @param model the model
 	 */
-	public SwapFragmentPanel(String id, IModel<MODELOBJECT> model) {
+	public SwapFragmentPanel(String id, IModel<T> model) {
 		super(id, model);
+		setModel(Args.notNull(model, "model"));
+		setDefaultModel(new CompoundPropertyModel<T>(model));
+		setOutputMarkupPlaceholderTag(true);
+		add(view = newViewFragment(FRAGMENT_ID));
+		edit = newEditFragment(FRAGMENT_ID);
 	}
 
 	/**
 	 * Swap the fragments.
 	 */
-	protected void swapFragments() {
+	private void swapFragments() {
 		Fragment fragment = view;
 		view.replaceWith(edit);
 		view = edit;
@@ -57,20 +94,58 @@ public abstract class SwapFragmentPanel<MODELOBJECT> extends Panel {
 	}
 	
 	/**
-	 * Factory method for the view fragment.
+	 * Abstract factory method for the view fragment.
 	 *
 	 * @param id the id
 	 * @return the view fragment
 	 */
-	protected abstract Fragment newFragmentView(final String id);
+	protected abstract Fragment newViewFragment(final String id);
 	
 
 	/**
-	 * Factory method for the edit fragment.
+	 * Abstract factory method for the edit fragment.
 	 *
 	 * @param id the id
 	 * @return the edit fragment
 	 */
-	protected abstract Fragment newFragmentEdit(final String id);
+	protected abstract Fragment newEditFragment(final String id);	
+	
+	/**
+	 * Swaps from the view fragment to the edit fragment.
+	 *
+	 * @param target the target
+	 * @param form the form
+	 */
+	protected void onSwapToEdit(final AjaxRequestTarget target, final Form<?> form) {
+		swapFragments();
+		target.add(view);
+		modeContext = ModeContext.EDIT_MODE;
+	}
+	
+	/**
+	 * Swaps from the edit fragment to the view fragment.
+	 *
+	 * @param target the target
+	 * @param form the form
+	 */
+	protected void onSwapToView(final AjaxRequestTarget target, final Form<?> form) {
+		target.add(edit);
+		swapFragments();
+		modeContext = ModeContext.VIEW_MODE;
+	}
+	
+	/**
+	 * Swaps the fragments.
+	 *
+	 * @param target the target
+	 * @param form the form
+	 */
+	protected void swapFragments(final AjaxRequestTarget target, final Form<?> form) {
+		if(modeContext.equals(ModeContext.VIEW_MODE)) {
+			onSwapToEdit(target, form);
+		} else {
+			onSwapToView(target, form);
+		}
+	}
 
 }
