@@ -1,5 +1,6 @@
 package org.jaulp.wicket.base.util;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.core.request.handler.IPageRequestHandler;
@@ -51,4 +52,21 @@ public final class ComponentFinder {
 		return application.newAjaxRequestTarget(page);
 	}
 	
+	/**
+	 * Finds the first parent of the given childComponent from the given parentClass.
+	 *
+	 * @param childComponent the child component
+	 * @param parentClass the parent class
+	 * @return the component
+	 */
+	public static Component findParent(Component childComponent, Class<? extends Component> parentClass) {
+		Component parent = childComponent.getParent();
+		while(parent != null) {
+			if(parent.getClass().equals(parentClass)) {
+				break;
+			}
+			parent = parent.getParent();
+		}
+		return parent;		
+	}
 }
