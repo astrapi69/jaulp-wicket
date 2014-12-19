@@ -66,9 +66,18 @@ public class WicketApplication extends WicketBootstrapApplication
 		});
 		// set up ports for http and https...
 		setRootRequestMapper(new HttpsMapper(getRootRequestMapper(),
-				new HttpsConfig(8080, 8443)));
+				new HttpsConfig(getHttpPort(), getHttpsPort())));
 		
 		ApplicationUtils.setExceptionSettingsForDeployment(this, new ApplicationRequestCycleListener());
+		ApplicationUtils.addFilePatternsToPackageResourceGuard(this, "+*.css", "+*.png");
+	}
+	
+	protected int getHttpPort() {
+		return WicketApplication.HTTP_PORT;
+	}
+	
+	protected int getHttpsPort() {
+		return WicketApplication.HTTPS_PORT;
 	}
 
 	/**
