@@ -38,12 +38,14 @@ import de.alpharogroup.wicket.components.examples.captcha.SslReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.checkboxes.CheckboxesPage;
 import de.alpharogroup.wicket.components.examples.deregistration.DeregistrationPage;
 import de.alpharogroup.wicket.components.examples.exceptions.ExceptionPage;
+import de.alpharogroup.wicket.components.examples.fragment.replacewith.ReplaceWithPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonPage;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
 import de.alpharogroup.wicket.components.examples.labeled.LabeledComponentsPage;
 import de.alpharogroup.wicket.components.examples.pdfdownload.PdfDownloadPage;
+import de.alpharogroup.wicket.components.examples.popupoverlay.PopupoverlayPage;
 import de.alpharogroup.wicket.components.examples.sign.in.SigninPage;
 import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
@@ -190,6 +192,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
     	final IModel<String> featuresMainModel = ResourceModelFactory.newResourceModel("global.menu.features.label", this);
     	final IModel<String> swapModel = ResourceModelFactory.newResourceModel("global.menu.swap.label", this);
     	final IModel<String> swapPersonModel = ResourceModelFactory.newResourceModel("global.menu.swap.person.label", this);
+    	final IModel<String> replaceWithPanelModel = ResourceModelFactory.newResourceModel("global.menu.replace.with.panel.label", this);
+    	final IModel<String> popupoverlayPanelModel = ResourceModelFactory.newResourceModel("global.menu.popupoverlay.label", this);
     	final IModel<String> tabsModel = ResourceModelFactory.newResourceModel("global.menu.tabs.label", this);
     	final IModel<String> signInModel = ResourceModelFactory.newResourceModel("global.menu.sign.in.label", this);
     	final IModel<String> signUpModel = ResourceModelFactory.newResourceModel("global.menu.sign.up.label", this);
@@ -212,6 +216,10 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
                 		AddressPage.class, swapModel).setIconType(GlyphIconType.eyeopen));
                 subMenu.add(new MenuBookmarkablePageLink<PersonPage>(
                 		PersonPage.class, swapPersonModel).setIconType(GlyphIconType.eyeopen));
+                subMenu.add(new MenuBookmarkablePageLink<ReplaceWithPage>(
+                		ReplaceWithPage.class, replaceWithPanelModel).setIconType(GlyphIconType.eyeopen));
+                subMenu.add(new MenuBookmarkablePageLink<PopupoverlayPage>(
+                		PopupoverlayPage.class, popupoverlayPanelModel).setIconType(GlyphIconType.eyeopen));
                 subMenu.add(new MenuBookmarkablePageLink<EditableAjaxTabbedPage>(
                 		EditableAjaxTabbedPage.class, tabsModel).setIconType(GlyphIconType.picture));
                 subMenu.add(new MenuBookmarkablePageLink<SigninPage>(
