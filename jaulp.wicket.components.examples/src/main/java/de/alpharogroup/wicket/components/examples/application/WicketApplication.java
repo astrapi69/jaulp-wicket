@@ -25,7 +25,8 @@ import de.alpharogroup.wicket.components.examples.home.HomePage;
  */
 public class WicketApplication extends WicketBootstrapApplication
 {    	
-
+    public static final int HTTP_PORT = 9090;
+    public static final int HTTPS_PORT = 9443;
 	/** The Constant logger. */
 	private static final Logger LOGGER = Logger
 			.getLogger(WicketApplication.class.getName());

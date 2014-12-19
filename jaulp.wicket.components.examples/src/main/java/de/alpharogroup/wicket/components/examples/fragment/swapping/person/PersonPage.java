@@ -9,7 +9,7 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
 
 
 @MountPath("public/swap/person")
-public class PersonPage extends PubliclyBasePage<Object> {
+public class PersonPage extends PubliclyBasePage<PersonModel> {
 	private static final long serialVersionUID = 1L;
 
 	public PersonPage(final PageParameters parameters) {

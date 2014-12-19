@@ -32,6 +32,8 @@ import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 public class WicketApplication extends WebApplication
 { 
 
+    public static final int HTTP_PORT = 9090;
+    public static final int HTTPS_PORT = 9443;
 	/** The Constant logger. */
 	private static final Logger logger = Logger
 			.getLogger(WicketApplication.class.getName());

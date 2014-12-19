@@ -22,6 +22,7 @@ import org.eclipse.jetty.server.bio.SocketConnector;
 import org.eclipse.jetty.server.ssl.SslSocketConnector;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.jaulp.wicket.base.examples.application.WicketApplication;
 
 public class StartBase {
     public static void main(String[] args) throws Exception {
@@ -33,7 +34,7 @@ public class StartBase {
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
-        connector.setPort(8080);
+        connector.setPort(WicketApplication.HTTP_PORT);
         server.addConnector(connector);
 
 		// check if a keystore for a SSL certificate is available, and
@@ -45,7 +46,6 @@ public class StartBase {
 
         Resource keystore = Resource.newClassPathResource("/keystore");
         if (keystore != null && keystore.exists()) {
-            connector.setConfidentialPort(8443);
 
             SslContextFactory factory = new SslContextFactory();
             factory.setKeyStoreResource(keystore);
@@ -54,7 +54,8 @@ public class StartBase {
             factory.setKeyManagerPassword("wicket");
             SslSocketConnector sslConnector = new SslSocketConnector(factory);
             sslConnector.setMaxIdleTime(timeout);
-            sslConnector.setPort(8443);
+            sslConnector.setPort(WicketApplication.HTTPS_PORT);
+            connector.setConfidentialPort(WicketApplication.HTTPS_PORT);
             sslConnector.setAcceptors(4);
             server.addConnector(sslConnector);
 

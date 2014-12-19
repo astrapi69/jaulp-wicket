@@ -22,6 +22,7 @@ import org.eclipse.jetty.server.ssl.SslSocketConnector;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.jaulp.wicket.dropdownchoices.examples.WicketApplication;
 
 public class StartDropDownChoicesApplication {
 
@@ -34,7 +35,7 @@ public class StartDropDownChoicesApplication {
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
-        connector.setPort(9090);
+        connector.setPort(WicketApplication.HTTP_PORT);
         server.addConnector(connector);
 
 		// check if a keystore for a SSL certificate is available, and
@@ -46,7 +47,6 @@ public class StartDropDownChoicesApplication {
 
         Resource keystore = Resource.newClassPathResource("/keystore");
         if (keystore != null && keystore.exists()) {
-            connector.setConfidentialPort(8443);
 
             SslContextFactory factory = new SslContextFactory();
             factory.setKeyStoreResource(keystore);
@@ -55,7 +55,8 @@ public class StartDropDownChoicesApplication {
             factory.setKeyManagerPassword("wicket");
             SslSocketConnector sslConnector = new SslSocketConnector(factory);
             sslConnector.setMaxIdleTime(timeout);
-            sslConnector.setPort(8443);
+            sslConnector.setPort(WicketApplication.HTTPS_PORT);
+            connector.setConfidentialPort(WicketApplication.HTTPS_PORT);
             sslConnector.setAcceptors(4);
             server.addConnector(sslConnector);
 

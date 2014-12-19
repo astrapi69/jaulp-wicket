@@ -2,6 +2,21 @@ package de.alpharogroup.wicket.components.examples.fragment.swapping.person;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Builder;
+
+@Getter 
+@Setter 
+@EqualsAndHashCode 
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PersonModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -13,37 +28,5 @@ public class PersonModel implements Serializable {
 	private String gender;
 	
 	private String age;
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getAge() {
-		return age;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
 
 }

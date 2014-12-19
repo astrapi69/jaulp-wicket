@@ -31,6 +31,8 @@ import org.jaulp.wicket.PackageResourceReferences;
  * @see wicket.myproject.Start#main(String[])
  */
 public class WicketApplication extends WebApplication {
+    public static final int HTTP_PORT = 9090;
+    public static final int HTTPS_PORT = 9443;
 	@Override
 	public Session newSession(Request request, Response response) {
 		return new WicketSession(request);

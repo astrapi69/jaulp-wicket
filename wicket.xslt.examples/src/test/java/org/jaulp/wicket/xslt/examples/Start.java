@@ -33,7 +33,7 @@ public class Start {
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
-        connector.setPort(8080);
+        connector.setPort(WicketApplication.HTTP_PORT);
         server.addConnector(connector);
 
 		// check if a keystore for a SSL certificate is available, and
@@ -45,7 +45,6 @@ public class Start {
 
         Resource keystore = Resource.newClassPathResource("/keystore");
         if (keystore != null && keystore.exists()) {
-            connector.setConfidentialPort(8443);
 
             SslContextFactory factory = new SslContextFactory();
             factory.setKeyStoreResource(keystore);
@@ -54,7 +53,8 @@ public class Start {
             factory.setKeyManagerPassword("wicket");
             SslSocketConnector sslConnector = new SslSocketConnector(factory);
             sslConnector.setMaxIdleTime(timeout);
-            sslConnector.setPort(8443);
+            sslConnector.setPort(WicketApplication.HTTPS_PORT);
+            connector.setConfidentialPort(WicketApplication.HTTPS_PORT);
             sslConnector.setAcceptors(4);
             server.addConnector(sslConnector);
 

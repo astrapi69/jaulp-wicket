@@ -15,17 +15,23 @@ public class ViewPersonPanel extends Panel {
 
 	public ViewPersonPanel(String id, IModel<PersonModel> model) {
 		super(id, model);
-		add(new AjaxFallbackLink<Object>("editLink") {
+		setOutputMarkupId(true);
+		setDefaultModel(model);
+		add(newEditLink("editLink"));
+		add(new Label("firstName").setOutputMarkupId(true));
+		add(new Label("lastName").setOutputMarkupId(true));
+		add(new Label("gender").setOutputMarkupId(true));
+		add(new Label("age").setOutputMarkupId(true));
+	}
+	
+	protected AjaxFallbackLink<Object> newEditLink(String id) {
+		return new AjaxFallbackLink<Object>(id) {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick(AjaxRequestTarget target) {
 				ViewPersonPanel.this.onSubmit(target);
 			}
-		});
-		add(new Label("firstName"));
-		add(new Label("lastName"));
-		add(new Label("gender"));
-		add(new Label("age"));
+		};
 	}
 	
 	protected void onSubmit(final AjaxRequestTarget target) {		

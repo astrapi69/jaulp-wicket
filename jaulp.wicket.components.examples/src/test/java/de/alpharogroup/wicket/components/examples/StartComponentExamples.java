@@ -8,6 +8,8 @@ import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import de.alpharogroup.wicket.components.examples.application.WicketApplication;
+
 public class StartComponentExamples {
     public static void main(String[] args) throws Exception {
         int timeout = (int) Duration.ONE_HOUR.getMilliseconds();
@@ -18,7 +20,7 @@ public class StartComponentExamples {
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
-        connector.setPort(9090);
+        connector.setPort(WicketApplication.HTTP_PORT);
         server.addConnector(connector);
 
         Resource keystore = Resource.newClassPathResource("/keystore");
@@ -30,7 +32,6 @@ public class StartComponentExamples {
             // use this certificate anywhere important as the passwords are
             // available in the source.
 
-            connector.setConfidentialPort(8443);
 
             SslContextFactory factory = new SslContextFactory();
             factory.setKeyStoreResource(keystore);
@@ -39,7 +40,8 @@ public class StartComponentExamples {
             factory.setKeyManagerPassword("wicket");
             SslSocketConnector sslConnector = new SslSocketConnector(factory);
             sslConnector.setMaxIdleTime(timeout);
-            sslConnector.setPort(8443);
+            sslConnector.setPort(WicketApplication.HTTPS_PORT);
+            connector.setConfidentialPort(WicketApplication.HTTPS_PORT);
             sslConnector.setAcceptors(4);
             server.addConnector(sslConnector);
 
