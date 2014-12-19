@@ -136,6 +136,31 @@ public final class ApplicationUtils {
 	}
 	
 	/**
+	 * Gets the resource stream from the given parameters.
+	 *
+	 * @param application the application
+	 * @param path the path
+	 * @param contentType the content type
+	 * @return the resource stream
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public static IResourceStream getResourceStream(final java.io.File file, final String contentType) throws IOException {
+    	return new ByteArrayResourceStreamWriter() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public String getContentType() {
+				return contentType;
+			}
+			@Override
+			protected byte[] load() throws IOException {
+				byte[] data = null;				
+				data = Files.readBytes(file);				
+				return data;
+			}    		
+    	};
+	}
+	
+	/**
 	 * Gets the default jquery reference from the given application.
 	 *
 	 * @param application the application

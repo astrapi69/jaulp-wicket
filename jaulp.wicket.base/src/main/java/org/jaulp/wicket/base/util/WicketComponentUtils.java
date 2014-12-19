@@ -376,7 +376,7 @@ public final class WicketComponentUtils {
 			@Override
 			protected byte[] load() throws IOException {
 				byte[] data = null;
-				final String realPath = WicketComponentUtils.getRealPath(application, path);		    	
+				final String realPath = ApplicationUtils.getRealPath(application, path);		    	
 				final File file = new File(realPath);				
 				data = Files.readBytes(file);				
 				return data;
