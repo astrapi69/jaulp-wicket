@@ -28,7 +28,7 @@ public abstract class UnorderedListPanel  extends ListViewPanel<ResourceBundleKe
 	 * @param id the id
 	 * @param list the list
 	 */
-	public UnorderedListPanel(String id, List<? extends ResourceBundleKey> list) {
+	public UnorderedListPanel(String id, List<ResourceBundleKey> list) {
 		super(id, list);
 	}
 
@@ -40,7 +40,7 @@ public abstract class UnorderedListPanel  extends ListViewPanel<ResourceBundleKe
 	 * @param model
 	 *            the model
 	 */
-	public UnorderedListPanel(String id, IModel<List<? extends ResourceBundleKey>> model) {
+	public UnorderedListPanel(String id, IModel<List<ResourceBundleKey>> model) {
 		super(id, model);
 	}
 

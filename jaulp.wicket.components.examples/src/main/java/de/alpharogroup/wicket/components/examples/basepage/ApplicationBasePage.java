@@ -261,7 +261,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 
 					@Override
 					protected Component newLinkListPanel(String id,
-							IModel<List<? extends LinkModel>> model) {
+							IModel<List<LinkModel>> model) {
 						LinkListPanel listPanel = new LinkListPanel(id, model) {
 							private static final long serialVersionUID = 1L;
 

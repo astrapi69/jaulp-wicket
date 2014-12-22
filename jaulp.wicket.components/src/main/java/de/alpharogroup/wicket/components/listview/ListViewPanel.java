@@ -7,7 +7,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
+import org.apache.wicket.model.util.ListModel;
 
 /**
  * The Class ListModelPanel takes a {@link ListView} of a generic type.
@@ -31,8 +31,8 @@ public abstract class ListViewPanel<T> extends Panel {
 	 * @param model
 	 *            the model
 	 */
-	public ListViewPanel(String id, List<? extends T> list) {
-		this(id, Model.ofList(list));
+	public ListViewPanel(String id, List<T> list) {
+		this(id, new ListModel<T>(list));
 	}
 
 	/**
@@ -43,7 +43,7 @@ public abstract class ListViewPanel<T> extends Panel {
 	 * @param model
 	 *            the model
 	 */
-	public ListViewPanel(String id, IModel<List<? extends T>> model) {
+	public ListViewPanel(String id, IModel<List<T>> model) {
 		super(id, model);
 		if (model == null) {
 			throw new IllegalArgumentException("Argument 'model' may not be null.");
@@ -60,7 +60,7 @@ public abstract class ListViewPanel<T> extends Panel {
 	 *            the model
 	 * @return the list view
 	 */
-	protected ListView<T> newListView(String id, IModel<List<? extends T>> model) {
+	protected ListView<T> newListView(String id, IModel<List<T>> model) {
 		ListView<T> listView = new ListView<T>(id, model) {
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
@@ -91,6 +91,6 @@ public abstract class ListViewPanel<T> extends Panel {
 	 */
 	public ListView<T> getListView() {
 		return listView;
-	}
+	}	
 
 }

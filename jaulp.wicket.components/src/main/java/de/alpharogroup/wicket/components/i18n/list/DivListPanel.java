@@ -23,7 +23,7 @@ public abstract class DivListPanel extends ListViewPanel<ResourceBundleKey> {
 	 * @param id the id
 	 * @param list the list
 	 */
-	public DivListPanel(String id, List<? extends ResourceBundleKey> list) {
+	public DivListPanel(String id, List<ResourceBundleKey> list) {
 		super(id, list);
 	}
 
@@ -36,7 +36,7 @@ public abstract class DivListPanel extends ListViewPanel<ResourceBundleKey> {
 	 *            the model
 	 */
 	public DivListPanel(String id,
-			IModel<List<? extends ResourceBundleKey>> content) {
+			IModel<List<ResourceBundleKey>> content) {
 		super(id, content);
 	}
 
