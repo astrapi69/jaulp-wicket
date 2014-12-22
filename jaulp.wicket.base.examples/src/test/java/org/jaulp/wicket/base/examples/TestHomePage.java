@@ -33,7 +33,7 @@ public class TestHomePage
 		tester = new WicketTester(new WicketApplication());
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void homepageRendersSuccessfully()
 	{
 		//start and render the test page
