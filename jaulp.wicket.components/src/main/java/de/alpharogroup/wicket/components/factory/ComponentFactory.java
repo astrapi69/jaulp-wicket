@@ -159,7 +159,7 @@ public class ComponentFactory {
 	}
 	
 	/**
-	 * Factory method for creating a new Label with a {@link ResourceBundleKey}.
+	 * Factory method for creating a new {@link Label} with a {@link ResourceBundleKey}.
 	 * 
 	 * @param id
 	 *            the id
@@ -167,7 +167,7 @@ public class ComponentFactory {
 	 *            the resource key
 	 * @param component
 	 *            the component to find resource keys
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	public static Label newLabel(String id, final ResourceBundleKey resourceKey, final Component component) {
 		return ComponentFactory.newLabel(id, ResourceModelFactory.newResourceModel(resourceKey, component));
@@ -250,14 +250,29 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new TextField.
+	 * Factory method for creating a new {@link TextField}.
 	 * 
 	 * @param id
 	 *            the id
-	 * @return the TextField
+	 * @return the new {@link TextField}
 	 */
 	public static Component newTextField(String id) {
-		TextField<String> textField = new TextField<String>(id);
+		TextField<String> textField = new TextField<>(id);
+		textField.setOutputMarkupId(true);
+		return textField;
+	}
+
+	/**
+	 * Factory method for creating a new {@link TextField}.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link TextField}
+	 */
+	public static<T> Component newTextField(String id, IModel<T> model) {
+		TextField<T> textField = new TextField<>(id, model);
 		textField.setOutputMarkupId(true);
 		return textField;
 	}

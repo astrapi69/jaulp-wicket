@@ -16,12 +16,9 @@
 package de.alpharogroup.wicket.components.labeled;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.behavior.AttributeAppender;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 

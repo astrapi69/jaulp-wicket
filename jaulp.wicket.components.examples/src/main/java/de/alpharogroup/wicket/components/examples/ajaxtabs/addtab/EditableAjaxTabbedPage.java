@@ -9,6 +9,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.alpharogroup.wicket.components.examples.ajaxtabs.addable.AddableTabbedPanel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabModel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabbedPanelModels;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
@@ -34,7 +35,7 @@ public class EditableAjaxTabbedPage  extends PubliclyBasePage<Object> {
 		TabModel<String> thirdTabModel = new TabModel<>(
 				Model.of("tab 3"), Model.of("TAB_3"), Model.of("x"));
 		tabmodels.add(firstTabModel).add(secondTabModel).add(thirdTabModel);
-		return new EditableAjaxTabbedPanelDecorator(CONTAINER_PANEL_ID, Model.of(tabmodels));
+		return new AddableTabbedPanel(CONTAINER_PANEL_ID, Model.of(tabmodels));
 	}
 
 }

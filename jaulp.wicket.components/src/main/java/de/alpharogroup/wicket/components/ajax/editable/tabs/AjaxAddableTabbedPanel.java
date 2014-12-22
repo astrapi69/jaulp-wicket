@@ -8,7 +8,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.ComponentTag;
@@ -107,7 +106,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	
 	protected abstract Component newAddTabModalWindow(String id, final IModel<String> model);
 	
-	protected abstract AjaxLink<?> newAddTabAjaxLink(String id);
+	protected abstract Label newaddTabLabel(String id, final IModel<String> model);
 	
 	protected Label newAddTabLabel(String id, final IModel<String> model) {
 		return ComponentFactory.newLabel(id, model);
