@@ -39,6 +39,7 @@ public class RadioChoicePanel extends Panel {
 			public String getIdValue(Brands object, int index) {
 				return object.getValue();
 			}
+			@SuppressWarnings("unused")
 			public Brands getObject(String id,
 					IModel<? extends List<? extends Brands>> choices) {
 				for (Brands brand : choices.getObject()) {
