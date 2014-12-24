@@ -281,9 +281,18 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 									return new ExternalLink(id, Model.of(model
 											.getUrl())).add(itemLinkLabel);
 								}
+								// add css class to current page.
+								if(model.getPageClass().equals(getPage().getClass())) {
+									itemLinkLabel.add(new AttributeAppender("class", " "+getCurrentPageCssClass()));
+								}
 								return new BookmarkablePageLink<String>(id,
 										model.getPageClass())
 										.add(itemLinkLabel);
+							}
+							
+							@Override
+							protected String getCurrentPageCssClass() {
+								return "active";
 							}
 						};
 						return listPanel;
