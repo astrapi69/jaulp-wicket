@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.examples.radiochoices;
+package de.alpharogroup.wicket.components.examples.radios;
 
 import java.io.Serializable;
 
@@ -21,5 +21,5 @@ public class Company implements Serializable {
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	String name;
+    private String name;
 }

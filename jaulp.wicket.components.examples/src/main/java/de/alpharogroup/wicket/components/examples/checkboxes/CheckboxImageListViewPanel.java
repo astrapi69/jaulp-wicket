@@ -7,12 +7,10 @@ import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 
 import org.apache.wicket.behavior.AttributeAppender;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.resource.PackageResourceReference;
@@ -56,8 +54,6 @@ public class CheckboxImageListViewPanel extends BasePanel {
 			protected void populateItem(ListItem<ImageCheckboxModel> item) {
 				ImageCheckboxModel wrapper = (ImageCheckboxModel) item
 						.getModelObject();
-				new CheckBox("check", new PropertyModel<Boolean>(
-						wrapper, "checked"));
 				CheckBox checkbox = new CheckBox("checkbox", new PropertyModel<Boolean>(
 						wrapper, "checked"));
 				checkbox.setOutputMarkupId(true);

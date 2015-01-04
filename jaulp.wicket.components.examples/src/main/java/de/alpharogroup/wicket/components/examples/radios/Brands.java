@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.examples.radiochoices;
+package de.alpharogroup.wicket.components.examples.radios;
 import lombok.Getter;
 
 public enum Brands {

@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.examples.radiochoices;
+package de.alpharogroup.wicket.components.examples.radios;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,36 +19,40 @@ import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.components.radio.RadioGroupModel;
 
-public class RadioGroupPanel extends BasePanel<Company> {
+public class RadioGroupExamplePanel extends BasePanel<Company> {
 	private static final long serialVersionUID = 1L;
-	Company selected
-//	= Company.builder().name("Ferrari").build()
-	;
-	public RadioGroupPanel(String id, IModel<Company> model) {
+	
+	public RadioGroupExamplePanel(String id, IModel<Company> model) {
 		super(id, model);
 		// Radio buttons must be part of a Form component.
 		Form<?> form = new Form<>("form");
 		add(form);
-		final RadioGroup<Company> group = new RadioGroup<Company>("group", new PropertyModel<Company>(this, "selected"));
-		group.add(new AjaxFormChoiceComponentUpdatingBehavior() {
-			private static final long serialVersionUID = 1L;
-			protected void onUpdate(AjaxRequestTarget target) {
-				target.add(getFeedback());
-				info("Selected Type : " + selected.getName());
-			}
-		});
-		form.add(group);
-
-		// Exercise left for the reader: load the list of companies from the database.
+		final RadioGroupModel<Company> radioGroupModel = new RadioGroupModel<>();
+		setModel(model);		
+		// create list...
 		List<Company> comps = Arrays.asList(
 				Company.builder().name("Ferrari").build(), 
 				Company.builder().name("Lamborgini").build(), 
 				Company.builder().name("Mazerati").build(), 
 				Company.builder().name("Porsche").build()
 				);
+		// we can set the selected radio from the start or leave it blank...
+		//radioGroupModel.setSelected(comps.get(0));
+		radioGroupModel.setRadios(comps);
+		
 		IModel<List<Company>> companies = new ListModel<Company>(comps);
-
+		
+		final RadioGroup<Company> group = new RadioGroup<Company>("group", new PropertyModel<Company>(radioGroupModel, "selected"));
+		group.add(new AjaxFormChoiceComponentUpdatingBehavior() {
+			private static final long serialVersionUID = 1L;
+			protected void onUpdate(AjaxRequestTarget target) {
+				target.add(getFeedback());
+				info("Selected Type : " + radioGroupModel.getSelected());
+			}
+		});
+		form.add(group);
 		// Construct a radio button and label for each company.
 		group.add(new ListView<Company>("choice", companies) {
 		    /**

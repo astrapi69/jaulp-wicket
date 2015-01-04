@@ -1,8 +1,10 @@
 <wicket:panel xmlns:wicket="http://wicket.apache.org">
-	<span wicket:id="group">
-		<div wicket:id="persons">
-			<span><input type="radio" wicket:id="radio" /></span>
-			<span wicket:id="name"></span>
-		</div>
-	</span>
+	<form wicket:id="form">
+		<span wicket:id="group">
+			<span wicket:id="choice"> 
+				<input wicket:id="radio" type="radio"/> 
+				<label wicket:id="label"></label>
+			</span>
+		</span>
+	</form>
 </wicket:panel>

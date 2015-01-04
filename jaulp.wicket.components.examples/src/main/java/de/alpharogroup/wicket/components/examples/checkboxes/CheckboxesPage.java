@@ -11,7 +11,7 @@ public class CheckboxesPage extends PubliclyBasePage<Object> {
 
 	@Override
 	public Component getContainerPanel() {
-		return new CheckboxImageListViewPanel(CONTAINER_PANEL_ID);
+		return new CheckboxesPanel(CONTAINER_PANEL_ID, null);
 	}
 	
 	public CheckboxesPage(final PageParameters parameters) {

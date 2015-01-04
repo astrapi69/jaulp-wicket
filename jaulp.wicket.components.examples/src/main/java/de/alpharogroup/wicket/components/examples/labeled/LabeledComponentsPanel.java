@@ -14,8 +14,9 @@ import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePanel;
 
-import de.alpharogroup.wicket.components.examples.radiochoices.RadioChoicePanel;
-import de.alpharogroup.wicket.components.examples.radiochoices.RadioGroupPanel;
+import de.alpharogroup.wicket.components.examples.radios.RadioChoicePanel;
+import de.alpharogroup.wicket.components.examples.radios.RadioChoicesListViewExamplePanel;
+import de.alpharogroup.wicket.components.examples.radios.RadioGroupExamplePanel;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledEnumLabelPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;
@@ -95,7 +96,9 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 		
 		add(new RadioChoicePanel("radioChoicePanel", null));
 		
-		add(new RadioGroupPanel("radioGroupPanel", null));
+		add(new RadioGroupExamplePanel("radioGroupPanel", null));
+		
+		add(new RadioChoicesListViewExamplePanel("radioChoicesListViewExamplePanel", null));
 		
 		add(feedbackPanel=new FeedbackPanel("feedbackpanel"));
 		feedbackPanel.setOutputMarkupId(true);
