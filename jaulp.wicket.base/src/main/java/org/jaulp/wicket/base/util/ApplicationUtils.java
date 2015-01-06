@@ -12,6 +12,8 @@ import org.apache.wicket.markup.html.SecurePackageResourceGuard;
 import org.apache.wicket.protocol.http.IRequestLogger;
 import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.protocol.https.HttpsConfig;
+import org.apache.wicket.protocol.https.HttpsMapper;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.settings.IExceptionSettings;
@@ -272,7 +274,7 @@ public final class ApplicationUtils {
 	/**
 	 * Sets the footer header response for the given application from the given footerFilterName.
 	 *
-	 * @param application the application to set
+	 * @param application the application
 	 * @param footerFilterName the name of the filter that you will use for your footer container
 	 */
 	public static void setFooterHeaderResponse(final Application application, final String footerFilterName) {
@@ -282,5 +284,17 @@ public final class ApplicationUtils {
 						footerFilterName);
 			}
 		});
+	}
+
+	/**
+	 * Sets the root request mapper for the given application from the given httpPort and httpsPort.
+	 *
+	 * @param application the application
+	 * @param httpPort the http port
+	 * @param httpsPort the https port
+	 */
+	public static void setRootRequestMapper(final Application application, final int httpPort, final int httpsPort) {
+		application.setRootRequestMapper(new HttpsMapper(application.getRootRequestMapper(),
+				new HttpsConfig(httpPort, httpsPort)));
 	}
 }

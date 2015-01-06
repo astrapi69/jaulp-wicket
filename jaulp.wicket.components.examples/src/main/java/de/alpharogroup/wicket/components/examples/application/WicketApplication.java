@@ -5,8 +5,6 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.protocol.https.HttpsConfig;
-import org.apache.wicket.protocol.https.HttpsMapper;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.util.ApplicationUtils;
 
@@ -50,8 +48,7 @@ public class WicketApplication extends WicketBootstrapApplication
 		// set footer scripts...
 		ApplicationUtils.setFooterHeaderResponse(this, FOOTER_FILTER_NAME);
 		// set up ports for http and https...
-		setRootRequestMapper(new HttpsMapper(getRootRequestMapper(),
-				new HttpsConfig(getHttpPort(), getHttpsPort())));
+		ApplicationUtils.setRootRequestMapper(this, getHttpPort(), getHttpsPort());
 		// set exception handling for error page...
 		ApplicationUtils.setExceptionSettingsForDeployment(this, new ApplicationRequestCycleListener());
 		ApplicationUtils.addFilePatternsToPackageResourceGuard(this, "+*.css", "+*.png");
