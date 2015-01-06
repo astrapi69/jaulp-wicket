@@ -43,7 +43,7 @@ public class WicketApplication extends WicketBootstrapApplication
 	public void init()
 	{
 		super.init();
-		// add your configuration here
+		// initialize all header contributors
 		initializeAllHeaderContributors();
 		// set footer scripts...
 		ApplicationUtils.setFooterHeaderResponse(this, FOOTER_FILTER_NAME);
@@ -51,6 +51,7 @@ public class WicketApplication extends WicketBootstrapApplication
 		ApplicationUtils.setRootRequestMapper(this, getHttpPort(), getHttpsPort());
 		// set exception handling for error page...
 		ApplicationUtils.setExceptionSettingsForDeployment(this, new ApplicationRequestCycleListener());
+		// add file patterns to the resource guard...
 		ApplicationUtils.addFilePatternsToPackageResourceGuard(this, "+*.css", "+*.png");
 	}
 	
