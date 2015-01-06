@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.17.0</version>
+		<version>6.18.0</version>
 	</parent>
 	<artifactId>jaulp.wicket.components.examples</artifactId>
 	<packaging>war</packaging>
@@ -49,12 +49,12 @@
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>wicket.bootstrap3</artifactId>
-			<version>6.17.0</version>
+			<version>6.18.0</version>
 		</dependency>
 <!-- 		<dependency> -->
 <!-- 			<groupId>de.alpharogroup</groupId> -->
 <!-- 			<artifactId>turbo.sansa.wicket.components</artifactId> -->
-<!-- 			<version>6.17.0</version> -->
+<!-- 			<version>6.18.0</version> -->
 <!-- 		</dependency> -->
 		<!--  JUNIT DEPENDENCY FOR TESTING -->
 		<dependency>
