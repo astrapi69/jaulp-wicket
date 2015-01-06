@@ -268,4 +268,19 @@ public final class ApplicationUtils {
 			}
 		}
 	}
+
+	/**
+	 * Sets the footer header response for the given application from the given footerFilterName.
+	 *
+	 * @param application the application to set
+	 * @param footerFilterName the name of the filter that you will use for your footer container
+	 */
+	public static void setFooterHeaderResponse(final Application application, final String footerFilterName) {
+		application.setHeaderResponseDecorator(new IHeaderResponseDecorator() {
+			public IHeaderResponse decorate(IHeaderResponse response) {
+				return new JavaScriptFilteredIntoFooterHeaderResponse(response,
+						footerFilterName);
+			}
+		});
+	}
 }

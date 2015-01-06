@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.Application;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
-import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.https.HttpsConfig;
 import org.apache.wicket.protocol.https.HttpsMapper;
@@ -14,7 +11,6 @@ import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.util.ApplicationUtils;
 
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrapApplication;
-import de.alpharogroup.wicket.bootstrap3.themes.CustomTheme;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 
 
@@ -42,12 +38,6 @@ public class WicketApplication extends WicketBootstrapApplication
 		return HomePage.class;
 	}
 
-
-	protected void configureBootstrap() {
-		CustomTheme theme = new CustomTheme();
-		configureBootstrap(theme);
-	}
-
 	/**
 	 * @see org.apache.wicket.Application#init()
 	 */
@@ -58,16 +48,11 @@ public class WicketApplication extends WicketBootstrapApplication
 		// add your configuration here
 		initializeAllHeaderContributors();
 		// set footer scripts...
-		setHeaderResponseDecorator(new IHeaderResponseDecorator() {
-			public IHeaderResponse decorate(IHeaderResponse response) {
-				return new JavaScriptFilteredIntoFooterHeaderResponse(response,
-						FOOTER_FILTER_NAME);
-			}
-		});
+		ApplicationUtils.setFooterHeaderResponse(this, FOOTER_FILTER_NAME);
 		// set up ports for http and https...
 		setRootRequestMapper(new HttpsMapper(getRootRequestMapper(),
 				new HttpsConfig(getHttpPort(), getHttpsPort())));
-		
+		// set exception handling for error page...
 		ApplicationUtils.setExceptionSettingsForDeployment(this, new ApplicationRequestCycleListener());
 		ApplicationUtils.addFilePatternsToPackageResourceGuard(this, "+*.css", "+*.png");
 	}
