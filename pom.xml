@@ -73,7 +73,7 @@
 		<!-- UNIT TEST versions -->
 		<testng.version>6.8.8</testng.version>
 		<junit.version>4.11</junit.version>
-		<jetty.version>8.1.14.v20131031</jetty.version>
+		<jetty.version>8.1.16.v20140903</jetty.version>
 		<!-- JAULP versions -->
 		<jaulp.core.version>3.9.0-SNAPSHOT</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
@@ -108,6 +108,8 @@
 		<maven-compiler-plugin.debug>true</maven-compiler-plugin.debug>
 		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
 		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
+		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
+		<wtp.version>2.0</wtp.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<license-maven-plugin.version>2.5</license-maven-plugin.version>
 		<maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
@@ -599,6 +601,11 @@
 					<inherited>true</inherited>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>${maven-install-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven-war-plugin.version}</version>
 				</plugin>
 
 			</plugins>
