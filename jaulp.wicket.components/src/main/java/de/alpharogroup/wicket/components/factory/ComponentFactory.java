@@ -94,6 +94,19 @@ public class ComponentFactory {
 	 *
 	 * @param <T> the generic type
 	 * @param id            the id
+	 * @return the form
+	 */
+	public static<T> Form<T> newForm(String id) {
+		Form<T> form = new Form<>(id);
+		form.setOutputMarkupId(true);
+		return form;
+	}
+
+	/**
+	 * Factory method for create a new Form.
+	 *
+	 * @param <T> the generic type
+	 * @param id            the id
 	 * @param model            the model
 	 * @return the form
 	 */
