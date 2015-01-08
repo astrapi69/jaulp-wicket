@@ -14,6 +14,7 @@ import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.wicket.components.examples.radios.AjaxRadioExamplePanel;
 import de.alpharogroup.wicket.components.examples.radios.RadioChoicePanel;
 import de.alpharogroup.wicket.components.examples.radios.RadioChoicesListViewExamplePanel;
 import de.alpharogroup.wicket.components.examples.radios.RadioGroupExamplePanel;
@@ -97,8 +98,10 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 		add(new RadioChoicePanel("radioChoicePanel", null));
 		
 		add(new RadioGroupExamplePanel("radioGroupPanel", null));
-		
+
 		add(new RadioChoicesListViewExamplePanel("radioChoicesListViewExamplePanel", null));
+		
+		add(new AjaxRadioExamplePanel("ajaxRadioExamplePanel", null));
 		
 		add(feedbackPanel=new FeedbackPanel("feedbackpanel"));
 		feedbackPanel.setOutputMarkupId(true);

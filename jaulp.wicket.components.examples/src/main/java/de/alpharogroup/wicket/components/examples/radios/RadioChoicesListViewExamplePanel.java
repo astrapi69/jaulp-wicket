@@ -52,7 +52,7 @@ public class RadioChoicesListViewExamplePanel extends BasePanel<Company> {
 			private static final long serialVersionUID = 1L;
 			protected void onUpdate(AjaxRequestTarget target) {
 				target.add(getFeedback());
-				info("Selected Type : " + radioGroupModel.getSelected());
+				info("Selected Type : " + radioGroupModel.getSelected().getName());
 			}
 		});	
 

@@ -1,0 +1,22 @@
+.image-radio-container input[type=radio] {
+	display: none;
+	margin: 10px;
+}
+
+.image-radio-container input[type=radio]+label {
+	display: inline-block;
+	margin: -2px;
+	padding: 4px 12px;
+	background-color: #e7e7e7;
+	border-color: #ddd;
+}
+
+.image-radio-container input[type=radio]:checked+label {
+	background-image: none;
+	background-color: #d0d0d0;
+}
+
+.image-radio-container input[type=radio][checked=checked]+label {
+	background-image: none;
+	background-color: #d0d0d0;
+}
