@@ -15,25 +15,22 @@
  */
 package de.alpharogroup.wicket.components.radio;
 
-import org.apache.wicket.ajax.AjaxEventBehavior;
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.markup.html.form.Radio;
 import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class EnumRadio extends the class Radio and takes as parameter an enum type.
+ * The Class AjaxEnumRadio extends the class AjaxRadio It restricts the Model to an enum type.
  * 
  * @param <T>
  *            the generic type that must extends enum.
  * @author Asterios Raptis
  */
-public abstract class AjaxEnumRadio<T extends Enum<?>> extends Radio<T> {
+public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T> {
 	
 	/**
 	 * The Constant serialVersionUID.
 	 */
-	private static final long serialVersionUID = -8391468655460799084L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Instantiates a new enum radio.
@@ -47,7 +44,6 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends Radio<T> {
 	 */
 	public AjaxEnumRadio(String id, IModel<T> model, RadioGroup<T> group) {
 		super(id, model, group);
-		commonInit();
 	}
 
 	/**
@@ -60,7 +56,6 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends Radio<T> {
 	 */
 	public AjaxEnumRadio(String id, RadioGroup<T> group) {
 		super(id, group);
-		commonInit();
 	}
 
 	/**
@@ -71,7 +66,6 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends Radio<T> {
 	 */
 	public AjaxEnumRadio(String id) {
 		super(id);
-		commonInit();
 	}
 
 	/**
@@ -84,23 +78,7 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends Radio<T> {
 	 */
 	public AjaxEnumRadio(String id, IModel<T> model) {
 		super(id, model);
-		commonInit();
-	}
-	
-	protected void commonInit(){
-		setOutputMarkupId(true);
-		add(new AjaxEventBehavior("click") {			
-			/**
-			 * The serialVersionUID.
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-				onAjaxEvent(target);
-			}
-		});
-	}
+	}  
 
 	/**
 	 * {@inheritDoc}
@@ -109,7 +87,5 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends Radio<T> {
 	public String getValue() {
 		return getModelObject().name();
 	}
-	
-	public abstract void onAjaxEvent(AjaxRequestTarget target);
 
 }
