@@ -1,6 +1,5 @@
 .image-radio-container input[type=radio] {
 	display: none;
-	margin: 10px;
 }
 
 .image-radio-container input[type=radio]+label {
@@ -9,19 +8,24 @@
 	line-height:24px;
 	cursor:pointer;
 	background-repeat:no-repeat;
-	background-image: url("img/radio-square-unchecked.png");
-    background-size: 20px 20px;
+	background-image: url("img/radio-round-unchecked.png");
+    background-size: 16px 16px;
 	background-color: #ffffff;
 }
 
-.image-radio-container input[type=radio]:checked+label {
-	background-image: url("img/radio-square-checked.png");
-    background-size: 20px 20px;
+.image-radio-container input[type=radio]+label:hover {
+	padding-left:28px;
+	display: inline-block;
+	line-height:24px;
+	cursor:pointer;
+	background-repeat:no-repeat;
+	background-image: url("img/radio-round-hover.png");
+    background-size: 16px 16px;
 	background-color: #ffffff;
 }
 
-.image-radio-container input[type=radio][checked=checked]+label {
-	background-image: url("img/radio-square-checked.png");
-    background-size: 20px 20px;
+.image-radio-container input[type=radio]:checked+label, .image-radio-container input[type=radio][checked=checked]+label {
+	background-image: url("img/radio-round-checked.png");
+    background-size: 16px 16px;
 	background-color: #ffffff;
 }

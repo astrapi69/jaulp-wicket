@@ -6,7 +6,9 @@ $('.image-radio-container').on('change click', 'label', function() {
     if($radios.is(':checked') === true) {
     	$('input:radio[name='+ $radiogroupname +']')
     		.each(function () { 
-    			$(this).prop('checked', false).removeAttr('checked'); 
+    			if($(this).is(':checked')){
+        			$(this).prop('checked', false).removeAttr('checked');     				
+    			}
     		});
     }
     $selectedRadio.prop('checked',true).attr('checked',true);
