@@ -23,7 +23,8 @@ public class RadioGroupModel<T> implements Serializable {
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	T selected;
-	List<T> radios;
+	private T selected;
+	private List<T> radios;
+	private String labelPropertyExpression;
 
 }

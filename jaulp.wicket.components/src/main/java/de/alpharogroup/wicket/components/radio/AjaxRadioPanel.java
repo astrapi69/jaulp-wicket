@@ -1,7 +1,21 @@
+/**
+ * Copyright (C) 2010 Asterios Raptis
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.alpharogroup.wicket.components.radio;
 
 import java.io.Serializable;
-import java.util.List;
 
 import lombok.Getter;
 
@@ -15,7 +29,6 @@ import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.jaulp.wicket.base.BasePanel;
@@ -28,10 +41,16 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T> the generic type
  */
 public abstract class AjaxRadioPanel<T extends Serializable> extends
-		BasePanel<List<T>> {
+		BasePanel<RadioGroupModel<T>> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Gets the form.
+	 *
+	 * @return the form
+	 */
 	
 	/**
 	 * Gets the form.
@@ -46,34 +65,54 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	 *
 	 * @return the radio group
 	 */
+	
+	/**
+	 * Gets the radio group.
+	 *
+	 * @return the radio group
+	 */
 	@Getter	
-	private RadioGroup<T> radioGroup;
+	private RadioGroup<T> radioGroup;	
+
+	/**
+	 * Implement this method to provide special behavior when an radio button is selected.
+	 *
+	 * @param target the target
+	 * @param newSelection the new selection
+	 */
+	protected abstract void onRadioSelect(AjaxRequestTarget target,	T newSelection);
 
 	/**
 	 * Instantiates a new ajax radio panel.
 	 *
 	 * @param id the id
-	 * @param items the items
-	 * @param propertyExpression the property expression
+	 * @param model the model
 	 */
-	public AjaxRadioPanel(String id, List<T> items, String propertyExpression) {
-		this(id, items, null, propertyExpression);
+	public AjaxRadioPanel(String id, final IModel<RadioGroupModel<T>> model) {
+		super(id, model);
+		add(form = newForm("form"));
+		form.add(radioGroup = newRadioGroup("radioGroup", new PropertyModel<T>(model.getObject(), "selected")));
+		radioGroup.add(newRadios(radioGroup, model));
 	}
 
 	/**
-	 * Instantiates a new ajax radio panel.
+	 * New radios.
 	 *
-	 * @param id the id
-	 * @param items the items
-	 * @param currentSelection the current selection
-	 * @param labelPropertyExpression the label property expression
+	 * @param group the group
+	 * @param model the model
+	 * @return the component
 	 */
-	public AjaxRadioPanel(String id, List<T> items, T currentSelection,
-			String labelPropertyExpression) {
-		super(id);
-		add(form = newForm("form"));
-		form.add(radioGroup = newRadioGroup("radioGroup", new Model<T>(currentSelection)));
-		radioGroup.add(newRadios(radioGroup, items, labelPropertyExpression));
+	protected Component newRadios(final RadioGroup<T> group, final IModel<RadioGroupModel<T>> model) {
+		return new ListView<T>("radioButtons", model.getObject().getRadios()) {
+			private static final long serialVersionUID = 1L;
+			protected void populateItem(ListItem<T> item) {
+				AjaxRadio<T> radio = newAjaxRadio("radio", group, item);
+				Label label = ComponentFactory.newLabel("label", radio.getMarkupId(), new PropertyModel<String>(item
+						.getModel(), model.getObject().getLabelPropertyExpression()));
+				item.add(radio);
+				item.add(label);
+			}
+		};
 	}
 
 	/**
@@ -84,8 +123,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	 * @param item the item
 	 * @return the ajax radio
 	 */
-	protected AjaxRadio<T> newAjaxRadio(String id, final RadioGroup<T> group,
-			ListItem<T> item) {
+	protected AjaxRadio<T> newAjaxRadio(String id, final RadioGroup<T> group, ListItem<T> item) {
 		return new AjaxRadio<T>("radio", item.getModel()) {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -116,37 +154,6 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 		RadioGroup<T> radioGroup = new RadioGroup<T>(id, model);
 		return radioGroup;
 	}
-
-	/**
-	 * New radios.
-	 *
-	 * @param group the group
-	 * @param items the items
-	 * @param labelPropertyExpression the label property expression
-	 * @return the component
-	 */
-	protected Component newRadios(final RadioGroup<T> group, List<T> items,
-			final String labelPropertyExpression) {
-		return new ListView<T>("radioButtons", items) {
-			private static final long serialVersionUID = 1L;
-			protected void populateItem(ListItem<T> item) {
-				AjaxRadio<T> radio = newAjaxRadio("radio", group, item);
-				Label label = ComponentFactory.newLabel("label", radio.getMarkupId(), new PropertyModel<String>(item
-						.getModel(), labelPropertyExpression));
-				item.add(radio);
-				item.add(label);
-			}
-		};
-	}
-
-	/**
-	 * Implement this method to provide special behavior when an radio button is selected.
-	 *
-	 * @param target the target
-	 * @param newSelection the new selection
-	 */
-	protected abstract void onRadioSelect(AjaxRequestTarget target,
-			T newSelection);
 
 	/**
 	 * {@inheritDoc}
