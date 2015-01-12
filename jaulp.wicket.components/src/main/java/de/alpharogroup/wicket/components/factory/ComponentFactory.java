@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.HiddenField;
+import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.image.Image;
@@ -22,12 +23,12 @@ import org.apache.wicket.request.resource.IResource;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * A factory for creating Component objects.
+ * A factory for create Component objects.
  */
 public class ComponentFactory {
 
 	/** 
-	 * Factory method for creating a new CheckBox.
+	 * Factory method for create a new CheckBox.
 	 *
 	 * @param id the id
 	 * @param model the model
@@ -40,7 +41,7 @@ public class ComponentFactory {
 	}
 	
 	/**
-	 * Factory method for creating a new ComponentFeedbackPanel.
+	 * Factory method for create a new ComponentFeedbackPanel.
 	 * 
 	 * @param id
 	 *            the id
@@ -57,7 +58,7 @@ public class ComponentFactory {
 	}
 	
 	/**
-	 * Factory method for creating a new EnumLabel.
+	 * Factory method for create a new EnumLabel.
 	 *
 	 * @param id the id
 	 * @param model the model of the label
@@ -77,7 +78,7 @@ public class ComponentFactory {
 	}
 	
 	/**
-	 * Factory method for creating a new FeedbackPanel.
+	 * Factory method for create a new FeedbackPanel.
 	 * 
 	 * @param id
 	 *            the id
@@ -117,7 +118,7 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new hidden field.
+	 * Factory method for create a new hidden field.
 	 *
 	 * @param id the id
 	 * @return the component
@@ -129,7 +130,7 @@ public class ComponentFactory {
 	}
 
 	/** 
-	 * Factory method for creating a new Image.
+	 * Factory method for create a new Image.
 	 *
 	 * @param id the id
 	 * @param imageResource the IResource object
@@ -144,7 +145,7 @@ public class ComponentFactory {
 
 
 	/**
-	 * Factory method for creating a new Label with a {@link IModel<String>}.
+	 * Factory method for create a new Label with a {@link IModel<String>}.
 	 *
 	 * @param <T> the generic type
 	 * @param id            the id
@@ -158,7 +159,7 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new Label with a {@link PropertyModel}.
+	 * Factory method for create a new Label with a {@link PropertyModel}.
 	 *
 	 * @param <T> the generic type
 	 * @param id            the id
@@ -172,7 +173,7 @@ public class ComponentFactory {
 	}
 	
 	/**
-	 * Factory method for creating a new {@link Label} with a {@link ResourceBundleKey}.
+	 * Factory method for create a new {@link Label} with a {@link ResourceBundleKey}.
 	 * 
 	 * @param id
 	 *            the id
@@ -187,7 +188,7 @@ public class ComponentFactory {
 	}
 	
 	/**
-	 * Factory method for creating a new Label with the for attribute.
+	 * Factory method for create a new Label with the for attribute.
 	 * 
 	 * @param id
 	 *            the id
@@ -206,7 +207,7 @@ public class ComponentFactory {
 
 	
 	/**
-	 * Factory method for creating a new Label with the for attribute.
+	 * Factory method for create a new Label with the for attribute.
 	 * 
 	 * @param id
 	 *            the id
@@ -221,7 +222,7 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new Label.
+	 * Factory method for create a new Label.
 	 *
 	 * @param id the id
 	 * @param resourceKey the resource key
@@ -236,7 +237,7 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new MultiLineLabel with a {@link IModel<String>}.
+	 * Factory method for create a new MultiLineLabel with a {@link IModel<String>}.
 	 *
 	 * @param <T> the generic type
 	 * @param id            the id
@@ -250,7 +251,7 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new TextArea.
+	 * Factory method for create a new TextArea.
 	 *
 	 * @param id the id
 	 * @param model the model
@@ -263,7 +264,7 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new {@link TextField}.
+	 * Factory method for create a new {@link TextField}.
 	 * 
 	 * @param id
 	 *            the id
@@ -276,7 +277,7 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for creating a new {@link TextField}.
+	 * Factory method for create a new {@link TextField}.
 	 * 
 	 * @param id
 	 *            the id
@@ -288,6 +289,29 @@ public class ComponentFactory {
 		TextField<T> textField = new TextField<>(id, model);
 		textField.setOutputMarkupId(true);
 		return textField;
+	}
+	
+	/**
+	 * Factory method for create a new {@link RadioGroup}.
+	 *
+	 * @param id the id
+	 * @return the new {@link RadioGroup}
+	 */
+	public static<T> RadioGroup<T> newRadioGroup(String id) {
+		return newRadioGroup(id, null);
+	}
+	
+	/**
+	 * Factory method for create a new {@link RadioGroup}.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @return the new {@link RadioGroup}
+	 */
+	public static<T> RadioGroup<T> newRadioGroup(String id, IModel<T> model) {
+		RadioGroup<T> radioGroup = new RadioGroup<T>(id, model);
+		radioGroup.setOutputMarkupId(true);
+		return radioGroup;
 	}
 	
 }

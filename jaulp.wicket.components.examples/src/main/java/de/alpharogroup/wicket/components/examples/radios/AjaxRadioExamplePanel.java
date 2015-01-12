@@ -43,8 +43,7 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>> {
 		ajaxRadioPanel = new AjaxRadioPanel<Company>("ajaxRadioPanel",	Model.of(radioGroupModel)) {
 			private static final long serialVersionUID = 1L;
 
-			protected void onRadioSelect(AjaxRequestTarget target,
-					Company newSelection) {
+			protected void onRadioSelect(AjaxRequestTarget target, Company newSelection) {
 				info("You have selected " + newSelection.getName());
 				target.add(getFeedback());
 			}

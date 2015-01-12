@@ -46,6 +46,7 @@ import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
 import de.alpharogroup.wicket.components.examples.labeled.LabeledComponentsPage;
 import de.alpharogroup.wicket.components.examples.pdfdownload.PdfDownloadPage;
 import de.alpharogroup.wicket.components.examples.popupoverlay.PopupoverlayPage;
+import de.alpharogroup.wicket.components.examples.radios.RadioComponentsExamplePage;
 import de.alpharogroup.wicket.components.examples.sign.in.SigninPage;
 import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
@@ -205,6 +206,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
     	final IModel<String> labeledModel = ResourceModelFactory.newResourceModel("global.menu.labeled.label", this);
     	final IModel<String> buttonsModel = ResourceModelFactory.newResourceModel("global.menu.buttons.label", this);
     	final IModel<String> checkboxesModel = ResourceModelFactory.newResourceModel("global.menu.checkboxes.label", this);
+    	final IModel<String> radiosModel = ResourceModelFactory.newResourceModel("global.menu.radios.label", this);
     	final IModel<String> deregistrationModel = ResourceModelFactory.newResourceModel("global.menu.deregistration.label", this);
     	final IModel<String> exceptionModel = ResourceModelFactory.newResourceModel("global.menu.exception.label", this);
     	   return new NavbarDropDownButton(featuresMainModel) {
@@ -240,8 +242,10 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
                 		LabeledComponentsPage.class, labeledModel).setIconType(GlyphIconType.leaf));
                 subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(
                 		ButtonsPage.class, buttonsModel).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(
+                subMenu.add(new MenuBookmarkablePageLink<CheckboxesPage>(
                 		CheckboxesPage.class, checkboxesModel).setIconType(GlyphIconType.book));
+                subMenu.add(new MenuBookmarkablePageLink<RadioComponentsExamplePage>(
+                		RadioComponentsExamplePage.class, radiosModel).setIconType(GlyphIconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
                 		DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
                 subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(

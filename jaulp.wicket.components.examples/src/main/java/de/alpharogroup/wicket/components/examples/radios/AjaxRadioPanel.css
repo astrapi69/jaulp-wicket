@@ -1,9 +1,9 @@
-.image-radio-container input[type=radio] {
+.radioButtonPanel .image-radio-container input[type=radio] {
 	display: none;
 	margin: 10px;
 }
 
-.image-radio-container input[type=radio]+label {
+.radioButtonPanel .image-radio-container input[type=radio]+label {
 	display: inline-block;
 	margin: -2px;
 	padding: 4px 12px;
@@ -11,12 +11,12 @@
 	border-color: #ddd;
 }
 
-.image-radio-container input[type=radio]:checked+label {
+.radioButtonPanel .image-radio-container input[type=radio]:checked+label {
 	background-image: none;
 	background-color: #d0d0d0;
 }
 
-.image-radio-container input[type=radio][checked=checked]+label {
+.radioButtonPanel .image-radio-container input[type=radio][checked=checked]+label {
 	background-image: none;
 	background-color: #d0d0d0;
 }

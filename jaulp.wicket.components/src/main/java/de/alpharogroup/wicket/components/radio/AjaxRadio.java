@@ -18,7 +18,6 @@ package de.alpharogroup.wicket.components.radio;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
-import org.apache.wicket.ajax.attributes.AjaxRequestAttributes.Method;
 import org.apache.wicket.markup.html.form.Radio;
 import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.model.IModel;
@@ -38,7 +37,7 @@ public abstract class AjaxRadio<T> extends Radio<T> {
 	 *
 	 * @param id the id
 	 */
-	public AjaxRadio(String id) {
+	public AjaxRadio(final String id) {
 		super(id);
 		commonInit();
 	} 
@@ -49,7 +48,7 @@ public abstract class AjaxRadio<T> extends Radio<T> {
      * @param id the id
      * @param model the model
      */
-    public AjaxRadio(String id, final IModel<T> model) {
+    public AjaxRadio(final String id, final IModel<T> model) {
         super(id, model);
 		commonInit();
     }
@@ -60,7 +59,7 @@ public abstract class AjaxRadio<T> extends Radio<T> {
 	 * @param id the id
 	 * @param group the group
 	 */
-	public AjaxRadio(String id, RadioGroup<T> group) {
+	public AjaxRadio(final String id, final RadioGroup<T> group) {
 		super(id, group);
 		commonInit();
 	}
@@ -72,7 +71,7 @@ public abstract class AjaxRadio<T> extends Radio<T> {
 	 * @param model the model
 	 * @param group the group
 	 */
-	public AjaxRadio(String id, IModel<T> model, RadioGroup<T> group) {
+	public AjaxRadio(final String id, final IModel<T> model, final RadioGroup<T> group) {
 		super(id, model, group);
 		commonInit();
 	}
@@ -82,7 +81,6 @@ public abstract class AjaxRadio<T> extends Radio<T> {
 	 * Common init.
 	 */
 	protected void commonInit() {
-        setOutputMarkupId(true);
         add(newAjaxEventBehavior("click"));
 	}
     
@@ -116,7 +114,6 @@ public abstract class AjaxRadio<T> extends Radio<T> {
 			@Override
 			protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
 				super.updateAjaxAttributes(attributes);
-				attributes.setMethod(Method.POST);
 				AjaxRadio.this.updateAjaxAttributes(attributes);
 			}
 		};

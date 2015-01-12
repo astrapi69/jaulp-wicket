@@ -95,14 +95,6 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 
 		form.add(submitButton);	
 		
-		add(new RadioChoicePanel("radioChoicePanel", null));
-		
-		add(new RadioGroupExamplePanel("radioGroupPanel", null));
-
-		add(new RadioChoicesListViewExamplePanel("radioChoicesListViewExamplePanel", null));
-		
-		add(new AjaxRadioExamplePanel("ajaxRadioExamplePanel", null));
-		
 		add(feedbackPanel=new FeedbackPanel("feedbackpanel"));
 		feedbackPanel.setOutputMarkupId(true);
 	}
