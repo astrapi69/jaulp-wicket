@@ -34,7 +34,7 @@ public class ComponentFactory {
 	 * @param model the model
 	 * @return the created CheckBox
 	 */
-	public static CheckBox newCheckBox(String id, IModel<Boolean> model) {
+	public static CheckBox newCheckBox(final String id, final IModel<Boolean> model) {
 		CheckBox checkBox = new CheckBox(id, model);
 		checkBox.setOutputMarkupId(true);
 		return checkBox;
@@ -49,8 +49,7 @@ public class ComponentFactory {
 	 *            the filter
 	 * @return the component feedback panel
 	 */
-	public static ComponentFeedbackPanel newComponentFeedbackPanel(String id,
-			Component filter) {
+	public static ComponentFeedbackPanel newComponentFeedbackPanel(final String id, final Component filter) {
 		ComponentFeedbackPanel feedbackPanel = new ComponentFeedbackPanel(id,
 				filter);
 		feedbackPanel.setOutputMarkupId(true);
@@ -65,8 +64,7 @@ public class ComponentFactory {
 	 * @return the enum label
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static <T> EnumLabel newEnumLabel(final String id,
-			PropertyModel<T> model) {
+	public static <T> EnumLabel newEnumLabel(final String id, final PropertyModel<T> model) {
 		EnumLabel enumLabel = new EnumLabel(id, model) {
 			private static final long serialVersionUID = 1L;
 			protected String resourceKey(Enum value) {
@@ -84,7 +82,7 @@ public class ComponentFactory {
 	 *            the id
 	 * @return the FeedbackPanel
 	 */
-	public static FeedbackPanel newFeedbackPanel(String id) {
+	public static FeedbackPanel newFeedbackPanel(final String id) {
 		FeedbackPanel feedbackPanel = new FeedbackPanel(id);
 		feedbackPanel.setOutputMarkupId(true);
 		return feedbackPanel;
@@ -97,10 +95,8 @@ public class ComponentFactory {
 	 * @param id            the id
 	 * @return the form
 	 */
-	public static<T> Form<T> newForm(String id) {
-		Form<T> form = new Form<>(id);
-		form.setOutputMarkupId(true);
-		return form;
+	public static<T> Form<T> newForm(final String id) {
+		return newForm(id, null);
 	}
 
 	/**
@@ -111,7 +107,7 @@ public class ComponentFactory {
 	 * @param model            the model
 	 * @return the form
 	 */
-	public static<T> Form<T> newForm(String id, final IModel<T> model) {
+	public static<T> Form<T> newForm(final String id, final IModel<T> model) {
 		Form<T> form = new Form<>(id, model);
 		form.setOutputMarkupId(true);
 		return form;
@@ -123,7 +119,7 @@ public class ComponentFactory {
 	 * @param id the id
 	 * @return the component
 	 */
-	public static Component newHiddenField(String id) {
+	public static Component newHiddenField(final String id) {
 		HiddenField<String> hiddenField = new HiddenField<String>(id);
 		hiddenField.setOutputMarkupId(true);
 		return hiddenField;
@@ -152,7 +148,7 @@ public class ComponentFactory {
 	 * @param model            the {@link IModel<String>} for the label.
 	 * @return the label
 	 */
-	public static<T> Label newLabel(String id, IModel<T> model) {
+	public static<T> Label newLabel(final String id, final IModel<T> model) {
 		Label label = new Label(id, model);
 		label.setOutputMarkupId(true);
 		return label;
@@ -166,7 +162,7 @@ public class ComponentFactory {
 	 * @param model            the model
 	 * @return the label
 	 */
-	public static <T> Label newLabel(String id, PropertyModel<T> model) {
+	public static <T> Label newLabel(final String id, final PropertyModel<T> model) {
 		Label label = new Label(id, model);
 		label.setOutputMarkupId(true);
 		return label;
@@ -183,7 +179,7 @@ public class ComponentFactory {
 	 *            the component to find resource keys
 	 * @return the new {@link Label}
 	 */
-	public static Label newLabel(String id, final ResourceBundleKey resourceKey, final Component component) {
+	public static Label newLabel(final String id, final ResourceBundleKey resourceKey, final Component component) {
 		return ComponentFactory.newLabel(id, ResourceModelFactory.newResourceModel(resourceKey, component));
 	}
 	
@@ -198,7 +194,7 @@ public class ComponentFactory {
 	 *            the model
 	 * @return the label
 	 */
-	public static Label newLabel(String id, String forId, IModel<String> model) {
+	public static Label newLabel(final String id, final String forId, final IModel<String> model) {
 		Label label = new Label(id, model);
 		label.add(new AttributeAppender("for", Model.of(forId), " "));
 		label.setOutputMarkupId(true);
@@ -217,7 +213,7 @@ public class ComponentFactory {
 	 *            the model
 	 * @return the label
 	 */
-	public static Label newLabel(String id, String forId, final ResourceBundleKey resourceBundleKey, final Component component) {	
+	public static Label newLabel(final String id, final String forId, final ResourceBundleKey resourceBundleKey, final Component component) {	
 		return ComponentFactory.newLabel(id, forId, ResourceModelFactory.newResourceModel(resourceBundleKey, component));
 	}
 
@@ -230,7 +226,7 @@ public class ComponentFactory {
 	 * @param component the component
 	 * @return the label
 	 */
-	public static Label newLabel(String id, final String resourceKey,
+	public static Label newLabel(final String id, final String resourceKey,
 			final String defaultValue, final Component component) {
 		return ComponentFactory.newLabel(id, ResourceModelFactory
 				.newResourceModel(resourceKey, component, defaultValue));
@@ -244,7 +240,7 @@ public class ComponentFactory {
 	 * @param model            the {@link IModel<String>} for the label.
 	 * @return the label
 	 */
-	public static<T> MultiLineLabel newMultiLineLabel(String id, IModel<T> model) {
+	public static<T> MultiLineLabel newMultiLineLabel(final String id, final IModel<T> model) {
 		MultiLineLabel multiLineLabel = new MultiLineLabel(id, model);
 		multiLineLabel.setOutputMarkupId(true);
 		return multiLineLabel;
@@ -257,7 +253,7 @@ public class ComponentFactory {
 	 * @param model the model
 	 * @return the text area
 	 */
-	public static<T> TextArea<T> newTextArea(String id, PropertyModel<T> model) {
+	public static<T> TextArea<T> newTextArea(final String id, final PropertyModel<T> model) {
 		TextArea<T> textArea = new TextArea<T>(id, model);
 		textArea.setOutputMarkupId(true);
 		return textArea;
@@ -270,7 +266,7 @@ public class ComponentFactory {
 	 *            the id
 	 * @return the new {@link TextField}
 	 */
-	public static Component newTextField(String id) {
+	public static Component newTextField(final String id) {
 		TextField<String> textField = new TextField<>(id);
 		textField.setOutputMarkupId(true);
 		return textField;
@@ -285,7 +281,7 @@ public class ComponentFactory {
 	 *            the model
 	 * @return the new {@link TextField}
 	 */
-	public static<T> Component newTextField(String id, IModel<T> model) {
+	public static<T> Component newTextField(final String id, final IModel<T> model) {
 		TextField<T> textField = new TextField<>(id, model);
 		textField.setOutputMarkupId(true);
 		return textField;
@@ -297,7 +293,7 @@ public class ComponentFactory {
 	 * @param id the id
 	 * @return the new {@link RadioGroup}
 	 */
-	public static<T> RadioGroup<T> newRadioGroup(String id) {
+	public static<T> RadioGroup<T> newRadioGroup(final String id) {
 		return newRadioGroup(id, null);
 	}
 	
@@ -308,7 +304,7 @@ public class ComponentFactory {
 	 * @param model the model
 	 * @return the new {@link RadioGroup}
 	 */
-	public static<T> RadioGroup<T> newRadioGroup(String id, IModel<T> model) {
+	public static<T> RadioGroup<T> newRadioGroup(final String id, final IModel<T> model) {
 		RadioGroup<T> radioGroup = new RadioGroup<T>(id, model);
 		radioGroup.setOutputMarkupId(true);
 		return radioGroup;

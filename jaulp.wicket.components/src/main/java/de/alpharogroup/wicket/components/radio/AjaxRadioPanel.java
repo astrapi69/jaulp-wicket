@@ -80,7 +80,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	 * @param target the target
 	 * @param newSelection the new selection
 	 */
-	protected abstract void onRadioSelect(AjaxRequestTarget target,	T newSelection);
+	protected abstract void onRadioSelect(final AjaxRequestTarget target, final T newSelection);
 
 	/**
 	 * Instantiates a new ajax radio panel.
@@ -88,7 +88,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	 * @param id the id
 	 * @param model the model
 	 */
-	public AjaxRadioPanel(String id, final IModel<RadioGroupModel<T>> model) {
+	public AjaxRadioPanel(final String id, final IModel<RadioGroupModel<T>> model) {
 		super(id, model);
 		add(form = newForm("form"));
 		form.add(radioGroup = newRadioGroup("radioGroup", new PropertyModel<T>(model.getObject(), "selected")));
@@ -105,7 +105,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	protected Component newRadios(final RadioGroup<T> group, final IModel<RadioGroupModel<T>> model) {
 		return new ListView<T>("radioButtons", model.getObject().getRadios()) {
 			private static final long serialVersionUID = 1L;
-			protected void populateItem(ListItem<T> item) {
+			protected void populateItem(final ListItem<T> item) {
 				AjaxRadio<T> radio = newAjaxRadio("radio", group, item);
 				Label label = ComponentFactory.newLabel("label", radio.getMarkupId(), new PropertyModel<String>(item
 						.getModel(), model.getObject().getLabelPropertyExpression()));
@@ -123,7 +123,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	 * @param item the item
 	 * @return the ajax radio
 	 */
-	protected AjaxRadio<T> newAjaxRadio(String id, final RadioGroup<T> group, ListItem<T> item) {
+	protected AjaxRadio<T> newAjaxRadio(final String id, final RadioGroup<T> group, final ListItem<T> item) {
 		return new AjaxRadio<T>("radio", item.getModel()) {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -139,7 +139,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	 * @param id the id
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id) {
+	protected Form<?> newForm(final String id) {
 		return ComponentFactory.newForm(id);
 	}
 	
@@ -150,15 +150,14 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	 * @param model the model
 	 * @return the radio group
 	 */
-	protected RadioGroup<T> newRadioGroup(String id, IModel<T> model) {
-		RadioGroup<T> radioGroup = new RadioGroup<T>(id, model);
-		return radioGroup;
+	protected RadioGroup<T> newRadioGroup(final String id, final IModel<T> model) {
+		return ComponentFactory.newRadioGroup(id, model);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void renderHead(IHeaderResponse response) {
+	public void renderHead(final IHeaderResponse response) {
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem
 				.forReference(new JavaScriptResourceReference(AjaxRadioPanel.class,
