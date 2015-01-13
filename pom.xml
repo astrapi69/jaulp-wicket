@@ -75,7 +75,7 @@
 		<junit.version>4.11</junit.version>
 		<jetty.version>8.1.16.v20140903</jetty.version>
 		<!-- JAULP versions -->
-		<jaulp.core.version>3.9.0-SNAPSHOT</jaulp.core.version>
+		<jaulp.core.version>3.9.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
 		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
