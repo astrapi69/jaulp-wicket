@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.examples.checkbox;
+package de.alpharogroup.wicket.components.examples.checkbox.image;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.examples.buttons.LocaleMenuPanel;
 import de.alpharogroup.wicket.components.form.checkbox.image.ImageCheckboxModel;
+import de.alpharogroup.wicket.components.form.checkbox.image.ImageChoicesModel;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.css", resourceType = "css", index = 1),
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.js", resourceType = "js", index = 2) })
@@ -26,27 +27,29 @@ public class CheckboxImageListViewPanel extends BasePanel {
 
 	public CheckboxImageListViewPanel(String id) {
 		super(id);
-
 		// add some dummy data
-		List<ImageCheckboxModel> data = new ArrayList<>();
-		data.add(ImageCheckboxModel
+		List<ImageCheckboxModel> choices = new ArrayList<>();
+		choices.add(ImageCheckboxModel
 				.builder()
 				.imageResource(
 						new PackageResourceReference(LocaleMenuPanel.class,
 								"germany.gif")).build());
-		data.add(ImageCheckboxModel
+		choices.add(ImageCheckboxModel
 				.builder()
 				.imageResource(
 						new PackageResourceReference(LocaleMenuPanel.class,
 								"britain.gif")).build());
-		data.add(ImageCheckboxModel
+		choices.add(ImageCheckboxModel
 				.builder()
 				.imageResource(
 						new PackageResourceReference(LocaleMenuPanel.class,
 								"hellas.gif")).build());
+		ImageChoicesModel imageChoicesModel = ImageChoicesModel.builder()
+				.choices(choices)
+				.build();
 
 		ListView<ImageCheckboxModel> listView = 
-				new ListView<ImageCheckboxModel>("list", data) {
+				new ListView<ImageCheckboxModel>("list", imageChoicesModel.getChoices()) {
 			/**
 			 * The serialVersionUID
 			 */
