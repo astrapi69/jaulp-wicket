@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.form.checkbox;
+package de.alpharogroup.wicket.components.form.checkbox.image;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,12 +19,12 @@ import lombok.experimental.Builder;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CheckboxModel<T> implements Serializable {
+public class ImageChoicesModel implements Serializable {
 	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	List<T> selectedItems = new ArrayList<T>();
-	List<T> choices;
+	private List<ImageCheckboxModel> choices;
+	List<ImageCheckboxModel> selectedItems = new ArrayList<ImageCheckboxModel>();
 	private String labelPropertyExpression;
 }

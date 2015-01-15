@@ -47,29 +47,13 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Gets the form.
-	 *
-	 * @return the form
-	 */
-	
-	/**
-	 * Gets the form.
-	 *
-	 * @return the form
+	 * the form.
 	 */
 	@Getter
 	private Form<?> form;
 	
 	/**
-	 * Gets the radio group.
-	 *
-	 * @return the radio group
-	 */
-	
-	/**
-	 * Gets the radio group.
-	 *
-	 * @return the radio group
+	 * the radio group.
 	 */
 	@Getter	
 	private RadioGroup<T> radioGroup;	

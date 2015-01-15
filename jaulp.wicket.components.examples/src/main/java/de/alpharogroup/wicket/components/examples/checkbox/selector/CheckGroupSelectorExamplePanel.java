@@ -29,6 +29,7 @@ public class CheckGroupSelectorExamplePanel extends Panel {
 				Company.builder().name("Mazerati").build(), 
 				Company.builder().name("Porsche").build()
 				));
+		checkboxModel.setLabelPropertyExpression("name");
 		IModel<CheckboxModel<Company>> checkGroupModel = Model.of(checkboxModel);
 		add(new CheckGroupSelectorPanel<Company>("checkGroupSelectorPanel", checkGroupModel){
 			/**

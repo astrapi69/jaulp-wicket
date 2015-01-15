@@ -3,6 +3,7 @@ package de.alpharogroup.wicket.components.examples.checkbox;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.components.examples.checkbox.image.CheckboxImageListViewPanel;
 import de.alpharogroup.wicket.components.examples.checkbox.selector.CheckGroupSelectorExamplePanel;
 
 public class CheckboxesPanel extends Panel {
