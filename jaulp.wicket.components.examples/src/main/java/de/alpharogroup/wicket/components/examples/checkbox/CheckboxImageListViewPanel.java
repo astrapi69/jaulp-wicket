@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.examples.checkboxes;
+package de.alpharogroup.wicket.components.examples.checkbox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.examples.buttons.LocaleMenuPanel;
+import de.alpharogroup.wicket.components.form.checkbox.image.ImageCheckboxModel;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.css", resourceType = "css", index = 1),
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.js", resourceType = "js", index = 2) })

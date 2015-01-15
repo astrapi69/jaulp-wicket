@@ -1,7 +1,9 @@
-package de.alpharogroup.wicket.components.examples.checkboxes;
+package de.alpharogroup.wicket.components.examples.checkbox;
 
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+
+import de.alpharogroup.wicket.components.examples.checkbox.selector.CheckGroupSelectorExamplePanel;
 
 public class CheckboxesPanel extends Panel {
 
@@ -12,6 +14,8 @@ public class CheckboxesPanel extends Panel {
 
 	public CheckboxesPanel(String id, IModel<?> model) {
 		super(id, model);
+
+		add(new CheckGroupSelectorExamplePanel("checkGroupSelectorExamplePanel", null));
 		add(new CheckboxImageListViewPanel("checkboxImageListViewPanel"));
 		add(new CheckChoicesListViewPanel("checkChoicesListViewPanel", model));
 	}

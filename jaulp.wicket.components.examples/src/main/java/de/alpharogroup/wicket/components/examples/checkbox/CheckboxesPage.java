@@ -1,4 +1,4 @@
-package de.alpharogroup.wicket.components.examples.checkboxes;
+package de.alpharogroup.wicket.components.examples.checkbox;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.request.mapper.parameter.PageParameters;

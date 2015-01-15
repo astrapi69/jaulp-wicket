@@ -1,10 +1,7 @@
-package de.alpharogroup.wicket.components.examples.checkboxes;
+package de.alpharogroup.wicket.components.examples.checkbox;
 
 import java.util.Arrays;
 import java.util.List;
-
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -20,6 +17,7 @@ import org.apache.wicket.model.util.ListModel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.examples.radios.Company;
 import de.alpharogroup.wicket.components.form.CheckChoicesListView;
+import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
 
 public class CheckChoicesListViewPanel extends Panel {
 

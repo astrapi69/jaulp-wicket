@@ -35,7 +35,7 @@ import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePage;
 import de.alpharogroup.wicket.components.examples.buttons.ButtonsPage;
 import de.alpharogroup.wicket.components.examples.captcha.ReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.captcha.SslReCaptchaPage;
-import de.alpharogroup.wicket.components.examples.checkboxes.CheckboxesPage;
+import de.alpharogroup.wicket.components.examples.checkbox.CheckboxesPage;
 import de.alpharogroup.wicket.components.examples.deregistration.DeregistrationPage;
 import de.alpharogroup.wicket.components.examples.exceptions.ExceptionPage;
 import de.alpharogroup.wicket.components.examples.fragment.replacewith.ReplaceWithPage;
