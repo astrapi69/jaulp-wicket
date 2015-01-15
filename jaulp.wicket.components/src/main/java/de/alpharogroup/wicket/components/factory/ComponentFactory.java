@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.factory;
 
+import java.util.Collection;
+
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
@@ -8,6 +10,8 @@ import org.apache.wicket.markup.html.basic.EnumLabel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.CheckGroup;
+import org.apache.wicket.markup.html.form.CheckGroupSelector;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.HiddenField;
 import org.apache.wicket.markup.html.form.RadioGroup;
@@ -141,11 +145,11 @@ public class ComponentFactory {
 
 
 	/**
-	 * Factory method for create a new Label with a {@link IModel<String>}.
+	 * Factory method for create a new Label with a {@link IModel}.
 	 *
 	 * @param <T> the generic type
 	 * @param id            the id
-	 * @param model            the {@link IModel<String>} for the label.
+	 * @param model            the {@link IModel} for the label.
 	 * @return the label
 	 */
 	public static<T> Label newLabel(final String id, final IModel<T> model) {
@@ -209,8 +213,10 @@ public class ComponentFactory {
 	 *            the id
 	 * @param forId
 	 *            the for id
-	 * @param model
-	 *            the model
+	 * @param resourceBundleKey
+	 *            the resource key
+	 * @param component
+	 *            the component to find resource keys
 	 * @return the label
 	 */
 	public static Label newLabel(final String id, final String forId, final ResourceBundleKey resourceBundleKey, final Component component) {	
@@ -233,11 +239,11 @@ public class ComponentFactory {
 	}
 
 	/**
-	 * Factory method for create a new MultiLineLabel with a {@link IModel<String>}.
+	 * Factory method for create a new MultiLineLabel with a {@link IModel}.
 	 *
 	 * @param <T> the generic type
 	 * @param id            the id
-	 * @param model            the {@link IModel<String>} for the label.
+	 * @param model            the {@link IModel} for the label.
 	 * @return the label
 	 */
 	public static<T> MultiLineLabel newMultiLineLabel(final String id, final IModel<T> model) {
@@ -308,6 +314,44 @@ public class ComponentFactory {
 		RadioGroup<T> radioGroup = new RadioGroup<T>(id, model);
 		radioGroup.setOutputMarkupId(true);
 		return radioGroup;
+	}
+	
+	/**
+	 * Factory method for create a new {@link CheckGroup}.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @return the new {@link CheckGroup}
+	 */
+	public static<T> CheckGroup<T> newCheckGroup(final String id, final IModel<? extends Collection<T>> model) {
+		CheckGroup<T> checkGroup = new CheckGroup<T>(id, model);
+		checkGroup.setOutputMarkupId(true);
+		return checkGroup;
+	}
+	
+	/**
+	 * Factory method for create a new {@link CheckGroupSelector}.
+	 *
+	 * @param id the id
+	 * @return the new {@link CheckGroupSelector}
+	 */
+	public static<T> CheckGroupSelector newCheckGroupSelector(final String id) {
+		CheckGroupSelector checkGroupSelector = new CheckGroupSelector(id);
+		checkGroupSelector.setOutputMarkupId(true);
+		return checkGroupSelector;
+	}
+	
+	/**
+	 * Factory method for create a new {@link CheckGroupSelector}.
+	 *
+	 * @param id the id
+	 * @param group the {@link CheckGroup}
+	 * @return the new {@link CheckGroupSelector}
+	 */
+	public static<T> CheckGroupSelector newCheckGroupSelector(final String id, final CheckGroup<T> group) {
+		CheckGroupSelector checkGroupSelector = new CheckGroupSelector(id, group);
+		checkGroupSelector.setOutputMarkupId(true);
+		return checkGroupSelector;
 	}
 	
 }
