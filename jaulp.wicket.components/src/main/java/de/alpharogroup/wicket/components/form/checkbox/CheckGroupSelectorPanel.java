@@ -5,7 +5,6 @@ import java.util.List;
 
 import lombok.Getter;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.basic.Label;
@@ -22,7 +21,7 @@ import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public abstract class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>> {
+public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>> {
 
 	/**
 	 * The serialVersionUID.
@@ -45,7 +44,7 @@ public abstract class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel
 	private Label checkGroupSelectorLabel;
 	
 	@Getter
-	private Component choices;
+	private ListView<T> choices;
 
 	public CheckGroupSelectorPanel(String id, IModel<CheckboxModel<T>> model) {
 		super(id, model);
@@ -61,7 +60,7 @@ public abstract class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel
         checkGroup.add(choices = newChoices("choices", model));
 	}
 	
-	protected Component newChoices(final String id, final IModel<CheckboxModel<T>> model) {
+	protected ListView<T> newChoices(final String id, final IModel<CheckboxModel<T>> model) {
 		ListView<T> choices = new ListView<T>("choices", model.getObject().getChoices()) {	   
 			/**
 			 * The serialVersionUID.
@@ -120,5 +119,5 @@ public abstract class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel
 		return checkGroup;
 	}
 	
-	protected abstract void onUpdate(AjaxRequestTarget target);
+	protected void onUpdate(AjaxRequestTarget target){}
 }
