@@ -120,12 +120,8 @@
 		<maven-assembly-plugin.version>2.5.3</maven-assembly-plugin.version>		
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<license-maven-plugin.version>2.7</license-maven-plugin.version>
-		<site-maven-plugin.version>0.9</site-maven-plugin.version>
-		<org.eclipse.egit.github.core.version>2.0.3</org.eclipse.egit.github.core.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-		<!-- GITHUB VARIABLE FOR MAVEN PLUGIN com.github.github. Github maven repository. -->
-		<github.global.server>github</github.global.server>
 		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
 	</properties>
 
@@ -608,48 +604,7 @@
 						<keystorePass>wicket</keystorePass>
 					</configuration>
 				</plugin>
-
-				<plugin>
-					<groupId>com.github.github</groupId>
-					<artifactId>site-maven-plugin</artifactId>
-					<version>${site-maven-plugin.version}</version>
-					<configuration>
-						<message>Maven artifacts for ${project.version}</message>
-						<!-- git commit message -->
-						<noJekyll>true</noJekyll>
-						<!-- disable webpage processing -->
-						<merge>true</merge>
-						<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
-						<!-- matches distribution management repository url above -->
-						<branch>refs/heads/mvn-repo</branch>
-						<!-- remote branch name -->
-						<includes>
-							<include>**/*</include>
-						</includes>
-						<repositoryName>jaulp.wicket</repositoryName>
-						<!-- github repo name -->
-						<repositoryOwner>astrapi69</repositoryOwner>
-						<!-- github username -->
-					</configuration>
-					<executions>
-						<!-- run site-maven-plugin's 'site' target as part of the build's normal 
-							'deploy' phase -->
-						<execution>
-							<goals>
-								<goal>site</goal>
-							</goals>
-							<phase>deploy</phase>
-						</execution>
-					</executions>
-					<dependencies>
-						<dependency>
-							<groupId>org.eclipse.mylyn.github</groupId>
-							<artifactId>org.eclipse.egit.github.core</artifactId>
-							<version>${org.eclipse.egit.github.core.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-
+				
 				<plugin>
 					<inherited>true</inherited>
 					<artifactId>maven-install-plugin</artifactId>
@@ -763,31 +718,6 @@
 				</repository>
 			</distributionManagement>
 
-		</profile>
-	
-		<profile>
-			<id>deploy-on-github</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<inherited>true</inherited>
-						<artifactId>maven-source-plugin</artifactId>
-					</plugin>
-
-					<plugin>
-						<inherited>true</inherited>
-						<groupId>com.github.github</groupId>
-						<artifactId>site-maven-plugin</artifactId>
-					</plugin>
-
-				</plugins>
-			</build>
 		</profile>
 
 		<profile>
