@@ -49,7 +49,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${artifactId}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<resources>
 
 			<resource>
@@ -132,7 +132,10 @@
 
 			<plugin>
 				<inherited>true</inherited>
-				<artifactId>maven-war-plugin</artifactId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 
 		</plugins>
