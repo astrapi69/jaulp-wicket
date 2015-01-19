@@ -123,7 +123,7 @@
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
-		<tomcat.version>7.0.57</tomcat.version>
+		<tomcat.version>7.0.54</tomcat.version>
 	</properties>
 
 	<dependencyManagement>
@@ -583,7 +583,7 @@
 								<maxIdleTime>3600000</maxIdleTime>
 							</connector>
 							<connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
-								<port>8443</port>
+								<port>9443</port>
 								<maxIdleTime>3600000</maxIdleTime>
 								<keystore>${project.build.directory}/test-classes/keystore</keystore>
 								<password>wicket</password>
@@ -599,8 +599,12 @@
 					<version>${tomcat7-maven-plugin.version}</version>
 					<configuration>
 						<path>/</path>
-						<port>8080</port>
-						<httpsPort>8443</httpsPort>
+						<port>9090</port>
+						<httpsPort>9443</httpsPort>
+						<update>true</update>
+						<url>http://localhost:9090/manager/text</url>
+						<username>tomcat</username>
+						<password>tomcat</password>
 						<keystoreFile>${project.build.directory}/test-classes/keystore</keystoreFile>
 						<keystorePass>wicket</keystorePass>
 					</configuration>
@@ -770,13 +774,25 @@
 			</snapshots>
 		</repository>
 
+		<repository>
+			<id>oss-sonatype</id>
+			<name>oss-sonatype</name>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
 	</repositories>
 
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<name>Nexus snapshot Repository</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>

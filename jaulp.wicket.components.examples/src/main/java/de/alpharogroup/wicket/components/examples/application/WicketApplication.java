@@ -8,7 +8,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.util.ApplicationUtils;
 
-import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrapApplication;
+import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 
 
@@ -17,7 +17,7 @@ import de.alpharogroup.wicket.components.examples.home.HomePage;
  * 
  * @see de.alpharogroup.wicket.components.examples.StartComponentExamples#main(String[])
  */
-public class WicketApplication extends WicketBootstrapApplication
+public class WicketApplication extends WicketBootstrap3Application
 {    	
     public static final int HTTP_PORT = 9090;
     public static final int HTTPS_PORT = 9443;
