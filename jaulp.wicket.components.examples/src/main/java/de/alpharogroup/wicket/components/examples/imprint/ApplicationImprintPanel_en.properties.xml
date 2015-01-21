@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment />
+	<entry key="main.global.company.masthead.label">Website Credits:</entry>
+	<entry key="main.global.company.url.and.slogan.label"></entry>
+	<entry key="imprint.service.from.label">is a service from</entry>
+	<entry key="main.global.company.name.label">Alpha Ro Group UG(haftungsbeschränkt)</entry>
+	<entry key="main.global.company.street.and.number.label">Seestr. 68</entry>
+	<entry key="main.global.company.zipcode.and.city.label">71638 Ludwigsburg</entry>
+	<entry key="main.global.company.state.label">Germany</entry>
+	<entry key="main.global.company.authorised.representative.label">Authorised representative:</entry>
+	<entry key="main.global.company.authorised.representative">Asterios Raptis</entry>
+	<entry key="main.global.company.register.entry.header.label">Value Added Tax Identification Number:</entry>
+	<entry key="main.global.company.register.entry.label">VAT No. according to Value Added Tax Act:</entry>
+	<entry key="main.global.company.register.entry.court.number">DE282352473</entry>
+	<entry key="main.global.company.register.identification.header.label">Business identification number:</entry>
+	<entry key="main.global.company.register.identification.label">Business identification number according to General Fiscal Law:</entry>	
+	<entry key="main.global.company.entry.commercial.register.header.label">Entry in the Commercial Register</entry>
+	<entry key="main.global.company.entry.commercial.register.label">Commercial Register Number:</entry>
+	<entry key="main.global.company.entry.commercial.register.number">HRB 740739</entry>
+</properties>

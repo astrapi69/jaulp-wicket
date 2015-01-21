@@ -1,10 +1,13 @@
 package de.alpharogroup.wicket.components.imprint;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.mailto.MailToPanel;
 import de.alpharogroup.wicket.components.termofuse.disclaimer.DisclaimerPanel;
@@ -73,6 +76,27 @@ public abstract class ImprintPanel extends Panel {
 
 		imprintContainer.add(new Label("companyRegisterIndedificationNumber",
 				newCompanyRegisterEntryNumberModel()));		
+		
+		imprintContainer.add(new Label("companyEntryCommercialRegisterHeader",
+				ResourceModelFactory.newResourceModel(
+						ResourceBundleKey.builder()
+						.key("main.global.company.entry.commercial.register.header.label")
+						.defaultValue("").build(), 
+						this)));
+
+		imprintContainer.add(new Label("companyEntryCommercialRegisterContent",
+				ResourceModelFactory.newResourceModel(
+						ResourceBundleKey.builder()
+						.key("main.global.company.entry.commercial.register.label")
+						.defaultValue("").build(), 
+						this)));
+
+		imprintContainer.add(new Label("companyEntryCommercialRegisterNumber",
+				ResourceModelFactory.newResourceModel(
+						ResourceBundleKey.builder()
+						.key("main.global.company.entry.commercial.register.number")
+						.defaultValue("").build(), 
+						this)));		
 
 		disclaimerContainer = newDisclaimerContainer("disclaimerContainer");
 		add(disclaimerContainer);
