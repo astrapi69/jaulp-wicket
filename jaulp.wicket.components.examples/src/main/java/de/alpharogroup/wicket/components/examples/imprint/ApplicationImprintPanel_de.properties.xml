@@ -12,12 +12,10 @@
 	<entry key="main.global.company.authorised.representative.label">Ansprechpartner:</entry>
 	<entry key="main.global.company.authorised.representative">Asterios Raptis</entry>
 	<entry key="main.global.company.register.entry.header.label">Umsatzsteuer-ID:</entry>
-	<entry key="main.global.company.register.entry.label">Umsatzsteuer-Identifikationsnummer gemäß §27 a
-		Umsatzsteuergesetz:</entry>
+	<entry key="main.global.company.register.entry.label">Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:</entry>
 	<entry key="main.global.company.register.entry.court.number">DE282352473</entry>
 	<entry key="main.global.company.register.identification.header.label">Wirtschafts-Identifikationsnummer:</entry>
-	<entry key="main.global.company.register.identification.label">Wirtschafts-Identifikationsnummer gemäß §139 c
-		Abgabenordnung:</entry>
+	<entry key="main.global.company.register.identification.label">Wirtschafts-Identifikationsnummer gemäß §139 c Abgabenordnung:</entry>
 	<entry key="main.global.company.entry.commercial.register.header.label">Handelsregistereintrag</entry>
 	<entry key="main.global.company.entry.commercial.register.label">Handelsregistereintragsnummer:</entry>
 	<entry key="main.global.company.entry.commercial.register.number">HRB 740739</entry>

@@ -14,9 +14,9 @@
 	<entry key="main.global.company.register.entry.header.label">Αριθμός Φορολογικού Μητρώου(ΑΦΜ)</entry>
 	<entry key="main.global.company.register.entry.label">Αριθμός Φορολογικού Μητρώου(ΑΦΜ) σύμφωνα με το δίκαιο περί φορολογίας κύκλου εργασιών:</entry>
 	<entry key="main.global.company.register.entry.court.number">DE282352473</entry>
-	<entry key="main.global.company.register.identification.header.label">Business identification number:</entry>
-	<entry key="main.global.company.register.identification.label">Business identification number according to General Fiscal Law:</entry>
-	<entry key="main.global.company.entry.commercial.register.header.label">Entry in the Commercial Register</entry>
-	<entry key="main.global.company.entry.commercial.register.label">Commercial Register Number:</entry>
+	<entry key="main.global.company.register.identification.header.label">Αριθμός απο την οικονομική ταυτότητα:</entry>
+	<entry key="main.global.company.register.identification.label">Αριθμός απο την οικονομική ταυτότητα σύμφωνα με το δίκαιο περί φορολογίας κύκλου εργασιών:</entry>
+	<entry key="main.global.company.entry.commercial.register.header.label">καταχώρηση στο εμπορικό μητρώο</entry>
+	<entry key="main.global.company.entry.commercial.register.label">Αριθμός απο το εμπορικό μητρώο:</entry>
 	<entry key="main.global.company.entry.commercial.register.number">HRB 740739</entry>
 </properties>
