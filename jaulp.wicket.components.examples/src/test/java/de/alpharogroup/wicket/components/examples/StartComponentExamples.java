@@ -20,7 +20,7 @@ public class StartComponentExamples {
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
-        connector.setPort(WicketApplication.HTTP_PORT);
+        connector.setPort(WicketApplication.DEFAULT_HTTP_PORT);
         server.addConnector(connector);
 
         Resource keystore = Resource.newClassPathResource("/keystore");
@@ -40,8 +40,8 @@ public class StartComponentExamples {
             factory.setKeyManagerPassword("wicket");
             SslSocketConnector sslConnector = new SslSocketConnector(factory);
             sslConnector.setMaxIdleTime(timeout);
-            sslConnector.setPort(WicketApplication.HTTPS_PORT);
-            connector.setConfidentialPort(WicketApplication.HTTPS_PORT);
+            sslConnector.setPort(WicketApplication.DEFAULT_HTTPS_PORT);
+            connector.setConfidentialPort(WicketApplication.DEFAULT_HTTPS_PORT);
             sslConnector.setAcceptors(4);
             server.addConnector(sslConnector);
 

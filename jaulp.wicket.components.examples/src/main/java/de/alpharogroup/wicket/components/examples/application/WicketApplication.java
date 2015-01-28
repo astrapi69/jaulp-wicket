@@ -19,14 +19,12 @@ import de.alpharogroup.wicket.components.examples.home.HomePage;
  */
 public class WicketApplication extends WicketBootstrap3Application
 {    	
-    public static final int HTTP_PORT = 9090;
-    public static final int HTTPS_PORT = 9443;
+    public static final int DEFAULT_HTTP_PORT = 9090;
+    public static final int DEFAULT_HTTPS_PORT = 9443;
 	/** The Constant logger. */
 	private static final Logger LOGGER = Logger
 			.getLogger(WicketApplication.class.getName());
 
-	// http://www.wicket-library.com/wicket-examples/resourceaggregation/wicket/bookmarkable/org.apache.wicket.examples.source.SourcesPage?0&SourcesPage_class=org.apache.wicket.examples.resourcedecoration.HomePage&source=HomePage.java
-	public static final String FOOTER_FILTER_NAME = "footer-container";
 	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
@@ -56,11 +54,29 @@ public class WicketApplication extends WicketBootstrap3Application
 	}
 	
 	protected int getHttpPort() {
-		return WicketApplication.HTTP_PORT;
+		if(getProperties().containsKey("application.http.port")) {
+			String httpPortString = getProperties().getProperty("application.http.port");			
+			try {
+				int httpPort = Integer.valueOf(httpPortString);
+				return httpPort;
+			} catch (NumberFormatException e) {
+				return WicketApplication.DEFAULT_HTTP_PORT;
+			}
+		}
+		return WicketApplication.DEFAULT_HTTP_PORT;
 	}
 	
 	protected int getHttpsPort() {
-		return WicketApplication.HTTPS_PORT;
+		if(getProperties().containsKey("application.https.port")) {
+			String httpsPortString = getProperties().getProperty("application.https.port");			
+			try {
+				int httpsPort = Integer.valueOf(httpsPortString);
+				return httpsPort;
+			} catch (NumberFormatException e) {
+				return WicketApplication.DEFAULT_HTTPS_PORT;
+			}
+		}
+		return WicketApplication.DEFAULT_HTTPS_PORT;
 	}
 
 	/**
