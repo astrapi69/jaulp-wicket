@@ -2,15 +2,15 @@ package de.alpharogroup.wicket.components.i18n.list;
 
 import java.util.List;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.model.IModel;
 
-import de.alpharogroup.wicket.components.listview.ListViewPanel;
-
 /**
- * The Class DivListPanel.
- * @param <T> the generic type of the list
+ * The Class ResourceBundleKeysPanel takes a list of content resource keys that should be
+ * in a resource bundle for i18n.
  */
-public abstract class DivListPanel<T> extends ListViewPanel<T> {
+public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundleKey> {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public abstract class DivListPanel<T> extends ListViewPanel<T> {
 	 * @param id the id
 	 * @param list the list
 	 */
-	public DivListPanel(String id, List<T> list) {
+	public ResourceBundleKeysPanel(String id, List<ResourceBundleKey> list) {
 		super(id, list);
 	}
 
@@ -33,8 +33,8 @@ public abstract class DivListPanel<T> extends ListViewPanel<T> {
 	 * @param content
 	 *            the model
 	 */
-	public DivListPanel(String id,
-			IModel<List<T>> content) {
+	public ResourceBundleKeysPanel(String id,
+			IModel<List<ResourceBundleKey>> content) {
 		super(id, content);
 	}
 

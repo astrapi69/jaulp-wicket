@@ -12,7 +12,7 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.AddJsQueryBehavior;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
 import de.alpharogroup.wicket.components.i18n.list.UnorderedListPanel;
-import de.alpharogroup.wicket.components.i18n.list.DivListPanel;
+import de.alpharogroup.wicket.components.i18n.list.ResourceBundleKeysPanel;
 
 
 public class RightsAndDutiesPanel extends Panel {
@@ -51,7 +51,7 @@ public class RightsAndDutiesPanel extends Panel {
 			}
 		});
 		
-		add(new DivListPanel("summary", model.getObject().getSummaryModel().getContentResourceKeys()) {
+		add(new ResourceBundleKeysPanel("summary", model.getObject().getSummaryModel().getContentResourceKeys()) {
 			
 			private static final long serialVersionUID = 1L;
 

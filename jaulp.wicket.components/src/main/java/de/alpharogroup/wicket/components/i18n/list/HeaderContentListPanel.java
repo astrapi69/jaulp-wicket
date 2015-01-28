@@ -56,7 +56,7 @@ public abstract class HeaderContentListPanel extends Panel {
 
 	protected Component newListPanel(String id,
 			IModel<ContentListModel> model) {
-		return new DivListPanel(id, model.getObject().getContentResourceKeys()) {
+		return new ResourceBundleKeysPanel(id, model.getObject().getContentResourceKeys()) {
 			
 			private static final long serialVersionUID = 1L;
 
