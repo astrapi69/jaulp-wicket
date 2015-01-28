@@ -127,11 +127,10 @@ public class WicketUrlUtils {
 	 * Gets the canonical page url. Try to reduce url by eliminating '..' and
 	 * '.' from the path where appropriate (this is somehow similar to
 	 * {@link java.io.File#getCanonicalPath()}).
-	 * @see Url#canonical()
 	 *
-	 * @param pageClass
-	 *            the page class
+	 * @param pageClass            the page class
 	 * @return the page url
+	 * @see Url#canonical()
 	 */
 	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass) {
 		return getCanonicalPageUrl(pageClass, null);
@@ -141,13 +140,11 @@ public class WicketUrlUtils {
 	 * Gets the canonical page url. Try to reduce url by eliminating '..' and
 	 * '.' from the path where appropriate (this is somehow similar to
 	 * {@link java.io.File#getCanonicalPath()}).
-	 * @see Url#canonical()
 	 *
-	 * @param pageClass
-	 *            the page class
-	 * @param parameters
-	 *            the parameters
+	 * @param pageClass            the page class
+	 * @param parameters            the parameters
 	 * @return the page url
+	 * @see Url#canonical()
 	 */
 	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
 		return getPageUrl(pageClass, parameters).canonical();
@@ -292,15 +289,32 @@ public class WicketUrlUtils {
 	 * @return the domain url
 	 */
 	public static String getDomainUrl(boolean withServerPort, boolean withSlashAtTheEnd) {
+		return newDomainUrl(
+				WicketComponentUtils.getHttpServletRequest()
+				.getScheme(),
+				WicketUrlUtils.getServerName(), 
+				WicketComponentUtils.getHttpServletRequest()
+				.getServerPort(), withServerPort, withSlashAtTheEnd);
+	}
+	
+	/**
+	 * Creates a new domain url from the given parameters.
+	 *
+	 * @param scheme the scheme
+	 * @param domainName the domain name
+	 * @param port the port
+	 * @param withServerPort the with server port
+	 * @param withSlashAtTheEnd the with slash at the end
+	 * @return the string
+	 */
+	public static String newDomainUrl(String scheme, String domainName, int port, boolean withServerPort, boolean withSlashAtTheEnd) {
 		StringBuilder domainUrl = new StringBuilder();
-		domainUrl.append(WicketComponentUtils.getHttpServletRequest()
-				.getScheme());
+		domainUrl.append(scheme);
 		domainUrl.append("://");
-		domainUrl.append(WicketUrlUtils.getServerName());
+		domainUrl.append(domainName);
 		if (withServerPort) {
 			domainUrl.append(":");
-			domainUrl.append(WicketComponentUtils.getHttpServletRequest()
-					.getServerPort());
+			domainUrl.append(port);
 		}
 		if(withSlashAtTheEnd) {
 			domainUrl.append("/");
