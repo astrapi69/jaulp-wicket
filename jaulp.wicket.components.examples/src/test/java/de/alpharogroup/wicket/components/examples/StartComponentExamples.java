@@ -26,7 +26,7 @@ public class StartComponentExamples {
         Resource keystore = Resource.newClassPathResource("/keystore");
         if (keystore != null && keystore.exists()) {
             // if a keystore for a SSL certificate is available, start a SSL
-            // connector on port 8443.
+            // connector on port WicketApplication.DEFAULT_HTTPS_PORT.
             // By default, the quickstart comes with a Apache Wicket Quickstart
             // Certificate that expires about half way september 2021. Do not
             // use this certificate anywhere important as the passwords are
@@ -45,8 +45,10 @@ public class StartComponentExamples {
             sslConnector.setAcceptors(4);
             server.addConnector(sslConnector);
 
-            System.out.println("SSL access to the quickstart has been enabled on port 8443");
-            System.out.println("You can access the application using SSL on https://localhost:8443");
+            System.out.println("SSL access to the quickstart has been enabled on port "
+            		+ WicketApplication.DEFAULT_HTTPS_PORT);
+            System.out.println("You can access the application using SSL on https://localhost:"
+            		+ WicketApplication.DEFAULT_HTTPS_PORT);
             System.out.println();
         }
 

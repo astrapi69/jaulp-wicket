@@ -10,12 +10,14 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.AddJsQueryBehavior;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.components.i18n.content.ContentModel;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 
@@ -63,25 +65,18 @@ public abstract class DeregistrationPanel extends
 	}
 	
 	protected Component newContentPanel(String id) {
-		ContentPanel contentPanel = new ContentPanel("contentPanel", null) {
-			private static final long serialVersionUID = 1L;
-			@Override
-			protected ResourceBundleKey newHeaderResourceKey() {
-				return ResourceBundleKey.builder()
+		ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel.builder()
+				.headerResourceKey(ResourceBundleKey.builder()
 						.key("sem.main.info.frame.deregistration.user.label")
 						.parameters(ListUtils
 								.toObjectArray(getDomainName()))
-						.build();
-			}
-			@Override
-			protected ResourceBundleKey newContentResourceKey() {
-				return ResourceBundleKey.builder()
-						.key("sem.main.header.deregistration.user.label")
+						.build())
+				.contentResourceKey(ResourceBundleKey.builder()
+						.key("sem.main.info.frame.deregistration.user.label")
 						.parameters(ListUtils
 								.toObjectArray(getDomainName()))
-						.build();
-			}
-		};
+						.build())
+				.build()));
 		contentPanel.getHeader().add(
 				new AddJsQueryBehavior("wrap", "<h1></h1>"));
 		contentPanel.getContent().add(

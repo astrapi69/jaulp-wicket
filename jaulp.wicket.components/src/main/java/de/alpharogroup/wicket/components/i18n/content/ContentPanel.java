@@ -22,8 +22,17 @@ public class ContentPanel extends BasePanel<ContentModel> {
 
 	public ContentPanel(String id, IModel<ContentModel> model) {
 		super(id, model);
-		add(header = newHeaderLabel("header", newHeaderModel()));
-		add(content = newContentLabel("content", newContentModel()));
+		if (model != null) {
+			add(header = newHeaderLabel("header",
+					ResourceModelFactory.newResourceModel(model.getObject()
+							.getHeaderResourceKey(), this)));
+			add(content = newContentLabel("content",
+					ResourceModelFactory.newResourceModel(model.getObject()
+							.getContentResourceKey(), this)));
+		} else {
+			add(header = newHeaderLabel("header", newHeaderModel()));
+			add(content = newContentLabel("content", newContentModel()));
+		}
 	}
 
 	public Component getHeader() {
