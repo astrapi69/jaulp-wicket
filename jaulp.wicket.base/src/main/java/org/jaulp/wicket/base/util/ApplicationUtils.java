@@ -150,10 +150,8 @@ public final class ApplicationUtils {
 	/**
 	 * Gets the resource stream from the given parameters.
 	 *
-	 * @param application
-	 *            the application
-	 * @param path
-	 *            the path
+	 * @param file
+	 *            the file
 	 * @param contentType
 	 *            the content type
 	 * @return the resource stream
@@ -217,6 +215,22 @@ public final class ApplicationUtils {
 						footerFilterName);
 			}
 		});
+	}
+
+	/**
+	 * Sets the footer header response for the given application from the given
+	 * footerFilterName.
+	 *
+	 * @param application
+	 *            the application
+	 * @param footerFilterName
+	 *            the name of the filter that you will use for your footer
+	 *            container
+	 * @deprecated use instead {@link ApplicationUtils#setHeaderResponseDecorator(Application, String)}
+	 */
+	public static void setFooterHeaderResponse(final Application application,
+			final String footerFilterName) {
+		setHeaderResponseDecorator(application, footerFilterName);
 	}
 
 	/**
@@ -308,26 +322,6 @@ public final class ApplicationUtils {
 				guard.addPattern(pattern);
 			}
 		}
-	}
-
-	/**
-	 * Sets the footer header response for the given application from the given
-	 * footerFilterName.
-	 *
-	 * @param application
-	 *            the application
-	 * @param footerFilterName
-	 *            the name of the filter that you will use for your footer
-	 *            container
-	 */
-	public static void setFooterHeaderResponse(final Application application,
-			final String footerFilterName) {
-		application.setHeaderResponseDecorator(new IHeaderResponseDecorator() {
-			public IHeaderResponse decorate(IHeaderResponse response) {
-				return new JavaScriptFilteredIntoFooterHeaderResponse(response,
-						footerFilterName);
-			}
-		});
 	}
 
 	/**
