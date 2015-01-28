@@ -22,6 +22,7 @@ import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
  * The Class BasePanel.
+ * @param <T> the generic type of the model
  */
 public abstract class BasePanel<T> extends GenericPanel<T> {
 

@@ -22,6 +22,7 @@ import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
  * The Class AbstractGenericBasePage.
+ * @param <T> the generic type of the model
  */
 public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T> {
 

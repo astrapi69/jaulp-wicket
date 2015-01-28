@@ -22,14 +22,12 @@ public final class PageParametersUtils {
 			String name) {
 		return getString(parameters.get(name));
 	}
+
 	/**
-	 * Gets the {@link String} object from the {@link StringValue} or returns null if the given {@link StringValue} is null.
+	 * Gets the string from the given {@link StringValue}.
 	 *
-	 * @param parameters
-	 *            the parameters
-	 * @param name
-	 *            the name
-	 * @return the parameter
+	 * @param value the value
+	 * @return the string
 	 */
 	public static String getString(StringValue value) {
 		if (isNotNullOrEmpty(value)) {
