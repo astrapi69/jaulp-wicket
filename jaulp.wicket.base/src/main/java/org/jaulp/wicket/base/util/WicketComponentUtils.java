@@ -51,6 +51,7 @@ import org.apache.wicket.util.time.Time;
 import org.jaulp.wicket.PackageResourceReferenceWrapper;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.enums.ResourceReferenceType;
+import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 
 /**
  * The Class WicketComponentUtils is a helper class for the migration from
@@ -180,6 +181,7 @@ public final class WicketComponentUtils {
 	 * @param parameters
 	 *            the  {@link Map} with the parameters to set.
 	 * @return the {@link PageParameters}
+	 * @deprecated use instead {@link PageParametersUtils#toPageParameters(Map)}
 	 */
 	public static PageParameters toPageParameters(Map<String, String> parameters) {
 		PageParameters param = new PageParameters();

@@ -1,5 +1,8 @@
 package org.jaulp.wicket.base.util.parameter;
 
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.string.StringValueConversionException;
@@ -93,6 +96,21 @@ public final class PageParametersUtils {
 	public static final boolean isNullOrEmpty(StringValue stringValue) {
 		return stringValue == null || stringValue.isNull()
 				|| stringValue.isEmpty();
+	}
+
+	/**
+	 * Converts the given Map to a {@link PageParameters} object.
+	 * 
+	 * @param parameters
+	 *            the  {@link Map} with the parameters to set.
+	 * @return the {@link PageParameters}
+	 */
+	public static PageParameters toPageParameters(Map<String, String> parameters) {
+		PageParameters param = new PageParameters();
+		for (Entry<String, String> parameter : parameters.entrySet()) {
+			param.add(parameter.getKey(), parameter.getValue());
+		}
+		return param;
 	}
 
 }
