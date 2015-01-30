@@ -3,6 +3,7 @@ package org.jaulp.wicket.base.util.parameter;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.log4j.Logger;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.string.StringValueConversionException;
@@ -12,6 +13,10 @@ import org.apache.wicket.util.string.StringValueConversionException;
  */
 public final class PageParametersUtils {
 
+	/** The Constant logger. */
+	private static final Logger LOGGER = Logger
+			.getLogger(PageParametersUtils.class.getName());
+	
 	/**
 	 * Gets the parameter.
 	 *
@@ -56,7 +61,7 @@ public final class PageParametersUtils {
 			try {
 				value = stringValue.toInteger();
 			} catch (StringValueConversionException e) {
-				value = -1;
+				LOGGER.error("Error by converting the given StringValue.", e);
 			}
 		}
 		return value;
