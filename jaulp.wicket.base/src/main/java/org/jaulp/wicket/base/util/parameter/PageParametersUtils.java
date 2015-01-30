@@ -42,6 +42,21 @@ public final class PageParametersUtils {
 			return value.toString();
 		}
 		return null;
+	}	
+
+	/**
+	 * Gets the Integer object or returns null if the given StringValue is null
+	 * or empty.
+	 *
+	 * @param stringValue
+	 *            the user id as StringValue object
+	 * @return the Integer object or null if the given StringValue is null or
+	 *         empty.
+	 * @deprecated use instead the
+	 *             {@link PageParametersUtils#toInteger(StringValue)}
+	 */
+	public static Integer getInteger(StringValue stringValue) {
+		return toInteger(stringValue);
 	}
 	
 	
@@ -55,7 +70,7 @@ public final class PageParametersUtils {
 	 * @return the Integer object or null if the given StringValue is null or
 	 *         empty.
 	 */
-	public static Integer getInteger(StringValue stringValue) {
+	public static Integer toInteger(StringValue stringValue) {
 		Integer value = null;
 		if (isNotNullOrEmpty(stringValue)) {
 			try {
