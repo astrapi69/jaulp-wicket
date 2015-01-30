@@ -4,9 +4,9 @@ import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.mailto.MailToPanel;
@@ -17,7 +17,7 @@ import de.alpharogroup.wicket.components.termofuse.disclaimer.DisclaimerPanel;
  * 
  * @author Asterios Raptis
  */
-public abstract class ImprintPanel extends Panel {
+public abstract class ImprintPanel extends BasePanel<ImprintModel> {
 
 	/**
 	 * The serialVersionUID.
