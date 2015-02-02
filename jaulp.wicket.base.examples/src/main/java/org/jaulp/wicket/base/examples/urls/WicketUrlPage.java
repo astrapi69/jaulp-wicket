@@ -22,7 +22,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
 import org.jaulp.wicket.base.examples.application.WicketApplication;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
-import org.jaulp.wicket.base.util.WicketUrlUtils;
+import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("/urlpageexample")

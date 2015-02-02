@@ -27,7 +27,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.TextTemplateResourceReference;
 import org.apache.wicket.util.lang.Args;
-import org.jaulp.wicket.base.util.WicketUrlUtils;
+import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 
 /**
  * The Class AddJsResourceReferenceBehavior adds a javascript file to given

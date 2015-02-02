@@ -22,7 +22,7 @@ import de.alpharogroup.wicket.components.form.checkbox.image.ImageChoicesModel;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.css", resourceType = "css", index = 1),
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.js", resourceType = "js", index = 2) })
-public class CheckboxImageListViewPanel extends BasePanel {
+public class CheckboxImageListViewPanel extends BasePanel<List<ImageCheckboxModel>> {
 	private static final long serialVersionUID = 1L;
 
 	public CheckboxImageListViewPanel(String id) {

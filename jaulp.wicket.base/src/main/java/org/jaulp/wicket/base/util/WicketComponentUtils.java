@@ -15,10 +15,7 @@
  */
 package org.jaulp.wicket.base.util;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +34,6 @@ import org.apache.wicket.markup.head.StringHeaderItem;
 import org.apache.wicket.protocol.http.RequestUtils;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.https.RequireHttps;
-import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -46,7 +42,6 @@ import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.time.Time;
 import org.jaulp.wicket.PackageResourceReferenceWrapper;
 import org.jaulp.wicket.PackageResourceReferences;
@@ -67,7 +62,7 @@ public final class WicketComponentUtils {
 	 * @return the request url
 	 */
 	public static String getRequestURL() {
-		StringBuffer url = getHttpServletRequest().getRequestURL();
+		StringBuffer url = WicketComponentUtils.getHttpServletRequest().getRequestURL();
 		return url.toString();
 	}
 
@@ -128,15 +123,10 @@ public final class WicketComponentUtils {
 	 * @param parameterName
 	 *            the parameter name
 	 * @return the parameter value
+	 * @deprecated use instead {@link PageParametersUtils#getParameter(Request, String)}
 	 */
 	public static String getParameter(Request request, String parameterName) {
-		String parameterValue = request.getRequestParameters()
-				.getParameterValue(parameterName).toString();
-		if (parameterValue == null || parameterValue.isEmpty()) {
-			parameterValue = request.getPostParameters()
-					.getParameterValue(parameterName).toString();
-		}
-		return parameterValue;
+		return PageParametersUtils.getParameter(request, parameterName);
 	}
 
 	/**
@@ -144,10 +134,10 @@ public final class WicketComponentUtils {
 	 * and post parameters. Migration method from 1.4.* to 1.5.*.
 	 * 
 	 * @return a map with all parameters.
+	 * @deprecated use instead {@link PageParametersUtils#getParameterMap()}
 	 */
 	public static Map<String, String[]> getParameterMap() {
-		Request request = RequestCycle.get().getRequest();
-		return getParameterMap(request);
+		return PageParametersUtils.getParameterMap();
 	}
 
 	/**
@@ -157,22 +147,10 @@ public final class WicketComponentUtils {
 	 * @param request
 	 *            the request
 	 * @return a map with all parameters.
+	 * @deprecated use instead {@link PageParametersUtils#getParameterMap(Request)}
 	 */
 	public static Map<String, String[]> getParameterMap(Request request) {
-		IRequestParameters parameters = request.getRequestParameters();
-		final Map<String, String[]> map = new HashMap<>();
-		Set<String> parameterNames = parameters.getParameterNames();
-		for (String parameterName : parameterNames) {
-			List<StringValue> parameterValues = parameters.getParameterValues(parameterName);
-			String[] stringArray = new String[parameterValues.size()];
-			if(parameterValues != null && !parameterValues.isEmpty()) {				
-				for (int i = 0; i < parameterValues.size(); i++) {
-					stringArray[i] = parameterValues.get(i).toString();
-				}
-			}
-			map.put(parameterName, stringArray);
-		}
-		return map;
+		return PageParametersUtils.getParameterMap(request);
 	}
 
 	/**
@@ -184,11 +162,7 @@ public final class WicketComponentUtils {
 	 * @deprecated use instead {@link PageParametersUtils#toPageParameters(Map)}
 	 */
 	public static PageParameters toPageParameters(Map<String, String> parameters) {
-		PageParameters param = new PageParameters();
-		for (Entry<String, String> parameter : parameters.entrySet()) {
-			param.add(parameter.getKey(), parameter.getValue());
-		}
-		return param;
+		return PageParametersUtils.toPageParameters(parameters);
 	}
 	
 	/**
@@ -198,10 +172,10 @@ public final class WicketComponentUtils {
 	 * @param parameterName
 	 *            the parameter name
 	 * @return the parameter value
+	 * @deprecated use instead {@link PageParametersUtils#getParameter(String)}
 	 */
 	public static String getParameter(String parameterName) {
-		Request request = RequestCycle.get().getRequest();
-		return getParameter(request, parameterName);
+		return PageParametersUtils.getParameter(parameterName);
 	}
 
 	/**

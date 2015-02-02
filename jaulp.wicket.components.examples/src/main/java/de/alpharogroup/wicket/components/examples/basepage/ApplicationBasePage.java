@@ -330,7 +330,9 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T> {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Gets the wicket application.
+	 *
+	 * @return the wicket application
 	 */
 	public WicketApplication getWicketApplication() {
 		return WicketApplication.get();

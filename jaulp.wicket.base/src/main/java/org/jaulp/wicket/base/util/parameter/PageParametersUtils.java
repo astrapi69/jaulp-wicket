@@ -1,9 +1,15 @@
 package org.jaulp.wicket.base.util.parameter;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.apache.wicket.request.IRequestParameters;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.string.StringValueConversionException;
@@ -131,6 +137,75 @@ public final class PageParametersUtils {
 			param.add(parameter.getKey(), parameter.getValue());
 		}
 		return param;
+	}
+
+	/**
+	 * Gets the parameter value from given parameter name. Looks in the query
+	 * and post parameters.
+	 * 
+	 * @param request
+	 *            the request
+	 * @param parameterName
+	 *            the parameter name
+	 * @return the parameter value
+	 */
+	public static String getParameter(Request request, String parameterName) {
+		String parameterValue = request.getRequestParameters()
+				.getParameterValue(parameterName).toString();
+		if (parameterValue == null || parameterValue.isEmpty()) {
+			parameterValue = request.getPostParameters()
+					.getParameterValue(parameterName).toString();
+		}
+		return parameterValue;
+	}
+
+	/**
+	 * Gets a map with all parameters. Looks in the query
+	 * and post parameters. Migration method from 1.4.* to 1.5.*.
+	 * 
+	 * @return a map with all parameters.
+	 */
+	public static Map<String, String[]> getParameterMap() {
+		Request request = RequestCycle.get().getRequest();
+		return getParameterMap(request);
+	}
+
+	/**
+	 * Gets a map with all parameters. Looks in the query
+	 * and post parameters. Migration method from 1.4.* to 1.5.*.
+	 * 
+	 * @param request
+	 *            the request
+	 * @return a map with all parameters.
+	 */
+	public static Map<String, String[]> getParameterMap(Request request) {
+		IRequestParameters parameters = request.getRequestParameters();
+		final Map<String, String[]> map = new HashMap<>();
+		Set<String> parameterNames = parameters.getParameterNames();
+		for (String parameterName : parameterNames) {
+			List<StringValue> parameterValues = parameters.getParameterValues(parameterName);
+			String[] stringArray = new String[parameterValues.size()];
+			if(parameterValues != null && !parameterValues.isEmpty()) {				
+				for (int i = 0; i < parameterValues.size(); i++) {
+					stringArray[i] = parameterValues.get(i).toString();
+				}
+			}
+			map.put(parameterName, stringArray);
+		}
+		return map;
+	}
+	
+	/**
+	 * Gets the parameter value from given parameter name. Looks in the query
+	 * and post parameters.
+	 * 
+	 * @param parameterName
+	 *            the parameter name
+	 * @return the parameter value
+	 */
+	public static String getParameter(String parameterName) {
+		Request request = RequestCycle.get().getRequest();
+		return getParameter(request, parameterName);
 	}
 
 }

@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jaulp.wicket.base.util;
+package org.jaulp.wicket.base.util.url;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
  * The Class WicketUrlUtils.
@@ -158,7 +160,7 @@ public class WicketUrlUtils {
 	 * @return the base url
 	 */
 	public static Url getBaseUrl(WebPage page) {
-		return new Url(page.getRequestCycle().getUrlRenderer().getBaseUrl());
+		return getBaseUrl(page.getClass());
 	}
 
 	/**
@@ -171,6 +173,17 @@ public class WicketUrlUtils {
 	public static Url getBaseUrl(Class<? extends WebPage> pageClass) {
 		return getBaseUrl(pageClass, null);
 	}
+
+	/**
+	 * Gets the base url from the given WebPage class object as String.
+	 * 
+	 * @param pageClass
+	 *            the page class
+	 * @return the base url as String.
+	 */
+	public static String toBaseUrl(Class<? extends WebPage> pageClass) {
+		return getBaseUrl(pageClass).canonical().toString();
+	}
 	
 	/**
 	 * Gets the base url.
@@ -182,6 +195,17 @@ public class WicketUrlUtils {
 	public static Url getBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
 		return RequestCycle.get().mapUrlFor(pageClass, parameters);
 	}
+	
+	/**
+	 * Gets the base ur as String.
+	 *
+	 * @param pageClass the page class
+	 * @param parameters the parameters
+	 * @return the base url as String.
+	 */
+	public static String toBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+		return getBaseUrl(pageClass, parameters).canonical().toString();
+	}
 
 	/**
 	 * Gets the base Url.
@@ -190,6 +214,16 @@ public class WicketUrlUtils {
 	 */
 	public static Url getBaseUrl() {
 		return RequestCycle.get().getUrlRenderer().getBaseUrl();
+	}
+
+
+	/**
+	 * Gets the base Url as String.
+	 * 
+	 * @return base Url as String.
+	 */
+	public static String toBaseUrl() {
+		return getBaseUrl().canonical().toString();
 	}
 
 	/**
@@ -320,5 +354,29 @@ public class WicketUrlUtils {
 			domainUrl.append("/");
 		}
 		return domainUrl.toString();
+	}
+
+	/**
+	 * Appends the given requestUrl that is resolved from the HttpServletRequest
+	 * and appends the urlFor from the RequestCycle from the given page and the
+	 * given PageParameters.
+	 * 
+	 * @param <C>
+	 *            the generic type
+	 * @param requestUrl
+	 *            the request url
+	 * @param page
+	 *            the page
+	 * @param param
+	 *            the param
+	 * @return the string
+	 */
+	public static <C extends WebPage> String urlFor(final String requestUrl,
+			Class<C> page, PageParameters param) {
+		String ru = StringUtils.substringBeforeLast(
+				requestUrl, "/");
+		StringBuilder url = new StringBuilder(ru).append("/");
+		url.append((RequestCycle.get()).urlFor(page, param));
+		return url.toString();
 	}
 }

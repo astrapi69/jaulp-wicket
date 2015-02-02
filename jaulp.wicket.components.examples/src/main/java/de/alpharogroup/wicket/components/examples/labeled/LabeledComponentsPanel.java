@@ -14,10 +14,6 @@ import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Member;
 import org.jaulp.wicket.base.BasePanel;
 
-import de.alpharogroup.wicket.components.examples.radios.AjaxRadioExamplePanel;
-import de.alpharogroup.wicket.components.examples.radios.RadioChoicePanel;
-import de.alpharogroup.wicket.components.examples.radios.RadioChoicesListViewExamplePanel;
-import de.alpharogroup.wicket.components.examples.radios.RadioGroupExamplePanel;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledEnumLabelPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;

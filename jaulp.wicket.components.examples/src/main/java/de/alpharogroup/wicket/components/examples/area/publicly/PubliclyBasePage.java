@@ -13,8 +13,8 @@ import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.util.WicketUrlUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.button.dropdown.DropDownButton;
@@ -64,6 +64,8 @@ import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterSharePan
  * The Class BasePage.
  * 
  * @author Asterios Raptis
+ * @param <T>
+ *            the generic type
  */
 public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 

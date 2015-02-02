@@ -15,7 +15,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PropertyListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
-import org.jaulp.wicket.base.util.WicketUrlUtils;
+import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 import org.wicketstuff.annotation.mount.MountPath;
 
 /**

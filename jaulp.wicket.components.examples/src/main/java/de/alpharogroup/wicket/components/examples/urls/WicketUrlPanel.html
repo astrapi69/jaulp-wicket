@@ -7,22 +7,100 @@
 
 	<br>
 	<br>
-	WicketUrlResolver.getUrlForForgottenPassword("bla", "1HE23WE", WicketUrlPage.class, true):<br>
-	<span wicket:id="urlForForgottenPassword"></span>
+	WicketUrlUtils.absoluteUrlFor(AddressPage.class):<br>
+	<span wicket:id="absoluteUrlFor"></span>
 	<br>
 	<br>
-	WicketUrlResolver.getUrlForForgottenPassword("bla", "1HE23WE", WicketUrlPage.class, false):<br>
-	<span wicket:id="urlForForgottenPassword2"></span>
+	WicketUrlUtils.absoluteUrlFor(AddressPage.class, true):<br>
+	<span wicket:id="absoluteUrlForWithPort"></span>
 	<br>
 	<br>
-	WicketUrlResolver.getUrlForForgottenPassword(WicketComponentUtils.getRequestURL(), "bla", "1HE23WE", WicketUrlPage.class):<br>
-	<span wicket:id="urlForForgottenPassword3"></span>
+	WicketUrlUtils.absoluteUrlFor(AddressPage.class, pageParameters, true):<br>
+	<span wicket:id="absoluteUrlForWithPortAndPageParameters"></span>
 	<br>
 	<br>
-	WicketUrlResolver.toFullUrl(false):<br>
-	<span wicket:id="toFullUrl"></span>
+	WicketUrlUtils.absoluteUrlFor(AddressPage.class, pageParameters, false):<br>
+	<span wicket:id="absoluteUrlForWithoutPortAndPageParameters"></span>
 	<br>
 	<br>
-	WicketUrlResolver.toFullUrl(true):<br>
-	<span wicket:id="toFullUrl1"></span>
+	WicketUrlUtils.getPageUrl(new AddressPage(new PageParameters())):<br>
+	<span wicket:id="getPageUrl"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getPageUrl(new AddressPage(pageParameters), pageParameters):<br>
+	<span wicket:id="getPageUrlWithPageParameters"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getPageUrl(AddressPage.class):<br>
+	<span wicket:id="getPageUrlWithPageClass"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getPageUrl(AddressPage.class, pageParameters):<br>
+	<span wicket:id="getPageUrlWithPageClassAndPageParameters"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getCanonicalPageUrl(AddressPage.class):<br>
+	<span wicket:id="getCanonicalPageUrlWithPageClass"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getCanonicalPageUrl(AddressPage.class, pageParameters):<br>
+	<span wicket:id="getCanonicalPageUrlWithPageClassAndPageParameters"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getBaseUrl():<br>
+	<span wicket:id="getBaseUrl"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getBaseUrl(new AddressPage(pageParameters)):<br>
+	<span wicket:id="getBaseUrlWithPageObject"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getBaseUrl(AddressPage.class):<br>
+	<span wicket:id="getBaseUrlWithPageClass"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getBaseUrl(new AddressPage(pageParameters), pageParameters):<br>
+	<span wicket:id="getBaseUrlWithPageClassAndPageParameters"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getContextPath():<br>
+	<span wicket:id="getContextPath"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getContextPath(new AddressPage(pageParameters)):<br>
+	<span wicket:id="getContextPathWithPageObject"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getUrlAsString(new AddressPage(pageParameters)):<br>
+	<span wicket:id="getUrlAsStringWithPageObject"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getUrlAsString(AddressPage.class):<br>
+	<span wicket:id="getUrlAsStringWithPageClass"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getLocalName():<br>
+	<span wicket:id="getLocalName"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getServerName():<br>
+	<span wicket:id="getServerName"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getDomainUrl():<br>
+	<span wicket:id="getDomainUrl"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getDomainUrl(false):<br>
+	<span wicket:id="getDomainUrlWithoutPort"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getDomainUrl(false, false):<br>
+	<span wicket:id="getDomainUrlWithoutPortAndSlash"></span>
+	<br>
+	<br>
+	WicketUrlUtils.urlFor(WicketComponentUtils.getRequestURL(),AddressPage.class, pageParameters):<br>
+	<span wicket:id="urlFor"></span>
+	
+
 </wicket:panel>
