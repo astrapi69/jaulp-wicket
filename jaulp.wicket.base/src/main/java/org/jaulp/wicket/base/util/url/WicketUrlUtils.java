@@ -17,6 +17,7 @@ package org.jaulp.wicket.base.util.url;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.protocol.https.Scheme;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -323,9 +324,20 @@ public class WicketUrlUtils {
 	 * @return the domain url
 	 */
 	public static String getDomainUrl(boolean withServerPort, boolean withSlashAtTheEnd) {
+		return getDomainUrl(false, withServerPort, withSlashAtTheEnd);
+	}
+
+	/**
+	 * Gets the domain url.
+	 * 
+	 * @param ssl if the domain url is secure the scheme https will be added otherwise http
+	 * @param withServerPort the with server port
+	 * @param withSlashAtTheEnd the with slash at the end
+	 * @return the domain url
+	 */
+	public static String getDomainUrl(boolean ssl, boolean withServerPort, boolean withSlashAtTheEnd) {
 		return newDomainUrl(
-				WicketComponentUtils.getHttpServletRequest()
-				.getScheme(),
+				ssl ? Scheme.HTTPS.urlName(): Scheme.HTTP.urlName(),
 				WicketUrlUtils.getServerName(), 
 				WicketComponentUtils.getHttpServletRequest()
 				.getServerPort(), withServerPort, withSlashAtTheEnd);
