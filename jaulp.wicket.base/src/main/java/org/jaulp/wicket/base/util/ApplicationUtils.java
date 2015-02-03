@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.RuntimeConfigurationType;
+import org.apache.wicket.core.util.file.WebApplicationPath;
 import org.apache.wicket.javascript.DefaultJavaScriptCompressor;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
@@ -24,6 +25,7 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.resource.IResourceStream;
+import org.apache.wicket.util.time.Duration;
 import org.jaulp.wicket.base.util.resource.ByteArrayResourceStreamWriter;
 
 /**
@@ -373,5 +375,30 @@ public final class ApplicationUtils {
 				}
 			}
 		});
+	}
+
+	/**
+	 * Use this method to enable hot deploy of your html templates on development.
+	 * Works only with jetty. Only for 
+	 *
+	 * @param application the new html hot deploy
+	 */
+	public static void setHtmlHotDeploy(final WebApplication application) {
+		application.getResourceSettings().setResourcePollFrequency(
+				Duration.ONE_SECOND);
+		String realPath = application.getServletContext().getRealPath("/");
+		if (realPath != null && !realPath.endsWith("/")) {
+			realPath += "/";
+		}
+		application
+				.getResourceSettings()
+				.getResourceFinders()
+				.add(new WebApplicationPath(application.getServletContext(),
+						realPath + "../java"));
+		application
+				.getResourceSettings()
+				.getResourceFinders()
+				.add(new WebApplicationPath(application.getServletContext(),
+						realPath + "../resources"));
 	}
 }
