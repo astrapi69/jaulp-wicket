@@ -46,17 +46,23 @@
 			<groupId>org.wicketstuff</groupId>
 			<artifactId>wicketstuff-annotation</artifactId>
 		</dependency>
+		<!-- WICKET-SOURCE DEPENDENCIES -->
+		<dependency>
+			<groupId>net.ftlines.wicket-source</groupId>
+			<artifactId>wicket-source</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>wicket.bootstrap3</artifactId>
 			<version>6.18.0</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>de.alpharogroup</groupId> -->
-<!-- 			<artifactId>turbo.sansa.wicket.components</artifactId> -->
-<!-- 			<version>6.18.0</version> -->
-<!-- 		</dependency> -->
-		<!--  JUNIT DEPENDENCY FOR TESTING -->
+		<!-- <dependency> -->
+		<!-- <groupId>de.alpharogroup</groupId> -->
+		<!-- <artifactId>turbo.sansa.wicket.components</artifactId> -->
+		<!-- <version>6.18.0</version> -->
+		<!-- </dependency> -->
+		<!-- JUNIT DEPENDENCY FOR TESTING -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
