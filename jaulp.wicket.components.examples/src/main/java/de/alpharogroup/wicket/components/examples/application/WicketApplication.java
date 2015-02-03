@@ -1,10 +1,17 @@
 package de.alpharogroup.wicket.components.examples.application;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import net.ftlines.wicketsource.WicketSource;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.Application;
+import org.apache.wicket.IApplicationListener;
+import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.util.ApplicationUtils;
 
@@ -38,20 +45,68 @@ public class WicketApplication extends WicketBootstrap3Application
 	 * @see org.apache.wicket.Application#init()
 	 */
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
 		// initialize all header contributors
 		initializeAllHeaderContributors();
-		// set footer scripts...
-		ApplicationUtils.setHeaderResponseDecorator(this, FOOTER_FILTER_NAME);
-		// set up ports for http and https...
-		ApplicationUtils.setRootRequestMapper(this, getHttpPort(), getHttpsPort());
-		// set exception handling for error page...
-		ApplicationUtils.setExceptionSettingsForDeployment(this, new ApplicationRequestCycleListener());
-		// add file patterns to the resource guard...
-		ApplicationUtils.addFilePatternsToPackageResourceGuard(this, "+*.css", "+*.png");
+		// set global settings for both development and deployment mode...
+		setGlobalSettings(this, getHttpPort(), getHttpsPort());
+		// set configuration for development...
+		if (RuntimeConfigurationType.DEVELOPMENT.equals(this.getConfigurationType())) {	
+			// Adds the references from source code to the browser to reference in eclipse....
+			WicketSource.configure(this);
+			ApplicationUtils.setHtmlHotDeploy(this);			
+			ApplicationUtils.setDebugSettingsForDevelopment(this);
+			ApplicationUtils.setExceptionSettingsForDevelopment(this);
+			// set the behavior if an missing resource is found...
+			getResourceSettings().setThrowExceptionOnMissingResource(true);
+		} 
+		// set configuration for deployment...
+		if (RuntimeConfigurationType.DEPLOYMENT.equals(this.getConfigurationType())) {
+			// set exception handling for custom error page...
+			ApplicationUtils.setExceptionSettingsForDeployment(this, new ApplicationRequestCycleListener());
+			ApplicationUtils.setDebugSettingsForDeployment(this);			
+		}
 	}
+	
+	public void setGlobalSettings(final WebApplication application,
+			final int httpPort, final int httpsPort) {
+		ApplicationUtils.setGlobalSettings(application, httpPort, 
+				httpsPort, FOOTER_FILTER_NAME, 
+				"UTF-8", "+*.css", "+*.png");
+		// add an applicationListener...
+		application.getApplicationListeners().add(new IApplicationListener() {
+			@Override
+			public void onBeforeDestroyed(Application application) {
+				LOGGER.info("Wicket application is destroyed");
+				// here can comes code that is needed before the application
+				// been destroyed...
+			}
+
+			@Override
+			public void onAfterInitialized(Application application) {
+				LOGGER.info("Wicket application is initialized");
+				// here can comes code that is needed after the application
+				// initialization...
+			}
+		});
+	}
+	
+	@Override
+	public RuntimeConfigurationType getConfigurationType() { 
+		RuntimeConfigurationType configType = super.getConfigurationType();
+		return configType; 
+	}
+
+	/**
+	 * Checks if is on development mode.
+	 * 
+	 * @return true, if is on development mode
+	 */
+	public boolean isOnDevelopmentMode() {
+		return getConfigurationType().equals(
+				RuntimeConfigurationType.DEVELOPMENT);
+	}	
 	
 	protected int getHttpPort() {
 		if(getProperties().containsKey("application.http.port")) {
@@ -125,5 +180,9 @@ public class WicketApplication extends WicketBootstrap3Application
 
 	public String getPackageToScan() {
 		return "de.alpharogroup.wicket.components.examples";
+	}
+
+	public List<String> getPackagesToScan() {
+		return Arrays.asList();
 	}
 }
