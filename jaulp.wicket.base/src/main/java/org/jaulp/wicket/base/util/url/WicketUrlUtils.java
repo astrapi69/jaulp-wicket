@@ -15,7 +15,6 @@
  */
 package org.jaulp.wicket.base.util.url;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.https.Scheme;
 import org.apache.wicket.request.Url;
@@ -368,27 +367,4 @@ public class WicketUrlUtils {
 		return domainUrl.toString();
 	}
 
-	/**
-	 * Appends the given requestUrl that is resolved from the HttpServletRequest
-	 * and appends the urlFor from the RequestCycle from the given page and the
-	 * given PageParameters.
-	 * 
-	 * @param <C>
-	 *            the generic type
-	 * @param requestUrl
-	 *            the request url
-	 * @param page
-	 *            the page
-	 * @param param
-	 *            the param
-	 * @return the string
-	 */
-	public static <C extends WebPage> String urlFor(final String requestUrl,
-			Class<C> page, PageParameters param) {
-		String ru = StringUtils.substringBeforeLast(
-				requestUrl, "/");
-		StringBuilder url = new StringBuilder(ru).append("/");
-		url.append((RequestCycle.get()).urlFor(page, param));
-		return url.toString();
-	}
 }

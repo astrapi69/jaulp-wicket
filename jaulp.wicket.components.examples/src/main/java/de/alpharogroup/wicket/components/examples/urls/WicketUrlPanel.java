@@ -7,7 +7,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.BasePanel;
-import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 
@@ -71,7 +70,9 @@ public class WicketUrlPanel extends BasePanel<Object> {
 		
 		add(new Label("getDomainUrlWithoutPortAndSlash", Model.of(WicketUrlUtils.getDomainUrl(false, false))));
 		
-		add(new Label("urlFor", Model.of(WicketUrlUtils.urlFor(WicketComponentUtils.getRequestURL(),AddressPage.class, pageParameters))));
+		add(new Label("getDomainUrlWithSslAndPortAndSlash", Model.of(WicketUrlUtils.getDomainUrl(true, true, true))));
+		
+		add(new Label("getDomainUrlWithSslWithoutPortAndWithSlash", Model.of(WicketUrlUtils.getDomainUrl(true, false, true))));
 		
 	}
 }

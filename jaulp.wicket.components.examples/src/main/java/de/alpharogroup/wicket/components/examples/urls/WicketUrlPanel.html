@@ -87,20 +87,24 @@
 	<span wicket:id="getServerName"></span>
 	<br>
 	<br>
-	WicketUrlUtils.getDomainUrl():<br>
-	<span wicket:id="getDomainUrl"></span>
+	WicketUrlUtils.getDomainUrl(false, false):<br>
+	<span wicket:id="getDomainUrlWithoutPortAndSlash"></span>
 	<br>
 	<br>
 	WicketUrlUtils.getDomainUrl(false):<br>
 	<span wicket:id="getDomainUrlWithoutPort"></span>
 	<br>
 	<br>
-	WicketUrlUtils.getDomainUrl(false, false):<br>
-	<span wicket:id="getDomainUrlWithoutPortAndSlash"></span>
+	WicketUrlUtils.getDomainUrl(true, false, true):<br>
+	<span wicket:id="getDomainUrlWithSslWithoutPortAndWithSlash"></span>
 	<br>
 	<br>
-	WicketUrlUtils.urlFor(WicketComponentUtils.getRequestURL(),AddressPage.class, pageParameters):<br>
-	<span wicket:id="urlFor"></span>
+	WicketUrlUtils.getDomainUrl():<br>
+	<span wicket:id="getDomainUrl"></span>
+	<br>
+	<br>
+	WicketUrlUtils.getDomainUrl(true, true, true):<br>
+	<span wicket:id="getDomainUrlWithSslAndPortAndSlash"></span>
 	
 
 </wicket:panel>
