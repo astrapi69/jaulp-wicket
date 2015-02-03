@@ -15,6 +15,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.util.ComponentFinder;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
+import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 public abstract class ReCaptchaPanel extends Panel {
@@ -41,9 +42,9 @@ public abstract class ReCaptchaPanel extends Panel {
 			public void validate() {
 				final ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
 				reCaptcha.setPrivateKey(getPrivateKey());
-				final String challenge = WicketComponentUtils
+				final String challenge = PageParametersUtils
 						.getParameter(PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD);
-				String uresponse = WicketComponentUtils
+				String uresponse = PageParametersUtils
 						.getParameter(PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD);
 				if (uresponse == null) {
 					uresponse = "";

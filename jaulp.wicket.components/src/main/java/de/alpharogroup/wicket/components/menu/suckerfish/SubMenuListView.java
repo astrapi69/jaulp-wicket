@@ -40,6 +40,7 @@ public final class SubMenuListView extends ListView<MenuItem> {
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param markupProvider the {@link MarkupContainer}
 	 */
 	public SubMenuListView(final String id,
 			final IModel<List<MenuItem>> model,
@@ -55,6 +56,7 @@ public final class SubMenuListView extends ListView<MenuItem> {
 	 *            the id
 	 * @param list
 	 *            the list
+	 * @param markupProvider the {@link MarkupContainer}
 	 */
 	public SubMenuListView(final String id, final List<MenuItem> list,
 			final MarkupContainer markupProvider) {

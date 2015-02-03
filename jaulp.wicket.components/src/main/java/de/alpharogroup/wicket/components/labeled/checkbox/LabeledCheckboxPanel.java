@@ -24,6 +24,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
  * Convenience class for labeled checkbox.
+ * @param <T> the generic type
  */
 public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 
@@ -38,6 +39,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
 	 *
 	 * @param id the id
 	 * @param model the model
+	 * @param labelModel the model of the label
 	 */
 	public LabeledCheckboxPanel(String id, IModel<T> model, IModel<String> labelModel) {
 		super(id, model, labelModel);

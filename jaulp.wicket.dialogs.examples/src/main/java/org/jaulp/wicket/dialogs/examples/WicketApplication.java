@@ -21,8 +21,6 @@ import org.apache.wicket.util.file.Folder;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
- *
- * @see StartDialogsExamples.myproject.Start#main(String[])
  */
 public class WicketApplication extends WebApplication
 {

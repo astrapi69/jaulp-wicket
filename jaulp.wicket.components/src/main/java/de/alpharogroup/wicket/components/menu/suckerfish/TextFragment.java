@@ -34,6 +34,7 @@ class TextFragment extends Fragment {
 	 * 
 	 * @param label
 	 *            the label
+	 * @param markupProvider the {@link MarkupContainer}
 	 */
 	public TextFragment(final Label label, final MarkupContainer markupProvider) {
 		super("linkfragment", "TEXTFRAGMENT", markupProvider);

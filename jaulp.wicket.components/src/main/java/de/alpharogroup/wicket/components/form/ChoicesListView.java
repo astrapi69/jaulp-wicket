@@ -12,6 +12,7 @@ import org.apache.wicket.util.convert.IConverter;
  * an IChoiceRenderer.
  * 
  * This class is inspired from fiftyfive.wicket.core project. Some changes with the generic types was done.
+ * @param <T> the generic type
  */
 public abstract class ChoicesListView<T> extends ListView<T>
 {
@@ -24,6 +25,9 @@ public abstract class ChoicesListView<T> extends ListView<T>
     /**
      * Construct a list view that will expose the specified IChoiceRenderer for
      * rendering its list items.
+     * @param id the id
+     * @param choices the list of choices
+     * @param renderer the choice renderer
      */
     public ChoicesListView(String id,
                            IModel<List<T>> choices,
@@ -35,6 +39,7 @@ public abstract class ChoicesListView<T> extends ListView<T>
     
     /**
      * Returns the IChoiceRenderer that was passed to the constructor.
+     * @return  the choice renderer
      */
     public IChoiceRenderer<T> getChoiceRenderer()
     {

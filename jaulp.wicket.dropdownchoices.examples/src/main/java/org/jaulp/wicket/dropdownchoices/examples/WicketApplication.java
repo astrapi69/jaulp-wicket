@@ -27,8 +27,6 @@ import org.jaulp.wicket.PackageResourceReferences;
 /**
  * Application object for your web application. If you want to run this
  * application without deploying, run the Start class.
- * 
- * @see wicket.myproject.Start#main(String[])
  */
 public class WicketApplication extends WebApplication {
     public static final int HTTP_PORT = 9090;
@@ -74,9 +72,6 @@ public class WicketApplication extends WebApplication {
 		prr.initializeResources("org");
 	}
 
-	/**
-	 * @see wicket.Application#getHomePage()
-	 */
 	public Class<? extends WebPage> getHomePage() {
 		return HomePage.class;
 	}

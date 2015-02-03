@@ -8,7 +8,6 @@ import java.util.List;
 import net.sourceforge.jaulp.date.DatePatterns;
 import net.sourceforge.jaulp.date.ParseDateUtils;
 
-import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
@@ -24,23 +23,32 @@ import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.data.provider.examples.data.provider.Person;
 
 public class RefreshingViewPanel extends Panel {
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
 	final Form<?> form;
 	private Person selected;
 
 	public RefreshingViewPanel(String id, IModel<?> model) {
 		super(id, model);
 
-		form = new Form("form");
+		form = new Form<Person>("form");
 		add(form);
 
 		// create a repeater that will display the list of contacts.
 		RefreshingView<Person> refreshingView = new RefreshingView<Person>(
 				"simple") {
+			/**
+					 * The serialVersionUID.
+					 */
+					private static final long serialVersionUID = 1L;
+
 			@Override
 			protected Iterator<IModel<Person>> getItemModels() {
 				// for simplicity we only show the first 10 contacts
-				SortParam<String> sort = new SortParam<String>("firstname",
-						true);
+//				SortParam<String> sort = new SortParam<String>("firstname",
+//						true);
 				Iterator<Person> contacts = getPersons().iterator();
 
 				// the iterator returns contact objects, but we need it to
@@ -87,6 +95,11 @@ public class RefreshingViewPanel extends Panel {
 	 */
 	private class ActionPanel extends Panel {
 		/**
+		 * The serialVersionUID.
+		 */
+		private static final long serialVersionUID = 1L;
+
+		/**
 		 * @param id
 		 *            component id
 		 * @param model
@@ -95,7 +108,12 @@ public class RefreshingViewPanel extends Panel {
 		public ActionPanel(String id, IModel<Person> model) {
 			super(id, model);
 			add(new ModalDialogWithStylePanel("modalDialog"));
-			add(new Link("select") {
+			add(new Link<Object>("select") {
+				/**
+				 * The serialVersionUID.
+				 */
+				private static final long serialVersionUID = 1L;
+
 				@Override
 				public void onClick() {
 					setSelected((Person) ActionPanel.this
@@ -104,6 +122,11 @@ public class RefreshingViewPanel extends Panel {
 			});
 
 			SubmitLink removeLink = new SubmitLink("remove", form) {
+				/**
+				 * The serialVersionUID.
+				 */
+				private static final long serialVersionUID = 1L;
+
 				@Override
 				public void onSubmit() {
 					Person contact = (Person) ActionPanel.this

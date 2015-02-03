@@ -38,6 +38,7 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior {
 
 	/**
 	 * Instantiates a new mailto behavior.
+	 * @param mailtoModel 
 	 */
 	public MailtoBehavior(T mailtoModel) {
 		this.mailtoModel = mailtoModel;
@@ -48,7 +49,6 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior {
 	 *
 	 * @param component
 	 *            the component
-	 * @see org.apache.wicket.behavior.AbstractBehavior#beforeRender(org.apache.wicket.Component)
 	 */
 	@Override
 	public void beforeRender(final Component component) {
@@ -72,7 +72,6 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior {
 	 *
 	 * @param component
 	 *            the component
-	 * @see org.apache.wicket.behavior.AbstractBehavior#onRendered(org.apache.wicket.Component)
 	 */
 	@Override
 	public void afterRender(final Component component) {

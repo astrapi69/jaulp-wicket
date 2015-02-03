@@ -21,8 +21,6 @@ import org.jaulp.wicket.data.provider.examples.pages.home.HomePage;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
- * 
- * @see StartDataProviderExample.myproject.Start#main(String[])
  */
 public class WicketApplication extends WebApplication
 {  
@@ -35,9 +33,6 @@ public class WicketApplication extends WebApplication
 	{
 	}
 	
-	/**
-	 * @see wicket.Application#getHomePage()
-	 */
 	public Class<? extends Page> getHomePage()
 	{
 		return HomePage.class;

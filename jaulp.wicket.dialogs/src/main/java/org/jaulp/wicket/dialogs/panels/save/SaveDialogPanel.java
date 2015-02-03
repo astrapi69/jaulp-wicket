@@ -24,41 +24,31 @@ public class SaveDialogPanel<T> extends BasePanel<T> {
 	private static final long serialVersionUID = 1L;
 		
 	/**
-	 * Gets the description label.
-	 *
-	 * @return the description label
+	 * the description label.
 	 */
 	@Getter
 	private final Label descriptionLabel;
 	
 	/**
-	 * Gets the cancel label.
-	 *
-	 * @return the cancel label
+	 * the cancel label.
 	 */
 	@Getter
 	private final Label cancelLabel;
 	
 	/**
-	 * Gets the save label.
-	 *
-	 * @return the save label
+	 * the save label.
 	 */
 	@Getter
 	private final Label saveLabel;
 
 	/**
-	 * Gets the cancel button.
-	 *
-	 * @return the cancel button
+	 * the cancel button.
 	 */
 	@Getter
 	private final AjaxButton cancelButton;	
 
 	/**
-	 * Gets the save button.
-	 *
-	 * @return the save button
+	 * the save button.
 	 */
 	@Getter
 	private final AjaxButton saveButton;
@@ -68,9 +58,7 @@ public class SaveDialogPanel<T> extends BasePanel<T> {
 	private Component textFieldLabel;
 	
 	/**
-	 * Gets the form.
-	 *
-	 * @return the form
+	 * the form.
 	 */
 	@Getter
 	private Form<?> form;		

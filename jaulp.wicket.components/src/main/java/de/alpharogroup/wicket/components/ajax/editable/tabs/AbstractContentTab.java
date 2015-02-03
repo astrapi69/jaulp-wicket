@@ -31,6 +31,7 @@ public abstract class AbstractContentTab<T> extends CloseableTab {
 	 *            string
 	 * @param content
 	 *            IModel used to represent the content of the tab.
+	 * @param closeTitle title of close
 	 */
 	public AbstractContentTab(final IModel<String> title, final IModel<T> content, final IModel<String> closeTitle) {
 		super(title, closeTitle);

@@ -42,6 +42,7 @@ import org.apache.wicket.model.Model;
  * 
  * This class is inspired from fiftyfive.wicket.core project. Some changes with the generic types was done.
  * For more information read this blog: <a href="http://blog.55minutes.com/2011/10/how-to-implement-radio-buttons-in-wicket/">http://blog.55minutes.com/2011/10/how-to-implement-radio-buttons-in-wicket/</a>
+ * @param <T> the generic type
  */
 public class RadioChoicesListView<T> extends ChoicesListView<T>
 {

@@ -28,8 +28,8 @@ public abstract class ListViewPanel<T> extends Panel {
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
+	 * @param list
+	 *            the list
 	 */
 	public ListViewPanel(String id, List<T> list) {
 		this(id, new ListModel<T>(list));

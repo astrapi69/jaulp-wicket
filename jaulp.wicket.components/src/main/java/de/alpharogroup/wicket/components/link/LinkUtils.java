@@ -64,6 +64,7 @@ public class LinkUtils {
 	 *            the label id
 	 * @param resourceModelKey
 	 *            the resource model key
+	 * @param defaultValue the default value
 	 * @param component
 	 *            the component
 	 * @return the bookmarkable page link
@@ -85,6 +86,8 @@ public class LinkUtils {
 	 *            the label id
 	 * @param resourceModelKey
 	 *            the resource model key
+	 * @param parameters the parameters 
+	 * @param defaultValue the default value
 	 * @param component
 	 *            the component
 	 * @return the bookmarkable page link

@@ -21,6 +21,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
 import org.jaulp.wicket.base.examples.application.WicketApplication;
+import org.jaulp.wicket.base.util.ApplicationUtils;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -43,7 +44,7 @@ public class WicketUrlPage extends WebPage {
 	add(new Label("urlClass", Model.of(WicketUrlUtils.getPageUrl(this))));
 	add(new Label("urlAsStringClass", Model.of(WicketUrlUtils.getUrlAsString(WicketUrlPage.class))));
 	add(new Label("urlAsStringPage", Model.of(WicketUrlUtils.getUrlAsString(this))));
-	add(new Label("contextPathApplication", Model.of(WicketComponentUtils.getContextPath(WicketApplication.get()))));
+	add(new Label("contextPathApplication", Model.of(ApplicationUtils.getContextPath(WicketApplication.get()))));
 	add(new Label("requestURL", Model.of(WicketComponentUtils.getRequestURL())));
 	add(new Label("remoteHost", Model.of(WicketComponentUtils.getIpAddress())));
 	add(new Label("remoteAddr", Model.of(WicketComponentUtils.getRemoteAddr())));

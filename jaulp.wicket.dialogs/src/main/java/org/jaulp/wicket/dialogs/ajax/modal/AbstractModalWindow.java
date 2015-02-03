@@ -22,6 +22,7 @@ import org.apache.wicket.model.IModel;
 
 /**
  * The Class AbstractModalWindow.
+ * @param <T> the generic type
  *
  */
 public abstract class AbstractModalWindow<T> extends ModalWindow {

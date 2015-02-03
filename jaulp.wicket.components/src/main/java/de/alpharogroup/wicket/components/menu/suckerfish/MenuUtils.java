@@ -60,6 +60,7 @@ public class MenuUtils {
 	 *            the resource model key
 	 * @param component
 	 *            the component
+	 * @param parameters the {@link PageParameters}
 	 * @return the suckerfish menu panel. menu item
 	 */
 	public static MenuItem createMenuItem(

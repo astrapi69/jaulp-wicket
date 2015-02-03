@@ -60,6 +60,7 @@ public class SilentStringResourceModel extends StringResourceModel {
      * Instantiates a new silent string resource model.
      *
      * @param resourceKey the resource key
+     * @param component the component
      * @param componentClass the component class
      * @param locale the locale
      */

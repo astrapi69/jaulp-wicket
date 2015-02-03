@@ -34,6 +34,7 @@ public final class MenuItemFragment extends Fragment {
 	 * 
 	 * @param menuItem
 	 *            the menu item
+	 * @param markupProvider the {@link MarkupContainer}
 	 */
 	public MenuItemFragment(final MenuItem menuItem, final MarkupContainer markupProvider) {
 		super("menuitemfragment", "MENUITEMFRAGMENT",

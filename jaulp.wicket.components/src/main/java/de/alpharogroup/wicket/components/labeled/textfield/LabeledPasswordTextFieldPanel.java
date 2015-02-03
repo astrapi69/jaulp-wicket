@@ -22,6 +22,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
  * Convenience class for labeled PasswordTextField.
+ * @param <T> the generic type
  * 
  */
 public class LabeledPasswordTextFieldPanel<T> extends

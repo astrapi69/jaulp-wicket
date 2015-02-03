@@ -34,6 +34,7 @@ public final class LinkFragment extends Fragment {
 	 * 
 	 * @param link
 	 *            the link
+	 * @param markupProvider the {@link MarkupContainer}
 	 */
 	public LinkFragment(final AbstractLink link, final MarkupContainer markupProvider) {
 		super("linkfragment", "LINKFRAGMENT", markupProvider);

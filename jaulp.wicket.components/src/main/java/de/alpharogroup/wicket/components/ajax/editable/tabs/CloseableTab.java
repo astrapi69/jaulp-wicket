@@ -22,6 +22,7 @@ public abstract class CloseableTab implements ICloseableTab {
 	 * 
 	 * @param title
 	 *            IModel used to represent the title of the tab. Must contain a string
+	 * @param closeTitle title of close
 	 */
 	public CloseableTab(final IModel<String> title, final IModel<String> closeTitle)
 	{

@@ -36,32 +36,14 @@ public abstract class SwapFragmentPanel<T>  extends GenericPanel<T> {
 	private static final long serialVersionUID = 1L;
 	
 	/** The view fragment. */
-	
-	/**
-	 * Gets the view.
-	 *
-	 * @return the view
-	 */
 	@Getter
 	private Fragment view;
 	
 	/** The edit fragment. */
-	
-	/**
-	 * Gets the edits the.
-	 *
-	 * @return the edits the
-	 */
 	@Getter
 	private Fragment edit;
 	
 	/** The ModeContext shows if the view mode or edit mode is visible. */
-	
-	/**
-	 * Gets the mode context.
-	 *
-	 * @return the mode context
-	 */
 	@Getter
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
 

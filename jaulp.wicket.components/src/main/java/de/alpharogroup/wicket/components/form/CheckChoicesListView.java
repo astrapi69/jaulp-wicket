@@ -44,6 +44,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * description paragraph.
  * 
  * This class is inspired from fiftyfive.wicket.core project. Some changes with the generic types was done.
+ * @param <T> the generic type
  */
 public class CheckChoicesListView<T> extends ChoicesListView<T>
 {

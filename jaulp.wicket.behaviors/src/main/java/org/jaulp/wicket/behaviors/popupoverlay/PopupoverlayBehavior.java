@@ -107,11 +107,6 @@ public class PopupoverlayBehavior extends Behavior {
 		}
 	}
 
-	/**
-	 * Replace the created map with the variables in the method
-	 * {@link WicketAlertJsBehavior#generateJS(TextTemplate)} with in the
-	 * js-template 'wicket-alert.js'.
-	 */
 	@Override
 	public void renderHead(Component c, final IHeaderResponse response) {
 		response.render(JavaScriptHeaderItem.forReference(Application.get()

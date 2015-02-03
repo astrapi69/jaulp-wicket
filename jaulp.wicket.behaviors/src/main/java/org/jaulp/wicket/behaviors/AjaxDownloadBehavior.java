@@ -33,6 +33,7 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior {
 
 	/**
 	 * Call this method to initiate the download.
+	 * @param target the {@link AjaxRequestTarget}
 	 */
 	public void initiate(AjaxRequestTarget target) {
 		String url = getCallbackUrl().toString();

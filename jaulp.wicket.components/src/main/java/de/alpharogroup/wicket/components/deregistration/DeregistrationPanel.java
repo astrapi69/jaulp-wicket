@@ -50,6 +50,7 @@ public abstract class DeregistrationPanel extends
 	 *
 	 * @param id
 	 *            the id
+	 * @param model the model
 	 */
 	public DeregistrationPanel(final String id, final IModel<DeregistrationModel> model) {
 		super(id, model);	
