@@ -255,6 +255,33 @@ public final class ApplicationUtils {
 	}
 
 	/**
+	 * Sets the debug settings for deployment mode for the given application.
+	 *
+	 * @param application
+	 *            the new debug settings for development
+	 */
+	public static void setDebugSettingsForDeployment(
+			final Application application) {
+		application.getMarkupSettings().setStripComments(true);
+		// The resources are never polled. This are properties, html,
+		// css, js files.
+		application.getResourceSettings().setResourcePollFrequency(null);
+		// set the behavior if an missing resource is found...
+		application.getResourceSettings().setThrowExceptionOnMissingResource(false);
+		// debug settings...
+		application.getDebugSettings().setComponentUseCheck(false);
+		application.getDebugSettings().setAjaxDebugModeEnabled(false);
+		application.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
+		
+		application.getDebugSettings().setOutputComponentPath(false);
+		application.getDebugSettings().setOutputMarkupContainerClassName(false);		
+		application.getDebugSettings()
+				.setLinePreciseReportingOnAddComponentEnabled(false);
+		application.getDebugSettings()
+				.setLinePreciseReportingOnNewComponentEnabled(false);
+	}
+
+	/**
 	 * Sets the settings for deployment mode for the given application.
 	 *
 	 * @param application
@@ -400,5 +427,34 @@ public final class ApplicationUtils {
 				.getResourceFinders()
 				.add(new WebApplicationPath(application.getServletContext(),
 						realPath + "../resources"));
+	}
+	
+
+	/**
+	 * Can be used to set the global settings for development and deployment mode for the given application.
+	 *
+	 * @param application the application
+	 * @param httpPort the http port
+	 * @param httpsPort the https port
+	 * @param footerFilterName the footer filter name
+	 * @param encoding the encoding
+	 * @param patterns the patterns
+	 */
+	public static void setGlobalSettings(final WebApplication application,
+			final int httpPort, final int httpsPort, 
+			final String footerFilterName, final String encoding, final String... patterns) {
+		// Standard-Encoding for Markup-Files
+		application.getMarkupSettings().setDefaultMarkupEncoding(encoding);
+		// Sets the Response-Header to Character encoding
+		// this means Content-Type text/html;charset=<encoding>
+		application.getRequestCycleSettings().setResponseRequestEncoding(encoding);
+		// set footer scripts...
+		ApplicationUtils.setHeaderResponseDecorator(application, footerFilterName);
+		// set up ports for http and https...
+		ApplicationUtils.setRootRequestMapper(application, httpPort, httpsPort);
+		// add file patterns to the resource guard...
+		ApplicationUtils.addFilePatternsToPackageResourceGuard(application, patterns);
+		// String wicket tags. Needed for wicket-jquery-ui
+		application.getMarkupSettings().setStripWicketTags(true); // IMPORTANT!
 	}
 }
