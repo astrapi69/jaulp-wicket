@@ -31,63 +31,66 @@ import de.alpharogroup.wicket.components.editable.textarea.EditableTextArea;
 import de.alpharogroup.wicket.components.editable.textfield.EditableTextField;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 
-public class ViewOrEditPage extends BasePage {
+public class ViewOrEditPage extends BasePage
+{
 	private static final long serialVersionUID = 1L;
-		
+
 	private boolean enableFields = true;
 
-	public ViewOrEditPage(final PageParameters parameters) {
-	super(parameters);	
-	
-	final Person person = new Person();
-	person.setGender(Gender.UNDEFINED);
-	person.setName("");
-	person.setAbout("bla");
-	person.setMarried(false);
-	setDefaultModel(Model.of(person));
+	public ViewOrEditPage(final PageParameters parameters)
+	{
+		super(parameters);
+
+		final Person person = new Person();
+		person.setGender(Gender.UNDEFINED);
+		person.setName("");
+		person.setAbout("bla");
+		person.setMarried(false);
+		setDefaultModel(Model.of(person));
 
 
+		final CompoundPropertyModel<Person> cpm = new CompoundPropertyModel<Person>(person);
 
-	final CompoundPropertyModel<Person> cpm = new CompoundPropertyModel<Person>(
-			person);
+		final Form<Person> form = new Form<Person>("form", cpm);
 
-	final Form<Person> form = 
-	        new Form<Person>("form", cpm);
+		add(form);
+		final EditableTextField nameTextField = new EditableTextField("name",
+			new PropertyModel<String>(person, "name"));
+		form.add(nameTextField);
+		IModel<String> taModel = new PropertyModel<String>(person, "about");
+		final EditableTextArea about = new EditableTextArea("about", taModel);
+		form.add(about);
 
-	add(form);
-	final EditableTextField nameTextField = new EditableTextField("name", new PropertyModel<String>(person, "name"));
-	form.add(nameTextField);
-	IModel<String> taModel = new PropertyModel<String>(person, "about");
-	final EditableTextArea about = new EditableTextArea("about", taModel);
-	form.add(about);
-	
-	
-	LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm, Model.of("Married:"));
-	
-	form.add(married);
 
-	// Create submit button for the form
-	final Button submitButton = new Button("submitButton") {
-		/**
-		 * The serialVersionUID.
-		 */
-		private static final long serialVersionUID = 1L;
+		LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm,
+			Model.of("Married:"));
 
-		@Override
-		public void onSubmit() {
-			info("Person:"+getDefaultModelObjectAsString());
-			enableFields = !enableFields;
-			about.setEditable(enableFields);
-			nameTextField.setEditable(enableFields);
-			
-			
-		}
-	};
+		form.add(married);
 
-	form.add(submitButton);
-	
-	add(new FeedbackPanel("feedbackpanel"));
-	
-	
-    }
+		// Create submit button for the form
+		final Button submitButton = new Button("submitButton")
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onSubmit()
+			{
+				info("Person:" + getDefaultModelObjectAsString());
+				enableFields = !enableFields;
+				about.setEditable(enableFields);
+				nameTextField.setEditable(enableFields);
+
+
+			}
+		};
+
+		form.add(submitButton);
+
+		add(new FeedbackPanel("feedbackpanel"));
+
+
+	}
 }

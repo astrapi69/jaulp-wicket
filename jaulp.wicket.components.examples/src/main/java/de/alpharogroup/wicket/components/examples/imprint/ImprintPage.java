@@ -11,11 +11,13 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
  * @author Asterios Raptis
  */
 @MountPath("public/imprint")
-public class ImprintPage extends PubliclyBasePage<Object> {
+public class ImprintPage extends PubliclyBasePage<Object>
+{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public Component getContainerPanel() {
+	public Component getContainerPanel()
+	{
 		return new ApplicationImprintPanel(CONTAINER_PANEL_ID);
 	}
 

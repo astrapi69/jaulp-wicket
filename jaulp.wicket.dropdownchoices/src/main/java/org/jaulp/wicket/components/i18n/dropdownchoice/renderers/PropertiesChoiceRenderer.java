@@ -27,7 +27,8 @@ import org.apache.wicket.model.StringResourceModel;
  * 
  * @author Asterios Raptis
  */
-public class PropertiesChoiceRenderer implements IChoiceRenderer<String> {
+public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -46,8 +47,8 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String> {
 	 * @param componentClass
 	 *            the component class
 	 */
-	public PropertiesChoiceRenderer(final Component component,
-			final Class<?> componentClass) {
+	public PropertiesChoiceRenderer(final Component component, final Class<?> componentClass)
+	{
 		this.component = component;
 		this.componentClass = componentClass;
 	}
@@ -56,9 +57,9 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Object getDisplayValue(final String object) {
-		StringResourceModel resourceModel = new StringResourceModel(
-				object, component, null);
+	public Object getDisplayValue(final String object)
+	{
+		StringResourceModel resourceModel = new StringResourceModel(object, component, null);
 		String value = resourceModel.getObject();
 		return value;
 	}
@@ -67,18 +68,20 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getIdValue(final String object, final int index) {
+	public String getIdValue(final String object, final int index)
+	{
 		return object;
 	}
 
-	
-	public String getObject(String id,
-			IModel<? extends List<? extends String>> choices) {
+
+	public String getObject(String id, IModel<? extends List<? extends String>> choices)
+	{
 		// override this method...
 		return null;
 	}
 
-	public Class<?> getComponentClass() {
+	public Class<?> getComponentClass()
+	{
 		return componentClass;
 	}
 }

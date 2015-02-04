@@ -24,8 +24,8 @@ import org.jaulp.wicket.data.provider.AbstractSortableDataProvider;
 /**
  * The Class SortablePersonDataProvider.
  */
-public class SortablePersonDataProvider extends
-		AbstractSortableDataProvider<Person, String> {
+public class SortablePersonDataProvider extends AbstractSortableDataProvider<Person, String>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -35,9 +35,11 @@ public class SortablePersonDataProvider extends
 	/**
 	 * Instantiates a new sortable person data provider.
 	 *
-	 * @param data the data
+	 * @param data
+	 *            the data
 	 */
-	public SortablePersonDataProvider(List<Person> data) {
+	public SortablePersonDataProvider(List<Person> data)
+	{
 		super(data);
 	}
 
@@ -45,7 +47,8 @@ public class SortablePersonDataProvider extends
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IModel<Person> model(Person person) {
+	public IModel<Person> model(Person person)
+	{
 		return new CompoundPropertyModel<Person>(person);
 	}
 

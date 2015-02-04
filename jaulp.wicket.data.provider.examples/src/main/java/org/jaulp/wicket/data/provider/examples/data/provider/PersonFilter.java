@@ -18,53 +18,63 @@ package org.jaulp.wicket.data.provider.examples.data.provider;
 import java.io.Serializable;
 import java.util.Date;
 
-public class PersonFilter implements Serializable {
+public class PersonFilter implements Serializable
+{
 
-    /**
-     * The serialVersionUID.
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String firstname;
 
 	private String lastname;
 
-	 private Date dateFrom;
-	 private Date dateTo;
+	private Date dateFrom;
+	private Date dateTo;
 
-	public PersonFilter() {
+	public PersonFilter()
+	{
 		super();
 	}
-	 public Date getDateFrom()
-	 {
-	 return dateFrom;
-	 }
-	 public void setDateFrom(Date dateFrom)
-	 {
-	 this.dateFrom = dateFrom;
-	 }
-	 public Date getDateTo()
-	 {
-	 return dateTo;
-	 }
-	 public void setDateTo(Date dateTo)
-	 {
-	 this.dateTo = dateTo;
-	 }
 
-	public String getFirstname() {
+	public Date getDateFrom()
+	{
+		return dateFrom;
+	}
+
+	public void setDateFrom(Date dateFrom)
+	{
+		this.dateFrom = dateFrom;
+	}
+
+	public Date getDateTo()
+	{
+		return dateTo;
+	}
+
+	public void setDateTo(Date dateTo)
+	{
+		this.dateTo = dateTo;
+	}
+
+	public String getFirstname()
+	{
 		return firstname;
 	}
 
-	public String getLastname() {
+	public String getLastname()
+	{
 		return lastname;
 	}
 
-	public void setFirstname(String firstname) {
+	public void setFirstname(String firstname)
+	{
 		this.firstname = firstname;
 	}
 
-	public void setLastname(String lastname) {
+	public void setLastname(String lastname)
+	{
 		this.lastname = lastname;
 	}
 

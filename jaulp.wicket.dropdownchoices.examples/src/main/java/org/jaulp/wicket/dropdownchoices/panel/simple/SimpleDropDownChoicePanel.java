@@ -26,33 +26,37 @@ import org.apache.wicket.model.LoadableDetachableModel;
 /**
  * @author Asterios Raptis
  */
-public class SimpleDropDownChoicePanel extends Panel {
+public class SimpleDropDownChoicePanel extends Panel
+{
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public SimpleDropDownChoicePanel( final String id ) {
-        super( id );
-        IModel<List<String>> countries = new LoadableDetachableModel<List<String>>() {
-            /**
+	public SimpleDropDownChoicePanel(final String id)
+	{
+		super(id);
+		IModel<List<String>> countries = new LoadableDetachableModel<List<String>>()
+		{
+			/**
 			 * 
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-            public List<String> load() {
-                List<String> l = new ArrayList<String>();
-                l.add( "Argentina" );
-                l.add( "Brazil" );
-                l.add( "Chile" );
-                return l;
-            }
-        };
+			public List<String> load()
+			{
+				List<String> l = new ArrayList<String>();
+				l.add("Argentina");
+				l.add("Brazil");
+				l.add("Chile");
+				return l;
+			}
+		};
 
-        DropDownChoice<String> country = new DropDownChoice<String>( "country", countries );
-        add( country );
-    }
+		DropDownChoice<String> country = new DropDownChoice<String>("country", countries);
+		add(country);
+	}
 
 }

@@ -8,7 +8,8 @@ import net.sourceforge.jaulp.random.RandomUtils;
 import org.apache.wicket.extensions.markup.html.captcha.CaptchaImageResource;
 import org.apache.wicket.util.value.ValueMap;
 
-public class CaptchaModel implements Serializable {
+public class CaptchaModel implements Serializable
+{
 
 	private static final String CAPTCHA_INPUT = "captchaInput";
 
@@ -18,28 +19,32 @@ public class CaptchaModel implements Serializable {
 	private final ValueMap properties = new ValueMap();
 
 	/** Random captcha password to match against. */
-	private final String randomCaptchaString = RandomUtils.getRandomString(
-			Constants.UCCHARSWN, 7);
+	private final String randomCaptchaString = RandomUtils.getRandomString(Constants.UCCHARSWN, 7);
 
 	private final CaptchaImageResource captchaImageResource;
 
-	public CaptchaModel() {
+	public CaptchaModel()
+	{
 		captchaImageResource = new CaptchaImageResource(randomCaptchaString);
 	}
 
-	public CaptchaImageResource getCaptchaImageResource() {
+	public CaptchaImageResource getCaptchaImageResource()
+	{
 		return captchaImageResource;
 	}
 
-	public String getCaptchaInput() {
+	public String getCaptchaInput()
+	{
 		return properties.getString(CAPTCHA_INPUT);
 	}
 
-	public ValueMap getProperties() {
+	public ValueMap getProperties()
+	{
 		return properties;
 	}
 
-	public String getRandomCaptchaString() {
+	public String getRandomCaptchaString()
+	{
 		return randomCaptchaString;
 	}
 }

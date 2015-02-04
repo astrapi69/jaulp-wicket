@@ -18,7 +18,8 @@ package org.jaulp.wicket.base.enums;
 /**
  * The Enum ResourceReferenceType contains types of ResourceReference.
  */
-public enum ResourceReferenceType {
+public enum ResourceReferenceType
+{
 
 	/** The type for javascript ResourceReferences. */
 	JS,

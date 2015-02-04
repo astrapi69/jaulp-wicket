@@ -16,7 +16,8 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type
  */
-public class LabeledMultiLineLabelPanel<T> extends Panel {
+public class LabeledMultiLineLabelPanel<T> extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -39,12 +40,11 @@ public class LabeledMultiLineLabelPanel<T> extends Panel {
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledMultiLineLabelPanel(String id, IModel<T> model,
-			IModel<String> labelModel) {
+	public LabeledMultiLineLabelPanel(String id, IModel<T> model, IModel<String> labelModel)
+	{
 		super(id, model);
 
-		PropertyModel<T> viewableLabelModel = new PropertyModel<T>(
-				model.getObject(), id);
+		PropertyModel<T> viewableLabelModel = new PropertyModel<T>(model.getObject(), id);
 
 		add(viewableLabel = newMultiLineLabelLabel("viewableLabel", viewableLabelModel));
 
@@ -53,9 +53,9 @@ public class LabeledMultiLineLabelPanel<T> extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a MultiLineLabel.
+	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * MultiLineLabel.
 	 * 
 	 * @param id
 	 *            the id
@@ -65,14 +65,14 @@ public class LabeledMultiLineLabelPanel<T> extends Panel {
 	 *            the model
 	 * @return the label
 	 */
-	protected MultiLineLabel newMultiLineLabelLabel(String id, PropertyModel<T> viewableLabelModel) {
+	protected MultiLineLabel newMultiLineLabelLabel(String id, PropertyModel<T> viewableLabelModel)
+	{
 		return ComponentFactory.newMultiLineLabel(id, viewableLabelModel);
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -82,7 +82,8 @@ public class LabeledMultiLineLabelPanel<T> extends Panel {
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<String> model) {
+	protected Label newLabel(String id, String forId, IModel<String> model)
+	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}
 }

@@ -10,7 +10,8 @@ import org.apache.wicket.model.IModel;
 /**
  * The Class ButtonPanel.
  */
-public abstract class ButtonPanel extends Panel {
+public abstract class ButtonPanel extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -20,7 +21,7 @@ public abstract class ButtonPanel extends Panel {
 
 	/** The Label component. */
 	private final Component label;
-	
+
 	/** The form. */
 	private final Form<?> form;
 
@@ -32,18 +33,23 @@ public abstract class ButtonPanel extends Panel {
 	 * @param labelModel
 	 *            the label model
 	 */
-	public ButtonPanel(String id, IModel<String> labelModel) {
+	public ButtonPanel(String id, IModel<String> labelModel)
+	{
 		this(id, labelModel, null);
 	}
-	
+
 	/**
 	 * Instantiates a new button panel.
 	 *
-	 * @param id the id
-	 * @param labelModel the label model
-	 * @param form the form
+	 * @param id
+	 *            the id
+	 * @param labelModel
+	 *            the label model
+	 * @param form
+	 *            the form
 	 */
-	public ButtonPanel(String id, IModel<String> labelModel, final Form<?> form) {
+	public ButtonPanel(String id, IModel<String> labelModel, final Form<?> form)
+	{
 		super(id);
 		this.form = form;
 		this.setOutputMarkupId(true);
@@ -52,9 +58,8 @@ public abstract class ButtonPanel extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
@@ -63,9 +68,8 @@ public abstract class ButtonPanel extends Panel {
 	protected abstract Button newButton(String id);
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
 	 *
 	 * @param id
 	 *            the id
@@ -73,7 +77,8 @@ public abstract class ButtonPanel extends Panel {
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, IModel<String> model) {
+	protected Label newLabel(String id, IModel<String> model)
+	{
 		return new Label(id, model);
 	}
 
@@ -82,7 +87,8 @@ public abstract class ButtonPanel extends Panel {
 	 *
 	 * @return the form
 	 */
-	public Form<?> getForm() {
+	public Form<?> getForm()
+	{
 		return form;
 	}
 
@@ -91,7 +97,8 @@ public abstract class ButtonPanel extends Panel {
 	 *
 	 * @return the button
 	 */
-	public Button getButton() {
+	public Button getButton()
+	{
 		return button;
 	}
 
@@ -100,7 +107,8 @@ public abstract class ButtonPanel extends Panel {
 	 * 
 	 * @return the label component
 	 */
-	public Component getLabel() {
+	public Component getLabel()
+	{
 		return label;
 	}
 

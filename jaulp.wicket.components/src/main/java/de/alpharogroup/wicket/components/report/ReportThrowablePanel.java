@@ -28,14 +28,14 @@ import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 /**
  * The Class ReportThrowablePanel can present an exception that is thrown from the application.
  */
-public abstract class ReportThrowablePanel extends Panel {
+public abstract class ReportThrowablePanel extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	/** The Constant logger. */
-	private static final Logger LOGGER = Logger
-			.getLogger(ReportThrowablePanel.class.getName());
-	
+	private static final Logger LOGGER = Logger.getLogger(ReportThrowablePanel.class.getName());
+
 	/** The header. */
 	@Getter
 	private final Label header;
@@ -63,20 +63,22 @@ public abstract class ReportThrowablePanel extends Panel {
 	/**
 	 * Instantiates a new report throwable panel.
 	 *
-	 * @param id the id
-	 * @param throwable the throwable
+	 * @param id
+	 *            the id
+	 * @param throwable
+	 *            the throwable
 	 */
-	public ReportThrowablePanel(String id, Throwable throwable) {
+	public ReportThrowablePanel(String id, Throwable throwable)
+	{
 		super(id);
 
 		reportThrowableModel = newReportThrowableModel(throwable);
 
 		IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<ReportThrowableModel>(
-				reportThrowableModel);
+			reportThrowableModel);
 		setDefaultModel(cpm);
 		add(header = newHeaderLabel("header",
-				ResourceModelFactory.newResourceModel("header.label", this,
-						"Upps! An error occured.")));
+			ResourceModelFactory.newResourceModel("header.label", this, "Upps! An error occured.")));
 
 		add(form = newForm("form", cpm));
 
@@ -94,10 +96,10 @@ public abstract class ReportThrowablePanel extends Panel {
 			{
 				toReplace.setDefaultModelObject(reportThrowableModel.getStackTrace());
 				Effects.replace(target, toReplace);
-				
+
 			}
 		};
-		form.add(link);		
+		form.add(link);
 
 		form.add(submitButton = newSubmitButton("submitButton"));
 
@@ -105,17 +107,20 @@ public abstract class ReportThrowablePanel extends Panel {
 		LOGGER.error(reportThrowableModel.getStackTrace());
 	}
 
-	private static class Effects {
+	private static class Effects
+	{
 
-		private static void replace(AjaxRequestTarget target, Component component) {
+		private static void replace(AjaxRequestTarget target, Component component)
+		{
 			component.add(new DisplayNoneBehavior());
 
-//			target.prependJavaScript("notify|jQuery('#"+component.getMarkupId()+"').slideUp(1000, notify);");
+			// target.prependJavaScript("notify|jQuery('#"+component.getMarkupId()+"').slideUp(1000, notify);");
 			target.add(component);
-			target.appendJavaScript("jQuery('#"+component.getMarkupId()+"').slideDown(100);");
+			target.appendJavaScript("jQuery('#" + component.getMarkupId() + "').slideDown(100);");
 		}
 	}
-	private static class DisplayNoneBehavior extends AttributeModifier {
+	private static class DisplayNoneBehavior extends AttributeModifier
+	{
 		private static final long serialVersionUID = 1L;
 
 		private DisplayNoneBehavior()
@@ -133,28 +138,32 @@ public abstract class ReportThrowablePanel extends Panel {
 	/**
 	 * New hidden field.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return the component
 	 */
-	protected Component newHiddenField(String id) {
+	protected Component newHiddenField(String id)
+	{
 		return ComponentFactory.newHiddenField(id);
 	}
 
 	/**
 	 * New header label.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the label
 	 */
-	protected Label newHeaderLabel(String id, IModel<String> model) {
+	protected Label newHeaderLabel(String id, IModel<String> model)
+	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Form.
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -162,22 +171,27 @@ public abstract class ReportThrowablePanel extends Panel {
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id, IModel<?> model) {
+	protected Form<?> newForm(String id, IModel<?> model)
+	{
 		return ComponentFactory.newForm(id, model);
 	}
 
 	/**
 	 * New submit button.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return the button
 	 */
-	protected Button newSubmitButton(String id) {
-		return new Button(id) {
+	protected Button newSubmitButton(String id)
+	{
+		return new Button(id)
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				/**
 				 * Do your stuff here (i.e. Send Email)
 				 */
@@ -187,34 +201,39 @@ public abstract class ReportThrowablePanel extends Panel {
 	}
 
 	/**
-	 * Hook method for submitting the error when the submit button is clicked.
-	 * Implement here everything what to do when the user submits the form.
+	 * Hook method for submitting the error when the submit button is clicked. Implement here
+	 * everything what to do when the user submits the form.
 	 */
 	protected abstract void onSubmitError();
 
 	/**
 	 * New description.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the labeled text area panel
 	 */
-	protected LabeledTextAreaPanel<ReportThrowableModel> newDescription(
-			String id, IModel<ReportThrowableModel> model) {
-		final IModel<String> labelModel = ResourceModelFactory
-				.newResourceModel("description.label", this,
-						"Please provide here any useful information");
-		final IModel<String> placeholderModel = ResourceModelFactory
-				.newResourceModel("global.enter.your.description.label", this,
-						"Enter here any useful information");
+	protected LabeledTextAreaPanel<ReportThrowableModel> newDescription(String id,
+		IModel<ReportThrowableModel> model)
+	{
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"description.label", this, "Please provide here any useful information");
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.your.description.label", this, "Enter here any useful information");
 		LabeledTextAreaPanel<ReportThrowableModel> description = new LabeledTextAreaPanel<ReportThrowableModel>(
-				id, model, labelModel){
-					private static final long serialVersionUID = 1L;
+			id, model, labelModel)
+		{
+			private static final long serialVersionUID = 1L;
+
 			@Override
-			protected TextArea<ReportThrowableModel> newTextArea(
-					String id, PropertyModel<ReportThrowableModel> model) {
+			protected TextArea<ReportThrowableModel> newTextArea(String id,
+				PropertyModel<ReportThrowableModel> model)
+			{
 				TextArea<ReportThrowableModel> textArea = super.newTextArea(id, model);
-				if(placeholderModel != null) {
+				if (placeholderModel != null)
+				{
 					textArea.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return super.newTextArea(id, model);
@@ -226,15 +245,15 @@ public abstract class ReportThrowablePanel extends Panel {
 	/**
 	 * New report throwable model.
 	 *
-	 * @param throwable the throwable
+	 * @param throwable
+	 *            the throwable
 	 * @return the report throwable model
 	 */
-	protected ReportThrowableModel newReportThrowableModel(Throwable throwable) {
-		return ReportThrowableModel.builder()
-				.affectedUsername(newAffectedUsername())
-				.responsePage(newResponsePageClass())
-				.rootUsername(newRootUsername())
-				.stackTrace(ExceptionUtils.getStackTraceElements(throwable)).build();
+	protected ReportThrowableModel newReportThrowableModel(Throwable throwable)
+	{
+		return ReportThrowableModel.builder().affectedUsername(newAffectedUsername())
+			.responsePage(newResponsePageClass()).rootUsername(newRootUsername())
+			.stackTrace(ExceptionUtils.getStackTraceElements(throwable)).build();
 	}
 
 	/**

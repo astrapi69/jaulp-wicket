@@ -25,21 +25,25 @@ import org.apache.wicket.request.Response;
 import org.jaulp.wicket.PackageResourceReferences;
 
 /**
- * Application object for your web application. If you want to run this
- * application without deploying, run the Start class.
+ * Application object for your web application. If you want to run this application without
+ * deploying, run the Start class.
  */
-public class WicketApplication extends WebApplication {
-    public static final int HTTP_PORT = 9090;
-    public static final int HTTPS_PORT = 9443;
+public class WicketApplication extends WebApplication
+{
+	public static final int HTTP_PORT = 9090;
+	public static final int HTTPS_PORT = 9443;
+
 	@Override
-	public Session newSession(Request request, Response response) {
+	public Session newSession(Request request, Response response)
+	{
 		return new WicketSession(request);
 	}
 
 	/**
 	 * Constructor
 	 */
-	public WicketApplication() {
+	public WicketApplication()
+	{
 	}
 
 	/**
@@ -48,13 +52,19 @@ public class WicketApplication extends WebApplication {
 	 * @see org.apache.wicket.protocol.http.WebApplication#init()
 	 */
 	@Override
-	protected void init() {
+	protected void init()
+	{
 		super.init();
-		try {
+		try
+		{
 			initResources();
-		} catch (ClassNotFoundException e) {
+		}
+		catch (ClassNotFoundException e)
+		{
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 	}
@@ -67,12 +77,14 @@ public class WicketApplication extends WebApplication {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	private void initResources() throws ClassNotFoundException, IOException {
+	private void initResources() throws ClassNotFoundException, IOException
+	{
 		PackageResourceReferences prr = PackageResourceReferences.getInstance();
 		prr.initializeResources("org");
 	}
 
-	public Class<? extends WebPage> getHomePage() {
+	public Class<? extends WebPage> getHomePage()
+	{
 		return HomePage.class;
 	}
 

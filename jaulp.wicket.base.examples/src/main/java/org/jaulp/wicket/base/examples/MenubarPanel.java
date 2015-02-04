@@ -32,65 +32,65 @@ import de.alpharogroup.wicket.components.menu.suckerfish.MenuUtils;
 
 @SuppressWarnings("rawtypes")
 @ImportResources(resources = { // This css file is currently loaded...
-		@ImportResource(resourceName = "MenubarPanel.css", resourceType = "css") })
-public class MenubarPanel extends BasePanel {
+@ImportResource(resourceName = "MenubarPanel.css", resourceType = "css") })
+public class MenubarPanel extends BasePanel
+{
 
 	private static final long serialVersionUID = 1L;
-	
-	public MenubarPanel(String id) {
+
+	public MenubarPanel(String id)
+	{
 		super(id);
 		MenuPanel menuBar = new MenuPanel("menuBar");
 		add(menuBar);
-		
+
 		initializeMenu(menuBar);
 	}
-	
-	public MenubarPanel(String id, IModel<?> model) {
+
+	public MenubarPanel(String id, IModel<?> model)
+	{
 		super(id);
 		// Another way to load your css file is to override the renderHead method...
 		MenuPanel menuBar = new MenuPanel("menuBar");
 		add(menuBar);
-		
+
 		initializeMenu(menuBar);
 	}
 
-	private void initializeMenu(MenuPanel menuBar) {
-		
-		MenuItem miHome = MenuUtils.createMenuItem(
-				HomePage.class, "top.menu.home", this);
+	private void initializeMenu(MenuPanel menuBar)
+	{
+
+		MenuItem miHome = MenuUtils.createMenuItem(HomePage.class, "top.menu.home", this);
 
 		menuBar.addMenu(miHome);
-		
-		MenuItem miAnother = MenuUtils.createMenuItem(
-				AnotherPage.class, "top.menu.another", this);
+
+		MenuItem miAnother = MenuUtils.createMenuItem(AnotherPage.class, "top.menu.another", this);
 
 		menuBar.addMenu(miAnother);
 
-		MenuItem subMenuFromMiAnother =  MenuUtils.createMenuItem(
-				SubmenuPage.class, "top.menu.sub.another.overview", this);
+		MenuItem subMenuFromMiAnother = MenuUtils.createMenuItem(SubmenuPage.class,
+			"top.menu.sub.another.overview", this);
 		miAnother.addMenu(subMenuFromMiAnother);
 
-		MenuItem subMenuDynamic =  MenuUtils.createMenuItem(
-				DynamicPage.class, "top.menu.sub.dynamic.overview", this);
+		MenuItem subMenuDynamic = MenuUtils.createMenuItem(DynamicPage.class,
+			"top.menu.sub.dynamic.overview", this);
 		miAnother.addMenu(subMenuDynamic);
 
-		MenuItem miViewOrEdit = MenuUtils.createMenuItem(
-				ViewOrEditPage.class, "top.menu.viewmode", this);
+		MenuItem miViewOrEdit = MenuUtils.createMenuItem(ViewOrEditPage.class, "top.menu.viewmode",
+			this);
 		menuBar.addMenu(miViewOrEdit);
-		
-		MenuItem miUrls = MenuUtils.createMenuItem(
-				WicketUrlPage.class, "top.menu.urls", this);
+
+		MenuItem miUrls = MenuUtils.createMenuItem(WicketUrlPage.class, "top.menu.urls", this);
 		menuBar.addMenu(miUrls);
-		
-		MenuItem miLabeled = MenuUtils.createMenuItem(
-				LabeledHomePage.class, "top.menu.labeled", this);
+
+		MenuItem miLabeled = MenuUtils.createMenuItem(LabeledHomePage.class, "top.menu.labeled",
+			this);
 
 		menuBar.addMenu(miLabeled);
-		
-		MenuItem miSitemap = MenuUtils.createMenuItem(
-				SiteMapPage.class, "top.menu.sitemap", this);
+
+		MenuItem miSitemap = MenuUtils.createMenuItem(SiteMapPage.class, "top.menu.sitemap", this);
 
 		menuBar.addMenu(miSitemap);
-	}	
+	}
 
 }

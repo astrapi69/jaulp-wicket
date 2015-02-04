@@ -8,7 +8,8 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
-public abstract class PopupoverlayPanel<T> extends Panel {
+public abstract class PopupoverlayPanel<T> extends Panel
+{
 
 	/**
 	 * The serialVersionUID
@@ -16,10 +17,11 @@ public abstract class PopupoverlayPanel<T> extends Panel {
 	private static final long serialVersionUID = 1L;
 	@Getter
 	private MarkupContainer overlayReference;
-	
+
 	Button openButton;
 
-	public PopupoverlayPanel(String id, IModel<T> model) {
+	public PopupoverlayPanel(String id, IModel<T> model)
+	{
 		super(id, model);
 
 		add(openButton = newOpenButton("openButton"));
@@ -29,31 +31,33 @@ public abstract class PopupoverlayPanel<T> extends Panel {
 		// add class attributte with the markup id from the overlay with the
 		// suffix '_open'
 		// that indicates that the overlay shell open...
-		openButton.add(new AttributeModifier("class", overlayReference
-				.getMarkupId() + "_open"));
-//
-//		Button button = new Button("button");
-//		overlayReference.add(button);
-//		// add class attributte with the markup id from the overlay with the
-//		// suffix '_close'
-//		// that indicates that the overlay shell close...
-//		button.add(new AttributeModifier("class", overlayReference
-//				.getMarkupId() + "_close"));
+		openButton.add(new AttributeModifier("class", overlayReference.getMarkupId() + "_open"));
+		//
+		// Button button = new Button("button");
+		// overlayReference.add(button);
+		// // add class attributte with the markup id from the overlay with the
+		// // suffix '_close'
+		// // that indicates that the overlay shell close...
+		// button.add(new AttributeModifier("class", overlayReference
+		// .getMarkupId() + "_close"));
 	}
-	
-	protected Button newOpenButton(String id) {
+
+	protected Button newOpenButton(String id)
+	{
 		return new Button(id);
 	}
 
 
 	protected abstract MarkupContainer newOverlayReference(String id, IModel<T> model);
-	
-	protected PopupoverlaySettings newPopupoverlaySettings() {
+
+	protected PopupoverlaySettings newPopupoverlaySettings()
+	{
 		PopupoverlaySettings settings = new PopupoverlaySettings();
 		return settings;
 	}
-	
-	protected PopupoverlayBehavior newPopupoverlayBehavior() {
+
+	protected PopupoverlayBehavior newPopupoverlayBehavior()
+	{
 		return new PopupoverlayBehavior(newPopupoverlaySettings());
 	}
 

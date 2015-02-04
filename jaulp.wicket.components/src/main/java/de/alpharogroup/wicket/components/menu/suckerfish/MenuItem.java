@@ -28,7 +28,8 @@ import org.apache.wicket.model.StringResourceModel;
  * 
  * @author Asterios Raptis
  */
-public class MenuItem implements Serializable {
+public class MenuItem implements Serializable
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 0L;
@@ -50,10 +51,11 @@ public class MenuItem implements Serializable {
 	 * @param strLabel
 	 *            the str label
 	 */
-	public MenuItem(final AbstractLink link, final String strLabel) {
-		if (link != null && !link.getId().equals(MenuPanel.LINK_ID)) {
-			throw new IllegalArgumentException(
-					"The id must be SuckerfishMenuPanel.LINK_ID");
+	public MenuItem(final AbstractLink link, final String strLabel)
+	{
+		if (link != null && !link.getId().equals(MenuPanel.LINK_ID))
+		{
+			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
 		}
 		this.link = link;
 		label = new Label(MenuPanel.LINK_TEXT_ID, strLabel);
@@ -68,11 +70,11 @@ public class MenuItem implements Serializable {
 	 * @param strLabel
 	 *            the str label
 	 */
-	public MenuItem(final AbstractLink link,
-			final StringResourceModel strLabel) {
-		if (link != null && !link.getId().equals(MenuPanel.LINK_ID)) {
-			throw new IllegalArgumentException(
-					"The id must be SuckerfishMenuPanel.LINK_ID");
+	public MenuItem(final AbstractLink link, final StringResourceModel strLabel)
+	{
+		if (link != null && !link.getId().equals(MenuPanel.LINK_ID))
+		{
+			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
 		}
 		this.link = link;
 		label = new Label(MenuPanel.LINK_TEXT_ID, strLabel);
@@ -85,7 +87,8 @@ public class MenuItem implements Serializable {
 	 * @param strLabel
 	 *            the str label
 	 */
-	public MenuItem(final String strLabel) {
+	public MenuItem(final String strLabel)
+	{
 		link = null;
 		label = new Label(MenuPanel.LINK_TEXT_ID, strLabel);
 	}
@@ -96,7 +99,8 @@ public class MenuItem implements Serializable {
 	 * @param stringResourceModel
 	 *            the string resource model
 	 */
-	public MenuItem(final StringResourceModel stringResourceModel) {
+	public MenuItem(final StringResourceModel stringResourceModel)
+	{
 		link = null;
 		label = new Label(MenuPanel.LINK_TEXT_ID, stringResourceModel);
 	}
@@ -107,7 +111,8 @@ public class MenuItem implements Serializable {
 	 * @param menu
 	 *            the menu
 	 */
-	public void addMenu(final MenuItem menu) {
+	public void addMenu(final MenuItem menu)
+	{
 		subMenuItems.add(menu);
 	}
 
@@ -117,9 +122,11 @@ public class MenuItem implements Serializable {
 	 * @param menuItems
 	 *            the new menu items
 	 */
-	public void setMenuItems(final List<MenuItem> menuItems) {
+	public void setMenuItems(final List<MenuItem> menuItems)
+	{
 		subMenuItems.clear();
-		for (final MenuItem child : menuItems) {
+		for (final MenuItem child : menuItems)
+		{
 			addMenu(child);
 		}
 	}
@@ -129,7 +136,8 @@ public class MenuItem implements Serializable {
 	 * 
 	 * @return the link
 	 */
-	public AbstractLink getLink() {
+	public AbstractLink getLink()
+	{
 		return link;
 	}
 
@@ -138,7 +146,8 @@ public class MenuItem implements Serializable {
 	 * 
 	 * @return the children
 	 */
-	public List<MenuItem> getChildren() {
+	public List<MenuItem> getChildren()
+	{
 		return subMenuItems;
 	}
 
@@ -147,7 +156,8 @@ public class MenuItem implements Serializable {
 	 * 
 	 * @return the label
 	 */
-	public Label getLabel() {
+	public Label getLabel()
+	{
 		return label;
 	}
 }

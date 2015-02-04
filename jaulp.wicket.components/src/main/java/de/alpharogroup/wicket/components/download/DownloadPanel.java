@@ -13,38 +13,50 @@ import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.ApplicationUtils;
 import org.jaulp.wicket.behaviors.AjaxDownloadBehavior;
 
-public abstract class DownloadPanel extends BasePanel<DownloadModel> {
-	
+public abstract class DownloadPanel extends BasePanel<DownloadModel>
+{
+
 	private static final long serialVersionUID = 1L;
 
-	public DownloadPanel(String id, final IModel<DownloadModel> model) {
+	public DownloadPanel(String id, final IModel<DownloadModel> model)
+	{
 		super(id, model);
 		Args.notNull(model, "model");
-    	final AjaxDownloadBehavior download = new AjaxDownloadBehavior() {
+		final AjaxDownloadBehavior download = new AjaxDownloadBehavior()
+		{
 			private static final long serialVersionUID = 1L;
-			
+
 			@Override
-			protected IResourceStream getResourceStream() {
-				try {
-					return ApplicationUtils.getResourceStream(getWebApplication(), model.getObject().getPath(),model.getObject().getContentType());
-				} catch (IOException e) {
+			protected IResourceStream getResourceStream()
+			{
+				try
+				{
+					return ApplicationUtils.getResourceStream(getWebApplication(), model
+						.getObject().getPath(), model.getObject().getContentType());
+				}
+				catch (IOException e)
+				{
 					e.printStackTrace();
-					getSession().info("Error: "+e.getLocalizedMessage());
-				} 
+					getSession().info("Error: " + e.getLocalizedMessage());
+				}
 				return null;
 			}
-			
+
 			@Override
-			protected String getFileName() {
+			protected String getFileName()
+			{
 				return model.getObject().getFilename();
 			}
 		};
-		
+
 		Label fileNameLabel = new Label("fileName", model.getObject().getFilename());
-		AjaxLink<Void> downloadLink = new AjaxLink<Void>("pdfLink") {
+		AjaxLink<Void> downloadLink = new AjaxLink<Void>("pdfLink")
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
-			public void onClick(AjaxRequestTarget target) {
+			public void onClick(AjaxRequestTarget target)
+			{
 				download.initiate(target);
 			}
 		};
@@ -52,7 +64,7 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel> {
 		downloadLink.add(fileNameLabel);
 		addOrReplace(downloadLink);
 	}
-	
+
 	protected abstract WebApplication getWebApplication();
 
 }

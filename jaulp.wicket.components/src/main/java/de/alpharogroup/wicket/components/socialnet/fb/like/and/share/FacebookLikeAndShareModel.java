@@ -20,7 +20,8 @@ import java.io.Serializable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-public class FacebookLikeAndShareModel implements Serializable {
+public class FacebookLikeAndShareModel implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,48 +31,58 @@ public class FacebookLikeAndShareModel implements Serializable {
 
 	private Boolean dataShowFaces;
 
-	public Boolean getDataShare() {
+	public Boolean getDataShare()
+	{
 		return dataShare;
 	}
 
-	public Integer getDataWith() {
+	public Integer getDataWith()
+	{
 		return dataWith;
 	}
 
-	public Boolean getDataShowFaces() {
+	public Boolean getDataShowFaces()
+	{
 		return dataShowFaces;
 	}
-	
-	public IModel<FacebookLikeAndShareModel> toModel() {
+
+	public IModel<FacebookLikeAndShareModel> toModel()
+	{
 		return Model.of(this);
 	}
 
-	public static class Builder {
+	public static class Builder
+	{
 		private Boolean dataShare = Boolean.TRUE;
 		private Integer dataWith = 450;
 		private Boolean dataShowFaces = Boolean.TRUE;
 
-		public Builder dataShare(Boolean dataShare) {
+		public Builder dataShare(Boolean dataShare)
+		{
 			this.dataShare = dataShare;
 			return this;
 		}
 
-		public Builder dataWith(Integer dataWith) {
+		public Builder dataWith(Integer dataWith)
+		{
 			this.dataWith = dataWith;
 			return this;
 		}
 
-		public Builder dataShowFaces(Boolean dataShowFaces) {
+		public Builder dataShowFaces(Boolean dataShowFaces)
+		{
 			this.dataShowFaces = dataShowFaces;
 			return this;
 		}
 
-		public FacebookLikeAndShareModel build() {
+		public FacebookLikeAndShareModel build()
+		{
 			return new FacebookLikeAndShareModel(this);
 		}
 	}
 
-	private FacebookLikeAndShareModel(Builder builder) {
+	private FacebookLikeAndShareModel(Builder builder)
+	{
 		this.dataShare = builder.dataShare;
 		this.dataWith = builder.dataWith;
 		this.dataShowFaces = builder.dataShowFaces;

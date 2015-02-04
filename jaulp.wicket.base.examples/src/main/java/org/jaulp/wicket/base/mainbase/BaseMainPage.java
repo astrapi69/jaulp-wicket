@@ -41,7 +41,8 @@ import org.jaulp.wicket.base.enums.ResourceReferenceType;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "BaseMainPage.js", resourceType = "js"),
 		@ImportResource(resourceName = "BaseMainPage.css", resourceType = "css") })
-public abstract class BaseMainPage extends BasePage {
+public abstract class BaseMainPage extends BasePage
+{
 
 	/**
 	 * The serialVersionUID.
@@ -52,7 +53,8 @@ public abstract class BaseMainPage extends BasePage {
 	/**
 	 * Instantiates a new base page.
 	 */
-	public BaseMainPage() {
+	public BaseMainPage()
+	{
 		super();
 	}
 
@@ -62,7 +64,8 @@ public abstract class BaseMainPage extends BasePage {
 	 * @param parameters
 	 *            the parameters
 	 */
-	public BaseMainPage(final PageParameters parameters) {
+	public BaseMainPage(final PageParameters parameters)
+	{
 		super(parameters);
 	}
 
@@ -70,30 +73,33 @@ public abstract class BaseMainPage extends BasePage {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response) {
+	public void renderHead(IHeaderResponse response)
+	{
 		Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
-				.getInstance().getPackageResourceReference(BaseMainPage.class);
-		if (null != headerContributors && !headerContributors.isEmpty()) {
-			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors) {
-				if (packageResourceReference.getType().equals(
-						ResourceReferenceType.JS)) {
+			.getInstance().getPackageResourceReference(BaseMainPage.class);
+		if (null != headerContributors && !headerContributors.isEmpty())
+		{
+			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors)
+			{
+				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
+				{
 					JavaScriptResourceReference reference = new JavaScriptResourceReference(
-							BaseMainPage.class, packageResourceReference
-									.getPackageResourceReference().getName());
-					if (!response.wasRendered(reference)) {
+						BaseMainPage.class, packageResourceReference.getPackageResourceReference()
+							.getName());
+					if (!response.wasRendered(reference))
+					{
 						JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
-								.forReference(reference);
+							.forReference(reference);
 						response.render(headerItem);
 					}
 				}
-				if (packageResourceReference.getType().equals(
-						ResourceReferenceType.CSS)) {
-					CssResourceReference reference = new CssResourceReference(
-							BaseMainPage.class, packageResourceReference
-									.getPackageResourceReference().getName());
-					if (!response.wasRendered(reference)) {
-						CssReferenceHeaderItem headerItem = CssHeaderItem
-								.forReference(reference);
+				if (packageResourceReference.getType().equals(ResourceReferenceType.CSS))
+				{
+					CssResourceReference reference = new CssResourceReference(BaseMainPage.class,
+						packageResourceReference.getPackageResourceReference().getName());
+					if (!response.wasRendered(reference))
+					{
+						CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(reference);
 						response.render(headerItem);
 					}
 				}

@@ -11,21 +11,27 @@ import de.alpharogroup.wicket.components.deregistration.DeregistrationPanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 @MountPath("public/deregistration")
-public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel> {
+public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel>
+{
 	private static final long serialVersionUID = 1L;
 
-	public DeregistrationPage(final PageParameters parameters) {
+	public DeregistrationPage(final PageParameters parameters)
+	{
 		super(parameters);
 	}
 
 	@Override
-	public Component getContainerPanel() {
-		final IModel<DeregistrationModel> model = new CompoundPropertyModel<DeregistrationModel>(new DeregistrationModel());
-		return new DeregistrationPanel(CONTAINER_PANEL_ID, model){
+	public Component getContainerPanel()
+	{
+		final IModel<DeregistrationModel> model = new CompoundPropertyModel<DeregistrationModel>(
+			new DeregistrationModel());
+		return new DeregistrationPanel(CONTAINER_PANEL_ID, model)
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onDeregistration() {
+			public void onDeregistration()
+			{
 				// TODO action...
 				IModel<DeregistrationModel> m = getModel();
 				Object mo = getModelObject();
@@ -33,10 +39,11 @@ public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel> {
 			}
 
 			@Override
-			public String getDomainName() {
+			public String getDomainName()
+			{
 				return "jaulp.wicket.components.org";
 			}
-			
+
 		};
 	}
 }

@@ -21,7 +21,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 /**
  * The Class RepliesandnotesPanel.
  */
-public class RepliesandnotesPanel extends Panel {
+public class RepliesandnotesPanel extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -29,10 +30,13 @@ public class RepliesandnotesPanel extends Panel {
 	/**
 	 * Instantiates a new repliesandnotes panel.
 	 *
-	 * @param id the id
-	 * @param repliesandnotes the repliesandnotes
+	 * @param id
+	 *            the id
+	 * @param repliesandnotes
+	 *            the repliesandnotes
 	 */
-	public RepliesandnotesPanel(String id, final MessageBean repliesandnotes) {
+	public RepliesandnotesPanel(String id, final MessageBean repliesandnotes)
+	{
 		super(id);
 		add(new Label("label", repliesandnotes.getMessageContent()));
 	}

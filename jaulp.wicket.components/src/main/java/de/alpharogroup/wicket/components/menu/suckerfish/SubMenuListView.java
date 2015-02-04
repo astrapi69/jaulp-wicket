@@ -27,7 +27,8 @@ import org.apache.wicket.model.IModel;
  * 
  * @author Asterios Raptis
  */
-public final class SubMenuListView extends ListView<MenuItem> {
+public final class SubMenuListView extends ListView<MenuItem>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 0L;
@@ -40,11 +41,12 @@ public final class SubMenuListView extends ListView<MenuItem> {
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @param markupProvider the {@link MarkupContainer}
+	 * @param markupProvider
+	 *            the {@link MarkupContainer}
 	 */
-	public SubMenuListView(final String id,
-			final IModel<List<MenuItem>> model,
-			final MarkupContainer markupProvider) {
+	public SubMenuListView(final String id, final IModel<List<MenuItem>> model,
+		final MarkupContainer markupProvider)
+	{
 		super(id, model);
 		this.markupProvider = markupProvider;
 	}
@@ -56,10 +58,12 @@ public final class SubMenuListView extends ListView<MenuItem> {
 	 *            the id
 	 * @param list
 	 *            the list
-	 * @param markupProvider the {@link MarkupContainer}
+	 * @param markupProvider
+	 *            the {@link MarkupContainer}
 	 */
 	public SubMenuListView(final String id, final List<MenuItem> list,
-			final MarkupContainer markupProvider) {
+		final MarkupContainer markupProvider)
+	{
 		super(id, list);
 		this.markupProvider = markupProvider;
 	}
@@ -72,7 +76,8 @@ public final class SubMenuListView extends ListView<MenuItem> {
 	 * @see org.apache.wicket.markup.html.list.ListView#populateItem(org.apache.wicket.markup.html.list.ListItem)
 	 */
 	@Override
-	protected void populateItem(final ListItem<MenuItem> item) {
+	protected void populateItem(final ListItem<MenuItem> item)
+	{
 		final MenuItem menuItem = item.getModelObject();
 		item.add(new MenuItemFragment(menuItem, this.markupProvider));
 	}

@@ -14,10 +14,11 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.listview.ListViewPanel;
 
 /**
- * The Class UnorderedListPanel takes a {@link ListView} of {@link ResourceBundleKey}s
- * content resource keys that should be in a resource bundle for i18n.
+ * The Class UnorderedListPanel takes a {@link ListView} of {@link ResourceBundleKey}s content
+ * resource keys that should be in a resource bundle for i18n.
  */
-public abstract class UnorderedListPanel  extends ListViewPanel<ResourceBundleKey> {
+public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -25,10 +26,13 @@ public abstract class UnorderedListPanel  extends ListViewPanel<ResourceBundleKe
 	/**
 	 * Instantiates a new unordered list panel.
 	 *
-	 * @param id the id
-	 * @param list the list
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
 	 */
-	public UnorderedListPanel(String id, List<ResourceBundleKey> list) {
+	public UnorderedListPanel(String id, List<ResourceBundleKey> list)
+	{
 		super(id, list);
 	}
 
@@ -40,7 +44,8 @@ public abstract class UnorderedListPanel  extends ListViewPanel<ResourceBundleKe
 	 * @param model
 	 *            the model
 	 */
-	public UnorderedListPanel(String id, IModel<List<ResourceBundleKey>> model) {
+	public UnorderedListPanel(String id, IModel<List<ResourceBundleKey>> model)
+	{
 		super(id, model);
 	}
 
@@ -53,9 +58,10 @@ public abstract class UnorderedListPanel  extends ListViewPanel<ResourceBundleKe
 	 *            the item
 	 * @return the component
 	 */
-	protected Component newListComponent(String id,
-			ListItem<ResourceBundleKey> item){
-		return new Label(id, ResourceModelFactory.newResourceModel(item.getModel().getObject(), this));
+	protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+	{
+		return new Label(id, ResourceModelFactory.newResourceModel(item.getModel().getObject(),
+			this));
 	}
 
 }

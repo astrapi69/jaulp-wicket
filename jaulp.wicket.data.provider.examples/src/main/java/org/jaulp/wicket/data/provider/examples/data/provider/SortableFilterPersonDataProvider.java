@@ -7,39 +7,48 @@ import java.util.List;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.jaulp.wicket.data.provider.AbstractSortFilterDataProvider;
 
-public class SortableFilterPersonDataProvider extends
-		AbstractSortFilterDataProvider<Person, String, PersonFilter> {
+public class SortableFilterPersonDataProvider
+	extends
+		AbstractSortFilterDataProvider<Person, String, PersonFilter>
+{
 
 	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public SortableFilterPersonDataProvider() {
+	public SortableFilterPersonDataProvider()
+	{
 		this(new ArrayList<Person>());
 	}
 
-	public SortableFilterPersonDataProvider(List<Person> data) {
+	public SortableFilterPersonDataProvider(List<Person> data)
+	{
 		super(data);
 		setFilterState(new PersonFilter());
 		setSort("firstname", SortOrder.ASCENDING);
 	}
 
 	@Override
-	protected List<Person> filter(List<Person> personsFound) {
+	protected List<Person> filter(List<Person> personsFound)
+	{
 		return filterByFirstname(personsFound);
 	}
 
-	protected List<Person> filterByDateOfBirth(List<Person> personsFound) {
+	protected List<Person> filterByDateOfBirth(List<Person> personsFound)
+	{
 		ArrayList<Person> result = new ArrayList<>();
 		Date dateFrom = getFilterState().getDateFrom();
 		Date dateTo = getFilterState().getDateTo();
-		for (Person person : personsFound) {
+		for (Person person : personsFound)
+		{
 			Date bornDate = person.getDateOfBirth();
-			if (dateFrom != null && bornDate.before(dateFrom)) {
+			if (dateFrom != null && bornDate.before(dateFrom))
+			{
 				continue;
 			}
-			if (dateTo != null && bornDate.after(dateTo)) {
+			if (dateTo != null && bornDate.after(dateTo))
+			{
 				continue;
 			}
 			result.add(person);
@@ -47,14 +56,17 @@ public class SortableFilterPersonDataProvider extends
 		return result;
 	}
 
-	protected List<Person> filterByFirstname(List<Person> personsFound) {
+	protected List<Person> filterByFirstname(List<Person> personsFound)
+	{
 		ArrayList<Person> result = new ArrayList<>();
 		String filter = getFilterState().getFirstname();
-		if(filter != null) {
-			for (Person person : personsFound) {				
-				if(person != null && 
-						person.getFirstname()!=null && 
-							person.getFirstname().matches(filter + "(.*)")) {
+		if (filter != null)
+		{
+			for (Person person : personsFound)
+			{
+				if (person != null && person.getFirstname() != null
+					&& person.getFirstname().matches(filter + "(.*)"))
+				{
 					result.add(person);
 				}
 			}

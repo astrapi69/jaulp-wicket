@@ -24,7 +24,8 @@ import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
  *
  * @author admin
  */
-public class TrademarksModelsPanel extends TwoDropDownChoicesPanel {
+public class TrademarksModelsPanel extends TwoDropDownChoicesPanel
+{
 
 	/**
 	 * The Constant serialVersionUID.
@@ -34,17 +35,20 @@ public class TrademarksModelsPanel extends TwoDropDownChoicesPanel {
 	/**
 	 * Instantiates a new trademarks models panel.
 	 *
-	 * @param id the id
-	 * @param stringTwoDropDownChoicesModel the string two drop down choices model
-	 * @param rootRenderer the root renderer
-	 * @param childRenderer the child renderer
+	 * @param id
+	 *            the id
+	 * @param stringTwoDropDownChoicesModel
+	 *            the string two drop down choices model
+	 * @param rootRenderer
+	 *            the root renderer
+	 * @param childRenderer
+	 *            the child renderer
 	 */
 	public TrademarksModelsPanel(String id,
-			StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel,
-			IChoiceRenderer<String> rootRenderer,
-			IChoiceRenderer<String> childRenderer) {
+		StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel,
+		IChoiceRenderer<String> rootRenderer, IChoiceRenderer<String> childRenderer)
+	{
 		super(id, stringTwoDropDownChoicesModel, rootRenderer, childRenderer);
 	}
 
 }
-

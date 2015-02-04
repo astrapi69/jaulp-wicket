@@ -9,15 +9,18 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
 
 
 @MountPath("public/swap/person")
-public class PersonPage extends PubliclyBasePage<PersonModel> {
+public class PersonPage extends PubliclyBasePage<PersonModel>
+{
 	private static final long serialVersionUID = 1L;
 
-	public PersonPage(final PageParameters parameters) {
+	public PersonPage(final PageParameters parameters)
+	{
 		super(parameters);
 	}
 
 	@Override
-	public Component getContainerPanel() {
+	public Component getContainerPanel()
+	{
 		return new PersonPanel(CONTAINER_PANEL_ID, Model.of(new PersonModel()));
 	}
 }

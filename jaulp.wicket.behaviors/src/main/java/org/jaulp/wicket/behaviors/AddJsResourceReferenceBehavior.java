@@ -30,10 +30,11 @@ import org.apache.wicket.util.lang.Args;
 import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 
 /**
- * The Class AddJsResourceReferenceBehavior adds a javascript file to given
- * WebPage class as a JavaScriptHeaderItem.
+ * The Class AddJsResourceReferenceBehavior adds a javascript file to given WebPage class as a
+ * JavaScriptHeaderItem.
  */
-public class AddJsResourceReferenceBehavior extends Behavior {
+public class AddJsResourceReferenceBehavior extends Behavior
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -45,9 +46,8 @@ public class AddJsResourceReferenceBehavior extends Behavior {
 	private final String filename;
 
 	/**
-	 * The unique id for the javascript element. This can be null, however in
-	 * that case the ajax header contribution can't detect duplicate script
-	 * fragments.
+	 * The unique id for the javascript element. This can be null, however in that case the ajax
+	 * header contribution can't detect duplicate script fragments.
 	 */
 	private String id;
 
@@ -61,9 +61,9 @@ public class AddJsResourceReferenceBehavior extends Behavior {
 	 * @param id
 	 *            the id
 	 */
-	public AddJsResourceReferenceBehavior(
-			final Class<? extends WebPage> pageClass, final String filename,
-			final String id) {
+	public AddJsResourceReferenceBehavior(final Class<? extends WebPage> pageClass,
+		final String filename, final String id)
+	{
 		Args.notNull(pageClass, "pageClass");
 		Args.notNull(filename, "filename");
 		this.pageClass = pageClass;
@@ -76,21 +76,22 @@ public class AddJsResourceReferenceBehavior extends Behavior {
 	 * 
 	 * @return the resource reference
 	 */
-	private ResourceReference getResourceReference() {
+	private ResourceReference getResourceReference()
+	{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("url", WicketUrlUtils.getUrlAsString(pageClass));
-		ResourceReference resourceReference = new TextTemplateResourceReference(
-				pageClass, this.filename, "text/javascript", Model.ofMap(map));
+		ResourceReference resourceReference = new TextTemplateResourceReference(pageClass,
+			this.filename, "text/javascript", Model.ofMap(map));
 		return resourceReference;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void renderHead(Component component, IHeaderResponse response) {
+	public void renderHead(Component component, IHeaderResponse response)
+	{
 		super.renderHead(component, response);
-		response.render(JavaScriptHeaderItem.forReference(
-				getResourceReference(), this.id));
+		response.render(JavaScriptHeaderItem.forReference(getResourceReference(), this.id));
 	}
 
 }

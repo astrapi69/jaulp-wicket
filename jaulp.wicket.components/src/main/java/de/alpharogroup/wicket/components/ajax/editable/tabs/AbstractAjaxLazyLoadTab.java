@@ -8,7 +8,8 @@ import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
-public abstract class AbstractAjaxLazyLoadTab<T> implements ITab {
+public abstract class AbstractAjaxLazyLoadTab<T> implements ITab
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -19,18 +20,22 @@ public abstract class AbstractAjaxLazyLoadTab<T> implements ITab {
 	@Getter
 	private IModel<T> content;
 
-	public AbstractAjaxLazyLoadTab(IModel<String> title, IModel<T> content) {
+	public AbstractAjaxLazyLoadTab(IModel<String> title, IModel<T> content)
+	{
 		this.title = title;
 		this.content = content;
 	}
 
 	@Override
-	public WebMarkupContainer getPanel(String panelId) {
-		return new AjaxLazyLoadPanel(panelId) {
+	public WebMarkupContainer getPanel(String panelId)
+	{
+		return new AjaxLazyLoadPanel(panelId)
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public Component getLazyLoadComponent(String markupId) {
+			public Component getLazyLoadComponent(String markupId)
+			{
 				return getLazyLoadPanel(markupId);
 			}
 		};

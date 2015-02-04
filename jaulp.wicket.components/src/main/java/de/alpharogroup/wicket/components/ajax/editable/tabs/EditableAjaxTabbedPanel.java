@@ -23,11 +23,14 @@ import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class EditableAjaxTabbedPanel extends the AjaxTabbedPanel and adds functionality to add or remove tabs from the TabbedPanel.
+ * The Class EditableAjaxTabbedPanel extends the AjaxTabbedPanel and adds functionality to add or
+ * remove tabs from the TabbedPanel.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
-public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> {
+public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -35,32 +38,41 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	/**
 	 * Instantiates a new editable ajax tabbed panel.
 	 *
-	 * @param id the id
-	 * @param tabs the tabs
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param tabs
+	 *            the tabs
+	 * @param model
+	 *            the model
 	 */
-	public EditableAjaxTabbedPanel(String id, List<T> tabs,
-			IModel<Integer> model) {
+	public EditableAjaxTabbedPanel(String id, List<T> tabs, IModel<Integer> model)
+	{
 		super(id, tabs, model);
 	}
 
 	/**
 	 * Instantiates a new editable ajax tabbed panel.
 	 *
-	 * @param id the id
-	 * @param tabs the tabs
+	 * @param id
+	 *            the id
+	 * @param tabs
+	 *            the tabs
 	 */
-	public EditableAjaxTabbedPanel(String id, List<T> tabs) {
+	public EditableAjaxTabbedPanel(String id, List<T> tabs)
+	{
 		super(id, tabs);
 	}
 
 	/**
 	 * On new tab.
 	 *
-	 * @param target the target
-	 * @param tab the tab
+	 * @param target
+	 *            the target
+	 * @param tab
+	 *            the tab
 	 */
-	public void onNewTab(final AjaxRequestTarget target, final T tab) {
+	public void onNewTab(final AjaxRequestTarget target, final T tab)
+	{
 		getTabs().add(tab);
 		setSelectedTab(getTabs().size() - 1);
 		target.add(this);
@@ -69,13 +81,17 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	/**
 	 * On new tab.
 	 *
-	 * @param target the target
-	 * @param tab the tab
-	 * @param index the index
+	 * @param target
+	 *            the target
+	 * @param tab
+	 *            the tab
+	 * @param index
+	 *            the index
 	 */
-	public void onNewTab(final AjaxRequestTarget target, final T tab,
-			final int index) {
-		if ((index < 0) || (index >= getTabs().size())) {
+	public void onNewTab(final AjaxRequestTarget target, final T tab, final int index)
+	{
+		if ((index < 0) || (index >= getTabs().size()))
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		getTabs().add(index, tab);
@@ -86,13 +102,17 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	/**
 	 * On remove tab removes the tab of the given index.
 	 *
-	 * @param target the target
-	 * @param index the index
+	 * @param target
+	 *            the target
+	 * @param index
+	 *            the index
 	 */
-	public void onRemoveTab(final AjaxRequestTarget target, final int index) {
+	public void onRemoveTab(final AjaxRequestTarget target, final int index)
+	{
 		int tabSize = getTabs().size();
 		// there have to be at least one tab on the ajaxTabbedPanel...
-		if (2 <= tabSize && index < tabSize) {
+		if (2 <= tabSize && index < tabSize)
+		{
 			setSelectedTab(index);
 			getTabs().remove(index);
 			target.add(this);
@@ -102,12 +122,16 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T> 
 	/**
 	 * On remove tab removes the given tab if it does exists.
 	 *
-	 * @param target the target
-	 * @param tab the tab
+	 * @param target
+	 *            the target
+	 * @param tab
+	 *            the tab
 	 */
-	public void onRemoveTab(final AjaxRequestTarget target, final T tab) {
+	public void onRemoveTab(final AjaxRequestTarget target, final T tab)
+	{
 		final int index = getTabs().indexOf(tab);
-		if (0 <= index) {
+		if (0 <= index)
+		{
 			onRemoveTab(target, index);
 		}
 	}

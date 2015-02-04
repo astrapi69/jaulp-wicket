@@ -20,39 +20,42 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.file.Folder;
 
 /**
- * Application object for your web application. If you want to run this application without deploying, run the Start class.
+ * Application object for your web application. If you want to run this application without
+ * deploying, run the Start class.
  */
 public class WicketApplication extends WebApplication
 {
-    public static final int HTTP_PORT = 9090;
-    public static final int HTTPS_PORT = 9443;
+	public static final int HTTP_PORT = 9090;
+	public static final int HTTPS_PORT = 9443;
 
 	/** The upload folder. */
 	private Folder uploadFolder = null;
-    /**
-     * Constructor.
-     */
+
+	/**
+	 * Constructor.
+	 */
 	public WicketApplication()
 	{
 
 
 	}
 
-	public void init() {
-        // Create the upload folder...
-        uploadFolder = new Folder(System.getProperty("java.io.tmpdir"), "wicket-uploads");
-        // Ensure folder exists
-        uploadFolder.mkdirs();
+	public void init()
+	{
+		// Create the upload folder...
+		uploadFolder = new Folder(System.getProperty("java.io.tmpdir"), "wicket-uploads");
+		// Ensure folder exists
+		uploadFolder.mkdirs();
 	}
 
-    /**
-     * Gets the home page.
-     *
-     * @return the home page
-     * @see org.apache.wicket.Application#getHomePage()
-     */
-    @Override
-    public Class< HomePage > getHomePage()
+	/**
+	 * Gets the home page.
+	 *
+	 * @return the home page
+	 * @see org.apache.wicket.Application#getHomePage()
+	 */
+	@Override
+	public Class<HomePage> getHomePage()
 	{
 		return HomePage.class;
 	}
@@ -60,7 +63,8 @@ public class WicketApplication extends WebApplication
 	/**
 	 * @return the folder for uploads
 	 */
-	public Folder getUploadFolder() {
+	public Folder getUploadFolder()
+	{
 		return this.uploadFolder;
 	}
 
@@ -69,8 +73,9 @@ public class WicketApplication extends WebApplication
 	 *
 	 * @return the wicket application
 	 */
-	public static WicketApplication get() {
-		return ((WicketApplication) Application.get());
+	public static WicketApplication get()
+	{
+		return ((WicketApplication)Application.get());
 	}
 
 }

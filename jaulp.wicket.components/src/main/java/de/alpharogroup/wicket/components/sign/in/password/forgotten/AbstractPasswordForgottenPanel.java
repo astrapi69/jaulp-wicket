@@ -23,7 +23,8 @@ import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextField
  * 
  * @author Asterios Raptis
  */
-public abstract class AbstractPasswordForgottenPanel extends Panel {
+public abstract class AbstractPasswordForgottenPanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
@@ -61,35 +62,33 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the id
 	 */
 	@SuppressWarnings("unchecked")
-	public AbstractPasswordForgottenPanel(final String id) {
+	public AbstractPasswordForgottenPanel(final String id)
+	{
 		super(id);
 		setDefaultModel(new CompoundPropertyModel<PasswordForgottenModel>(
-				new PasswordForgottenModel()));
+			new PasswordForgottenModel()));
 
 		add(form = newForm("form", getDefaultModel()));
 
 		form.add(header = newHeaderLabel("header", "password.forgotten.label",
-				"Password forgotten help", this));
+			"Password forgotten help", this));
 
-		email = newEmailTextField("email",
-				(IModel<PasswordForgottenModel>) getDefaultModel());
+		email = newEmailTextField("email", (IModel<PasswordForgottenModel>)getDefaultModel());
 
 		form.add(email);
 
 		form.add(captchaPanel = newCaptcha("captchaPanel"));
 		// Create submit button for the form
 		submitButton = newButton("submitButton");
-		buttonLabel = newButtonLabel("buttonLabel",
-				"global.button.send.email.label", "Send email");
+		buttonLabel = newButtonLabel("buttonLabel", "global.button.send.email.label", "Send email");
 		submitButton.add(buttonLabel);
 		form.add(submitButton);
 	}
 
 	/**
-	 * Factory method for creating the EmailTextField for the email. This method
-	 * is invoked in the constructor from the derived classes and can be
-	 * overridden so users can provide their own version of a EmailTextField for
-	 * the email.
+	 * Factory method for creating the EmailTextField for the email. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a EmailTextField for the email.
 	 *
 	 * @param id
 	 *            the id
@@ -97,27 +96,28 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the model
 	 * @return the text field
 	 */
-	protected Component newEmailTextField(String id,
-			final IModel<PasswordForgottenModel> model) {
-		final IModel<String> labelModel = ResourceModelFactory
-				.newResourceModel("password.forgotten.content.label", this,
-						"Give email in the Textfield");
-		final IModel<String> placeholderModel = ResourceModelFactory
-				.newResourceModel("global.enter.your.email.label", this,
-						"Enter your email here");
+	protected Component newEmailTextField(String id, final IModel<PasswordForgottenModel> model)
+	{
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"password.forgotten.content.label", this, "Give email in the Textfield");
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.your.email.label", this, "Enter your email here");
 		LabeledEmailTextFieldPanel<PasswordForgottenModel> emailTextField = new LabeledEmailTextFieldPanel<PasswordForgottenModel>(
-				id, model, labelModel) {
+			id, model, labelModel)
+		{
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected EmailTextField newEmailTextField(String id,
-					IModel<PasswordForgottenModel> model) {
+				IModel<PasswordForgottenModel> model)
+			{
 				EmailTextField emailTextField = new EmailTextField(id,
-						model(from(model).getEmail()));
+					model(from(model).getEmail()));
 				emailTextField.setOutputMarkupId(true);
 				emailTextField.setRequired(true);
-				if(placeholderModel != null) {
+				if (placeholderModel != null)
+				{
 					emailTextField.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return emailTextField;
@@ -127,32 +127,34 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id) {
-		return new Button(id) {
+	protected Button newButton(String id)
+	{
+		return new Button(id)
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				onSend();
 			}
 		};
 	}
 
 	/**
-	 * Factory method for creating the button Label. This method is invoked in
-	 * the constructor from the derived classes and can be overridden so users
-	 * can provide their own version of a button Label.
+	 * Factory method for creating the button Label. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a button
+	 * Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -162,8 +164,8 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue) {
+	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	{
 		return ComponentFactory.newLabel(id, resourceKey, defaultValue, this);
 	}
 
@@ -177,9 +179,8 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	protected abstract Component newCaptcha(String id);
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -193,17 +194,16 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the component
 	 * @return the label
 	 */
-	protected Label newEmailLabel(String id, String forId,
-			final String resourceKey, final String defaultValue,
-			final Component component) {
-		return ComponentFactory.newLabel(id, forId, ResourceModelFactory.newResourceModel(
-				resourceKey, component, defaultValue));
+	protected Label newEmailLabel(String id, String forId, final String resourceKey,
+		final String defaultValue, final Component component)
+	{
+		return ComponentFactory.newLabel(id, forId,
+			ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue));
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Form.
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -211,7 +211,8 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id, IModel<?> model) {
+	protected Form<?> newForm(String id, IModel<?> model)
+	{
 		return ComponentFactory.newForm(id, model);
 	}
 
@@ -228,10 +229,11 @@ public abstract class AbstractPasswordForgottenPanel extends Panel {
 	 *            the component
 	 * @return the label
 	 */
-	protected Label newHeaderLabel(String id, final String resourceKey,
-			final String defaultValue, final Component component) {
-		return ComponentFactory.newLabel(id, ResourceModelFactory.newResourceModel(
-				resourceKey, component, defaultValue));
+	protected Label newHeaderLabel(String id, final String resourceKey, final String defaultValue,
+		final Component component)
+	{
+		return ComponentFactory.newLabel(id,
+			ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue));
 	}
 
 	// Hook method for implement the action...

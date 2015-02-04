@@ -21,14 +21,14 @@ import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 /**
  * The Class SignupPanel.
  */
-public class SignupPanel extends Panel {
+public class SignupPanel extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The Constant LOGGER. */
-	protected static final Logger LOGGER = LoggerFactory
-			.getLogger(SignupPanel.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(SignupPanel.class);
 
 	/** The username. */
 	private Component username;
@@ -41,63 +41,82 @@ public class SignupPanel extends Panel {
 	 *
 	 * @return the signin panel
 	 */
-	public Component getSigninPanel() {
+	public Component getSigninPanel()
+	{
 		return signinPanel;
 	}
 
 	/** The repeat password. */
 	private Component repeatPassword;
-	
+
 	/**
 	 * Instantiates a new signup panel.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
 	@SuppressWarnings("unchecked")
-	public SignupPanel(String id, final IModel<? extends BaseUsernameSignUpModel> model) {
+	public SignupPanel(String id, final IModel<? extends BaseUsernameSignUpModel> model)
+	{
 		super(id, model);
-		add(username = newUsernameTextField("username",(IModel<BaseUsernameSignUpModel>)model));
+		add(username = newUsernameTextField("username", (IModel<BaseUsernameSignUpModel>)model));
 		add(signinPanel = newSigninPanel("signinPanel", model));
-		add(repeatPassword = newRepeatPasswordTextField("repeatPassword", (IModel<BaseUsernameSignUpModel>)model));
+		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
+			(IModel<BaseUsernameSignUpModel>)model));
 	}
-	
+
 	/**
-	 * Factory method for creating the SigninPanel that contains the TextField for the email and password. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Component that contains the TextField for the email and password.
+	 * Factory method for creating the SigninPanel that contains the TextField for the email and
+	 * password. This method is invoked in the constructor from the derived classes and can be
+	 * overridden so users can provide their own version of a Component that contains the TextField
+	 * for the email and password.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the Component
 	 */
-	protected Component newSigninPanel(String id, final IModel<? extends BaseUsernameSignUpModel> model) {
+	protected Component newSigninPanel(String id,
+		final IModel<? extends BaseUsernameSignUpModel> model)
+	{
 		return new SigninPanel(id, model);
 	}
-	
+
 	/**
 	 * Factory method for creating the TextField for the username. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a TextField for the username.
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a TextField for the username.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text field
 	 */
-	protected Component newUsernameTextField(String id, final IModel<BaseUsernameSignUpModel> model) {
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel("global.username.label", this);
-	final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel("global.enter.your.username.label", this);
-	LabeledTextFieldPanel<BaseUsernameSignUpModel> nameTextField = new LabeledTextFieldPanel<BaseUsernameSignUpModel>(id, model, labelModel) {
+	protected Component newUsernameTextField(String id, final IModel<BaseUsernameSignUpModel> model)
+	{
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel("global.username.label",
+			this);
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.your.username.label", this);
+		LabeledTextFieldPanel<BaseUsernameSignUpModel> nameTextField = new LabeledTextFieldPanel<BaseUsernameSignUpModel>(
+			id, model, labelModel)
+		{
 
 			private static final long serialVersionUID = 1L;
 
 			@SuppressWarnings({ "rawtypes", "unchecked" })
-			protected TextField newTextField(String id,
-					IModel<BaseUsernameSignUpModel> modelSuper) {
-				TextField<String> textField = new TextField<String>(id, model(from(model).getUsername()));
+			protected TextField newTextField(String id, IModel<BaseUsernameSignUpModel> modelSuper)
+			{
+				TextField<String> textField = new TextField<String>(id, model(from(model)
+					.getUsername()));
 				textField.setOutputMarkupId(true);
 				textField.setRequired(true);
-				if(placeholderModel != null) {
+				if (placeholderModel != null)
+				{
 					textField.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return textField;
@@ -107,31 +126,43 @@ public class SignupPanel extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the EmailTextField for the repeated password. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
+	 * Factory method for creating the EmailTextField for the repeated password. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a EmailTextField for the repeated password.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text field
 	 */
-	protected Component newRepeatPasswordTextField(String id, final IModel<BaseUsernameSignUpModel> model) {
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel("global.repeat.password.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel("global.enter.your.password.again.label", this);
-		LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> pwTextField = new LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel>(id, model, labelModel){
+	protected Component newRepeatPasswordTextField(String id,
+		final IModel<BaseUsernameSignUpModel> model)
+	{
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"global.repeat.password.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.your.password.again.label", this);
+		LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> pwTextField = new LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel>(
+			id, model, labelModel)
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected PasswordTextField newPasswordTextField(String id,
-					IModel<BaseUsernameSignUpModel> modelSuper) {
-				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model).getRepeatPassword()));
+				IModel<BaseUsernameSignUpModel> modelSuper)
+			{
+				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
+					.getRepeatPassword()));
 				pwTextField.setOutputMarkupId(true);
-				if(placeholderModel != null) {
+				if (placeholderModel != null)
+				{
 					pwTextField.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return pwTextField;
 			}
 		};
-		return pwTextField;		
+		return pwTextField;
 	}
 
 	/**
@@ -139,7 +170,8 @@ public class SignupPanel extends Panel {
 	 *
 	 * @return the username
 	 */
-	public Component getUsername() {
+	public Component getUsername()
+	{
 		return username;
 	}
 
@@ -148,7 +180,8 @@ public class SignupPanel extends Panel {
 	 *
 	 * @return the repeat password
 	 */
-	public Component getRepeatPassword() {
+	public Component getRepeatPassword()
+	{
 		return repeatPassword;
 	}
 

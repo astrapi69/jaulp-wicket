@@ -10,15 +10,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RadioGroupModel<T> implements Serializable {
-	
+public class RadioGroupModel<T> implements Serializable
+{
+
 	/**
 	 * The serialVersionUID.
 	 */

@@ -25,7 +25,8 @@ import org.apache.wicket.model.IModel;
  *
  * @author Asterios Raptis
  */
-public class EditableTextArea extends Panel {
+public class EditableTextArea extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -38,33 +39,39 @@ public class EditableTextArea extends Panel {
 	 *
 	 * @return true, if it is editable
 	 */
-	public boolean isEditable() {
+	public boolean isEditable()
+	{
 		return editable;
 	}
-	
+
 	/** The MultiLineLabel. */
 	private final MultiLineLabel label;
-	
+
 	/** The text area. */
 	private final TextArea<String> textArea;
 
 	/**
 	 * Sets the editable.
 	 *
-	 * @param editable the new editable
+	 * @param editable
+	 *            the new editable
 	 */
-	public void setEditable(boolean editable) {
+	public void setEditable(boolean editable)
+	{
 		this.editable = editable;
 	}
 
 	/**
 	 * Instantiates a new editable text area.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @see org.apache.wicket.Component#Component(String, IModel)
 	 */
-	public EditableTextArea(final String id, final IModel<String> model) {
+	public EditableTextArea(final String id, final IModel<String> model)
+	{
 		super(id, model);
 		editable = true;
 		this.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
@@ -73,44 +80,54 @@ public class EditableTextArea extends Panel {
 	}
 
 
-
 	/**
-	 * Factory method for creating the TextArea. This method is invoked in the
-	 * constructor from this class and can be overridden so users can
-	 * provide their own version of a TextArea.
+	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
+	 * class and can be overridden so users can provide their own version of a TextArea.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text area
 	 */
-	protected TextArea<String> newTextArea(String id, IModel<String> model) {
-		TextArea<String> textArea = new TextArea<String>(id, model){
+	protected TextArea<String> newTextArea(String id, IModel<String> model)
+	{
+		TextArea<String> textArea = new TextArea<String>(id, model)
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
-		    protected void onConfigure() {
-		        setVisibilityAllowed(isEditable());
-		    }
+			protected void onConfigure()
+			{
+				setVisibilityAllowed(isEditable());
+			}
 		};
 		textArea.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		return textArea;
 	}
-	
+
 	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a MultiLineLabel.
+	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * MultiLineLabel.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the MultiLineLabel
 	 */
-	protected MultiLineLabel newMultiLineLabel(String id, IModel<String> model) {
-		MultiLineLabel multiLineLabel = new MultiLineLabel(id, model){
+	protected MultiLineLabel newMultiLineLabel(String id, IModel<String> model)
+	{
+		MultiLineLabel multiLineLabel = new MultiLineLabel(id, model)
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
-		    protected void onConfigure() {
-		        setVisibilityAllowed(!isEditable());
-		    }
+			protected void onConfigure()
+			{
+				setVisibilityAllowed(!isEditable());
+			}
 		};
 		multiLineLabel.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		return multiLineLabel;
@@ -121,7 +138,8 @@ public class EditableTextArea extends Panel {
 	 *
 	 * @return the label
 	 */
-	public MultiLineLabel getLabel() {
+	public MultiLineLabel getLabel()
+	{
 		return label;
 	}
 
@@ -130,7 +148,8 @@ public class EditableTextArea extends Panel {
 	 *
 	 * @return the text area
 	 */
-	public TextArea<String> getTextArea() {
+	public TextArea<String> getTextArea()
+	{
 		return textArea;
 	}
 

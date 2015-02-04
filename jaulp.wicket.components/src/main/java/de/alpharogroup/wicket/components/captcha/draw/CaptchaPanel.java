@@ -11,41 +11,42 @@ import org.apache.wicket.model.PropertyModel;
  * 
  * @author Asterios Raptis
  */
-public class CaptchaPanel extends Panel {
+public class CaptchaPanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CaptchaPanel(String id, CaptchaModel captchaModel) {
-        super(id);
-        // Create a random Image...
-        Image captchaImage = new Image("captchaImage",
-                captchaModel.getCaptchaImageResource());
-        // Create an TextField for the input...
-        RequiredTextField<String> captchaInput = 
-        		new RequiredTextField<String>("captchaInput", 
-        				new PropertyModel<String>(
-                        captchaModel.getProperties(), "captchaInput")) {
+	public CaptchaPanel(String id, CaptchaModel captchaModel)
+	{
+		super(id);
+		// Create a random Image...
+		Image captchaImage = new Image("captchaImage", captchaModel.getCaptchaImageResource());
+		// Create an TextField for the input...
+		RequiredTextField<String> captchaInput = new RequiredTextField<String>("captchaInput",
+			new PropertyModel<String>(captchaModel.getProperties(), "captchaInput"))
+		{
 
-            /**
-             * The serialVersionUID.
-             */
-            private static final long serialVersionUID = 1L;
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
 
-            @Override
-            protected final void onComponentTag(final ComponentTag tag) {
-                super.onComponentTag(tag);
-                // clear the field after each render
-                tag.put("value", "");
-            }
-        };
-        captchaInput.setType(String.class);
-        // Add the image to the panel...
-        add(captchaImage);
-        // Add the TextField to the panel...
-        add(captchaInput);
+			@Override
+			protected final void onComponentTag(final ComponentTag tag)
+			{
+				super.onComponentTag(tag);
+				// clear the field after each render
+				tag.put("value", "");
+			}
+		};
+		captchaInput.setType(String.class);
+		// Add the image to the panel...
+		add(captchaImage);
+		// Add the TextField to the panel...
+		add(captchaInput);
 	}
 
 }

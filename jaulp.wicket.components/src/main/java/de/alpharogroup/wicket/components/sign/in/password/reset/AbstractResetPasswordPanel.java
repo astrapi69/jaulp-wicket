@@ -11,24 +11,26 @@ import org.jaulp.wicket.base.pageparameters.ParameterKeys;
  * 
  * @author Asterios Raptis
  */
-public abstract class AbstractResetPasswordPanel extends Panel {
+public abstract class AbstractResetPasswordPanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AbstractResetPasswordPanel(final String id, final PageParameters parameters) {
+	public AbstractResetPasswordPanel(final String id, final PageParameters parameters)
+	{
 		super(id);
-		ResetPasswordModel model = ResetPasswordModel
-				.builder()
-				.username(parameters.get(ParameterKeys.USERNAME).toString())
-				.confirmationCode(parameters.get(ParameterKeys.CONFIRMATION_CODE).toString().trim())
-				.build();
+		ResetPasswordModel model = ResetPasswordModel.builder()
+			.username(parameters.get(ParameterKeys.USERNAME).toString())
+			.confirmationCode(parameters.get(ParameterKeys.CONFIRMATION_CODE).toString().trim())
+			.build();
 		onReset(model.getUsername(), model.getConfirmationCode());
 	}
 
-	public AbstractResetPasswordPanel(final String id, final IModel<ResetPasswordModel> model) {
+	public AbstractResetPasswordPanel(final String id, final IModel<ResetPasswordModel> model)
+	{
 		super(id, model);
 		onReset(model.getObject().getUsername(), model.getObject().getConfirmationCode());
 	}

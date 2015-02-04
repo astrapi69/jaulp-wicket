@@ -6,7 +6,8 @@ import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
 /**
  * The Class GoogleAnalyticsBehavior adds the application specific js script.
  */
-public class GoogleAnalyticsBehavior extends AddJsResourceReferenceBehavior {
+public class GoogleAnalyticsBehavior extends AddJsResourceReferenceBehavior
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -17,7 +18,8 @@ public class GoogleAnalyticsBehavior extends AddJsResourceReferenceBehavior {
 	 * @param pageClass
 	 *            the page class
 	 */
-	public GoogleAnalyticsBehavior(final Class<? extends WebPage> pageClass) {
+	public GoogleAnalyticsBehavior(final Class<? extends WebPage> pageClass)
+	{
 		super(pageClass, "gaq.js", "gaq");
 	}
 

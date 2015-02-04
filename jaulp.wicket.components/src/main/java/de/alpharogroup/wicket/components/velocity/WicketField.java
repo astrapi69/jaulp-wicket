@@ -20,14 +20,15 @@ import net.sourceforge.jaulp.xml.tag.SimpleTag;
 import org.apache.wicket.Component;
 
 /**
- * The Class WicketField encapsulates a wicket component and can create its own
- * html tag for this component. It can be used with velocity to create dynamic
- * panel without create html templates for it.
+ * The Class WicketField encapsulates a wicket component and can create its own html tag for this
+ * component. It can be used with velocity to create dynamic panel without create html templates for
+ * it.
  * 
  * @param <C>
  *            the generic type for the Component
  */
-public class WicketField<C extends Component> extends SimpleTag {
+public class WicketField<C extends Component> extends SimpleTag
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -43,7 +44,8 @@ public class WicketField<C extends Component> extends SimpleTag {
 	 * 
 	 * @return the component
 	 */
-	public C getComponent() {
+	public C getComponent()
+	{
 		return component;
 	}
 
@@ -52,7 +54,8 @@ public class WicketField<C extends Component> extends SimpleTag {
 	 * 
 	 * @return the wicket id
 	 */
-	public String getWicketId() {
+	public String getWicketId()
+	{
 		return getAttributes().get(WICKET_ID);
 	}
 
@@ -62,7 +65,8 @@ public class WicketField<C extends Component> extends SimpleTag {
 	 * @param component
 	 *            the new component
 	 */
-	public void setComponent(C component) {
+	public void setComponent(C component)
+	{
 		this.component = component;
 	}
 

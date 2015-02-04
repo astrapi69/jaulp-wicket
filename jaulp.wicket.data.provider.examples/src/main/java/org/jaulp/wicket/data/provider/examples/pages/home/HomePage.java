@@ -27,68 +27,87 @@ import org.jaulp.wicket.data.provider.examples.pages.refreshingview.RefreshingVi
 /**
  * Homepage
  */
-public class HomePage extends WebPage {
+public class HomePage extends WebPage
+{
 
 	private static final long serialVersionUID = 1L;
 
 	// TODO Add any page properties or variables here
 
-	public HomePage(){
+	public HomePage()
+	{
 		super();
 
-        initLayout();
+		initLayout();
 	}
 
-    /**
+	/**
 	 * Constructor that is invoked when page is invoked without a session.
 	 *
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public HomePage(final PageParameters parameters) {
-    	super(parameters);
+	public HomePage(final PageParameters parameters)
+	{
+		super(parameters);
 
-        initLayout();
+		initLayout();
 
 
-    }
+	}
 
-	private void initLayout() {
-		
-		add(new Link<Void>("dataViewLink") {
+	private void initLayout()
+	{
+
+		add(new Link<Void>("dataViewLink")
+		{
 			private static final long serialVersionUID = 1L;
-			public void onClick() {
-				setResponsePage(DataViewPage.class);				
+
+			public void onClick()
+			{
+				setResponsePage(DataViewPage.class);
 			}
 		});
-		
-		add(new Link<Void>("listViewLink") {
+
+		add(new Link<Void>("listViewLink")
+		{
 			private static final long serialVersionUID = 1L;
-			public void onClick() {
-				setResponsePage(ListViewPage.class);				
+
+			public void onClick()
+			{
+				setResponsePage(ListViewPage.class);
 			}
 		});
-		
-		add(new Link<Void>("dataTableLink") {
+
+		add(new Link<Void>("dataTableLink")
+		{
 			private static final long serialVersionUID = 1L;
-			public void onClick() {
-				setResponsePage(DataTablePage.class);				
+
+			public void onClick()
+			{
+				setResponsePage(DataTablePage.class);
 			}
 		});
-		
-		add(new Link<Void>("defaultDataTableLink") {
+
+		add(new Link<Void>("defaultDataTableLink")
+		{
 			private static final long serialVersionUID = 1L;
-			public void onClick() {
-				setResponsePage(DefaultDataTablePage.class);				
+
+			public void onClick()
+			{
+				setResponsePage(DefaultDataTablePage.class);
 			}
 		});
-		
-		add(new Link<Void>("refreshingViewLink") {
+
+		add(new Link<Void>("refreshingViewLink")
+		{
 			private static final long serialVersionUID = 1L;
-			public void onClick() {
-				setResponsePage(RefreshingViewPage.class);				
+
+			public void onClick()
+			{
+				setResponsePage(RefreshingViewPage.class);
 			}
 		});
-		
+
 	}
 }

@@ -3,7 +3,6 @@ package de.alpharogroup.wicket.components.i18n.list;
 import java.io.Serializable;
 import java.util.List;
 
-
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -14,17 +13,18 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ContentListModel implements Serializable {
+public class ContentListModel implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
-	@NonNull 
+	@NonNull
 	private List<ResourceBundleKey> contentResourceKeys;
 
 }

@@ -26,24 +26,26 @@ import org.jaulp.wicket.annotated.header.contributors.examples.panels.home.HomeP
 /**
  * Homepage
  */
-@ImportResources( resources = {@ImportResource( resourceName = "HomePage.css", resourceType = "css", index = 0 )})
-public class HomePage extends BasePage {
+@ImportResources(resources = { @ImportResource(resourceName = "HomePage.css", resourceType = "css", index = 0) })
+public class HomePage extends BasePage
+{
 
 	private static final long serialVersionUID = 1L;
 
-    /**
+	/**
 	 * Constructor that is invoked when page is invoked without a session.
 	 *
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public HomePage(final PageParameters parameters) {
-    	super(parameters);
+	public HomePage(final PageParameters parameters)
+	{
+		super(parameters);
 
-    	add(new HomePanel("homePanel"));
+		add(new HomePanel("homePanel"));
 
-    	add(new FooterPanel("footerPanel"));
+		add(new FooterPanel("footerPanel"));
 
-    }
+	}
 
 }

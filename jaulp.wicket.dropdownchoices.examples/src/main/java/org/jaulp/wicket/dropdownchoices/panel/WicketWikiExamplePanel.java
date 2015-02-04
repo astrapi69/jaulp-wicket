@@ -24,17 +24,20 @@ import org.jaulp.wicket.model.dropdownchoices.SelectOptionModel;
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
 
-public class WicketWikiExamplePanel extends Panel {
+public class WicketWikiExamplePanel extends Panel
+{
 
 	private static final long serialVersionUID = 1L;
 
-	public WicketWikiExamplePanel( final String id ) {
-        super( id );
-        SelectOptionModel [] options = new SelectOptionModel [] {
-                new SelectOptionModel( "and", "AND" ), new SelectOptionModel( "|", "OR" ) };
-        ChoiceRenderer<SelectOptionModel> choiceRenderer = new ChoiceRenderer<SelectOptionModel>( "value", "key" );
-        add( new LocalisedDropDownChoice<SelectOptionModel>( "connective",
-                Arrays.asList( options ), choiceRenderer ) );
-    }
+	public WicketWikiExamplePanel(final String id)
+	{
+		super(id);
+		SelectOptionModel[] options = new SelectOptionModel[] {
+				new SelectOptionModel("and", "AND"), new SelectOptionModel("|", "OR") };
+		ChoiceRenderer<SelectOptionModel> choiceRenderer = new ChoiceRenderer<SelectOptionModel>(
+			"value", "key");
+		add(new LocalisedDropDownChoice<SelectOptionModel>("connective", Arrays.asList(options),
+			choiceRenderer));
+	}
 
 }

@@ -26,7 +26,8 @@ import org.jaulp.wicket.behaviors.models.MailtoModel;
  *            the generic type
  * @author Asterios Raptis
  */
-public class MailtoBehavior<T extends MailtoModel> extends Behavior {
+public class MailtoBehavior<T extends MailtoModel> extends Behavior
+{
 
 	/**
 	 * The serialVersionUID.
@@ -38,9 +39,11 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior {
 
 	/**
 	 * Instantiates a new mailto behavior.
-	 * @param mailtoModel 
+	 * 
+	 * @param mailtoModel
 	 */
-	public MailtoBehavior(T mailtoModel) {
+	public MailtoBehavior(T mailtoModel)
+	{
 		this.mailtoModel = mailtoModel;
 	}
 
@@ -51,11 +54,11 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior {
 	 *            the component
 	 */
 	@Override
-	public void beforeRender(final Component component) {
+	public void beforeRender(final Component component)
+	{
 		super.beforeRender(component);
 		component.getResponse().write(
-				"<a href=\"mailto:" + mailtoModel.getMailtoAddresModel().getObject()
-						+ "\">");
+			"<a href=\"mailto:" + mailtoModel.getMailtoAddresModel().getObject() + "\">");
 	}
 
 	/**
@@ -63,7 +66,8 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior {
 	 *
 	 * @return the mailto model
 	 */
-	public T getMailtoModel() {
+	public T getMailtoModel()
+	{
 		return mailtoModel;
 	}
 
@@ -74,7 +78,8 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior {
 	 *            the component
 	 */
 	@Override
-	public void afterRender(final Component component) {
+	public void afterRender(final Component component)
+	{
 		super.afterRender(component);
 		component.getResponse().write("</a>");
 	}

@@ -25,11 +25,12 @@ import org.apache.wicket.util.lang.Args;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
- * The Class LinkBehavior adds the ability to a component to act as a link, </br> i.e.
- * like a tablerow tag( &lt;tr&gt; ) or a list item (&lt;li&gt;) the ability to act as a link. </br>For instance
- * in repeaters like the DataView.
+ * The Class LinkBehavior adds the ability to a component to act as a link, </br> i.e. like a
+ * tablerow tag( &lt;tr&gt; ) or a list item (&lt;li&gt;) the ability to act as a link. </br>For
+ * instance in repeaters like the DataView.
  */
-public class LinkBehavior extends Behavior {
+public class LinkBehavior extends Behavior
+{
 
 	/**
 	 * The serialVersionUID.
@@ -55,8 +56,9 @@ public class LinkBehavior extends Behavior {
 	 * @param absolutePath
 	 *            the absolute path
 	 */
-	public LinkBehavior(final String onmouseoverColor,
-			final String onmouseoutColor, final String absolutePath) {
+	public LinkBehavior(final String onmouseoverColor, final String onmouseoutColor,
+		final String absolutePath)
+	{
 		super();
 		Args.notNull(onmouseoverColor, "onmouseoverColor");
 		Args.notNull(onmouseoutColor, "onmouseoutColor");
@@ -65,19 +67,22 @@ public class LinkBehavior extends Behavior {
 		this.onmouseoutColor = onmouseoutColor;
 		this.absolutePath = absolutePath;
 	}
-	
+
 	/**
 	 * Instantiates a new tablerow link behavior.
 	 *
-	 * @param onmouseoverColor the onmouseover color
-	 * @param onmouseoutColor the onmouseout color
-	 * @param targetPage the target page
-	 * @param pageParameters the page parameters
+	 * @param onmouseoverColor
+	 *            the onmouseover color
+	 * @param onmouseoutColor
+	 *            the onmouseout color
+	 * @param targetPage
+	 *            the target page
+	 * @param pageParameters
+	 *            the page parameters
 	 */
-	public LinkBehavior(final String onmouseoverColor,
-			final String onmouseoutColor, 
-			final Class<? extends WebPage> targetPage, 
-			final PageParameters pageParameters) {
+	public LinkBehavior(final String onmouseoverColor, final String onmouseoutColor,
+		final Class<? extends WebPage> targetPage, final PageParameters pageParameters)
+	{
 		super();
 		Args.notNull(onmouseoverColor, "onmouseoverColor");
 		Args.notNull(onmouseoutColor, "onmouseoutColor");
@@ -87,19 +92,22 @@ public class LinkBehavior extends Behavior {
 		String url = RequestCycle.get().urlFor(targetPage, pageParameters).toString();
 		this.absolutePath = WicketComponentUtils.toAbsolutePath(url);
 	}
-	
+
 	/**
 	 * Instantiates a new tablerow link behavior.
 	 *
-	 * @param onmouseoverColor the onmouseover color
-	 * @param onmouseoutColor the onmouseout color
-	 * @param targetPage the target page
-	 * @param pageParameters the page parameters
+	 * @param onmouseoverColor
+	 *            the onmouseover color
+	 * @param onmouseoutColor
+	 *            the onmouseout color
+	 * @param targetPage
+	 *            the target page
+	 * @param pageParameters
+	 *            the page parameters
 	 */
-	public LinkBehavior(final String onmouseoverColor,
-			final String onmouseoutColor, 
-			final WebPage targetPage, 
-			final PageParameters pageParameters) {
+	public LinkBehavior(final String onmouseoverColor, final String onmouseoutColor,
+		final WebPage targetPage, final PageParameters pageParameters)
+	{
 		super();
 		Args.notNull(onmouseoverColor, "onmouseoverColor");
 		Args.notNull(onmouseoutColor, "onmouseoutColor");
@@ -114,13 +122,14 @@ public class LinkBehavior extends Behavior {
 	 * (non-Javadoc)
 	 */
 	@Override
-	public void onComponentTag(final Component component, final ComponentTag tag) {
+	public void onComponentTag(final Component component, final ComponentTag tag)
+	{
 
-		tag.put("onmouseover", "this.style.backgroundColor = '"
-				+ onmouseoverColor + "';this.style.cursor = 'pointer';");
+		tag.put("onmouseover", "this.style.backgroundColor = '" + onmouseoverColor
+			+ "';this.style.cursor = 'pointer';");
 
-		tag.put("onmouseout", "this.style.backgroundColor = '"
-				+ onmouseoutColor + "';this.style.cursor ='default';");
+		tag.put("onmouseout", "this.style.backgroundColor = '" + onmouseoutColor
+			+ "';this.style.cursor ='default';");
 
 		tag.put("onclick", "document.location.href = '" + absolutePath + "';");
 

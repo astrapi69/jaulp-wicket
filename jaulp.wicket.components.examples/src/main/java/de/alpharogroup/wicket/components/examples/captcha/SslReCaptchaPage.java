@@ -9,16 +9,19 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
 
 @MountPath("public/sslrecaptcha")
 @RequireHttps
-public class SslReCaptchaPage extends PubliclyBasePage<Object> {
+public class SslReCaptchaPage extends PubliclyBasePage<Object>
+{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public Component getContainerPanel() {
+	public Component getContainerPanel()
+	{
 		return new ReCaptchaFormPanel(CONTAINER_PANEL_ID);
 	}
 
-	public SslReCaptchaPage(final PageParameters parameters) {
- 		super(parameters);		
+	public SslReCaptchaPage(final PageParameters parameters)
+	{
+		super(parameters);
 	}
- 
+
 }

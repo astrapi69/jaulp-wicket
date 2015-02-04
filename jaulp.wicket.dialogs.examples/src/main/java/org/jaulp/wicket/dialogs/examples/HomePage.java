@@ -36,7 +36,8 @@ import org.jaulp.wicket.dialogs.examples.panel.ModalDialogWithStylePanel;
 /**
  * Homepage.
  */
-public class HomePage extends WebPage {
+public class HomePage extends WebPage
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -47,7 +48,8 @@ public class HomePage extends WebPage {
 	 * @param parameters
 	 *            Page parameters
 	 */
-	public HomePage(final PageParameters parameters) {
+	public HomePage(final PageParameters parameters)
+	{
 
 		final WebMarkupContainer wmc = new WebMarkupContainer("comments");
 		wmc.setOutputMarkupId(true);
@@ -56,24 +58,26 @@ public class HomePage extends WebPage {
 		final List<MessageBean> noteList = new ArrayList<MessageBean>();
 		final MessageBean messageBean = new MessageBean();
 		messageBean.setMessageContent("hello");
-		final ModalWindow modalWindow = (ModalWindow) new BaseModalWindow<MessageBean>(
-				"baseModalWindow", "Title", 350, 160,
-				new CompoundPropertyModel<MessageBean>(messageBean)) {
+		final ModalWindow modalWindow = (ModalWindow)new BaseModalWindow<MessageBean>(
+			"baseModalWindow", "Title", 350, 160, new CompoundPropertyModel<MessageBean>(
+				messageBean))
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onCancel(final AjaxRequestTarget target) {
+			public void onCancel(final AjaxRequestTarget target)
+			{
 				target.add(wmc);
 				close(target);
 			}
 
 			@Override
-			public void onSelect(final AjaxRequestTarget target,
-					final MessageBean object) {
-				MessageBean clone = (MessageBean) WicketObjects.cloneObject(object);
+			public void onSelect(final AjaxRequestTarget target, final MessageBean object)
+			{
+				MessageBean clone = (MessageBean)WicketObjects.cloneObject(object);
 				noteList.add(clone);
 				// Clear the content from textarea in the dialog.
 				object.setMessageContent("");
@@ -86,47 +90,50 @@ public class HomePage extends WebPage {
 		modalWindow.setResizable(false);
 		add(modalWindow);
 
-		final AjaxLink<String> linkToModalWindow = new AjaxLink<String>(
-				"linkToModalWindow") {
+		final AjaxLink<String> linkToModalWindow = new AjaxLink<String>("linkToModalWindow")
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(final AjaxRequestTarget target) {
+			public void onClick(final AjaxRequestTarget target)
+			{
 				modalWindow.show(target);
 			}
 		};
 		// Add the WebMarkupContainer...
 		add(wmc);
 
-		final Label linkToModalWindowLabel = new Label(
-				"linkToModalWindowLabel", "show modal dialog");
+		final Label linkToModalWindowLabel = new Label("linkToModalWindowLabel",
+			"show modal dialog");
 		linkToModalWindow.add(linkToModalWindowLabel);
 		// The AjaxLink to open the modal window
 		add(linkToModalWindow);
 		// here we must set the message content from the bean in a repeater...
-        final ListView< MessageBean > repliesAndNotesListView = new ListView< MessageBean >(
-                "repliesAndNotesListView", noteList ) {
-            /**
-             * The serialVersionUID.
-             */
-            private static final long serialVersionUID = 1L;
+		final ListView<MessageBean> repliesAndNotesListView = new ListView<MessageBean>(
+			"repliesAndNotesListView", noteList)
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
 
-            @Override
-            protected void populateItem( final ListItem< MessageBean > item ) {
-                final MessageBean repliesandnotes = item.getModelObject();
-                item.add( new RepliesandnotesPanel( "repliesandnotesPanel",
-                        repliesandnotes ) );
+			@Override
+			protected void populateItem(final ListItem<MessageBean> item)
+			{
+				final MessageBean repliesandnotes = item.getModelObject();
+				item.add(new RepliesandnotesPanel("repliesandnotesPanel", repliesandnotes));
 
-            }
-        };
-        repliesAndNotesListView.setVisible( true );
-        wmc.add( repliesAndNotesListView );
+			}
+		};
+		repliesAndNotesListView.setVisible(true);
+		wmc.add(repliesAndNotesListView);
 
-        @SuppressWarnings("rawtypes")
-		Link showUploadPage = new Link("showUploadPage") {
+		@SuppressWarnings("rawtypes")
+		Link showUploadPage = new Link("showUploadPage")
+		{
 
 			/**
 			 *
@@ -134,14 +141,15 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick() {
+			public void onClick()
+			{
 				setResponsePage(new UploadPage(getPageParameters()));
 			}
 
-        };
-        add(showUploadPage);
-        
-        add(new ModalDialogWithStylePanel("modalDialogWithStylePanel"));
-   
+		};
+		add(showUploadPage);
+
+		add(new ModalDialogWithStylePanel("modalDialogWithStylePanel"));
+
 	}
 }

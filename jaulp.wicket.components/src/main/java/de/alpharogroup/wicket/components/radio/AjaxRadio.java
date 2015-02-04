@@ -25,94 +25,113 @@ import org.apache.wicket.model.IModel;
 /**
  * The Class AjaxRadio extends the Radio component and adds an onclick {@link AjaxEventBehavior}.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
-public abstract class AjaxRadio<T> extends Radio<T> {
+public abstract class AjaxRadio<T> extends Radio<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Instantiates a new ajax radio.
-	 *
-	 * @param id the id
-	 */
-	public AjaxRadio(final String id) {
-		super(id);
-		commonInit();
-	} 
-	
-    /**
-     * Instantiates a new ajax radio.
-     *
-     * @param id the id
-     * @param model the model
-     */
-    public AjaxRadio(final String id, final IModel<T> model) {
-        super(id, model);
-		commonInit();
-    }
 
 	/**
 	 * Instantiates a new ajax radio.
 	 *
-	 * @param id the id
-	 * @param group the group
+	 * @param id
+	 *            the id
 	 */
-	public AjaxRadio(final String id, final RadioGroup<T> group) {
-		super(id, group);
+	public AjaxRadio(final String id)
+	{
+		super(id);
 		commonInit();
 	}
-	
+
 	/**
 	 * Instantiates a new ajax radio.
 	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param group the group
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
-	public AjaxRadio(final String id, final IModel<T> model, final RadioGroup<T> group) {
+	public AjaxRadio(final String id, final IModel<T> model)
+	{
+		super(id, model);
+		commonInit();
+	}
+
+	/**
+	 * Instantiates a new ajax radio.
+	 *
+	 * @param id
+	 *            the id
+	 * @param group
+	 *            the group
+	 */
+	public AjaxRadio(final String id, final RadioGroup<T> group)
+	{
+		super(id, group);
+		commonInit();
+	}
+
+	/**
+	 * Instantiates a new ajax radio.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param group
+	 *            the group
+	 */
+	public AjaxRadio(final String id, final IModel<T> model, final RadioGroup<T> group)
+	{
 		super(id, model, group);
 		commonInit();
 	}
 
-    
+
 	/**
 	 * Common init.
 	 */
-	protected void commonInit() {
-        add(newAjaxEventBehavior("click"));
+	protected void commonInit()
+	{
+		add(newAjaxEventBehavior("click"));
 	}
-    
-    /**
-     * Listener method invoked on the ajax request generated when the user clicks the radio.
-     *
-     * @param target the target
-     */
-	public abstract void onClick(final AjaxRequestTarget target);    
+
+	/**
+	 * Listener method invoked on the ajax request generated when the user clicks the radio.
+	 *
+	 * @param target
+	 *            the target
+	 */
+	public abstract void onClick(final AjaxRequestTarget target);
 
 
 	/**
 	 * New ajax event behavior.
 	 *
-	 * @param event            the name of the default event on which this link will listen
-	 *            to
-	 * @return the ajax behavior which will be executed when the user clicks the
-	 *         link
+	 * @param event
+	 *            the name of the default event on which this link will listen to
+	 * @return the ajax behavior which will be executed when the user clicks the link
 	 */
-	protected AjaxEventBehavior newAjaxEventBehavior(String event) {
-		return new AjaxEventBehavior(event) {
+	protected AjaxEventBehavior newAjaxEventBehavior(String event)
+	{
+		return new AjaxEventBehavior(event)
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onEvent(AjaxRequestTarget target) {
-                RadioGroup<T> radioGroup = getGroup();
-                radioGroup.processInput();
+			protected void onEvent(AjaxRequestTarget target)
+			{
+				RadioGroup<T> radioGroup = getGroup();
+				radioGroup.processInput();
 				onClick(target);
 			}
 
 			@Override
-			protected void updateAjaxAttributes(AjaxRequestAttributes attributes) {
+			protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
+			{
 				super.updateAjaxAttributes(attributes);
 				AjaxRadio.this.updateAjaxAttributes(attributes);
 			}
@@ -122,7 +141,8 @@ public abstract class AjaxRadio<T> extends Radio<T> {
 	/**
 	 * Update ajax attributes.
 	 *
-	 * @param attributes the attributes
+	 * @param attributes
+	 *            the attributes
 	 */
 	protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
 	{

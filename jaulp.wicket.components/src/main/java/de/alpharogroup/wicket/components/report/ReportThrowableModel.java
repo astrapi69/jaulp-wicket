@@ -11,9 +11,9 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +22,8 @@ import lombok.experimental.Builder;
  * Instantiates a new report throwable model that is used to report an exception
  * or error an a description from the affected user.
  */
-public class ReportThrowableModel implements Serializable {
+public class ReportThrowableModel implements Serializable
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;

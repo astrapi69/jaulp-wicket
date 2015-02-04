@@ -21,103 +21,130 @@ import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>> {
+public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * the form.
 	 */
 	@Getter
-	private Form<?> form;	
+	private Form<?> form;
 
 	@Getter
-	private CheckGroup<T> checkGroup;	
+	private CheckGroup<T> checkGroup;
 
 	@Getter
 	private CheckGroupSelector checkGroupSelector;
 
 	@Getter
 	private Label checkGroupSelectorLabel;
-	
+
 	@Getter
 	private ListView<T> choices;
 
-	public CheckGroupSelectorPanel(String id, IModel<CheckboxModel<T>> model) {
+	public CheckGroupSelectorPanel(String id, IModel<CheckboxModel<T>> model)
+	{
 		super(id, model);
-		
+
 		add(form = newForm("form"));
-		
-		form.add(checkGroup = newCheckGroup("checkGroup", new PropertyModel<List<T>>(model.getObject(), "selectedItems")));
-		
-		checkGroup.add(checkGroupSelector = newCheckGroupSelector("checkGroupSelector", checkGroup));
-		
-		checkGroup.add(checkGroupSelectorLabel = newCheckGroupSelectorLabel("checkGroupSelectorLabel", checkGroupSelector.getMarkupId(), Model.of("check/uncheck all")));
-		
-        checkGroup.add(choices = newChoices("choices", model));
+
+		form.add(checkGroup = newCheckGroup("checkGroup",
+			new PropertyModel<List<T>>(model.getObject(), "selectedItems")));
+
+		checkGroup
+			.add(checkGroupSelector = newCheckGroupSelector("checkGroupSelector", checkGroup));
+
+		checkGroup.add(checkGroupSelectorLabel = newCheckGroupSelectorLabel(
+			"checkGroupSelectorLabel", checkGroupSelector.getMarkupId(),
+			Model.of("check/uncheck all")));
+
+		checkGroup.add(choices = newChoices("choices", model));
 	}
-	
-	protected ListView<T> newChoices(final String id, final IModel<CheckboxModel<T>> model) {
-		ListView<T> choices = new ListView<T>("choices", model.getObject().getChoices()) {	   
+
+	protected ListView<T> newChoices(final String id, final IModel<CheckboxModel<T>> model)
+	{
+		ListView<T> choices = new ListView<T>("choices", model.getObject().getChoices())
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
+
 			@Override
-			protected void populateItem(ListItem<T> item) {
-                item.add(new Check<T>("checkbox", item.getModel()));
-                item.add(new Label("label", new PropertyModel<String>(item.getDefaultModel(),  model.getObject().getLabelPropertyExpression())));
+			protected void populateItem(ListItem<T> item)
+			{
+				item.add(new Check<T>("checkbox", item.getModel()));
+				item.add(new Label("label", new PropertyModel<String>(item.getDefaultModel(), model
+					.getObject().getLabelPropertyExpression())));
 			}
-        };
-        choices.setReuseItems(true);
-        return choices;
+		};
+		choices.setReuseItems(true);
+		return choices;
 	}
-	
-	protected Label newCheckGroupSelectorLabel(final String id, final String forId, final IModel<String> model) {
+
+	protected Label newCheckGroupSelectorLabel(final String id, final String forId,
+		final IModel<String> model)
+	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}
-	
+
 	/**
 	 * Factory method for create a new {@link CheckGroupSelector}.
 	 *
-	 * @param id the id
-	 * @param group the {@link CheckGroup}
+	 * @param id
+	 *            the id
+	 * @param group
+	 *            the {@link CheckGroup}
 	 * @return the new {@link CheckGroupSelector}
 	 */
-	protected CheckGroupSelector newCheckGroupSelector(final String id, final CheckGroup<T> group) {
+	protected CheckGroupSelector newCheckGroupSelector(final String id, final CheckGroup<T> group)
+	{
 		return ComponentFactory.newCheckGroupSelector(id, group);
 	}
-	
+
 	/**
 	 * New form.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 * @return the form
 	 */
-	protected Form<?> newForm(final String id) {
+	protected Form<?> newForm(final String id)
+	{
 		return ComponentFactory.newForm(id);
 	}
-	
+
 	/**
 	 * New check group.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the radio group
 	 */
-	protected CheckGroup<T> newCheckGroup(final String id, final IModel<? extends Collection<T>> model) {
+	protected CheckGroup<T> newCheckGroup(final String id,
+		final IModel<? extends Collection<T>> model)
+	{
 		CheckGroup<T> checkGroup = ComponentFactory.newCheckGroup(id, model);
-		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior() {
+		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()
+		{
 			private static final long serialVersionUID = 1L;
-			protected void onUpdate(AjaxRequestTarget target) {
+
+			protected void onUpdate(AjaxRequestTarget target)
+			{
 				CheckGroupSelectorPanel.this.onUpdate(target);
 			}
 		});
 		return checkGroup;
 	}
-	
-	protected void onUpdate(AjaxRequestTarget target){}
+
+	protected void onUpdate(AjaxRequestTarget target)
+	{
+	}
 }

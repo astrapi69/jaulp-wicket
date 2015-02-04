@@ -9,15 +9,18 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
 
 
 @MountPath("public/swap")
-public class AddressPage extends PubliclyBasePage<Object> {
+public class AddressPage extends PubliclyBasePage<Object>
+{
 	private static final long serialVersionUID = 1L;
 
-	public AddressPage(final PageParameters parameters) {
+	public AddressPage(final PageParameters parameters)
+	{
 		super(parameters);
 	}
 
 	@Override
-	public Component getContainerPanel() {
+	public Component getContainerPanel()
+	{
 		return new AddressPanel(CONTAINER_PANEL_ID, Model.of(new HomeAddress()));
 	}
 }

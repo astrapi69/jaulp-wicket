@@ -30,18 +30,20 @@ import org.jaulp.wicket.dialogs.panels.DialogPanel;
 /**
  * The Class YesNoPanel.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
-public abstract class YesNoPanel<T> extends DialogPanel<T> {
+public abstract class YesNoPanel<T> extends DialogPanel<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The Label component. */
 	private final Label label;
-	
+
 	/** The no button. */
-	private final AjaxButton noButton;	
+	private final AjaxButton noButton;
 
 	/** The yes button. */
 	private final AjaxButton yesButton;
@@ -49,65 +51,71 @@ public abstract class YesNoPanel<T> extends DialogPanel<T> {
 	/**
 	 * Instantiates a new yes no panel.
 	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param labelModel the label model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
 	 */
-	public YesNoPanel(String id, final IModel<T> model,final IModel<String> labelModel) {
+	public YesNoPanel(String id, final IModel<T> model, final IModel<String> labelModel)
+	{
 		super(id, model, labelModel);
 		add(label = newLabel(labelModel));
 
-		yesButton = new AjaxButton("yesButton") {
+		yesButton = new AjaxButton("yesButton")
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form) {
+			protected void onError(AjaxRequestTarget target, Form<?> form)
+			{
 			}
 
 			@Override
-			protected void onSubmit(final AjaxRequestTarget target,
-					final Form<?> form) {
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
 				final T object = model.getObject();
 				onYes(target, object);
 			}
 
 			@SuppressWarnings("unused")
-			public <E extends EventObject> void send(IEventSink sink,
-					Broadcast broadcast, E payload) {
+			public <E extends EventObject> void send(IEventSink sink, Broadcast broadcast, E payload)
+			{
 			}
 		};
-		IModel<String> yesLabelModel = new StringResourceModel(
-				"global.yes.label", this, null);
+		IModel<String> yesLabelModel = new StringResourceModel("global.yes.label", this, null);
 		yesButton.add(new Label("yesLabel", yesLabelModel));
 		add(yesButton);
-		
-		noButton = new AjaxButton("noButton") {
+
+		noButton = new AjaxButton("noButton")
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form) {
+			protected void onError(AjaxRequestTarget target, Form<?> form)
+			{
 			}
 
 			@Override
-			protected void onSubmit(final AjaxRequestTarget target,
-					final Form<?> form) {
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
 				final T object = model.getObject();
 				onNo(target, object);
 			}
 
 			@SuppressWarnings("unused")
-			public <E extends EventObject> void send(IEventSink sink,
-					Broadcast broadcast, E payload) {
+			public <E extends EventObject> void send(IEventSink sink, Broadcast broadcast, E payload)
+			{
 			}
 		};
-		IModel<String> noLabelModel = new StringResourceModel(
-				"global.no.label", this, null);
+		IModel<String> noLabelModel = new StringResourceModel("global.no.label", this, null);
 		noButton.add(new Label("noLabel", noLabelModel));
 		add(noButton);
 	}
@@ -117,7 +125,8 @@ public abstract class YesNoPanel<T> extends DialogPanel<T> {
 	 *
 	 * @return the label
 	 */
-	public Label getLabel() {
+	public Label getLabel()
+	{
 		return label;
 	}
 
@@ -126,7 +135,8 @@ public abstract class YesNoPanel<T> extends DialogPanel<T> {
 	 *
 	 * @return the no button
 	 */
-	public AjaxButton getNoButton() {
+	public AjaxButton getNoButton()
+	{
 		return noButton;
 	}
 
@@ -135,35 +145,41 @@ public abstract class YesNoPanel<T> extends DialogPanel<T> {
 	 *
 	 * @return the yes button
 	 */
-	public AjaxButton getYesButton() {
+	public AjaxButton getYesButton()
+	{
 		return yesButton;
 	}
-	
+
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
 	 *
-	 * @param model the model
+	 * @param model
+	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(IModel<String> model) {
+	protected Label newLabel(IModel<String> model)
+	{
 		return super.newLabel("message", model);
 	}
-	
+
 	/**
 	 * On no.
 	 *
-	 * @param target the target
-	 * @param object the object
+	 * @param target
+	 *            the target
+	 * @param object
+	 *            the object
 	 */
 	public abstract void onNo(final AjaxRequestTarget target, final T object);
 
 	/**
 	 * On yes.
 	 *
-	 * @param target the target
-	 * @param object the object
+	 * @param target
+	 *            the target
+	 * @param object
+	 *            the object
 	 */
 	public abstract void onYes(final AjaxRequestTarget target, final T object);
 

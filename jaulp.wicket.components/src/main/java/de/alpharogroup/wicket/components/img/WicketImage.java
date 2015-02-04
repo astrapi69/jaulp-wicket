@@ -26,7 +26,8 @@ import org.jaulp.wicket.base.util.ApplicationUtils;
  * 
  * @author Asterios Raptis
  */
-public class WicketImage extends WebComponent {
+public class WicketImage extends WebComponent
+{
 
 	/**
 	 * The serialVersionUID.
@@ -39,7 +40,8 @@ public class WicketImage extends WebComponent {
 	 * @param id
 	 *            the id
 	 */
-	public WicketImage(final String id) {
+	public WicketImage(final String id)
+	{
 		super(id);
 	}
 
@@ -51,7 +53,8 @@ public class WicketImage extends WebComponent {
 	 * @param model
 	 *            the model
 	 */
-	public WicketImage(final String id, final IModel<?> model) {
+	public WicketImage(final String id, final IModel<?> model)
+	{
 		super(id, model);
 	}
 
@@ -59,11 +62,13 @@ public class WicketImage extends WebComponent {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onComponentTag(final ComponentTag tag) {
+	protected void onComponentTag(final ComponentTag tag)
+	{
 		checkComponentTag(tag, "img");
 		super.onComponentTag(tag);
 		final String modelObjectAsString = getDefaultModelObjectAsString();
-		final String contextPath = ApplicationUtils.getContextPath(((WebApplication) getApplication()));
+		final String contextPath = ApplicationUtils
+			.getContextPath(((WebApplication)getApplication()));
 		final String imagePath = contextPath + modelObjectAsString;
 		tag.put("src", imagePath);
 	}

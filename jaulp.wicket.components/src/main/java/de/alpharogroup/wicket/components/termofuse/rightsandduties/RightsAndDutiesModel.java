@@ -12,21 +12,22 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RightsAndDutiesModel implements Serializable {
+public class RightsAndDutiesModel implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
 
 	HeaderContentListModel introductionModel;
-	
+
 	ContentListModel listModel;
-	
+
 	ContentListModel summaryModel;
 
 }

@@ -30,118 +30,133 @@ import org.apache.wicket.model.CompoundPropertyModel;
 /**
  * The Class BaseModalPanel.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
-public abstract class BaseModalPanel< T > extends Panel {
-    /**
-     * The serialVersionUID.
-     */
-    private static final long serialVersionUID = 1L;
+public abstract class BaseModalPanel<T> extends Panel
+{
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * Instantiates a new base modal panel.
-     *
-     * @param id the id
-     * @param model the model
-     */
-    public BaseModalPanel( final String id,
-            final CompoundPropertyModel< T > model ) {
-        super( id );
+	/**
+	 * Instantiates a new base modal panel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public BaseModalPanel(final String id, final CompoundPropertyModel<T> model)
+	{
+		super(id);
 
-        final Form< T > form = new Form< T >( "form", model );
-        form.setOutputMarkupId( true );
-        form.clearInput();
-        add( form );
+		final Form<T> form = new Form<T>("form", model);
+		form.setOutputMarkupId(true);
+		form.clearInput();
+		add(form);
 
-        final TextArea< String > note = new TextArea< String >(
-                "messageContent" );
+		final TextArea<String> note = new TextArea<String>("messageContent");
 
-        note.clearInput();
-        // IT IS VERY IMPORTANT TO SET THE OUTPUTMARKUPID TO TRUE...
-        note.setOutputMarkupId( true );
-        note.add( new OnChangeAjaxBehavior() {
-            /**
-             * The serialVersionUID.
-             */
-            private static final long serialVersionUID = 1L;
+		note.clearInput();
+		// IT IS VERY IMPORTANT TO SET THE OUTPUTMARKUPID TO TRUE...
+		note.setOutputMarkupId(true);
+		note.add(new OnChangeAjaxBehavior()
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
 
-            @Override
-            public void onUpdate( final AjaxRequestTarget target ) {
-                // Do nothing...
-            }
-        } );
-        form.add( note );
+			@Override
+			public void onUpdate(final AjaxRequestTarget target)
+			{
+				// Do nothing...
+			}
+		});
+		form.add(note);
 
-        final AjaxButton close = new AjaxButton( "cancelButton" ) {
-            /**
-             * The serialVersionUID.
-             */
-            private static final long serialVersionUID = 1L;
+		final AjaxButton close = new AjaxButton("cancelButton")
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
 
-            @Override
-            public void onSubmit( final AjaxRequestTarget target,
-                    final Form< ? > form ) {
-                target.add( note );
-                onCancel( target );
+			@Override
+			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
+				target.add(note);
+				onCancel(target);
 
-            }
+			}
 
 			@SuppressWarnings("unused")
-			public <E extends EventObject>void send(final IEventSink sink, final Broadcast broadcast, final E payload) {
+			public <E extends EventObject> void send(final IEventSink sink,
+				final Broadcast broadcast, final E payload)
+			{
 				// TODO Auto-generated method stub
 
 			}
 
 			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form) {
+			protected void onError(AjaxRequestTarget target, Form<?> form)
+			{
 				// TODO Auto-generated method stub
 
 			}
-        };
-        form.add( close );
+		};
+		form.add(close);
 
-        final AjaxButton selectionButton = new AjaxButton( "okButton" ) {
-            /**
-             * The serialVersionUID.
-             */
-            private static final long serialVersionUID = 1L;
+		final AjaxButton selectionButton = new AjaxButton("okButton")
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
 
-            @Override
-            protected void onSubmit( final AjaxRequestTarget target,
-                    final Form< ? > form ) {
-                final T obj = model.getObject();
-                onSelect( target, obj );
-            }
+			@Override
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
+				final T obj = model.getObject();
+				onSelect(target, obj);
+			}
 
 			@SuppressWarnings("unused")
-			public <E extends EventObject> void send(IEventSink sink, Broadcast broadcast, E payload) {
+			public <E extends EventObject> void send(IEventSink sink, Broadcast broadcast, E payload)
+			{
 				// TODO Auto-generated method stub
 
 			}
 
 			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form) {
+			protected void onError(AjaxRequestTarget target, Form<?> form)
+			{
 				// TODO Auto-generated method stub
 
 			}
-        };
-        form.add( selectionButton );
+		};
+		form.add(selectionButton);
 
-    }
+	}
 
-    /**
-     * On cancel.
-     *
-     * @param target the target
-     */
-    abstract void onCancel( AjaxRequestTarget target );
+	/**
+	 * On cancel.
+	 *
+	 * @param target
+	 *            the target
+	 */
+	abstract void onCancel(AjaxRequestTarget target);
 
-    /**
-     * On select.
-     *
-     * @param target the target
-     * @param object the object
-     */
-    abstract void onSelect( AjaxRequestTarget target, T object );
+	/**
+	 * On select.
+	 *
+	 * @param target
+	 *            the target
+	 * @param object
+	 *            the object
+	 */
+	abstract void onSelect(AjaxRequestTarget target, T object);
 
 }

@@ -5,14 +5,15 @@ import lombok.Getter;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
-public abstract class CloseableTab implements ICloseableTab {
+public abstract class CloseableTab implements ICloseableTab
+{
 	private static final long serialVersionUID = 1L;
 
 
 	/** The title of the tab. */
 	@Getter
 	IModel<String> title;
-	
+
 	/** The close title. */
 	@Getter
 	IModel<String> closeTitle;
@@ -22,7 +23,8 @@ public abstract class CloseableTab implements ICloseableTab {
 	 * 
 	 * @param title
 	 *            IModel used to represent the title of the tab. Must contain a string
-	 * @param closeTitle title of close
+	 * @param closeTitle
+	 *            title of close
 	 */
 	public CloseableTab(final IModel<String> title, final IModel<String> closeTitle)
 	{

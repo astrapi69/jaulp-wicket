@@ -16,24 +16,28 @@ import org.apache.wicket.model.IModel;
  * The Class AddressPanel. Inspired from this blog:
  * http://pawelzubkiewicz.blogspot.de/2009/06/wicket-swapping-replacing-fragments.html
  */
-public class AddressPanel extends Panel {
-	
+public class AddressPanel extends Panel
+{
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The current fragment. */
 	private Fragment currentFragment;
-	
+
 	/** The alternate fragment. */
 	private Fragment alternateFragment;
 
 	/**
 	 * Instantiates a new address panel.
 	 *
-	 * @param id the id
-	 * @param address the address
+	 * @param id
+	 *            the id
+	 * @param address
+	 *            the address
 	 */
-	public AddressPanel(String id, IModel<HomeAddress> address) {
+	public AddressPanel(String id, IModel<HomeAddress> address)
+	{
 		super(id, address);
 		setDefaultModel(new CompoundPropertyModel<HomeAddress>(address));
 		setOutputMarkupPlaceholderTag(true);
@@ -48,21 +52,26 @@ public class AddressPanel extends Panel {
 	/**
 	 * Adds the current fragment.
 	 */
-	private void addCurrentFragment() {
+	private void addCurrentFragment()
+	{
 		add(currentFragment);
 	}
 
 	/**
 	 * Adds the edit link.
 	 */
-	private void addEditLink() {
-		add(new AjaxFallbackLink<Object>("addressEditLink") {
+	private void addEditLink()
+	{
+		add(new AjaxFallbackLink<Object>("addressEditLink")
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target) {
+			public void onClick(AjaxRequestTarget target)
+			{
 				swapFragments();
-				if (target != null) {
+				if (target != null)
+				{
 					target.add(currentFragment);
 				}
 			}
@@ -72,7 +81,8 @@ public class AddressPanel extends Panel {
 	/**
 	 * Swap fragments.
 	 */
-	protected void swapFragments() {
+	protected void swapFragments()
+	{
 		Fragment temp = currentFragment;
 		currentFragment.replaceWith(alternateFragment);
 		currentFragment = alternateFragment;
@@ -84,9 +94,9 @@ public class AddressPanel extends Panel {
 	 *
 	 * @return the fragment
 	 */
-	private Fragment createFragmentViewAddress() {
-		Fragment viewAddress = new Fragment("group", "view", this,
-				getDefaultModel());
+	private Fragment createFragmentViewAddress()
+	{
+		Fragment viewAddress = new Fragment("group", "view", this, getDefaultModel());
 		viewAddress.add(new Label("street"));
 		viewAddress.add(new Label("localNumber"));
 		viewAddress.add(new Label("city"));
@@ -100,9 +110,9 @@ public class AddressPanel extends Panel {
 	 *
 	 * @return the fragment
 	 */
-	private Fragment createFragmentEditAddress() {
-		Fragment editAddress = new Fragment("group", "edit", this,
-				getDefaultModel());
+	private Fragment createFragmentEditAddress()
+	{
+		Fragment editAddress = new Fragment("group", "edit", this, getDefaultModel());
 
 		editAddress.setOutputMarkupPlaceholderTag(true);
 		editAddress.add(createAddressForm());
@@ -114,16 +124,20 @@ public class AddressPanel extends Panel {
 	 *
 	 * @return the component
 	 */
-	private Component createAddressForm() {
+	private Component createAddressForm()
+	{
 		Form<HomeAddress> form = new Form<HomeAddress>("editAddressForm");
 		form.add(new TextField<>("street"));
 		form.add(new TextField<>("localNumber"));
 		form.add(new TextField<>("city"));
 		form.add(new TextField<>("code"));
-		form.add(new Button("save") {
+		form.add(new Button("save")
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				swapFragments();
 			}
 		});

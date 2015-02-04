@@ -15,49 +15,66 @@ import de.alpharogroup.wicket.components.i18n.list.UnorderedListPanel;
 import de.alpharogroup.wicket.components.i18n.list.ResourceBundleKeysPanel;
 
 
-public class RightsAndDutiesPanel extends Panel {
+public class RightsAndDutiesPanel extends Panel
+{
 
-	private static final long serialVersionUID = 1L;	
+	private static final long serialVersionUID = 1L;
 
-	public RightsAndDutiesPanel(String id) {
+	public RightsAndDutiesPanel(String id)
+	{
 		this(id, null);
 	}
 
-	public RightsAndDutiesPanel(String id, IModel<RightsAndDutiesModel> model) {
+	public RightsAndDutiesPanel(String id, IModel<RightsAndDutiesModel> model)
+	{
 		super(id, model);
-		
-		add(new HeaderContentListPanel("introduction", Model.of(model.getObject().getIntroductionModel())) {
+
+		add(new HeaderContentListPanel("introduction", Model.of(model.getObject()
+			.getIntroductionModel()))
+		{
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item) {
-				return new Label(id, newContentResourceModel(item.getModel())).add(new AddJsQueryBehavior("wrap", "<p></p>"));
+			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+			{
+				return new Label(id, newContentResourceModel(item.getModel()))
+					.add(new AddJsQueryBehavior("wrap", "<p></p>"));
 			}
 
 			@Override
-			protected Component newHeaderLabel(String id, IModel<String> model) {
-				return super.newHeaderLabel(id, model).add(new AddJsQueryBehavior("wrap", "<h2></h2>"));
-			}
-		});
-		
-		add(new UnorderedListPanel("list", model.getObject().getListModel().getContentResourceKeys()) {
-			
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item) {
-				return new Label(id, ResourceModelFactory.newResourceModel(item.getModel().getObject(), this));
+			protected Component newHeaderLabel(String id, IModel<String> model)
+			{
+				return super.newHeaderLabel(id, model).add(
+					new AddJsQueryBehavior("wrap", "<h2></h2>"));
 			}
 		});
-		
-		add(new ResourceBundleKeysPanel("summary", model.getObject().getSummaryModel().getContentResourceKeys()) {
-			
+
+		add(new UnorderedListPanel("list", model.getObject().getListModel()
+			.getContentResourceKeys())
+		{
+
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item) {
-				return new Label(id, ResourceModelFactory.newResourceModel(item.getModel().getObject(), this)).add(new AddJsQueryBehavior("wrap", "<p></p>"));
+			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+			{
+				return new Label(id, ResourceModelFactory.newResourceModel(item.getModel()
+					.getObject(), this));
+			}
+		});
+
+		add(new ResourceBundleKeysPanel("summary", model.getObject().getSummaryModel()
+			.getContentResourceKeys())
+		{
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+			{
+				return new Label(id, ResourceModelFactory.newResourceModel(item.getModel()
+					.getObject(), this)).add(new AddJsQueryBehavior("wrap", "<p></p>"));
 			}
 		});
 

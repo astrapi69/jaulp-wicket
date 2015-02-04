@@ -22,15 +22,17 @@ import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("/another")
-public class AnotherPage extends WebPage {
+public class AnotherPage extends WebPage
+{
 	private static final long serialVersionUID = 1L;
 
-    public AnotherPage(final PageParameters parameters) {
-	super(parameters);
-	
-	add(new MenubarPanel("menubarPanel"));
-	
-	add(new Label("text", Model.of("This is another page.")));
+	public AnotherPage(final PageParameters parameters)
+	{
+		super(parameters);
 
-    }
+		add(new MenubarPanel("menubarPanel"));
+
+		add(new Label("text", Model.of("This is another page.")));
+
+	}
 }

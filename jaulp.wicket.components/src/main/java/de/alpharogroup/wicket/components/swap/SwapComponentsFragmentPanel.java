@@ -20,15 +20,14 @@ import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.IModel;
 
 /**
- * The abstract class SwapComponentsFragmentPanel provides the feature to swap
- * components. The components can be created with the abstract factory methods
- * that have to be implemented.
+ * The abstract class SwapComponentsFragmentPanel provides the feature to swap components. The
+ * components can be created with the abstract factory methods that have to be implemented.
  *
  * @param <T>
  *            the generic type of the model object.
  */
-public abstract class SwapComponentsFragmentPanel<T> extends
-		SwapFragmentPanel<T> {
+public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -41,7 +40,8 @@ public abstract class SwapComponentsFragmentPanel<T> extends
 	 * @param model
 	 *            the model
 	 */
-	public SwapComponentsFragmentPanel(String id, IModel<T> model) {
+	public SwapComponentsFragmentPanel(String id, IModel<T> model)
+	{
 		super(id, model);
 	}
 
@@ -52,7 +52,8 @@ public abstract class SwapComponentsFragmentPanel<T> extends
 	 *            the id
 	 * @return the fragment
 	 */
-	protected Fragment newViewFragment(final String id) {
+	protected Fragment newViewFragment(final String id)
+	{
 		Fragment viewFragment = new Fragment(id, "view", this, getModel());
 		viewFragment.setOutputMarkupPlaceholderTag(true);
 		viewFragment.add(newViewComponent("viewComponent", getModel()));
@@ -77,9 +78,9 @@ public abstract class SwapComponentsFragmentPanel<T> extends
 	 *            the id
 	 * @return the fragment
 	 */
-	protected Fragment newEditFragment(final String id) {
-		Fragment editFragment = new Fragment(id, "edit", this,
-				getDefaultModel());
+	protected Fragment newEditFragment(final String id)
+	{
+		Fragment editFragment = new Fragment(id, "edit", this, getDefaultModel());
 		editFragment.setOutputMarkupPlaceholderTag(true);
 		editFragment.add(newEditComponent("editComponent", getModel()));
 		return editFragment;

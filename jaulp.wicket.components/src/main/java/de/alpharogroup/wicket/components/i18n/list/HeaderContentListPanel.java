@@ -11,10 +11,11 @@ import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * The Class HeaderContentListPanel takes a header resource key and a list of
- * content resource keys that should be in a resource bundle for i18n.
+ * The Class HeaderContentListPanel takes a header resource key and a list of content resource keys
+ * that should be in a resource bundle for i18n.
  */
-public abstract class HeaderContentListPanel extends Panel {
+public abstract class HeaderContentListPanel extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -31,7 +32,8 @@ public abstract class HeaderContentListPanel extends Panel {
 	 * @param id
 	 *            the id
 	 */
-	public HeaderContentListPanel(String id) {
+	public HeaderContentListPanel(String id)
+	{
 		this(id, null);
 	}
 
@@ -43,25 +45,27 @@ public abstract class HeaderContentListPanel extends Panel {
 	 * @param model
 	 *            the model
 	 */
-	public HeaderContentListPanel(String id,
-			IModel<HeaderContentListModel> model) {
+	public HeaderContentListPanel(String id, IModel<HeaderContentListModel> model)
+	{
 		super(id, model);
 		add(header = newHeaderLabel("header", newHeaderModel(model.getObject()
-				.getHeaderResourceKey()
-				)));
-		add(listPanel = newListPanel("listPanel",
-				Model.of(ContentListModel.builder().contentResourceKeys(model.getObject().getContentResourceKeys()).build())
-				));
+			.getHeaderResourceKey())));
+		add(listPanel = newListPanel(
+			"listPanel",
+			Model.of(ContentListModel.builder()
+				.contentResourceKeys(model.getObject().getContentResourceKeys()).build())));
 	}
 
-	protected Component newListPanel(String id,
-			IModel<ContentListModel> model) {
-		return new ResourceBundleKeysPanel(id, model.getObject().getContentResourceKeys()) {
-			
+	protected Component newListPanel(String id, IModel<ContentListModel> model)
+	{
+		return new ResourceBundleKeysPanel(id, model.getObject().getContentResourceKeys())
+		{
+
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item) {
+			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+			{
 				return HeaderContentListPanel.this.newListComponent(id, item);
 			}
 		};
@@ -72,11 +76,13 @@ public abstract class HeaderContentListPanel extends Panel {
 	 *
 	 * @return the header
 	 */
-	public Component getHeader() {
+	public Component getHeader()
+	{
 		return header;
 	}
 
-	public Component getListPanel() {
+	public Component getListPanel()
+	{
 		return listPanel;
 	}
 
@@ -87,7 +93,8 @@ public abstract class HeaderContentListPanel extends Panel {
 	 *            the resource key
 	 * @return the i model
 	 */
-	protected IModel<String> newHeaderModel(final ResourceBundleKey resourceKey) {
+	protected IModel<String> newHeaderModel(final ResourceBundleKey resourceKey)
+	{
 		return ResourceModelFactory.newResourceModel(resourceKey, this);
 	}
 
@@ -98,9 +105,10 @@ public abstract class HeaderContentListPanel extends Panel {
 	 *            the resource key
 	 * @return the i model
 	 */
-	protected IModel<String> newContentResourceModel(IModel<ResourceBundleKey> resourceKey) {
+	protected IModel<String> newContentResourceModel(IModel<ResourceBundleKey> resourceKey)
+	{
 		return ResourceModelFactory.newResourceModel(resourceKey.getObject(), this);
-				
+
 	}
 
 	/**
@@ -112,7 +120,8 @@ public abstract class HeaderContentListPanel extends Panel {
 	 *            the model
 	 * @return the component
 	 */
-	protected Component newHeaderLabel(String id, IModel<String> model) {
+	protected Component newHeaderLabel(String id, IModel<String> model)
+	{
 		Label label = new Label(id, model);
 		return label;
 	}
@@ -126,7 +135,6 @@ public abstract class HeaderContentListPanel extends Panel {
 	 *            the item
 	 * @return the component
 	 */
-	protected abstract Component newListComponent(String id,
-			ListItem<ResourceBundleKey> item);
+	protected abstract Component newListComponent(String id, ListItem<ResourceBundleKey> item);
 
 }

@@ -12,14 +12,15 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ImageChoicesModel implements Serializable {
+public class ImageChoicesModel implements Serializable
+{
 	/**
 	 * The serialVersionUID
 	 */

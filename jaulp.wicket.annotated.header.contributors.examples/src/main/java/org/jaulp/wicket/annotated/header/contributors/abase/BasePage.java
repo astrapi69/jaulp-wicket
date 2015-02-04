@@ -31,10 +31,10 @@ import org.jaulp.wicket.base.util.WicketComponentUtils;
  * 
  * @author Asterios Raptis
  */
-@ImportResources(resources = {
-		@ImportResource(resourceName = "BasePage.js", resourceType = "js"),
+@ImportResources(resources = { @ImportResource(resourceName = "BasePage.js", resourceType = "js"),
 		@ImportResource(resourceName = "BasePage.css", resourceType = "css") })
-public abstract class BasePage extends AbstractBasePage {
+public abstract class BasePage extends AbstractBasePage
+{
 
 	/**
 	 * The serialVersionUID.
@@ -47,7 +47,8 @@ public abstract class BasePage extends AbstractBasePage {
 	/**
 	 * Instantiates a new base page.
 	 */
-	public BasePage() {
+	public BasePage()
+	{
 		this(new PageParameters());
 	}
 
@@ -57,7 +58,8 @@ public abstract class BasePage extends AbstractBasePage {
 	 * @param parameters
 	 *            the parameters
 	 */
-	public BasePage(final PageParameters parameters) {
+	public BasePage(final PageParameters parameters)
+	{
 		super(parameters);
 		title = new StringResourceModel("page.title", this, null);
 		add(new Label("title", title));
@@ -67,9 +69,10 @@ public abstract class BasePage extends AbstractBasePage {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response) {
-    	super.renderHead(response);    	
-    	WicketComponentUtils.renderHeaderResponse(response, BasePage.class);
+	public void renderHead(IHeaderResponse response)
+	{
+		super.renderHead(response);
+		WicketComponentUtils.renderHeaderResponse(response, BasePage.class);
 	}
 
 }

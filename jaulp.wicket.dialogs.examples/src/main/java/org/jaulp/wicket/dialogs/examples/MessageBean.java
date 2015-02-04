@@ -20,7 +20,8 @@ import java.io.Serializable;
 /**
  * The Class MessageBean.
  */
-public class MessageBean implements Serializable {
+public class MessageBean implements Serializable
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -33,23 +34,27 @@ public class MessageBean implements Serializable {
 	 *
 	 * @return the message content
 	 */
-	public String getMessageContent() {
+	public String getMessageContent()
+	{
 		return messageContent;
 	}
 
 	/**
 	 * Sets the message content.
 	 *
-	 * @param messageContent the new message content
+	 * @param messageContent
+	 *            the new message content
 	 */
-	public void setMessageContent(String messageContent) {
+	public void setMessageContent(String messageContent)
+	{
 		this.messageContent = messageContent;
 	}
 
 	/**
 	 * Instantiates a new message bean.
 	 */
-	public MessageBean() {
+	public MessageBean()
+	{
 		super();
 	}
 

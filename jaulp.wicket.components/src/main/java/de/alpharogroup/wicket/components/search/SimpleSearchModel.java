@@ -15,19 +15,20 @@ import org.apache.wicket.util.io.IClusterable;
  *
  * @author Asterios Raptis
  */
-@Getter 
- @Setter 
- @EqualsAndHashCode 
- @ToString
- @NoArgsConstructor
- @AllArgsConstructor
- @Builder
-public class SimpleSearchModel implements IClusterable {
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class SimpleSearchModel implements IClusterable
+{
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The searchtext. What im looking for. */
 	private String searchtext = "";
 

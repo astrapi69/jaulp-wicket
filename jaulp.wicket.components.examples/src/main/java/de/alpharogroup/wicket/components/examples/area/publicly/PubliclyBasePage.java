@@ -67,12 +67,12 @@ import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterSharePan
  * @param <T>
  *            the generic type
  */
-public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
+public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
+{
 
 
 	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger
-			.getLogger(PubliclyBasePage.class.getName());
+	protected static final Logger LOGGER = Logger.getLogger(PubliclyBasePage.class.getName());
 
 	/**
 	 * The serialVersionUID.
@@ -82,7 +82,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 	/**
 	 * Instantiates a new base page.
 	 */
-	public PubliclyBasePage() {
+	public PubliclyBasePage()
+	{
 		this(new PageParameters());
 	}
 
@@ -92,17 +93,20 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 	 * @param parameters
 	 *            the parameters
 	 */
-	public PubliclyBasePage(final PageParameters parameters) {
+	public PubliclyBasePage(final PageParameters parameters)
+	{
 		super(parameters);
 		initializeComponents();
 	}
-	
-	public PubliclyBasePage(IModel<T> model) {
+
+	public PubliclyBasePage(IModel<T> model)
+	{
 		super(model);
 		initializeComponents();
 	}
 
-	private void initializeComponents() {
+	private void initializeComponents()
+	{
 		add(newFacebookLikeAndSharePanel("facebookLikeAndSharePanel"));
 		add(newTwitterSharePanel("twitterSharePanel"));
 		add(newTwitterFollowPanel("twitterFollowPanel"));
@@ -112,45 +116,39 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 		add(getContainerPanel());
 		add(newFooterPanel("footer"));
 	}
-	
-	protected Component newFacebookLikeAndSharePanel(String id) {
-		FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(id, 
-				new FacebookLikeAndShareModel.Builder()
-		.build()
-		.toModel());
+
+	protected Component newFacebookLikeAndSharePanel(String id)
+	{
+		FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(id,
+			new FacebookLikeAndShareModel.Builder().build().toModel());
 		return facebookLikeAndSharePanel;
 	}
-	
-	protected Component newGooglePlusSharePanel(String id) {
+
+	protected Component newGooglePlusSharePanel(String id)
+	{
 		IModel<GooglePlusShareModel> model = new GooglePlusShareModel.Builder()
-		.scriptSrc("https://apis.google.com/js/platform.js")
-		.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
-		.cssClass("g-plusone")
-		.dataAnnotation("inline")
-		.dataWith("300")
-		.dataHref(WicketUrlUtils.absoluteUrlFor(this.getClass(), false))
-		.build().toModel();
+			.scriptSrc("https://apis.google.com/js/platform.js")
+			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
+			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
+			.dataHref(WicketUrlUtils.absoluteUrlFor(this.getClass(), false)).build().toModel();
 		return new GooglePlusSharePanel(id, model);
 	}
-	
-	protected Component newTwitterSharePanel(String id) {
-		String dataUrl = "http://www."+WicketApplication.get().getDomainName();
+
+	protected Component newTwitterSharePanel(String id)
+	{
+		String dataUrl = "http://www." + WicketApplication.get().getDomainName();
 		IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
-		.shareUrl("https://twitter.com/share")
-		.dataUrl(dataUrl)
-		.via(WicketApplication.get().getDomainName())
-		.counturl(dataUrl)
-		.build().toModel();
+			.shareUrl("https://twitter.com/share").dataUrl(dataUrl)
+			.via(WicketApplication.get().getDomainName()).counturl(dataUrl).build().toModel();
 		return new TwitterSharePanel(id, model);
 	}
-	
-	protected Component newTwitterFollowPanel(String id) {
+
+	protected Component newTwitterFollowPanel(String id)
+	{
 		String username = "jaulp.wicket";
-		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder()
-		.username(username)
-		.urlPrefix("https://twitter.com/")
-		.url("https://twitter.com/"+username)
-		.build().toModel());
+		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
+			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
+			.toModel());
 	}
 
 	/**
@@ -158,7 +156,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 	 * 
 	 * @return 's the Navbar panel.
 	 */
-	public Component getNavbarPanel() {
+	public Component getNavbarPanel()
+	{
 		return newNavbar(NAVBAR_PANEL_ID);
 	}
 
@@ -169,154 +168,183 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T> {
 	 *            The components markup id.
 	 * @return a new {@link Navbar} instance
 	 */
-	protected Navbar newNavbar(String markupId) {
+	protected Navbar newNavbar(String markupId)
+	{
 		Navbar navbar = new Navbar(markupId);
 
 		navbar.setPosition(Navbar.Position.TOP);
 		IModel<String> brandNameModel = ResourceModelFactory.newResourceModel(
-				"global.slogan.mainhead.label", this);
+			"global.slogan.mainhead.label", this);
 		IModel<String> overviewModel = ResourceModelFactory.newResourceModel(
-				"global.menu.overview.label", this);
+			"global.menu.overview.label", this);
 		// show brand name
 		navbar.setBrandName(brandNameModel);
-		navbar.addComponents(NavbarComponents.transform(
-				Navbar.ComponentPosition.LEFT, new NavbarButton<HomePage>(
-						HomePage.class, overviewModel)
-						.setIconType(GlyphIconType.home),										
-						newFeaturesDropDownButton(),
-						newLegalDropDownButton(),
-						newNavbarDropDownButton())
-						);
+		navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
+			new NavbarButton<HomePage>(HomePage.class, overviewModel)
+				.setIconType(GlyphIconType.home), newFeaturesDropDownButton(),
+			newLegalDropDownButton(), newNavbarDropDownButton()));
 
 		return navbar;
 	}
-	
-	protected Component newFeaturesDropDownButton() {	
-    	final IModel<String> featuresMainModel = ResourceModelFactory.newResourceModel("global.menu.features.label", this);
-    	final IModel<String> swapModel = ResourceModelFactory.newResourceModel("global.menu.swap.label", this);
-    	final IModel<String> swapPersonModel = ResourceModelFactory.newResourceModel("global.menu.swap.person.label", this);
-    	final IModel<String> replaceWithPanelModel = ResourceModelFactory.newResourceModel("global.menu.replace.with.panel.label", this);
-    	final IModel<String> popupoverlayPanelModel = ResourceModelFactory.newResourceModel("global.menu.popupoverlay.label", this);
-    	final IModel<String> tabsModel = ResourceModelFactory.newResourceModel("global.menu.tabs.label", this);
-    	final IModel<String> signInModel = ResourceModelFactory.newResourceModel("global.menu.sign.in.label", this);
-    	final IModel<String> signUpModel = ResourceModelFactory.newResourceModel("global.menu.sign.up.label", this);
-    	final IModel<String> downloadFileModel = ResourceModelFactory.newResourceModel("global.menu.download.pdf.label", this);
-    	final IModel<String> recaptchaModel = ResourceModelFactory.newResourceModel("global.menu.recaptcha.label", this);
-    	final IModel<String> sslRecaptchaModel = ResourceModelFactory.newResourceModel("global.menu.ssl.recaptcha.label", this);
-    	final IModel<String> wicketUrlsModel = ResourceModelFactory.newResourceModel("global.menu.wicket.urls.label", this);
-    	final IModel<String> alertsModel = ResourceModelFactory.newResourceModel("global.menu.alerts.label", this);
-    	final IModel<String> labeledModel = ResourceModelFactory.newResourceModel("global.menu.labeled.label", this);
-    	final IModel<String> buttonsModel = ResourceModelFactory.newResourceModel("global.menu.buttons.label", this);
-    	final IModel<String> checkboxesModel = ResourceModelFactory.newResourceModel("global.menu.checkboxes.label", this);
-    	final IModel<String> radiosModel = ResourceModelFactory.newResourceModel("global.menu.radios.label", this);
-    	final IModel<String> deregistrationModel = ResourceModelFactory.newResourceModel("global.menu.deregistration.label", this);
-    	final IModel<String> exceptionModel = ResourceModelFactory.newResourceModel("global.menu.exception.label", this);
-    	   return new NavbarDropDownButton(featuresMainModel) {
-			private static final long serialVersionUID = 1L;
-			@Override
-            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
-                subMenu.add(new MenuBookmarkablePageLink<AddressPage>(
-                		AddressPage.class, swapModel).setIconType(GlyphIconType.eyeopen));
-                subMenu.add(new MenuBookmarkablePageLink<PersonPage>(
-                		PersonPage.class, swapPersonModel).setIconType(GlyphIconType.eyeopen));
-                subMenu.add(new MenuBookmarkablePageLink<ReplaceWithPage>(
-                		ReplaceWithPage.class, replaceWithPanelModel).setIconType(GlyphIconType.eyeopen));
-                subMenu.add(new MenuBookmarkablePageLink<PopupoverlayPage>(
-                		PopupoverlayPage.class, popupoverlayPanelModel).setIconType(GlyphIconType.eyeopen));
-                subMenu.add(new MenuBookmarkablePageLink<EditableAjaxTabbedPage>(
-                		EditableAjaxTabbedPage.class, tabsModel).setIconType(GlyphIconType.picture));
-                subMenu.add(new MenuBookmarkablePageLink<SigninPage>(
-                		SigninPage.class, signInModel).setIconType(GlyphIconType.lock));
-                subMenu.add(new MenuBookmarkablePageLink<SignupPage>(
-                		SignupPage.class, signUpModel).setIconType(GlyphIconType.zoomin));
-                subMenu.add(new MenuBookmarkablePageLink<PdfDownloadPage>(
-                		PdfDownloadPage.class, downloadFileModel).setIconType(GlyphIconType.download));
-                subMenu.add(new MenuBookmarkablePageLink<ReCaptchaPage>(
-                		ReCaptchaPage.class, recaptchaModel).setIconType(GlyphIconType.check));
-                subMenu.add(new MenuBookmarkablePageLink<SslReCaptchaPage>(
-                		SslReCaptchaPage.class, sslRecaptchaModel).setIconType(GlyphIconType.bullhorn));
-                subMenu.add(new MenuBookmarkablePageLink<WicketUrlPage>(
-                		WicketUrlPage.class, wicketUrlsModel).setIconType(GlyphIconType.file));
-                subMenu.add(new MenuBookmarkablePageLink<AlertsPage>(
-                		AlertsPage.class, alertsModel).setIconType(GlyphIconType.bell));
-                subMenu.add(new MenuBookmarkablePageLink<LabeledComponentsPage>(
-                		LabeledComponentsPage.class, labeledModel).setIconType(GlyphIconType.leaf));
-                subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(
-                		ButtonsPage.class, buttonsModel).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<CheckboxesPage>(
-                		CheckboxesPage.class, checkboxesModel).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<RadioComponentsExamplePage>(
-                		RadioComponentsExamplePage.class, radiosModel).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
-                		DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
-                subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(
-                		ExceptionPage.class, exceptionModel).setIconType(GlyphIconType.fire));
-                
-                return subMenu;
-            }
-        }.setIconType(GlyphIconType.folderopen)
-//        .setInverted(true)
-        ;
-    }
-	
-	protected Component newLegalDropDownButton() {	
-    	final IModel<String> legacyMainModel = ResourceModelFactory.newResourceModel("global.menu.legacy.label", this);
-    	final IModel<String> imprintModel = ResourceModelFactory.newResourceModel("global.menu.imprint.label", this);
-    	final IModel<String> termOfUseModel = ResourceModelFactory.newResourceModel("global.menu.termofuse.label", this);
-    	final IModel<String> copyrightModel = ResourceModelFactory.newResourceModel("global.menu.copyright.label", this);
-    	   return new NavbarDropDownButton(legacyMainModel) {
+
+	protected Component newFeaturesDropDownButton()
+	{
+		final IModel<String> featuresMainModel = ResourceModelFactory.newResourceModel(
+			"global.menu.features.label", this);
+		final IModel<String> swapModel = ResourceModelFactory.newResourceModel(
+			"global.menu.swap.label", this);
+		final IModel<String> swapPersonModel = ResourceModelFactory.newResourceModel(
+			"global.menu.swap.person.label", this);
+		final IModel<String> replaceWithPanelModel = ResourceModelFactory.newResourceModel(
+			"global.menu.replace.with.panel.label", this);
+		final IModel<String> popupoverlayPanelModel = ResourceModelFactory.newResourceModel(
+			"global.menu.popupoverlay.label", this);
+		final IModel<String> tabsModel = ResourceModelFactory.newResourceModel(
+			"global.menu.tabs.label", this);
+		final IModel<String> signInModel = ResourceModelFactory.newResourceModel(
+			"global.menu.sign.in.label", this);
+		final IModel<String> signUpModel = ResourceModelFactory.newResourceModel(
+			"global.menu.sign.up.label", this);
+		final IModel<String> downloadFileModel = ResourceModelFactory.newResourceModel(
+			"global.menu.download.pdf.label", this);
+		final IModel<String> recaptchaModel = ResourceModelFactory.newResourceModel(
+			"global.menu.recaptcha.label", this);
+		final IModel<String> sslRecaptchaModel = ResourceModelFactory.newResourceModel(
+			"global.menu.ssl.recaptcha.label", this);
+		final IModel<String> wicketUrlsModel = ResourceModelFactory.newResourceModel(
+			"global.menu.wicket.urls.label", this);
+		final IModel<String> alertsModel = ResourceModelFactory.newResourceModel(
+			"global.menu.alerts.label", this);
+		final IModel<String> labeledModel = ResourceModelFactory.newResourceModel(
+			"global.menu.labeled.label", this);
+		final IModel<String> buttonsModel = ResourceModelFactory.newResourceModel(
+			"global.menu.buttons.label", this);
+		final IModel<String> checkboxesModel = ResourceModelFactory.newResourceModel(
+			"global.menu.checkboxes.label", this);
+		final IModel<String> radiosModel = ResourceModelFactory.newResourceModel(
+			"global.menu.radios.label", this);
+		final IModel<String> deregistrationModel = ResourceModelFactory.newResourceModel(
+			"global.menu.deregistration.label", this);
+		final IModel<String> exceptionModel = ResourceModelFactory.newResourceModel(
+			"global.menu.exception.label", this);
+		return new NavbarDropDownButton(featuresMainModel)
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-            protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId) {
-                final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
-                subMenu.add(new MenuBookmarkablePageLink<ImprintPage>(
-                		ImprintPage.class, imprintModel).setIconType(GlyphIconType.eyeopen));
-                subMenu.add(new MenuBookmarkablePageLink<TermOfUsePage>(
-                		TermOfUsePage.class, termOfUseModel).setIconType(GlyphIconType.picture));
-                subMenu.add(new MenuBookmarkablePageLink<ImprintPage>(
-                		ImprintPage.class, copyrightModel).setIconType(GlyphIconType.lock));
-                
-                return subMenu;
-            }
-        }.setIconType(GlyphIconType.folderopen)
-//        .setInverted(true)
-        ;
-    }
+			protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId)
+			{
+				final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+				subMenu.add(new MenuBookmarkablePageLink<AddressPage>(AddressPage.class, swapModel)
+					.setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<PersonPage>(PersonPage.class,
+					swapPersonModel).setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<ReplaceWithPage>(ReplaceWithPage.class,
+					replaceWithPanelModel).setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<PopupoverlayPage>(PopupoverlayPage.class,
+					popupoverlayPanelModel).setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<EditableAjaxTabbedPage>(
+					EditableAjaxTabbedPage.class, tabsModel).setIconType(GlyphIconType.picture));
+				subMenu.add(new MenuBookmarkablePageLink<SigninPage>(SigninPage.class, signInModel)
+					.setIconType(GlyphIconType.lock));
+				subMenu.add(new MenuBookmarkablePageLink<SignupPage>(SignupPage.class, signUpModel)
+					.setIconType(GlyphIconType.zoomin));
+				subMenu.add(new MenuBookmarkablePageLink<PdfDownloadPage>(PdfDownloadPage.class,
+					downloadFileModel).setIconType(GlyphIconType.download));
+				subMenu.add(new MenuBookmarkablePageLink<ReCaptchaPage>(ReCaptchaPage.class,
+					recaptchaModel).setIconType(GlyphIconType.check));
+				subMenu.add(new MenuBookmarkablePageLink<SslReCaptchaPage>(SslReCaptchaPage.class,
+					sslRecaptchaModel).setIconType(GlyphIconType.bullhorn));
+				subMenu.add(new MenuBookmarkablePageLink<WicketUrlPage>(WicketUrlPage.class,
+					wicketUrlsModel).setIconType(GlyphIconType.file));
+				subMenu.add(new MenuBookmarkablePageLink<AlertsPage>(AlertsPage.class, alertsModel)
+					.setIconType(GlyphIconType.bell));
+				subMenu.add(new MenuBookmarkablePageLink<LabeledComponentsPage>(
+					LabeledComponentsPage.class, labeledModel).setIconType(GlyphIconType.leaf));
+				subMenu.add(new MenuBookmarkablePageLink<ButtonsPage>(ButtonsPage.class,
+					buttonsModel).setIconType(GlyphIconType.book));
+				subMenu.add(new MenuBookmarkablePageLink<CheckboxesPage>(CheckboxesPage.class,
+					checkboxesModel).setIconType(GlyphIconType.book));
+				subMenu.add(new MenuBookmarkablePageLink<RadioComponentsExamplePage>(
+					RadioComponentsExamplePage.class, radiosModel).setIconType(GlyphIconType.book));
+				subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
+					DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
+				subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(ExceptionPage.class,
+					exceptionModel).setIconType(GlyphIconType.fire));
+
+				return subMenu;
+			}
+		}.setIconType(GlyphIconType.folderopen)
+		// .setInverted(true)
+		;
+	}
+
+	protected Component newLegalDropDownButton()
+	{
+		final IModel<String> legacyMainModel = ResourceModelFactory.newResourceModel(
+			"global.menu.legacy.label", this);
+		final IModel<String> imprintModel = ResourceModelFactory.newResourceModel(
+			"global.menu.imprint.label", this);
+		final IModel<String> termOfUseModel = ResourceModelFactory.newResourceModel(
+			"global.menu.termofuse.label", this);
+		final IModel<String> copyrightModel = ResourceModelFactory.newResourceModel(
+			"global.menu.copyright.label", this);
+		return new NavbarDropDownButton(legacyMainModel)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId)
+			{
+				final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
+				subMenu.add(new MenuBookmarkablePageLink<ImprintPage>(ImprintPage.class,
+					imprintModel).setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<TermOfUsePage>(TermOfUsePage.class,
+					termOfUseModel).setIconType(GlyphIconType.picture));
+				subMenu.add(new MenuBookmarkablePageLink<ImprintPage>(ImprintPage.class,
+					copyrightModel).setIconType(GlyphIconType.lock));
+
+				return subMenu;
+			}
+		}.setIconType(GlyphIconType.folderopen)
+		// .setInverted(true)
+		;
+	}
 
 	/**
 	 * creates a new {@link NavbarDropDownButton} instance
 	 * 
 	 * @return a new {@link NavbarDropDownButton} instance
 	 */
-	protected DropDownButton newNavbarDropDownButton() {
-		DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes")) {
+	protected DropDownButton newNavbarDropDownButton()
+	{
+		DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes"))
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public boolean isActive(Component item) {
+			public boolean isActive(Component item)
+			{
 				return false;
 			}
 
 			@Override
-			protected List<AbstractLink> newSubMenuButtons(
-					final String buttonMarkupId) {
+			protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId)
+			{
 				final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
 				subMenu.add(new MenuHeader(Model.of("all available themes:")));
 				subMenu.add(new MenuDivider());
 
-				final IBootstrapSettings settings = Bootstrap
-						.getSettings(getApplication());
-				final List<ITheme> themes = settings.getThemeProvider()
-						.available();
+				final IBootstrapSettings settings = Bootstrap.getSettings(getApplication());
+				final List<ITheme> themes = settings.getThemeProvider().available();
 
-				for (final ITheme theme : themes) {
+				for (final ITheme theme : themes)
+				{
 					PageParameters params = new PageParameters();
 					params.set("theme", theme.name());
 
-					subMenu.add(new MenuBookmarkablePageLink<Page>(
-							getPageClass(), params, Model.of(theme.name())));
+					subMenu.add(new MenuBookmarkablePageLink<Page>(getPageClass(), params, Model
+						.of(theme.name())));
 				}
 				return subMenu;
 			}

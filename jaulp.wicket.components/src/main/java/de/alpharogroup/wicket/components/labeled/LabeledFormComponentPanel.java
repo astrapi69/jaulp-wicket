@@ -29,8 +29,8 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  *            the generic type
  * @see FormComponentPanel
  */
-public abstract class LabeledFormComponentPanel<T> extends
-		FormComponentPanel<T> {
+public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -47,18 +47,23 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 * @param id
 	 *            the id
 	 */
-	public LabeledFormComponentPanel(String id) {
+	public LabeledFormComponentPanel(String id)
+	{
 		super(id);
 	}
 
 	/**
 	 * Instantiates a new LabeledFormComponentPanel object.
 	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param labelModel the label model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
 	 */
-	public LabeledFormComponentPanel(String id, IModel<T> model, IModel<String> labelModel) {
+	public LabeledFormComponentPanel(String id, IModel<T> model, IModel<String> labelModel)
+	{
 		super(id, model);
 		setLabel(labelModel);
 	}
@@ -68,14 +73,15 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 *
 	 * @return the label component
 	 */
-	public Component getLabelComponent() {
+	public Component getLabelComponent()
+	{
 		return label;
 	}
 
 	/**
-	 * Factory method for creating the ComponentFeedbackPanel. This method is
-	 * invoked in the constructor from the derived classes and can be overridden
-	 * so users can provide their own version of a ComponentFeedbackPanel.
+	 * Factory method for creating the ComponentFeedbackPanel. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a ComponentFeedbackPanel.
 	 * 
 	 * @param id
 	 *            the id
@@ -83,15 +89,14 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 *            the filter
 	 * @return the component feedback panel
 	 */
-	protected ComponentFeedbackPanel newComponentFeedbackPanel(String id,
-			Component filter) {
+	protected ComponentFeedbackPanel newComponentFeedbackPanel(String id, Component filter)
+	{
 		return ComponentFactory.newComponentFeedbackPanel(id, filter);
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -101,7 +106,8 @@ public abstract class LabeledFormComponentPanel<T> extends
 	 *            the model
 	 * @return the label
 	 */
-	protected Component newLabel(String id, String forId, IModel<String> model) {
+	protected Component newLabel(String id, String forId, IModel<String> model)
+	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}
 }

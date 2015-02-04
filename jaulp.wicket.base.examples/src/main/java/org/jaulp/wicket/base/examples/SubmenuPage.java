@@ -22,15 +22,17 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("/submenu")
-public class SubmenuPage extends WebPage {
+public class SubmenuPage extends WebPage
+{
 	private static final long serialVersionUID = 1L;
 
-    public SubmenuPage(final PageParameters parameters) {
-	super(parameters);
-	
-	add(new MenubarPanel("menubarPanel"));
-	
-	add(new Label("text", Model.of("This is a submenu page.")));
+	public SubmenuPage(final PageParameters parameters)
+	{
+		super(parameters);
 
-    }
+		add(new MenubarPanel("menubarPanel"));
+
+		add(new Label("text", Model.of("This is a submenu page.")));
+
+	}
 }

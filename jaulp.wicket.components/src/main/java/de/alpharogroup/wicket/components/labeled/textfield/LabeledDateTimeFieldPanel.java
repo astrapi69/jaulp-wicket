@@ -26,38 +26,47 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 /**
  * Convenience class for labeled DateTextfield.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
-public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T> {
+public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-		
+
 	/** The text field. */
 	private final DateTimeField dateTimeField;
-	
-	public DateTimeField getDateTimeField() {
+
+	public DateTimeField getDateTimeField()
+	{
 		return dateTimeField;
 	}
 
 	/**
 	 * Instantiates a new LabeledDateTextfieldPanel.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 */
-	public LabeledDateTimeFieldPanel(String id) {
+	public LabeledDateTimeFieldPanel(String id)
+	{
 		this(id, null, null);
 	}
 
 	/**
 	 * Instantiates a new LabeledDateTextfieldPanel.
 	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param labelModel the label model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
 	 */
-	public LabeledDateTimeFieldPanel(String id, IModel<T> model, IModel<String> labelModel) {
-		super(id, model, labelModel);		
+	public LabeledDateTimeFieldPanel(String id, IModel<T> model, IModel<String> labelModel)
+	{
+		super(id, model, labelModel);
 		add(dateTimeField = newDateTimeField("dateTimeField", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dateTimeField));
@@ -69,36 +78,42 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void convertInput() {
+	public void convertInput()
+	{
 		setConvertedInput(getModel().getObject());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getInput() {
+	public String getInput()
+	{
 		return dateTimeField.getInput();
 	}
 
 	/**
-	 * Factory method for creating the DateTextField. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a DateTextField.
+	 * Factory method for creating the DateTextField. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a
+	 * DateTextField.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text field
 	 */
-	protected DateTimeField newDateTimeField(String id, IModel<T> model) {
-		PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());		
-		DateTimeField dateTextField = new DateTimeField(id, textFieldModel );
+	protected DateTimeField newDateTimeField(String id, IModel<T> model)
+	{
+		PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());
+		DateTimeField dateTextField = new DateTimeField(id, textFieldModel);
 		return dateTextField;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void onBeforeRender() {
+	protected void onBeforeRender()
+	{
 		dateTimeField.setRequired(isRequired());
 		super.onBeforeRender();
 	}

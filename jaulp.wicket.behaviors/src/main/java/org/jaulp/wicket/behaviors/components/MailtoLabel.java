@@ -25,14 +25,15 @@ import org.jaulp.wicket.behaviors.models.MailtoModel;
  *
  * @author Asterios Raptis
  */
-public class MailtoLabel extends Label {
+public class MailtoLabel extends Label
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
-    private static final long serialVersionUID = -3924484332764709856L;
+	private static final long serialVersionUID = -3924484332764709856L;
 
-    /**
+	/**
 	 * Instantiates a new mailto label.
 	 *
 	 * @param id
@@ -40,9 +41,11 @@ public class MailtoLabel extends Label {
 	 * @param mailtoModel
 	 *            the mailto model
 	 */
-	public MailtoLabel(final String id, final MailtoModel mailtoModel) {
+	public MailtoLabel(final String id, final MailtoModel mailtoModel)
+	{
 		super(id);
-		final MailtoBehavior<MailtoModel> mailtoBehavior = new MailtoBehavior<MailtoModel>(mailtoModel);
+		final MailtoBehavior<MailtoModel> mailtoBehavior = new MailtoBehavior<MailtoModel>(
+			mailtoModel);
 		this.setDefaultModel(mailtoModel.getMailtoViewModel());
 		this.add(mailtoBehavior);
 	}

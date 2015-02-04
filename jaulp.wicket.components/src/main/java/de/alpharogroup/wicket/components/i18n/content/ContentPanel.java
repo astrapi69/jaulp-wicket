@@ -9,62 +9,73 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public class ContentPanel extends BasePanel<ContentModel> {
+public class ContentPanel extends BasePanel<ContentModel>
+{
 
 	private static final long serialVersionUID = 1L;
 
 	private final Component header;
 	private final Component content;
 
-	public ContentPanel(String id) {
+	public ContentPanel(String id)
+	{
 		this(id, null);
 	}
 
-	public ContentPanel(String id, IModel<ContentModel> model) {
+	public ContentPanel(String id, IModel<ContentModel> model)
+	{
 		super(id, model);
-		if (model != null) {
-			add(header = newHeaderLabel("header",
-					ResourceModelFactory.newResourceModel(model.getObject()
-							.getHeaderResourceKey(), this)));
-			add(content = newContentLabel("content",
-					ResourceModelFactory.newResourceModel(model.getObject()
-							.getContentResourceKey(), this)));
-		} else {
+		if (model != null)
+		{
+			add(header = newHeaderLabel("header", ResourceModelFactory.newResourceModel(model
+				.getObject().getHeaderResourceKey(), this)));
+			add(content = newContentLabel("content", ResourceModelFactory.newResourceModel(model
+				.getObject().getContentResourceKey(), this)));
+		}
+		else
+		{
 			add(header = newHeaderLabel("header", newHeaderModel()));
 			add(content = newContentLabel("content", newContentModel()));
 		}
 	}
 
-	public Component getHeader() {
+	public Component getHeader()
+	{
 		return header;
 	}
 
-	public Component getContent() {
+	public Component getContent()
+	{
 		return content;
 	}
 
-	protected Component newHeaderLabel(String id, IModel<String> model) {
+	protected Component newHeaderLabel(String id, IModel<String> model)
+	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
-	protected IModel<String> newHeaderModel() {
+	protected IModel<String> newHeaderModel()
+	{
 		return ResourceModelFactory.newResourceModel(newHeaderResourceKey(), this);
 	}
-	
-	protected ResourceBundleKey newHeaderResourceKey() {
-		return ResourceBundleKey.builder().key("header.label").build();		
+
+	protected ResourceBundleKey newHeaderResourceKey()
+	{
+		return ResourceBundleKey.builder().key("header.label").build();
 	}
 
-	protected Component newContentLabel(String id, IModel<String> model) {
+	protected Component newContentLabel(String id, IModel<String> model)
+	{
 		return ComponentFactory.newMultiLineLabel(id, model);
 	}
 
-	protected IModel<String> newContentModel() {
-		return ResourceModelFactory
-				.newResourceModel(newContentResourceKey(), this);
+	protected IModel<String> newContentModel()
+	{
+		return ResourceModelFactory.newResourceModel(newContentResourceKey(), this);
 	}
-	
-	protected ResourceBundleKey newContentResourceKey() {
+
+	protected ResourceBundleKey newContentResourceKey()
+	{
 		return ResourceBundleKey.builder().key("content.label").build();
 	}
 

@@ -7,7 +7,8 @@ import org.apache.wicket.util.io.IClusterable;
  * 
  * @author Asterios Raptis
  */
-public class DeregistrationModel implements IClusterable {
+public class DeregistrationModel implements IClusterable
+{
 
 	/**
 	 * The serialVersionUID.
@@ -22,7 +23,8 @@ public class DeregistrationModel implements IClusterable {
 	 * 
 	 * @return the motivation
 	 */
-	public String getMotivation() {
+	public String getMotivation()
+	{
 		return motivation;
 	}
 
@@ -32,7 +34,8 @@ public class DeregistrationModel implements IClusterable {
 	 * @param motivation
 	 *            the new motivation
 	 */
-	public void setMotivation(final String motivation) {
+	public void setMotivation(final String motivation)
+	{
 		this.motivation = motivation;
 	}
 

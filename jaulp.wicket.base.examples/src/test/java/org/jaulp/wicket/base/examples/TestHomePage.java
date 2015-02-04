@@ -33,13 +33,13 @@ public class TestHomePage
 		tester = new WicketTester(new WicketApplication());
 	}
 
-	@Test(enabled=false)
+	@Test(enabled = false)
 	public void homepageRendersSuccessfully()
 	{
-		//start and render the test page
+		// start and render the test page
 		tester.startPage(HomePage.class);
 
-		//assert rendered page class
+		// assert rendered page class
 		tester.assertRenderedPage(HomePage.class);
 	}
 }

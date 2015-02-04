@@ -20,32 +20,36 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.data.provider.examples.listview.ListViewPanel;
 
 
-public class ListViewPage extends WebPage {
+public class ListViewPage extends WebPage
+{
 
 	private static final long serialVersionUID = 1L;
 
-	public ListViewPage(){
+	public ListViewPage()
+	{
 		super();
 
-        initLayout();
+		initLayout();
 	}
 
-    /**
+	/**
 	 * Constructor that is invoked when page is invoked without a session.
 	 *
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public ListViewPage(final PageParameters parameters) {
-    	super(parameters);
+	public ListViewPage(final PageParameters parameters)
+	{
+		super(parameters);
 
-        initLayout();
+		initLayout();
 
 
-    }
+	}
 
-	private void initLayout() {
-        // Add the ListView...
-        add(new ListViewPanel("listViewPanel"));
+	private void initLayout()
+	{
+		// Add the ListView...
+		add(new ListViewPanel("listViewPanel"));
 	}
 }

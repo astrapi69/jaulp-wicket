@@ -17,7 +17,8 @@ import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 /**
  * The Class SinginFormPanel.
  */
-public abstract class SigninFormPanel extends Panel {
+public abstract class SigninFormPanel extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -36,18 +37,20 @@ public abstract class SigninFormPanel extends Panel {
 	/**
 	 * Instantiates a new singin form panel.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
-	public SigninFormPanel(String id, final IModel<? extends SignInModel> model) {
-		super(id, model);		
+	public SigninFormPanel(String id, final IModel<? extends SignInModel> model)
+	{
+		super(id, model);
 		add(form = newForm("form", model));
 		form.add(signinPanel = new SigninPanel("signinPanel", model));
 		// Create submit button for the form
-		submitButton = newButton("submitButton");			
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", 
-				"global.button.sign.in.label",
-				"Sign In"));	
+		submitButton = newButton("submitButton");
+		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label",
+			"Sign In"));
 		form.add(submitButton);
 	}
 
@@ -57,25 +60,28 @@ public abstract class SigninFormPanel extends Panel {
 	 *
 	 * @return the button label
 	 */
-	public Label getButtonLabel() {
+	public Label getButtonLabel()
+	{
 		return buttonLabel;
 	}
-	
+
 	/**
 	 * Gets the form.
 	 *
 	 * @return the form
 	 */
-	public Form<?> getForm() {
+	public Form<?> getForm()
+	{
 		return form;
 	}
-	
+
 	/**
 	 * Gets the signin panel.
 	 *
 	 * @return the signin panel
 	 */
-	public Component getSigninPanel() {
+	public Component getSigninPanel()
+	{
 		return signinPanel;
 	}
 
@@ -84,37 +90,40 @@ public abstract class SigninFormPanel extends Panel {
 	 *
 	 * @return the submit button
 	 */
-	public Button getSubmitButton() {
+	public Button getSubmitButton()
+	{
 		return submitButton;
 	}
-	
+
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id) {
-		return new Button(id) {
+	protected Button newButton(String id)
+	{
+		return new Button(id)
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				onSignin();
 			}
 		};
 	}
 
 	/**
-	 * Factory method for creating the button Label. This method is invoked in
-	 * the constructor from the derived classes and can be overridden so users
-	 * can provide their own version of a button Label.
+	 * Factory method for creating the button Label. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a button
+	 * Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -124,17 +133,17 @@ public abstract class SigninFormPanel extends Panel {
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue) {
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, this, defaultValue);		
-		
+	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	{
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, this,
+			defaultValue);
+
 		return ComponentFactory.newLabel(id, labelModel);
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Form.
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -142,21 +151,26 @@ public abstract class SigninFormPanel extends Panel {
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id, IModel<?> model) {
+	protected Form<?> newForm(String id, IModel<?> model)
+	{
 		return ComponentFactory.newForm(id, model);
 	}
 
-	
+
 	/**
-	 * Factory method for creating the SigninPanel that contains the TextField for the email and password. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Component that contains the TextField for the email and password.
+	 * Factory method for creating the SigninPanel that contains the TextField for the email and
+	 * password. This method is invoked in the constructor from the derived classes and can be
+	 * overridden so users can provide their own version of a Component that contains the TextField
+	 * for the email and password.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the Component
 	 */
-	protected Component newSigninPanel(String id, final IModel<SignInModel> model) {
+	protected Component newSigninPanel(String id, final IModel<SignInModel> model)
+	{
 		return new SigninPanel("signinPanel", model);
 	}
 

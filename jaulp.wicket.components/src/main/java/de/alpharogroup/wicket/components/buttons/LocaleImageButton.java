@@ -25,7 +25,8 @@ import org.apache.wicket.request.resource.ResourceReference;
  * 
  * @author Asterios Raptis
  */
-public class LocaleImageButton extends ImageButton {
+public class LocaleImageButton extends ImageButton
+{
 
 	/**
 	 * The serialVersionUID.
@@ -45,12 +46,13 @@ public class LocaleImageButton extends ImageButton {
 	 * @param locale
 	 *            the locale
 	 */
-	public LocaleImageButton(final String id,
-			final ResourceReference resourceReference, final Locale locale) {
+	public LocaleImageButton(final String id, final ResourceReference resourceReference,
+		final Locale locale)
+	{
 		super(id, resourceReference);
-		if (locale == null) {
-			throw new IllegalArgumentException(
-					"Locale argument should not be null.");
+		if (locale == null)
+		{
+			throw new IllegalArgumentException("Locale argument should not be null.");
 		}
 		this.locale = locale;
 	}
@@ -61,8 +63,10 @@ public class LocaleImageButton extends ImageButton {
 	 * @see org.apache.wicket.markup.html.form.Button#onSubmit()
 	 */
 	@Override
-	public void onSubmit() {
-		if (locale != null) {
+	public void onSubmit()
+	{
+		if (locale != null)
+		{
 			getSession().setLocale(locale);
 		}
 	}

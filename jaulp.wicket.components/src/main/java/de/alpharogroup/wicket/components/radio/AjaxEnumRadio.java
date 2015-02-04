@@ -25,8 +25,9 @@ import org.apache.wicket.model.IModel;
  *            the generic type that must extends enum.
  * @author Asterios Raptis
  */
-public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T> {
-	
+public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T>
+{
+
 	/**
 	 * The Constant serialVersionUID.
 	 */
@@ -42,7 +43,8 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T> {
 	 * @param group
 	 *            the group
 	 */
-	public AjaxEnumRadio(String id, IModel<T> model, RadioGroup<T> group) {
+	public AjaxEnumRadio(String id, IModel<T> model, RadioGroup<T> group)
+	{
 		super(id, model, group);
 	}
 
@@ -54,7 +56,8 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T> {
 	 * @param group
 	 *            the group
 	 */
-	public AjaxEnumRadio(String id, RadioGroup<T> group) {
+	public AjaxEnumRadio(String id, RadioGroup<T> group)
+	{
 		super(id, group);
 	}
 
@@ -64,7 +67,8 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T> {
 	 * @param id
 	 *            the id
 	 */
-	public AjaxEnumRadio(String id) {
+	public AjaxEnumRadio(String id)
+	{
 		super(id);
 	}
 
@@ -76,15 +80,17 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T> {
 	 * @param model
 	 *            the model
 	 */
-	public AjaxEnumRadio(String id, IModel<T> model) {
+	public AjaxEnumRadio(String id, IModel<T> model)
+	{
 		super(id, model);
-	}  
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getValue() {
+	public String getValue()
+	{
 		return getModelObject().name();
 	}
 

@@ -13,29 +13,31 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
 
 
 @MountPath("public/download/pdf")
-public class PdfDownloadPage extends PubliclyBasePage<Object> {
+public class PdfDownloadPage extends PubliclyBasePage<Object>
+{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public Component getContainerPanel() {
-		DownloadModel downloadModel =  DownloadModel.builder()
-				.filename("download.pdf")
-				.path("pdf/download.pdf")
-				.contentType("application/pdf")
-				.build();
-		return new DownloadPanel(CONTAINER_PANEL_ID, Model.of(downloadModel)) {
+	public Component getContainerPanel()
+	{
+		DownloadModel downloadModel = DownloadModel.builder().filename("download.pdf")
+			.path("pdf/download.pdf").contentType("application/pdf").build();
+		return new DownloadPanel(CONTAINER_PANEL_ID, Model.of(downloadModel))
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected WebApplication getWebApplication() {
+			protected WebApplication getWebApplication()
+			{
 				return WicketApplication.get();
 			}
-			
+
 		};
 	}
 
-	public PdfDownloadPage(final PageParameters parameters) {
+	public PdfDownloadPage(final PageParameters parameters)
+	{
 		super(parameters);
 	}
-	
+
 }

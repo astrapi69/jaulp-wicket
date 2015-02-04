@@ -11,8 +11,8 @@ import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
-public abstract class SignupFormPanel extends
-		BasePanel<BaseUsernameSignUpModel> {
+public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
+{
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
@@ -21,33 +21,35 @@ public abstract class SignupFormPanel extends
 	private Button submitButton;
 
 	private Form<?> form;
-	
+
 	private Component signupPanel;
 
-	public SignupFormPanel(String id) {
+	public SignupFormPanel(String id)
+	{
 		super(id);
 		initComponent();
 	}
 
-	protected void initComponent() {
+	protected void initComponent()
+	{
 		BaseUsernameSignUpModel modelObject = new BaseUsernameSignUpModel();
 		modelObject.setEmail("");
 		IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<BaseUsernameSignUpModel>(
-				modelObject);
+			modelObject);
 		setModel(model);
 		addOrReplace(form = newForm("form", model));
 		form.addOrReplace(signupPanel = newSignupPanel("signupPanel", getModel()));
-		
+
 		form.addOrReplace(submitButton = newButton("signupButton"));
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel",
-				"global.button.sign.up.label", "Sign up"));
+		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.up.label",
+			"Sign up"));
 		form.add(submitButton);
 	}
 
 	/**
-	 * Factory method for creating the SignupPanel. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a SignupPanel.
+	 * Factory method for creating the SignupPanel. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a
+	 * SignupPanel.
 	 * 
 	 * @param id
 	 *            the id
@@ -55,14 +57,14 @@ public abstract class SignupFormPanel extends
 	 *            the model
 	 * @return the SignupPanel
 	 */
-	protected Component newSignupPanel(String id, IModel<BaseUsernameSignUpModel> model) {
-				return new SignupPanel(id, model);		
+	protected Component newSignupPanel(String id, IModel<BaseUsernameSignUpModel> model)
+	{
+		return new SignupPanel(id, model);
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Form.
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -71,36 +73,37 @@ public abstract class SignupFormPanel extends
 	 * @return the form
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected Form<?> newForm(String id,
-			IModel<? extends BaseUsernameSignUpModel> model) {
+	protected Form<?> newForm(String id, IModel<? extends BaseUsernameSignUpModel> model)
+	{
 		return new Form(id, model);
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id) {
-		return new Button(id) {
+	protected Button newButton(String id)
+	{
+		return new Button(id)
+		{
 			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				onSignup();
 			}
 		};
 	}
 
 	/**
-	 * Factory method for creating the Button Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the Button Label. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -110,10 +113,10 @@ public abstract class SignupFormPanel extends
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue) {
-		final IModel<String> labelModel = ResourceModelFactory
-				.newResourceModel(resourceKey, this, defaultValue);
+	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	{
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, this,
+			defaultValue);
 		Label label = new Label(id, labelModel);
 		label.setOutputMarkupId(true);
 		return label;
@@ -121,19 +124,23 @@ public abstract class SignupFormPanel extends
 
 	protected abstract void onSignup();
 
-	public Component getSignupPanel() {
+	public Component getSignupPanel()
+	{
 		return signupPanel;
 	}
 
-	public Button getSubmitButton() {
+	public Button getSubmitButton()
+	{
 		return submitButton;
 	}
 
-	public Label getButtonLabel() {
+	public Label getButtonLabel()
+	{
 		return buttonLabel;
 	}
 
-	public Form<?> getForm() {
+	public Form<?> getForm()
+	{
 		return form;
 	}
 }

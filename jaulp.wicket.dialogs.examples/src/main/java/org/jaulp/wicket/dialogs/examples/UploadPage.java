@@ -25,9 +25,11 @@ import org.jaulp.wicket.dialogs.examples.panel.UploadFilePanel;
 /**
  * @author admin
  */
-public class UploadPage extends WebPage {
+public class UploadPage extends WebPage
+{
 
-	public UploadPage(PageParameters parameters) {
+	public UploadPage(PageParameters parameters)
+	{
 		super(parameters);
 		final ModalWindow uploadFileDialog = new ModalWindow("uploadFileDialog");
 
@@ -36,13 +38,15 @@ public class UploadPage extends WebPage {
 		final UploadFilePanel uploadFilePanel = new UploadFilePanel("content");
 		uploadFileDialog.setContent(uploadFilePanel);
 
-		add(new AjaxLink<Void>("showUpdoadFileDialog"){
+		add(new AjaxLink<Void>("showUpdoadFileDialog")
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
-			public void onClick(AjaxRequestTarget target) {
+			public void onClick(AjaxRequestTarget target)
+			{
 				uploadFileDialog.show(target);
 			}
 		});
@@ -53,4 +57,3 @@ public class UploadPage extends WebPage {
 
 
 }
-

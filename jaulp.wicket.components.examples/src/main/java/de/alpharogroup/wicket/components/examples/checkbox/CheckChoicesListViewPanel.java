@@ -19,42 +19,46 @@ import de.alpharogroup.wicket.components.examples.radios.Company;
 import de.alpharogroup.wicket.components.form.CheckChoicesListView;
 import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
 
-public class CheckChoicesListViewPanel extends Panel {
+public class CheckChoicesListViewPanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CheckChoicesListViewPanel(String id, IModel<?> model) {
+	public CheckChoicesListViewPanel(String id, IModel<?> model)
+	{
 		super(id, model);
 		Form<?> form = new Form<>("form");
 		add(form);
 		final CheckboxModel<Company> checkboxModel = new CheckboxModel<Company>();
-		checkboxModel.setChoices(Arrays.asList(
-				Company.builder().name("Ferrari").build(), 
-				Company.builder().name("Lamborgini").build(), 
-				Company.builder().name("Mazerati").build(), 
-				Company.builder().name("Porsche").build()
-				));
+		checkboxModel.setChoices(Arrays.asList(Company.builder().name("Ferrari").build(), Company
+			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
+			Company.builder().name("Porsche").build()));
 
 		// Tell CheckChoicesListView what properties to use for label
 		ChoiceRenderer<Company> renderer = new ChoiceRenderer<Company>("name");
-		
-		CheckGroup<Company> checkGroup = new CheckGroup<Company>("group", new PropertyModel<List<Company>>(checkboxModel, "selectedItems"));
-		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior() {
+
+		CheckGroup<Company> checkGroup = new CheckGroup<Company>("group",
+			new PropertyModel<List<Company>>(checkboxModel, "selectedItems"));
+		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()
+		{
 			private static final long serialVersionUID = 1L;
-			protected void onUpdate(AjaxRequestTarget target) {
+
+			protected void onUpdate(AjaxRequestTarget target)
+			{
 				target.add(getFeedback());
 				info("Selected Types : " + checkboxModel.getSelectedItems());
 			}
 		});
-		form.add(checkGroup
-	     .add(new CheckChoicesListView<Company>("choices", new ListModel<Company>(checkboxModel.getChoices()), renderer)));
+		form.add(checkGroup.add(new CheckChoicesListView<Company>("choices",
+			new ListModel<Company>(checkboxModel.getChoices()), renderer)));
 	}
 
-	protected Component getFeedback() {
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>) getPage();
+	protected Component getFeedback()
+	{
+		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 

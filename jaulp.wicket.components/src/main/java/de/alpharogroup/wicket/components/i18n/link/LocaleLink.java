@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package de.alpharogroup.wicket.components.i18n.link;
+
 import java.util.Locale;
 
 import org.apache.wicket.markup.html.link.Link;
@@ -25,7 +26,8 @@ import org.apache.wicket.markup.html.link.Link;
  *            the generic type
  * @author Asterios Raptis
  */
-public class LocaleLink<T> extends Link<T> {
+public class LocaleLink<T> extends Link<T>
+{
 	/**
 	 * The serialVersionUID.
 	 */
@@ -42,11 +44,12 @@ public class LocaleLink<T> extends Link<T> {
 	 * @param locale
 	 *            the locale to set.
 	 */
-	public LocaleLink(final String id, final Locale locale) {
+	public LocaleLink(final String id, final Locale locale)
+	{
 		super(id);
-		if (null == locale) {
-			throw new IllegalArgumentException(
-					"Locale argument should not be null.");
+		if (null == locale)
+		{
+			throw new IllegalArgumentException("Locale argument should not be null.");
 		}
 		this.locale = locale;
 	}
@@ -57,8 +60,10 @@ public class LocaleLink<T> extends Link<T> {
 	 * @see org.apache.wicket.markup.html.link.Link#onClick()
 	 */
 	@Override
-	public void onClick() {
-		if (null != locale) {
+	public void onClick()
+	{
+		if (null != locale)
+		{
 			getSession().setLocale(locale);
 		}
 	}

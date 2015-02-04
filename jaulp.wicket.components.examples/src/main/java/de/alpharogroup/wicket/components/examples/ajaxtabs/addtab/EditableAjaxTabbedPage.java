@@ -20,20 +20,22 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
  */
 @ImportResources(resources = { @ImportResource(resourceName = "TabbedPanelPage.css", resourceType = "css", index = 1) })
 @MountPath("public/ajaxtabs")
-public class EditableAjaxTabbedPage  extends PubliclyBasePage<Object> {
+public class EditableAjaxTabbedPage extends PubliclyBasePage<Object>
+{
 	private static final long serialVersionUID = 1L;
 
 
 	@Override
-	public Component getContainerPanel() {
-		TabbedPanelModels<String> tabmodels = new TabbedPanelModels<String>();		
+	public Component getContainerPanel()
+	{
+		TabbedPanelModels<String> tabmodels = new TabbedPanelModels<String>();
 		tabmodels.setTabModels(new ArrayList<TabModel<String>>());
-		TabModel<String> firstTabModel = new TabModel<>(
-				Model.of("tab 1"), Model.of("TAB_1"), Model.of("x"));
-		TabModel<String> secondTabModel = new TabModel<>(
-				Model.of("tab 2"), Model.of("TAB_2"), Model.of("x"));
-		TabModel<String> thirdTabModel = new TabModel<>(
-				Model.of("tab 3"), Model.of("TAB_3"), Model.of("x"));
+		TabModel<String> firstTabModel = new TabModel<>(Model.of("tab 1"), Model.of("TAB_1"),
+			Model.of("x"));
+		TabModel<String> secondTabModel = new TabModel<>(Model.of("tab 2"), Model.of("TAB_2"),
+			Model.of("x"));
+		TabModel<String> thirdTabModel = new TabModel<>(Model.of("tab 3"), Model.of("TAB_3"),
+			Model.of("x"));
 		tabmodels.add(firstTabModel).add(secondTabModel).add(thirdTabModel);
 		return new AddableTabbedPanel(CONTAINER_PANEL_ID, Model.of(tabmodels));
 	}

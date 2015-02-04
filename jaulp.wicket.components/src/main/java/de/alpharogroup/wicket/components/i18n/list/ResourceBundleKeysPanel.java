@@ -7,10 +7,11 @@ import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class ResourceBundleKeysPanel takes a list of content resource keys that should be
- * in a resource bundle for i18n.
+ * The Class ResourceBundleKeysPanel takes a list of content resource keys that should be in a
+ * resource bundle for i18n.
  */
-public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundleKey> {
+public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundleKey>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -18,10 +19,13 @@ public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundl
 	/**
 	 * Instantiates a new div list panel.
 	 *
-	 * @param id the id
-	 * @param list the list
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
 	 */
-	public ResourceBundleKeysPanel(String id, List<ResourceBundleKey> list) {
+	public ResourceBundleKeysPanel(String id, List<ResourceBundleKey> list)
+	{
 		super(id, list);
 	}
 
@@ -33,8 +37,8 @@ public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundl
 	 * @param content
 	 *            the model
 	 */
-	public ResourceBundleKeysPanel(String id,
-			IModel<List<ResourceBundleKey>> content) {
+	public ResourceBundleKeysPanel(String id, IModel<List<ResourceBundleKey>> content)
+	{
 		super(id, content);
 	}
 

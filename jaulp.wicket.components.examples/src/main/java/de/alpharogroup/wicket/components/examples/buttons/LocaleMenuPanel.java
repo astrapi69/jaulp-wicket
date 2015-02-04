@@ -17,9 +17,9 @@ import de.alpharogroup.wicket.components.buttons.LocaleImageButton;
  * 
  * @author Asterios Raptis
  */
-@ImportResources(resources = {
-			@ImportResource(resourceName = "LocaleMenuPanel.css", resourceType = "css", index = 1) })
-public class LocaleMenuPanel extends BasePanel<Object> {
+@ImportResources(resources = { @ImportResource(resourceName = "LocaleMenuPanel.css", resourceType = "css", index = 1) })
+public class LocaleMenuPanel extends BasePanel<Object>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -32,26 +32,23 @@ public class LocaleMenuPanel extends BasePanel<Object> {
 	 * @param id
 	 *            the id
 	 */
-	public LocaleMenuPanel(final String id) {
+	public LocaleMenuPanel(final String id)
+	{
 		super(id);
 
-		Form<LocaleImageButton> form = 
-		        new Form<LocaleImageButton>("form");
+		Form<LocaleImageButton> form = new Form<LocaleImageButton>("form");
 		add(form);
 
-		LocaleImageButton germanyLocaleButton = new LocaleImageButton(
-				"germanyLocaleButton", new PackageResourceReference(LocaleMenuPanel.class,
-						"germany.gif"), Locale.GERMANY);
+		LocaleImageButton germanyLocaleButton = new LocaleImageButton("germanyLocaleButton",
+			new PackageResourceReference(LocaleMenuPanel.class, "germany.gif"), Locale.GERMANY);
 		form.add(germanyLocaleButton);
 
-		LocaleImageButton englishLocaleButton = new LocaleImageButton(
-				"englishLocaleButton",new PackageResourceReference(LocaleMenuPanel.class,
-						"britain.gif"), Locale.ENGLISH);
+		LocaleImageButton englishLocaleButton = new LocaleImageButton("englishLocaleButton",
+			new PackageResourceReference(LocaleMenuPanel.class, "britain.gif"), Locale.ENGLISH);
 		form.add(englishLocaleButton);
 
-		LocaleImageButton greekLocaleButton = new LocaleImageButton(
-				"greekLocaleButton", new PackageResourceReference(LocaleMenuPanel.class,
-						"hellas.gif"), Locales.HELLENIC);
+		LocaleImageButton greekLocaleButton = new LocaleImageButton("greekLocaleButton",
+			new PackageResourceReference(LocaleMenuPanel.class, "hellas.gif"), Locales.HELLENIC);
 		form.add(greekLocaleButton);
 
 	}

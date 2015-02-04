@@ -22,16 +22,18 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.jaulp.wicket.PackageResourceReferences;
 
 /**
- * Application object for your web application. If you want to run this application without deploying, run the Start class.
+ * Application object for your web application. If you want to run this application without
+ * deploying, run the Start class.
  */
 public class WicketApplication extends WebApplication
 {
 
-    public static final int HTTP_PORT = 9090;
-    public static final int HTTPS_PORT = 9443;
-    /**
-     * Constructor
-     */
+	public static final int HTTP_PORT = 9090;
+	public static final int HTTPS_PORT = 9443;
+
+	/**
+	 * Constructor
+	 */
 	public WicketApplication()
 	{
 	}
@@ -41,32 +43,42 @@ public class WicketApplication extends WebApplication
 		return HomePage.class;
 	}
 
-    /**
-     * {@inheritDoc}
-     * @see org.apache.wicket.protocol.http.WebApplication#init()
-     */
-    @Override
-	protected void init() {
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.apache.wicket.protocol.http.WebApplication#init()
+	 */
+	@Override
+	protected void init()
+	{
 		super.init();
-        try {
-        	initResources();
-        } catch ( ClassNotFoundException e ) {
-            e.printStackTrace();
-        } catch ( IOException e ) {
-            e.printStackTrace();
-        }
+		try
+		{
+			initResources();
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 
-    /**
-     * Inits the all relevant resources like css and js files.
-     *
-     * @throws ClassNotFoundException the class not found exception
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    private void initResources() throws ClassNotFoundException, IOException {
-    	PackageResourceReferences prr = PackageResourceReferences.getInstance();
-    	prr.initializeResources("org.jaulp");
-    }
+	/**
+	 * Inits the all relevant resources like css and js files.
+	 *
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	private void initResources() throws ClassNotFoundException, IOException
+	{
+		PackageResourceReferences prr = PackageResourceReferences.getInstance();
+		prr.initializeResources("org.jaulp");
+	}
 
 }

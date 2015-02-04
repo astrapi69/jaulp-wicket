@@ -18,10 +18,12 @@ package org.jaulp.wicket.data.provider.examples.data.provider;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Person implements Serializable {
+public class Person implements Serializable
+{
 
 
-    public Person(String firstname, String lastname, Date dateOfBirth) {
+	public Person(String firstname, String lastname, Date dateOfBirth)
+	{
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -29,9 +31,9 @@ public class Person implements Serializable {
 	}
 
 	/**
-     * The serialVersionUID.
-     */
-    private static final long serialVersionUID = 1L;
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String firstname;
 
@@ -39,31 +41,38 @@ public class Person implements Serializable {
 
 	private Date dateOfBirth;
 
-	public Person() {
+	public Person()
+	{
 		super();
 	}
 
-	public Date getDateOfBirth() {
+	public Date getDateOfBirth()
+	{
 		return dateOfBirth;
 	}
 
-	public String getFirstname() {
+	public String getFirstname()
+	{
 		return firstname;
 	}
 
-	public String getLastname() {
+	public String getLastname()
+	{
 		return lastname;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth)
+	{
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public void setFirstname(String firstname) {
+	public void setFirstname(String firstname)
+	{
 		this.firstname = firstname;
 	}
 
-	public void setLastname(String lastname) {
+	public void setLastname(String lastname)
+	{
 		this.lastname = lastname;
 	}
 

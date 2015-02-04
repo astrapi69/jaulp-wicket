@@ -6,11 +6,13 @@ import org.wicketstuff.annotation.mount.MountPath;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 @MountPath("public/radio/components")
-public class RadioComponentsExamplePage  extends PubliclyBasePage<Object> {
+public class RadioComponentsExamplePage extends PubliclyBasePage<Object>
+{
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public Component getContainerPanel() {
+	public Component getContainerPanel()
+	{
 		return new RadioComponentsPanel(CONTAINER_PANEL_ID);
 	}
 

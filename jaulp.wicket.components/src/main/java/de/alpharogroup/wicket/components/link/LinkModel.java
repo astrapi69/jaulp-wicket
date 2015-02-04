@@ -13,19 +13,21 @@ import lombok.experimental.Builder;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Page;
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LinkModel implements Serializable {
+public class LinkModel implements Serializable
+{
 	private static final long serialVersionUID = 1L;
-	
-	private Class<? extends Page> pageClass; 
+
+	private Class<? extends Page> pageClass;
 	@NonNull
 	private ResourceBundleKey resourceModelKey;
-	
+
 	private String url;
 }

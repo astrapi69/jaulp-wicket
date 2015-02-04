@@ -23,15 +23,15 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 /**
  * The Class AddJavascriptBehavior adds javascript code as String with an id.
  */
-public class AddJavascriptBehavior extends Behavior {
+public class AddJavascriptBehavior extends Behavior
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The unique id for the javascript element. This can be null, however in
-	 * that case the ajax header contribution can't detect duplicate script
-	 * fragments.
+	 * The unique id for the javascript element. This can be null, however in that case the ajax
+	 * header contribution can't detect duplicate script fragments.
 	 */
 	private String id;
 
@@ -44,9 +44,10 @@ public class AddJavascriptBehavior extends Behavior {
 	 * @param javascript
 	 *            javascript content to be add.
 	 * @param id
-	 *            unique id for the javascript element. 
+	 *            unique id for the javascript element.
 	 */
-	public AddJavascriptBehavior(CharSequence javascript, String id) {
+	public AddJavascriptBehavior(CharSequence javascript, String id)
+	{
 		super();
 		this.javascript = javascript;
 		this.id = id;
@@ -55,9 +56,9 @@ public class AddJavascriptBehavior extends Behavior {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void renderHead(Component component, IHeaderResponse response) {
-		response.render(JavaScriptHeaderItem
-				.forScript(this.javascript, this.id));
+	public void renderHead(Component component, IHeaderResponse response)
+	{
+		response.render(JavaScriptHeaderItem.forScript(this.javascript, this.id));
 		super.renderHead(component, response);
 	}
 

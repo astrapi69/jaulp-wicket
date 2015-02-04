@@ -15,7 +15,8 @@ import org.apache.wicket.model.util.ListModel;
  * @param <T>
  *            the generic type
  */
-public abstract class ListViewPanel<T> extends Panel {
+public abstract class ListViewPanel<T> extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -31,7 +32,8 @@ public abstract class ListViewPanel<T> extends Panel {
 	 * @param list
 	 *            the list
 	 */
-	public ListViewPanel(String id, List<T> list) {
+	public ListViewPanel(String id, List<T> list)
+	{
 		this(id, new ListModel<T>(list));
 	}
 
@@ -43,9 +45,11 @@ public abstract class ListViewPanel<T> extends Panel {
 	 * @param model
 	 *            the model
 	 */
-	public ListViewPanel(String id, IModel<List<T>> model) {
+	public ListViewPanel(String id, IModel<List<T>> model)
+	{
 		super(id, model);
-		if (model == null) {
+		if (model == null)
+		{
 			throw new IllegalArgumentException("Argument 'model' may not be null.");
 		}
 		add(listView = newListView("listView", model));
@@ -60,12 +64,15 @@ public abstract class ListViewPanel<T> extends Panel {
 	 *            the model
 	 * @return the list view
 	 */
-	protected ListView<T> newListView(String id, IModel<List<T>> model) {
-		ListView<T> listView = new ListView<T>(id, model) {
+	protected ListView<T> newListView(String id, IModel<List<T>> model)
+	{
+		ListView<T> listView = new ListView<T>(id, model)
+		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
-			protected void populateItem(ListItem<T> item) {
+			protected void populateItem(ListItem<T> item)
+			{
 				item.add(newListComponent("item", item));
 			}
 
@@ -89,8 +96,9 @@ public abstract class ListViewPanel<T> extends Panel {
 	 *
 	 * @return the list view
 	 */
-	public ListView<T> getListView() {
+	public ListView<T> getListView()
+	{
 		return listView;
-	}	
+	}
 
 }

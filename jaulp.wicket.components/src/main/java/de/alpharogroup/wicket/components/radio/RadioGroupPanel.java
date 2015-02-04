@@ -13,42 +13,49 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 
-public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>> {
+public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
+{
 	private static final long serialVersionUID = 1L;
 
-	public RadioGroupPanel(String id, final IModel<RadioGroupModel<T>> model) {
+	public RadioGroupPanel(String id, final IModel<RadioGroupModel<T>> model)
+	{
 		super(id, model);
 		setOutputMarkupId(true);
 		Form<?> form = new Form<>("form");
 		add(form);
-		final RadioGroup<T> group = 
-				new RadioGroup<T>("group", new PropertyModel<T>(model.getObject(), "selected"));
-		group.add(new AjaxFormChoiceComponentUpdatingBehavior() {
+		final RadioGroup<T> group = new RadioGroup<T>("group", new PropertyModel<T>(
+			model.getObject(), "selected"));
+		group.add(new AjaxFormChoiceComponentUpdatingBehavior()
+		{
 			private static final long serialVersionUID = 1L;
-			protected void onUpdate(AjaxRequestTarget target) {
+
+			protected void onUpdate(AjaxRequestTarget target)
+			{
 				RadioGroupPanel.this.onUpdate(target);
 			}
-		});		
+		});
 		group.setOutputMarkupId(true);
 		form.add(group);
 
-		group.add(new ListView<T>("choice", model.getObject().getRadios()) {
-		    /**
+		group.add(new ListView<T>("choice", model.getObject().getRadios())
+		{
+			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			protected void populateItem(final ListItem<T> item)
-		    {
+			{
 				Radio<T> radio = new Radio<T>("radio", item.getModel(), group);
 				radio.setOutputMarkupId(true);
 				radio.add(new AttributeAppender("name", newRadioName()));
-		        item.add(radio);
-		        item.add(RadioGroupPanel.this.newLabel("label", radio.getMarkupId(), item.getModel()));
-		    }
+				item.add(radio);
+				item.add(RadioGroupPanel.this.newLabel("label", radio.getMarkupId(),
+					item.getModel()));
+			}
 		}.setOutputMarkupId(true));
 	}
-	
+
 	/**
 	 * Factory method for creating a new Label with the for attribute.
 	 * 
@@ -60,14 +67,19 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>> {
 	 *            the list item model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<T> model) {
-		return null;		
+	protected Label newLabel(String id, String forId, IModel<T> model)
+	{
+		return null;
 	};
-	
-	protected void onUpdate(AjaxRequestTarget target){
+
+	protected void onUpdate(AjaxRequestTarget target)
+	{
 		System.out.println("onupdate...");
 	}
-	
-	protected String newRadioName(){return "radiogroup";}
+
+	protected String newRadioName()
+	{
+		return "radiogroup";
+	}
 
 }

@@ -25,7 +25,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
  * @param <T>
  *            the generic type
  */
-public abstract class BaseModalWindow<T> extends ModalWindow {
+public abstract class BaseModalWindow<T> extends ModalWindow
+{
 
 	/**
 	 * The serialVersionUID.
@@ -46,27 +47,30 @@ public abstract class BaseModalWindow<T> extends ModalWindow {
 	 * @param model
 	 *            the model
 	 */
-	public BaseModalWindow(final String id, final String title,
-			final int initialWidth, final int initialHeight,
-			final CompoundPropertyModel<T> model) {
+	public BaseModalWindow(final String id, final String title, final int initialWidth,
+		final int initialHeight, final CompoundPropertyModel<T> model)
+	{
 		super(id);
 		setInitialWidth(initialWidth);
 		setInitialHeight(initialHeight);
 		setTitle(title);
 
-		setContent(new BaseModalPanel<T>(this.getContentId(), model) {
+		setContent(new BaseModalPanel<T>(this.getContentId(), model)
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			void onCancel(final AjaxRequestTarget target) {
+			void onCancel(final AjaxRequestTarget target)
+			{
 				BaseModalWindow.this.onCancel(target);
 			}
 
 			@Override
-			void onSelect(final AjaxRequestTarget target, final T object) {
+			void onSelect(final AjaxRequestTarget target, final T object)
+			{
 				BaseModalWindow.this.onSelect(target, object);
 			}
 		});

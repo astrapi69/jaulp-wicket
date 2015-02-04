@@ -14,7 +14,8 @@ import org.apache.wicket.model.IModel;
  *            the generic type
  * @see ITab
  */
-public abstract class AbstractContentTab<T> extends CloseableTab {
+public abstract class AbstractContentTab<T> extends CloseableTab
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -27,13 +28,15 @@ public abstract class AbstractContentTab<T> extends CloseableTab {
 	 * Constructor.
 	 *
 	 * @param title
-	 *            IModel used to represent the title of the tab. Must contain a
-	 *            string
+	 *            IModel used to represent the title of the tab. Must contain a string
 	 * @param content
 	 *            IModel used to represent the content of the tab.
-	 * @param closeTitle title of close
+	 * @param closeTitle
+	 *            title of close
 	 */
-	public AbstractContentTab(final IModel<String> title, final IModel<T> content, final IModel<String> closeTitle) {
+	public AbstractContentTab(final IModel<String> title, final IModel<T> content,
+		final IModel<String> closeTitle)
+	{
 		super(title, closeTitle);
 		this.content = content;
 	}
@@ -42,7 +45,8 @@ public abstract class AbstractContentTab<T> extends CloseableTab {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isVisible() {
+	public boolean isVisible()
+	{
 		return true;
 	}
 

@@ -13,39 +13,40 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TermOfUseModel implements Serializable {
+public class TermOfUseModel implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private HeaderContentListModel generalTermsAndConditionsModel;
-	
+
 	private HeaderContentListModel cancellationModel;
-	
+
 	private HeaderContentListModel contractModel;
-	
+
 	private HeaderContentListModel copyrightModel;
-	
+
 	private HeaderContentListModel dataProtectionModel;
-	
+
 	private HeaderContentListModel fulfilmentAndJurisdictionPlaceModel;
-	
+
 	private HeaderContentListModel legalReferencesModel;
-	
+
 	private HeaderContentListModel liabilityModel;
-	
+
 	private HeaderContentListModel modificationsClauseModel;
-	
+
 	private RightsAndDutiesModel rightsAndDutiesModel;
-	
+
 	private HeaderContentListModel salvatoriusClauseModel;
-	
+
 	private HeaderContentListModel disclaimerModel;
 
 }

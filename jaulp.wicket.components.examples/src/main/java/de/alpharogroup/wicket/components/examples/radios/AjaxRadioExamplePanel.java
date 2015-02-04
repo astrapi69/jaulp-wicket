@@ -18,7 +18,8 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
 import de.alpharogroup.wicket.components.radio.AjaxRadioPanel;
 import de.alpharogroup.wicket.components.radio.RadioGroupModel;
 
-public class AjaxRadioExamplePanel extends BasePanel<List<Company>> {
+public class AjaxRadioExamplePanel extends BasePanel<List<Company>>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -27,23 +28,25 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>> {
 	@Getter
 	AjaxRadioPanel<Company> ajaxRadioPanel;
 
-	public AjaxRadioExamplePanel(String id, IModel<List<Company>> model) {
+	public AjaxRadioExamplePanel(String id, IModel<List<Company>> model)
+	{
 		super(id, model);
 		// create list...
-		List<Company> items = Arrays.asList(Company.builder().name("Ferrari")
-				.build(), Company.builder().name("Lamborgini").build(), Company
-				.builder().name("Mazerati").build(),
-				Company.builder().name("Porsche").build());
+		List<Company> items = Arrays.asList(Company.builder().name("Ferrari").build(), Company
+			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
+			Company.builder().name("Porsche").build());
 		final RadioGroupModel<Company> radioGroupModel = new RadioGroupModel<>();
 		setModel(model);
 		radioGroupModel.setLabelPropertyExpression("name");
 		// we can set the selected radio from the start or leave it blank...
 		// radioGroupModel.setSelected(items.get(0));
 		radioGroupModel.setRadios(items);
-		ajaxRadioPanel = new AjaxRadioPanel<Company>("ajaxRadioPanel",	Model.of(radioGroupModel)) {
+		ajaxRadioPanel = new AjaxRadioPanel<Company>("ajaxRadioPanel", Model.of(radioGroupModel))
+		{
 			private static final long serialVersionUID = 1L;
 
-			protected void onRadioSelect(AjaxRequestTarget target, Company newSelection) {
+			protected void onRadioSelect(AjaxRequestTarget target, Company newSelection)
+			{
 				info("You have selected " + newSelection.getName());
 				target.add(getFeedback());
 			}
@@ -51,18 +54,20 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>> {
 		add(ajaxRadioPanel);
 	}
 
-	protected Component getFeedback() {
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>) getPage();
+	protected Component getFeedback()
+	{
+		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void renderHead(IHeaderResponse response) {
+	public void renderHead(IHeaderResponse response)
+	{
 		super.renderHead(response);
 		response.render(CssHeaderItem.forReference(new CssResourceReference(
-				AjaxRadioExamplePanel.class, "AjaxRadioExamplePanel.css")));
+			AjaxRadioExamplePanel.class, "AjaxRadioExamplePanel.css")));
 
 	}
 }

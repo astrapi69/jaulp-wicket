@@ -17,22 +17,24 @@ import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFi
  *
  * @author Asterios Raptis
  */
-public class ChangePasswordPanel extends Panel {
+public class ChangePasswordPanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The current password. */
 	private final Component currentPassword;
-	
+
 	/**
 	 * Gets the current password.
 	 *
 	 * @return the current password
 	 */
-	public Component getCurrentPassword() {
+	public Component getCurrentPassword()
+	{
 		return currentPassword;
 	}
 
@@ -41,7 +43,8 @@ public class ChangePasswordPanel extends Panel {
 	 *
 	 * @return the new password
 	 */
-	public Component getNewPassword() {
+	public Component getNewPassword()
+	{
 		return newPassword;
 	}
 
@@ -50,49 +53,65 @@ public class ChangePasswordPanel extends Panel {
 	 *
 	 * @return the repeat new password
 	 */
-	public Component getRepeatNewPassword() {
+	public Component getRepeatNewPassword()
+	{
 		return repeatNewPassword;
 	}
 
 	/** The new password. */
 	private final Component newPassword;
-	
+
 	/** The repeat new password. */
 	private final Component repeatNewPassword;
 
 	/**
 	 * Instantiates a new abstract change password panel.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
-	public ChangePasswordPanel(final String id, final IModel<ChangePasswordModel> model) {
-		super(id);		
+	public ChangePasswordPanel(final String id, final IModel<ChangePasswordModel> model)
+	{
+		super(id);
 		add(currentPassword = newCurrentPasswordTextField("currentPassword", model));
 		add(newPassword = newPasswordTextField("newPassword", model));
 		add(repeatNewPassword = newRepeatPasswordTextField("repeatNewPassword", model));
 	}
 
 	/**
-	 * Factory method for creating the PasswordTextField for the repeat password. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
+	 * Factory method for creating the PasswordTextField for the repeat password. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a PasswordTextField for the repeat password.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text field
 	 */
-	protected Component newRepeatPasswordTextField(String id, final IModel<ChangePasswordModel> model) {
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel("change.pw.new.password.repeat.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel("global.enter.new.password.repeat.label", this);
-		LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(id, model, labelModel) {
+	protected Component newRepeatPasswordTextField(String id,
+		final IModel<ChangePasswordModel> model)
+	{
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"change.pw.new.password.repeat.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.new.password.repeat.label", this);
+		LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(
+			id, model, labelModel)
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected PasswordTextField newPasswordTextField(String id,
-					IModel<ChangePasswordModel> model) {
-				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model).getRepeatNewPassword()));
+				IModel<ChangePasswordModel> model)
+			{
+				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
+					.getRepeatNewPassword()));
 				pwTextField.setOutputMarkupId(true);
-				if(placeholderModel != null) {
+				if (placeholderModel != null)
+				{
 					pwTextField.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return pwTextField;
@@ -102,25 +121,36 @@ public class ChangePasswordPanel extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the PasswordTextField for the new password. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
+	 * Factory method for creating the PasswordTextField for the new password. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a PasswordTextField for the new password.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text field
 	 */
-	protected Component newPasswordTextField(String id, final IModel<ChangePasswordModel> model) {
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel("change.pw.new.password.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel("global.enter.new.password.label", this);
-		LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(id, model, labelModel){
+	protected Component newPasswordTextField(String id, final IModel<ChangePasswordModel> model)
+	{
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"change.pw.new.password.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.new.password.label", this);
+		LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(
+			id, model, labelModel)
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected PasswordTextField newPasswordTextField(String id,
-					IModel<ChangePasswordModel> model) {
-				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model).getNewPassword()));
+				IModel<ChangePasswordModel> model)
+			{
+				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
+					.getNewPassword()));
 				pwTextField.setOutputMarkupId(true);
-				if(placeholderModel != null) {
+				if (placeholderModel != null)
+				{
 					pwTextField.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return pwTextField;
@@ -130,25 +160,37 @@ public class ChangePasswordPanel extends Panel {
 	}
 
 	/**
-	 * Factory method for creating the PasswordTextField for the current password. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
+	 * Factory method for creating the PasswordTextField for the current password. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a PasswordTextField for the current password.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text field
 	 */
-	protected Component newCurrentPasswordTextField(String id, final IModel<ChangePasswordModel> model) {
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel("change.pw.current.password.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel("global.enter.current.password.label", this);
-		LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(id, model, labelModel){
+	protected Component newCurrentPasswordTextField(String id,
+		final IModel<ChangePasswordModel> model)
+	{
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"change.pw.current.password.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.current.password.label", this);
+		LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(
+			id, model, labelModel)
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected PasswordTextField newPasswordTextField(String id,
-					IModel<ChangePasswordModel> model) {
-				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model).getCurrentPassword()));
+				IModel<ChangePasswordModel> model)
+			{
+				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
+					.getCurrentPassword()));
 				pwTextField.setOutputMarkupId(true);
-				if(placeholderModel != null) {
+				if (placeholderModel != null)
+				{
 					pwTextField.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return pwTextField;

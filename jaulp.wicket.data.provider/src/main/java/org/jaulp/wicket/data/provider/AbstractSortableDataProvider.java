@@ -31,38 +31,46 @@ import org.apache.wicket.model.Model;
 /**
  * The Class AbstractSortableDataProvider.
  *
- * @param <T> the generic type of the Model for the DataProvider.
- * @param <S> the generic type for the SortState. 
+ * @param <T>
+ *            the generic type of the Model for the DataProvider.
+ * @param <S>
+ *            the generic type for the SortState.
  * @author Asterios Raptis
  */
-public class AbstractSortableDataProvider<T extends Serializable, S extends Serializable> implements ISortableDataProvider< T, S > {
+public class AbstractSortableDataProvider<T extends Serializable, S extends Serializable>
+	implements
+		ISortableDataProvider<T, S>
+{
 
-    /**
-     * The serialVersionUID.
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /** The data for this DataProvider. */
-    private List< T > data;
+	/** The data for this DataProvider. */
+	private List<T> data;
 
-    /** The sort state. */
+	/** The sort state. */
 	private final SingleSortState<S> sortState = new SingleSortState<S>();
 
-    /**
-     * Default constructor.
-     */
-    public AbstractSortableDataProvider() {
-        this(new ArrayList<T>());
-    }
+	/**
+	 * Default constructor.
+	 */
+	public AbstractSortableDataProvider()
+	{
+		this(new ArrayList<T>());
+	}
 
-    /**
-     * Instantiates a new abstract data provider.
-     *
-     * @param data the data
-     */
-    public AbstractSortableDataProvider( final List< T > data ) {
-    	this.data = data;
-    }
+	/**
+	 * Instantiates a new abstract data provider.
+	 *
+	 * @param data
+	 *            the data
+	 */
+	public AbstractSortableDataProvider(final List<T> data)
+	{
+		this.data = data;
+	}
 
 	/**
 	 * Gets the sort state.
@@ -70,7 +78,8 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	 * @return the sort state
 	 * @see ISortableDataProvider#getSortState()
 	 */
-	public final ISortState<S> getSortState() {
+	public final ISortState<S> getSortState()
+	{
 		return sortState;
 	}
 
@@ -79,109 +88,128 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	 *
 	 * @return current sort state
 	 */
-	public SortParam<S> getSort() {
+	public SortParam<S> getSort()
+	{
 		return sortState.getSort();
 	}
 
 	/**
 	 * Sets the current sort state.
 	 *
-	 * @param param            parameter containing new sorting information
+	 * @param param
+	 *            parameter containing new sorting information
 	 */
-	public void setSort(final SortParam<S> param) {
+	public void setSort(final SortParam<S> param)
+	{
 		sortState.setSort(param);
 	}
 
 	/**
 	 * Sets the current sort state.
 	 *
-	 * @param property            sort property
-	 * @param order            sort order
+	 * @param property
+	 *            sort property
+	 * @param order
+	 *            sort order
 	 */
 	public void setSort(final S property, final SortOrder order)
 	{
 		sortState.setPropertySortOrder(property, order);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void detach() {
-    	this.data = null;
-    }
-
-    /**
-     * Gets the data.
-     *
-     * @return the data
-     */
-    public List< T > getData() {
-        return this.data;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public Iterator< ? extends T > iterator( final long first, final long count ) {
-        List< T > result = new ArrayList<T>(sort());
-        if ( result.size() > ( first + count ) ) {
-            result = result.subList( (int)first, (int)first + (int)count );
-        } else {
-        	result = result.subList((int)first, result.size());
-        }
-        return result.iterator();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void detach()
+	{
+		this.data = null;
+	}
 
 	/**
-	 * Sorts the given list by getting the {@link SortParam#getProperty()} and
-	 * if not null the given list will be sort.
+	 * Gets the data.
+	 *
+	 * @return the data
+	 */
+	public List<T> getData()
+	{
+		return this.data;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Iterator<? extends T> iterator(final long first, final long count)
+	{
+		List<T> result = new ArrayList<T>(sort());
+		if (result.size() > (first + count))
+		{
+			result = result.subList((int)first, (int)first + (int)count);
+		}
+		else
+		{
+			result = result.subList((int)first, result.size());
+		}
+		return result.iterator();
+	}
+
+	/**
+	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
+	 * list will be sort.
 	 *
 	 * @param unsortedList
 	 *            the unsorted list
 	 * @return the same list but sorted.
 	 */
-	protected List< T > sort(List<T> unsortedList) {
+	protected List<T> sort(List<T> unsortedList)
+	{
 		SortParam<S> sortParam = getSort();
-		if(sortParam != null) {
+		if (sortParam != null)
+		{
 			String property = (String)sortParam.getProperty();
 			boolean ascending = sortParam.isAscending();
-			SortCollectionUtils.sortList(unsortedList, property, ascending);			
+			SortCollectionUtils.sortList(unsortedList, property, ascending);
 		}
 		return unsortedList;
 	}
 
 	/**
-	 * Sorts the given list by getting the {@link SortParam#getProperty()} and
-	 * if not null the given list will be sort.
+	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
+	 * list will be sort.
+	 * 
 	 * @return the same list but sorted.
 	 */
-	protected List< T > sort() {
+	protected List<T> sort()
+	{
 		return sort(getData());
 	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public IModel< T > model( final T object ) {
-        return Model.of( object );
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public IModel<T> model(final T object)
+	{
+		return Model.of(object);
+	}
 
-    /**
-     * Sets the data.
-     *
-     * @param data the new data
-     */
-    protected void setData( final List< T > data ) {
-        this.data = data;
-    }
+	/**
+	 * Sets the data.
+	 *
+	 * @param data
+	 *            the new data
+	 */
+	protected void setData(final List<T> data)
+	{
+		this.data = data;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public long size() {
-        return getData().size();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public long size()
+	{
+		return getData().size();
+	}
 
 }

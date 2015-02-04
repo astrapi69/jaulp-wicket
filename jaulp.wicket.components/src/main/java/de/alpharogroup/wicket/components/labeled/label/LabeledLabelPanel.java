@@ -15,7 +15,8 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type
  */
-public class LabeledLabelPanel<T> extends Panel {
+public class LabeledLabelPanel<T> extends Panel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -38,12 +39,11 @@ public class LabeledLabelPanel<T> extends Panel {
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledLabelPanel(String id, IModel<T> model,
-			IModel<String> labelModel) {
+	public LabeledLabelPanel(String id, IModel<T> model, IModel<String> labelModel)
+	{
 		super(id, model);
 
-		PropertyModel<T> viewableLabelModel = new PropertyModel<T>(
-				model.getObject(), id);
+		PropertyModel<T> viewableLabelModel = new PropertyModel<T>(model.getObject(), id);
 
 		add(viewableLabel = newLabel("viewableLabel", viewableLabelModel));
 
@@ -51,14 +51,14 @@ public class LabeledLabelPanel<T> extends Panel {
 		add(label = newLabel("label", markupId, labelModel));
 	}
 
-	protected Label newLabel(String id, PropertyModel<T> viewableLabelModel) {
+	protected Label newLabel(String id, PropertyModel<T> viewableLabelModel)
+	{
 		return ComponentFactory.newLabel(id, viewableLabelModel);
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Label.
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -68,7 +68,8 @@ public class LabeledLabelPanel<T> extends Panel {
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<String> model) {
+	protected Label newLabel(String id, String forId, IModel<String> model)
+	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}
 }

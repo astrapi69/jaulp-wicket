@@ -25,7 +25,8 @@ import org.apache.wicket.model.StringResourceModel;
  * 
  * @author Asterios Raptis
  */
-public class MailtoModel implements Serializable {
+public class MailtoModel implements Serializable
+{
 
 	/**
 	 * The serialVersionUID.
@@ -41,7 +42,8 @@ public class MailtoModel implements Serializable {
 	/**
 	 * Instantiates a new mailto model.
 	 */
-	public MailtoModel() {
+	public MailtoModel()
+	{
 		super();
 	}
 
@@ -53,8 +55,8 @@ public class MailtoModel implements Serializable {
 	 * @param mailtoViewModel
 	 *            the mailto view model
 	 */
-	public MailtoModel(final IModel<String> mailtoAddresModel,
-			final IModel<String> mailtoViewModel) {
+	public MailtoModel(final IModel<String> mailtoAddresModel, final IModel<String> mailtoViewModel)
+	{
 		super();
 		this.mailtoAddresModel = mailtoAddresModel;
 		this.mailtoViewModel = mailtoViewModel;
@@ -65,7 +67,8 @@ public class MailtoModel implements Serializable {
 	 * 
 	 * @return the mailto addres model
 	 */
-	public IModel<String> getMailtoAddresModel() {
+	public IModel<String> getMailtoAddresModel()
+	{
 		return mailtoAddresModel;
 	}
 
@@ -74,7 +77,8 @@ public class MailtoModel implements Serializable {
 	 * 
 	 * @return the mailto view model
 	 */
-	public IModel<String> getMailtoViewModel() {
+	public IModel<String> getMailtoViewModel()
+	{
 		return mailtoViewModel;
 	}
 
@@ -84,7 +88,8 @@ public class MailtoModel implements Serializable {
 	 * @param mailtoAddresModel
 	 *            the new mailto addres model
 	 */
-	public void setMailtoAddresModel(final StringResourceModel mailtoAddresModel) {
+	public void setMailtoAddresModel(final StringResourceModel mailtoAddresModel)
+	{
 		this.mailtoAddresModel = mailtoAddresModel;
 	}
 
@@ -94,7 +99,8 @@ public class MailtoModel implements Serializable {
 	 * @param mailtoViewModel
 	 *            the new mailto view model
 	 */
-	public void setMailtoViewModel(final StringResourceModel mailtoViewModel) {
+	public void setMailtoViewModel(final StringResourceModel mailtoViewModel)
+	{
 		this.mailtoViewModel = mailtoViewModel;
 	}
 

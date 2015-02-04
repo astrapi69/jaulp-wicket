@@ -22,10 +22,13 @@ import de.alpharogroup.wicket.components.labeled.textfield.LabeledDateTextFieldP
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledDateTimeFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 
-public class LabeledComponentsPanel extends BasePanel<Object> {
+public class LabeledComponentsPanel extends BasePanel<Object>
+{
 	private static final long serialVersionUID = 1L;
 	private FeedbackPanel feedbackPanel;
-	public LabeledComponentsPanel(String id) {
+
+	public LabeledComponentsPanel(String id)
+	{
 		super(id);
 		final Member person = new Member();
 		person.setGender(Gender.UNDEFINED);
@@ -35,63 +38,73 @@ public class LabeledComponentsPanel extends BasePanel<Object> {
 		person.setDateofbirth(new Date());
 		person.setDateofMarriage(new Date());
 
-		final CompoundPropertyModel<Member> cpm = new CompoundPropertyModel<Member>(
-				person);
+		final CompoundPropertyModel<Member> cpm = new CompoundPropertyModel<Member>(person);
 
-		final Form<Member> form = 
-		        new Form<Member>("form", cpm);
+		final Form<Member> form = new Form<Member>("form", cpm);
 
 		add(form);
-		
-		LabeledEnumLabelPanel<Member> genderLabel = new LabeledEnumLabelPanel<Member>("gender", cpm, Model.of("Gender:"));
+
+		LabeledEnumLabelPanel<Member> genderLabel = new LabeledEnumLabelPanel<Member>("gender",
+			cpm, Model.of("Gender:"));
 		form.add(genderLabel);
-		
-		LabeledLabelPanel<Member> nameLabel = new LabeledLabelPanel<Member>("name", cpm, Model.of("Name:"));
+
+		LabeledLabelPanel<Member> nameLabel = new LabeledLabelPanel<Member>("name", cpm,
+			Model.of("Name:"));
 		form.add(nameLabel);
-		
-		LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>("nickname", cpm, Model.of("Input your nickname:"));
+
+		LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>("nickname",
+			cpm, Model.of("Input your nickname:"));
 		form.add(nameTextField);
-			
-		LabeledTextAreaPanel<Member> about = new LabeledTextAreaPanel<Member>("about", cpm,  Model.of("About:"));
+
+		LabeledTextAreaPanel<Member> about = new LabeledTextAreaPanel<Member>("about", cpm,
+			Model.of("About:"));
 		form.add(about);
-		
-		LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<Member>("married", cpm, Model.of("Married:"));
-		
+
+		LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<Member>("married", cpm,
+			Model.of("Married:"));
+
 		form.add(married);
-		
-		LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>("dateofbirth", cpm, Model.of("Date of birth:"));
+
+		LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>(
+			"dateofbirth", cpm, Model.of("Date of birth:"));
 		form.add(dateofbirth);
 
 
-		LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>("dateofMarriage", cpm, Model.of("Date of marriage:")){
+		LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>(
+			"dateofMarriage", cpm, Model.of("Date of marriage:"))
+		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
-			protected DateTimeField newDateTimeField(String id,
-					IModel<Member> model) {
-				PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());		
-				DateTimeField dateTextField = new DateTimeField(id, textFieldModel );
+			protected DateTimeField newDateTimeField(String id, IModel<Member> model)
+			{
+				PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(),
+					getId());
+				DateTimeField dateTextField = new DateTimeField(id, textFieldModel);
 				return dateTextField;
 			}
-			
+
 		};
 		form.add(dateofMarriage);
-		
+
 		// Create submit button for the form
-		final Button submitButton = new Button("submitButton") {
+		final Button submitButton = new Button("submitButton")
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
-				info("Member:"+person.toString());
+			public void onSubmit()
+			{
+				info("Member:" + person.toString());
 			}
 		};
 
-		form.add(submitButton);	
-		
-		add(feedbackPanel=new FeedbackPanel("feedbackpanel"));
+		form.add(submitButton);
+
+		add(feedbackPanel = new FeedbackPanel("feedbackpanel"));
 		feedbackPanel.setOutputMarkupId(true);
 	}
 }

@@ -28,7 +28,8 @@ import de.alpharogroup.wicket.components.link.LinkUtils;
  * 
  * @author Asterios Raptis
  */
-public class MenuUtils {
+public class MenuUtils
+{
 
 	/**
 	 * Creates the bookmarkable page link.
@@ -45,10 +46,12 @@ public class MenuUtils {
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> createBookmarkablePageLink(
-			String linkId, Class<? extends Page> pageClass, String labelId,
-			String resourceModelKey, Component component) {
-		return LinkUtils.newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey, component);
+	public static BookmarkablePageLink<String> createBookmarkablePageLink(String linkId,
+		Class<? extends Page> pageClass, String labelId, String resourceModelKey,
+		Component component)
+	{
+		return LinkUtils.newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey,
+			component);
 	}
 
 	/**
@@ -60,19 +63,18 @@ public class MenuUtils {
 	 *            the resource model key
 	 * @param component
 	 *            the component
-	 * @param parameters the {@link PageParameters}
+	 * @param parameters
+	 *            the {@link PageParameters}
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem createMenuItem(
-			Class<? extends Page> pageClass, String resourceModelKey,
-			Component component, final PageParameters parameters) {
-		final BookmarkablePageLink<String> bookmarkablePageLink = 
-				new BookmarkablePageLink<String>(
-				MenuPanel.LINK_ID, pageClass, parameters);
-		StringResourceModel stringResourceModel = new StringResourceModel(
-				resourceModelKey, component, null);
-		final MenuItem menuItem = new MenuItem(
-				bookmarkablePageLink, stringResourceModel);
+	public static MenuItem createMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
+		Component component, final PageParameters parameters)
+	{
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
+			MenuPanel.LINK_ID, pageClass, parameters);
+		StringResourceModel stringResourceModel = new StringResourceModel(resourceModelKey,
+			component, null);
+		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
 		return menuItem;
 	}
 
@@ -83,13 +85,12 @@ public class MenuUtils {
 	 *            the string resource model
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem createMenuItem(
-			final StringResourceModel stringResourceModel) {
-		final MenuItem menuItem = new MenuItem(
-				stringResourceModel);
+	public static MenuItem createMenuItem(final StringResourceModel stringResourceModel)
+	{
+		final MenuItem menuItem = new MenuItem(stringResourceModel);
 		return menuItem;
 	}
-	
+
 
 	/**
 	 * Creates the menu item.
@@ -102,17 +103,16 @@ public class MenuUtils {
 	 *            the component
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem createMenuItem(
-			Class<? extends Page> pageClass, String resourceModelKey,
-			Component component) {
+	public static MenuItem createMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
+		Component component)
+	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
-				MenuPanel.LINK_ID, pageClass);
-		StringResourceModel stringResourceModel = new StringResourceModel(
-				resourceModelKey, component, null);
-		final MenuItem menuItem = new MenuItem(
-				bookmarkablePageLink, stringResourceModel);
+			MenuPanel.LINK_ID, pageClass);
+		StringResourceModel stringResourceModel = new StringResourceModel(resourceModelKey,
+			component, null);
+		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
 		return menuItem;
 	}
 
-	
+
 }

@@ -24,66 +24,78 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
  * Convenience class for labeled checkbox.
- * @param <T> the generic type
+ * 
+ * @param <T>
+ *            the generic type
  */
-public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T> {
+public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-		
+
 	/** The CheckBox component. */
 	private CheckBox checkBox;
 
 	/**
 	 * Instantiates a new LabeledCheckboxPanel object.
 	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param labelModel the model of the label
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the model of the label
 	 */
-	public LabeledCheckboxPanel(String id, IModel<T> model, IModel<String> labelModel) {
+	public LabeledCheckboxPanel(String id, IModel<T> model, IModel<String> labelModel)
+	{
 		super(id, model, labelModel);
 		PropertyModel<Boolean> propertyModel = new PropertyModel<Boolean>(model.getObject(), id);
-        add(checkBox = newCheckBox("checkBox", propertyModel));
+		add(checkBox = newCheckBox("checkBox", propertyModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
 
 		String markupId = checkBox.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-  
+
 	}
-	
-	/** 
-	 * Factory method for creating the CheckBox. This method is invoked in the
-	 * constructor from this class and can be overridden so users can
-	 * provide their own version of a CheckBox.
+
+	/**
+	 * Factory method for creating the CheckBox. This method is invoked in the constructor from this
+	 * class and can be overridden so users can provide their own version of a CheckBox.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the created CheckBox
 	 */
-	protected CheckBox newCheckBox(String id, IModel<Boolean> model) {
+	protected CheckBox newCheckBox(String id, IModel<Boolean> model)
+	{
 		return ComponentFactory.newCheckBox(id, model);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getInput() {
+	public String getInput()
+	{
 		return checkBox.getInput();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void convertInput() {
+	public void convertInput()
+	{
 		setConvertedInput(getModel().getObject());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void onBeforeRender() {
+	protected void onBeforeRender()
+	{
 		checkBox.setRequired(isRequired());
 		super.onBeforeRender();
 	}

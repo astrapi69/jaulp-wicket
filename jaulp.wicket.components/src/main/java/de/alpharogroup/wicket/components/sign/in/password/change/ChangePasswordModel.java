@@ -5,7 +5,8 @@ import java.io.Serializable;
 /**
  * The Class ChangePasswordModel captures the data for change the password of a user.
  */
-public class ChangePasswordModel implements Serializable {
+public class ChangePasswordModel implements Serializable
+{
 
 	/**
 	 * The serialVersionUID.
@@ -26,7 +27,8 @@ public class ChangePasswordModel implements Serializable {
 	 *
 	 * @return the current password of a user.
 	 */
-	public String getCurrentPassword() {
+	public String getCurrentPassword()
+	{
 		return currentPassword;
 	}
 
@@ -35,7 +37,8 @@ public class ChangePasswordModel implements Serializable {
 	 *
 	 * @return the new password of a user
 	 */
-	public String getNewPassword() {
+	public String getNewPassword()
+	{
 		return newPassword;
 	}
 
@@ -44,34 +47,41 @@ public class ChangePasswordModel implements Serializable {
 	 *
 	 * @return the repeated new password of a user.
 	 */
-	public String getRepeatNewPassword() {
+	public String getRepeatNewPassword()
+	{
 		return repeatNewPassword;
 	}
 
 	/**
 	 * Sets the current password of a user.
 	 *
-	 * @param currentPassword the new current password of a user.
+	 * @param currentPassword
+	 *            the new current password of a user.
 	 */
-	public void setCurrentPassword(final String currentPassword) {
+	public void setCurrentPassword(final String currentPassword)
+	{
 		this.currentPassword = currentPassword;
 	}
 
 	/**
 	 * Sets the new password of a user.
 	 *
-	 * @param newPassword the new new password of a user.
+	 * @param newPassword
+	 *            the new new password of a user.
 	 */
-	public void setNewPassword(final String newPassword) {
+	public void setNewPassword(final String newPassword)
+	{
 		this.newPassword = newPassword;
 	}
 
 	/**
 	 * Sets the repeated new password of a user.
 	 *
-	 * @param repeatNewPassword the new repeated new password of a user.
+	 * @param repeatNewPassword
+	 *            the new repeated new password of a user.
 	 */
-	public void setRepeatNewPassword(final String repeatNewPassword) {
+	public void setRepeatNewPassword(final String repeatNewPassword)
+	{
 		this.repeatNewPassword = repeatNewPassword;
 	}
 

@@ -15,7 +15,8 @@ import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
-public class RadioChoicePanel extends Panel {
+public class RadioChoicePanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID
@@ -24,26 +25,33 @@ public class RadioChoicePanel extends Panel {
 	private static final List<Brands> TYPES = Arrays.asList(Brands.values());
 
 	private Brands selected
-//	= Brands.LAMBORGINI
+	// = Brands.LAMBORGINI
 	;
 
-	public RadioChoicePanel(String id, IModel<?> model) {
+	public RadioChoicePanel(String id, IModel<?> model)
+	{
 		super(id, model);
-		IChoiceRenderer<Brands> renderer = new IChoiceRenderer<Brands>() {
+		IChoiceRenderer<Brands> renderer = new IChoiceRenderer<Brands>()
+		{
 			private static final long serialVersionUID = 1L;
 
-			public Object getDisplayValue(Brands object) {
+			public Object getDisplayValue(Brands object)
+			{
 				return object.getValue();
 			}
 
-			public String getIdValue(Brands object, int index) {
+			public String getIdValue(Brands object, int index)
+			{
 				return object.getValue();
 			}
+
 			@SuppressWarnings("unused")
-			public Brands getObject(String id,
-					IModel<? extends List<? extends Brands>> choices) {
-				for (Brands brand : choices.getObject()) {
-					if(brand.getValue().equals(id)) {
+			public Brands getObject(String id, IModel<? extends List<? extends Brands>> choices)
+			{
+				for (Brands brand : choices.getObject())
+				{
+					if (brand.getValue().equals(id))
+					{
 						return brand;
 					}
 				}
@@ -52,15 +60,17 @@ public class RadioChoicePanel extends Panel {
 
 		};
 		RadioChoice<Brands> brandingType = new RadioChoice<Brands>("branding",
-				new PropertyModel<Brands>(this, "selected"), TYPES, renderer);
+			new PropertyModel<Brands>(this, "selected"), TYPES, renderer);
 		// dont add a <br> after every radio...
 		brandingType.setSuffix("");
 		brandingType.setOutputMarkupId(true);
-		brandingType.add(new AjaxFormChoiceComponentUpdatingBehavior() {
+		brandingType.add(new AjaxFormChoiceComponentUpdatingBehavior()
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target) {
+			protected void onUpdate(AjaxRequestTarget target)
+			{
 				target.add(getFeedback());
 				info("Selected Type : " + selected.getValue());
 			}
@@ -71,8 +81,9 @@ public class RadioChoicePanel extends Panel {
 		form.add(brandingType);
 	}
 
-	protected Component getFeedback() {
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>) getPage();
+	protected Component getFeedback()
+	{
+		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 }

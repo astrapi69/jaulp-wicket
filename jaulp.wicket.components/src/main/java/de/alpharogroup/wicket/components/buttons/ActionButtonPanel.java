@@ -23,7 +23,8 @@ import de.alpharogroup.wicket.components.actions.Action;
 /**
  * The Class ActionButtonPanel.
  */
-public abstract class ActionButtonPanel extends ButtonPanel {
+public abstract class ActionButtonPanel extends ButtonPanel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -36,7 +37,8 @@ public abstract class ActionButtonPanel extends ButtonPanel {
 	 * @param labelModel
 	 *            the label model
 	 */
-	public ActionButtonPanel(String id, IModel<String> labelModel) {
+	public ActionButtonPanel(String id, IModel<String> labelModel)
+	{
 		super(id, labelModel);
 	}
 
@@ -48,23 +50,25 @@ public abstract class ActionButtonPanel extends ButtonPanel {
 	protected abstract Action getAction();
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id) {
-		return new Button(id) {
+	protected Button newButton(String id)
+	{
+		return new Button(id)
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				getAction().execute();
 			}
 		};

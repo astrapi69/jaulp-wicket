@@ -21,56 +21,85 @@ import java.util.List;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-public class SortCollectionUtilsTest {
+public class SortCollectionUtilsTest
+{
 
-	protected void setUp() throws Exception {
+	protected void setUp() throws Exception
+	{
 	}
 
-	protected void tearDown() throws Exception {
+	protected void tearDown() throws Exception
+	{
 	}
+
 	@Test
-	public void testSortList() {
+	public void testSortList()
+	{
 		List<Person> persons = new ArrayList<Person>();
-        Person obelix = new Person();
-        obelix.setGender( "male" );
-        obelix.setName( "obelix" );
+		Person obelix = new Person();
+		obelix.setGender("male");
+		obelix.setName("obelix");
 
-        Person asterix = new Person();
-        asterix.setGender( "male" );
-        asterix.setName( "asterix" );
+		Person asterix = new Person();
+		asterix.setGender("male");
+		asterix.setName("asterix");
 
-        Person miraculix = new Person();
-        miraculix.setGender( "male" );
-        miraculix.setName( "miraculix" );
+		Person miraculix = new Person();
+		miraculix.setGender("male");
+		miraculix.setName("miraculix");
 
-        persons.add(obelix);
-        persons.add(asterix);
-        persons.add(miraculix);
+		persons.add(obelix);
+		persons.add(asterix);
+		persons.add(miraculix);
 
-        // Unsorted Persons...
-        AssertJUnit.assertTrue("Index of person 'obelix' should be <0> but was <" +persons.indexOf(obelix) + ">.", persons.indexOf(obelix) == 0);
-        AssertJUnit.assertTrue("Index of person 'asterix' should be <1> but was <" +persons.indexOf(asterix) + ">.", persons.indexOf(asterix) == 1);
-        AssertJUnit.assertTrue("Index of person 'miraculix' should be <2> but was <" +persons.indexOf(miraculix) + ">.", persons.indexOf(miraculix) == 2);
+		// Unsorted Persons...
+		AssertJUnit.assertTrue(
+			"Index of person 'obelix' should be <0> but was <" + persons.indexOf(obelix) + ">.",
+			persons.indexOf(obelix) == 0);
+		AssertJUnit.assertTrue(
+			"Index of person 'asterix' should be <1> but was <" + persons.indexOf(asterix) + ">.",
+			persons.indexOf(asterix) == 1);
+		AssertJUnit.assertTrue(
+			"Index of person 'miraculix' should be <2> but was <" + persons.indexOf(miraculix)
+				+ ">.", persons.indexOf(miraculix) == 2);
 
-        SortCollectionUtils.sortList(persons, "name", true);
-        // Sorted Persons by name in ascending order...
-        AssertJUnit.assertTrue("Index of person 'obelix' should be <0> but was <" +persons.indexOf(obelix) + ">.", persons.indexOf(obelix) == 0);
-        AssertJUnit.assertTrue("Index of person 'miraculix' should be <1> but was <" +persons.indexOf(miraculix) + ">.", persons.indexOf(miraculix) == 1);
-        AssertJUnit.assertTrue("Index of person 'asterix' should be <2> but was <" +persons.indexOf(asterix) + ">.", persons.indexOf(asterix) == 2);
+		SortCollectionUtils.sortList(persons, "name", true);
+		// Sorted Persons by name in ascending order...
+		AssertJUnit.assertTrue(
+			"Index of person 'obelix' should be <0> but was <" + persons.indexOf(obelix) + ">.",
+			persons.indexOf(obelix) == 0);
+		AssertJUnit.assertTrue(
+			"Index of person 'miraculix' should be <1> but was <" + persons.indexOf(miraculix)
+				+ ">.", persons.indexOf(miraculix) == 1);
+		AssertJUnit.assertTrue(
+			"Index of person 'asterix' should be <2> but was <" + persons.indexOf(asterix) + ">.",
+			persons.indexOf(asterix) == 2);
 
-        SortCollectionUtils.sortList(persons, "name", false);
-        // Sorted Persons by name in descending order...
-        AssertJUnit.assertTrue("Index of person 'asterix' should be <0> but was <" +persons.indexOf(asterix) + ">.", persons.indexOf(asterix) == 0);
-        AssertJUnit.assertTrue("Index of person 'miraculix' should be <1> but was <" +persons.indexOf(miraculix) + ">.", persons.indexOf(miraculix) == 1);
-        AssertJUnit.assertTrue("Index of person 'obelix' should be <2> but was <" +persons.indexOf(obelix) + ">.", persons.indexOf(obelix) == 2);
-        // set a null value...
-        asterix.setName(null);
-        
-        SortCollectionUtils.sortList(persons, "name", true);
-        // Sorted Persons by name in ascending order with a null value...
-        AssertJUnit.assertTrue("Index of person 'obelix' should be <0> but was <" +persons.indexOf(obelix) + ">.", persons.indexOf(obelix) == 0);
-        AssertJUnit.assertTrue("Index of person 'miraculix' should be <1> but was <" +persons.indexOf(miraculix) + ">.", persons.indexOf(miraculix) == 1);
-        AssertJUnit.assertTrue("Index of person 'asterix' should be <2> but was <" +persons.indexOf(asterix) + ">.", persons.indexOf(asterix) == 2);
+		SortCollectionUtils.sortList(persons, "name", false);
+		// Sorted Persons by name in descending order...
+		AssertJUnit.assertTrue(
+			"Index of person 'asterix' should be <0> but was <" + persons.indexOf(asterix) + ">.",
+			persons.indexOf(asterix) == 0);
+		AssertJUnit.assertTrue(
+			"Index of person 'miraculix' should be <1> but was <" + persons.indexOf(miraculix)
+				+ ">.", persons.indexOf(miraculix) == 1);
+		AssertJUnit.assertTrue(
+			"Index of person 'obelix' should be <2> but was <" + persons.indexOf(obelix) + ">.",
+			persons.indexOf(obelix) == 2);
+		// set a null value...
+		asterix.setName(null);
+
+		SortCollectionUtils.sortList(persons, "name", true);
+		// Sorted Persons by name in ascending order with a null value...
+		AssertJUnit.assertTrue(
+			"Index of person 'obelix' should be <0> but was <" + persons.indexOf(obelix) + ">.",
+			persons.indexOf(obelix) == 0);
+		AssertJUnit.assertTrue(
+			"Index of person 'miraculix' should be <1> but was <" + persons.indexOf(miraculix)
+				+ ">.", persons.indexOf(miraculix) == 1);
+		AssertJUnit.assertTrue(
+			"Index of person 'asterix' should be <2> but was <" + persons.indexOf(asterix) + ">.",
+			persons.indexOf(asterix) == 2);
 
 	}
 

@@ -25,33 +25,41 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 /**
  * Convenience class for labeled TextArea.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
-public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
-	
+public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
+{
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-		
+
 	/** The text area. */
 	private final TextArea<T> textArea;
 
 	/**
 	 * Instantiates a new labeled text area panel.
 	 *
-	 * @param id the id
+	 * @param id
+	 *            the id
 	 */
-	public LabeledTextAreaPanel(String id) {
+	public LabeledTextAreaPanel(String id)
+	{
 		this(id, null, null);
 	}
 
 	/**
 	 * Instantiates a new labeled text area panel.
 	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param labelModel the label model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
 	 */
-	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel) {
+	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel)
+	{
 		super(id, model, labelModel);
 		PropertyModel<T> textAreaModel = new PropertyModel<T>(model.getObject(), id);
 		add(textArea = newTextArea("textArea", textAreaModel));
@@ -65,14 +73,16 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void convertInput() {
+	public void convertInput()
+	{
 		setConvertedInput(textArea.getConvertedInput());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getInput() {
+	public String getInput()
+	{
 		return textArea.getInput();
 	}
 
@@ -81,27 +91,31 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T> {
 	 *
 	 * @return the text area
 	 */
-	public TextArea<T> getTextArea() {
+	public TextArea<T> getTextArea()
+	{
 		return textArea;
 	}
 
 	/**
-	 * Factory method for creating the TextArea. This method is invoked in the
-	 * constructor from this class and can be overridden so users can
-	 * provide their own version of a TextArea.
+	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
+	 * class and can be overridden so users can provide their own version of a TextArea.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the text area
 	 */
-	protected TextArea<T> newTextArea(String id, PropertyModel<T> model) {
+	protected TextArea<T> newTextArea(String id, PropertyModel<T> model)
+	{
 		return ComponentFactory.newTextArea(id, model);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void onBeforeRender() {
+	protected void onBeforeRender()
+	{
 		textArea.setRequired(isRequired());
 		super.onBeforeRender();
 	}

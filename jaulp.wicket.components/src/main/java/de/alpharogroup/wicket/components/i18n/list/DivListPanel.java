@@ -8,9 +8,12 @@ import de.alpharogroup.wicket.components.listview.ListViewPanel;
 
 /**
  * The Class DivListPanel.
- * @param <T> the generic type of the list
+ * 
+ * @param <T>
+ *            the generic type of the list
  */
-public abstract class DivListPanel<T> extends ListViewPanel<T> {
+public abstract class DivListPanel<T> extends ListViewPanel<T>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -18,10 +21,13 @@ public abstract class DivListPanel<T> extends ListViewPanel<T> {
 	/**
 	 * Instantiates a new div list panel.
 	 *
-	 * @param id the id
-	 * @param list the list
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
 	 */
-	public DivListPanel(String id, List<T> list) {
+	public DivListPanel(String id, List<T> list)
+	{
 		super(id, list);
 	}
 
@@ -33,8 +39,8 @@ public abstract class DivListPanel<T> extends ListViewPanel<T> {
 	 * @param content
 	 *            the model
 	 */
-	public DivListPanel(String id,
-			IModel<List<T>> content) {
+	public DivListPanel(String id, IModel<List<T>> content)
+	{
 		super(id, content);
 	}
 

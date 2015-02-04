@@ -30,108 +30,122 @@ import org.jaulp.wicket.dialogs.examples.WicketApplication;
 /**
  * @author asterios
  */
-public class UploadFilePanel extends Panel {
+public class UploadFilePanel extends Panel
+{
 
-    /**
-     * The serialVersionUID.
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public UploadFilePanel( String id ) {
-        super( id );
-        // Add upload form with ajax progress bar
-        final FileUploadForm simpleUploadForm = new FileUploadForm(
-                "ajaxUpload" );
-        add( simpleUploadForm );
-    }
+	public UploadFilePanel(String id)
+	{
+		super(id);
+		// Add upload form with ajax progress bar
+		final FileUploadForm simpleUploadForm = new FileUploadForm("ajaxUpload");
+		add(simpleUploadForm);
+	}
 
-    /**
-     * Form for uploads.
-     */
-    private class FileUploadForm extends Form< Void > {
-        /**
-         * The serialVersionUID.
-         */
-        private static final long serialVersionUID = 1L;
+	/**
+	 * Form for uploads.
+	 */
+	private class FileUploadForm extends Form<Void>
+	{
+		/**
+		 * The serialVersionUID.
+		 */
+		private static final long serialVersionUID = 1L;
 
-        private FileUploadField fileUploadField;
+		private FileUploadField fileUploadField;
 
-        public FileUploadField getFileUploadField() {
+		public FileUploadField getFileUploadField()
+		{
 			return fileUploadField;
 		}
 
 		/**
-         * Construct.
-         *
-         * @param name Component name
-         */
-        public FileUploadForm( String name ) {
-            super( name );
-            // set this form to multipart mode (allways needed for uploads!)
-            setMultiPart( true );
+		 * Construct.
+		 *
+		 * @param name
+		 *            Component name
+		 */
+		public FileUploadForm(String name)
+		{
+			super(name);
+			// set this form to multipart mode (allways needed for uploads!)
+			setMultiPart(true);
 
-            Label lblAddLogo = new Label( "lblAddLogo", "Upload File" );
-            add( lblAddLogo );
+			Label lblAddLogo = new Label("lblAddLogo", "Upload File");
+			add(lblAddLogo);
 
-            Label lblFile = new Label( "lblFile", "File:" );
-            add( lblFile );
+			Label lblFile = new Label("lblFile", "File:");
+			add(lblFile);
 
-            // Add one file input field
-            fileUploadField = new FileUploadField( "fileInput" );
-            add( getFileUploadField() );
+			// Add one file input field
+			fileUploadField = new FileUploadField("fileInput");
+			add(getFileUploadField());
 
-            // Set maximum size to 500K for demo purposes
-            setMaxSize( Bytes.kilobytes( 500 ) );
-        }
+			// Set maximum size to 500K for demo purposes
+			setMaxSize(Bytes.kilobytes(500));
+		}
 
-        /**
-         * @see org.apache.wicket.markup.html.form.Form#onSubmit()
-         */
-        @Override
-        protected void onSubmit() {
-            final FileUpload upload = fileUploadField.getFileUpload();
-            if ( upload != null ) {
-                // Create a new file
-                File newFile = new File( getUploadFolder(),
-                        upload.getClientFileName() );
+		/**
+		 * @see org.apache.wicket.markup.html.form.Form#onSubmit()
+		 */
+		@Override
+		protected void onSubmit()
+		{
+			final FileUpload upload = fileUploadField.getFileUpload();
+			if (upload != null)
+			{
+				// Create a new file
+				File newFile = new File(getUploadFolder(), upload.getClientFileName());
 
-                // Check new file, delete if it allready existed
-                checkFileExists( newFile );
+				// Check new file, delete if it allready existed
+				checkFileExists(newFile);
 
-                try {
-                    // Save to new file
-                    newFile.createNewFile();
-                    upload.writeTo( newFile );
+				try
+				{
+					// Save to new file
+					newFile.createNewFile();
+					upload.writeTo(newFile);
 
-                } catch ( Exception e ) {
-                    throw new IllegalStateException( "Unable to write file" );
-                }
-                onUploadFile();
+				}
+				catch (Exception e)
+				{
+					throw new IllegalStateException("Unable to write file");
+				}
+				onUploadFile();
 
-            }
-        }
-    }
+			}
+		}
+	}
 
-    public void onUploadFile(){
-    }
+	public void onUploadFile()
+	{
+	}
 
-    /**
-     * Check whether the file allready exists, and if so, try to delete it.
-     *
-     * @param newFile the file to check
-     */
-    private void checkFileExists( File newFile ) {
-        if ( newFile.exists() ) {
-            // Try to delete the file
-            if ( !Files.remove( newFile ) ) {
-                throw new IllegalStateException( "Unable to overwrite "
-                        + newFile.getAbsolutePath() );
-            }
-        }
-    }
+	/**
+	 * Check whether the file allready exists, and if so, try to delete it.
+	 *
+	 * @param newFile
+	 *            the file to check
+	 */
+	private void checkFileExists(File newFile)
+	{
+		if (newFile.exists())
+		{
+			// Try to delete the file
+			if (!Files.remove(newFile))
+			{
+				throw new IllegalStateException("Unable to overwrite " + newFile.getAbsolutePath());
+			}
+		}
+	}
 
-    private Folder getUploadFolder() {
-        return WicketApplication.get().getUploadFolder();
-    }
+	private Folder getUploadFolder()
+	{
+		return WicketApplication.get().getUploadFolder();
+	}
 
 }

@@ -12,14 +12,15 @@ import lombok.experimental.Builder;
 
 import org.apache.wicket.request.resource.ResourceReference;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ImageCheckboxModel implements Serializable {
+public class ImageCheckboxModel implements Serializable
+{
 	/**
 	 * The serialVersionUID
 	 */

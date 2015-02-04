@@ -11,7 +11,8 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordModel> {
+public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordModel>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -28,23 +29,22 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	@Getter
 	private Form<?> form;
 
-	public ChangePasswordFormPanel(String id, IModel<ChangePasswordModel> model) {
+	public ChangePasswordFormPanel(String id, IModel<ChangePasswordModel> model)
+	{
 		super(id, model);
 		form = newForm("form", model);
 		add(form);
 		form.add(new ChangePasswordPanel("changePasswordPanel", model));
 		// Create submit button for the form
-		submitButton = newButton("submitButton");			
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", 
-				"global.update.button.label",
-				"Update"));	
+		submitButton = newButton("submitButton");
+		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.update.button.label",
+			"Update"));
 		form.add(submitButton);
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Form.
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -52,35 +52,37 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id, IModel<?> model) {
+	protected Form<?> newForm(String id, IModel<?> model)
+	{
 		return ComponentFactory.newForm(id, model);
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id) {
-		return new Button(id) {
+	protected Button newButton(String id)
+	{
+		return new Button(id)
+		{
 			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				onChangePassword();
 			}
 		};
 	}
 
 	/**
-	 * Factory method for creating the Button Label. This method is invoked in
-	 * the constructor from the derived classes and can be overridden so users
-	 * can provide their own version of a Label.
+	 * Factory method for creating the Button Label. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -90,12 +92,12 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue) {
-		return ComponentFactory.newLabel(id, ResourceModelFactory
-				.newResourceModel(resourceKey, this, defaultValue));
+	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	{
+		return ComponentFactory.newLabel(id,
+			ResourceModelFactory.newResourceModel(resourceKey, this, defaultValue));
 	}
-	
+
 	protected abstract void onChangePassword();
 
 }

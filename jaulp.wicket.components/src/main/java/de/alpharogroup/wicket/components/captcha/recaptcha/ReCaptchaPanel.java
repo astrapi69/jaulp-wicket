@@ -18,66 +18,73 @@ import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
-public abstract class ReCaptchaPanel extends Panel {
+public abstract class ReCaptchaPanel extends Panel
+{
 	private static final long serialVersionUID = 1L;
 	private static final String PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
 	private static final String PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
 
-	public ReCaptchaPanel(String id) {
+	public ReCaptchaPanel(String id)
+	{
 		super(id);
 
-		add(new FormComponent<Serializable>("captcha",
-				new Model<Serializable>()) {
+		add(new FormComponent<Serializable>("captcha", new Model<Serializable>())
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void onComponentTagBody(final MarkupStream markupStream,
-					final ComponentTag openTag) {
-				replaceComponentTagBody(markupStream, openTag, 
-						newReCaptcha(getPublicKey(), getPrivateKey(), false)
-						.createRecaptchaHtml("errorText", "clean", null));
+				final ComponentTag openTag)
+			{
+				replaceComponentTagBody(
+					markupStream,
+					openTag,
+					newReCaptcha(getPublicKey(), getPrivateKey(), false).createRecaptchaHtml(
+						"errorText", "clean", null));
 			}
 
 			@Override
-			public void validate() {
+			public void validate()
+			{
 				final ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
 				reCaptcha.setPrivateKey(getPrivateKey());
 				final String challenge = PageParametersUtils
-						.getParameter(PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD);
+					.getParameter(PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD);
 				String uresponse = PageParametersUtils
-						.getParameter(PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD);
-				if (uresponse == null) {
+					.getParameter(PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD);
+				if (uresponse == null)
+				{
 					uresponse = "";
 				}
-				String remoteAddress = WicketComponentUtils
-				.getHttpServletRequest().getRemoteAddr();
-				final ReCaptchaResponse reCaptchaResponse = reCaptcha
-						.checkAnswer(remoteAddress, challenge, uresponse);
+				String remoteAddress = WicketComponentUtils.getHttpServletRequest().getRemoteAddr();
+				final ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddress,
+					challenge, uresponse);
 
-				if (!reCaptchaResponse.isValid()) {
+				if (!reCaptchaResponse.isValid())
+				{
 					error(ResourceModelFactory.newResourceModel(
-							ResourceBundleKey.builder()
-							.key("kaptcha.invalid.label")
+						ResourceBundleKey.builder().key("kaptcha.invalid.label")
 							.defaultValue("Incorrect answer, type the words from the image again!")
 							.build(), this).getObject());
 				}
 			}
 		});
 	}
-	
-	private ReCaptcha newReCaptcha(String publicKey, String privateKey, boolean includeNoscript) {
-		if(WicketComponentUtils.isSecure(ComponentFinder.getCurrentPage())) {
-			ReCaptcha reCaptcha = ReCaptchaFactory
-					.newSecureReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);
-			((ReCaptchaImpl) reCaptcha).setRecaptchaServer("https://www.google.com/recaptcha/api");
+
+	private ReCaptcha newReCaptcha(String publicKey, String privateKey, boolean includeNoscript)
+	{
+		if (WicketComponentUtils.isSecure(ComponentFinder.getCurrentPage()))
+		{
+			ReCaptcha reCaptcha = ReCaptchaFactory.newSecureReCaptcha(getPublicKey(),
+				getPrivateKey(), includeNoscript);
+			((ReCaptchaImpl)reCaptcha).setRecaptchaServer("https://www.google.com/recaptcha/api");
 			return reCaptcha;
 		}
-		return ReCaptchaFactory
-				.newReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);		
+		return ReCaptchaFactory.newReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);
 	}
-	
+
 	public abstract String getPublicKey();
-	
+
 	public abstract String getPrivateKey();
 
 }

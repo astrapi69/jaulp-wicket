@@ -12,32 +12,37 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TabbedPanelModels<T> implements Serializable {
+public class TabbedPanelModels<T> implements Serializable
+{
 
 	/** The Constant logger. */
-	private static final Logger LOGGER = Logger
-			.getLogger(TabbedPanelModels.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(TabbedPanelModels.class.getName());
 
 	private static final long serialVersionUID = 1L;
 	List<TabModel<T>> tabModels;
-	
-	public TabbedPanelModels<T> add(TabModel<T> tabModel) {
-		if(getTabModels()== null) {
-			LOGGER.info("The list tabModels is null! Please set the list tabModels and add than the Given tabModel.");
+
+	public TabbedPanelModels<T> add(TabModel<T> tabModel)
+	{
+		if (getTabModels() == null)
+		{
+			LOGGER
+				.info("The list tabModels is null! Please set the list tabModels and add than the Given tabModel.");
 			return this;
 		}
 		getTabModels().add(tabModel);
 		return this;
 	}
-	
-	public TabbedPanelModels<T> remove(TabModel<T> tabModel) {
-		if(getTabModels()== null) {
+
+	public TabbedPanelModels<T> remove(TabModel<T> tabModel)
+	{
+		if (getTabModels() == null)
+		{
 			LOGGER.info("The list tabModels is null! Given tabModel can not be removed.");
 			return this;
 		}

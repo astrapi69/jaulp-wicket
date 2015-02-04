@@ -10,23 +10,24 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PersonModel implements Serializable {
+public class PersonModel implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
 
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private String gender;
-	
+
 	private String age;
 
 }

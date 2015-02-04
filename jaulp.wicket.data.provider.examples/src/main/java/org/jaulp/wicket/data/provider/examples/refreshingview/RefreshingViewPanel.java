@@ -22,7 +22,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.data.provider.examples.data.provider.Person;
 
-public class RefreshingViewPanel extends Panel {
+public class RefreshingViewPanel extends Panel
+{
 	/**
 	 * The serialVersionUID.
 	 */
@@ -30,40 +31,45 @@ public class RefreshingViewPanel extends Panel {
 	final Form<?> form;
 	private Person selected;
 
-	public RefreshingViewPanel(String id, IModel<?> model) {
+	public RefreshingViewPanel(String id, IModel<?> model)
+	{
 		super(id, model);
 
 		form = new Form<Person>("form");
 		add(form);
 
 		// create a repeater that will display the list of contacts.
-		RefreshingView<Person> refreshingView = new RefreshingView<Person>(
-				"simple") {
+		RefreshingView<Person> refreshingView = new RefreshingView<Person>("simple")
+		{
 			/**
-					 * The serialVersionUID.
-					 */
-					private static final long serialVersionUID = 1L;
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Iterator<IModel<Person>> getItemModels() {
+			protected Iterator<IModel<Person>> getItemModels()
+			{
 				// for simplicity we only show the first 10 contacts
-//				SortParam<String> sort = new SortParam<String>("firstname",
-//						true);
+				// SortParam<String> sort = new SortParam<String>("firstname",
+				// true);
 				Iterator<Person> contacts = getPersons().iterator();
 
 				// the iterator returns contact objects, but we need it to
 				// return models, we use this handy adapter class to perform
 				// on-the-fly conversion.
-				return new ModelIteratorAdapter<Person>(contacts) {
+				return new ModelIteratorAdapter<Person>(contacts)
+				{
 					@Override
-					protected IModel<Person> model(Person object) {
+					protected IModel<Person> model(Person object)
+					{
 						return new CompoundPropertyModel<Person>(object);
 					}
 				};
 			}
 
 			@Override
-			protected void populateItem(final Item<Person> item) {
+			protected void populateItem(final Item<Person> item)
+			{
 				// populate the row of the repeater
 				IModel<Person> contact = item.getModel();
 				item.add(new ActionPanel("actions", contact));
@@ -72,8 +78,8 @@ public class RefreshingViewPanel extends Panel {
 			}
 
 			@Override
-			protected Item<Person> newItem(String id, int index,
-					IModel<Person> model) {
+			protected Item<Person> newItem(String id, int index, IModel<Person> model)
+			{
 				// this item sets markup class attribute to either 'odd' or
 				// 'even' for decoration
 				return new OddEvenItem<Person>(id, index, model);
@@ -84,8 +90,7 @@ public class RefreshingViewPanel extends Panel {
 		// hierarchy (because it might contain things like form errors that
 		// would be lost if the hierarchy for each item was recreated every
 		// request by default), so we use an item reuse strategy.
-		refreshingView.setItemReuseStrategy(ReuseIfModelsEqualStrategy
-				.getInstance());
+		refreshingView.setItemReuseStrategy(ReuseIfModelsEqualStrategy.getInstance());
 
 		form.add(refreshingView);
 	}
@@ -93,7 +98,8 @@ public class RefreshingViewPanel extends Panel {
 	/**
 	 * Panel that houses row-actions
 	 */
-	private class ActionPanel extends Panel {
+	private class ActionPanel extends Panel
+	{
 		/**
 		 * The serialVersionUID.
 		 */
@@ -105,32 +111,35 @@ public class RefreshingViewPanel extends Panel {
 		 * @param model
 		 *            model for contact
 		 */
-		public ActionPanel(String id, IModel<Person> model) {
+		public ActionPanel(String id, IModel<Person> model)
+		{
 			super(id, model);
 			add(new ModalDialogWithStylePanel("modalDialog"));
-			add(new Link<Object>("select") {
+			add(new Link<Object>("select")
+			{
 				/**
 				 * The serialVersionUID.
 				 */
 				private static final long serialVersionUID = 1L;
 
 				@Override
-				public void onClick() {
-					setSelected((Person) ActionPanel.this
-							.getDefaultModelObject());
+				public void onClick()
+				{
+					setSelected((Person)ActionPanel.this.getDefaultModelObject());
 				}
 			});
 
-			SubmitLink removeLink = new SubmitLink("remove", form) {
+			SubmitLink removeLink = new SubmitLink("remove", form)
+			{
 				/**
 				 * The serialVersionUID.
 				 */
 				private static final long serialVersionUID = 1L;
 
 				@Override
-				public void onSubmit() {
-					Person contact = (Person) ActionPanel.this
-							.getDefaultModelObject();
+				public void onSubmit()
+				{
+					Person contact = (Person)ActionPanel.this.getDefaultModelObject();
 					info("Removed Person " + contact);
 					// DatabaseLocator.getDatabase().delete(contact);
 				}
@@ -143,7 +152,8 @@ public class RefreshingViewPanel extends Panel {
 	/**
 	 * @return selected contact
 	 */
-	public Person getSelected() {
+	public Person getSelected()
+	{
 		return selected;
 	}
 
@@ -152,7 +162,8 @@ public class RefreshingViewPanel extends Panel {
 	 * 
 	 * @param selected
 	 */
-	public void setSelected(Person selected) {
+	public void setSelected(Person selected)
+	{
 		addStateChange();
 		this.selected = selected;
 	}
@@ -164,47 +175,52 @@ public class RefreshingViewPanel extends Panel {
 	 * 
 	 * @return the persons
 	 */
-	protected List<Person> getPersons() {
-		if (persons == null) {
+	protected List<Person> getPersons()
+	{
+		if (persons == null)
+		{
 			persons = new ArrayList<Person>();
-			try {
-				persons.add(new Person("Jamie", "Curtis", ParseDateUtils
-						.parseToDate("12.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Toni", "Montana", ParseDateUtils
-						.parseToDate("02.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Anton", "Pitt", ParseDateUtils
-						.parseToDate("13.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Willy", "Lee", ParseDateUtils
-						.parseToDate("03.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Bruce", "Willis", ParseDateUtils
-						.parseToDate("14.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Henning", "Presley", ParseDateUtils
-						.parseToDate("04.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Michael", "Jackson", ParseDateUtils
-						.parseToDate("15.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Marco", "William", ParseDateUtils
-						.parseToDate("05.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Gabriel", "Spears", ParseDateUtils
-						.parseToDate("16.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Kurt", "Russell", ParseDateUtils
-						.parseToDate("06.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Ralph", "Crow", ParseDateUtils
-						.parseToDate("17.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Peter", "Reilly", ParseDateUtils
-						.parseToDate("07.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Asterix", "Nulty", ParseDateUtils
-						.parseToDate("08.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Obelix", "Bond", ParseDateUtils
-						.parseToDate("18.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Miraculix", "James", ParseDateUtils
-						.parseToDate("09.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Darth", "Schnyder", ParseDateUtils
-						.parseToDate("19.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Angela", "De Niro", ParseDateUtils
-						.parseToDate("10.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
-				persons.add(new Person("Brad", "Pacino", ParseDateUtils
-						.parseToDate("21.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
-			} catch (ParseException e) {
+			try
+			{
+				persons.add(new Person("Jamie", "Curtis", ParseDateUtils.parseToDate("12.12.1960",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Toni", "Montana", ParseDateUtils.parseToDate("02.12.1950",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Anton", "Pitt", ParseDateUtils.parseToDate("13.12.1960",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Willy", "Lee", ParseDateUtils.parseToDate("03.12.1950",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Bruce", "Willis", ParseDateUtils.parseToDate("14.12.1960",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Henning", "Presley", ParseDateUtils.parseToDate(
+					"04.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Michael", "Jackson", ParseDateUtils.parseToDate(
+					"15.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Marco", "William", ParseDateUtils.parseToDate("05.12.1950",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Gabriel", "Spears", ParseDateUtils.parseToDate(
+					"16.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Kurt", "Russell", ParseDateUtils.parseToDate("06.12.1950",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Ralph", "Crow", ParseDateUtils.parseToDate("17.12.1960",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Peter", "Reilly", ParseDateUtils.parseToDate("07.12.1950",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Asterix", "Nulty", ParseDateUtils.parseToDate("08.12.1950",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Obelix", "Bond", ParseDateUtils.parseToDate("18.12.1960",
+					DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Miraculix", "James", ParseDateUtils.parseToDate(
+					"09.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Darth", "Schnyder", ParseDateUtils.parseToDate(
+					"19.12.1960", DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Angela", "De Niro", ParseDateUtils.parseToDate(
+					"10.12.1950", DatePatterns.DOT_DD_MM_YYYY)));
+				persons.add(new Person("Brad", "Pacino", ParseDateUtils.parseToDate("21.12.1960",
+					DatePatterns.DOT_DD_MM_YYYY)));
+			}
+			catch (ParseException e)
+			{
 				e.printStackTrace();
 			}
 		}

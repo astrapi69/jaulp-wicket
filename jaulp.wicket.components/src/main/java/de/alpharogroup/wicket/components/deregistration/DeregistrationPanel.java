@@ -26,8 +26,8 @@ import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
  *
  * @author Asterios Raptis
  */
-public abstract class DeregistrationPanel extends
-		BasePanel<DeregistrationModel> {
+public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -40,7 +40,7 @@ public abstract class DeregistrationPanel extends
 	private Button submitButton;
 
 	private Component motivation;
-	
+
 	private Component contentPanel;
 
 	private Form<?> form;
@@ -50,46 +50,41 @@ public abstract class DeregistrationPanel extends
 	 *
 	 * @param id
 	 *            the id
-	 * @param model the model
+	 * @param model
+	 *            the model
 	 */
-	public DeregistrationPanel(final String id, final IModel<DeregistrationModel> model) {
-		super(id, model);	
+	public DeregistrationPanel(final String id, final IModel<DeregistrationModel> model)
+	{
+		super(id, model);
 		add(contentPanel = newContentPanel("contentPanel"));
 		add(form = new Form<DeregistrationModel>("form", model));
 		form.add(motivation = newMotivation("motivation", model));
 		// Create submit button for the form
-		submitButton = newButton("submitButton");			
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", 
-				"sem.main.global.deregistration.user.label",
-				"Deregister"));	
+		submitButton = newButton("submitButton");
+		submitButton.add(buttonLabel = newButtonLabel("buttonLabel",
+			"sem.main.global.deregistration.user.label", "Deregister"));
 		form.add(submitButton);
 	}
-	
-	protected Component newContentPanel(String id) {
-		ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel.builder()
-				.headerResourceKey(ResourceBundleKey.builder()
-						.key("sem.main.info.frame.deregistration.user.label")
-						.parameters(ListUtils
-								.toObjectArray(getDomainName()))
-						.build())
-				.contentResourceKey(ResourceBundleKey.builder()
-						.key("sem.main.info.frame.deregistration.user.label")
-						.parameters(ListUtils
-								.toObjectArray(getDomainName()))
-						.build())
-				.build()));
-		contentPanel.getHeader().add(
-				new AddJsQueryBehavior("wrap", "<h1></h1>"));
-		contentPanel.getContent().add(
-				new AddJsQueryBehavior("wrap", "<p class=\"lead\"></p>"));
+
+	protected Component newContentPanel(String id)
+	{
+		ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel
+			.builder()
+			.headerResourceKey(
+				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
+					.parameters(ListUtils.toObjectArray(getDomainName())).build())
+			.contentResourceKey(
+				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
+					.parameters(ListUtils.toObjectArray(getDomainName())).build()).build()));
+		contentPanel.getHeader().add(new AddJsQueryBehavior("wrap", "<h1></h1>"));
+		contentPanel.getContent().add(new AddJsQueryBehavior("wrap", "<p class=\"lead\"></p>"));
 		return contentPanel;
-		
+
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in
-	 * the constructor from the derived classes and can be overridden so users
-	 * can provide their own version of a Label.
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -97,14 +92,15 @@ public abstract class DeregistrationPanel extends
 	 *            the resource key
 	 * @return the label
 	 */
-	protected Label newLabel(String id, final ResourceBundleKey resourceKey) {
+	protected Label newLabel(String id, final ResourceBundleKey resourceKey)
+	{
 		return ComponentFactory.newLabel(id, resourceKey, this);
 	}
 
 	/**
-	 * Factory method for creating the LabeledTextAreaPanel. This method is
-	 * invoked in the constructor from the derived classes and can be overridden
-	 * so users can provide their own version of a Form.
+	 * Factory method for creating the LabeledTextAreaPanel. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -112,31 +108,28 @@ public abstract class DeregistrationPanel extends
 	 *            the model
 	 * @return the form
 	 */
-	protected LabeledTextAreaPanel<?> newMotivation(String id,
-			IModel<DeregistrationModel> model) {
-		final IModel<String> labelModel = ResourceModelFactory
-				.newResourceModel(ResourceBundleKey.builder()
-						.key("sem.main.feedback.deregistration.user.label")
-						.defaultValue("Please confirm the deregistration")
-						.parameters(ListUtils
-								.toObjectArray(getDomainName()))
-						.build(), this);
-		final IModel<String> placeholderModel = ResourceModelFactory
-				.newResourceModel(
-						"global.enter.your.deregistration.motivation.label",
-						this, "Enter here your deregistration motivation.");
+	protected LabeledTextAreaPanel<?> newMotivation(String id, IModel<DeregistrationModel> model)
+	{
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("sem.main.feedback.deregistration.user.label")
+				.defaultValue("Please confirm the deregistration")
+				.parameters(ListUtils.toObjectArray(getDomainName())).build(), this);
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.your.deregistration.motivation.label", this,
+			"Enter here your deregistration motivation.");
 		LabeledTextAreaPanel<DeregistrationModel> description = new LabeledTextAreaPanel<DeregistrationModel>(
-				id, model, labelModel) {
+			id, model, labelModel)
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected TextArea<DeregistrationModel> newTextArea(String id,
-					PropertyModel<DeregistrationModel> model) {
-				TextArea<DeregistrationModel> textArea = super.newTextArea(id,
-						model);
-				if (placeholderModel != null) {
-					textArea.add(new AttributeAppender("placeholder",
-							placeholderModel));
+				PropertyModel<DeregistrationModel> model)
+			{
+				TextArea<DeregistrationModel> textArea = super.newTextArea(id, model);
+				if (placeholderModel != null)
+				{
+					textArea.add(new AttributeAppender("placeholder", placeholderModel));
 				}
 				return super.newTextArea(id, model);
 			}
@@ -145,9 +138,8 @@ public abstract class DeregistrationPanel extends
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Form.
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
 	 * 
 	 * @param id
 	 *            the id
@@ -155,35 +147,37 @@ public abstract class DeregistrationPanel extends
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id, IModel<?> model) {		
+	protected Form<?> newForm(String id, IModel<?> model)
+	{
 		return ComponentFactory.newForm(id, model);
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id) {
-		return new Button(id) {
+	protected Button newButton(String id)
+	{
+		return new Button(id)
+		{
 			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
+			public void onSubmit()
+			{
 				onDeregistration();
 			}
 		};
 	}
 
 	/**
-	 * Factory method for creating the Button Label. This method is invoked in
-	 * the constructor from the derived classes and can be overridden so users
-	 * can provide their own version of a Label.
+	 * Factory method for creating the Button Label. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a Label.
 	 * 
 	 * @param id
 	 *            the id
@@ -193,29 +187,34 @@ public abstract class DeregistrationPanel extends
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey,
-			final String defaultValue) {
-		return ComponentFactory.newLabel(id, ResourceModelFactory
-				.newResourceModel(resourceKey, this, defaultValue));
+	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	{
+		return ComponentFactory.newLabel(id,
+			ResourceModelFactory.newResourceModel(resourceKey, this, defaultValue));
 	}
 
-	public Label getButtonLabel() {
+	public Label getButtonLabel()
+	{
 		return buttonLabel;
 	}
 
-	public Button getSubmitButton() {
+	public Button getSubmitButton()
+	{
 		return submitButton;
 	}
 
-	public Component getMotivation() {
+	public Component getMotivation()
+	{
 		return motivation;
 	}
 
-	public Component getContentPanel() {
+	public Component getContentPanel()
+	{
 		return contentPanel;
 	}
 
-	public Form<?> getForm() {
+	public Form<?> getForm()
+	{
 		return form;
 	}
 

@@ -9,17 +9,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Company implements Serializable {
+public class Company implements Serializable
+{
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-    private String name;
+	private String name;
 }

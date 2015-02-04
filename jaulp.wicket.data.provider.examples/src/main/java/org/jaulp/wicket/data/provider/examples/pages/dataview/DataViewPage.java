@@ -19,34 +19,39 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.data.provider.examples.dataview.SortableDataViewPanel;
 
-public class DataViewPage extends WebPage {
+public class DataViewPage extends WebPage
+{
 
 	private static final long serialVersionUID = 1L;
 
-	public DataViewPage(){
+	public DataViewPage()
+	{
 		super();
 
-        initLayout();
+		initLayout();
 	}
 
-    /**
+	/**
 	 * Constructor that is invoked when page is invoked without a session.
 	 *
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public DataViewPage(final PageParameters parameters) {
-    	super(parameters);
+	public DataViewPage(final PageParameters parameters)
+	{
+		super(parameters);
 
-        initLayout();
+		initLayout();
 
 
-    }
+	}
 
-	private void initLayout() {
+	private void initLayout()
+	{
 
-        // Add sortable DataView...
-        SortableDataViewPanel sortableDataViewPanel = new SortableDataViewPanel("sortableDataViewPanel");
-        add(sortableDataViewPanel);
+		// Add sortable DataView...
+		SortableDataViewPanel sortableDataViewPanel = new SortableDataViewPanel(
+			"sortableDataViewPanel");
+		add(sortableDataViewPanel);
 	}
 }

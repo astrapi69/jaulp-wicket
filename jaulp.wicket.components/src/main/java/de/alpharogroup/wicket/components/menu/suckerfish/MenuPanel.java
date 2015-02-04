@@ -26,9 +26,9 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 
-@ImportResources(resources = {
-		@ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
-public class MenuPanel extends BasePanel<Object> {
+@ImportResources(resources = { @ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
+public class MenuPanel extends BasePanel<Object>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 0L;
@@ -40,11 +40,10 @@ public class MenuPanel extends BasePanel<Object> {
 	public static final String LINK_TEXT_ID = "linktext";
 
 	/**
-	 * This appender is used to add a down or right arrow icon if there are
-	 * children.
+	 * This appender is used to add a down or right arrow icon if there are children.
 	 */
-	public static final AttributeAppender menuHasSubmenuAppender = new AttributeAppender(
-			"class", new Model<String>("menu-has-submenu"), " ");
+	public static final AttributeAppender menuHasSubmenuAppender = new AttributeAppender("class",
+		new Model<String>("menu-has-submenu"), " ");
 
 	/** The top menu items. */
 	private final List<MenuItem> topMenuItems = new ArrayList<MenuItem>();
@@ -55,13 +54,12 @@ public class MenuPanel extends BasePanel<Object> {
 	 * @param id
 	 *            the id
 	 */
-	public MenuPanel(final String id) {
+	public MenuPanel(final String id)
+	{
 		super(id);
 		// Add the top menus
-		add(
-				new SubMenuListView("topmenuitems",
-				new PropertyModel<List<MenuItem>>(this, "topMenuItems"), this)
-			);
+		add(new SubMenuListView("topmenuitems", new PropertyModel<List<MenuItem>>(this,
+			"topMenuItems"), this));
 	}
 
 	/**
@@ -70,7 +68,8 @@ public class MenuPanel extends BasePanel<Object> {
 	 * @param menu
 	 *            the menu
 	 */
-	public void addMenu(final MenuItem menu) {
+	public void addMenu(final MenuItem menu)
+	{
 		topMenuItems.add(menu);
 	}
 
@@ -80,9 +79,10 @@ public class MenuPanel extends BasePanel<Object> {
 	 * @param menuItems
 	 *            the new menu items
 	 */
-	public void setMenuItems(final List<MenuItem> menuItems) {
+	public void setMenuItems(final List<MenuItem> menuItems)
+	{
 		topMenuItems.clear();
 		topMenuItems.addAll(menuItems);
 	}
-	
+
 }

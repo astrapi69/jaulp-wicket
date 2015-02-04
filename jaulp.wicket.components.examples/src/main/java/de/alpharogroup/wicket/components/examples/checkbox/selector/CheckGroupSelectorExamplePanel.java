@@ -13,32 +13,33 @@ import de.alpharogroup.wicket.components.examples.radios.Company;
 import de.alpharogroup.wicket.components.form.checkbox.CheckGroupSelectorPanel;
 import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
 
-public class CheckGroupSelectorExamplePanel extends Panel {
+public class CheckGroupSelectorExamplePanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CheckGroupSelectorExamplePanel(String id, IModel<?> model) {
+	public CheckGroupSelectorExamplePanel(String id, IModel<?> model)
+	{
 		super(id, model);
 		final CheckboxModel<Company> checkboxModel = new CheckboxModel<Company>();
-		checkboxModel.setChoices(Arrays.asList(
-				Company.builder().name("Ferrari").build(), 
-				Company.builder().name("Lamborgini").build(), 
-				Company.builder().name("Mazerati").build(), 
-				Company.builder().name("Porsche").build()
-				));
+		checkboxModel.setChoices(Arrays.asList(Company.builder().name("Ferrari").build(), Company
+			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
+			Company.builder().name("Porsche").build()));
 		checkboxModel.setLabelPropertyExpression("name");
 		IModel<CheckboxModel<Company>> checkGroupModel = Model.of(checkboxModel);
-		add(new CheckGroupSelectorPanel<Company>("checkGroupSelectorPanel", checkGroupModel){
+		add(new CheckGroupSelectorPanel<Company>("checkGroupSelectorPanel", checkGroupModel)
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target) {
+			protected void onUpdate(AjaxRequestTarget target)
+			{
 				target.add(getFeedback());
 				info("Selected Types : " + checkboxModel.getSelectedItems());
 			}
@@ -46,8 +47,9 @@ public class CheckGroupSelectorExamplePanel extends Panel {
 
 	}
 
-	protected Component getFeedback() {
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>) getPage();
+	protected Component getFeedback()
+	{
+		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 

@@ -21,7 +21,8 @@ import org.jaulp.wicket.base.enums.ResourceReferenceType;
 /**
  * The Class PackageResourceReferenceWrapper.
  */
-public class PackageResourceReferenceWrapper {
+public class PackageResourceReferenceWrapper
+{
 
 	/** The package resource reference. */
 	private final PackageResourceReference packageResourceReference;
@@ -32,10 +33,14 @@ public class PackageResourceReferenceWrapper {
 	/**
 	 * The Constructor.
 	 *
-	 * @param packageResourceReference the package resource reference
-	 * @param type the type
+	 * @param packageResourceReference
+	 *            the package resource reference
+	 * @param type
+	 *            the type
 	 */
-	public PackageResourceReferenceWrapper(PackageResourceReference packageResourceReference, ResourceReferenceType type) {
+	public PackageResourceReferenceWrapper(PackageResourceReference packageResourceReference,
+		ResourceReferenceType type)
+	{
 		super();
 		this.packageResourceReference = packageResourceReference;
 		this.type = type;
@@ -46,7 +51,8 @@ public class PackageResourceReferenceWrapper {
 	 *
 	 * @return the package resource reference
 	 */
-	public PackageResourceReference getPackageResourceReference() {
+	public PackageResourceReference getPackageResourceReference()
+	{
 		return packageResourceReference;
 	}
 
@@ -55,14 +61,16 @@ public class PackageResourceReferenceWrapper {
 	 *
 	 * @return the type
 	 */
-	public ResourceReferenceType getType() {
+	public ResourceReferenceType getType()
+	{
 		return type;
 	}
-	
-    /**
-     * {@inheritDoc}
-     */
-	public String toString() {
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String toString()
+	{
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("[PackageResourceReferenceWrapper:");
 		buffer.append(" packageResourceReference: ");

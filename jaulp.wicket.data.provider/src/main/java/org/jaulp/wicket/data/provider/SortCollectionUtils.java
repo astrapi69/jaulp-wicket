@@ -23,23 +23,30 @@ import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.ComparatorUtils;
 import net.sourceforge.jaulp.comparators.ComparableComparator;
 
-public final class SortCollectionUtils {
+public final class SortCollectionUtils
+{
 
-	private SortCollectionUtils(){
+	private SortCollectionUtils()
+	{
 
 	}
 
 	/**
 	 * Sort.
 	 *
-	 * @param list the list
-	 * @param property the property
-	 * @param ascending the ascending
+	 * @param list
+	 *            the list
+	 * @param property
+	 *            the property
+	 * @param ascending
+	 *            the ascending
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static<T> void sortList(List<T> list, String property, boolean ascending) {
+	public static <T> void sortList(List<T> list, String property, boolean ascending)
+	{
 		Comparator comparator = new BeanComparator(property, new ComparableComparator());
-		if(ascending) {
+		if (ascending)
+		{
 			comparator = ComparatorUtils.reversedComparator(comparator);
 		}
 		Collections.sort(list, comparator);

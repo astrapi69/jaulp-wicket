@@ -19,34 +19,39 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.data.provider.examples.refreshingview.RefreshingViewPanel;
 
-public class RefreshingViewPage extends WebPage {
+public class RefreshingViewPage extends WebPage
+{
 
 	private static final long serialVersionUID = 1L;
 
-	public RefreshingViewPage(){
+	public RefreshingViewPage()
+	{
 		super();
 
-        initLayout();
+		initLayout();
 	}
 
-    /**
+	/**
 	 * Constructor that is invoked when page is invoked without a session.
 	 *
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public RefreshingViewPage(final PageParameters parameters) {
-    	super(parameters);
+	public RefreshingViewPage(final PageParameters parameters)
+	{
+		super(parameters);
 
-        initLayout();
+		initLayout();
 
 
-    }
+	}
 
-	private void initLayout() {
+	private void initLayout()
+	{
 
-        // Add sortable RefreshingView...
-		RefreshingViewPanel sortableDataViewPanel = new RefreshingViewPanel("sortableDataViewPanel", null);
-        add(sortableDataViewPanel);
+		// Add sortable RefreshingView...
+		RefreshingViewPanel sortableDataViewPanel = new RefreshingViewPanel(
+			"sortableDataViewPanel", null);
+		add(sortableDataViewPanel);
 	}
 }

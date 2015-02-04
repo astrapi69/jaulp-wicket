@@ -5,11 +5,12 @@ import org.jaulp.wicket.base.application.AbstractApplicationRequestCycleListener
 
 import de.alpharogroup.wicket.components.examples.exceptions.ExceptionPage;
 
-public class ApplicationRequestCycleListener extends
-		AbstractApplicationRequestCycleListener {
+public class ApplicationRequestCycleListener extends AbstractApplicationRequestCycleListener
+{
 	private static final long serialVersionUID = 1L;
 
-	public IRequestablePage getExceptionPage(Exception e) {
+	public IRequestablePage getExceptionPage(Exception e)
+	{
 		e.printStackTrace();
 		return new ExceptionPage(e);
 	}

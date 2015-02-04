@@ -20,7 +20,8 @@ import java.io.Serializable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-public class GooglePlusShareModel implements Serializable {
+public class GooglePlusShareModel implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,35 +37,43 @@ public class GooglePlusShareModel implements Serializable {
 
 	private String locale;
 
-	public String getCssClass() {
+	public String getCssClass()
+	{
 		return cssClass;
 	}
 
-	public String getDataAnnotation() {
+	public String getDataAnnotation()
+	{
 		return dataAnnotation;
 	}
 
-	public String getDataWith() {
+	public String getDataWith()
+	{
 		return dataWith;
 	}
 
-	public String getDataHref() {
+	public String getDataHref()
+	{
 		return dataHref;
 	}
 
-	public String getScriptSrc() {
+	public String getScriptSrc()
+	{
 		return scriptSrc;
 	}
 
-	public String getLocale() {
+	public String getLocale()
+	{
 		return locale;
 	}
-	
-	public IModel<GooglePlusShareModel> toModel() {
+
+	public IModel<GooglePlusShareModel> toModel()
+	{
 		return Model.of(this);
 	}
 
-	public static class Builder {
+	public static class Builder
+	{
 		private String cssClass;
 		private String dataAnnotation;
 		private String dataWith;
@@ -72,42 +81,50 @@ public class GooglePlusShareModel implements Serializable {
 		private String scriptSrc;
 		private String locale;
 
-		public Builder cssClass(String cssClass) {
+		public Builder cssClass(String cssClass)
+		{
 			this.cssClass = cssClass;
 			return this;
 		}
 
-		public Builder dataAnnotation(String dataAnnotation) {
+		public Builder dataAnnotation(String dataAnnotation)
+		{
 			this.dataAnnotation = dataAnnotation;
 			return this;
 		}
 
-		public Builder dataWith(String dataWith) {
+		public Builder dataWith(String dataWith)
+		{
 			this.dataWith = dataWith;
 			return this;
 		}
 
-		public Builder dataHref(String dataHref) {
+		public Builder dataHref(String dataHref)
+		{
 			this.dataHref = dataHref;
 			return this;
 		}
 
-		public Builder scriptSrc(String scriptSrc) {
+		public Builder scriptSrc(String scriptSrc)
+		{
 			this.scriptSrc = scriptSrc;
 			return this;
 		}
 
-		public Builder locale(String locale) {
+		public Builder locale(String locale)
+		{
 			this.locale = locale;
 			return this;
 		}
 
-		public GooglePlusShareModel build() {
+		public GooglePlusShareModel build()
+		{
 			return new GooglePlusShareModel(this);
 		}
 	}
 
-	private GooglePlusShareModel(Builder builder) {
+	private GooglePlusShareModel(Builder builder)
+	{
 		this.cssClass = builder.cssClass;
 		this.dataAnnotation = builder.dataAnnotation;
 		this.dataWith = builder.dataWith;

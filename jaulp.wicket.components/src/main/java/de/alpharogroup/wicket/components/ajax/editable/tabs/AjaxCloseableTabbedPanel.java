@@ -24,7 +24,8 @@ import org.apache.wicket.util.lang.Args;
 /**
  * The Class AjaxCloseableTabbedPanel adds functionality to add or remove tabs from the TabbedPanel.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
 public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 {
@@ -69,13 +70,15 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 * @param model
 	 *            model holding the index of the selected tab
 	 */
-	public AjaxCloseableTabbedPanel(final String id, final List<T> tabs, IModel<Integer> model)	{
+	public AjaxCloseableTabbedPanel(final String id, final List<T> tabs, IModel<Integer> model)
+	{
 		super(id, model);
 		setOutputMarkupId(true);
 		setVersioned(false);
 		this.tabs = Args.notNull(tabs, "tabs");
 
-		final IModel<Integer> tabCount = new AbstractReadOnlyModel<Integer>() {
+		final IModel<Integer> tabCount = new AbstractReadOnlyModel<Integer>()
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -94,9 +97,10 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		tabsUlContainer.add(tabsLoop = newTabsLoop("tabs", tabCount));
 
 		add(newPanel());
-	}	
-	
-	protected Loop newTabsLoop(String id, final IModel<Integer> model) {
+	}
+
+	protected Loop newTabsLoop(String id, final IModel<Integer> model)
+	{
 		Loop tabsLoop = new Loop(id, model)
 		{
 			private static final long serialVersionUID = 1L;
@@ -106,18 +110,18 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 			{
 				final int index = item.getIndex();
 				final T tab = AjaxCloseableTabbedPanel.this.tabs.get(index);
-				
+
 				final WebMarkupContainer titleCloseLink = newCloseLink("closeTab", index);
-				
+
 				titleCloseLink.add(newCloseTitle("closeTitle", tab.getCloseTitle(), index));
 				item.add(titleCloseLink);
-				
+
 				final WebMarkupContainer titleLink = newLink("link", index);
 
 				titleLink.add(newTitle("title", tab.getTitle(), index));
 				item.add(titleLink);
 				item.add(new AttributeAppender("class", " label"));
-				
+
 			}
 
 			@Override
@@ -303,7 +307,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 *            index of tab
 	 * @return title component
 	 */
-	protected Component newCloseTitle(final String titleId, final IModel<?> titleModel, final int index)
+	protected Component newCloseTitle(final String titleId, final IModel<?> titleModel,
+		final int index)
 	{
 		return new Label(titleId, titleModel);
 	}
@@ -362,7 +367,6 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 		};
 	}
-	
 
 
 	/**
@@ -411,7 +415,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 			{
 				if (target != null)
 				{
-					onRemoveTab(target, index);					
+					onRemoveTab(target, index);
 				}
 				onAjaxUpdate(target);
 			}
@@ -466,18 +470,18 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 			component = tab.getPanel(TAB_PANEL_ID);
 			if (component == null)
 			{
-				throw new WicketRuntimeException("ITab.getPanel() returned null. TabbedPanel [" +
-					getPath() + "] ITab index [" + currentTab + "]");
+				throw new WicketRuntimeException("ITab.getPanel() returned null. TabbedPanel ["
+					+ getPath() + "] ITab index [" + currentTab + "]");
 			}
 		}
 
 		if (!component.getId().equals(TAB_PANEL_ID))
 		{
 			throw new WicketRuntimeException(
-				"ITab.getPanel() returned a panel with invalid id [" +
-					component.getId() +
-					"]. You must always return a panel with id equal to the provided panelId parameter. TabbedPanel [" +
-					getPath() + "] ITab index [" + currentTab + "]");
+				"ITab.getPanel() returned a panel with invalid id ["
+					+ component.getId()
+					+ "]. You must always return a panel with id equal to the provided panelId parameter. TabbedPanel ["
+					+ getPath() + "] ITab index [" + currentTab + "]");
 		}
 
 		addOrReplace(component);
@@ -533,10 +537,13 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * On new tab.
 	 *
-	 * @param target the target
-	 * @param tab the tab
+	 * @param target
+	 *            the target
+	 * @param tab
+	 *            the tab
 	 */
-	public void onNewTab(final AjaxRequestTarget target, final T tab) {
+	public void onNewTab(final AjaxRequestTarget target, final T tab)
+	{
 		getTabs().add(tab);
 		setSelectedTab(getTabs().size() - 1);
 		target.add(this);
@@ -545,13 +552,17 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * On new tab.
 	 *
-	 * @param target the target
-	 * @param tab the tab
-	 * @param index the index
+	 * @param target
+	 *            the target
+	 * @param tab
+	 *            the tab
+	 * @param index
+	 *            the index
 	 */
-	public void onNewTab(final AjaxRequestTarget target, final T tab,
-			final int index) {
-		if ((index < 0) || (index >= getTabs().size())) {
+	public void onNewTab(final AjaxRequestTarget target, final T tab, final int index)
+	{
+		if ((index < 0) || (index >= getTabs().size()))
+		{
 			throw new IndexOutOfBoundsException();
 		}
 		getTabs().add(index, tab);
@@ -562,13 +573,17 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * On remove tab removes the tab of the given index.
 	 *
-	 * @param target the target
-	 * @param index the index
+	 * @param target
+	 *            the target
+	 * @param index
+	 *            the index
 	 */
-	public void onRemoveTab(final AjaxRequestTarget target, final int index) {
+	public void onRemoveTab(final AjaxRequestTarget target, final int index)
+	{
 		int tabSize = getTabs().size();
 		// there have to be at least one tab on the ajaxTabbedPanel...
-		if (2 <= tabSize && index < tabSize) {
+		if (2 <= tabSize && index < tabSize)
+		{
 			setSelectedTab(index);
 			getTabs().remove(index);
 			target.add(this);
@@ -578,12 +593,16 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * On remove tab removes the given tab if it does exists.
 	 *
-	 * @param target the target
-	 * @param tab the tab
+	 * @param target
+	 *            the target
+	 * @param tab
+	 *            the tab
 	 */
-	public void onRemoveTab(final AjaxRequestTarget target, final T tab) {
+	public void onRemoveTab(final AjaxRequestTarget target, final T tab)
+	{
 		final int index = getTabs().indexOf(tab);
-		if (0 <= index) {
+		if (0 <= index)
+		{
 			onRemoveTab(target, index);
 		}
 	}
@@ -640,7 +659,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 				Boolean visible = visibilities[index];
 				if (visible == null)
 				{
-					if(index == 1 && index == tabs.size()) {
+					if (index == 1 && index == tabs.size())
+					{
 						visible = tabs.get(0).isVisible();
 						visibilities[0] = visible;
 						return visible;

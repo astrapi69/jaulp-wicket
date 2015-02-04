@@ -9,18 +9,21 @@ import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonModel;
 
 @MountPath("public/replace/with/panels")
-public class ReplaceWithPage extends PubliclyBasePage<PersonModel> {
+public class ReplaceWithPage extends PubliclyBasePage<PersonModel>
+{
 
-    /**
+	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	public ReplaceWithPage(final PageParameters parameters) {      
-    }
-	
+
+	public ReplaceWithPage(final PageParameters parameters)
+	{
+	}
+
 	@Override
-	public Component getContainerPanel() {
+	public Component getContainerPanel()
+	{
 		return new ReplaceWithPanel(CONTAINER_PANEL_ID, Model.of(new PersonModel()));
 	}
 }

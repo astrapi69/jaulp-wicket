@@ -28,7 +28,8 @@ import org.apache.wicket.model.StringResourceModel;
  * 
  * @author Asterios Raptis
  */
-public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
+public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -52,8 +53,9 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
 	 * @param componentClass
 	 *            the component class
 	 */
-	public LocalisedChoiceRenderer(final String propertiesKeyPrefix,
-			final Component component, final Class<?> componentClass) {
+	public LocalisedChoiceRenderer(final String propertiesKeyPrefix, final Component component,
+		final Class<?> componentClass)
+	{
 		this.propertiesKeyPrefix = propertiesKeyPrefix;
 		this.component = component;
 		this.componentClass = componentClass;
@@ -68,9 +70,10 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
 	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getDisplayValue(java.lang.Object)
 	 */
 	@Override
-	public Object getDisplayValue(final String object) {
-		StringResourceModel resourceModel = new StringResourceModel(
-				propertiesKeyPrefix + "." + object, component,  null);
+	public Object getDisplayValue(final String object)
+	{
+		StringResourceModel resourceModel = new StringResourceModel(propertiesKeyPrefix + "."
+			+ object, component, null);
 		String value = resourceModel.getObject();
 		return value;
 
@@ -84,22 +87,23 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String> {
 	 * @param index
 	 *            the index
 	 * @return the id value
-	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getIdValue(java.lang.Object,
-	 *      int)
+	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getIdValue(java.lang.Object, int)
 	 */
 	@Override
-	public String getIdValue(final String object, final int index) {
+	public String getIdValue(final String object, final int index)
+	{
 		return object;
 	}
 
-	
-	public String getObject(String id,
-			IModel<? extends List<? extends String>> choices) {
+
+	public String getObject(String id, IModel<? extends List<? extends String>> choices)
+	{
 		// override this method...
 		return null;
 	}
 
-	public Class<?> getComponentClass() {
+	public Class<?> getComponentClass()
+	{
 		return componentClass;
 	}
 }

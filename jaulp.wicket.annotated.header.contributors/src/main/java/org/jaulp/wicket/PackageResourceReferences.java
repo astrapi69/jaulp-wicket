@@ -32,27 +32,30 @@ import org.jaulp.wicket.base.enums.ResourceReferenceType;
 /**
  * The Class PackageResourceReferences.
  */
-public class PackageResourceReferences {
+public class PackageResourceReferences
+{
 
 	/** The Constant instance. */
 	private final static PackageResourceReferences instance = new PackageResourceReferences();
-	
+
 	/**
 	 * Gets the single instance of PackageResourceReferences.
 	 *
 	 * @return single instance of PackageResourceReferences
 	 */
-	public static PackageResourceReferences getInstance() {
+	public static PackageResourceReferences getInstance()
+	{
 		return instance;
 	}
 
 	/** The package resource reference map. */
-	private final Map< Class< ? >, Set<  PackageResourceReferenceWrapper > > packageResourceReferenceMap = new LinkedHashMap< Class< ? >, Set< PackageResourceReferenceWrapper > >();
+	private final Map<Class<?>, Set<PackageResourceReferenceWrapper>> packageResourceReferenceMap = new LinkedHashMap<Class<?>, Set<PackageResourceReferenceWrapper>>();
 
 	/**
 	 * Instantiates a new package resource references.
 	 */
-	private PackageResourceReferences(){
+	private PackageResourceReferences()
+	{
 		super();
 	}
 
@@ -61,24 +64,29 @@ public class PackageResourceReferences {
 	 *
 	 * @return the package resource reference map
 	 */
-	public Map<Class<?>, Set<PackageResourceReferenceWrapper>> getPackageResourceReferenceMap() {
+	public Map<Class<?>, Set<PackageResourceReferenceWrapper>> getPackageResourceReferenceMap()
+	{
 		return packageResourceReferenceMap;
 	}
 
 	/**
 	 * Adds the package resource reference from interfaces.
 	 *
-	 * @param packageResourceReferences the package resource references
-	 * @param searchClass the search class
+	 * @param packageResourceReferences
+	 *            the package resource references
+	 * @param searchClass
+	 *            the search class
 	 * @return 's a set with the founded interfaces from the given search class.
 	 */
-	private Set<PackageResourceReferenceWrapper> addPackageResourceReferenceFromInterfaces(Set<PackageResourceReferenceWrapper> packageResourceReferences,
-            final Class< ? > searchClass){
-		final Class< ? > [] interfaces = searchClass.getInterfaces();
-		for ( int i = 0; i < interfaces.length; i++ ) {
-			final Class< ? > iface = interfaces[ i ];
+	private Set<PackageResourceReferenceWrapper> addPackageResourceReferenceFromInterfaces(
+		Set<PackageResourceReferenceWrapper> packageResourceReferences, final Class<?> searchClass)
+	{
+		final Class<?>[] interfaces = searchClass.getInterfaces();
+		for (int i = 0; i < interfaces.length; i++)
+		{
+			final Class<?> iface = interfaces[i];
 			packageResourceReferences = addFoundPackageResourceReferences(
-					packageResourceReferences, iface);
+				packageResourceReferences, iface);
 		}
 		return packageResourceReferences;
 	}
@@ -86,21 +94,32 @@ public class PackageResourceReferences {
 	/**
 	 * Adds the found package resource references.
 	 *
-	 * @param packageResourceReferences the package resource references
-	 * @param iface the iface
+	 * @param packageResourceReferences
+	 *            the package resource references
+	 * @param iface
+	 *            the iface
 	 * @return the sets the
 	 */
-	private Set<PackageResourceReferenceWrapper> addFoundPackageResourceReferences(Set<PackageResourceReferenceWrapper> packageResourceReferences, final Class< ? > iface ){
-		final Set<PackageResourceReferenceWrapper>  prr =
-			PackageResourceReferences.getInstance().getPackageResourceReferenceMap().get(iface);
-		if(packageResourceReferences != null && !packageResourceReferences.isEmpty()) {
-			if(prr != null && !prr.isEmpty() ){
+	private Set<PackageResourceReferenceWrapper> addFoundPackageResourceReferences(
+		Set<PackageResourceReferenceWrapper> packageResourceReferences, final Class<?> iface)
+	{
+		final Set<PackageResourceReferenceWrapper> prr = PackageResourceReferences.getInstance()
+			.getPackageResourceReferenceMap().get(iface);
+		if (packageResourceReferences != null && !packageResourceReferences.isEmpty())
+		{
+			if (prr != null && !prr.isEmpty())
+			{
 				packageResourceReferences.addAll(prr);
-			} else {
-				
 			}
-		} else {
-			if(prr != null && !prr.isEmpty() ){
+			else
+			{
+
+			}
+		}
+		else
+		{
+			if (prr != null && !prr.isEmpty())
+			{
 				packageResourceReferences = prr;
 			}
 		}
@@ -110,54 +129,65 @@ public class PackageResourceReferences {
 	/**
 	 * Gets the package resource reference.
 	 *
-	 * @param componentClass the component class
+	 * @param componentClass
+	 *            the component class
 	 * @return the package resource reference
 	 */
-	public Set<PackageResourceReferenceWrapper> getPackageResourceReference(Class<?> componentClass) {
-		Set< PackageResourceReferenceWrapper > packageResourceReference = PackageResourceReferences.getInstance()
-		.getPackageResourceReferenceMap().get( componentClass );
-        packageResourceReference = addPackageResourceReferenceFromInterfaces(
-                packageResourceReference, componentClass );
+	public Set<PackageResourceReferenceWrapper> getPackageResourceReference(Class<?> componentClass)
+	{
+		Set<PackageResourceReferenceWrapper> packageResourceReference = PackageResourceReferences
+			.getInstance().getPackageResourceReferenceMap().get(componentClass);
+		packageResourceReference = addPackageResourceReferenceFromInterfaces(
+			packageResourceReference, componentClass);
 		return packageResourceReference;
 	}
 
-    /**
-     * Initialize resources.
-     *
-     * @param packageName the package name
-     * @throws ClassNotFoundException the class not found exception
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-	public void initializeResources(String packageName) throws ClassNotFoundException,
-            IOException {
-        final Map< Class< ? >, ImportResource [] > resourcesMap = ImportResourcesUtils.getImportResources(packageName);
+	/**
+	 * Initialize resources.
+	 *
+	 * @param packageName
+	 *            the package name
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public void initializeResources(String packageName) throws ClassNotFoundException, IOException
+	{
+		final Map<Class<?>, ImportResource[]> resourcesMap = ImportResourcesUtils
+			.getImportResources(packageName);
 
-        for ( final Iterator< Entry< Class< ? >, ImportResource [] >> iter = resourcesMap
-                .entrySet().iterator(); iter.hasNext(); ) {
-            final Entry< Class< ? >, ImportResource [] > entry = iter
-                    .next();
-            final Class< ? > key = entry.getKey();
-            final ImportResource [] value = entry.getValue();
-            final Set< PackageResourceReferenceWrapper > packageResourceReferences = new LinkedHashSet< PackageResourceReferenceWrapper >();
-            for ( int i = 0; i < value.length; i++ ) {
-                final ImportResource importResource = value[ i ];
-                
-                if ( importResource.resourceType().equalsIgnoreCase( "js" ) ) {
-                	PackageResourceReference t =  new PackageResourceReference(key,
-                    		importResource.resourceName());
+		for (final Iterator<Entry<Class<?>, ImportResource[]>> iter = resourcesMap.entrySet()
+			.iterator(); iter.hasNext();)
+		{
+			final Entry<Class<?>, ImportResource[]> entry = iter.next();
+			final Class<?> key = entry.getKey();
+			final ImportResource[] value = entry.getValue();
+			final Set<PackageResourceReferenceWrapper> packageResourceReferences = new LinkedHashSet<PackageResourceReferenceWrapper>();
+			for (int i = 0; i < value.length; i++)
+			{
+				final ImportResource importResource = value[i];
 
-                	packageResourceReferences.add(new PackageResourceReferenceWrapper(t, ResourceReferenceType.JS));
-                } else if ( importResource.resourceType().equalsIgnoreCase(
-                        "css" ) ) {
-                	PackageResourceReference t =  new PackageResourceReference(key,
-                    		importResource.resourceName());
-                	packageResourceReferences.add(new PackageResourceReferenceWrapper(t, ResourceReferenceType.CSS));
-                }
-            }
-            PackageResourceReferences.getInstance().getPackageResourceReferenceMap()
-                    .put( key, packageResourceReferences );
-        }
+				if (importResource.resourceType().equalsIgnoreCase("js"))
+				{
+					PackageResourceReference t = new PackageResourceReference(key,
+						importResource.resourceName());
 
-    }
+					packageResourceReferences.add(new PackageResourceReferenceWrapper(t,
+						ResourceReferenceType.JS));
+				}
+				else if (importResource.resourceType().equalsIgnoreCase("css"))
+				{
+					PackageResourceReference t = new PackageResourceReference(key,
+						importResource.resourceName());
+					packageResourceReferences.add(new PackageResourceReferenceWrapper(t,
+						ResourceReferenceType.CSS));
+				}
+			}
+			PackageResourceReferences.getInstance().getPackageResourceReferenceMap()
+				.put(key, packageResourceReferences);
+		}
+
+	}
 
 }

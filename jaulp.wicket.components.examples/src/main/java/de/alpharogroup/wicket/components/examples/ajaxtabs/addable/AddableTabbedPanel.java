@@ -28,7 +28,8 @@ import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabbedPanelModels;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public class AddableTabbedPanel extends Panel {
+public class AddableTabbedPanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
@@ -38,52 +39,69 @@ public class AddableTabbedPanel extends Panel {
 	@Getter
 	private final AjaxAddableTabbedPanel<ICloseableTab> ajaxTabbedPanel;
 
-	public AddableTabbedPanel(final String id, final IModel<TabbedPanelModels<String>> model) {
+	public AddableTabbedPanel(final String id, final IModel<TabbedPanelModels<String>> model)
+	{
 		super(id, model);
 
 		setDefaultModel(new CompoundPropertyModel<TabbedPanelModels<String>>(model));
 		List<TabModel<String>> tabModels = model.getObject().getTabModels();
-		for (int i = 0; i < tabModels.size(); i++) {			
-			tabs.add(new AbstractContentTab<TabModel<String>>(tabModels.get(i)
-					.getTitle(), Model.of(tabModels.get(i)) , Model.of("x")) {
+		for (int i = 0; i < tabModels.size(); i++)
+		{
+			tabs.add(new AbstractContentTab<TabModel<String>>(tabModels.get(i).getTitle(), Model
+				.of(tabModels.get(i)), Model.of("x"))
+			{
 				private static final long serialVersionUID = 1L;
-				public Panel getPanel(String panelId) {
+
+				public Panel getPanel(String panelId)
+				{
 					Panel p = new TabPanel(panelId, getContent().getObject().getContent());
 					return p;
 				}
 			});
 		}
 
-		add(ajaxTabbedPanel = new AjaxAddableTabbedPanel<ICloseableTab>("tabs", tabs) {
+		add(ajaxTabbedPanel = new AjaxAddableTabbedPanel<ICloseableTab>("tabs", tabs)
+		{
 			private static final long serialVersionUID = 1L;
-			protected WebMarkupContainer newCloseLink(final String linkId, final int index) {
+
+			protected WebMarkupContainer newCloseLink(final String linkId, final int index)
+			{
 				WebMarkupContainer wmc = super.newCloseLink(linkId, index);
 				wmc.add(new AttributeAppender("class", "close label label-warning"));
 				return wmc;
-				
+
 			}
+
 			@Override
-			protected WebMarkupContainer newLink(String linkId, int index) {
+			protected WebMarkupContainer newLink(String linkId, int index)
+			{
 				WebMarkupContainer wmc = super.newLink(linkId, index);
 				wmc.add(new AttributeAppender("class", "label label-success"));
 				return wmc;
 			}
+
 			@Override
-			protected IModel<String> newAddTabLabelModel() {
+			protected IModel<String> newAddTabLabelModel()
+			{
 				return Model.of("+");
 			}
+
 			@Override
-			protected Component newAddTab(String id, IModel<String> model) {
-				WebMarkupContainer addTabContainer = new WebMarkupContainer(id);				
+			protected Component newAddTab(String id, IModel<String> model)
+			{
+				WebMarkupContainer addTabContainer = new WebMarkupContainer(id);
 				addTabContainer.setOutputMarkupId(true);
 				addTabContainer.add(new AttributeAppender("class", " label"));
-				final ModalWindow modalWindow = newAddTabModalWindow("modalWindow", Model.of("Add new tab"));
+				final ModalWindow modalWindow = newAddTabModalWindow("modalWindow",
+					Model.of("Add new tab"));
 				addTabContainer.add(modalWindow);
-				AjaxLink<Void> openModal = new AjaxLink<Void>("openModal") {
+				AjaxLink<Void> openModal = new AjaxLink<Void>("openModal")
+				{
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					public void onClick(AjaxRequestTarget target) {
+					public void onClick(AjaxRequestTarget target)
+					{
 						target.prependJavaScript("Wicket.Window.unloadConfirmation = false;");
 						modalWindow.show(target);
 					}
@@ -94,69 +112,83 @@ public class AddableTabbedPanel extends Panel {
 				addTabContainer.add(openModal);
 				return addTabContainer;
 			}
+
 			@Override
-			protected ModalWindow newAddTabModalWindow(String id,
-					IModel<String> model) {
+			protected ModalWindow newAddTabModalWindow(String id, IModel<String> model)
+			{
 				final ModalWindow modalWindow = new ModalWindow(id);
-			    modalWindow.setOutputMarkupId(true);
-			    modalWindow.setCssClassName(ModalWindow.CSS_CLASS_GRAY);
-			    modalWindow.setTitle(model.getObject());
-			    modalWindow.setInitialHeight(200);
-			    modalWindow.setInitialWidth(300);
-			    modalWindow.setContent(new SaveDialogPanel<String>(modalWindow.getContentId(), Model.of(new String())){
-			    	/**
+				modalWindow.setOutputMarkupId(true);
+				modalWindow.setCssClassName(ModalWindow.CSS_CLASS_GRAY);
+				modalWindow.setTitle(model.getObject());
+				modalWindow.setInitialHeight(200);
+				modalWindow.setInitialWidth(300);
+				modalWindow.setContent(new SaveDialogPanel<String>(modalWindow.getContentId(),
+					Model.of(new String()))
+				{
+					/**
 					 * The serialVersionUID.
 					 */
 					private static final long serialVersionUID = 1L;
+
 					@Override
-					protected void onCancel(AjaxRequestTarget target,
-							Form<?> form) {
+					protected void onCancel(AjaxRequestTarget target, Form<?> form)
+					{
 						super.onCancel(target, form);
 						modalWindow.close(target);
 					}
+
 					@SuppressWarnings("unchecked")
 					@Override
-			    	protected void onSave(AjaxRequestTarget target, Form<?> form) {
-			    		super.onSave(target, form);
-			    		if(target == null) {
-			    			target = ComponentFinder.findAjaxRequestTarget();
-			    		}
-			    		Object value = getModel();
-			    		String v = null;
-			    		if(value instanceof IModel) {
-			    			Object obj = ((IModel<?>) value).getObject();
-			    			if(obj instanceof String) {
-			    				v = (String) obj;
-			    			}
-			    		}
-			    		target.add(ajaxTabbedPanel);
-			    		
-			    		final TabModel<String> newTabModel = new TabModel<>(
-								Model.of(v), Model.of(v), Model.of("x"));
-						
-						AbstractContentTab<TabModel<String>> tab = new AbstractContentTab<TabModel<String>>(newTabModel.getTitle(),
-								Model.of(newTabModel), Model.of("x")) {
+					protected void onSave(AjaxRequestTarget target, Form<?> form)
+					{
+						super.onSave(target, form);
+						if (target == null)
+						{
+							target = ComponentFinder.findAjaxRequestTarget();
+						}
+						Object value = getModel();
+						String v = null;
+						if (value instanceof IModel)
+						{
+							Object obj = ((IModel<?>)value).getObject();
+							if (obj instanceof String)
+							{
+								v = (String)obj;
+							}
+						}
+						target.add(ajaxTabbedPanel);
+
+						final TabModel<String> newTabModel = new TabModel<>(Model.of(v), Model
+							.of(v), Model.of("x"));
+
+						AbstractContentTab<TabModel<String>> tab = new AbstractContentTab<TabModel<String>>(
+							newTabModel.getTitle(), Model.of(newTabModel), Model.of("x"))
+						{
 							private static final long serialVersionUID = 1L;
 
-							public Panel getPanel(String panelId) {
-								Panel p = new TabPanel(panelId, getContent().getObject().getContent());
+							public Panel getPanel(String panelId)
+							{
+								Panel p = new TabPanel(panelId, getContent().getObject()
+									.getContent());
 								return p;
 							}
 						};
 						Object object = AddableTabbedPanel.this.getDefaultModelObject();
-						TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>) object;
+						TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
 						List<TabModel<String>> tabModels = tabbedModel.getTabModels();
 						tabModels.add(newTabModel);
 						ajaxTabbedPanel.onNewTab(target, tab);
 						modalWindow.close(target);
-			    	}
-			    });
+					}
+				});
 				return modalWindow;
 			}
+
 			@Override
-			protected Label newaddTabLabel(String id, IModel<String> model) {
+			protected Label newaddTabLabel(String id, IModel<String> model)
+			{
 				return ComponentFactory.newLabel(id, model);
-			}	
+			}
 		});
 	}
 

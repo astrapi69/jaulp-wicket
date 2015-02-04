@@ -36,66 +36,69 @@ import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 /**
  * @author Asterios Raptis
  */
-public class WicketWikiExample extends WebPage {
+public class WicketWikiExample extends WebPage
+{
 
 	private static final long serialVersionUID = 1L;
 	private final FeedbackPanel feedback;
 
-    public WicketWikiExample( final PageParameters params ) {
-        super( params );
+	public WicketWikiExample(final PageParameters params)
+	{
+		super(params);
 
-        // Construct form and feedback panel and hook them up
-        feedback = new FeedbackPanel( "feedback" );
-        add( feedback );
+		// Construct form and feedback panel and hook them up
+		feedback = new FeedbackPanel("feedback");
+		add(feedback);
 
-        SimpleDropDownChoicePanel simpleDropDownChoicePanel = new SimpleDropDownChoicePanel(
-                "simpleDropDownChoicePanel" );
+		SimpleDropDownChoicePanel simpleDropDownChoicePanel = new SimpleDropDownChoicePanel(
+			"simpleDropDownChoicePanel");
 
-        add( simpleDropDownChoicePanel );
+		add(simpleDropDownChoicePanel);
 
-        BaseDropDownChoicePanel baseDropDownChoicePanel = 
-        		new BaseDropDownChoicePanel("baseDropDownChoicePanel");
+		BaseDropDownChoicePanel baseDropDownChoicePanel = new BaseDropDownChoicePanel(
+			"baseDropDownChoicePanel");
 
-        add( baseDropDownChoicePanel );
+		add(baseDropDownChoicePanel);
 
-        WicketWikiExamplePanel wicketWikiExamplePanel = 
-        		new WicketWikiExamplePanel("wicketWikiExamplePanel");
+		WicketWikiExamplePanel wicketWikiExamplePanel = new WicketWikiExamplePanel(
+			"wicketWikiExamplePanel");
 
-        add( wicketWikiExamplePanel );
+		add(wicketWikiExamplePanel);
 
-        /** The models map. */
-        Map< String, List< String >> modelsMap = new HashMap< String, List< String >>();
+		/** The models map. */
+		Map<String, List<String>> modelsMap = new HashMap<String, List<String>>();
 
-        modelsMap.put( "trademark.audi", Arrays.asList( new String [] {
-                "audi.a4", "audi.a6", "audi.tt" } ) );
-        modelsMap.put( "trademark.cadillac", Arrays.asList( new String [] {
-                "cadillac.cts", "cadillac.dts", "cadillac.escalade",
-                "cadillac.srx", "cadillac.deville" } ) );
-        modelsMap.put(
-                "trademark.ford",
-                Arrays.asList( new String [] { "ford.crown", "ford.escape",
-                        "ford.expedition", "ford.explorer", "ford.f_150" } ) );
+		modelsMap.put("trademark.audi",
+			Arrays.asList(new String[] { "audi.a4", "audi.a6", "audi.tt" }));
+		modelsMap.put(
+			"trademark.cadillac",
+			Arrays.asList(new String[] { "cadillac.cts", "cadillac.dts", "cadillac.escalade",
+					"cadillac.srx", "cadillac.deville" }));
+		modelsMap.put(
+			"trademark.ford",
+			Arrays.asList(new String[] { "ford.crown", "ford.escape", "ford.expedition",
+					"ford.explorer", "ford.f_150" }));
 
-        final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel = new StringTwoDropDownChoicesModel(
-                "trademark.audi", modelsMap );
+		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel = new StringTwoDropDownChoicesModel(
+			"trademark.audi", modelsMap);
 
-        TwoDropDownChoicesPanel twoDropDownChoicesPanel = new TrademarksModelsPanel(
-                "twoDropDownChoicesPanel", stringTwoDropDownChoicesModel,
-                new PropertiesChoiceRenderer(this, this.getClass()),
-                new PropertiesChoiceRenderer(this, this.getClass()) );
-        add(twoDropDownChoicesPanel);
+		TwoDropDownChoicesPanel twoDropDownChoicesPanel = new TrademarksModelsPanel(
+			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(
+				this, this.getClass()), new PropertiesChoiceRenderer(this, this.getClass()));
+		add(twoDropDownChoicesPanel);
 
-        LocalisedDropDownChoicePanel localisedDropDownChoicePanel = new LocalisedDropDownChoicePanel(
-                "localisedDropDownChoicePanel" );
-        add( localisedDropDownChoicePanel );
+		LocalisedDropDownChoicePanel localisedDropDownChoicePanel = new LocalisedDropDownChoicePanel(
+			"localisedDropDownChoicePanel");
+		add(localisedDropDownChoicePanel);
 
-        ThreeDropDownChoicesPanel threeDropDownChoicesPanel = new ThreeDropDownChoicesPanel(
-                "threeDropDownChoicesPanel" );
-        add( threeDropDownChoicesPanel );
-    }
+		ThreeDropDownChoicesPanel threeDropDownChoicesPanel = new ThreeDropDownChoicesPanel(
+			"threeDropDownChoicesPanel");
+		add(threeDropDownChoicesPanel);
+	}
 
-    public FeedbackPanel getFeedback() {
-        return feedback;
-    }
+	public FeedbackPanel getFeedback()
+	{
+		return feedback;
+	}
 
 }

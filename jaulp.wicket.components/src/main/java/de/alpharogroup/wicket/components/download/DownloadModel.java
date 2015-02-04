@@ -11,19 +11,20 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DownloadModel implements Serializable {
+public class DownloadModel implements Serializable
+{
 	private static final long serialVersionUID = 1L;
-	@NonNull 
+	@NonNull
 	private String filename;
-	@NonNull 
-	private String path; 
-	@NonNull 
+	@NonNull
+	private String path;
+	@NonNull
 	private String contentType;
 }

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package org.jaulp.wicket.model.dropdownchoices;
+
 import java.util.List;
 import java.util.Map;
 
@@ -22,21 +23,24 @@ import java.util.Map;
  *
  * @author Asterios Raptis
  */
-public class StringTwoDropDownChoicesModel extends
-        TwoDropDownChoicesModel< String > {
+public class StringTwoDropDownChoicesModel extends TwoDropDownChoicesModel<String>
+{
 
-    /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * Instantiates a new string two drop down choices model.
-     *
-     * @param selectedTrademark the selected trademark
-     * @param modelsMap the models map
-     */
-    public StringTwoDropDownChoicesModel( final String selectedTrademark,
-            final Map< String, List< String >> modelsMap ) {
-        super( selectedTrademark, modelsMap );
-    }
+	/**
+	 * Instantiates a new string two drop down choices model.
+	 *
+	 * @param selectedTrademark
+	 *            the selected trademark
+	 * @param modelsMap
+	 *            the models map
+	 */
+	public StringTwoDropDownChoicesModel(final String selectedTrademark,
+		final Map<String, List<String>> modelsMap)
+	{
+		super(selectedTrademark, modelsMap);
+	}
 
 }

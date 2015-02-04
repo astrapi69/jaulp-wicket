@@ -12,18 +12,19 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
 
-@Getter 
-@Setter 
-@EqualsAndHashCode 
+@Getter
+@Setter
+@EqualsAndHashCode
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ContentModel implements Serializable {
+public class ContentModel implements Serializable
+{
 	private static final long serialVersionUID = 1L;
-	@NonNull 
+	@NonNull
 	private ResourceBundleKey headerResourceKey;
-	@NonNull 
+	@NonNull
 	private ResourceBundleKey contentResourceKey;
 
 }

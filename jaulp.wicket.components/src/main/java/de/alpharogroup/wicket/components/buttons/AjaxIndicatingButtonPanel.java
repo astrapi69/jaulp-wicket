@@ -24,7 +24,8 @@ import org.apache.wicket.model.IModel;
 /**
  * The Class ActionButtonPanel.
  */
-public abstract class AjaxIndicatingButtonPanel extends ButtonPanel {
+public abstract class AjaxIndicatingButtonPanel extends ButtonPanel
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -32,40 +33,45 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel {
 	/**
 	 * Instantiates a new action button panel.
 	 *
-	 * @param id            the id
-	 * @param labelModel            the label model
-	 * @param form the form
+	 * @param id
+	 *            the id
+	 * @param labelModel
+	 *            the label model
+	 * @param form
+	 *            the form
 	 */
-	public AjaxIndicatingButtonPanel(String id, IModel<String> labelModel,
-			final Form<?> form) {
+	public AjaxIndicatingButtonPanel(String id, IModel<String> labelModel, final Form<?> form)
+	{
 		super(id, labelModel, form);
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a Button.
+	 * Factory method for creating the Button. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id) {
-		return new IndicatingAjaxButton(id, getForm()) {
+	protected Button newButton(String id)
+	{
+		return new IndicatingAjaxButton(id, getForm())
+		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onSubmit(final AjaxRequestTarget target,
-					final Form<?> form) {
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
 				target.add(form);
 				AjaxIndicatingButtonPanel.this.onSubmit(target, form);
 			}
 
 			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form) {
+			protected void onError(AjaxRequestTarget target, Form<?> form)
+			{
 			}
 		};
 	}
@@ -73,10 +79,11 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel {
 	/**
 	 * Hook method.
 	 *
-	 * @param target the target
-	 * @param form the form
+	 * @param target
+	 *            the target
+	 * @param form
+	 *            the form
 	 */
-	protected abstract void onSubmit(final AjaxRequestTarget target,
-			final Form<?> form);
+	protected abstract void onSubmit(final AjaxRequestTarget target, final Form<?> form);
 
 }

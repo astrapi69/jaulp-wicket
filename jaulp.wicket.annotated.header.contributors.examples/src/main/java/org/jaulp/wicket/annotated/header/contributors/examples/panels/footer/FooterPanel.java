@@ -24,20 +24,21 @@ import net.sourceforge.jaulp.io.annotations.ImportResources;
 /**
  * @author admin
  */
-@ImportResources( resources = {@ImportResource( resourceName = "FooterPanel.css", resourceType = "css", index = 0 )})
-public class FooterPanel extends BasePanel<Object> {
+@ImportResources(resources = { @ImportResource(resourceName = "FooterPanel.css", resourceType = "css", index = 0) })
+public class FooterPanel extends BasePanel<Object>
+{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public FooterPanel(String id) {
+	public FooterPanel(String id)
+	{
 		super(id);
 
-        // Add the simplest type of label
-        add(new Label("message", "jaulp.wicket"));
+		// Add the simplest type of label
+		add(new Label("message", "jaulp.wicket"));
 	}
 
 }
-

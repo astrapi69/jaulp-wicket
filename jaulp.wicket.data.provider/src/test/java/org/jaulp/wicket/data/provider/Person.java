@@ -18,64 +18,75 @@ package org.jaulp.wicket.data.provider;
 /**
  * The Class Person.
  */
-public class Person {
+public class Person
+{
 
-    /** The name. */
-    String name;
+	/** The name. */
+	String name;
 
-    /** The gender. */
-    String gender;
+	/** The gender. */
+	String gender;
 
-    /**
-     * Instantiates a new person.
-     */
-    public Person() {
-        super();
-    }
+	/**
+	 * Instantiates a new person.
+	 */
+	public Person()
+	{
+		super();
+	}
 
-    /**
-     * Gets the gender.
-     *
-     * @return the gender
-     */
-    public String getGender() {
+	/**
+	 * Gets the gender.
+	 *
+	 * @return the gender
+	 */
+	public String getGender()
+	{
 
-        return gender;
-    }
+		return gender;
+	}
 
-    /**
-     * Gets the name.
-     *
-     * @return the name
-     */
-    public String getName() {
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
+	public String getName()
+	{
 
-        return name;
-    }
+		return name;
+	}
 
-    /**
-     * Sets the gender.
-     *
-     * @param gender the new gender
-     */
-    public void setGender( String gender ) {
-        this.gender = gender;
-    }
+	/**
+	 * Sets the gender.
+	 *
+	 * @param gender
+	 *            the new gender
+	 */
+	public void setGender(String gender)
+	{
+		this.gender = gender;
+	}
 
-    /**
-     * Sets the name.
-     *
-     * @param name the new name
-     */
-    public void setName( String name ) {
-        this.name = name;
-    }
+	/**
+	 * Sets the name.
+	 *
+	 * @param name
+	 *            the new name
+	 */
+	public void setName(String name)
+	{
+		this.name = name;
+	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "Person [name=" + name + ", gender=" + gender + "]";
 	}
 

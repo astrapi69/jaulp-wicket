@@ -10,22 +10,25 @@ import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
-public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M> extends
-		LabeledFormComponentPanel<M> {
+public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
+	extends
+		LabeledFormComponentPanel<M>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	private LocalisedDropDownChoice<T> dropdownChoice;
 
-	public EnumLocalizedDropdownChoicePanel(String id, IModel<M> model,
-			IModel<String> labelModel, List<T> enumValues) {
+	public EnumLocalizedDropdownChoicePanel(String id, IModel<M> model, IModel<String> labelModel,
+		List<T> enumValues)
+	{
 		super(id, model, labelModel);
 		setDefaultModel(model);
 		PropertyModel<T> pm = new PropertyModel<T>(model.getObject(), id);
 		ChoiceRenderer<T> choiceRenderer = new ChoiceRenderer<T>("name", "name");
-		
-		add(dropdownChoice = newLocalisedDropDownChoice("dropdownChoice", pm,
-				enumValues, choiceRenderer));
+
+		add(dropdownChoice = newLocalisedDropDownChoice("dropdownChoice", pm, enumValues,
+			choiceRenderer));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dropdownChoice));
 
@@ -33,42 +36,44 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M> extends
 		add(label = newLabel("label", markupId, getLabel()));
 
 		// Add bootstrap css...
-		getLabelComponent()
-				.add(new AttributeAppender("class", "control-label"));
+		getLabelComponent().add(new AttributeAppender("class", "control-label"));
 
 	}
 
-	protected LocalisedDropDownChoice<T> newLocalisedDropDownChoice(
-			final String id, final IModel<T> model,
-			final List<? extends T> data,
-			final IChoiceRenderer<? super T> renderer) {
-		LocalisedDropDownChoice<T> ddc = new LocalisedDropDownChoice<T>(id,
-				model, data, renderer);
+	protected LocalisedDropDownChoice<T> newLocalisedDropDownChoice(final String id,
+		final IModel<T> model, final List<? extends T> data,
+		final IChoiceRenderer<? super T> renderer)
+	{
+		LocalisedDropDownChoice<T> ddc = new LocalisedDropDownChoice<T>(id, model, data, renderer);
 		return ddc;
 	}
 
-	public LocalisedDropDownChoice<T> getDropdownChoice() {
+	public LocalisedDropDownChoice<T> getDropdownChoice()
+	{
 		return dropdownChoice;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getInput() {
+	public String getInput()
+	{
 		return dropdownChoice.getInput();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void convertInput() {
+	public void convertInput()
+	{
 		setConvertedInput(getModel().getObject());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void onBeforeRender() {
+	protected void onBeforeRender()
+	{
 		dropdownChoice.setRequired(isRequired());
 		super.onBeforeRender();
 	}

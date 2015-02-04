@@ -31,29 +31,35 @@ import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.components.MailtoLabel;
 import org.jaulp.wicket.behaviors.models.MailtoModel;
+
 /**
  * Homepage
  */
-public class HomePage extends WebPage {
+public class HomePage extends WebPage
+{
 
 	private static final long serialVersionUID = 1L;
 
 	// Add any page properties or variables here
 
-    /**
+	/**
 	 * Constructor that is invoked when page is invoked without a session.
 	 *
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public HomePage(final PageParameters parameters) {
-    	StringResourceModel mailtoAddresModel = new StringResourceModel("mailtoAddresModel.value", this, null);
-    	StringResourceModel mailtoViewModel = new StringResourceModel("mailtoViewModel.value", this, null);
-    	MailtoModel mailtoModel = new MailtoModel(mailtoAddresModel, mailtoViewModel );
-    	
-    	add(new MailtoLabel("mailtoLabel", mailtoModel) );
-    	
-    	Button button = new Button("button"){
+	public HomePage(final PageParameters parameters)
+	{
+		StringResourceModel mailtoAddresModel = new StringResourceModel("mailtoAddresModel.value",
+			this, null);
+		StringResourceModel mailtoViewModel = new StringResourceModel("mailtoViewModel.value",
+			this, null);
+		MailtoModel mailtoModel = new MailtoModel(mailtoAddresModel, mailtoViewModel);
+
+		add(new MailtoLabel("mailtoLabel", mailtoModel));
+
+		Button button = new Button("button")
+		{
 
 			/**
 			 * 
@@ -61,15 +67,17 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit() {
-				
+			public void onSubmit()
+			{
+
 			}
-    		
-    	};
-    	add(new AddJsResourceReferenceBehavior(this.getClass(), "functions.js", "func"));
-    	 add(new AddJavascriptBehavior("alertnow();", "xy"));
 
-    	add(new Link<String>("focusRequestExamplePage") {
+		};
+		add(new AddJsResourceReferenceBehavior(this.getClass(), "functions.js", "func"));
+		add(new AddJavascriptBehavior("alertnow();", "xy"));
+
+		add(new Link<String>("focusRequestExamplePage")
+		{
 
 			/**
 			 * 
@@ -77,42 +85,46 @@ public class HomePage extends WebPage {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick() {
-				 setResponsePage(FocusRequestExamplePage.class);
+			public void onClick()
+			{
+				setResponsePage(FocusRequestExamplePage.class);
 			}
 		});
 
-    	add(button);
-    	add(new FaviconBehavior());
+		add(button);
+		add(new FaviconBehavior());
 
-    	AjaxLink<Void> link01 = new AjaxLink<Void>("link01") {
+		AjaxLink<Void> link01 = new AjaxLink<Void>("link01")
+		{
 			private static final long serialVersionUID = 1L;
 
-			public void onClick(AjaxRequestTarget target) {
-		 				 		
+			public void onClick(AjaxRequestTarget target)
+			{
+
 			}
 		};
-		link01.add(new AttributeAppender(
-				"class", "navbarlink"));
+		link01.add(new AttributeAppender("class", "navbarlink"));
 		add(link01);
-		AjaxLink<Void> link02 = new AjaxLink<Void>("link02") {
+		AjaxLink<Void> link02 = new AjaxLink<Void>("link02")
+		{
 			private static final long serialVersionUID = 1L;
 
-			public void onClick(AjaxRequestTarget target) {
-		 				 		
+			public void onClick(AjaxRequestTarget target)
+			{
+
 			}
 		};
 		add(link02);
-    	
-    }
+
+	}
 
 	@Override
-	public void renderHead(IHeaderResponse response) {
+	public void renderHead(IHeaderResponse response)
+	{
 		super.renderHead(response);
-		response.render(JavaScriptHeaderItem
-				.forReference(ApplicationUtils.getJQueryReference()));
-		
+		response.render(JavaScriptHeaderItem.forReference(ApplicationUtils.getJQueryReference()));
+
 	}
-    
-    
+
+
 }

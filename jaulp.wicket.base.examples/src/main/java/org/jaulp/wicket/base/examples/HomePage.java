@@ -22,15 +22,17 @@ import org.jaulp.wicket.base.mainbase.BaseMainPage;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("/home")
-public class HomePage extends BaseMainPage {
+public class HomePage extends BaseMainPage
+{
 	private static final long serialVersionUID = 1L;
 
-    public HomePage(final PageParameters parameters) {
-	super(parameters);
-	
-	add(new MenubarPanel("menubarPanel"));
-	
-	add(new Label("text", Model.of("This is the home page.")));
+	public HomePage(final PageParameters parameters)
+	{
+		super(parameters);
 
-    }
+		add(new MenubarPanel("menubarPanel"));
+
+		add(new Label("text", Model.of("This is the home page.")));
+
+	}
 }

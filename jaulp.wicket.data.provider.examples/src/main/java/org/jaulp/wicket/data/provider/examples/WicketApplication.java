@@ -20,19 +20,21 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.jaulp.wicket.data.provider.examples.pages.home.HomePage;
 
 /**
- * Application object for your web application. If you want to run this application without deploying, run the Start class.
+ * Application object for your web application. If you want to run this application without
+ * deploying, run the Start class.
  */
 public class WicketApplication extends WebApplication
-{  
-    public static final int HTTP_PORT = 9090;
-    public static final int HTTPS_PORT = 9443;  
-    /**
-     * Constructor
-     */
+{
+	public static final int HTTP_PORT = 9090;
+	public static final int HTTPS_PORT = 9443;
+
+	/**
+	 * Constructor
+	 */
 	public WicketApplication()
 	{
 	}
-	
+
 	public Class<? extends Page> getHomePage()
 	{
 		return HomePage.class;

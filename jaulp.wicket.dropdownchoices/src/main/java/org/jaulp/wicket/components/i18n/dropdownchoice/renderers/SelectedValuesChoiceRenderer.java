@@ -27,7 +27,8 @@ import org.apache.wicket.model.StringResourceModel;
  * 
  * @author Asterios Raptis
  */
-public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
+public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -38,7 +39,8 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 	/** The component class. */
 	private final Class<?> componentClass;
 
-	public Class<?> getComponentClass() {
+	public Class<?> getComponentClass()
+	{
 		return componentClass;
 	}
 
@@ -50,8 +52,8 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 	 * @param componentClass
 	 *            the component class
 	 */
-	public SelectedValuesChoiceRenderer(final Component component,
-			final Class<?> componentClass) {
+	public SelectedValuesChoiceRenderer(final Component component, final Class<?> componentClass)
+	{
 		this.component = component;
 		this.componentClass = componentClass;
 	}
@@ -65,21 +67,24 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getDisplayValue(java.lang.Object)
 	 */
 	@Override
-	public Object getDisplayValue(final String object) {
+	public Object getDisplayValue(final String object)
+	{
 		String splitString = "=>";
 		String[] splittedValue = object.split(splitString);
 		StringBuffer sb = new StringBuffer();
-		if (splittedValue.length == 1) {
-			StringResourceModel resourceModel = new StringResourceModel(
-					splittedValue[0], component, null);
+		if (splittedValue.length == 1)
+		{
+			StringResourceModel resourceModel = new StringResourceModel(splittedValue[0],
+				component, null);
 			sb.append(resourceModel.getObject());
-		} else {
-			StringResourceModel resourceModel = new StringResourceModel(
-					splittedValue[0], component, null);
+		}
+		else
+		{
+			StringResourceModel resourceModel = new StringResourceModel(splittedValue[0],
+				component, null);
 			sb.append(resourceModel.getObject());
 			sb.append(splitString);
-			resourceModel = new StringResourceModel(splittedValue[1],
-					component,  null);
+			resourceModel = new StringResourceModel(splittedValue[1], component, null);
 			sb.append(resourceModel.getObject());
 		}
 		return sb.toString();
@@ -93,19 +98,18 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String> {
 	 * @param index
 	 *            the index
 	 * @return the id value
-	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getIdValue(java.lang.Object,
-	 *      int)
+	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getIdValue(java.lang.Object, int)
 	 */
 	@Override
-	public String getIdValue(final String object, final int index) {
+	public String getIdValue(final String object, final int index)
+	{
 		return object;
 	}
 
-	
-	public String getObject(String id,
-			IModel<? extends List<? extends String>> choices) {				
+
+	public String getObject(String id, IModel<? extends List<? extends String>> choices)
+	{
 		return null;
 	}
 
 }
-

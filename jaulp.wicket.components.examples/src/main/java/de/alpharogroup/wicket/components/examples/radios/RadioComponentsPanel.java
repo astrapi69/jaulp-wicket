@@ -6,17 +6,21 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.request.resource.CssResourceReference;
 
-public class RadioComponentsPanel extends Panel {
+public class RadioComponentsPanel extends Panel
+{
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public RadioComponentsPanel(String id) {
+	public RadioComponentsPanel(String id)
+	{
 		super(id);
-		
-		AjaxRadioExamplePanel radioButtonPanel = new AjaxRadioExamplePanel("ajaxRadioExampleButtonPanel", null) {
+
+		AjaxRadioExamplePanel radioButtonPanel = new AjaxRadioExamplePanel(
+			"ajaxRadioExampleButtonPanel", null)
+		{
 
 			/**
 			 * The serialVersionUID.
@@ -26,17 +30,19 @@ public class RadioComponentsPanel extends Panel {
 			/**
 			 * {@inheritDoc}
 			 */
-			public void renderHead(IHeaderResponse response) {
+			public void renderHead(IHeaderResponse response)
+			{
 				response.render(CssHeaderItem.forReference(new CssResourceReference(
-						AjaxRadioExamplePanel.class, "AjaxRadioPanel.css")));
+					AjaxRadioExamplePanel.class, "AjaxRadioPanel.css")));
 
 			}
 		};
-		radioButtonPanel.getAjaxRadioPanel().add(new AttributeAppender("class", "radioButtonPanel"));
+		radioButtonPanel.getAjaxRadioPanel()
+			.add(new AttributeAppender("class", "radioButtonPanel"));
 		add(radioButtonPanel);
-		
+
 		add(new RadioChoicePanel("radioChoicePanel", null));
-		
+
 		add(new RadioGroupExamplePanel("radioGroupPanel", null));
 
 		add(new RadioChoicesListViewExamplePanel("radioChoicesListViewExamplePanel", null));

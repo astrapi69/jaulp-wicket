@@ -19,34 +19,38 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.data.provider.examples.datatable.DataTablePanel;
 
-public class DataTablePage extends WebPage {
+public class DataTablePage extends WebPage
+{
 
 	private static final long serialVersionUID = 1L;
 
-	public DataTablePage(){
+	public DataTablePage()
+	{
 		super();
 
-        initLayout();
+		initLayout();
 	}
 
-    /**
+	/**
 	 * Constructor that is invoked when page is invoked without a session.
 	 *
 	 * @param parameters
 	 *            Page parameters
 	 */
-    public DataTablePage(final PageParameters parameters) {
-    	super(parameters);
+	public DataTablePage(final PageParameters parameters)
+	{
+		super(parameters);
 
-        initLayout();
+		initLayout();
 
 
-    }
+	}
 
-	private void initLayout() {
+	private void initLayout()
+	{
 		DataTablePanel dataTablePanel = new DataTablePanel("dataTablePanel");
 		add(dataTablePanel);
-        
-        
+
+
 	}
 }

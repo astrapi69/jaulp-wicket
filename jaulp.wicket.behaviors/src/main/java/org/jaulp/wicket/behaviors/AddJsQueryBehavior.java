@@ -10,32 +10,36 @@ import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
-public class AddJsQueryBehavior extends Behavior {
+public class AddJsQueryBehavior extends Behavior
+{
 	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger
-			.getLogger(AddJsQueryBehavior.class.getName());
+	protected static final Logger LOGGER = Logger.getLogger(AddJsQueryBehavior.class.getName());
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	CharSequence statementLabel;
 	CharSequence statementArgs;
 
-	public AddJsQueryBehavior(CharSequence statementLabel, CharSequence statementArgs) {
+	public AddJsQueryBehavior(CharSequence statementLabel, CharSequence statementArgs)
+	{
 		Args.notNull(statementLabel, "statementLabel");
 		Args.notNull(statementArgs, "statementArgs");
 		this.statementLabel = statementLabel;
 		this.statementArgs = statementArgs;
 	}
 
-	public void renderHead(Component component, IHeaderResponse response) {
+	public void renderHead(Component component, IHeaderResponse response)
+	{
 		CharSequence renderedStatement = createRenderedStatement(component);
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
-	
-	public CharSequence createRenderedStatement(Component component) {
-		JsStatement statement = new JsQuery(component).$().chain(statementLabel, JsUtils.quotes(statementArgs));
+
+	public CharSequence createRenderedStatement(Component component)
+	{
+		JsStatement statement = new JsQuery(component).$().chain(statementLabel,
+			JsUtils.quotes(statementArgs));
 		// $('#component').statementLabel('statementArgs');
-		return statement.render();		
+		return statement.render();
 	}
 }

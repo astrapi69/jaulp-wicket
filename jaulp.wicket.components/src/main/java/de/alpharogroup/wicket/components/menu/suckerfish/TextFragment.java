@@ -24,7 +24,8 @@ import org.apache.wicket.markup.html.panel.Fragment;
  * 
  * @author Asterios Raptis
  */
-class TextFragment extends Fragment {
+class TextFragment extends Fragment
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 0L;
@@ -34,9 +35,11 @@ class TextFragment extends Fragment {
 	 * 
 	 * @param label
 	 *            the label
-	 * @param markupProvider the {@link MarkupContainer}
+	 * @param markupProvider
+	 *            the {@link MarkupContainer}
 	 */
-	public TextFragment(final Label label, final MarkupContainer markupProvider) {
+	public TextFragment(final Label label, final MarkupContainer markupProvider)
+	{
 		super("linkfragment", "TEXTFRAGMENT", markupProvider);
 		add(label);
 	}
