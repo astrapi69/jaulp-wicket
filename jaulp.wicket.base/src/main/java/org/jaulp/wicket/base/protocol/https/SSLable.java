@@ -23,5 +23,6 @@ import org.apache.wicket.protocol.https.RequireHttps;
  * @author Asterios Raptis
  */
 @RequireHttps
-public interface SSLable {
+public interface SSLable
+{
 }

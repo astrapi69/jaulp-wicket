@@ -5,10 +5,12 @@ import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-public class PageParametersUtilsTest {
+public class PageParametersUtilsTest
+{
 
 	@Test
-	public void testIsNotNullOrEmpty() {
+	public void testIsNotNullOrEmpty()
+	{
 		boolean expected = false;
 		boolean actual = PageParametersUtils.isNotNullOrEmpty(null);
 		AssertJUnit.assertTrue("Should be false.", expected == actual);
@@ -20,8 +22,10 @@ public class PageParametersUtilsTest {
 		actual = PageParametersUtils.isNotNullOrEmpty(sv);
 		AssertJUnit.assertTrue("Should be false.", expected == actual);
 	}
+
 	@Test
-	public void testIsNullOrEmpty() {
+	public void testIsNullOrEmpty()
+	{
 		boolean expected = true;
 		boolean actual = PageParametersUtils.isNullOrEmpty(null);
 		AssertJUnit.assertTrue("Should be true.", expected == actual);

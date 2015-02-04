@@ -19,9 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The Class OnlineSessionUsers holds the mapping between the users that are
- * online and can be applied to get the functionality how many users are online.
- * It saves also the session object.
+ * The Class OnlineSessionUsers holds the mapping between the users that are online and can be
+ * applied to get the functionality how many users are online. It saves also the session object.
  *
  * @param <USER>
  *            the generic type for the users object.
@@ -30,14 +29,14 @@ import java.util.Map;
  * @param <SESSION>
  *            the generic type for the session object.
  */
-public class OnlineSessionUsers<USER, ID, SESSION> extends
-		OnlineUsers<USER, ID> {
+public class OnlineSessionUsers<USER, ID, SESSION> extends OnlineUsers<USER, ID>
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** This map holds which session id references to which session. */
-	private final Map<ID, SESSION> sessionIdToSession = new HashMap<ID, SESSION>();
+	private final Map<ID, SESSION> sessionIdToSession = new HashMap<>();
 
 	/**
 	 * Adds the user online.
@@ -50,7 +49,8 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends
 	 *            the session object
 	 * @return the session id
 	 */
-	public synchronized ID addOnline(USER user, ID sessionId, SESSION session) {
+	public synchronized ID addOnline(USER user, ID sessionId, SESSION session)
+	{
 		sessionIdToSession.put(sessionId, session);
 		return super.addOnline(user, sessionId);
 	}
@@ -68,24 +68,28 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends
 	 *            the new session object
 	 * @return the new session id that is associated with the given user.
 	 */
-	public synchronized ID replaceSessionId(USER user, ID oldSessionId,
-			ID newSessionId, SESSION newSession) {
+	public synchronized ID replaceSessionId(USER user, ID oldSessionId, ID newSessionId,
+		SESSION newSession)
+	{
 		remove(oldSessionId);
 		return addOnline(user, newSessionId, newSession);
 	}
 
 	/**
-	 * Removes the user from the map. This method shell be invoked when the
-	 * session is unbounded from the Application. In wicket is the best way to
-	 * do that in the {@code WebApplication#sessionUnbound(String)}.
+	 * Removes the user from the map. This method shell be invoked when the session is unbounded
+	 * from the Application. In wicket is the best way to do that in the
+	 * {@code WebApplication#sessionUnbound(String)}.
 	 * 
 	 * @param user
 	 *            the user
 	 * @return the session id
 	 */
-	public synchronized ID removeOnline(USER user) {
+	@Override
+	public synchronized ID removeOnline(USER user)
+	{
 		ID sessionId = super.removeOnline(user);
-		if (sessionId != null) {
+		if (sessionId != null)
+		{
 			sessionIdToSession.remove(sessionId);
 		}
 		return sessionId;
@@ -98,7 +102,9 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends
 	 *            the session id
 	 * @return the user
 	 */
-	public synchronized USER remove(ID sessionId) {
+	@Override
+	public synchronized USER remove(ID sessionId)
+	{
 		sessionIdToSession.remove(sessionId);
 		return super.remove(sessionId);
 	}
@@ -110,7 +116,8 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends
 	 *            the session id
 	 * @return the session
 	 */
-	public synchronized SESSION getSession(ID sessionId) {
+	public synchronized SESSION getSession(ID sessionId)
+	{
 		return sessionIdToSession.get(sessionId);
 	}
 
@@ -121,7 +128,8 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends
 	 *            the user
 	 * @return the session
 	 */
-	public synchronized SESSION get(USER user) {
+	public synchronized SESSION get(USER user)
+	{
 		return sessionIdToSession.get(getSessionId(user));
 	}
 

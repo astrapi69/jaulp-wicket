@@ -21,10 +21,13 @@ import org.apache.wicket.Session;
 /**
  * The Interface IApplicationModel holds methods for getting the Application and Session objects.
  *
- * @param <A> the generic type for the Wicket Application.
- * @param <S> the generic type for the Wicket Session.
+ * @param <A>
+ *            the generic type for the Wicket Application.
+ * @param <S>
+ *            the generic type for the Wicket Session.
  */
-public interface IApplicationModel<A extends Application, S extends Session> {
+public interface IApplicationModel<A extends Application, S extends Session>
+{
 
 	/**
 	 * Gets the wicket application.

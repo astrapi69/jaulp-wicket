@@ -53,31 +53,29 @@ public class LabeledHomePage extends BasePage {
 	person.setDateofbirth(new Date());
 	person.setDateofMarriage(new Date());
 
-
-
-	final CompoundPropertyModel<Member> cpm = new CompoundPropertyModel<Member>(
+	final CompoundPropertyModel<Member> cpm = new CompoundPropertyModel<>(
 			person);
 
 	final Form<Member> form = 
-	        new Form<Member>("form", cpm);
+	        new Form<>("form", cpm);
 
 	add(form);
 
-	LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>("name", cpm, Model.of("Name:"));
+	LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<>("name", cpm, Model.of("Name:"));
 
 	form.add(nameTextField);
 		
-	LabeledTextAreaPanel<Member> about = new LabeledTextAreaPanel<Member>("about", cpm,  Model.of("About:"));
+	LabeledTextAreaPanel<Member> about = new LabeledTextAreaPanel<>("about", cpm,  Model.of("About:"));
 	form.add(about);
 	
-	LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<Member>("married", cpm, Model.of("Married:"));
+	LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<>("married", cpm, Model.of("Married:"));
 	
 	form.add(married);
 
-	LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>("dateofbirth", cpm, Model.of("Date of birth:"));
+	LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<>("dateofbirth", cpm, Model.of("Date of birth:"));
 	form.add(dateofbirth);
 
-	LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>("dateofMarriage", cpm, Model.of("Date of marriage:"));
+	LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<>("dateofMarriage", cpm, Model.of("Date of marriage:"));
 	form.add(dateofMarriage);
 	
 //	LabeledAutoCompleteTextfieldPanel<Member> actf = new LabeledAutoCompleteTextfieldPanel<Member>("", cpm, Model.of("city")) {

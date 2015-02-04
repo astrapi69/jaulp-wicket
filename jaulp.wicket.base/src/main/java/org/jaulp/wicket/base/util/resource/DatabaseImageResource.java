@@ -22,7 +22,8 @@ import org.apache.wicket.request.resource.ByteArrayResource;
  * 
  * @author Asterios Raptis
  */
-public class DatabaseImageResource extends ByteArrayResource {
+public class DatabaseImageResource extends ByteArrayResource
+{
 
 	/**
 	 * The serialVersionUID.
@@ -43,7 +44,8 @@ public class DatabaseImageResource extends ByteArrayResource {
 	 * @param data
 	 *            the data
 	 */
-	public DatabaseImageResource(String contentType, byte[] data) {
+	public DatabaseImageResource(String contentType, byte[] data)
+	{
 		super(contentType, data);
 		this.contentType = contentType;
 		this.data = data;
@@ -54,7 +56,8 @@ public class DatabaseImageResource extends ByteArrayResource {
 	 * 
 	 * @return the content type
 	 */
-	public String getContentType() {
+	public String getContentType()
+	{
 		return contentType;
 	}
 
@@ -63,7 +66,8 @@ public class DatabaseImageResource extends ByteArrayResource {
 	 * 
 	 * @return the data
 	 */
-	public byte[] getData() {
+	public byte[] getData()
+	{
 		return data;
 	}
 

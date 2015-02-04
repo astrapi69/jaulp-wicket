@@ -31,12 +31,14 @@ import org.jaulp.wicket.base.util.resource.ByteArrayResourceStreamWriter;
 /**
  * The Class ApplicationUtils.
  */
-public final class ApplicationUtils {
+public final class ApplicationUtils
+{
 
 	/**
 	 * private constructor.
 	 */
-	private ApplicationUtils() {
+	private ApplicationUtils()
+	{
 	}
 
 	/**
@@ -45,9 +47,10 @@ public final class ApplicationUtils {
 	 * @param application
 	 *            the WebApplication
 	 */
-	public static void initializeSpring(WebApplication application) {
+	public static void initializeSpring(WebApplication application)
+	{
 		application.getComponentInstantiationListeners().add(
-				new SpringComponentInjector(application));
+			new SpringComponentInjector(application));
 	}
 
 	/**
@@ -57,17 +60,19 @@ public final class ApplicationUtils {
 	 *            the WebApplication
 	 * @return the context path
 	 */
-	public static String getContextPath(final WebApplication application) {
+	public static String getContextPath(final WebApplication application)
+	{
 		String contextPath = application.getServletContext().getContextPath();
-		if (null != contextPath && !contextPath.isEmpty()) {
+		if (null != contextPath && !contextPath.isEmpty())
+		{
 			return contextPath;
 		}
 		return "";
 	}
 
 	/**
-	 * Gets the real path corresponding to the given virtual path from the given
-	 * WebApplication. This method gets decorated the method of the
+	 * Gets the real path corresponding to the given virtual path from the given WebApplication.
+	 * This method gets decorated the method of the
 	 * {@link javax.servlet.ServletContext#getRealPath(String)}.
 	 * 
 	 * @param application
@@ -77,10 +82,11 @@ public final class ApplicationUtils {
 	 * @return the real path, or null if the translation cannot be performed
 	 */
 
-	public static String getRealPath(final WebApplication application,
-			String path) {
+	public static String getRealPath(final WebApplication application, String path)
+	{
 		String realPath = application.getServletContext().getRealPath(path);
-		if (null != realPath && !realPath.isEmpty()) {
+		if (null != realPath && !realPath.isEmpty())
+		{
 			return realPath;
 		}
 		return "";
@@ -93,12 +99,15 @@ public final class ApplicationUtils {
 	 *            the web application
 	 * @return the request logger
 	 */
-	public static IRequestLogger getRequestLogger(WebApplication webApplication) {
-		if (webApplication == null) {
-			webApplication = (WebApplication) Application.get();
+	public static IRequestLogger getRequestLogger(WebApplication webApplication)
+	{
+		if (webApplication == null)
+		{
+			webApplication = (WebApplication)Application.get();
 		}
 		IRequestLogger requestLogger = webApplication.getRequestLogger();
-		if (requestLogger == null) {
+		if (requestLogger == null)
+		{
 			requestLogger = new RequestLogger();
 		}
 		return requestLogger;
@@ -109,7 +118,8 @@ public final class ApplicationUtils {
 	 * 
 	 * @return the request logger
 	 */
-	public static IRequestLogger getRequestLogger() {
+	public static IRequestLogger getRequestLogger()
+	{
 		return getRequestLogger(null);
 	}
 
@@ -126,24 +136,25 @@ public final class ApplicationUtils {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public static IResourceStream getResourceStream(
-			final WebApplication application, final String path,
-			final String contentType) throws IOException {
-		return new ByteArrayResourceStreamWriter() {
+	public static IResourceStream getResourceStream(final WebApplication application,
+		final String path, final String contentType) throws IOException
+	{
+		return new ByteArrayResourceStreamWriter()
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public String getContentType() {
+			public String getContentType()
+			{
 				return contentType;
 			}
 
 			@Override
-			protected byte[] load() throws IOException {
-				byte[] data = null;
-				final String realPath = ApplicationUtils.getRealPath(
-						application, path);
+			protected byte[] load() throws IOException
+			{
+				final String realPath = ApplicationUtils.getRealPath(application, path);
 				final File file = new File(realPath);
-				data = Files.readBytes(file);
+				byte[] data = Files.readBytes(file);
 				return data;
 			}
 		};
@@ -161,19 +172,22 @@ public final class ApplicationUtils {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	public static IResourceStream getResourceStream(final java.io.File file,
-			final String contentType) throws IOException {
-		return new ByteArrayResourceStreamWriter() {
+		final String contentType) throws IOException
+	{
+		return new ByteArrayResourceStreamWriter()
+		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public String getContentType() {
+			public String getContentType()
+			{
 				return contentType;
 			}
 
 			@Override
-			protected byte[] load() throws IOException {
-				byte[] data = null;
-				data = Files.readBytes(file);
+			protected byte[] load() throws IOException
+			{
+				byte[] data = Files.readBytes(file);
 				return data;
 			}
 		};
@@ -186,8 +200,8 @@ public final class ApplicationUtils {
 	 *            the application
 	 * @return the default jquery reference
 	 */
-	public static ResourceReference getJQueryReference(
-			final Application application) {
+	public static ResourceReference getJQueryReference(final Application application)
+	{
 		return application.getJavaScriptLibrarySettings().getJQueryReference();
 	}
 
@@ -196,42 +210,46 @@ public final class ApplicationUtils {
 	 *
 	 * @return the default jquery reference
 	 */
-	public static ResourceReference getJQueryReference() {
+	public static ResourceReference getJQueryReference()
+	{
 		return getJQueryReference(Application.get());
 	}
 
 	/**
-	 * Sets an {@link IHeaderResponseDecorator} for the given application to use
-	 * to decorate header responses.
+	 * Sets an {@link IHeaderResponseDecorator} for the given application to use to decorate header
+	 * responses.
 	 *
 	 * @param application
 	 *            the application
 	 * @param footerFilterName
 	 *            the footer filter name
 	 */
-	public static void setHeaderResponseDecorator(
-			final Application application, final String footerFilterName) {
-		application.setHeaderResponseDecorator(new IHeaderResponseDecorator() {
-			public IHeaderResponse decorate(IHeaderResponse response) {
-				return new JavaScriptFilteredIntoFooterHeaderResponse(response,
-						footerFilterName);
+	public static void setHeaderResponseDecorator(final Application application,
+		final String footerFilterName)
+	{
+		application.setHeaderResponseDecorator(new IHeaderResponseDecorator()
+		{
+			@Override
+			public IHeaderResponse decorate(IHeaderResponse response)
+			{
+				return new JavaScriptFilteredIntoFooterHeaderResponse(response, footerFilterName);
 			}
 		});
 	}
 
 	/**
-	 * Sets the footer header response for the given application from the given
-	 * footerFilterName.
+	 * Sets the footer header response for the given application from the given footerFilterName.
 	 *
 	 * @param application
 	 *            the application
 	 * @param footerFilterName
-	 *            the name of the filter that you will use for your footer
-	 *            container
-	 * @deprecated use instead {@link ApplicationUtils#setHeaderResponseDecorator(Application, String)}
+	 *            the name of the filter that you will use for your footer container
+	 * @deprecated use instead
+	 *             {@link ApplicationUtils#setHeaderResponseDecorator(Application, String)}
 	 */
 	public static void setFooterHeaderResponse(final Application application,
-			final String footerFilterName) {
+		final String footerFilterName)
+	{
 		setHeaderResponseDecorator(application, footerFilterName);
 	}
 
@@ -241,14 +259,12 @@ public final class ApplicationUtils {
 	 * @param application
 	 *            the new debug settings for development
 	 */
-	public static void setDebugSettingsForDevelopment(
-			final Application application) {
+	public static void setDebugSettingsForDevelopment(final Application application)
+	{
 		application.getDebugSettings().setComponentUseCheck(true);
 		application.getDebugSettings().setOutputMarkupContainerClassName(true);
-		application.getDebugSettings()
-				.setLinePreciseReportingOnAddComponentEnabled(true);
-		application.getDebugSettings()
-				.setLinePreciseReportingOnNewComponentEnabled(true);
+		application.getDebugSettings().setLinePreciseReportingOnAddComponentEnabled(true);
+		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(true);
 		application.getDebugSettings().setAjaxDebugModeEnabled(true);
 		application.getDebugSettings().setDevelopmentUtilitiesEnabled(true);
 		application.getDebugSettings().setOutputComponentPath(true);
@@ -260,8 +276,8 @@ public final class ApplicationUtils {
 	 * @param application
 	 *            the new debug settings for development
 	 */
-	public static void setDebugSettingsForDeployment(
-			final Application application) {
+	public static void setDebugSettingsForDeployment(final Application application)
+	{
 		application.getMarkupSettings().setStripComments(true);
 		// The resources are never polled. This are properties, html,
 		// css, js files.
@@ -272,13 +288,11 @@ public final class ApplicationUtils {
 		application.getDebugSettings().setComponentUseCheck(false);
 		application.getDebugSettings().setAjaxDebugModeEnabled(false);
 		application.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
-		
+
 		application.getDebugSettings().setOutputComponentPath(false);
-		application.getDebugSettings().setOutputMarkupContainerClassName(false);		
-		application.getDebugSettings()
-				.setLinePreciseReportingOnAddComponentEnabled(false);
-		application.getDebugSettings()
-				.setLinePreciseReportingOnNewComponentEnabled(false);
+		application.getDebugSettings().setOutputMarkupContainerClassName(false);
+		application.getDebugSettings().setLinePreciseReportingOnAddComponentEnabled(false);
+		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(false);
 	}
 
 	/**
@@ -287,7 +301,8 @@ public final class ApplicationUtils {
 	 * @param application
 	 *            the new settings for deployment
 	 */
-	public static void setSettingsForDeployment(final Application application) {
+	public static void setSettingsForDeployment(final Application application)
+	{
 		// The resources are polled every second. This are properties, html,
 		// css, js files.
 		application.getResourceSettings().setResourcePollFrequency(null);
@@ -295,8 +310,8 @@ public final class ApplicationUtils {
 		application.getDebugSettings().setAjaxDebugModeEnabled(false);
 		application.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
 		application.getMarkupSettings().setStripComments(true);
-		application.getResourceSettings().setJavaScriptCompressor(
-				new DefaultJavaScriptCompressor());
+		application.getResourceSettings()
+			.setJavaScriptCompressor(new DefaultJavaScriptCompressor());
 	}
 
 	/**
@@ -307,55 +322,54 @@ public final class ApplicationUtils {
 	 * @param applicationRequestCycleListener
 	 *            the application request cycle listener
 	 */
-	public static void setExceptionSettingsForDeployment(
-			final Application application,
-			final AbstractRequestCycleListener applicationRequestCycleListener) {
+	public static void setExceptionSettingsForDeployment(final Application application,
+		final AbstractRequestCycleListener applicationRequestCycleListener)
+	{
 		// show the exception page from us...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-				IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+			IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
 		// In case of unhandled exception redirect it to a custom page
-		application.getRequestCycleListeners().add(
-				applicationRequestCycleListener);
+		application.getRequestCycleListeners().add(applicationRequestCycleListener);
 	}
 
 	/**
-	 * Sets the exception settings for development mode for the given
-	 * application.
+	 * Sets the exception settings for development mode for the given application.
 	 *
 	 * @param application
 	 *            the new exception settings for development
 	 */
-	public static void setExceptionSettingsForDevelopment(
-			final Application application) {
+	public static void setExceptionSettingsForDevelopment(final Application application)
+	{
 		// show the exception page from wicket...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-				IExceptionSettings.SHOW_EXCEPTION_PAGE);
+			IExceptionSettings.SHOW_EXCEPTION_PAGE);
 	}
 
 	/**
-	 * Adds the given file patterns to package resource guard from the given
-	 * application.
+	 * Adds the given file patterns to package resource guard from the given application.
 	 *
 	 * @param application
 	 *            the application
 	 * @param patterns
 	 *            the patterns
 	 */
-	public static void addFilePatternsToPackageResourceGuard(
-			final Application application, String... patterns) {
-		IPackageResourceGuard packageResourceGuard = application
-				.getResourceSettings().getPackageResourceGuard();
-		if (packageResourceGuard instanceof SecurePackageResourceGuard) {
-			SecurePackageResourceGuard guard = (SecurePackageResourceGuard) packageResourceGuard;
-			for (String pattern : patterns) {
+	public static void addFilePatternsToPackageResourceGuard(final Application application,
+		String... patterns)
+	{
+		IPackageResourceGuard packageResourceGuard = application.getResourceSettings()
+			.getPackageResourceGuard();
+		if (packageResourceGuard instanceof SecurePackageResourceGuard)
+		{
+			SecurePackageResourceGuard guard = (SecurePackageResourceGuard)packageResourceGuard;
+			for (String pattern : patterns)
+			{
 				guard.addPattern(pattern);
 			}
 		}
 	}
 
 	/**
-	 * Sets the root request mapper for the given application from the given
-	 * httpPort and httpsPort.
+	 * Sets the root request mapper for the given application from the given httpPort and httpsPort.
 	 *
 	 * @param application
 	 *            the application
@@ -364,18 +378,17 @@ public final class ApplicationUtils {
 	 * @param httpsPort
 	 *            the https port
 	 */
-	public static void setRootRequestMapper(final Application application,
-			final int httpPort, final int httpsPort) {
-		application.setRootRequestMapper(new HttpsMapper(application
-				.getRootRequestMapper(), new HttpsConfig(httpPort, httpsPort)));
+	public static void setRootRequestMapper(final Application application, final int httpPort,
+		final int httpsPort)
+	{
+		application.setRootRequestMapper(new HttpsMapper(application.getRootRequestMapper(),
+			new HttpsConfig(httpPort, httpsPort)));
 	}
 
 	/**
-	 * Sets the RootRequestMapper for the given application from the given
-	 * httpPort and httpsPort.
-	 * Note: if the configuration type is
-	 * RuntimeConfigurationType.DEVELOPMENT then only HTTP scheme will be
-	 * returned.
+	 * Sets the RootRequestMapper for the given application from the given httpPort and httpsPort.
+	 * Note: if the configuration type is RuntimeConfigurationType.DEVELOPMENT then only HTTP scheme
+	 * will be returned.
 	 *
 	 * @param application
 	 *            the application
@@ -384,19 +397,22 @@ public final class ApplicationUtils {
 	 * @param httpsPort
 	 *            the https port
 	 */
-	public static void setRootRequestMapperForDevelopment(
-			final Application application, final int httpPort,
-			final int httpsPort) {
-		application.setRootRequestMapper(new HttpsMapper(application
-				.getRootRequestMapper(), new HttpsConfig(httpPort, httpsPort)) {
+	public static void setRootRequestMapperForDevelopment(final Application application,
+		final int httpPort, final int httpsPort)
+	{
+		application.setRootRequestMapper(new HttpsMapper(application.getRootRequestMapper(),
+			new HttpsConfig(httpPort, httpsPort))
+		{
 			@Override
-			protected Scheme getDesiredSchemeFor(
-					Class<? extends IRequestablePage> pageClass) {
-				if (application.getConfigurationType().equals(
-						RuntimeConfigurationType.DEVELOPMENT)) {
+			protected Scheme getDesiredSchemeFor(Class<? extends IRequestablePage> pageClass)
+			{
+				if (application.getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT))
+				{
 					// is in development mode, returning Scheme.HTTP...
 					return Scheme.HTTP;
-				} else {
+				}
+				else
+				{
 					// not in development mode, letting the mapper decide
 					return super.getDesiredSchemeFor(pageClass);
 				}
@@ -405,17 +421,19 @@ public final class ApplicationUtils {
 	}
 
 	/**
-	 * Use this method to enable hot deploy of your html templates on development.
-	 * Works only with jetty. Only for 
+	 * Use this method to enable hot deploy of your html templates on development. Works only with
+	 * jetty. Only for
 	 *
-	 * @param application the new html hot deploy
+	 * @param application
+	 *            the new html hot deploy
 	 */
-	public static void setHtmlHotDeploy(final WebApplication application) {
-		application.getResourceSettings().setResourcePollFrequency(
-				Duration.ONE_SECOND);
+	public static void setHtmlHotDeploy(final WebApplication application)
+	{
+		application.getResourceSettings().setResourcePollFrequency(Duration.ONE_SECOND);
 		String slash = "/";
 		String realPath = application.getServletContext().getRealPath(slash);
-		if (realPath != null && !realPath.endsWith(slash)) {
+		if (realPath != null && !realPath.endsWith(slash))
+		{
 			realPath += slash;
 		}
 		String javaSourcePath = realPath + "../java";
@@ -425,35 +443,43 @@ public final class ApplicationUtils {
 	}
 
 	/**
-	 * Adds the given resourcePath to the resource finder from the given application. 
+	 * Adds the given resourcePath to the resource finder from the given application.
+	 * 
 	 * @see {@link org.apache.wicket.settings.IResourceSettings#getResourceFinders()}
 	 *
-	 * @param application the application
-	 * @param resourcePath the resource path
+	 * @param application
+	 *            the application
+	 * @param resourcePath
+	 *            the resource path
 	 */
-	public static void addResourceFinder(final WebApplication application,
-			String resourcePath) {
-		application
-				.getResourceSettings()
-				.getResourceFinders()
-				.add(new WebApplicationPath(application.getServletContext(),
-						resourcePath));
+	public static void addResourceFinder(final WebApplication application, String resourcePath)
+	{
+		application.getResourceSettings().getResourceFinders()
+			.add(new WebApplicationPath(application.getServletContext(), resourcePath));
 	}
-	
+
 
 	/**
-	 * Can be used to set the global settings for development and deployment mode for the given application.
+	 * Can be used to set the global settings for development and deployment mode for the given
+	 * application.
 	 *
-	 * @param application the application
-	 * @param httpPort the http port
-	 * @param httpsPort the https port
-	 * @param footerFilterName the footer filter name
-	 * @param encoding the encoding
-	 * @param patterns the patterns
+	 * @param application
+	 *            the application
+	 * @param httpPort
+	 *            the http port
+	 * @param httpsPort
+	 *            the https port
+	 * @param footerFilterName
+	 *            the footer filter name
+	 * @param encoding
+	 *            the encoding
+	 * @param patterns
+	 *            the patterns
 	 */
-	public static void setGlobalSettings(final WebApplication application,
-			final int httpPort, final int httpsPort, 
-			final String footerFilterName, final String encoding, final String... patterns) {
+	public static void setGlobalSettings(final WebApplication application, final int httpPort,
+		final int httpsPort, final String footerFilterName, final String encoding,
+		final String... patterns)
+	{
 		// Standard-Encoding for Markup-Files
 		application.getMarkupSettings().setDefaultMarkupEncoding(encoding);
 		// Sets the Response-Header to Character encoding

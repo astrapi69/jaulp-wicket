@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 package org.jaulp.wicket.base.util;
+
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * The Class BotAgentInspector has on method that checks for agent strings.
  */
-public class BotAgentInspector {
+public class BotAgentInspector
+{
 
 	/** The Constant BOT_AGENTS. */
-	private static final Set<String> BOT_AGENTS = new HashSet<String>() {
+	private static final Set<String> BOT_AGENTS = new HashSet<String>()
+	{
 		private static final long serialVersionUID = 1L;
 		{
 			add("googlebot");
@@ -65,7 +68,8 @@ public class BotAgentInspector {
 	};
 
 	/** The Constant NO_BOT_AGENTS. */
-	private static final Set<String> NO_BOT_AGENTS = new HashSet<String>() {
+	private static final Set<String> NO_BOT_AGENTS = new HashSet<String>()
+	{
 		private static final long serialVersionUID = 1L;
 		{
 			add("firefox");
@@ -78,23 +82,28 @@ public class BotAgentInspector {
 	};
 
 	/**
-	 * Checks if the given String object is agent over the String array
-	 * BOT_AGENTS.
+	 * Checks if the given String object is agent over the String array BOT_AGENTS.
 	 * 
 	 * @param agent
 	 *            String to check.
 	 * @return true, if is agent
 	 */
-	public static boolean isAgent(final String agent) {
-		if (agent != null) {
+	public static boolean isAgent(final String agent)
+	{
+		if (agent != null)
+		{
 			final String lowerAgent = agent.toLowerCase();
-			for (String noBot : NO_BOT_AGENTS) {
-				if (lowerAgent.indexOf(noBot) > -1) {
+			for (String noBot : NO_BOT_AGENTS)
+			{
+				if (lowerAgent.contains(noBot))
+				{
 					return false;
 				}
 			}
-			for (final String bot : BOT_AGENTS) {
-				if (lowerAgent.indexOf(bot) > -1) {
+			for (final String bot : BOT_AGENTS)
+			{
+				if (lowerAgent.contains(bot))
+				{
 					return true;
 				}
 			}

@@ -1,12 +1,14 @@
 package org.jaulp.wicket.base.pageparameters;
+
 /**
  * The Class ParameterKeys contains constants for the <code>PageParameters</code> keys.
  */
-public class ParameterKeys {
+public class ParameterKeys
+{
 
 	/** The Constant CONFIRMATION_CODE. */
 	public static final String CONFIRMATION_CODE = "forgotten";
-	
+
 	/** The Constant USER_ID. */
 	public static final String USER_ID = "USER_ID";
 

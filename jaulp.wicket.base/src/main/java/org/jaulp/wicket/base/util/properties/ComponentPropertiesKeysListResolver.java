@@ -10,19 +10,19 @@ import org.apache.wicket.Component;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * The Class ComponentPropertiesKeysListResolver creates a list with the properties keys
- * from the given list with the given prefix and optionally a suffix. This class
- * is usefull for get Properties that have a properties key prefix for instance:
- * properties key prefix='infringement.list.entry' and the properties key prefix='label'.
- * The values list contains:
- * a ResourceBundleKey object with the key '1' and with parameters '7'
- * and a second ResourceBundleKey object with the key '2' with no parameters.
- * The properties file could look something like this: 
- * infringement.list.entry.1.label = foo {0}
- * infringement.list.entry.2.label = bar
+ * The Class ComponentPropertiesKeysListResolver creates a list with the properties keys from the
+ * given list with the given prefix and optionally a suffix. This class is usefull for get
+ * Properties that have a properties key prefix for instance: properties key
+ * prefix='infringement.list.entry' and the properties key prefix='label'. The values list contains:
+ * a ResourceBundleKey object with the key '1' and with parameters '7' and a second
+ * ResourceBundleKey object with the key '2' with no parameters. The properties file could look
+ * something like this: infringement.list.entry.1.label = foo {0} infringement.list.entry.2.label =
+ * bar
  */
-public class ComponentPropertiesKeysListResolver extends
-		PropertiesKeysListResolver<ResourceBundleKey> {
+public class ComponentPropertiesKeysListResolver
+	extends
+		PropertiesKeysListResolver<ResourceBundleKey>
+{
 
 	/** The relative component used for lookups. */
 	private Component component;
@@ -37,8 +37,9 @@ public class ComponentPropertiesKeysListResolver extends
 	 * @param values
 	 *            the values
 	 */
-	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix,
-			Component component, List<ResourceBundleKey> values) {
+	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix, Component component,
+		List<ResourceBundleKey> values)
+	{
 		this(propertiesKeyPrefix, null, component, values);
 	}
 
@@ -55,8 +56,8 @@ public class ComponentPropertiesKeysListResolver extends
 	 *            the values
 	 */
 	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix,
-			String propertiesKeySuffix, Component component,
-			List<ResourceBundleKey> values) {
+		String propertiesKeySuffix, Component component, List<ResourceBundleKey> values)
+	{
 		super(propertiesKeyPrefix, propertiesKeySuffix, values);
 		this.component = component;
 	}
@@ -68,27 +69,28 @@ public class ComponentPropertiesKeysListResolver extends
 	 *            the {@link ResourceBundleKey} object
 	 * @return the display value
 	 */
-	public String getDisplayValue(final ResourceBundleKey resourceBundleKey) {
-		return ResourceModelFactory.newResourceModel(
-				getPropertiesKey(resourceBundleKey.getKey()), 
-				resourceBundleKey.getParameters(),
-				component, 
-				resourceBundleKey.getDefaultValue())
-				.getObject();
+	@Override
+	public String getDisplayValue(final ResourceBundleKey resourceBundleKey)
+	{
+		return ResourceModelFactory.newResourceModel(getPropertiesKey(resourceBundleKey.getKey()),
+			resourceBundleKey.getParameters(), component, resourceBundleKey.getDefaultValue())
+			.getObject();
 	}
-	
+
 	/**
 	 * Gets the display values with the full properties keys as a List of {@link ResourceBundleKey}.
 	 *
 	 * @return the display values
 	 */
-	public List<ResourceBundleKey> getDisplayValues() {
-		List<ResourceBundleKey> rbk = new ArrayList<ResourceBundleKey>();
-		for(ResourceBundleKey key : getValues()) {
-			ResourceBundleKey clone = (ResourceBundleKey) key.clone();
+	public List<ResourceBundleKey> getDisplayValues()
+	{
+		List<ResourceBundleKey> rbk = new ArrayList<>();
+		for (ResourceBundleKey key : getValues())
+		{
+			ResourceBundleKey clone = (ResourceBundleKey)key.clone();
 			clone.setKey(getPropertiesKey(key.getKey()));
 			rbk.add(clone);
 		}
-		return rbk;		
+		return rbk;
 	}
 }

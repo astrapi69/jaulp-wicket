@@ -25,7 +25,8 @@ import org.jaulp.wicket.base.util.WicketComponentUtils;
 /**
  * The Class WicketUrlUtils.
  */
-public class WicketUrlUtils {
+public class WicketUrlUtils
+{
 
 	/**
 	 * Returns the absolute url for the given page without the server port.
@@ -36,13 +37,13 @@ public class WicketUrlUtils {
 	 *            the page
 	 * @return the string
 	 */
-	public static <C extends WebPage> String absoluteUrlFor(Class<C> page) {
+	public static <C extends WebPage> String absoluteUrlFor(Class<C> page)
+	{
 		return absoluteUrlFor(page, null, false);
 	}
 
 	/**
-	 * Returns the absolute url for the given page and
-	 * optionally with the server port.
+	 * Returns the absolute url for the given page and optionally with the server port.
 	 * 
 	 * @param <C>
 	 *            the generic type
@@ -52,14 +53,14 @@ public class WicketUrlUtils {
 	 *            the with server port
 	 * @return the string
 	 */
-	public static <C extends WebPage> String absoluteUrlFor(Class<C> page,
-			 boolean withServerPort) {
+	public static <C extends WebPage> String absoluteUrlFor(Class<C> page, boolean withServerPort)
+	{
 		return absoluteUrlFor(page, null, withServerPort);
 	}
 
 	/**
-	 * Returns the absolute url for the given page with the parameters and
-	 * optionally with the server port.
+	 * Returns the absolute url for the given page with the parameters and optionally with the
+	 * server port.
 	 * 
 	 * @param <C>
 	 *            the generic type
@@ -72,11 +73,11 @@ public class WicketUrlUtils {
 	 * @return the string
 	 */
 	public static <C extends WebPage> String absoluteUrlFor(Class<C> page,
-			PageParameters parameters, boolean withServerPort) {
+		PageParameters parameters, boolean withServerPort)
+	{
 		StringBuilder url = new StringBuilder();
 		url.append(WicketUrlUtils.getDomainUrl(withServerPort));
-		url.append(WicketUrlUtils.getBaseUrl(page, parameters).canonical()
-				.toString());
+		url.append(WicketUrlUtils.getBaseUrl(page, parameters).canonical().toString());
 		return url.toString();
 	}
 
@@ -87,18 +88,22 @@ public class WicketUrlUtils {
 	 *            the page
 	 * @return the page url
 	 */
-	public static Url getPageUrl(WebPage page) {
+	public static Url getPageUrl(WebPage page)
+	{
 		return getPageUrl(page.getClass());
 	}
-	
+
 	/**
 	 * Gets the page url.
 	 *
-	 * @param page the page
-	 * @param parameters the parameters
+	 * @param page
+	 *            the page
+	 * @param parameters
+	 *            the parameters
 	 * @return the page url
 	 */
-	public static Url getPageUrl(WebPage page, PageParameters parameters) {
+	public static Url getPageUrl(WebPage page, PageParameters parameters)
+	{
 		return getPageUrl(page.getClass(), parameters);
 	}
 
@@ -109,46 +114,54 @@ public class WicketUrlUtils {
 	 *            the page class
 	 * @return the page url
 	 */
-	public static Url getPageUrl(Class<? extends WebPage> pageClass) {
+	public static Url getPageUrl(Class<? extends WebPage> pageClass)
+	{
 		return getPageUrl(pageClass, null);
 	}
-	
+
 	/**
 	 * Gets the page url.
 	 *
-	 * @param pageClass the page class
-	 * @param parameters the parameters
+	 * @param pageClass
+	 *            the page class
+	 * @param parameters
+	 *            the parameters
 	 * @return the page url
 	 */
-	public static Url getPageUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+	public static Url getPageUrl(Class<? extends WebPage> pageClass, PageParameters parameters)
+	{
 		String url = RequestCycle.get().urlFor(pageClass, parameters).toString();
 		return Url.parse(url);
 	}
-	
+
 	/**
-	 * Gets the canonical page url. Try to reduce url by eliminating '..' and
-	 * '.' from the path where appropriate (this is somehow similar to
-	 * {@link java.io.File#getCanonicalPath()}).
+	 * Gets the canonical page url. Try to reduce url by eliminating '..' and '.' from the path
+	 * where appropriate (this is somehow similar to {@link java.io.File#getCanonicalPath()}).
 	 *
-	 * @param pageClass            the page class
+	 * @param pageClass
+	 *            the page class
 	 * @return the page url
 	 * @see Url#canonical()
 	 */
-	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass) {
+	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass)
+	{
 		return getCanonicalPageUrl(pageClass, null);
 	}
-	
+
 	/**
-	 * Gets the canonical page url. Try to reduce url by eliminating '..' and
-	 * '.' from the path where appropriate (this is somehow similar to
-	 * {@link java.io.File#getCanonicalPath()}).
+	 * Gets the canonical page url. Try to reduce url by eliminating '..' and '.' from the path
+	 * where appropriate (this is somehow similar to {@link java.io.File#getCanonicalPath()}).
 	 *
-	 * @param pageClass            the page class
-	 * @param parameters            the parameters
+	 * @param pageClass
+	 *            the page class
+	 * @param parameters
+	 *            the parameters
 	 * @return the page url
 	 * @see Url#canonical()
 	 */
-	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass,
+		PageParameters parameters)
+	{
 		return getPageUrl(pageClass, parameters).canonical();
 	}
 
@@ -159,7 +172,8 @@ public class WicketUrlUtils {
 	 *            the page
 	 * @return the base url
 	 */
-	public static Url getBaseUrl(WebPage page) {
+	public static Url getBaseUrl(WebPage page)
+	{
 		return getBaseUrl(page.getClass());
 	}
 
@@ -170,7 +184,8 @@ public class WicketUrlUtils {
 	 *            the page class
 	 * @return the base url
 	 */
-	public static Url getBaseUrl(Class<? extends WebPage> pageClass) {
+	public static Url getBaseUrl(Class<? extends WebPage> pageClass)
+	{
 		return getBaseUrl(pageClass, null);
 	}
 
@@ -181,29 +196,36 @@ public class WicketUrlUtils {
 	 *            the page class
 	 * @return the base url as String.
 	 */
-	public static String toBaseUrl(Class<? extends WebPage> pageClass) {
+	public static String toBaseUrl(Class<? extends WebPage> pageClass)
+	{
 		return getBaseUrl(pageClass).canonical().toString();
 	}
-	
+
 	/**
 	 * Gets the base url.
 	 *
-	 * @param pageClass the page class
-	 * @param parameters the parameters
+	 * @param pageClass
+	 *            the page class
+	 * @param parameters
+	 *            the parameters
 	 * @return the base url
 	 */
-	public static Url getBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+	public static Url getBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters)
+	{
 		return RequestCycle.get().mapUrlFor(pageClass, parameters);
 	}
-	
+
 	/**
 	 * Gets the base ur as String.
 	 *
-	 * @param pageClass the page class
-	 * @param parameters the parameters
+	 * @param pageClass
+	 *            the page class
+	 * @param parameters
+	 *            the parameters
 	 * @return the base url as String.
 	 */
-	public static String toBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters) {
+	public static String toBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters)
+	{
 		return getBaseUrl(pageClass, parameters).canonical().toString();
 	}
 
@@ -212,7 +234,8 @@ public class WicketUrlUtils {
 	 * 
 	 * @return base Url
 	 */
-	public static Url getBaseUrl() {
+	public static Url getBaseUrl()
+	{
 		return RequestCycle.get().getUrlRenderer().getBaseUrl();
 	}
 
@@ -222,7 +245,8 @@ public class WicketUrlUtils {
 	 * 
 	 * @return base Url as String.
 	 */
-	public static String toBaseUrl() {
+	public static String toBaseUrl()
+	{
 		return getBaseUrl().canonical().toString();
 	}
 
@@ -233,7 +257,8 @@ public class WicketUrlUtils {
 	 *            the page
 	 * @return the context path
 	 */
-	public static String getContextPath(WebPage page) {
+	public static String getContextPath(WebPage page)
+	{
 		return page.getRequest().getContextPath();
 	}
 
@@ -242,7 +267,8 @@ public class WicketUrlUtils {
 	 * 
 	 * @return the context path
 	 */
-	public static String getContextPath() {
+	public static String getContextPath()
+	{
 		return RequestCycle.get().getRequest().getContextPath();
 	}
 
@@ -253,7 +279,8 @@ public class WicketUrlUtils {
 	 *            the page
 	 * @return the url as string
 	 */
-	public static String getUrlAsString(WebPage page) {
+	public static String getUrlAsString(WebPage page)
+	{
 		return getUrlAsString(page.getClass());
 	}
 
@@ -264,7 +291,8 @@ public class WicketUrlUtils {
 	 *            the page class
 	 * @return the url as string
 	 */
-	public static String getUrlAsString(Class<? extends WebPage> pageClass) {
+	public static String getUrlAsString(Class<? extends WebPage> pageClass)
+	{
 		Url pageUrl = getPageUrl(pageClass);
 		Url url = getBaseUrl(pageClass);
 		url.resolveRelative(pageUrl);
@@ -273,15 +301,15 @@ public class WicketUrlUtils {
 	}
 
 	/**
-	 * Returns the host name or the ip address on which the request was
-	 * received.
+	 * Returns the host name or the ip address on which the request was received.
 	 * 
-	 * @return a <code>String</code> containing the host name of the ip address
-	 *         on which the request was received.
+	 * @return a <code>String</code> containing the host name of the ip address on which the request
+	 *         was received.
 	 * 
 	 * @see javax.servlet.ServletRequest#getLocalName()
 	 */
-	public static String getLocalName() {
+	public static String getLocalName()
+	{
 		return WicketComponentUtils.getHttpServletRequest().getLocalName();
 	}
 
@@ -290,7 +318,8 @@ public class WicketUrlUtils {
 	 *
 	 * @return the server name
 	 */
-	public static String getServerName() {
+	public static String getServerName()
+	{
 		return WicketComponentUtils.getHttpServletRequest().getServerName();
 	}
 
@@ -299,7 +328,8 @@ public class WicketUrlUtils {
 	 *
 	 * @return the domain url
 	 */
-	public static String getDomainUrl() {
+	public static String getDomainUrl()
+	{
 
 		return getDomainUrl(true);
 	}
@@ -311,57 +341,72 @@ public class WicketUrlUtils {
 	 *            the with server port
 	 * @return the domain url
 	 */
-	public static String getDomainUrl(boolean withServerPort) {
+	public static String getDomainUrl(boolean withServerPort)
+	{
 		return getDomainUrl(withServerPort, true);
 	}
 
 	/**
 	 * Gets the domain url.
 	 *
-	 * @param withServerPort the with server port
-	 * @param withSlashAtTheEnd the with slash at the end
+	 * @param withServerPort
+	 *            the with server port
+	 * @param withSlashAtTheEnd
+	 *            the with slash at the end
 	 * @return the domain url
 	 */
-	public static String getDomainUrl(boolean withServerPort, boolean withSlashAtTheEnd) {
+	public static String getDomainUrl(boolean withServerPort, boolean withSlashAtTheEnd)
+	{
 		return getDomainUrl(false, withServerPort, withSlashAtTheEnd);
 	}
 
 	/**
 	 * Gets the domain url.
 	 * 
-	 * @param ssl if the domain url is secure the scheme https will be added otherwise http
-	 * @param withServerPort the with server port
-	 * @param withSlashAtTheEnd the with slash at the end
+	 * @param ssl
+	 *            if the domain url is secure the scheme https will be added otherwise http
+	 * @param withServerPort
+	 *            the with server port
+	 * @param withSlashAtTheEnd
+	 *            the with slash at the end
 	 * @return the domain url
 	 */
-	public static String getDomainUrl(boolean ssl, boolean withServerPort, boolean withSlashAtTheEnd) {
-		return newDomainUrl(
-				ssl ? Scheme.HTTPS.urlName(): Scheme.HTTP.urlName(),
-				WicketUrlUtils.getServerName(), 
-				WicketComponentUtils.getHttpServletRequest()
+	public static String getDomainUrl(boolean ssl, boolean withServerPort, boolean withSlashAtTheEnd)
+	{
+		return newDomainUrl(ssl ? Scheme.HTTPS.urlName() : Scheme.HTTP.urlName(),
+			WicketUrlUtils.getServerName(), WicketComponentUtils.getHttpServletRequest()
 				.getServerPort(), withServerPort, withSlashAtTheEnd);
 	}
-	
+
 	/**
 	 * Creates a new domain url from the given parameters.
 	 *
-	 * @param scheme the scheme
-	 * @param domainName the domain name
-	 * @param port the port
-	 * @param withServerPort the with server port
-	 * @param withSlashAtTheEnd the with slash at the end
+	 * @param scheme
+	 *            the scheme
+	 * @param domainName
+	 *            the domain name
+	 * @param port
+	 *            the port
+	 * @param withServerPort
+	 *            the with server port
+	 * @param withSlashAtTheEnd
+	 *            the with slash at the end
 	 * @return the string
 	 */
-	public static String newDomainUrl(String scheme, String domainName, int port, boolean withServerPort, boolean withSlashAtTheEnd) {
+	public static String newDomainUrl(String scheme, String domainName, int port,
+		boolean withServerPort, boolean withSlashAtTheEnd)
+	{
 		StringBuilder domainUrl = new StringBuilder();
 		domainUrl.append(scheme);
 		domainUrl.append("://");
 		domainUrl.append(domainName);
-		if (withServerPort) {
+		if (withServerPort)
+		{
 			domainUrl.append(":");
 			domainUrl.append(port);
 		}
-		if(withSlashAtTheEnd) {
+		if (withSlashAtTheEnd)
+		{
 			domainUrl.append("/");
 		}
 		return domainUrl.toString();

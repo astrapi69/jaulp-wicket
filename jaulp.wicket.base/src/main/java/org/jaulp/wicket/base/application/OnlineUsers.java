@@ -20,22 +20,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The Class OnlineUsers holds the mapping between the users that are online 
- * and can be applied to get the functionality how many users are online.
+ * The Class OnlineUsers holds the mapping between the users that are online and can be applied to
+ * get the functionality how many users are online.
  *
- * @param <USER> the generic type for the users object.
- * @param <ID> the generic type for the id the references to the user object.
+ * @param <USER>
+ *            the generic type for the users object.
+ * @param <ID>
+ *            the generic type for the id the references to the user object.
  */
-public class OnlineUsers<USER, ID> implements Serializable {
+public class OnlineUsers<USER, ID> implements Serializable
+{
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** This map holds the users objects that are online. */
-	private final Map<USER, ID> usersOnline = new HashMap<USER, ID>();
+	private final Map<USER, ID> usersOnline = new HashMap<>();
 
 	/** This map holds which session id references to which user. */
-	private final Map<ID, USER> sessionIdToUser = new HashMap<ID, USER>();
+	private final Map<ID, USER> sessionIdToUser = new HashMap<>();
 
 	/**
 	 * Adds the user online.
@@ -46,35 +49,43 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	 *            the session id
 	 * @return the string
 	 */
-	public synchronized ID addOnline(USER user, ID sessionId) {
+	public synchronized ID addOnline(USER user, ID sessionId)
+	{
 		sessionIdToUser.put(sessionId, user);
 		return usersOnline.put(user, sessionId);
 	}
-	
+
 	/**
 	 * Replace the given old session id with the new one.
 	 *
-	 * @param user the user
-	 * @param oldSessionId the old session id
-	 * @param newSessionId the new session id
+	 * @param user
+	 *            the user
+	 * @param oldSessionId
+	 *            the old session id
+	 * @param newSessionId
+	 *            the new session id
 	 * @return the new session id that is associated with the given user.
 	 */
-	public synchronized ID replaceSessionId(USER user, ID oldSessionId, ID newSessionId) {		
-		remove(oldSessionId);		
+	public synchronized ID replaceSessionId(USER user, ID oldSessionId, ID newSessionId)
+	{
+		remove(oldSessionId);
 		return addOnline(user, newSessionId);
 	}
 
 	/**
-	 * Removes the user from the map. This method shell be invoked when the session is unbounded from the Application.
-	 * In wicket is the best way to do that in the {@code WebApplication#sessionUnbound(String)}.
+	 * Removes the user from the map. This method shell be invoked when the session is unbounded
+	 * from the Application. In wicket is the best way to do that in the
+	 * {@code WebApplication#sessionUnbound(String)}.
 	 * 
 	 * @param user
 	 *            the user
 	 * @return the session id
 	 */
-	public synchronized ID removeOnline(USER user) {
+	public synchronized ID removeOnline(USER user)
+	{
 		ID sessionId = usersOnline.remove(user);
-		if (sessionId != null) {
+		if (sessionId != null)
+		{
 			sessionIdToUser.remove(sessionId);
 		}
 		return sessionId;
@@ -83,12 +94,15 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	/**
 	 * Removes the user from the map with the session id.
 	 *
-	 * @param sessionId the session id
+	 * @param sessionId
+	 *            the session id
 	 * @return the user
 	 */
-	public synchronized USER remove(ID sessionId) {
+	public synchronized USER remove(ID sessionId)
+	{
 		USER user = getUser(sessionId);
-		if (user != null) {
+		if (user != null)
+		{
 			usersOnline.remove(user);
 		}
 		sessionIdToUser.remove(sessionId);
@@ -102,17 +116,20 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	 *            the user
 	 * @return true, if the user is online
 	 */
-	public boolean isOnline(USER user) {
+	public boolean isOnline(USER user)
+	{
 		return usersOnline.containsKey(user);
 	}
-	
+
 	/**
 	 * Gets the session id.
 	 *
-	 * @param user the user
+	 * @param user
+	 *            the user
 	 * @return the session id
 	 */
-	public ID getSessionId(USER user){
+	public ID getSessionId(USER user)
+	{
 		return usersOnline.get(user);
 	}
 
@@ -123,7 +140,8 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	 *            the session id
 	 * @return the user
 	 */
-	public USER getUser(ID sessionId) {
+	public USER getUser(ID sessionId)
+	{
 		return sessionIdToUser.get(sessionId);
 	}
 
@@ -132,7 +150,8 @@ public class OnlineUsers<USER, ID> implements Serializable {
 	 * 
 	 * @return how many users are at this moment online.
 	 */
-	public int getSize() {
+	public int getSize()
+	{
 		return usersOnline.size();
 	}
 }

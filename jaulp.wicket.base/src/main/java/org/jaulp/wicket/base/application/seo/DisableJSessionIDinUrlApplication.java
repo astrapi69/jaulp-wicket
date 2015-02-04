@@ -27,14 +27,14 @@ import org.jaulp.wicket.base.util.BotAgentInspector;
 
 /**
  * The Class DisableJSessionIDinUrlApplication overrides the method
- * <code>{@link WebApplication#newWebResponse(WebRequest, HttpServletResponse)}</code>
- * that checks if a request comes from a robot and if this is the case it
- * removes the sessiod id from the response object. If you cant extends this
- * class just override the method
- * <code>{@link WebApplication#newWebResponse(WebRequest, HttpServletResponse)}</code>
- * into your Application class, this will have the same effect.
+ * <code>{@link WebApplication#newWebResponse(WebRequest, HttpServletResponse)}</code> that checks
+ * if a request comes from a robot and if this is the case it removes the sessiod id from the
+ * response object. If you cant extends this class just override the method
+ * <code>{@link WebApplication#newWebResponse(WebRequest, HttpServletResponse)}</code> into your
+ * Application class, this will have the same effect.
  */
-public abstract class DisableJSessionIDinUrlApplication extends WebApplication {
+public abstract class DisableJSessionIDinUrlApplication extends WebApplication
+{
 
 	/**
 	 * Disable sessionId in the url if it comes from a robot.
@@ -45,24 +45,27 @@ public abstract class DisableJSessionIDinUrlApplication extends WebApplication {
 	 *            the http servlet response
 	 * @return the web response
 	 */
+	@Override
 	protected WebResponse newWebResponse(final WebRequest webRequest,
-			final HttpServletResponse httpServletResponse) {
-		return new ServletWebResponse((ServletWebRequest) webRequest,
-				httpServletResponse) {
+		final HttpServletResponse httpServletResponse)
+	{
+		return new ServletWebResponse((ServletWebRequest)webRequest, httpServletResponse)
+		{
 
 			@Override
-			public String encodeURL(CharSequence url) {
-				return isRobot(webRequest) ? url.toString() : super
-						.encodeURL(url);
+			public String encodeURL(CharSequence url)
+			{
+				return isRobot(webRequest) ? url.toString() : super.encodeURL(url);
 			}
 
 			@Override
-			public String encodeRedirectURL(CharSequence url) {
-				return isRobot(webRequest) ? url.toString() : super
-						.encodeRedirectURL(url);
+			public String encodeRedirectURL(CharSequence url)
+			{
+				return isRobot(webRequest) ? url.toString() : super.encodeRedirectURL(url);
 			}
 
-			private boolean isRobot(WebRequest request) {
+			private boolean isRobot(WebRequest request)
+			{
 				final String agent = webRequest.getHeader("User-Agent");
 				return BotAgentInspector.isAgent(agent);
 			}

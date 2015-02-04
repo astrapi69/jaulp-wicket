@@ -11,19 +11,21 @@ import org.apache.wicket.request.cycle.RequestCycle;
 /**
  * The Class ComponentFinder.
  */
-public final class ComponentFinder {
+public final class ComponentFinder
+{
 
 	/**
 	 * Gets the current page.
 	 *
 	 * @return the current page
 	 */
-	public static Page getCurrentPage() {
-		IRequestHandler requestHandler = RequestCycle.get()
-				.getActiveRequestHandler();
-		if (requestHandler instanceof IPageRequestHandler) {
-			IPageRequestHandler pageRequestHandler = (IPageRequestHandler) requestHandler;
-			return (Page) pageRequestHandler.getPage();
+	public static Page getCurrentPage()
+	{
+		IRequestHandler requestHandler = RequestCycle.get().getActiveRequestHandler();
+		if (requestHandler instanceof IPageRequestHandler)
+		{
+			IPageRequestHandler pageRequestHandler = (IPageRequestHandler)requestHandler;
+			return (Page)pageRequestHandler.getPage();
 		}
 		return null;
 	}
@@ -34,7 +36,8 @@ public final class ComponentFinder {
 	 * 
 	 * @return the found AjaxRequestTarget or {@code null}
 	 */
-	public static AjaxRequestTarget findAjaxRequestTarget() {
+	public static AjaxRequestTarget findAjaxRequestTarget()
+	{
 		return RequestCycle.get().find(AjaxRequestTarget.class);
 	}
 
@@ -42,33 +45,42 @@ public final class ComponentFinder {
 	/**
 	 * Creates a new ajax request target from the given Page.
 	 * 
-	 * @param application the web application
+	 * @param application
+	 *            the web application
 	 * @param page
 	 *            page on which ajax response is made
 	 * @return an AjaxRequestTarget instance
 	 * 
-	 * @see for more infomation look at org.apache.wicket.protocol.http.WebApplication#newAjaxRequestTarget(Page)
+	 * @see for more infomation look at
+	 *      org.apache.wicket.protocol.http.WebApplication#newAjaxRequestTarget(Page)
 	 */
 	@SuppressWarnings("javadoc")
-	public static AjaxRequestTarget newAjaxRequestTarget(WebApplication application, Page page) {
+	public static AjaxRequestTarget newAjaxRequestTarget(WebApplication application, Page page)
+	{
 		return application.newAjaxRequestTarget(page);
 	}
-	
+
 	/**
 	 * Finds the first parent of the given childComponent from the given parentClass.
 	 *
-	 * @param childComponent the child component
-	 * @param parentClass the parent class
+	 * @param childComponent
+	 *            the child component
+	 * @param parentClass
+	 *            the parent class
 	 * @return the component
 	 */
-	public static Component findParent(Component childComponent, Class<? extends Component> parentClass) {
+	public static Component findParent(Component childComponent,
+		Class<? extends Component> parentClass)
+	{
 		Component parent = childComponent.getParent();
-		while(parent != null) {
-			if(parent.getClass().equals(parentClass)) {
+		while (parent != null)
+		{
+			if (parent.getClass().equals(parentClass))
+			{
 				break;
 			}
 			parent = parent.getParent();
 		}
-		return parent;		
+		return parent;
 	}
 }

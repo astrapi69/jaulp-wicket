@@ -1,4 +1,5 @@
 package org.jaulp.wicket.base.pages;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +24,15 @@ import org.wicketstuff.annotation.mount.MountPath;
  */
 public abstract class AbstractSiteMapPage extends WebPage
 {
-	
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	/** The Constant logger. */
-	private static final Logger LOGGER = Logger
-			.getLogger(AbstractSiteMapPage.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(AbstractSiteMapPage.class.getName());
 
 	/** The Constant PATTERN. */
 	private static final Pattern PATTERN = Pattern.compile("^\\./");
-	
+
 	/**
 	 * Gets the all page classes.
 	 *
@@ -40,7 +40,7 @@ public abstract class AbstractSiteMapPage extends WebPage
 	 */
 	protected abstract List<? extends Class<? extends WebPage>> getAllPageClasses();
 
-	
+
 	/**
 	 * Gets the package name where to search for page classes.
 	 *
@@ -54,30 +54,43 @@ public abstract class AbstractSiteMapPage extends WebPage
 	 * @return the all page classes quietly
 	 */
 	@SuppressWarnings("unchecked")
-	protected List<? extends Class<? extends WebPage>> getAllPageClassesQuietly() {
-		List<Class<? extends WebPage>> pages = new ArrayList<>();		
-		try {
-			Set<Class<?>> set = AnnotationUtils.getAllAnnotatedClasses(
-					getPackageName(), MountPath.class);
-			for (Class<?> class1 : set) {
-					pages.add((Class<? extends WebPage>)class1);				
+	protected List<? extends Class<? extends WebPage>> getAllPageClassesQuietly()
+	{
+		List<Class<? extends WebPage>> pages = new ArrayList<>();
+		try
+		{
+			Set<Class<?>> set = AnnotationUtils.getAllAnnotatedClasses(getPackageName(),
+				MountPath.class);
+			for (Class<?> class1 : set)
+			{
+				pages.add((Class<? extends WebPage>)class1);
 			}
-		} catch (ClassCastException e) {
-			LOGGER.error(e.getClass().getName()+" occured while scanning for MountPath annotations.", e);
-		} catch (ClassNotFoundException e) {
-			LOGGER.error(e.getClass().getName()+" occured while scanning for MountPath annotations.", e);
-		} catch (IOException e) {
-			LOGGER.error(e.getClass().getName()+" occured while scanning for MountPath annotations.", e);
+		}
+		catch (ClassCastException e)
+		{
+			LOGGER.error(e.getClass().getName()
+				+ " occured while scanning for MountPath annotations.", e);
+		}
+		catch (ClassNotFoundException e)
+		{
+			LOGGER.error(e.getClass().getName()
+				+ " occured while scanning for MountPath annotations.", e);
+		}
+		catch (IOException e)
+		{
+			LOGGER.error(e.getClass().getName()
+				+ " occured while scanning for MountPath annotations.", e);
 		}
 		return pages;
 	}
-	
+
 	/**
 	 * Gets the base url.
 	 *
 	 * @return the base url
 	 */
-	protected String getBaseUrl() {
+	protected String getBaseUrl()
+	{
 		return WicketUrlUtils.getDomainUrl(false);
 	}
 
@@ -86,7 +99,8 @@ public abstract class AbstractSiteMapPage extends WebPage
 	 */
 	public AbstractSiteMapPage()
 	{
-		this.add(new PropertyListView<SiteUrl>("urls", this.newListModel()) {
+		this.add(new PropertyListView<SiteUrl>("urls", this.newListModel())
+		{
 
 			private static final long serialVersionUID = 1L;
 
@@ -107,18 +121,20 @@ public abstract class AbstractSiteMapPage extends WebPage
 	 */
 	private IModel<List<SiteUrl>> newListModel()
 	{
-		return new LoadableDetachableModel<List<SiteUrl>>() {
+		return new LoadableDetachableModel<List<SiteUrl>>()
+		{
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected List<SiteUrl> load()
 			{
-				final List<SiteUrl> list = new ArrayList<SiteUrl>();
+				final List<SiteUrl> list = new ArrayList<>();
 
 				for (Class<? extends WebPage> type : getAllPageClasses())
 				{
-					String loc = PATTERN.matcher(AbstractSiteMapPage.this.urlFor(type, null)).replaceFirst(getBaseUrl());
+					String loc = PATTERN.matcher(AbstractSiteMapPage.this.urlFor(type, null))
+						.replaceFirst(getBaseUrl());
 
 					if (loc.endsWith("/."))
 					{
@@ -133,9 +149,9 @@ public abstract class AbstractSiteMapPage extends WebPage
 		};
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public MarkupType getMarkupType()
 	{
@@ -147,14 +163,15 @@ public abstract class AbstractSiteMapPage extends WebPage
 	 */
 	class SiteUrl
 	{
-		
+
 		/** The loc. */
-		private String loc;
+		private final String loc;
 
 		/**
 		 * Instantiates a new site url.
 		 *
-		 * @param loc the loc
+		 * @param loc
+		 *            the loc
 		 */
 		public SiteUrl(String loc)
 		{

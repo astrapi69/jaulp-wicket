@@ -26,7 +26,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * 
  * @author Asterios Raptis
  */
-public abstract class BasePage extends AbstractBasePage {
+public abstract class BasePage extends AbstractBasePage
+{
 
 	/**
 	 * The serialVersionUID.
@@ -45,7 +46,8 @@ public abstract class BasePage extends AbstractBasePage {
 	/**
 	 * Instantiates a new BasePage.
 	 */
-	public BasePage() {
+	public BasePage()
+	{
 		this(new PageParameters());
 	}
 
@@ -55,7 +57,8 @@ public abstract class BasePage extends AbstractBasePage {
 	 * @param parameters
 	 *            the parameters
 	 */
-	public BasePage(final PageParameters parameters) {
+	public BasePage(final PageParameters parameters)
+	{
 		super(parameters);
 	}
 
@@ -65,22 +68,26 @@ public abstract class BasePage extends AbstractBasePage {
 	 * @param model
 	 *            the model
 	 */
-	public BasePage(IModel<?> model) {
+	public BasePage(IModel<?> model)
+	{
 		super(model);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	protected void onBeforeRender() {
-	    // set content of the <title> tag
+	protected void onBeforeRender()
+	{
+		// set content of the <title> tag
 		addOrReplace(new Label("title", title = newTitle()));
-	    // set content attribute of the <meta name="keywords"> tag
-		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content", keywords = newKeywords(), " ")));
-	    // set content attribute of the <meta name="description"> tag
-		addOrReplace(new Label("description", "").add(new AttributeAppender("content", description = newDescription(), " ")));
-	    super.onBeforeRender();
+		// set content attribute of the <meta name="keywords"> tag
+		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content",
+			keywords = newKeywords(), " ")));
+		// set content attribute of the <meta name="description"> tag
+		addOrReplace(new Label("description", "").add(new AttributeAppender("content",
+			description = newDescription(), " ")));
+		super.onBeforeRender();
 	}
 
 	/**
@@ -88,7 +95,8 @@ public abstract class BasePage extends AbstractBasePage {
 	 *
 	 * @return the description
 	 */
-	public IModel<String> getDescription() {
+	public IModel<String> getDescription()
+	{
 		return description;
 	}
 
@@ -97,7 +105,8 @@ public abstract class BasePage extends AbstractBasePage {
 	 *
 	 * @return the keywords
 	 */
-	public IModel<String> getKeywords() {
+	public IModel<String> getKeywords()
+	{
 		return keywords;
 	}
 
@@ -106,36 +115,38 @@ public abstract class BasePage extends AbstractBasePage {
 	 * 
 	 * @return the page title
 	 */
-	public IModel<String> getTitle() {
+	public IModel<String> getTitle()
+	{
 		return title;
 	}
 
 	/**
-	 * Factory method that can be overwritten for new meta tag content for
-	 * description.
+	 * Factory method that can be overwritten for new meta tag content for description.
 	 * 
-	 * @return the new <code>IModel<code>
+	 * @return the new <code>IModel</code>
 	 */
-	protected IModel<String> newDescription() {
+	protected IModel<String> newDescription()
+	{
 		return new StringResourceModel("page.meta.description", this, null, "");
 	}
 
 	/**
-	 * Factory method that can be overwritten for new meta tag content for
-	 * keywords.
+	 * Factory method that can be overwritten for new meta tag content for keywords.
 	 * 
-	 * @return the new <code>IModel<code>
+	 * @return the new <code>IModel</code>
 	 */
-	protected IModel<String> newKeywords() {
+	protected IModel<String> newKeywords()
+	{
 		return new StringResourceModel("page.meta.keywords", this, null, "");
 	}
 
 	/**
 	 * Factory method that can be overwritten for new meta tag content for the title.
 	 * 
-	 * @return the new <code>IModel<code>
+	 * @return the new <code>IModel</code>
 	 */
-	protected IModel<String> newTitle() {
+	protected IModel<String> newTitle()
+	{
 		return new StringResourceModel("page.title", this, null, "Home page");
 	}
 
