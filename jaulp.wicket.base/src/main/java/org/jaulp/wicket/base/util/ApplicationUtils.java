@@ -413,20 +413,31 @@ public final class ApplicationUtils {
 	public static void setHtmlHotDeploy(final WebApplication application) {
 		application.getResourceSettings().setResourcePollFrequency(
 				Duration.ONE_SECOND);
-		String realPath = application.getServletContext().getRealPath("/");
-		if (realPath != null && !realPath.endsWith("/")) {
-			realPath += "/";
+		String slash = "/";
+		String realPath = application.getServletContext().getRealPath(slash);
+		if (realPath != null && !realPath.endsWith(slash)) {
+			realPath += slash;
 		}
+		String javaSourcePath = realPath + "../java";
+		String resourcesPath = realPath + "../resources";
+		addResourceFinder(application, javaSourcePath);
+		addResourceFinder(application, resourcesPath);
+	}
+
+	/**
+	 * Adds the given resourcePath to the resource finder from the given application. 
+	 * @see {@link org.apache.wicket.settings.IResourceSettings#getResourceFinders()}
+	 *
+	 * @param application the application
+	 * @param resourcePath the resource path
+	 */
+	public static void addResourceFinder(final WebApplication application,
+			String resourcePath) {
 		application
 				.getResourceSettings()
 				.getResourceFinders()
 				.add(new WebApplicationPath(application.getServletContext(),
-						realPath + "../java"));
-		application
-				.getResourceSettings()
-				.getResourceFinders()
-				.add(new WebApplicationPath(application.getServletContext(),
-						realPath + "../resources"));
+						resourcePath));
 	}
 	
 
