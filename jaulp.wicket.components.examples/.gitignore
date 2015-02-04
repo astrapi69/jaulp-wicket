@@ -18,6 +18,11 @@
 /.settings
 /.tern-project
 
+##################
+# netbeans files #
+##################
+/nb-configuration.xml
+
 #########################
 # maven generated files #
 #########################

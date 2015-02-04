@@ -20,7 +20,7 @@
 ##################
 # netbeans files #
 ##################
-nb-configuration.xml
+/nb-configuration.xml
 
 #########################
 # maven generated files #

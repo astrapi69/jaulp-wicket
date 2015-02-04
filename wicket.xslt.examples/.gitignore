@@ -5,3 +5,8 @@
 /bin
 /test-output
 /wicket.xslt.examples.iml
+
+##################
+# netbeans files #
+##################
+/nb-configuration.xml
