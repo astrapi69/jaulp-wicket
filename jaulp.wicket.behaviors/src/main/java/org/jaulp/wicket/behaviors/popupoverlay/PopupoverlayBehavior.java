@@ -28,7 +28,7 @@ public class PopupoverlayBehavior extends Behavior {
 	private PopupoverlaySettings settings = new PopupoverlaySettings();
 
 	private final TextTemplate wicketAlertTemplate = new PackageTextTemplate(
-			PopupoverlayBehavior.class, "popupoverlay-template.js");
+			PopupoverlayBehavior.class, "popupoverlay-template.js.tmpl");
 
 	public PopupoverlayBehavior() {
 	}
