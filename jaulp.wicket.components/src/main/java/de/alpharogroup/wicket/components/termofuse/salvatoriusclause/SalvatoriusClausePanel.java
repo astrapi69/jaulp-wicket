@@ -1,12 +1,13 @@
 package de.alpharogroup.wicket.components.termofuse.salvatoriusclause;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.model.IModel;
-
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import org.jaulp.wicket.behaviors.AddJsQueryBehavior;
+
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
 

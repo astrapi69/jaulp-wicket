@@ -2,7 +2,6 @@ package de.alpharogroup.wicket.components.report;
 
 import java.io.Serializable;
 
-import org.apache.wicket.request.component.IRequestablePage;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
+
+import org.apache.wicket.request.component.IRequestablePage;
 
 @Getter
 @Setter

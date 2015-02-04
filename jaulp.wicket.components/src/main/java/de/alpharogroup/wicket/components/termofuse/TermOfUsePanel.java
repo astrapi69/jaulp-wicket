@@ -4,6 +4,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
 import de.alpharogroup.wicket.components.termofuse.cancellation.CancellationPanel;
 import de.alpharogroup.wicket.components.termofuse.contract.ContractPanel;

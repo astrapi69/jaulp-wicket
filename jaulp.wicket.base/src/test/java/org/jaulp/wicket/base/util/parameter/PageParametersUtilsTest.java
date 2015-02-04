@@ -1,7 +1,6 @@
 package org.jaulp.wicket.base.util.parameter;
 
 import org.apache.wicket.util.string.StringValue;
-import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 

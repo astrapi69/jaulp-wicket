@@ -24,8 +24,9 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
-import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
+
+import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
 /**
  * The Class TwoDropDownChoicesPanel contains two dropdowns with a root and a child dropdown.

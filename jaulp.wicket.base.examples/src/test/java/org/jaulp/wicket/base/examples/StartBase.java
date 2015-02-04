@@ -16,11 +16,11 @@
 package org.jaulp.wicket.base.examples;
 
 import org.apache.wicket.util.time.Duration;
-import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.bio.SocketConnector;
 import org.eclipse.jetty.server.ssl.SslSocketConnector;
 import org.eclipse.jetty.util.resource.Resource;
+import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.jaulp.wicket.base.examples.application.WicketApplication;
 

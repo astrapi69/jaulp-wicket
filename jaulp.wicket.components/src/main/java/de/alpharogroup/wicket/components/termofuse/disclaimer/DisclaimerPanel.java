@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
+
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
 
 public class DisclaimerPanel extends Panel

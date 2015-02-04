@@ -15,11 +15,11 @@
  */
 package org.jaulp.wicket.annotated.header.contributors.examples.panels.home;
 
-import org.apache.wicket.markup.html.basic.Label;
-import org.jaulp.wicket.base.BasePanel;
-
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
+
+import org.apache.wicket.markup.html.basic.Label;
+import org.jaulp.wicket.base.BasePanel;
 
 /**
  * @author admin

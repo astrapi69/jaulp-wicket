@@ -29,9 +29,10 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
+import org.wicketstuff.annotation.mount.MountPath;
+
 import de.alpharogroup.wicket.components.velocity.VelocityFieldsPanel;
 import de.alpharogroup.wicket.components.velocity.WicketField;
-import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("/velocity")
 public class DynamicPage extends WebPage

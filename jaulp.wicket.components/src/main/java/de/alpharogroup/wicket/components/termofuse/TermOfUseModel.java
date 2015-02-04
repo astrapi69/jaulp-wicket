@@ -2,9 +2,6 @@ package de.alpharogroup.wicket.components.termofuse;
 
 import java.io.Serializable;
 
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
-import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
+import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
 
 @Getter
 @Setter

@@ -19,9 +19,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import net.sourceforge.jaulp.comparators.ComparableComparator;
+
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.ComparatorUtils;
-import net.sourceforge.jaulp.comparators.ComparableComparator;
 
 public final class SortCollectionUtils
 {

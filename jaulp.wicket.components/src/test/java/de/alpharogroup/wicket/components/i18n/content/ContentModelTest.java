@@ -4,8 +4,6 @@ import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.testng.annotations.Test;
 
-import de.alpharogroup.wicket.components.i18n.content.ContentModel;
-
 
 public class ContentModelTest
 {

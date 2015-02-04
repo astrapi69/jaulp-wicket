@@ -15,11 +15,11 @@
  */
 package org.jaulp.wicket.dialogs.examples;
 
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.dialogs.examples.panel.UploadFilePanel;
 
 /**

@@ -3,7 +3,6 @@ package de.alpharogroup.wicket.components.i18n.list;
 import java.io.Serializable;
 import java.util.List;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,6 +11,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Builder;
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 @Getter
 @Setter

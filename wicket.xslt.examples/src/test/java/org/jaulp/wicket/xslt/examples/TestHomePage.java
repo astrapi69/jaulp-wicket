@@ -17,7 +17,6 @@ package org.jaulp.wicket.xslt.examples;
 
 import org.apache.wicket.util.tester.WicketTester;
 import org.jaulp.wicket.xslt.examples.pages.HomePage;
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

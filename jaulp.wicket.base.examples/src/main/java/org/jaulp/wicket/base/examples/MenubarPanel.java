@@ -25,6 +25,7 @@ import org.jaulp.wicket.base.components.viewmode.examples.ViewOrEditPage;
 import org.jaulp.wicket.base.examples.sitemap.SiteMapPage;
 import org.jaulp.wicket.base.examples.urls.WicketUrlPage;
 import org.jaulp.wicket.base.examples.velocity.DynamicPage;
+
 import de.alpharogroup.wicket.components.menu.suckerfish.MenuItem;
 import de.alpharogroup.wicket.components.menu.suckerfish.MenuPanel;
 import de.alpharogroup.wicket.components.menu.suckerfish.MenuUtils;

@@ -10,9 +10,10 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.AddJsQueryBehavior;
+
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
-import de.alpharogroup.wicket.components.i18n.list.UnorderedListPanel;
 import de.alpharogroup.wicket.components.i18n.list.ResourceBundleKeysPanel;
+import de.alpharogroup.wicket.components.i18n.list.UnorderedListPanel;
 
 
 public class RightsAndDutiesPanel extends Panel

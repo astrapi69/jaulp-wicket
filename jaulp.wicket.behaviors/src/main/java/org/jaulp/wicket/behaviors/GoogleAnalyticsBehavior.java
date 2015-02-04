@@ -1,7 +1,6 @@
 package org.jaulp.wicket.behaviors;
 
 import org.apache.wicket.markup.html.WebPage;
-import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
 
 /**
  * The Class GoogleAnalyticsBehavior adds the application specific js script.

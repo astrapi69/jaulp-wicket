@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**

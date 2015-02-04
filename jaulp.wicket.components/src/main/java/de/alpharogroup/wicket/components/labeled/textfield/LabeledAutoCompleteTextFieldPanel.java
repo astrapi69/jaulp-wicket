@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.model.IModel;
+
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**

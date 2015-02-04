@@ -3,14 +3,14 @@ package de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels;
 import java.io.Serializable;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import org.apache.log4j.Logger;
 
 @Getter
 @Setter
