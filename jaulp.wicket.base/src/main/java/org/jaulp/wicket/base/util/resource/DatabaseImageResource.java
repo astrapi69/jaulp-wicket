@@ -31,10 +31,7 @@ public class DatabaseImageResource extends ByteArrayResource
 	private static final long serialVersionUID = 1L;
 
 	/** The content type. */
-	private String contentType;
-
-	/** The data. */
-	private byte[] data;
+	private final String contentType;
 
 	/**
 	 * Instantiates a new database image resource.
@@ -48,7 +45,6 @@ public class DatabaseImageResource extends ByteArrayResource
 	{
 		super(contentType, data);
 		this.contentType = contentType;
-		this.data = data;
 	}
 
 	/**
@@ -68,7 +64,7 @@ public class DatabaseImageResource extends ByteArrayResource
 	 */
 	public byte[] getData()
 	{
-		return data;
+		return getData(null);
 	}
 
 }

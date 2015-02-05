@@ -25,7 +25,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.util.ApplicationUtils;
+import org.jaulp.wicket.base.util.application.ApplicationUtils;
 import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
 import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
 import org.jaulp.wicket.behaviors.FaviconBehavior;

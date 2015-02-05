@@ -49,7 +49,7 @@ public class PackageResourceReferences
 	}
 
 	/** The package resource reference map. */
-	private final Map<Class<?>, Set<PackageResourceReferenceWrapper>> packageResourceReferenceMap = new LinkedHashMap<Class<?>, Set<PackageResourceReferenceWrapper>>();
+	private final Map<Class<?>, Set<PackageResourceReferenceWrapper>> packageResourceReferenceMap = new LinkedHashMap<>();
 
 	/**
 	 * Instantiates a new package resource references.
@@ -163,7 +163,7 @@ public class PackageResourceReferences
 			final Entry<Class<?>, ImportResource[]> entry = iter.next();
 			final Class<?> key = entry.getKey();
 			final ImportResource[] value = entry.getValue();
-			final Set<PackageResourceReferenceWrapper> packageResourceReferences = new LinkedHashSet<PackageResourceReferenceWrapper>();
+			final Set<PackageResourceReferenceWrapper> packageResourceReferences = new LinkedHashSet<>();
 			for (int i = 0; i < value.length; i++)
 			{
 				final ImportResource importResource = value[i];

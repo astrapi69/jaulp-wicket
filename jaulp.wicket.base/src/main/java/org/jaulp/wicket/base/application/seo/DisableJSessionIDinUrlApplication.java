@@ -22,7 +22,7 @@ import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebResponse;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
-import org.jaulp.wicket.base.util.BotAgentInspector;
+import org.jaulp.wicket.base.util.seo.BotAgentInspector;
 
 
 /**

@@ -1,4 +1,4 @@
-package org.jaulp.wicket.base.util;
+package org.jaulp.wicket.base.util.application;
 
 import java.io.IOException;
 

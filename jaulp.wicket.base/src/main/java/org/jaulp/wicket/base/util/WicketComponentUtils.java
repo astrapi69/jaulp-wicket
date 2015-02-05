@@ -46,6 +46,7 @@ import org.apache.wicket.util.time.Time;
 import org.jaulp.wicket.PackageResourceReferenceWrapper;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.enums.ResourceReferenceType;
+import org.jaulp.wicket.base.util.application.ApplicationUtils;
 import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 
 /**

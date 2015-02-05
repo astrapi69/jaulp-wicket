@@ -21,8 +21,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.examples.MenubarPanel;
 import org.jaulp.wicket.base.examples.application.WicketApplication;
-import org.jaulp.wicket.base.util.ApplicationUtils;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
+import org.jaulp.wicket.base.util.application.ApplicationUtils;
 import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 import org.wicketstuff.annotation.mount.MountPath;
 

@@ -71,7 +71,7 @@ public class PackageResourceReferenceWrapper
 	 */
 	public String toString()
 	{
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 		buffer.append("[PackageResourceReferenceWrapper:");
 		buffer.append(" packageResourceReference: ");
 		buffer.append(packageResourceReference);

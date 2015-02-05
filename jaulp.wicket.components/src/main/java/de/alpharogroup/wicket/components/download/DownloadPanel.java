@@ -10,7 +10,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.jaulp.wicket.base.BasePanel;
-import org.jaulp.wicket.base.util.ApplicationUtils;
+import org.jaulp.wicket.base.util.application.ApplicationUtils;
 import org.jaulp.wicket.behaviors.AjaxDownloadBehavior;
 
 public abstract class DownloadPanel extends BasePanel<DownloadModel>
