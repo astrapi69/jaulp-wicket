@@ -276,13 +276,27 @@ public final class ApplicationUtils
 	 *
 	 * @param application
 	 *            the new debug settings for development
+	 * @deprecated use instead
+	 *             {@link ApplicationUtils#setDeploymentModeConfiguration(Application)}
 	 */
 	public static void setDebugSettingsForDeployment(final Application application)
 	{
+		setDeploymentModeConfiguration(application);
+	}
+
+	/**
+	 * Sets the debug settings for deployment mode for the given application.
+	 *
+	 * @param application
+	 *            the application to set the settings
+	 */
+	public static void setDeploymentModeConfiguration(final Application application) {
 		application.getMarkupSettings().setStripComments(true);
 		// The resources are never polled. This are properties, html,
 		// css, js files.
 		application.getResourceSettings().setResourcePollFrequency(null);
+		application.getResourceSettings()
+		.setJavaScriptCompressor(new DefaultJavaScriptCompressor());
 		// set the behavior if an missing resource is found...
 		application.getResourceSettings().setThrowExceptionOnMissingResource(false);
 		// debug settings...
@@ -301,18 +315,12 @@ public final class ApplicationUtils
 	 *
 	 * @param application
 	 *            the new settings for deployment
+	 * @deprecated use instead
+	 *             {@link ApplicationUtils#setDeploymentModeConfiguration(Application)}
 	 */
 	public static void setSettingsForDeployment(final Application application)
 	{
-		// The resources are polled every second. This are properties, html,
-		// css, js files.
-		application.getResourceSettings().setResourcePollFrequency(null);
-		application.getDebugSettings().setComponentUseCheck(false);
-		application.getDebugSettings().setAjaxDebugModeEnabled(false);
-		application.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
-		application.getMarkupSettings().setStripComments(true);
-		application.getResourceSettings()
-			.setJavaScriptCompressor(new DefaultJavaScriptCompressor());
+		setDeploymentModeConfiguration(application);
 	}
 
 	/**
