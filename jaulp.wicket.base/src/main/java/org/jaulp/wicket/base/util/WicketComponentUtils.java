@@ -232,8 +232,7 @@ public final class WicketComponentUtils
 
 	/**
 	 * Disables caching from a WebPage. To disable the cache override the WebPage.setHeader() and
-	 * invoke this method. 
-	 * For instance:<code>
+	 * invoke this method. For instance:<code>
 	 * protected void setHeaders(WebResponse response) {
 	 * &nbsp;&nbsp;&nbsp;&nbsp;WicketComponentUtils.disableCaching(response);
 	 * }

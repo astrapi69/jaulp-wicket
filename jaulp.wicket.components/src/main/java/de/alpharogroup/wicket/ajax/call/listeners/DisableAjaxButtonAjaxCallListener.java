@@ -20,7 +20,7 @@ import org.apache.wicket.ajax.attributes.IAjaxCallListener;
 
 /**
  * This ajax call listener disables the ajax Button if it is clicked. Add this listener to the
- * attributes. Example: 
+ * attributes. Example:
  * 
  * <code>
  * 		Button submit = new AjaxFallbackButton("submit",form) {

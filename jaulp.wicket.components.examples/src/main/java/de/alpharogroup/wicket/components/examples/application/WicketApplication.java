@@ -48,6 +48,12 @@ public class WicketApplication extends WicketBootstrap3Application
 		super.init();
 		// initialize all header contributors
 		initializeAllHeaderContributors();
+		// set application configuration...
+		setApplicationConfiguration();
+	}
+
+	protected void setApplicationConfiguration()
+	{
 		// set global settings for both development and deployment mode...
 		setGlobalSettings(this, getHttpPort(), getHttpsPort());
 		// set configuration for development...
@@ -61,15 +67,17 @@ public class WicketApplication extends WicketBootstrap3Application
 			setDeploymentModeSettings(this);
 		}
 	}
-	
-	public void setDeploymentModeSettings(final WebApplication application) {
+
+	protected void setDeploymentModeSettings(final WebApplication application)
+	{
 		// set exception handling for custom error page...
 		ApplicationUtils.setExceptionSettingsForDeployment(application,
 			new ApplicationRequestCycleListener());
 		ApplicationUtils.setDeploymentModeConfiguration(application);
 	}
-	
-	public void setDevelopmentModeSettings(final WebApplication application) {
+
+	protected void setDevelopmentModeSettings(final WebApplication application)
+	{
 		// Adds the references from source code to the browser to reference in eclipse....
 		WicketSource.configure(application);
 		ApplicationUtils.setHtmlHotDeploy(application);
@@ -98,7 +106,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		});
 	}
 
-	public void setGlobalSettings(final WebApplication application, final int httpPort,
+	protected void setGlobalSettings(final WebApplication application, final int httpPort,
 		final int httpsPort)
 	{
 		ApplicationUtils.setGlobalSettings(application, httpPort, httpsPort, FOOTER_FILTER_NAME,
