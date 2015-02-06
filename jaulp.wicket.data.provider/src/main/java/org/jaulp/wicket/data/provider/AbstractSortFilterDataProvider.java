@@ -42,6 +42,7 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public F getFilterState()
 	{
 		return this.filterState;
@@ -50,6 +51,7 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void setFilterState(final F filterState)
 	{
 		this.filterState = filterState;
@@ -59,9 +61,10 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
-		List<T> ret = new ArrayList<T>(filter(sort()));
+		List<T> ret = new ArrayList<>(filter(sort()));
 		if (ret.size() > (first + count))
 		{
 			ret = ret.subList((int)first, (int)first + (int)count);
@@ -76,6 +79,7 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public long size()
 	{
 		return filter(getData()).size();

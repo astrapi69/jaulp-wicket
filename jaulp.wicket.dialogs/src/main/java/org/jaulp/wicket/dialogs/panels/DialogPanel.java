@@ -19,6 +19,8 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
 public abstract class DialogPanel<T> extends Panel
 {
 
@@ -44,8 +46,7 @@ public abstract class DialogPanel<T> extends Panel
 	 */
 	protected Label newLabel(String id, IModel<String> model)
 	{
-		Label label = new Label(id, model);
-		return label;
+		return ComponentFactory.newLabel(id, model);
 	}
 
 }

@@ -35,7 +35,7 @@ public class SortCollectionUtilsTest
 	@Test
 	public void testSortList()
 	{
-		List<Person> persons = new ArrayList<Person>();
+		List<Person> persons = new ArrayList<>();
 		Person obelix = new Person();
 		obelix.setGender("male");
 		obelix.setName("obelix");

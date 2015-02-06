@@ -45,10 +45,10 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 	private T selectedChildOption;
 
 	/** The models map. */
-	private Map<T, List<T>> modelsMap = new HashMap<T, List<T>>();
+	private Map<T, List<T>> modelsMap = new HashMap<>();
 
 	/** The root choices. */
-	private IModel<List<T>> rootChoices;
+	private final IModel<List<T>> rootChoices;
 
 	/** The child choices. */
 	private IModel<List<T>> childChoices;
@@ -74,7 +74,7 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 			public List<T> getObject()
 			{
 				Set<T> keys = modelsMap.keySet();
-				List<T> keysList = new ArrayList<T>(keys);
+				List<T> keysList = new ArrayList<>(keys);
 				return keysList;
 			}
 

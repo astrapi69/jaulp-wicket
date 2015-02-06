@@ -34,10 +34,10 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
 	private static final long serialVersionUID = 1L;
 
 	/** The relative component used for lookups. */
-	private Component component;
+	private final Component component;
 
 	/** The component class. */
-	private Class<?> componentClass;
+	private final Class<?> componentClass;
 
 	/**
 	 * Instantiates a new properties choice renderer.

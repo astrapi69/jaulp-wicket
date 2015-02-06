@@ -51,7 +51,7 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	private List<T> data;
 
 	/** The sort state. */
-	private final SingleSortState<S> sortState = new SingleSortState<S>();
+	private final SingleSortState<S> sortState = new SingleSortState<>();
 
 	/**
 	 * Default constructor.
@@ -78,6 +78,7 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	 * @return the sort state
 	 * @see ISortableDataProvider#getSortState()
 	 */
+	@Override
 	public final ISortState<S> getSortState()
 	{
 		return sortState;
@@ -139,9 +140,10 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
-		List<T> result = new ArrayList<T>(sort());
+		List<T> result = new ArrayList<>(sort());
 		if (result.size() > (first + count))
 		{
 			result = result.subList((int)first, (int)first + (int)count);
@@ -207,6 +209,7 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public long size()
 	{
 		return getData().size();

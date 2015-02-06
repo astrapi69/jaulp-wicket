@@ -34,7 +34,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	private static final long serialVersionUID = 1L;
 
 	/** The relative component used for lookups. */
-	private Component component;
+	private final Component component;
 
 	/** The component class. */
 	private final Class<?> componentClass;
@@ -71,7 +71,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	{
 		String splitString = "=>";
 		String[] splittedValue = object.split(splitString);
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		if (splittedValue.length == 1)
 		{
 			StringResourceModel resourceModel = new StringResourceModel(splittedValue[0],

@@ -29,9 +29,6 @@ public class WicketApplication extends WebApplication
 	public static final int HTTP_PORT = 9090;
 	public static final int HTTPS_PORT = 9443;
 
-	/**
-	 * @see org.apache.wicket.Application#getHomePage()
-	 */
 	@Override
 	public Class<HomePage> getHomePage()
 	{

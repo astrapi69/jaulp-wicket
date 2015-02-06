@@ -57,16 +57,16 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 
 	/** The label text field. */
 	@Getter
-	private Component textFieldLabel;
+	private final Component textFieldLabel;
 
 	/**
 	 * the form.
 	 */
 	@Getter
-	private Form<?> form;
+	private final Form<?> form;
 	/** The text field. */
 	@Getter
-	private Component textField;
+	private final Component textField;
 
 	/**
 	 * Instantiates a new save dialog panel.

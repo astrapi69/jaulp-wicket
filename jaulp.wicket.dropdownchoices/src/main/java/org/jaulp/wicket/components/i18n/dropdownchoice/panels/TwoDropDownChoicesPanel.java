@@ -94,8 +94,8 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 		final IModel<String> model, final IModel<? extends List<? extends String>> choices,
 		final IChoiceRenderer<? super String> renderer)
 	{
-		LocalisedDropDownChoice<String> rc = new LocalisedDropDownChoice<String>(id, model,
-			choices, renderer);
+		LocalisedDropDownChoice<String> rc = new LocalisedDropDownChoice<>(id, model, choices,
+			renderer);
 		rc.add(new AjaxFormComponentUpdatingBehavior("onchange")
 		{
 			/** The Constant serialVersionUID. */
@@ -127,8 +127,8 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 		final IModel<String> model, final IModel<? extends List<? extends String>> choices,
 		final IChoiceRenderer<? super String> renderer)
 	{
-		LocalisedDropDownChoice<String> cc = new LocalisedDropDownChoice<String>(id, model,
-			choices, renderer);
+		LocalisedDropDownChoice<String> cc = new LocalisedDropDownChoice<>(id, model, choices,
+			renderer);
 		cc.setOutputMarkupId(true);
 		return cc;
 	}

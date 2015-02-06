@@ -35,7 +35,7 @@ public class ThreeDropDownChoicesModel<T> extends TwoDropDownChoicesModel<T>
 	private T selectedValueOption;
 
 	/** The child choices. */
-	private List<T> selectedValuesChoices;
+	private final List<T> selectedValuesChoices;
 
 	/**
 	 * Instantiates a new generic three drop down choices model.

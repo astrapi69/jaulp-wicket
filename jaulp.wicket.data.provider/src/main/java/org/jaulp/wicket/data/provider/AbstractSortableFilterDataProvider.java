@@ -59,7 +59,7 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	private List<T> data;
 
 	/** The sort state. */
-	private final SingleSortState<S> sortState = new SingleSortState<S>();
+	private final SingleSortState<S> sortState = new SingleSortState<>();
 
 	/**
 	 * Default constructor.
@@ -86,6 +86,7 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	 * @return the sort state
 	 * @see ISortableDataProvider#getSortState()
 	 */
+	@Override
 	public final ISortState<S> getSortState()
 	{
 		return sortState;
@@ -168,9 +169,10 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
-		List<T> ret = new ArrayList<T>(filter(sort()));
+		List<T> ret = new ArrayList<>(filter(sort()));
 		if (ret.size() > (first + count))
 		{
 			ret = ret.subList((int)first, (int)first + (int)count);
@@ -246,6 +248,7 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public long size()
 	{
 		return filter(getData()).size();

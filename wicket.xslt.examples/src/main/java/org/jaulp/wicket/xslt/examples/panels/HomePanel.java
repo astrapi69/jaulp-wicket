@@ -32,7 +32,7 @@ public class HomePanel extends Panel
 	public HomePanel(final String id)
 	{
 		super(id);
-		Label report = new Label("message", new Model<String>(
+		Label report = new Label("message", new Model<>(
 
 		"<message>Yep, it worked!</message>"));
 		add(report);

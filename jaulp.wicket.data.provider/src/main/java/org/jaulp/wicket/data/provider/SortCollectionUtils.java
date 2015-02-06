@@ -35,6 +35,8 @@ public final class SortCollectionUtils
 	/**
 	 * Sort.
 	 *
+	 * @param <T>
+	 *            the generic type of the list
 	 * @param list
 	 *            the list
 	 * @param property

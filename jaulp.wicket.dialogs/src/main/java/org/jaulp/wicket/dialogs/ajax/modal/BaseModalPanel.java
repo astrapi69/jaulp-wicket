@@ -52,12 +52,12 @@ public abstract class BaseModalPanel<T> extends Panel
 	{
 		super(id);
 
-		final Form<T> form = new Form<T>("form", model);
+		final Form<T> form = new Form<>("form", model);
 		form.setOutputMarkupId(true);
 		form.clearInput();
 		add(form);
 
-		final TextArea<String> note = new TextArea<String>("messageContent");
+		final TextArea<String> note = new TextArea<>("messageContent");
 
 		note.clearInput();
 		// IT IS VERY IMPORTANT TO SET THE OUTPUTMARKUPID TO TRUE...
