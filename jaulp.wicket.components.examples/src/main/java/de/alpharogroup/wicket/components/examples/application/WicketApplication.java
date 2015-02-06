@@ -53,29 +53,30 @@ public class WicketApplication extends WicketBootstrap3Application
 		// set configuration for development...
 		if (RuntimeConfigurationType.DEVELOPMENT.equals(this.getConfigurationType()))
 		{
-			// Adds the references from source code to the browser to reference in eclipse....
-			WicketSource.configure(this);
-			ApplicationUtils.setHtmlHotDeploy(this);
-			ApplicationUtils.setDebugSettingsForDevelopment(this);
-			ApplicationUtils.setExceptionSettingsForDevelopment(this);
-			// set the behavior if an missing resource is found...
-			getResourceSettings().setThrowExceptionOnMissingResource(true);
+			setDevelopmentModeSettings(this);
 		}
 		// set configuration for deployment...
 		if (RuntimeConfigurationType.DEPLOYMENT.equals(this.getConfigurationType()))
 		{
-			// set exception handling for custom error page...
-			ApplicationUtils.setExceptionSettingsForDeployment(this,
-				new ApplicationRequestCycleListener());
-			ApplicationUtils.setDebugSettingsForDeployment(this);
+			setDeploymentModeSettings(this);
 		}
 	}
-
-	public void setGlobalSettings(final WebApplication application, final int httpPort,
-		final int httpsPort)
-	{
-		ApplicationUtils.setGlobalSettings(application, httpPort, httpsPort, FOOTER_FILTER_NAME,
-			"UTF-8", "+*.css", "+*.png");
+	
+	public void setDeploymentModeSettings(final WebApplication application) {
+		// set exception handling for custom error page...
+		ApplicationUtils.setExceptionSettingsForDeployment(application,
+			new ApplicationRequestCycleListener());
+		ApplicationUtils.setDeploymentModeConfiguration(application);
+	}
+	
+	public void setDevelopmentModeSettings(final WebApplication application) {
+		// Adds the references from source code to the browser to reference in eclipse....
+		WicketSource.configure(application);
+		ApplicationUtils.setHtmlHotDeploy(application);
+		ApplicationUtils.setDebugSettingsForDevelopment(application);
+		ApplicationUtils.setExceptionSettingsForDevelopment(application);
+		// set the behavior if an missing resource is found...
+		application.getResourceSettings().setThrowExceptionOnMissingResource(true);
 		// add an applicationListener...
 		application.getApplicationListeners().add(new IApplicationListener()
 		{
@@ -95,6 +96,13 @@ public class WicketApplication extends WicketBootstrap3Application
 				// initialization...
 			}
 		});
+	}
+
+	public void setGlobalSettings(final WebApplication application, final int httpPort,
+		final int httpsPort)
+	{
+		ApplicationUtils.setGlobalSettings(application, httpPort, httpsPort, FOOTER_FILTER_NAME,
+			"UTF-8", "+*.css", "+*.png");
 	}
 
 	@Override
