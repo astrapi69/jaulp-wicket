@@ -40,7 +40,7 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior
 	/**
 	 * Instantiates a new mailto behavior.
 	 * 
-	 * @param mailtoModel
+	 * @param mailtoModel The mailto model.
 	 */
 	public MailtoBehavior(T mailtoModel)
 	{

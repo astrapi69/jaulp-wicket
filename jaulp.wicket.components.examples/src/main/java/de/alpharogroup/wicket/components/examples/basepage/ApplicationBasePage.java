@@ -204,7 +204,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	/**
 	 * Factory method that can be overwritten for new meta tag content for keywords.
 	 * 
-	 * @return the new <code>IModel<code>
+	 * @return the new <code>IModel</code>
 	 */
 	protected IModel<String> newKeywords()
 	{
@@ -215,7 +215,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	/**
 	 * Factory method that can be overwritten for new meta tag content for the title.
 	 * 
-	 * @return the new <code>IModel<code>
+	 * @return the new <code>IModel</code>
 	 */
 	protected IModel<String> newTitle()
 	{

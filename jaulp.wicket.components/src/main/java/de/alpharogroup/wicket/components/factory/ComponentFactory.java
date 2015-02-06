@@ -358,6 +358,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new {@link TextField}.
 	 * 
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @return the new {@link TextField}

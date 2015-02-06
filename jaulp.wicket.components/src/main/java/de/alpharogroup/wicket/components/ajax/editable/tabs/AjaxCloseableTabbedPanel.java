@@ -171,7 +171,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * Generates a loop item used to represent a specific tab's <code>li</code> element.
 	 * 
-	 * @param tabIndex
+	 * @param tabIndex the tab index
 	 * @return new loop item
 	 */
 	protected LoopItem newTabContainer(final int tabIndex)

@@ -88,7 +88,7 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 	 *            the choices
 	 * @param renderer
 	 *            the renderer
-	 * @return the localised drop down choice< string>
+	 * @return the root choice
 	 */
 	protected LocalisedDropDownChoice<String> newRootChoice(final String id,
 		final IModel<String> model, final IModel<? extends List<? extends String>> choices,
@@ -121,7 +121,7 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 	 *            the choices
 	 * @param renderer
 	 *            the renderer
-	 * @return the localised drop down choice< string>
+	 * @return the child choice
 	 */
 	protected LocalisedDropDownChoice<String> newChildChoice(final String id,
 		final IModel<String> model, final IModel<? extends List<? extends String>> choices,

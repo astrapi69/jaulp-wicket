@@ -21,6 +21,7 @@ import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.settings.IExceptionSettings;
+import org.apache.wicket.settings.IResourceSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -445,7 +446,7 @@ public final class ApplicationUtils
 	/**
 	 * Adds the given resourcePath to the resource finder from the given application.
 	 * 
-	 * @see {@link org.apache.wicket.settings.IResourceSettings#getResourceFinders()}
+	 * @see IResourceSettings#getResourceFinders()
 	 *
 	 * @param application
 	 *            the application

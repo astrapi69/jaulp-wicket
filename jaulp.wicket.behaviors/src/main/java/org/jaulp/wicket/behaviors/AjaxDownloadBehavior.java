@@ -65,14 +65,13 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 	 * Hook method for a file name which will let the browser prompt with a save/open dialog.
 	 * 
 	 * @return the file name
-	 * @see ResourceStreamRequestTarget#getFileName()
 	 */
 	protected abstract String getFileName();
 
 	/**
 	 * Hook method providing the actual resource stream.
 	 * 
-	 * @return
+	 * @return the resource stream.
 	 */
 	protected abstract IResourceStream getResourceStream();
 }

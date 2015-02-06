@@ -265,7 +265,7 @@ public abstract class ReportThrowablePanel extends Panel
 	/**
 	 * New response page class.
 	 *
-	 * @return the class<? extends i requestable page>
+	 * @return the class of the response page 
 	 */
 	protected abstract Class<? extends IRequestablePage> newResponsePageClass();
 

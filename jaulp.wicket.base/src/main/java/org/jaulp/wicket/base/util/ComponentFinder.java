@@ -51,8 +51,8 @@ public final class ComponentFinder
 	 *            page on which ajax response is made
 	 * @return an AjaxRequestTarget instance
 	 * 
-	 * @see for more infomation look at
-	 *      org.apache.wicket.protocol.http.WebApplication#newAjaxRequestTarget(Page)
+	 * @see WebApplication#newAjaxRequestTarget(Page)
+	 * 
 	 */
 	@SuppressWarnings("javadoc")
 	public static AjaxRequestTarget newAjaxRequestTarget(WebApplication application, Page page)
