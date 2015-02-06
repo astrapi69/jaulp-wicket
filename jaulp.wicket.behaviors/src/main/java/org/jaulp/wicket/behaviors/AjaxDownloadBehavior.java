@@ -52,6 +52,7 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 		target.appendJavaScript("setTimeout(\"window.location.href='" + url + "'\", 100);");
 	}
 
+        @Override
 	public void onRequest()
 	{
 		ResourceStreamRequestHandler handler = new ResourceStreamRequestHandler(
@@ -63,12 +64,14 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 	/**
 	 * Hook method for a file name which will let the browser prompt with a save/open dialog.
 	 * 
+     * @return the file name
 	 * @see ResourceStreamRequestTarget#getFileName()
 	 */
 	protected abstract String getFileName();
 
 	/**
 	 * Hook method providing the actual resource stream.
+     * @return 
 	 */
 	protected abstract IResourceStream getResourceStream();
 }

@@ -25,7 +25,7 @@ public class AddJsQueryStatementsBehavior extends Behavior
 
 	public AddJsQueryStatementsBehavior()
 	{
-		this.chainableStatement = new ArrayList<ChainableStatement>();
+		this.chainableStatement = new ArrayList<>();
 	}
 
 	public AddJsQueryStatementsBehavior(List<ChainableStatement> chainableStatement)
@@ -34,6 +34,7 @@ public class AddJsQueryStatementsBehavior extends Behavior
 		this.chainableStatement = chainableStatement;
 	}
 
+        @Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		CharSequence renderedStatement = createRenderedStatement(component);

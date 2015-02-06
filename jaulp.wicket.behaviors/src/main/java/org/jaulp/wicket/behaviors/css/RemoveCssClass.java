@@ -29,7 +29,7 @@ public class RemoveCssClass extends AttributeModifier
 
 	public RemoveCssClass(String cssClass)
 	{
-		super("class", new Model<String>(cssClass));
+		super("class", new Model<>(cssClass));
 	}
 
 	@Override

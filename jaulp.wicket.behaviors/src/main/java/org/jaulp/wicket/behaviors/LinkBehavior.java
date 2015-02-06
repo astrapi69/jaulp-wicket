@@ -25,8 +25,8 @@ import org.apache.wicket.util.lang.Args;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 
 /**
- * The Class LinkBehavior adds the ability to a component to act as a link, </br> i.e. like a
- * tablerow tag( &lt;tr&gt; ) or a list item (&lt;li&gt;) the ability to act as a link. </br>For
+ * The Class LinkBehavior adds the ability to a component to act as a link,  i.e. like a
+ * tablerow tag( &lt;tr&gt; ) or a list item (&lt;li&gt;) the ability to act as a link. For
  * instance in repeaters like the DataView.
  */
 public class LinkBehavior extends Behavior
@@ -38,13 +38,13 @@ public class LinkBehavior extends Behavior
 	private static final long serialVersionUID = 1L;
 
 	/** The onmouseover color. */
-	private String onmouseoverColor;
+	private final String onmouseoverColor;
 
 	/** The onmouseout color. */
-	private String onmouseoutColor;
+	private final String onmouseoutColor;
 
 	/** The absolute path. */
-	private String absolutePath;
+	private final String absolutePath;
 
 	/**
 	 * Instantiates a new tablerow link behavior.

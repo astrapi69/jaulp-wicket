@@ -19,6 +19,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.util.lang.Args;
 
 /**
  * The Class AddJavascriptBehavior adds javascript code as String with an id.
@@ -33,10 +34,10 @@ public class AddJavascriptBehavior extends Behavior
 	 * The unique id for the javascript element. This can be null, however in that case the ajax
 	 * header contribution can't detect duplicate script fragments.
 	 */
-	private String id;
+	private final String id;
 
 	/** The javascript code to be rendered. */
-	private CharSequence javascript;
+	private final CharSequence javascript;
 
 	/**
 	 * Instantiates a new adds the javascript behavior.
@@ -49,6 +50,7 @@ public class AddJavascriptBehavior extends Behavior
 	public AddJavascriptBehavior(CharSequence javascript, String id)
 	{
 		super();
+                Args.notNull(javascript, "javascript");
 		this.javascript = javascript;
 		this.id = id;
 	}
@@ -56,6 +58,7 @@ public class AddJavascriptBehavior extends Behavior
 	/**
 	 * {@inheritDoc}
 	 */
+        @Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		response.render(JavaScriptHeaderItem.forScript(this.javascript, this.id));

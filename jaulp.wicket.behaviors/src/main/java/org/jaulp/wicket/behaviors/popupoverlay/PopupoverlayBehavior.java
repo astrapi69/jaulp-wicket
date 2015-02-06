@@ -50,7 +50,7 @@ public class PopupoverlayBehavior extends Behavior
 
 	protected String generateJS(final TextTemplate textTemplate)
 	{
-		final Map<String, Object> variables = new HashMap<String, Object>();
+		final Map<String, Object> variables = new HashMap<>();
 		variables.put("componentId", this.component.getMarkupId());
 		variables.put("type", "'" + this.settings.getType() + "'");
 		variables.put("autoopen", this.settings.isAutoopen());

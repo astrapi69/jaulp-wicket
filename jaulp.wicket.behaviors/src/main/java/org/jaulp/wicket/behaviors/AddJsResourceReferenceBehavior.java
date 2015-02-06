@@ -49,7 +49,7 @@ public class AddJsResourceReferenceBehavior extends Behavior
 	 * The unique id for the javascript element. This can be null, however in that case the ajax
 	 * header contribution can't detect duplicate script fragments.
 	 */
-	private String id;
+	private final String id;
 
 	/**
 	 * Instantiates a new adds the js resource reference behavior.
@@ -78,7 +78,7 @@ public class AddJsResourceReferenceBehavior extends Behavior
 	 */
 	private ResourceReference getResourceReference()
 	{
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("url", WicketUrlUtils.getUrlAsString(pageClass));
 		ResourceReference resourceReference = new TextTemplateResourceReference(pageClass,
 			this.filename, "text/javascript", Model.ofMap(map));
@@ -88,6 +88,7 @@ public class AddJsResourceReferenceBehavior extends Behavior
 	/**
 	 * {@inheritDoc}
 	 */
+        @Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		super.renderHead(component, response);

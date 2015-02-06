@@ -6,7 +6,7 @@ public enum HorizontalPosition
 {
 	CENTER("center"), LEFT("left"), RIGHT("right"), LEFTEDGE("leftedge"), RIGHTEDGE("rightedge");
 	@Getter
-	private String position;
+	private final String position;
 
 	private HorizontalPosition(String position)
 	{

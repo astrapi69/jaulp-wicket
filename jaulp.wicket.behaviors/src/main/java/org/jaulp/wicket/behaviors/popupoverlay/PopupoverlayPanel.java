@@ -16,7 +16,7 @@ public abstract class PopupoverlayPanel<T> extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 	@Getter
-	private MarkupContainer overlayReference;
+	private final MarkupContainer overlayReference;
 
 	Button openButton;
 

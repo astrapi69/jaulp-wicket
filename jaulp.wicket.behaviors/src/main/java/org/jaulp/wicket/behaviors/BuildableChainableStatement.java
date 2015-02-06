@@ -12,12 +12,12 @@ public class BuildableChainableStatement implements ChainableStatement, Serializ
 	/**
 	 * The statement label.
 	 */
-	private String label;
+	private final String label;
 
 	/**
 	 * The statement args.
 	 */
-	private CharSequence[] args;
+	private final CharSequence[] args;
 
 	@Override
 	public String chainLabel()

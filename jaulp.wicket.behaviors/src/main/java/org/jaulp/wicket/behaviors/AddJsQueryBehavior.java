@@ -29,6 +29,7 @@ public class AddJsQueryBehavior extends Behavior
 		this.statementArgs = statementArgs;
 	}
 
+        @Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		CharSequence renderedStatement = createRenderedStatement(component);

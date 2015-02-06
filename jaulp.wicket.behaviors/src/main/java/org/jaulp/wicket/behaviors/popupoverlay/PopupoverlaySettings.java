@@ -57,7 +57,7 @@ public class PopupoverlaySettings implements Serializable
 	/**
 	 * Sets background opacity. defaults to '0.5';
 	 */
-	private Float opacity = Float.valueOf(0.5f);
+	private Float opacity = 0.5f;
 
 	/**
 	 * Sets horizontal position. Options `leftedge` and `rightedge` can be used only for tooltips,

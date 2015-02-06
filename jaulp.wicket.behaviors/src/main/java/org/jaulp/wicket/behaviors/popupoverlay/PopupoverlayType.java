@@ -6,7 +6,7 @@ public enum PopupoverlayType
 {
 	OVERLAY("overlay"), TOOLTIP("tooltip");
 	@Getter
-	private String type;
+	private final String type;
 
 	private PopupoverlayType(String type)
 	{
