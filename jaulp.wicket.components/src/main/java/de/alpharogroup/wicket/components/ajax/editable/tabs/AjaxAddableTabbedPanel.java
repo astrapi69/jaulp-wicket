@@ -118,7 +118,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 	protected Loop newTabsLoop(String id, final IModel<Integer> model)
 	{
-		Loop tabsLoop = new Loop(id, model)
+		Loop localTabsLoop = new Loop(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -147,7 +147,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 				return newTabContainer(iteration);
 			}
 		};
-		return tabsLoop;
+		return localTabsLoop;
 	}
 
 	/**
@@ -475,7 +475,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 		final Component component;
 
-		if (currentTab == -1 || (tabs.size() == 0) || !getVisiblityCache().isVisible(currentTab))
+		if (currentTab == -1 || (tabs.isEmpty()) || !getVisiblityCache().isVisible(currentTab))
 		{
 			// no tabs or the current tab is not visible
 			component = newPanel();

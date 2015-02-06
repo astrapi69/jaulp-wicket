@@ -35,7 +35,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The CheckBox component. */
-	private CheckBox checkBox;
+	private final CheckBox checkBox;
 
 	/**
 	 * Instantiates a new LabeledCheckboxPanel object.
@@ -50,7 +50,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	public LabeledCheckboxPanel(String id, IModel<T> model, IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
-		PropertyModel<Boolean> propertyModel = new PropertyModel<Boolean>(model.getObject(), id);
+		PropertyModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), id);
 		add(checkBox = newCheckBox("checkBox", propertyModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
@@ -78,6 +78,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return checkBox.getInput();
@@ -86,6 +87,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
@@ -94,6 +96,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		checkBox.setRequired(isRequired());

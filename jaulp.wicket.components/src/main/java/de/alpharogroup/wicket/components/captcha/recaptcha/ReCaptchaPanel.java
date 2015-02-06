@@ -23,6 +23,7 @@ public abstract class ReCaptchaPanel extends Panel
 	private static final long serialVersionUID = 1L;
 	private static final String PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
 	private static final String PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
+	private static final String RECAPTCHA_SERVER_URL = "https://www.google.com/recaptcha/api";
 
 	public ReCaptchaPanel(String id)
 	{
@@ -77,7 +78,7 @@ public abstract class ReCaptchaPanel extends Panel
 		{
 			ReCaptcha reCaptcha = ReCaptchaFactory.newSecureReCaptcha(getPublicKey(),
 				getPrivateKey(), includeNoscript);
-			((ReCaptchaImpl)reCaptcha).setRecaptchaServer("https://www.google.com/recaptcha/api");
+			((ReCaptchaImpl)reCaptcha).setRecaptchaServer(RECAPTCHA_SERVER_URL);
 			return reCaptcha;
 		}
 		return ReCaptchaFactory.newReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);

@@ -25,17 +25,17 @@ public class TwitterShareModel implements Serializable
 
 	private static final long serialVersionUID = 1L;
 
-	private String shareUrl;
+	private final String shareUrl;
 
-	private String dataUrl;
+	private final String dataUrl;
 
-	private String via;
+	private final String via;
 
-	private String counturl;
+	private final String counturl;
 
 	private Boolean showCount = Boolean.FALSE;
 
-	private String countAlign;
+	private final String countAlign;
 
 	public String getShareUrl()
 	{

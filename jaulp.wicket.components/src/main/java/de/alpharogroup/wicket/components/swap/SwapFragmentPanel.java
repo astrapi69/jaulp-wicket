@@ -64,7 +64,7 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	{
 		super(id, model);
 		setModel(Args.notNull(model, "model"));
-		setDefaultModel(new CompoundPropertyModel<T>(model));
+		setDefaultModel(new CompoundPropertyModel<>(model));
 		setOutputMarkupPlaceholderTag(true);
 		add(view = newViewFragment(FRAGMENT_ID));
 		edit = newEditFragment(FRAGMENT_ID);

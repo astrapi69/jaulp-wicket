@@ -17,15 +17,15 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	private LocalisedDropDownChoice<T> dropdownChoice;
+	private final LocalisedDropDownChoice<T> dropdownChoice;
 
 	public EnumLocalizedDropdownChoicePanel(String id, IModel<M> model, IModel<String> labelModel,
 		List<T> enumValues)
 	{
 		super(id, model, labelModel);
 		setDefaultModel(model);
-		PropertyModel<T> pm = new PropertyModel<T>(model.getObject(), id);
-		ChoiceRenderer<T> choiceRenderer = new ChoiceRenderer<T>("name", "name");
+		PropertyModel<T> pm = new PropertyModel<>(model.getObject(), id);
+		ChoiceRenderer<T> choiceRenderer = new ChoiceRenderer<>("name", "name");
 
 		add(dropdownChoice = newLocalisedDropDownChoice("dropdownChoice", pm, enumValues,
 			choiceRenderer));
@@ -44,7 +44,7 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 		final IModel<T> model, final List<? extends T> data,
 		final IChoiceRenderer<? super T> renderer)
 	{
-		LocalisedDropDownChoice<T> ddc = new LocalisedDropDownChoice<T>(id, model, data, renderer);
+		LocalisedDropDownChoice<T> ddc = new LocalisedDropDownChoice<>(id, model, data, renderer);
 		return ddc;
 	}
 
@@ -56,6 +56,7 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return dropdownChoice.getInput();
@@ -64,6 +65,7 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
@@ -72,6 +74,7 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		dropdownChoice.setRequired(isRequired());

@@ -34,7 +34,7 @@ public class AddJsQueryStatementsBehavior extends Behavior
 		this.chainableStatement = chainableStatement;
 	}
 
-        @Override
+	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		CharSequence renderedStatement = createRenderedStatement(component);

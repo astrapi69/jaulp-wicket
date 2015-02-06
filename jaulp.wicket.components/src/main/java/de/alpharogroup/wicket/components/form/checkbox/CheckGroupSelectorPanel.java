@@ -33,19 +33,19 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 	 * the form.
 	 */
 	@Getter
-	private Form<?> form;
+	private final Form<?> form;
 
 	@Getter
-	private CheckGroup<T> checkGroup;
+	private final CheckGroup<T> checkGroup;
 
 	@Getter
-	private CheckGroupSelector checkGroupSelector;
+	private final CheckGroupSelector checkGroupSelector;
 
 	@Getter
-	private Label checkGroupSelectorLabel;
+	private final Label checkGroupSelectorLabel;
 
 	@Getter
-	private ListView<T> choices;
+	private final ListView<T> choices;
 
 	public CheckGroupSelectorPanel(String id, IModel<CheckboxModel<T>> model)
 	{
@@ -78,7 +78,7 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 			@Override
 			protected void populateItem(ListItem<T> item)
 			{
-				item.add(new Check<T>("checkbox", item.getModel()));
+				item.add(new Check<>("checkbox", item.getModel()));
 				item.add(new Label("label", new PropertyModel<String>(item.getDefaultModel(), model
 					.getObject().getLabelPropertyExpression())));
 			}
@@ -136,6 +136,7 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
 				CheckGroupSelectorPanel.this.onUpdate(target);

@@ -27,9 +27,9 @@ public class SigninPanel extends Panel
 
 	protected static final Logger LOGGER = LoggerFactory.getLogger(SigninPanel.class);
 	@Getter
-	private Component email;
+	private final Component email;
 	@Getter
-	private Component password;
+	private final Component password;
 
 	@SuppressWarnings("unchecked")
 	public SigninPanel(String id, final IModel<? extends SignInModel> model)

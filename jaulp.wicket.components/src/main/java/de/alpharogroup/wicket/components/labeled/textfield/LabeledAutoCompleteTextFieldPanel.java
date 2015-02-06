@@ -71,6 +71,7 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(autoCompleteTextField.getConvertedInput());
@@ -79,6 +80,7 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return autoCompleteTextField.getInput();
@@ -110,6 +112,7 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		autoCompleteTextField.setRequired(isRequired());

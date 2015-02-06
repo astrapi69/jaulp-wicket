@@ -65,7 +65,8 @@ public class FocusRequestBehavior extends Behavior
 	private String createJavaScript(Component component)
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.append("setTimeout(" + "function() {" + "var component = document.getElementById(\"").append(component.getMarkupId()).append("\");");
+		sb.append("setTimeout(" + "function() {" + "var component = document.getElementById(\"")
+			.append(component.getMarkupId()).append("\");");
 		if (clearValue)
 		{
 			sb.append("component.value = \"\";");
@@ -79,7 +80,7 @@ public class FocusRequestBehavior extends Behavior
 	/**
 	 * {@inheritDoc}
 	 */
-        @Override
+	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		component.setOutputMarkupId(true);

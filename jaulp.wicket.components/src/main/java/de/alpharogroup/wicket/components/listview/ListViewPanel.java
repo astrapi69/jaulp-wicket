@@ -34,7 +34,7 @@ public abstract class ListViewPanel<T> extends Panel
 	 */
 	public ListViewPanel(String id, List<T> list)
 	{
-		this(id, new ListModel<T>(list));
+		this(id, new ListModel<>(list));
 	}
 
 	/**
@@ -71,6 +71,7 @@ public abstract class ListViewPanel<T> extends Panel
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void populateItem(ListItem<T> item)
 			{
 				item.add(newListComponent("item", item));

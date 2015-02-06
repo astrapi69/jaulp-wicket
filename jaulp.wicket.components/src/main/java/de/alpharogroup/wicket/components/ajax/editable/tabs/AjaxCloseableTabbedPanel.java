@@ -458,7 +458,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 		final Component component;
 
-		if (currentTab == -1 || (tabs.size() == 0) || !getVisiblityCache().isVisible(currentTab))
+		if (currentTab == -1 || (tabs.isEmpty()) || !getVisiblityCache().isVisible(currentTab))
 		{
 			// no tabs or the current tab is not visible
 			component = newPanel();

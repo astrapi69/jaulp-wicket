@@ -59,6 +59,7 @@ public class CheckChoicesListView<T> extends ChoicesListView<T>
 		super(id, choices, renderer);
 	}
 
+	@Override
 	protected void populateItem(ListItem<T> it)
 	{
 		final int index = it.getIndex();

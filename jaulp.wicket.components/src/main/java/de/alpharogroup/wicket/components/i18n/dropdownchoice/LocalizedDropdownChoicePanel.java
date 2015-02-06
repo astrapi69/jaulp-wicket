@@ -12,7 +12,7 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	private LocalisedDropDownChoice<T> dropdownChoice;
+	private final LocalisedDropDownChoice<T> dropdownChoice;
 
 	public LocalizedDropdownChoicePanel(String id, IModel<T> model, IModel<String> labelModel,
 		List<T> enumValues)

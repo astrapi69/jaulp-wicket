@@ -22,7 +22,7 @@ public abstract class ChoicesListView<T> extends ListView<T>
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	private IChoiceRenderer<T> choiceRenderer;
+	private final IChoiceRenderer<T> choiceRenderer;
 
 	/**
 	 * Construct a list view that will expose the specified IChoiceRenderer for rendering its list
@@ -59,6 +59,7 @@ public abstract class ChoicesListView<T> extends ListView<T>
 	 * 
 	 * @param choice
 	 *            The current value of the list that is being rendered.
+	 * @return the choice label
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected String getChoiceLabel(T choice)
@@ -89,6 +90,7 @@ public abstract class ChoicesListView<T> extends ListView<T>
 	 *            The current value of the list that is being rendered.
 	 * @param index
 	 *            The zero-indexed position of that value in the list.
+	 * @return the choice value
 	 */
 	protected String getChoiceValue(T choice, int index)
 	{

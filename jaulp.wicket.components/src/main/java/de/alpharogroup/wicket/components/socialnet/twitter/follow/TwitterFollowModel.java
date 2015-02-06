@@ -24,10 +24,10 @@ public class TwitterFollowModel implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	private String username;
-	private String urlPrefix;
+	private final String username;
+	private final String urlPrefix;
 	private Boolean showCount = Boolean.FALSE;
-	private String url;
+	private final String url;
 
 	public String getUsername()
 	{

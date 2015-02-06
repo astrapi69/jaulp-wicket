@@ -19,6 +19,7 @@ import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
@@ -72,6 +73,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
@@ -80,6 +82,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return emailTextField.getInput();
@@ -108,15 +111,14 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 */
 	protected EmailTextField newEmailTextField(String id, IModel<T> model)
 	{
-		IModel<String> textFieldModel = new PropertyModel<String>(model.getObject(), getId());
-		EmailTextField emailTextField = new EmailTextField(id, textFieldModel);
-		emailTextField.setOutputMarkupId(true);
-		return emailTextField;
+		return ComponentFactory.newEmailTextField(id, new PropertyModel<String>(model.getObject(),
+			getId()));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		emailTextField.setRequired(isRequired());

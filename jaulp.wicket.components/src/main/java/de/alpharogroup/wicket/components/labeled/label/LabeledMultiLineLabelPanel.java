@@ -44,7 +44,7 @@ public class LabeledMultiLineLabelPanel<T> extends Panel
 	{
 		super(id, model);
 
-		PropertyModel<T> viewableLabelModel = new PropertyModel<T>(model.getObject(), id);
+		PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), id);
 
 		add(viewableLabel = newMultiLineLabelLabel("viewableLabel", viewableLabelModel));
 
@@ -59,9 +59,7 @@ public class LabeledMultiLineLabelPanel<T> extends Panel
 	 * 
 	 * @param id
 	 *            the id
-	 * @param forId
-	 *            the for id
-	 * @param model
+	 * @param viewableLabelModel
 	 *            the model
 	 * @return the label
 	 */

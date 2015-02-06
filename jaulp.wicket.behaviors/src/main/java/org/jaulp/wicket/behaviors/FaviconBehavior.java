@@ -32,7 +32,7 @@ public class FaviconBehavior extends Behavior
 	/**
 	 * {@inheritDoc}
 	 */
-        @Override
+	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		response.render(new StringHeaderItem(

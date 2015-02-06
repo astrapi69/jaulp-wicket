@@ -61,7 +61,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
-		PropertyModel<T> textAreaModel = new PropertyModel<T>(model.getObject(), id);
+		PropertyModel<T> textAreaModel = new PropertyModel<>(model.getObject(), id);
 		add(textArea = newTextArea("textArea", textAreaModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", textArea));
@@ -73,6 +73,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(textArea.getConvertedInput());
@@ -81,6 +82,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return textArea.getInput();
@@ -114,6 +116,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		textArea.setRequired(isRequired());

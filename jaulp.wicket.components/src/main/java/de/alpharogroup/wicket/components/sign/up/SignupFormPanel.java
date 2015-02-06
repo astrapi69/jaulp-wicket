@@ -34,8 +34,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	{
 		BaseUsernameSignUpModel modelObject = new BaseUsernameSignUpModel();
 		modelObject.setEmail("");
-		IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<BaseUsernameSignUpModel>(
-			modelObject);
+		IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<>(modelObject);
 		setModel(model);
 		addOrReplace(form = newForm("form", model));
 		form.addOrReplace(signupPanel = newSignupPanel("signupPanel", getModel()));

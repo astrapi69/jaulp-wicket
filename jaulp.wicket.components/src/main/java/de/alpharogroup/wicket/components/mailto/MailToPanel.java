@@ -1,8 +1,10 @@
 package de.alpharogroup.wicket.components.mailto;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.components.MailtoLabel;
 import org.jaulp.wicket.behaviors.models.MailtoModel;
 
@@ -55,9 +57,9 @@ public abstract class MailToPanel extends Panel
 	}
 
 	/**
-	 * Factory method to create a IModel<String> for the MailtoViewModel. This method is invoked in
-	 * the constructor from this class and can be overridden so users can provide their own version
-	 * of a MailtoViewModel.
+	 * Factory method to create a IModel for the MailtoViewModel. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * MailtoViewModel.
 	 * 
 	 * @param params
 	 *            the params
@@ -65,13 +67,15 @@ public abstract class MailToPanel extends Panel
 	 */
 	protected IModel<String> newMailToViewModel(final Object[] params)
 	{
-		return new StringResourceModel("global.compamy.mailto.view", this, null, params);
+		return ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("global.compamy.mailto.view").parameters(params)
+				.build(), this);
 	}
 
 	/**
-	 * Factory method to create a IModel<String> for the MailtoAddressModel. This method is invoked
-	 * in the constructor from this class and can be overridden so users can provide their own
-	 * version of a MailtoAddressModel.
+	 * Factory method to create a IModel for the MailtoAddressModel. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * MailtoAddressModel.
 	 * 
 	 * @param params
 	 *            the params
@@ -79,7 +83,9 @@ public abstract class MailToPanel extends Panel
 	 */
 	protected IModel<String> newMailToAddressModel(final Object[] params)
 	{
-		return new StringResourceModel("global.mailto.address", this, null, params);
+		return ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("global.mailto.address").parameters(params).build(),
+			this);
 	}
 
 }

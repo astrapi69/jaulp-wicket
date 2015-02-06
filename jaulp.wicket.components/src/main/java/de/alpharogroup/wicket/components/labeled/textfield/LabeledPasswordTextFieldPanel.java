@@ -19,6 +19,7 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
@@ -93,16 +94,14 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 */
 	protected PasswordTextField newPasswordTextField(String id, IModel<T> model)
 	{
-		PropertyModel<String> passwordTextFieldModel = new PropertyModel<String>(model.getObject(),
-			getId());
-		PasswordTextField passwordTextField = new PasswordTextField(id, passwordTextFieldModel);
-		passwordTextField.setOutputMarkupId(true);
-		return passwordTextField;
+		return ComponentFactory.newPasswordTextField(id,
+			new PropertyModel<String>(model.getObject(), getId()));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return passwordTextField.getInput();
@@ -111,6 +110,7 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
@@ -119,6 +119,7 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		passwordTextField.setRequired(isRequired());

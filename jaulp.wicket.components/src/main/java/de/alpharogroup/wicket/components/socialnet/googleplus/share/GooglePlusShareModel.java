@@ -25,17 +25,17 @@ public class GooglePlusShareModel implements Serializable
 
 	private static final long serialVersionUID = 1L;
 
-	private String cssClass;
+	private final String cssClass;
 
-	private String dataAnnotation;
+	private final String dataAnnotation;
 
-	private String dataWith;
+	private final String dataWith;
 
-	private String dataHref;
+	private final String dataHref;
 
-	private String scriptSrc;
+	private final String scriptSrc;
 
-	private String locale;
+	private final String locale;
 
 	public String getCssClass()
 	{

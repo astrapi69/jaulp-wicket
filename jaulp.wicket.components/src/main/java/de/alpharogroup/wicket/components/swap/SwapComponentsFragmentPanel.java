@@ -52,6 +52,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	 *            the id
 	 * @return the fragment
 	 */
+	@Override
 	protected Fragment newViewFragment(final String id)
 	{
 		Fragment viewFragment = new Fragment(id, "view", this, getModel());
@@ -78,6 +79,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	 *            the id
 	 * @return the fragment
 	 */
+	@Override
 	protected Fragment newEditFragment(final String id)
 	{
 		Fragment editFragment = new Fragment(id, "edit", this, getDefaultModel());

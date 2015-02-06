@@ -34,9 +34,9 @@ public class DisclaimerPanel extends Panel
 
 
 	/**
-	 * Factory method to create a IModel<String> for the disclaimer content. This method is invoked
-	 * in the constructor from this class and can be overridden so users can provide their own
-	 * version of a disclaimer content.
+	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * disclaimer content.
 	 * 
 	 * @return the i model
 	 */
@@ -58,9 +58,9 @@ public class DisclaimerPanel extends Panel
 	}
 
 	/**
-	 * Factory method to create a IModel<String> for the disclaimer content. This method is invoked
-	 * in the constructor from this class and can be overridden so users can provide their own
-	 * version of a disclaimer content.
+	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * disclaimer content.
 	 * 
 	 * @return the i model
 	 */
@@ -70,9 +70,9 @@ public class DisclaimerPanel extends Panel
 	}
 
 	/**
-	 * Factory method to create a IModel<String> for the disclaimer header. This method is invoked
-	 * in the constructor from this class and can be overridden so users can provide their own
-	 * version of a disclaimer header.
+	 * Factory method to create a IModel for the disclaimer header. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * disclaimer header.
 	 * 
 	 * @return the i model
 	 */

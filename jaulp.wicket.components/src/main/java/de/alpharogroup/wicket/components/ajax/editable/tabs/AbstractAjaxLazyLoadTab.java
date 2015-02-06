@@ -15,10 +15,10 @@ public abstract class AbstractAjaxLazyLoadTab<T> implements ITab
 	private static final long serialVersionUID = 1L;
 	/** The title of the tab. */
 	@Getter
-	private IModel<String> title;
+	private final IModel<String> title;
 	/** The model of the content. */
 	@Getter
-	private IModel<T> content;
+	private final IModel<T> content;
 
 	public AbstractAjaxLazyLoadTab(IModel<String> title, IModel<T> content)
 	{

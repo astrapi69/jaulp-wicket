@@ -6,14 +6,17 @@ import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.EnumLabel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.CheckGroup;
 import org.apache.wicket.markup.html.form.CheckGroupSelector;
+import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.HiddenField;
+import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
@@ -68,6 +71,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new EnumLabel.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -81,6 +86,7 @@ public class ComponentFactory
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected String resourceKey(Enum value)
 			{
 				return value.name();
@@ -88,6 +94,38 @@ public class ComponentFactory
 		};
 		enumLabel.setOutputMarkupId(true);
 		return enumLabel;
+	}
+
+	/**
+	 * Factory method for creating a new {@link EmailTextField}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link EmailTextField}
+	 */
+	public static EmailTextField newEmailTextField(String id, IModel<String> model)
+	{
+		EmailTextField emailTextField = new EmailTextField(id, model);
+		emailTextField.setOutputMarkupId(true);
+		return emailTextField;
+	}
+
+	/**
+	 * Factory method for creating a new {@link PasswordTextField}.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link PasswordTextField}
+	 */
+	public static PasswordTextField newPasswordTextField(String id, IModel<String> model)
+	{
+		PasswordTextField passwordTextField = new PasswordTextField(id, model);
+		passwordTextField.setOutputMarkupId(true);
+		return passwordTextField;
 	}
 
 	/**
@@ -108,7 +146,7 @@ public class ComponentFactory
 	 * Factory method for create a new Form.
 	 *
 	 * @param <T>
-	 *            the generic type
+	 *            the generic type of the form
 	 * @param id
 	 *            the id
 	 * @return the form
@@ -122,7 +160,7 @@ public class ComponentFactory
 	 * Factory method for create a new Form.
 	 *
 	 * @param <T>
-	 *            the generic type
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -145,7 +183,7 @@ public class ComponentFactory
 	 */
 	public static Component newHiddenField(final String id)
 	{
-		HiddenField<String> hiddenField = new HiddenField<String>(id);
+		HiddenField<String> hiddenField = new HiddenField<>(id);
 		hiddenField.setOutputMarkupId(true);
 		return hiddenField;
 	}
@@ -171,7 +209,7 @@ public class ComponentFactory
 	 * Factory method for create a new Label with a {@link IModel}.
 	 *
 	 * @param <T>
-	 *            the generic type
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -189,7 +227,7 @@ public class ComponentFactory
 	 * Factory method for create a new Label with a {@link PropertyModel}.
 	 *
 	 * @param <T>
-	 *            the generic type
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -285,7 +323,7 @@ public class ComponentFactory
 	 * Factory method for create a new MultiLineLabel with a {@link IModel}.
 	 *
 	 * @param <T>
-	 *            the generic type
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -302,6 +340,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new TextArea.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -310,7 +350,7 @@ public class ComponentFactory
 	 */
 	public static <T> TextArea<T> newTextArea(final String id, final PropertyModel<T> model)
 	{
-		TextArea<T> textArea = new TextArea<T>(id, model);
+		TextArea<T> textArea = new TextArea<>(id, model);
 		textArea.setOutputMarkupId(true);
 		return textArea;
 	}
@@ -322,23 +362,23 @@ public class ComponentFactory
 	 *            the id
 	 * @return the new {@link TextField}
 	 */
-	public static Component newTextField(final String id)
+	public static <T> TextField<T> newTextField(final String id)
 	{
-		TextField<String> textField = new TextField<>(id);
-		textField.setOutputMarkupId(true);
-		return textField;
+		return newTextField(id, null);
 	}
 
 	/**
 	 * Factory method for create a new {@link TextField}.
 	 * 
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
 	 * @return the new {@link TextField}
 	 */
-	public static <T> Component newTextField(final String id, final IModel<T> model)
+	public static <T> TextField<T> newTextField(final String id, final IModel<T> model)
 	{
 		TextField<T> textField = new TextField<>(id, model);
 		textField.setOutputMarkupId(true);
@@ -348,6 +388,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new {@link RadioGroup}.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @return the new {@link RadioGroup}
@@ -360,6 +402,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new {@link RadioGroup}.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -368,7 +412,7 @@ public class ComponentFactory
 	 */
 	public static <T> RadioGroup<T> newRadioGroup(final String id, final IModel<T> model)
 	{
-		RadioGroup<T> radioGroup = new RadioGroup<T>(id, model);
+		RadioGroup<T> radioGroup = new RadioGroup<>(id, model);
 		radioGroup.setOutputMarkupId(true);
 		return radioGroup;
 	}
@@ -376,6 +420,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new {@link CheckGroup}.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
@@ -385,7 +431,7 @@ public class ComponentFactory
 	public static <T> CheckGroup<T> newCheckGroup(final String id,
 		final IModel<? extends Collection<T>> model)
 	{
-		CheckGroup<T> checkGroup = new CheckGroup<T>(id, model);
+		CheckGroup<T> checkGroup = new CheckGroup<>(id, model);
 		checkGroup.setOutputMarkupId(true);
 		return checkGroup;
 	}
@@ -393,6 +439,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new {@link CheckGroupSelector}.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @return the new {@link CheckGroupSelector}
@@ -407,6 +455,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new {@link CheckGroupSelector}.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param group
@@ -419,6 +469,37 @@ public class ComponentFactory
 		CheckGroupSelector checkGroupSelector = new CheckGroupSelector(id, group);
 		checkGroupSelector.setOutputMarkupId(true);
 		return checkGroupSelector;
+	}
+
+	/**
+	 * Factory method for create a new {@link WebMarkupContainer}.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the new {@link WebMarkupContainer}
+	 */
+	public static WebMarkupContainer newWebMarkupContainer(final String id)
+	{
+		return newWebMarkupContainer(id, null);
+	}
+
+	/**
+	 * Factory method for create a new {@link WebMarkupContainer}.
+	 *
+	 * @param <T>
+	 *            the generic type of the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link WebMarkupContainer}
+	 */
+	public static <T> WebMarkupContainer newWebMarkupContainer(final String id,
+		final IModel<T> model)
+	{
+		WebMarkupContainer webMarkupContainer = new WebMarkupContainer(id, model);
+		webMarkupContainer.setOutputMarkupId(true);
+		return webMarkupContainer;
 	}
 
 }

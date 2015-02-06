@@ -65,8 +65,7 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 	public AbstractPasswordForgottenPanel(final String id)
 	{
 		super(id);
-		setDefaultModel(new CompoundPropertyModel<PasswordForgottenModel>(
-			new PasswordForgottenModel()));
+		setDefaultModel(new CompoundPropertyModel<>(new PasswordForgottenModel()));
 
 		add(form = newForm("form", getDefaultModel()));
 

@@ -78,6 +78,7 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
@@ -86,6 +87,7 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return dateTimeField.getInput();
@@ -104,7 +106,7 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 */
 	protected DateTimeField newDateTimeField(String id, IModel<T> model)
 	{
-		PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());
+		PropertyModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
 		DateTimeField dateTextField = new DateTimeField(id, textFieldModel);
 		return dateTextField;
 	}
@@ -112,6 +114,7 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		dateTimeField.setRequired(isRequired());

@@ -70,7 +70,7 @@ public class MenuUtils
 	public static MenuItem createMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
 		Component component, final PageParameters parameters)
 	{
-		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass, parameters);
 		StringResourceModel stringResourceModel = new StringResourceModel(resourceModelKey,
 			component, null);
@@ -106,7 +106,7 @@ public class MenuUtils
 	public static MenuItem createMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
 		Component component)
 	{
-		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass);
 		StringResourceModel stringResourceModel = new StringResourceModel(resourceModelKey,
 			component, null);

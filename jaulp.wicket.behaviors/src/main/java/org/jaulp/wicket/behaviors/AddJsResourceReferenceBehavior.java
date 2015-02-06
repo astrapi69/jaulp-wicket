@@ -88,7 +88,7 @@ public class AddJsResourceReferenceBehavior extends Behavior
 	/**
 	 * {@inheritDoc}
 	 */
-        @Override
+	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		super.renderHead(component, response);

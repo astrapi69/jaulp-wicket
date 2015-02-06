@@ -26,6 +26,6 @@ public class ImageChoicesModel implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	private List<ImageCheckboxModel> choices;
-	List<ImageCheckboxModel> selectedItems = new ArrayList<ImageCheckboxModel>();
+	List<ImageCheckboxModel> selectedItems = new ArrayList<>();
 	private String labelPropertyExpression;
 }

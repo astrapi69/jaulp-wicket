@@ -22,6 +22,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
 public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModel>
 {
 
@@ -45,7 +47,7 @@ public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModel>
 
 	protected WebMarkupContainer newWebMarkupContainer(String id, IModel<GooglePlusShareModel> model)
 	{
-		WebMarkupContainer googlePlusButton = new WebMarkupContainer(id);
+		WebMarkupContainer googlePlusButton = ComponentFactory.newWebMarkupContainer(id, model);
 		googlePlusButton.add(new AttributeModifier("class", model.getObject().getCssClass()));
 		googlePlusButton.add(new AttributeModifier("data-annotation", model.getObject()
 			.getDataAnnotation()));

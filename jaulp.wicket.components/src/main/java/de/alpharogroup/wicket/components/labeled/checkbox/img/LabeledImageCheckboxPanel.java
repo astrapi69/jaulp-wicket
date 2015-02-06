@@ -19,16 +19,15 @@ public class LabeledImageCheckboxPanel extends Panel
 
 	/** The CheckBox component. */
 	@Getter
-	private CheckBox checkBox;
+	private final CheckBox checkBox;
 	/** The image. */
 	@Getter
-	private Image image;
+	private final Image image;
 
 	public LabeledImageCheckboxPanel(String id, IModel<LabeledImageCheckboxModel> model)
 	{
 		super(id, model);
-		PropertyModel<Boolean> propertyModel = new PropertyModel<Boolean>(model.getObject(),
-			"checked");
+		PropertyModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), "checked");
 		add(checkBox = newCheckBox("checkBox", propertyModel));
 		add(image = newImage("image", model.getObject().getImageResource()));
 	}

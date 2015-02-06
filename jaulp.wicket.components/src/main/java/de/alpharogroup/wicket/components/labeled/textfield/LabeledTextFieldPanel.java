@@ -19,6 +19,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
@@ -72,6 +73,7 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(textField.getConvertedInput());
@@ -80,6 +82,7 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return textField.getInput();
@@ -107,10 +110,7 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 */
 	protected TextField<T> newTextField(String id, IModel<T> model)
 	{
-		PropertyModel<T> textFieldModel = new PropertyModel<T>(model.getObject(), getId());
-		TextField<T> textField = new TextField<T>(id, textFieldModel);
-		textField.setOutputMarkupId(true);
-		return textField;
+		return ComponentFactory.newTextField(id, new PropertyModel<T>(model.getObject(), getId()));
 	}
 
 	/**

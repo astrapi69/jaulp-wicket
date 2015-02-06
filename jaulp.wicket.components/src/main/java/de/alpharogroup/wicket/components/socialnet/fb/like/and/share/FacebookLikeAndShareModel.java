@@ -25,11 +25,11 @@ public class FacebookLikeAndShareModel implements Serializable
 
 	private static final long serialVersionUID = 1L;
 
-	private Boolean dataShare;
+	private final Boolean dataShare;
 
-	private Integer dataWith;
+	private final Integer dataWith;
 
-	private Boolean dataShowFaces;
+	private final Boolean dataShowFaces;
 
 	public Boolean getDataShare()
 	{

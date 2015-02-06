@@ -45,7 +45,7 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 {
 
 	/** The value. */
-	private String value;
+	private final String value;
 
 	/**
 	 * Instantiates a new disable compontent ajax call listener.
@@ -76,7 +76,7 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 		StringBuilder sb = new StringBuilder();
 		if (this.value != null)
 		{
-			sb.append("component.value=\"" + this.value + "\";");
+			sb.append("component.value=\"").append(this.value).append("\";");
 		}
 		String jsscript = "var component = document.getElementById(\"" + component.getMarkupId()
 			+ "\");" + "component.disabled=true;" + sb.toString();

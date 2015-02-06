@@ -180,6 +180,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected CharSequence getDefaultChoice(final String selected)
 	{
 		if (defaultChoice)
@@ -202,6 +203,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected boolean localizeDisplayValues()
 	{
 		return true;

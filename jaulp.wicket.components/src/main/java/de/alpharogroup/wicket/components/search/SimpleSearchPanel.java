@@ -33,7 +33,7 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	public SimpleSearchPanel(final String id)
 	{
 		super(id);
-		setModel(new CompoundPropertyModel<SimpleSearchModel>(new SimpleSearchModel()));
+		setModel(new CompoundPropertyModel<>(new SimpleSearchModel()));
 		add(form = newForm("form", getModel()));
 		form.add(searchtext = newTextField("searchtext"));
 		searchButton = newButton("searchButton");

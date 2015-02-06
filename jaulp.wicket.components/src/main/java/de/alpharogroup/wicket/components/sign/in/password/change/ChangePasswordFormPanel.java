@@ -21,13 +21,13 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 
 	/** The button label. */
 	@Getter
-	private Label buttonLabel;
+	private final Label buttonLabel;
 
 	@Getter
-	private Button submitButton;
+	private final Button submitButton;
 
 	@Getter
-	private Form<?> form;
+	private final Form<?> form;
 
 	public ChangePasswordFormPanel(String id, IModel<ChangePasswordModel> model)
 	{

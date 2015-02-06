@@ -27,7 +27,7 @@ public class WrapAllChildrenBehavior extends Behavior
 	CharSequence statementLabel;
 	CharSequence statementArgs;
 
-        @Override
+	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		JsStatement statement = new JsQuery(component).$().chain("children")

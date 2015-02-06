@@ -26,7 +26,7 @@ public abstract class FooterMenuPanel extends Panel
 
 	public FooterMenuPanel(final String id, List<LinkModel> list)
 	{
-		this(id, new ListModel<LinkModel>(list));
+		this(id, new ListModel<>(list));
 	}
 
 	public FooterMenuPanel(final String id, IModel<List<LinkModel>> model)

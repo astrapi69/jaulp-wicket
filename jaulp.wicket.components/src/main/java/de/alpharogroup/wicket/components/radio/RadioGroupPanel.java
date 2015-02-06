@@ -23,12 +23,13 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 		setOutputMarkupId(true);
 		Form<?> form = new Form<>("form");
 		add(form);
-		final RadioGroup<T> group = new RadioGroup<T>("group", new PropertyModel<T>(
+		final RadioGroup<T> group = new RadioGroup<>("group", new PropertyModel<T>(
 			model.getObject(), "selected"));
 		group.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
 				RadioGroupPanel.this.onUpdate(target);
@@ -44,9 +45,10 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void populateItem(final ListItem<T> item)
 			{
-				Radio<T> radio = new Radio<T>("radio", item.getModel(), group);
+				Radio<T> radio = new Radio<>("radio", item.getModel(), group);
 				radio.setOutputMarkupId(true);
 				radio.add(new AttributeAppender("name", newRadioName()));
 				item.add(radio);

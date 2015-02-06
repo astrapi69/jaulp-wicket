@@ -74,8 +74,7 @@ public abstract class ReportThrowablePanel extends Panel
 
 		reportThrowableModel = newReportThrowableModel(throwable);
 
-		IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<ReportThrowableModel>(
-			reportThrowableModel);
+		IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<>(reportThrowableModel);
 		setDefaultModel(cpm);
 		add(header = newHeaderLabel("header",
 			ResourceModelFactory.newResourceModel("header.label", this, "Upps! An error occured.")));

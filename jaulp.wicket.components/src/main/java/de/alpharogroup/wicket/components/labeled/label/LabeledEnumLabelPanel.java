@@ -45,7 +45,7 @@ public class LabeledEnumLabelPanel<T> extends Panel
 	{
 		super(id, model);
 
-		PropertyModel<T> viewableLabelModel = new PropertyModel<T>(model.getObject(), id);
+		PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), id);
 		add(enumLabel = newEnumLabel("viewableLabel", viewableLabelModel));
 
 		String markupId = enumLabel.getMarkupId();

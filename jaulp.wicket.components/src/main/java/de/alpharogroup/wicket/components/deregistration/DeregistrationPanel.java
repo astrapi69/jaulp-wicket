@@ -35,15 +35,15 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
-	private Label buttonLabel;
+	private final Label buttonLabel;
 
-	private Button submitButton;
+	private final Button submitButton;
 
-	private Component motivation;
+	private final Component motivation;
 
-	private Component contentPanel;
+	private final Component contentPanel;
 
-	private Form<?> form;
+	private final Form<?> form;
 
 	/**
 	 * Instantiates a new deregistration panel.

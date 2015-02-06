@@ -81,6 +81,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
@@ -89,6 +90,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return dateTextField.getInput();
@@ -107,7 +109,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 */
 	protected DateTextField newDateTextField(String id, IModel<T> model)
 	{
-		PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(), getId());
+		PropertyModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
 
 		DateTextField dateTextField = new DateTextField(id, textFieldModel, new StyleDateConverter(
 			"S-", true))
@@ -130,6 +132,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected boolean enableMonthYearSelection()
 			{
 				return true;
@@ -144,6 +147,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		dateTextField.setRequired(isRequired());

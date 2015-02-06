@@ -50,7 +50,7 @@ public class AddJavascriptBehavior extends Behavior
 	public AddJavascriptBehavior(CharSequence javascript, String id)
 	{
 		super();
-                Args.notNull(javascript, "javascript");
+		Args.notNull(javascript, "javascript");
 		this.javascript = javascript;
 		this.id = id;
 	}
@@ -58,7 +58,7 @@ public class AddJavascriptBehavior extends Behavior
 	/**
 	 * {@inheritDoc}
 	 */
-        @Override
+	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
 		response.render(JavaScriptHeaderItem.forScript(this.javascript, this.id));

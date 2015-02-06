@@ -131,7 +131,7 @@ public class LinkUtils
 		Class<? extends Page> pageClass, String labelId, ResourceBundleKey resourceModelKey,
 		Component component)
 	{
-		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<String>(
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			linkId, pageClass);
 		bookmarkablePageLink.add(new Label(labelId, ResourceModelFactory.newResourceModel(
 			resourceModelKey, component)));

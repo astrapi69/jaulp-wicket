@@ -36,7 +36,6 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 				}
 				catch (IOException e)
 				{
-					e.printStackTrace();
 					getSession().info("Error: " + e.getLocalizedMessage());
 				}
 				return null;

@@ -50,7 +50,7 @@ public class VelocityFieldsPanel extends Panel
 	public VelocityFieldsPanel(String id, final IModel<List<WicketField<?>>> model)
 	{
 		super(id, model);
-		final Map<String, List<WicketField<?>>> map = new HashMap<String, List<WicketField<?>>>();
+		final Map<String, List<WicketField<?>>> map = new HashMap<>();
 		map.put("fields", model.getObject());
 		StringBuilder sb = new StringBuilder();
 
@@ -61,8 +61,7 @@ public class VelocityFieldsPanel extends Panel
 		String tmp = sb.toString();
 
 		final IResourceStream template = new StringResourceStream(tmp);
-		VelocityPanel velocityPanel = new VelocityPanel("velocityPanel",
-			new MapModel<String, List<WicketField<?>>>(map))
+		VelocityPanel velocityPanel = new VelocityPanel("velocityPanel", new MapModel<>(map))
 		{
 
 			private static final long serialVersionUID = 1L;
