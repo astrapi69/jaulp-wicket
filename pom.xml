@@ -120,7 +120,7 @@
 		<nexus-staging-maven-plugin.version>1.6.3</nexus-staging-maven-plugin.version>
 		<maven-assembly-plugin.version>2.5.3</maven-assembly-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-		<license-maven-plugin.version>2.7</license-maven-plugin.version>
+		<license-maven-plugin.version>2.8</license-maven-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
@@ -737,6 +737,45 @@
 					<version>${maven-war-plugin.version}</version>
 				</plugin>
 
+				<plugin>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${license-maven-plugin.version}</version>
+					<configuration>
+						<header>src/main/resources/LICENSE.txt</header>
+						<properties>
+							<owner>Asterios Raptis</owner>
+							<year>${project.inceptionYear}</year>
+							<email>asterios.raptis@gmx.net</email>
+						</properties>
+						<excludes>
+							<exclude>**/README</exclude>
+							<exclude>**/*.xml</exclude>
+							<exclude>**/*.xsl</exclude>
+							<exclude>**/*.xsd</exclude>
+							<exclude>**/*.dtd</exclude>
+							<exclude>**/*.html</exclude>
+							<exclude>**/*.properties</exclude>
+							<exclude>**/*.bat</exclude>
+							<exclude>**/*.gradle</exclude>
+							<exclude>**/*.MF</exclude>
+							<exclude>**/*.txt</exclude>
+							<exclude>**/*.css</exclude>
+							<exclude>**/*.js</exclude>
+							<exclude>**/*.vm</exclude>
+							<exclude>src/test/resources/**</exclude>
+							<exclude>src/main/resources/**</exclude>
+						</excludes>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>format</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
 			</plugins>
 
 		</pluginManagement>
@@ -926,42 +965,9 @@
 				<plugins>
 
 					<plugin>
+						<inherited>true</inherited>
 						<groupId>com.mycila</groupId>
 						<artifactId>license-maven-plugin</artifactId>
-						<version>${license-maven-plugin.version}</version>
-						<configuration>
-							<header>src/main/resources/LICENSE.txt</header>
-							<properties>
-								<owner>Asterios Raptis</owner>
-								<year>${project.inceptionYear}</year>
-								<email>asterios.raptis@gmx.net</email>
-							</properties>
-							<excludes>
-								<exclude>**/README</exclude>
-								<exclude>**/*.xml</exclude>
-								<exclude>**/*.xsl</exclude>
-								<exclude>**/*.xsd</exclude>
-								<exclude>**/*.dtd</exclude>
-								<exclude>**/*.html</exclude>
-								<exclude>**/*.properties</exclude>
-								<exclude>**/*.bat</exclude>
-								<exclude>**/*.gradle</exclude>
-								<exclude>**/*.MF</exclude>
-								<exclude>**/*.txt</exclude>
-								<exclude>**/*.css</exclude>
-								<exclude>**/*.js</exclude>
-								<exclude>**/*.vm</exclude>
-								<exclude>src/test/resources/**</exclude>
-								<exclude>src/main/resources/**</exclude>
-							</excludes>
-						</configuration>
-						<executions>
-							<execution>
-								<goals>
-									<goal>format</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 
 				</plugins>
