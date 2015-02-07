@@ -63,6 +63,7 @@ public class HomePage extends WebPage
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick()
 			{
 				setResponsePage(DataViewPage.class);
@@ -73,6 +74,7 @@ public class HomePage extends WebPage
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick()
 			{
 				setResponsePage(ListViewPage.class);
@@ -83,6 +85,7 @@ public class HomePage extends WebPage
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick()
 			{
 				setResponsePage(DataTablePage.class);
@@ -93,6 +96,7 @@ public class HomePage extends WebPage
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick()
 			{
 				setResponsePage(DefaultDataTablePage.class);
@@ -103,6 +107,7 @@ public class HomePage extends WebPage
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick()
 			{
 				setResponsePage(RefreshingViewPage.class);

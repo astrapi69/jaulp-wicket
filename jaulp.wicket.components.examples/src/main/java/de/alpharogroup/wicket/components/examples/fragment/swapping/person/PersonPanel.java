@@ -32,12 +32,14 @@ public class PersonPanel extends SwapComponentsFragmentPanel<PersonModel>
 		super(id, model);
 	}
 
+	@Override
 	protected Component newViewComponent(String id, IModel<PersonModel> model)
 	{
 		return new ViewPersonPanel(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void onSubmit(AjaxRequestTarget target)
 			{
 				swapFragments(target, null);
@@ -45,12 +47,14 @@ public class PersonPanel extends SwapComponentsFragmentPanel<PersonModel>
 		};
 	}
 
+	@Override
 	protected Component newEditComponent(String id, IModel<PersonModel> model)
 	{
 		return new EditPersonPanel(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void onSubmit(AjaxRequestTarget target, final Form<?> form)
 			{
 				swapFragments(target, form);

@@ -45,6 +45,7 @@ public class UploadPage extends WebPage
 			 */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick(AjaxRequestTarget target)
 			{
 				uploadFileDialog.show(target);

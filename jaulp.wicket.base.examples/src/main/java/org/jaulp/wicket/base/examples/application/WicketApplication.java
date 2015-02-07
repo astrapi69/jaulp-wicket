@@ -106,6 +106,6 @@ public class WicketApplication extends WebApplication
 	 */
 	public static WicketApplication get()
 	{
-		return ((WicketApplication)Application.get());
+		return (WicketApplication)Application.get();
 	}
 }

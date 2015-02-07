@@ -73,6 +73,7 @@ public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey
 	 *            the item
 	 * @return the component
 	 */
+	@Override
 	protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
 	{
 		return new Label(id, ResourceModelFactory.newResourceModel(item.getModel().getObject(),

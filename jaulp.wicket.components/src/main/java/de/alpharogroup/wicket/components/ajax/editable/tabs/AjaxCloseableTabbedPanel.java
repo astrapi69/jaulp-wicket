@@ -234,7 +234,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	{
 		int index = getSelectedTab();
 
-		if ((index == -1) || (getVisiblityCache().isVisible(index) == false))
+		if (index == -1 || getVisiblityCache().isVisible(index) == false)
 		{
 			// find first visible tab
 			index = -1;
@@ -449,7 +449,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 */
 	public AjaxCloseableTabbedPanel<T> setSelectedTab(final int index)
 	{
-		if ((index < 0) || (index >= tabs.size()))
+		if (index < 0 || index >= tabs.size())
 		{
 			throw new IndexOutOfBoundsException();
 		}
@@ -474,7 +474,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 		final Component component;
 
-		if (currentTab == -1 || (tabs.isEmpty()) || !getVisiblityCache().isVisible(currentTab))
+		if (currentTab == -1 || tabs.isEmpty() || !getVisiblityCache().isVisible(currentTab))
 		{
 			// no tabs or the current tab is not visible
 			component = newPanel();
@@ -577,7 +577,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 */
 	public void onNewTab(final AjaxRequestTarget target, final T tab, final int index)
 	{
-		if ((index < 0) || (index >= getTabs().size()))
+		if (index < 0 || index >= getTabs().size())
 		{
 			throw new IndexOutOfBoundsException();
 		}

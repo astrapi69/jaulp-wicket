@@ -45,6 +45,7 @@ public class RadioComponentsPanel extends Panel
 			/**
 			 * {@inheritDoc}
 			 */
+			@Override
 			public void renderHead(IHeaderResponse response)
 			{
 				response.render(CssHeaderItem.forReference(new CssResourceReference(

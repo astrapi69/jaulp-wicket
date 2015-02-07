@@ -57,6 +57,7 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 			{
 				private static final long serialVersionUID = 1L;
 
+				@Override
 				public Panel getPanel(String panelId)
 				{
 					Panel p = new TabPanel(panelId, getContent().getObject().getContent());
@@ -69,6 +70,7 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected WebMarkupContainer newCloseLink(final String linkId, final int index)
 			{
 				WebMarkupContainer wmc = super.newCloseLink(linkId, index);
@@ -108,6 +110,7 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 				{
 					private static final long serialVersionUID = 1L;
 
+					@Override
 					public Panel getPanel(String panelId)
 					{
 						Panel p = new TabPanel(panelId, getContent().getObject().getContent());
@@ -152,7 +155,7 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 	protected void onRemoveTab(final AjaxRequestTarget target, final int index)
 	{
 		Object object = EditableAjaxTabbedPanelDecorator.this.getDefaultModelObject();
-		TabbedPanelModels<String> tabbedModel = ((TabbedPanelModels<String>)object);
+		TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
 		List<TabModel<String>> tabModels = tabbedModel.getTabModels();
 		tabModels.remove(index);
 		ajaxTabbedPanel.onRemoveTab(target, index);

@@ -98,6 +98,7 @@ public class HomePage extends WebPage
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick(AjaxRequestTarget target)
 			{
 
@@ -109,6 +110,7 @@ public class HomePage extends WebPage
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onClick(AjaxRequestTarget target)
 			{
 

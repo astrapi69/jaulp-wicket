@@ -131,6 +131,7 @@ public final class WicketComponentUtils
 	 * @return the parameter value
 	 * @deprecated use instead {@link PageParametersUtils#getParameter(Request, String)}
 	 */
+	@Deprecated
 	public static String getParameter(Request request, String parameterName)
 	{
 		return PageParametersUtils.getParameter(request, parameterName);
@@ -143,6 +144,7 @@ public final class WicketComponentUtils
 	 * @return a map with all parameters.
 	 * @deprecated use instead {@link PageParametersUtils#getParameterMap()}
 	 */
+	@Deprecated
 	public static Map<String, String[]> getParameterMap()
 	{
 		return PageParametersUtils.getParameterMap();
@@ -157,6 +159,7 @@ public final class WicketComponentUtils
 	 * @return a map with all parameters.
 	 * @deprecated use instead {@link PageParametersUtils#getParameterMap(Request)}
 	 */
+	@Deprecated
 	public static Map<String, String[]> getParameterMap(Request request)
 	{
 		return PageParametersUtils.getParameterMap(request);
@@ -170,6 +173,7 @@ public final class WicketComponentUtils
 	 * @return the {@link PageParameters}
 	 * @deprecated use instead {@link PageParametersUtils#toPageParameters(Map)}
 	 */
+	@Deprecated
 	public static PageParameters toPageParameters(Map<String, String> parameters)
 	{
 		return PageParametersUtils.toPageParameters(parameters);
@@ -183,6 +187,7 @@ public final class WicketComponentUtils
 	 * @return the parameter value
 	 * @deprecated use instead {@link PageParametersUtils#getParameter(String)}
 	 */
+	@Deprecated
 	public static String getParameter(String parameterName)
 	{
 		return PageParametersUtils.getParameter(parameterName);
@@ -274,6 +279,7 @@ public final class WicketComponentUtils
 	 * @return the context path
 	 * @deprecated use instead {@link ApplicationUtils#getContextPath(WebApplication)}
 	 */
+	@Deprecated
 	public static String getContextPath(final WebApplication application)
 	{
 		String contextPath = application.getServletContext().getContextPath();

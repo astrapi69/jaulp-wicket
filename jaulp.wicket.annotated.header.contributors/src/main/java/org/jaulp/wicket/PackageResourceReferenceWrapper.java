@@ -69,6 +69,7 @@ public class PackageResourceReferenceWrapper
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String toString()
 	{
 		StringBuilder buffer = new StringBuilder();

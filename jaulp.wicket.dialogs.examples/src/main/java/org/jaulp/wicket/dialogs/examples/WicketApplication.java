@@ -40,6 +40,7 @@ public class WicketApplication extends WebApplication
 
 	}
 
+	@Override
 	public void init()
 	{
 		// Create the upload folder...
@@ -75,7 +76,7 @@ public class WicketApplication extends WebApplication
 	 */
 	public static WicketApplication get()
 	{
-		return ((WicketApplication)Application.get());
+		return (WicketApplication)Application.get();
 	}
 
 }

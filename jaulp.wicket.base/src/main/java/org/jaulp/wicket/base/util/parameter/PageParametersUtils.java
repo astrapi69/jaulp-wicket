@@ -76,6 +76,7 @@ public final class PageParametersUtils
 	 * @return the Integer object or null if the given StringValue is null or empty.
 	 * @deprecated use instead the {@link PageParametersUtils#toInteger(StringValue)}
 	 */
+	@Deprecated
 	public static Integer getInteger(StringValue stringValue)
 	{
 		return toInteger(stringValue);

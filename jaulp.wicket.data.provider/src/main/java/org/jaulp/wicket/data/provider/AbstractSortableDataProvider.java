@@ -144,7 +144,7 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
 		List<T> result = new ArrayList<>(sort());
-		if (result.size() > (first + count))
+		if (result.size() > first + count)
 		{
 			result = result.subList((int)first, (int)first + (int)count);
 		}

@@ -139,6 +139,7 @@ public class TwoDropDownChoicesPage extends WebPage
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void renderHead(IHeaderResponse response)
 	{
 		WicketComponentUtils.renderHeaderResponse(response, this.getClass());

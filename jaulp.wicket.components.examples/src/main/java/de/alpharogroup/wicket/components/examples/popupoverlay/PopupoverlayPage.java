@@ -50,6 +50,7 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected MarkupContainer newOverlayReference(String id, IModel<PersonModel> model)
 			{
 				ViewPersonPanel panel = new ViewPersonPanel(id, model);

@@ -55,6 +55,7 @@ public class DataTablePanel extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public List<Person> getData()
 			{
 				List<Person> persons = getPersons();

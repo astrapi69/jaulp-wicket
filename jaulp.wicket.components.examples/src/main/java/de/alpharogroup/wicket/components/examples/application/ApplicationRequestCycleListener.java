@@ -24,6 +24,7 @@ public class ApplicationRequestCycleListener extends AbstractApplicationRequestC
 {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	public IRequestablePage getExceptionPage(Exception e)
 	{
 		e.printStackTrace();

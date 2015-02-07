@@ -263,6 +263,7 @@ public final class ApplicationUtils
 	 * @deprecated use instead
 	 *             {@link ApplicationUtils#setHeaderResponseDecorator(Application, String)}
 	 */
+	@Deprecated
 	public static void setFooterHeaderResponse(final Application application,
 		final String footerFilterName)
 	{
@@ -293,6 +294,7 @@ public final class ApplicationUtils
 	 *            the new debug settings for development
 	 * @deprecated use instead {@link ApplicationUtils#setDeploymentModeConfiguration(Application)}
 	 */
+	@Deprecated
 	public static void setDebugSettingsForDeployment(final Application application)
 	{
 		setDeploymentModeConfiguration(application);
@@ -332,6 +334,7 @@ public final class ApplicationUtils
 	 *            the new settings for deployment
 	 * @deprecated use instead {@link ApplicationUtils#setDeploymentModeConfiguration(Application)}
 	 */
+	@Deprecated
 	public static void setSettingsForDeployment(final Application application)
 	{
 		setDeploymentModeConfiguration(application);

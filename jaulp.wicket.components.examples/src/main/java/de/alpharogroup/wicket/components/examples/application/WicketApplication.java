@@ -230,9 +230,10 @@ public class WicketApplication extends WicketBootstrap3Application
 	 */
 	public static WicketApplication get()
 	{
-		return ((WicketApplication)Application.get());
+		return (WicketApplication)Application.get();
 	}
 
+	@Override
 	public String getPackageToScan()
 	{
 		return "de.alpharogroup.wicket.components.examples";

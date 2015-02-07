@@ -51,6 +51,7 @@ public class EditPersonPanel extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				EditPersonPanel.this.onSubmit(target, form);

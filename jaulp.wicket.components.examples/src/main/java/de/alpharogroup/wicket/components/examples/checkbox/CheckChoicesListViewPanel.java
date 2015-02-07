@@ -61,6 +61,7 @@ public class CheckChoicesListViewPanel extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
 				target.add(getFeedback());

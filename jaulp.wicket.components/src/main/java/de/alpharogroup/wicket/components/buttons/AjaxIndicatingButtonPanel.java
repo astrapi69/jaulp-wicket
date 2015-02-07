@@ -53,6 +53,7 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel
 	 *            the wicket id
 	 * @return the Button
 	 */
+	@Override
 	protected Button newButton(String id)
 	{
 		return new IndicatingAjaxButton(id, getForm())

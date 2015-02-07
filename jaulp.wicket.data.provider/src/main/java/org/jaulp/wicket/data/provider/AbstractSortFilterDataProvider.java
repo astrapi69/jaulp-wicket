@@ -80,7 +80,7 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
 		List<T> ret = new ArrayList<>(filter(sort()));
-		if (ret.size() > (first + count))
+		if (ret.size() > first + count)
 		{
 			ret = ret.subList((int)first, (int)first + (int)count);
 		}

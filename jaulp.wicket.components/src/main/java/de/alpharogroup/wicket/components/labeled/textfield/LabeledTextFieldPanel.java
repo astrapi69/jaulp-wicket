@@ -116,6 +116,7 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		textField.setRequired(isRequired());

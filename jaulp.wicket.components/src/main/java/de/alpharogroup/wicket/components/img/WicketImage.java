@@ -68,7 +68,7 @@ public class WicketImage extends WebComponent
 		super.onComponentTag(tag);
 		final String modelObjectAsString = getDefaultModelObjectAsString();
 		final String contextPath = ApplicationUtils
-			.getContextPath(((WebApplication)getApplication()));
+			.getContextPath((WebApplication)getApplication());
 		final String imagePath = contextPath + modelObjectAsString;
 		tag.put("src", imagePath);
 	}

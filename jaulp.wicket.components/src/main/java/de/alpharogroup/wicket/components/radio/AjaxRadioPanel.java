@@ -101,6 +101,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void populateItem(final ListItem<T> item)
 			{
 				AjaxRadio<T> radio = newAjaxRadio("radio", group, item);
@@ -168,6 +169,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);

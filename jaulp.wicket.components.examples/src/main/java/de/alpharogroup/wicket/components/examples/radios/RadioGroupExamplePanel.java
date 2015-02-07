@@ -64,6 +64,7 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
 				target.add(getFeedback());
@@ -79,6 +80,7 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void populateItem(ListItem<Company> it)
 			{
 				Radio<Company> radio = new Radio<Company>("radio", it.getModel(), group);

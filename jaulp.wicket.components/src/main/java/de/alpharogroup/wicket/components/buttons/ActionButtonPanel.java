@@ -57,6 +57,7 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	 *            the wicket id
 	 * @return the Button
 	 */
+	@Override
 	protected Button newButton(String id)
 	{
 		return new Button(id)

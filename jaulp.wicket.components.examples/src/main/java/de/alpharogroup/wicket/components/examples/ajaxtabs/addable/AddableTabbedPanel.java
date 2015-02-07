@@ -67,6 +67,7 @@ public class AddableTabbedPanel extends Panel
 			{
 				private static final long serialVersionUID = 1L;
 
+				@Override
 				public Panel getPanel(String panelId)
 				{
 					Panel p = new TabPanel(panelId, getContent().getObject().getContent());
@@ -79,6 +80,7 @@ public class AddableTabbedPanel extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected WebMarkupContainer newCloseLink(final String linkId, final int index)
 			{
 				WebMarkupContainer wmc = super.newCloseLink(linkId, index);
@@ -181,6 +183,7 @@ public class AddableTabbedPanel extends Panel
 						{
 							private static final long serialVersionUID = 1L;
 
+							@Override
 							public Panel getPanel(String panelId)
 							{
 								Panel p = new TabPanel(panelId, getContent().getObject()

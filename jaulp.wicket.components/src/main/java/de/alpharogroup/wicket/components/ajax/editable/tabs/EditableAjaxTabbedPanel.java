@@ -90,7 +90,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	 */
 	public void onNewTab(final AjaxRequestTarget target, final T tab, final int index)
 	{
-		if ((index < 0) || (index >= getTabs().size()))
+		if (index < 0 || index >= getTabs().size())
 		{
 			throw new IndexOutOfBoundsException();
 		}

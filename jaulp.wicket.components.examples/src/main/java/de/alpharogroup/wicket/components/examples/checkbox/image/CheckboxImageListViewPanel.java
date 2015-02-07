@@ -66,9 +66,10 @@ public class CheckboxImageListViewPanel extends BasePanel<List<ImageCheckboxMode
 			 */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void populateItem(ListItem<ImageCheckboxModel> item)
 			{
-				ImageCheckboxModel wrapper = (ImageCheckboxModel)item.getModelObject();
+				ImageCheckboxModel wrapper = item.getModelObject();
 				CheckBox checkbox = new CheckBox("checkbox", new PropertyModel<Boolean>(wrapper,
 					"checked"));
 				checkbox.setOutputMarkupId(true);

@@ -83,6 +83,7 @@ public class WicketApplication extends WebApplication
 		prr.initializeResources("org");
 	}
 
+	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
 		return HomePage.class;

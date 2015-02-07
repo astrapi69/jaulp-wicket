@@ -50,11 +50,13 @@ public class RadioChoicePanel extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public Object getDisplayValue(Brands object)
 			{
 				return object.getValue();
 			}
 
+			@Override
 			public String getIdValue(Brands object, int index)
 			{
 				return object.getValue();

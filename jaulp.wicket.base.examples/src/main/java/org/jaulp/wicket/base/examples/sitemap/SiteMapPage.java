@@ -35,6 +35,7 @@ public class SiteMapPage extends AbstractSiteMapPage
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected List<? extends Class<? extends WebPage>> getAllPageClasses()
 	{
 		return getAllPageClassesQuietly();
@@ -43,6 +44,7 @@ public class SiteMapPage extends AbstractSiteMapPage
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected String getPackageName()
 	{
 		return "org.jaulp.wicket.base";

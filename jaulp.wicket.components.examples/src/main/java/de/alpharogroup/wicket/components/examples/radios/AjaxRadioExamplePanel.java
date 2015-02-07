@@ -60,6 +60,7 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>>
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void onRadioSelect(AjaxRequestTarget target, Company newSelection)
 			{
 				info("You have selected " + newSelection.getName());
@@ -78,6 +79,7 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>>
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void renderHead(IHeaderResponse response)
 	{
 		super.renderHead(response);

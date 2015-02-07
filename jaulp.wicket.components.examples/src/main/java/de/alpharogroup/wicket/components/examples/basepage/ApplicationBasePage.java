@@ -53,6 +53,7 @@ import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
@@ -142,7 +143,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		add(new GoogleAnalyticsBehavior(ApplicationBasePage.class));
 		add(new BootstrapBaseBehavior());
 		HeaderResponseContainer headerResponseContainer = new HeaderResponseContainer(
-			WicketApplication.FOOTER_FILTER_NAME, WicketApplication.FOOTER_FILTER_NAME);
+			WicketBootstrap3Application.FOOTER_FILTER_NAME, WicketBootstrap3Application.FOOTER_FILTER_NAME);
 		add(headerResponseContainer);
 	}
 
@@ -221,6 +222,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	 * 
 	 * @return the new <code>IModel</code>
 	 */
+	@Override
 	protected IModel<String> newKeywords()
 	{
 		return ResourceModelFactory.newResourceModel("page.meta.keywords", this,
@@ -232,6 +234,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	 * 
 	 * @return the new <code>IModel</code>
 	 */
+	@Override
 	protected IModel<String> newTitle()
 	{
 		return ResourceModelFactory.newResourceModel("page.title", this, "jaulp.wicket.components");

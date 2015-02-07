@@ -16,7 +16,6 @@
 package org.jaulp.wicket;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -82,9 +81,8 @@ public class PackageResourceReferences
 		Set<PackageResourceReferenceWrapper> packageResourceReferences, final Class<?> searchClass)
 	{
 		final Class<?>[] interfaces = searchClass.getInterfaces();
-		for (int i = 0; i < interfaces.length; i++)
+		for (final Class<?> iface : interfaces)
 		{
-			final Class<?> iface = interfaces[i];
 			packageResourceReferences = addFoundPackageResourceReferences(
 				packageResourceReferences, iface);
 		}
@@ -157,17 +155,13 @@ public class PackageResourceReferences
 		final Map<Class<?>, ImportResource[]> resourcesMap = ImportResourcesUtils
 			.getImportResources(packageName);
 
-		for (final Iterator<Entry<Class<?>, ImportResource[]>> iter = resourcesMap.entrySet()
-			.iterator(); iter.hasNext();)
+		for (Entry<Class<?>, ImportResource[]> entry : resourcesMap.entrySet())
 		{
-			final Entry<Class<?>, ImportResource[]> entry = iter.next();
 			final Class<?> key = entry.getKey();
 			final ImportResource[] value = entry.getValue();
 			final Set<PackageResourceReferenceWrapper> packageResourceReferences = new LinkedHashSet<>();
-			for (int i = 0; i < value.length; i++)
+			for (final ImportResource importResource : value)
 			{
-				final ImportResource importResource = value[i];
-
 				if (importResource.resourceType().equalsIgnoreCase("js"))
 				{
 					PackageResourceReference t = new PackageResourceReference(key,

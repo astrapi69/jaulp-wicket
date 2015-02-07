@@ -94,12 +94,14 @@ public class ReplaceWithPanel extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected Component newSubmitButton(String id, Form<?> form)
 			{
 				return new AjaxFallbackButton(id, form)
 				{
 					private static final long serialVersionUID = 1L;
 
+					@Override
 					protected void onConfigure()
 					{
 						super.onConfigure();
@@ -116,6 +118,7 @@ public class ReplaceWithPanel extends Panel
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected AjaxFallbackLink<Object> newEditLink(String id)
 			{
 				return new AjaxFallbackLink<Object>(id)
@@ -127,6 +130,7 @@ public class ReplaceWithPanel extends Panel
 					{
 					}
 
+					@Override
 					protected void onConfigure()
 					{
 						super.onConfigure();

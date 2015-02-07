@@ -55,6 +55,7 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public String getInput()
 	{
 		return dropdownChoice.getInput();
@@ -63,6 +64,7 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void convertInput()
 	{
 		setConvertedInput(dropdownChoice.getConvertedInput());
@@ -71,6 +73,7 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	protected void onBeforeRender()
 	{
 		dropdownChoice.setRequired(isRequired());
