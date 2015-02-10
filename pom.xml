@@ -66,7 +66,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<wicket.version>${project.version}</wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>6.18.0</wicketstuff.version>
+		<wicketstuff.version>${project.version}</wicketstuff.version>
 		<wiquery-core.version>6.13.0</wiquery-core.version>
 		<wicket-modelfactory.version>0.9.4</wicket-modelfactory.version>
 		<wicket-source.version>6.0.0.8</wicket-source.version>
@@ -78,7 +78,7 @@
 		<junit.version>4.11</junit.version>
 		<jetty.version>8.1.16.v20140903</jetty.version>
 		<!-- JAULP versions -->
-		<jaulp.core.version>3.9.0</jaulp.core.version>
+		<jaulp.core.version>3.10.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
 		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
