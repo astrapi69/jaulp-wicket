@@ -22,6 +22,7 @@ import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.protocol.http.servlet.ServletWebResponse;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
+import org.jaulp.wicket.base.application.BaseWebApplication;
 import org.jaulp.wicket.base.util.seo.BotAgentInspector;
 
 
@@ -33,7 +34,7 @@ import org.jaulp.wicket.base.util.seo.BotAgentInspector;
  * <code>{@link WebApplication#newWebResponse(WebRequest, HttpServletResponse)}</code> into your
  * Application class, this will have the same effect.
  */
-public abstract class DisableJSessionIDinUrlApplication extends WebApplication
+public abstract class DisableJSessionIDinUrlApplication extends BaseWebApplication
 {
 
 	/**

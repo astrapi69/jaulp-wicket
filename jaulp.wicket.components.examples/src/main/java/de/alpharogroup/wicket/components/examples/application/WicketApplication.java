@@ -63,45 +63,28 @@ public class WicketApplication extends WicketBootstrap3Application
 		super.init();
 		// initialize all header contributors
 		initializeAllHeaderContributors();
-		// set application configuration...
-		setApplicationConfiguration();
 	}
 
-	protected void setApplicationConfiguration()
-	{
-		// set global settings for both development and deployment mode...
-		setGlobalSettings(this, getHttpPort(), getHttpsPort());
-		// set configuration for development...
-		if (RuntimeConfigurationType.DEVELOPMENT.equals(this.getConfigurationType()))
-		{
-			setDevelopmentModeSettings(this);
-		}
-		// set configuration for deployment...
-		if (RuntimeConfigurationType.DEPLOYMENT.equals(this.getConfigurationType()))
-		{
-			setDeploymentModeSettings(this);
-		}
-	}
 
-	protected void setDeploymentModeSettings(final WebApplication application)
+	protected void newDeploymentModeSettings()
 	{
 		// set exception handling for custom error page...
-		ApplicationUtils.setExceptionSettingsForDeployment(application,
+		ApplicationUtils.setExceptionSettingsForDeployment(this,
 			new ApplicationRequestCycleListener());
-		ApplicationUtils.setDeploymentModeConfiguration(application);
+		ApplicationUtils.setDeploymentModeConfiguration(this);
 	}
 
-	protected void setDevelopmentModeSettings(final WebApplication application)
+	protected void newDevelopmentModeSettings()
 	{
 		// Adds the references from source code to the browser to reference in eclipse....
-		WicketSource.configure(application);
-		ApplicationUtils.setHtmlHotDeploy(application);
-		ApplicationUtils.setDebugSettingsForDevelopment(application);
-		ApplicationUtils.setExceptionSettingsForDevelopment(application);
+		WicketSource.configure(this);
+		ApplicationUtils.setHtmlHotDeploy(this);
+		ApplicationUtils.setDebugSettingsForDevelopment(this);
+		ApplicationUtils.setExceptionSettingsForDevelopment(this);
 		// set the behavior if an missing resource is found...
-		application.getResourceSettings().setThrowExceptionOnMissingResource(true);
+		this.getResourceSettings().setThrowExceptionOnMissingResource(true);
 		// add an applicationListener...
-		application.getApplicationListeners().add(new IApplicationListener()
+		this.getApplicationListeners().add(new IApplicationListener()
 		{
 			@Override
 			public void onBeforeDestroyed(Application application)
@@ -121,7 +104,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		});
 	}
 
-	protected void setGlobalSettings(final WebApplication application, final int httpPort,
+	protected void newGlobalSettings(final WebApplication application, final int httpPort,
 		final int httpsPort)
 	{
 		ApplicationUtils.setGlobalSettings(application, httpPort, httpsPort, FOOTER_FILTER_NAME,
@@ -145,7 +128,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		return getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT);
 	}
 
-	protected int getHttpPort()
+	protected int newHttpPort()
 	{
 		if (getProperties().containsKey("application.http.port"))
 		{
@@ -163,7 +146,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		return WicketApplication.DEFAULT_HTTP_PORT;
 	}
 
-	protected int getHttpsPort()
+	protected int newHttpsPort()
 	{
 		if (getProperties().containsKey("application.https.port"))
 		{
