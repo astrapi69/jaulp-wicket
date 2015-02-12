@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.experimental.Builder;
+import lombok.Builder;
 
 @Getter
 @Setter
