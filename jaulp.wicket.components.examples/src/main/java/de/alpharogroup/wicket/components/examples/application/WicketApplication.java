@@ -61,6 +61,13 @@ public class WicketApplication extends WicketBootstrap3Application
 	public void init()
 	{
 		super.init();
+	}
+
+	/**
+	 * Called just before a the application configurations.
+	 */
+	protected void onBeforeApplicationConfigurations()
+	{
 		// initialize all header contributors
 		initializeAllHeaderContributors();
 	}

@@ -1,8 +1,13 @@
 package org.jaulp.wicket.base.application;
 
+import lombok.Getter;
+
 import org.apache.log4j.Logger;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.util.time.Duration;
+import org.apache.wicket.util.time.Time;
+import org.joda.time.DateTime;
 
 /**
  * The Class BaseWebApplication have factory methods for the application settings that should be
@@ -13,11 +18,13 @@ public abstract class BaseWebApplication extends WebApplication
 
 	/** The Constant DEFAULT_HTTP_PORT. */
 	public static final int DEFAULT_HTTP_PORT = 9090;
-
 	/** The Constant DEFAULT_HTTPS_PORT. */
 	public static final int DEFAULT_HTTPS_PORT = 9443;
 	/** The Constant logger. */
 	protected static final Logger LOGGER = Logger.getLogger(BaseWebApplication.class.getName());
+	/** The Constant logger. */
+	@Getter
+	private DateTime startupDate;
 
 	/**
 	 * Inits the application configuration for global, development and deployment.
@@ -27,15 +34,38 @@ public abstract class BaseWebApplication extends WebApplication
 	@Override
 	public void init()
 	{
+		this.startupDate = new DateTime();
 		super.init();
+		// set configuration before the application configuration...
+		onBeforeApplicationConfigurations();
 		// set application configuration...
-		setApplicationConfigurations();
+		onApplicationConfigurations();
+	}
+
+	/**
+	 * Gets the elapsed duration since this application was initialized.
+	 */
+	public Duration getUptime()
+	{
+		DateTime startup = getStartupDate();
+		if (null != startup)
+		{
+			return Duration.elapsed(Time.valueOf(startup.toDate()));
+		}
+		return Duration.NONE;
+	}
+
+	/**
+	 * Called just before a the application configurations.
+	 */
+	protected void onBeforeApplicationConfigurations()
+	{
 	}
 
 	/**
 	 * Sets the application configurations.
 	 */
-	protected void setApplicationConfigurations()
+	protected void onApplicationConfigurations()
 	{
 		// set global settings for both development and deployment mode...
 		newGlobalSettings(this, newHttpPort(), newHttpsPort());
@@ -72,14 +102,16 @@ public abstract class BaseWebApplication extends WebApplication
 	}
 
 	/**
-	 * Factory method that can be overwritten to provide application specific deployment mode settings.
+	 * Factory method that can be overwritten to provide application specific deployment mode
+	 * settings.
 	 */
 	protected void newDeploymentModeSettings()
 	{
 	}
 
 	/**
-	 * Factory method that can be overwritten to provide application specific development mode settings.
+	 * Factory method that can be overwritten to provide application specific development mode
+	 * settings.
 	 */
 	protected void newDevelopmentModeSettings()
 	{
