@@ -143,7 +143,8 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		add(new GoogleAnalyticsBehavior(ApplicationBasePage.class));
 		add(new BootstrapBaseBehavior());
 		HeaderResponseContainer headerResponseContainer = new HeaderResponseContainer(
-			WicketBootstrap3Application.FOOTER_FILTER_NAME, WicketBootstrap3Application.FOOTER_FILTER_NAME);
+			WicketBootstrap3Application.FOOTER_FILTER_NAME,
+			WicketBootstrap3Application.FOOTER_FILTER_NAME);
 		add(headerResponseContainer);
 	}
 

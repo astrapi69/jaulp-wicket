@@ -58,9 +58,8 @@ public class HomePage extends WebPage
 		final List<MessageBean> noteList = new ArrayList<MessageBean>();
 		final MessageBean messageBean = new MessageBean();
 		messageBean.setMessageContent("hello");
-		final ModalWindow modalWindow = new BaseModalWindow<MessageBean>(
-			"baseModalWindow", "Title", 350, 160, new CompoundPropertyModel<MessageBean>(
-				messageBean))
+		final ModalWindow modalWindow = new BaseModalWindow<MessageBean>("baseModalWindow",
+			"Title", 350, 160, new CompoundPropertyModel<MessageBean>(messageBean))
 		{
 			/**
 			 * The serialVersionUID.
