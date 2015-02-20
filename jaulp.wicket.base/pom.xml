@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.19.0</version>
+		<version>7.0.0-M5</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>jaulp.wicket.base</artifactId>

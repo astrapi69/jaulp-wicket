@@ -36,7 +36,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.settings.IJavaScriptLibrarySettings;
+import org.apache.wicket.settings.JavaScriptLibrarySettings;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.time.Duration;
 import org.jaulp.wicket.base.GenericBasePage;
@@ -340,7 +340,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	public void renderHead(IHeaderResponse response)
 	{
 		super.renderHead(response);
-		IJavaScriptLibrarySettings javaScriptSettings = getApplication()
+		JavaScriptLibrarySettings javaScriptSettings = getApplication()
 			.getJavaScriptLibrarySettings();
 		response.render(JavaScriptHeaderItem.forReference(javaScriptSettings.getJQueryReference()));
 		Bootstrap.renderHead(response);

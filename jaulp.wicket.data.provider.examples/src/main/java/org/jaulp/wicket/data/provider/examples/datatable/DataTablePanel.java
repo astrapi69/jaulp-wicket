@@ -94,9 +94,7 @@ public class DataTablePanel extends Panel
 			"filterState.dateTo")));
 		add(filterForm);
 
-
-		FilterToolbar filterToolbar = new FilterToolbar(tableWithFilterForm, filterForm,
-			dataProvider);
+		FilterToolbar filterToolbar = new FilterToolbar(tableWithFilterForm, filterForm);
 		tableWithFilterForm.addTopToolbar(filterToolbar);
 		tableWithFilterForm.addTopToolbar(new NavigationToolbar(tableWithFilterForm));
 		tableWithFilterForm.addTopToolbar(new HeadersToolbar<>(tableWithFilterForm, dataProvider));

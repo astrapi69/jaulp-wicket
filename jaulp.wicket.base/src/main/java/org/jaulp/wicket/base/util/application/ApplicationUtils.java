@@ -35,8 +35,7 @@ import org.apache.wicket.protocol.https.Scheme;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.settings.IExceptionSettings;
-import org.apache.wicket.settings.IResourceSettings;
+import org.apache.wicket.settings.ExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -284,7 +283,7 @@ public final class ApplicationUtils
 		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(true);
 		application.getDebugSettings().setAjaxDebugModeEnabled(true);
 		application.getDebugSettings().setDevelopmentUtilitiesEnabled(true);
-		application.getDebugSettings().setOutputComponentPath(true);
+		application.getDebugSettings().setComponentPathAttributeName("data-wicket-path");
 	}
 
 	/**
@@ -321,7 +320,6 @@ public final class ApplicationUtils
 		application.getDebugSettings().setAjaxDebugModeEnabled(false);
 		application.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
 
-		application.getDebugSettings().setOutputComponentPath(false);
 		application.getDebugSettings().setOutputMarkupContainerClassName(false);
 		application.getDebugSettings().setLinePreciseReportingOnAddComponentEnabled(false);
 		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(false);
@@ -353,7 +351,7 @@ public final class ApplicationUtils
 	{
 		// show the exception page from us...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+			ExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
 		// In case of unhandled exception redirect it to a custom page
 		application.getRequestCycleListeners().add(applicationRequestCycleListener);
 	}
@@ -368,7 +366,7 @@ public final class ApplicationUtils
 	{
 		// show the exception page from wicket...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			IExceptionSettings.SHOW_EXCEPTION_PAGE);
+			ExceptionSettings.SHOW_EXCEPTION_PAGE);
 	}
 
 	/**
