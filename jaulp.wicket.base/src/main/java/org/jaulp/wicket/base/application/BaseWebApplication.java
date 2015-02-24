@@ -1,10 +1,16 @@
 package org.jaulp.wicket.base.application;
 
+import java.io.File;
+
 import lombok.Getter;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.RuntimeConfigurationType;
+import org.apache.wicket.pageStore.DiskDataStore;
+import org.apache.wicket.pageStore.IDataStore;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.settings.IStoreSettings;
+import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Duration;
 import org.apache.wicket.util.time.Time;
 import org.joda.time.DateTime;
@@ -23,6 +29,12 @@ public abstract class BaseWebApplication extends WebApplication
 	/** The Constant logger. */
 	protected static final Logger LOGGER = Logger.getLogger(BaseWebApplication.class.getName());
 	/** The Constant logger. */
+	
+	/**
+	 * Gets the startup date.
+	 *
+	 * @return the startup date
+	 */
 	@Getter
 	private DateTime startupDate;
 
@@ -44,6 +56,8 @@ public abstract class BaseWebApplication extends WebApplication
 
 	/**
 	 * Gets the elapsed duration since this application was initialized.
+	 *
+	 * @return the uptime
 	 */
 	public Duration getUptime()
 	{
@@ -130,6 +144,38 @@ public abstract class BaseWebApplication extends WebApplication
 	protected void newGlobalSettings(final WebApplication application, final int httpPort,
 		final int httpsPort)
 	{
+	}
+	
+	/**
+	 * Factory method that can be overwritten to provide an application data store. Here the default
+	 * will be returned.
+	 * 
+	 * For instance:
+	 * 
+	 * <pre>
+	 * public void init() {
+	 * ...
+	 * getStoreSettings().setInmemoryCacheSize(30);
+	 * 
+	 * setPageManagerProvider(new DefaultPageManagerProvider(this)
+	 * {
+	 * 	&#064;Override
+	 * 	protected IDataStore newDataStore()
+	 * 	{
+	 * 		return newApplicationDataStore();
+	 * 	}
+	 * });
+	 * ...
+	 * }
+	 * </pre>
+	 * 
+	 * @return the IDataStore.
+	 */
+	protected IDataStore newApplicationDataStore() {
+		IStoreSettings storeSettings = getStoreSettings();
+		Bytes maxSizePerSession = storeSettings.getMaxSizePerSession();
+		File fileStoreFolder = storeSettings.getFileStoreFolder();
+		return new DiskDataStore(this.getName(), fileStoreFolder, maxSizePerSession);
 	}
 
 }
