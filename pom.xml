@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.alpharogroup</groupId>
 	<artifactId>jaulp.wicket</artifactId>
-	<version>6.19.0</version>
+	<version>6.18.0</version>
 	<inceptionYear>2010</inceptionYear>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
