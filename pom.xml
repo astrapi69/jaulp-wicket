@@ -60,10 +60,12 @@
 		<module>jaulp.wicket.components.examples</module>
 	</modules>
 
-
 	<properties>
 		<!-- PROJECT encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- LOMBOK version -->
+		<lombok.version>1.16.0</lombok.version>
+		<!-- WICKET version -->
 		<wicket.version>${project.version}</wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
 		<wicketstuff.version>${project.version}</wicketstuff.version>
@@ -77,6 +79,7 @@
 		<testng.version>6.8.8</testng.version>
 		<junit.version>4.12</junit.version>
 		<jetty.version>8.1.16.v20140903</jetty.version>
+		<jetty9.version>9.2.8.v20150217</jetty9.version>
 		<!-- JAULP versions -->
 		<jaulp.core.version>3.10.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
@@ -131,12 +134,11 @@
 	<dependencyManagement>
 
 		<dependencies>
-
-			<!-- JUNIT DEPENDENCY FOR TESTING -->
+			<!-- LOMBOK DEPENDENCIES -->
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
 			</dependency>
 			<!-- WICKET DEPENDENCIES -->
 			<dependency>
@@ -353,11 +355,18 @@
 				<artifactId>log4j</artifactId>
 				<version>${log4j.version}</version>
 			</dependency>
-
+			<!-- UNIT DEPENDENCY FOR TESTING -->
+			<!-- TESTNG DEPENDENCY FOR TESTING -->
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
 				<version>${testng.version}</version>
+			</dependency>
+			<!-- JUNIT DEPENDENCY FOR TESTING -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
 			</dependency>
 
 		</dependencies>
@@ -365,6 +374,11 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<!-- LOMBOK DEPENDENCIES -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 		<!-- WICKET DEPENDENCIES -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
@@ -391,10 +405,17 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 		</dependency>
-
+		<!-- UNIT DEPENDENCY FOR TESTING -->
+		<!-- TESTNG DEPENDENCY FOR TESTING -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- JUNIT DEPENDENCY FOR TESTING -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 
