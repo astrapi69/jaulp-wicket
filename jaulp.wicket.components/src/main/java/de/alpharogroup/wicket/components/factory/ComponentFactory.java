@@ -277,6 +277,8 @@ public class ComponentFactory
 	/**
 	 * Factory method for create a new Label with the for attribute.
 	 * 
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param forId
@@ -285,7 +287,7 @@ public class ComponentFactory
 	 *            the model
 	 * @return the label
 	 */
-	public static Label newLabel(final String id, final String forId, final IModel<String> model)
+	public static<T> Label newLabel(final String id, final String forId, final IModel<T> model)
 	{
 		Label label = new Label(id, model);
 		label.add(new AttributeAppender("for", Model.of(forId), " "));
