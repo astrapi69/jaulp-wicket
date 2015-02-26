@@ -37,6 +37,7 @@ public class EditPersonPanel extends Panel
 		setOutputMarkupId(true);
 		setDefaultModel(model);
 		Form<PersonModel> form = new Form<PersonModel>("editPersonForm");
+		form.setOutputMarkupId(true);
 		add(form);
 		form.add(new TextField<String>("firstName").setOutputMarkupId(true));
 		form.add(new TextField<String>("lastName").setOutputMarkupId(true));
