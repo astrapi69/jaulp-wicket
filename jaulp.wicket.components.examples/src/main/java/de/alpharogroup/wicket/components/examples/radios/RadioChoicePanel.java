@@ -39,9 +39,7 @@ public class RadioChoicePanel extends Panel
 	private static final long serialVersionUID = 1L;
 	private static final List<Brands> TYPES = Arrays.asList(Brands.values());
 
-	private Brands selected
-	// = Brands.LAMBORGINI
-	;
+	private Brands selected;
 
 	public RadioChoicePanel(String id, IModel<?> model)
 	{

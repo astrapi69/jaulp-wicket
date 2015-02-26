@@ -28,6 +28,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
 public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 {
 	private static final long serialVersionUID = 1L;
@@ -86,7 +88,7 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	 */
 	protected Label newLabel(String id, String forId, IModel<T> model)
 	{
-		return null;
+		return ComponentFactory.newLabel(id, forId, model);
 	};
 
 	protected void onUpdate(AjaxRequestTarget target)
