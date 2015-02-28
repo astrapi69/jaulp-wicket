@@ -57,11 +57,6 @@
 			<artifactId>wicket.bootstrap3</artifactId>
 			<version>6.18.0</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>de.alpharogroup</groupId> -->
-		<!-- <artifactId>turbo.sansa.wicket.components</artifactId> -->
-		<!-- <version>6.18.0</version> -->
-		<!-- </dependency> -->
 
 	</dependencies>
 
