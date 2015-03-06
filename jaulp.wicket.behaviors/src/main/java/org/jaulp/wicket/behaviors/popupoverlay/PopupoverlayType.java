@@ -17,12 +17,30 @@ package org.jaulp.wicket.behaviors.popupoverlay;
 
 import lombok.Getter;
 
+/**
+ * This enum encapsulates the two possible values from the attribute 'type' in the
+ * jquery.popupoverlay plugin.
+ */
 public enum PopupoverlayType
 {
-	OVERLAY("overlay"), TOOLTIP("tooltip");
+
+	/** The overlay value. */
+	OVERLAY("overlay"),
+	/** The tooltip value. */
+	TOOLTIP("tooltip");
+
+	/**
+	 * The value of the type.
+	 */
 	@Getter
 	private final String type;
 
+	/**
+	 * Constructor with a given type.
+	 *
+	 * @param type
+	 *            the type
+	 */
 	private PopupoverlayType(String type)
 	{
 		this.type = type;

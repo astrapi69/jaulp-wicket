@@ -17,12 +17,36 @@ package org.jaulp.wicket.behaviors.popupoverlay;
 
 import lombok.Getter;
 
+/**
+ * This enum encapsulates the five possible values from the attribute 'vertical' in the
+ * jquery.popupoverlay plugin.
+ */
 public enum VerticalPosition
 {
-	CENTER("center"), TOP("top"), BOTTOM("bottom"), TOPEDGE("topedge"), BOTTOMEDGE("bottomedge");
+
+	/** The center. */
+	CENTER("center"),
+	/** The top. */
+	TOP("top"),
+	/** The bottom. */
+	BOTTOM("bottom"),
+	/** The topedge. */
+	TOPEDGE("topedge"),
+	/** The bottomedge. */
+	BOTTOMEDGE("bottomedge");
+
+	/**
+	 * The value of the vertical position.
+	 */
 	@Getter
 	private final String position;
 
+	/**
+	 * Constructor with a given vertical position.
+	 *
+	 * @param position
+	 *            the position
+	 */
 	private VerticalPosition(String position)
 	{
 		this.position = position;

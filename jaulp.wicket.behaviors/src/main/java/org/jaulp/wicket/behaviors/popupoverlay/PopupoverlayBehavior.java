@@ -26,9 +26,13 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnLoadHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.template.TextTemplate;
 
+/**
+ * The Class PopupoverlayBehavior.
+ */
 public class PopupoverlayBehavior extends Behavior
 {
 
@@ -37,24 +41,41 @@ public class PopupoverlayBehavior extends Behavior
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** The {@link ResourceReference} constant for the js-file from the jquery.popupoverlay plugin. */
 	public static final ResourceReference POPUPOVERLAY_PLUGIN_REFERENCE = new JavaScriptResourceReference(
 		PopupoverlayBehavior.class, "jquery.popupoverlay.js");
 
+	/** The component. */
 	private Component component;
+	
+	/** The settings. */
 	private PopupoverlaySettings settings = new PopupoverlaySettings();
 
+	/** The popupoverlay template. */
 	private final TextTemplate popupoverlayTemplate = new PackageTextTemplate(
 		PopupoverlayBehavior.class, "popupoverlay-template.js.tmpl");
 
+	/**
+	 * Default constructor.
+	 */
 	public PopupoverlayBehavior()
 	{
 	}
 
+	/**
+	 * Constructor with {@link PopupoverlaySettings}.
+	 *
+	 * @param settings the settings
+	 */
 	public PopupoverlayBehavior(PopupoverlaySettings settings)
 	{
+		Args.notNull(settings, "settings");
 		this.settings = settings;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void bind(final Component component)
 	{
@@ -63,6 +84,12 @@ public class PopupoverlayBehavior extends Behavior
 		this.component.setOutputMarkupId(true);
 	}
 
+	/**
+	 * Generate js.
+	 *
+	 * @param textTemplate the text template
+	 * @return the string
+	 */
 	protected String generateJS(final TextTemplate textTemplate)
 	{
 		final Map<String, Object> variables = new HashMap<>();
@@ -105,6 +132,13 @@ public class PopupoverlayBehavior extends Behavior
 		return textTemplate.asString();
 	}
 
+	/**
+	 * Sets the variable.
+	 *
+	 * @param variablename the variablename
+	 * @param object the object
+	 * @param variables the variables
+	 */
 	protected void setVariable(String variablename, Object object,
 		final Map<String, Object> variables)
 	{
@@ -118,6 +152,13 @@ public class PopupoverlayBehavior extends Behavior
 		}
 	}
 
+	/**
+	 * Sets the variable with singe quotation marks.
+	 *
+	 * @param variablename the variablename
+	 * @param object the object
+	 * @param variables the variables
+	 */
 	protected void setVariableWithSingeQuotationMarks(String variablename, Object object,
 		final Map<String, Object> variables)
 	{
@@ -131,6 +172,9 @@ public class PopupoverlayBehavior extends Behavior
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(Component c, final IHeaderResponse response)
 	{
@@ -141,6 +185,11 @@ public class PopupoverlayBehavior extends Behavior
 		response.render(OnLoadHeaderItem.forScript(generateJS(popupoverlayTemplate)));
 	}
 
+	/**
+	 * Sets the settings.
+	 *
+	 * @param settings the new settings
+	 */
 	public void setSettings(PopupoverlaySettings settings)
 	{
 		this.settings = settings;

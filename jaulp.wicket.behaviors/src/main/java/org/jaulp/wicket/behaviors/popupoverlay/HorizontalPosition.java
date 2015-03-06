@@ -17,12 +17,36 @@ package org.jaulp.wicket.behaviors.popupoverlay;
 
 import lombok.Getter;
 
+/**
+ * This enum encapsulates the five possible values from the attribute 'horizontal' in the
+ * jquery.popupoverlay plugin.
+ */
 public enum HorizontalPosition
 {
-	CENTER("center"), LEFT("left"), RIGHT("right"), LEFTEDGE("leftedge"), RIGHTEDGE("rightedge");
+
+	/** The center value. */
+	CENTER("center"),
+	/** The left value. */
+	LEFT("left"),
+	/** The right value. */
+	RIGHT("right"),
+	/** The leftedge value. */
+	LEFTEDGE("leftedge"),
+	/** The rightedge value. */
+	RIGHTEDGE("rightedge");
+
+	/**
+	 * The value of the horizontal position.
+	 */
 	@Getter
 	private final String position;
 
+	/**
+	 * Constructor with a given horizontal position.
+	 *
+	 * @param position
+	 *            the position
+	 */
 	private HorizontalPosition(String position)
 	{
 		this.position = position;

@@ -24,6 +24,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * This class encapsulates various settings for {@link PopupoverlayBehavior}. See the documentation
+ * for the jquery popupoverlay plugin for further information.
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -33,9 +37,7 @@ import lombok.ToString;
 public class PopupoverlaySettings implements Serializable
 {
 
-	/**
-	 * The serialVersionUID
-	 */
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -43,14 +45,10 @@ public class PopupoverlaySettings implements Serializable
 	 */
 	private String type = PopupoverlayType.OVERLAY.getType();
 
-	/**
-	 * Shows the popup when initialized; defaults to false;
-	 */
+	/** Shows the popup when initialized; defaults to false;. */
 	private boolean autoopen = false;
 
-	/**
-	 * Disables scrolling of background content while the popup is visible; defaults to false;
-	 */
+	/** Disables scrolling of background content while the popup is visible; defaults to false;. */
 	private boolean scrolllock = false;
 
 	/**
@@ -99,24 +97,16 @@ public class PopupoverlaySettings implements Serializable
 	 */
 	private int offsetleft = 0;
 
-	/**
-	 * Closes the popup when Escape key is pressed; defaults to true;
-	 */
+	/** Closes the popup when Escape key is pressed; defaults to true;. */
 	private boolean escape = true;
 
-	/**
-	 * Closes the popup when clicked outside of it; defaults to true;
-	 */
+	/** Closes the popup when clicked outside of it; defaults to true;. */
 	private boolean blur = true;
 
-	/**
-	 * Sets default z-index to the popup (2001) and to the background (2000); defaults to true;
-	 */
+	/** Sets default z-index to the popup (2001) and to the background (2000); defaults to true;. */
 	private boolean setzindex = true;
 
-	/**
-	 * Sets highest z-index on the page to the popup; defaults to false;
-	 */
+	/** Sets highest z-index on the page to the popup; defaults to false;. */
 	private boolean autozindex = false;
 
 	/**

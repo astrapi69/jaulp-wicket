@@ -25,10 +25,10 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class PopupoverlayPanel.
+ * The Class PopupoverlayPanel is production ready and is also an example how to use the {@link PopupoverlayBehavior}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of the model.
  */
 public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 {
