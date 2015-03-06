@@ -66,16 +66,19 @@ public class BaseDropDownChoicePanel extends Panel
 				return object.getDigraph();
 			}
 
-	        @SuppressWarnings("unused")
-			public Country getObject(String id, IModel<? extends List<? extends Country>> choices) {
-	          List<? extends Country> c = choices.getObject();
-	          for (Country country : c) {
-	            if (country.equals(id)) {
-	              return country;
-	            }
-	          }
-	          return null;
-	        }
+			@SuppressWarnings("unused")
+			public Country getObject(String id, IModel<? extends List<? extends Country>> choices)
+			{
+				List<? extends Country> c = choices.getObject();
+				for (Country country : c)
+				{
+					if (country.equals(id))
+					{
+						return country;
+					}
+				}
+				return null;
+			}
 		};
 
 		DropDownChoice<Country> country = new DropDownChoice<Country>("country", countries);

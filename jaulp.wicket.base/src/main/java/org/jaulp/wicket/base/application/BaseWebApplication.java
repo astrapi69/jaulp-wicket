@@ -28,8 +28,6 @@ public abstract class BaseWebApplication extends WebApplication
 	public static final int DEFAULT_HTTPS_PORT = 9443;
 	/** The Constant logger. */
 	protected static final Logger LOGGER = Logger.getLogger(BaseWebApplication.class.getName());
-	/** The Constant logger. */
-	
 	/**
 	 * Gets the startup date.
 	 *
@@ -145,7 +143,7 @@ public abstract class BaseWebApplication extends WebApplication
 		final int httpsPort)
 	{
 	}
-	
+
 	/**
 	 * Factory method that can be overwritten to provide an application data store. Here the default
 	 * will be returned.
@@ -171,7 +169,8 @@ public abstract class BaseWebApplication extends WebApplication
 	 * 
 	 * @return the IDataStore.
 	 */
-	protected IDataStore newApplicationDataStore() {
+	protected IDataStore newApplicationDataStore()
+	{
 		IStoreSettings storeSettings = getStoreSettings();
 		Bytes maxSizePerSession = storeSettings.getMaxSizePerSession();
 		File fileStoreFolder = storeSettings.getFileStoreFolder();

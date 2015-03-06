@@ -287,7 +287,7 @@ public class ComponentFactory
 	 *            the model
 	 * @return the label
 	 */
-	public static<T> Label newLabel(final String id, final String forId, final IModel<T> model)
+	public static <T> Label newLabel(final String id, final String forId, final IModel<T> model)
 	{
 		Label label = new Label(id, model);
 		label.add(new AttributeAppender("for", Model.of(forId), " "));
