@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.18.0</version>
+		<version>6.15.0</version>
 	</parent>
 	<artifactId>jaulp.wicket.components.examples</artifactId>
 	<packaging>war</packaging>
@@ -51,11 +51,11 @@
 			<groupId>net.ftlines.wicket-source</groupId>
 			<artifactId>wicket-source</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>wicket.bootstrap3</artifactId>
-			<version>6.18.0</version>
+			<version>6.15.0</version>
 		</dependency>
 
 	</dependencies>
