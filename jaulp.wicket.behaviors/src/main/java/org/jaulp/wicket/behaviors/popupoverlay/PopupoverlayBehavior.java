@@ -37,13 +37,13 @@ public class PopupoverlayBehavior extends Behavior
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final ResourceReference pluginReference = new JavaScriptResourceReference(
+	public static final ResourceReference POPUPOVERLAY_PLUGIN_REFERENCE = new JavaScriptResourceReference(
 		PopupoverlayBehavior.class, "jquery.popupoverlay.js");
 
 	private Component component;
 	private PopupoverlaySettings settings = new PopupoverlaySettings();
 
-	private final TextTemplate wicketAlertTemplate = new PackageTextTemplate(
+	private final TextTemplate popupoverlayTemplate = new PackageTextTemplate(
 		PopupoverlayBehavior.class, "popupoverlay-template.js.tmpl");
 
 	public PopupoverlayBehavior()
@@ -136,8 +136,9 @@ public class PopupoverlayBehavior extends Behavior
 	{
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
-		response.render(JavaScriptHeaderItem.forReference(pluginReference));
-		response.render(OnLoadHeaderItem.forScript(generateJS(wicketAlertTemplate)));
+		response.render(JavaScriptHeaderItem
+			.forReference(PopupoverlayBehavior.POPUPOVERLAY_PLUGIN_REFERENCE));
+		response.render(OnLoadHeaderItem.forScript(generateJS(popupoverlayTemplate)));
 	}
 
 	public void setSettings(PopupoverlaySettings settings)
