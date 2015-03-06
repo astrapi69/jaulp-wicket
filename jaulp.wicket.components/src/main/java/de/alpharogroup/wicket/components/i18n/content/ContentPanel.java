@@ -40,6 +40,7 @@ public class ContentPanel extends BasePanel<ContentModel>
 	public ContentPanel(String id, IModel<ContentModel> model)
 	{
 		super(id, model);
+		setOutputMarkupId(true);
 		if (model != null)
 		{
 			add(header = newHeaderLabel("header", ResourceModelFactory.newResourceModel(model
