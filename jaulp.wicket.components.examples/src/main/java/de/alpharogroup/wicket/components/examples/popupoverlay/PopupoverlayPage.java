@@ -26,7 +26,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonModel;
-import de.alpharogroup.wicket.components.examples.fragment.swapping.person.ViewPersonPanel;
+import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonPanel;
 
 
 @MountPath("public/popupoverlay")
@@ -42,7 +42,7 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		return new PopupoverlayPanel<PersonModel>(CONTAINER_PANEL_ID, Model.of(new PersonModel()))
+		PopupoverlayPanel<PersonModel> popupoverlayPanel = new PopupoverlayPanel<PersonModel>(CONTAINER_PANEL_ID, Model.of(new PersonModel()))
 		{
 
 			/**
@@ -53,8 +53,9 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 			@Override
 			protected MarkupContainer newOverlayReference(String id, IModel<PersonModel> model)
 			{
-				ViewPersonPanel panel = new ViewPersonPanel(id, model);
-				panel.add(new AttributeAppender("class", "overlay-panel"));
+				PersonPanel panel = new PersonPanel(id, model);
+				panel.add(new AttributeAppender("style", " height: 800px; width: 600px;"));
+				panel.add(new AttributeAppender("class", " overlay-panel"));
 				panel.add(newPopupoverlayBehavior());
 				panel.setOutputMarkupId(true);
 				return panel;
@@ -62,5 +63,7 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 
 
 		};
+
+		return popupoverlayPanel;
 	}
 }
