@@ -50,15 +50,15 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
-	private final Label buttonLabel;
+	private Label buttonLabel;
 
-	private final Button submitButton;
+	private Button submitButton;
 
-	private final Component motivation;
+	private Component motivation;
 
-	private final Component contentPanel;
+	private Component contentPanel;
 
-	private final Form<?> form;
+	private Form<?> form;
 
 	/**
 	 * Instantiates a new deregistration panel.
@@ -71,14 +71,20 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	public DeregistrationPanel(final String id, final IModel<DeregistrationModel> model)
 	{
 		super(id, model);
-		add(contentPanel = newContentPanel("contentPanel"));
-		add(form = new Form<DeregistrationModel>("form", model));
-		form.add(motivation = newMotivation("motivation", model));
+	}
+
+
+	public void onBeforeRender()
+	{
+		addOrReplace(contentPanel = newContentPanel("contentPanel"));
+		addOrReplace(form = newForm("form", getModel()));
+		form.addOrReplace(motivation = newMotivation("motivation", getModel()));
 		// Create submit button for the form
 		submitButton = newButton("submitButton");
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel",
+		submitButton.addOrReplace(buttonLabel = newButtonLabel("buttonLabel",
 			"sem.main.global.deregistration.user.label", "Deregister"));
-		form.add(submitButton);
+		form.addOrReplace(submitButton);
+		super.onBeforeRender();
 	}
 
 	protected Component newContentPanel(String id)
