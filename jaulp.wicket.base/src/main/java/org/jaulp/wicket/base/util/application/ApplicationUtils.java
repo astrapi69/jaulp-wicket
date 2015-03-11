@@ -517,7 +517,8 @@ public final class ApplicationUtils
 		ApplicationUtils.setRootRequestMapper(application, httpPort, httpsPort);
 		// add file patterns to the resource guard...
 		ApplicationUtils.addFilePatternsToPackageResourceGuard(application, patterns);
-		// String wicket tags. Needed for wicket-jquery-ui
-		application.getMarkupSettings().setStripWicketTags(true); // IMPORTANT!
+		// Removes(strips) all wicket tags like <wicket:panel>, <wicket:extend> and <wicket:child>.
+		// This is very important to set to true if you use the library wicket-jquery-ui
+		application.getMarkupSettings().setStripWicketTags(true);
 	}
 }

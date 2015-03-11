@@ -23,6 +23,18 @@ import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import java.io.File;
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
+
+import org.apache.wicket.Application;
+import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
+import org.apache.wicket.protocol.http.WicketFilter;
+import org.eclipse.jetty.servlet.DefaultServlet;
+import org.eclipse.jetty.servlet.FilterHolder;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 
 public class StartComponentExamples
@@ -98,4 +110,47 @@ public class StartComponentExamples
 			System.exit(1);
 		}
 	}
+	
+	
+  /**
+   * Starts the given wicket application with the given parameters.
+   * @param applicationClass
+   * @param contextPath
+   * @param webapp
+   * @param httpPort
+   * @param httpsPort
+   * @param maxInactiveInterval
+   * @param filterPath
+   * @throws Exception
+   */
+  public static void startWebapp(
+    final Class<? extends Application> applicationClass,
+    String contextPath,
+    File webapp,
+    int httpPort,
+    int httpsPort,
+    int maxInactiveInterval,
+    String filterPath) throws Exception {
+
+    final Server server = new Server(httpPort);
+
+    final ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+    context.setContextPath(contextPath);
+
+    context.setResourceBase(webapp.getAbsolutePath());
+
+    final FilterHolder filter = new FilterHolder(WicketFilter.class);
+    filter.setInitParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM, applicationClass.getName());
+    filter.setInitParameter(WicketFilter.FILTER_MAPPING_PARAM, filterPath);
+    context.addFilter(filter, filterPath, EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR));
+    context.addServlet(DefaultServlet.class, filterPath);
+
+    context.getSessionHandler().getSessionManager().setMaxInactiveInterval(maxInactiveInterval);
+
+    server.setHandler(context);
+
+    server.start();
+    server.join();
+
+  }
 }
