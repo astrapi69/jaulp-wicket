@@ -47,6 +47,7 @@ import de.alpharogroup.wicket.components.examples.ajaxtabs.addtab.EditableAjaxTa
 import de.alpharogroup.wicket.components.examples.alerts.AlertsPage;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePage;
+import de.alpharogroup.wicket.components.examples.beaneditor.example.BeanEditorExamplePage;
 import de.alpharogroup.wicket.components.examples.buttons.ButtonsPage;
 import de.alpharogroup.wicket.components.examples.captcha.ReCaptchaPage;
 import de.alpharogroup.wicket.components.examples.captcha.SslReCaptchaPage;
@@ -242,6 +243,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			"global.menu.deregistration.label", this);
 		final IModel<String> exceptionModel = ResourceModelFactory.newResourceModel(
 			"global.menu.exception.label", this);
+		final IModel<String> beanEditorExampleModel = ResourceModelFactory.newResourceModel(
+			"global.menu.bean.editor.label", this);
 		return new NavbarDropDownButton(featuresMainModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -254,6 +257,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 					.setIconType(GlyphIconType.eyeopen));
 				subMenu.add(new MenuBookmarkablePageLink<PersonPage>(PersonPage.class,
 					swapPersonModel).setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<PersonPage>(BeanEditorExamplePage.class,
+					beanEditorExampleModel).setIconType(GlyphIconType.eyeopen));
 				subMenu.add(new MenuBookmarkablePageLink<ReplaceWithPage>(ReplaceWithPage.class,
 					replaceWithPanelModel).setIconType(GlyphIconType.eyeopen));
 				subMenu.add(new MenuBookmarkablePageLink<PopupoverlayPage>(PopupoverlayPage.class,
