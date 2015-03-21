@@ -18,6 +18,8 @@ package org.jaulp.wicket.behaviors;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+
 import org.apache.log4j.Logger;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -27,23 +29,27 @@ import org.apache.wicket.util.lang.Args;
 import org.odlabs.wiquery.core.javascript.ChainableStatement;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 
-public class AddJsQueryStatementsBehavior extends Behavior
+public class JqueryStatementsBehavior extends Behavior
 {
 	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger.getLogger(AddJsQueryStatementsBehavior.class
+	protected static final Logger LOGGER = Logger.getLogger(JqueryStatementsBehavior.class
 		.getName());
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	List<ChainableStatement> chainableStatement;
+	private List<ChainableStatement> chainableStatement;
+	@Getter
+	private CharSequence renderedStatement;
+	@Getter
+	private boolean rendered;
 
-	public AddJsQueryStatementsBehavior()
+	public JqueryStatementsBehavior()
 	{
 		this.chainableStatement = new ArrayList<>();
 	}
 
-	public AddJsQueryStatementsBehavior(List<ChainableStatement> chainableStatement)
+	public JqueryStatementsBehavior(List<ChainableStatement> chainableStatement)
 	{
 		Args.notNull(chainableStatement, "chainableStatement");
 		this.chainableStatement = chainableStatement;
@@ -56,7 +62,7 @@ public class AddJsQueryStatementsBehavior extends Behavior
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
 
-	public AddJsQueryStatementsBehavior add(ChainableStatement defaultChainableStatement)
+	public JqueryStatementsBehavior add(ChainableStatement defaultChainableStatement)
 	{
 		this.chainableStatement.add(defaultChainableStatement);
 		return this;
@@ -70,6 +76,8 @@ public class AddJsQueryStatementsBehavior extends Behavior
 		{
 			statement.chain(defaultChainableStatement);
 		}
-		return statement.render();
+		this.renderedStatement = statement.render();
+		this.rendered = true;		
+		return this.renderedStatement;
 	}
 }
