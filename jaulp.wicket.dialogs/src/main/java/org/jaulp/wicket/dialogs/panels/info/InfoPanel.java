@@ -15,30 +15,47 @@
  */
 package org.jaulp.wicket.dialogs.panels.info;
 
-import java.util.EventObject;
+import lombok.Getter;
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.event.Broadcast;
-import org.apache.wicket.event.IEventSink;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
-import org.jaulp.wicket.dialogs.panels.DialogPanel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
-public abstract class InfoPanel<T> extends DialogPanel<T>
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
+public abstract class InfoPanel<T> extends GenericPanel<T>
 {
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+	@Getter
+	final AjaxButton closeButton;
+
+	public InfoPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
+	{
+		super(id, model);
+		add(newLabel("message", labelModel));
+		add(closeButton = newCloseButton("closeButton"));
+	}
 
 	/**
-	 * 
+	 * Factory method for creating a new no {@link AjaxButton}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a no {@link AjaxButton}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param form
+	 *            the form
+	 * @return the new {@link AjaxButton}
 	 */
-	private static final long serialVersionUID = 1L;
-
-	public InfoPanel(String id, final IModel<T> model, final IModel<String> labelModel)
+	protected AjaxButton newCloseButton(final String id)
 	{
-		super(id, model, labelModel);
-		add(newLabel("message", labelModel));
-
-		final AjaxButton closeButton = new AjaxButton("closeButton")
+		AjaxButton ajaxButton = new AjaxButton(id)
 		{
 			/**
 			 * The serialVersionUID.
@@ -46,23 +63,36 @@ public abstract class InfoPanel<T> extends DialogPanel<T>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-			{
-				final T object = model.getObject();
-				onClose(target, object);
-			}
-
-			@SuppressWarnings("unused")
-			public <E extends EventObject> void send(IEventSink sink, Broadcast broadcast, E payload)
+			protected void onError(final AjaxRequestTarget target, final Form<?> form)
 			{
 			}
 
 			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form)
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
+				final T object = InfoPanel.this.getModelObject();
+				onClose(target, object);
 			}
 		};
-		add(closeButton);
+		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+			.key("global.no.label").defaultValue("No").build(), this);
+		ajaxButton.add(newLabel("noLabel", noLabelModel));
+		return ajaxButton;
+	}
+
+	/**
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
+	protected Label newLabel(String id, IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	public abstract void onClose(final AjaxRequestTarget target, final T object);
