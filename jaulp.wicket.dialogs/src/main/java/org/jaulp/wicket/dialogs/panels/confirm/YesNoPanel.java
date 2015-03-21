@@ -16,14 +16,15 @@
 package org.jaulp.wicket.dialogs.panels.confirm;
 
 import lombok.Getter;
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
-import org.jaulp.wicket.dialogs.panels.DialogPanel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
@@ -33,7 +34,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type
  */
-public abstract class YesNoPanel<T> extends DialogPanel<T>
+public abstract class YesNoPanel<T> extends GenericPanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -63,12 +64,23 @@ public abstract class YesNoPanel<T> extends DialogPanel<T>
 	 */
 	public YesNoPanel(String id, final IModel<T> model, final IModel<String> labelModel)
 	{
-		super(id, model, labelModel);
+		super(id, model);		
 		add(label = newLabel("message", labelModel));
 		add(yesButton = newYesButton("yesButton"));
 		add(noButton = newNoButton("noButton"));
 	}
 
+	/**
+	 * Factory method for creating a new no {@link AjaxButton}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a no {@link AjaxButton}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param form
+	 *            the form
+	 * @return the new {@link AjaxButton}
+	 */
 	protected AjaxButton newNoButton(final String id)
 	{
 		AjaxButton ajaxButton = new AjaxButton(id)
@@ -90,11 +102,23 @@ public abstract class YesNoPanel<T> extends DialogPanel<T>
 				onNo(target, form, false);
 			}
 		};
-		final IModel<String> noLabelModel = new StringResourceModel("global.no.label", this, null);
+		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+			.key("global.no.label").defaultValue("No").build(), this);
 		ajaxButton.add(newLabel("noLabel", noLabelModel));
 		return ajaxButton;
 	}
 
+	/**
+	 * Factory method for creating a new yes {@link AjaxButton}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a yes {@link AjaxButton}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param form
+	 *            the form
+	 * @return the new {@link AjaxButton}
+	 */
 	protected AjaxButton newYesButton(final String id)
 	{
 		final AjaxButton ajaxButton = new AjaxButton(id)
@@ -117,7 +141,8 @@ public abstract class YesNoPanel<T> extends DialogPanel<T>
 			}
 
 		};
-		final IModel<String> yesLabelModel = new StringResourceModel("global.yes.label", this, null);
+		final IModel<String> yesLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+			.key("global.yes.label").defaultValue("Yes").build(), this);
 		ajaxButton.add(newLabel("yesLabel", yesLabelModel));
 		return ajaxButton;
 	}
