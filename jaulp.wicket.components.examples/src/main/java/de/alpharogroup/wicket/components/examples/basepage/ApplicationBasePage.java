@@ -43,7 +43,7 @@ import org.jaulp.wicket.base.GenericBasePage;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
-import org.jaulp.wicket.behaviors.AddJsQueryStatementsBehavior;
+import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
 import org.jaulp.wicket.behaviors.BuildableChainableStatement;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.GoogleAnalyticsBehavior;
@@ -323,7 +323,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 					}
 				};
 				// Add bootstrap class to ul element...
-				add(new AddJsQueryStatementsBehavior().add(
+				add(new JqueryStatementsBehavior().add(
 					new BuildableChainableStatement.Builder().label("find")
 						.args(JsUtils.quotes("ul")).build()).add(
 					new BuildableChainableStatement.Builder().label("addClass")
