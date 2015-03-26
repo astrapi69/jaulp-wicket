@@ -66,6 +66,11 @@ public class JqueryStatementsBehaviorTest
 		JsStatement jsQuery = new JsQuery().$(".foo").each(new JsScope()
 		{
 
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void execute(JsScopeContext scopeContext)
 			{
 				scopeContext.self().chain("css", "border", "1px solid red");

@@ -40,13 +40,13 @@ public class StartComponentExamples
 {
 	public static void main(String[] args) throws Exception
 	{
-		 eclipseStart();
-		
+		eclipseStart();
+
 		// alternate start with params...
-//		File webapp = PathFinder.getSrcMainJavaDir();
-//		new File(PathFinder.getSrcMainJavaDir(), "webapp");
-//		startWebapp(WicketApplication.class, "/", webapp, WicketApplication.DEFAULT_HTTP_PORT,
-//			WicketApplication.DEFAULT_HTTPS_PORT, 300, "/*");
+		// File webapp = PathFinder.getSrcMainJavaDir();
+		// new File(PathFinder.getSrcMainJavaDir(), "webapp");
+		// startWebapp(WicketApplication.class, "/", webapp, WicketApplication.DEFAULT_HTTP_PORT,
+		// WicketApplication.DEFAULT_HTTPS_PORT, 300, "/*");
 	}
 
 

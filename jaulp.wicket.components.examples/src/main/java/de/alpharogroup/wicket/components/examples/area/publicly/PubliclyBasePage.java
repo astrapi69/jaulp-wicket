@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.examples.area.publicly;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.alpharogroup.wicket.components.examples.googlecharts.GoogleChartsExamplePage;
 import net.sourceforge.jaulp.locale.LocaleUtils;
 
 import org.apache.log4j.Logger;
@@ -79,7 +80,7 @@ import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterSharePan
 
 /**
  * The Class BasePage.
- * 
+ *
  * @author Asterios Raptis
  * @param <T>
  *            the generic type
@@ -106,7 +107,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 
 	/**
 	 * Instantiates a new base page.
-	 * 
+	 *
 	 * @param parameters
 	 *            the parameters
 	 */
@@ -170,7 +171,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 
 	/**
 	 * Gets the Navbar panel.
-	 * 
+	 *
 	 * @return 's the Navbar panel.
 	 */
 	public Component getNavbarPanel()
@@ -180,7 +181,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 
 	/**
 	 * creates a new {@link Navbar} instance
-	 * 
+	 *
 	 * @param markupId
 	 *            The components markup id.
 	 * @return a new {@link Navbar} instance
@@ -248,6 +249,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			"global.menu.bean.editor.label", this);
 		final IModel<String> animationExampleModel = ResourceModelFactory.newResourceModel(
 			"global.menu.animation.label", this);
+		final IModel<String> googlechartsExampleModel = ResourceModelFactory.newResourceModel(
+			"global.menu.googlecharts.label", this);
 		return new NavbarDropDownButton(featuresMainModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -260,10 +263,14 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 					.setIconType(GlyphIconType.eyeopen));
 				subMenu.add(new MenuBookmarkablePageLink<PersonPage>(PersonPage.class,
 					swapPersonModel).setIconType(GlyphIconType.eyeopen));
-				subMenu.add(new MenuBookmarkablePageLink<PersonPage>(BeanEditorExamplePage.class,
-					beanEditorExampleModel).setIconType(GlyphIconType.eyeopen));
-				subMenu.add(new MenuBookmarkablePageLink<PersonPage>(AnimationPage.class,
+				subMenu.add(new MenuBookmarkablePageLink<BeanEditorExamplePage>(
+					BeanEditorExamplePage.class, beanEditorExampleModel)
+					.setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<AnimationPage>(AnimationPage.class,
 					animationExampleModel).setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<GoogleChartsExamplePage>(
+					GoogleChartsExamplePage.class, googlechartsExampleModel)
+					.setIconType(GlyphIconType.eyeopen));
 				subMenu.add(new MenuBookmarkablePageLink<ReplaceWithPage>(ReplaceWithPage.class,
 					replaceWithPanelModel).setIconType(GlyphIconType.eyeopen));
 				subMenu.add(new MenuBookmarkablePageLink<PopupoverlayPage>(PopupoverlayPage.class,
@@ -338,7 +345,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 
 	/**
 	 * creates a new {@link NavbarDropDownButton} instance
-	 * 
+	 *
 	 * @return a new {@link NavbarDropDownButton} instance
 	 */
 	protected DropDownButton newNavbarDropDownButton()

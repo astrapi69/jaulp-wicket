@@ -74,8 +74,8 @@ public abstract class InfoPanel<T> extends GenericPanel<T>
 				onClose(target, object);
 			}
 		};
-		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
-			.key("global.no.label").defaultValue("No").build(), this);
+		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key("global.no.label").defaultValue("No").build(), this);
 		ajaxButton.add(newLabel("noLabel", noLabelModel));
 		return ajaxButton;
 	}

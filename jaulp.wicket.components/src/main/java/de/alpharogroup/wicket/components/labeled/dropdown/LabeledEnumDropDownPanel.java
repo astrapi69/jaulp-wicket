@@ -7,7 +7,13 @@ import org.apache.wicket.model.IModel;
 public class LabeledEnumDropDownPanel extends Panel
 {
 
-	public LabeledEnumDropDownPanel(String id, IModel model, IModel labelModel, IModel choices)
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public LabeledEnumDropDownPanel(String id, IModel<?> model, IModel<String> labelModel, IModel<?> choices)
 	{
 		super(id, model);
 		add(new DropDownChoice("edit", model, choices).setLabel(labelModel));

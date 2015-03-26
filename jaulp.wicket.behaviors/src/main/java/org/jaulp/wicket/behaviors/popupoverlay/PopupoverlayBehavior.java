@@ -47,7 +47,7 @@ public class PopupoverlayBehavior extends Behavior
 
 	/** The component. */
 	private Component component;
-	
+
 	/** The settings. */
 	private PopupoverlaySettings settings = new PopupoverlaySettings();
 
@@ -65,7 +65,8 @@ public class PopupoverlayBehavior extends Behavior
 	/**
 	 * Constructor with {@link PopupoverlaySettings}.
 	 *
-	 * @param settings the settings
+	 * @param settings
+	 *            the settings
 	 */
 	public PopupoverlayBehavior(PopupoverlaySettings settings)
 	{
@@ -87,7 +88,8 @@ public class PopupoverlayBehavior extends Behavior
 	/**
 	 * Generate js.
 	 *
-	 * @param textTemplate the text template
+	 * @param textTemplate
+	 *            the text template
 	 * @return the string
 	 */
 	protected String generateJS(final TextTemplate textTemplate)
@@ -135,9 +137,12 @@ public class PopupoverlayBehavior extends Behavior
 	/**
 	 * Sets the variable.
 	 *
-	 * @param variablename the variablename
-	 * @param object the object
-	 * @param variables the variables
+	 * @param variablename
+	 *            the variablename
+	 * @param object
+	 *            the object
+	 * @param variables
+	 *            the variables
 	 */
 	protected void setVariable(String variablename, Object object,
 		final Map<String, Object> variables)
@@ -155,9 +160,12 @@ public class PopupoverlayBehavior extends Behavior
 	/**
 	 * Sets the variable with singe quotation marks.
 	 *
-	 * @param variablename the variablename
-	 * @param object the object
-	 * @param variables the variables
+	 * @param variablename
+	 *            the variablename
+	 * @param object
+	 *            the object
+	 * @param variables
+	 *            the variables
 	 */
 	protected void setVariableWithSingeQuotationMarks(String variablename, Object object,
 		final Map<String, Object> variables)
@@ -188,7 +196,8 @@ public class PopupoverlayBehavior extends Behavior
 	/**
 	 * Sets the settings.
 	 *
-	 * @param settings the new settings
+	 * @param settings
+	 *            the new settings
 	 */
 	public void setSettings(PopupoverlaySettings settings)
 	{

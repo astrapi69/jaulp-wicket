@@ -25,6 +25,10 @@ import java.util.Set;
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResourcesUtils;
 
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.HeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import org.jaulp.wicket.base.enums.ResourceReferenceType;
 
@@ -182,6 +186,46 @@ public class PackageResourceReferences
 				.put(key, packageResourceReferences);
 		}
 
+	}
+
+	/**
+	 * Adds the given javascript files to the given response object in the given scope.
+	 * 
+	 * @param response
+	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
+	 * @param scope
+	 *            The scope of the javascript files.
+	 * @param jsFilenames
+	 *            The javascript file names.
+	 */
+	public static void addJsFiles(IHeaderResponse response, Class<?> scope, String... jsFilenames)
+	{
+		for (String jsFilename : jsFilenames)
+		{
+			HeaderItem item = JavaScriptHeaderItem.forReference(new PackageResourceReference(scope,
+				jsFilename));
+			response.render(item);
+		}
+	}
+
+	/**
+	 * Adds the given css files to the given response object in the given scope.
+	 * 
+	 * @param response
+	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
+	 * @param scope
+	 *            The scope of the css files.
+	 * @param cssFilenames
+	 *            The css file names.
+	 */
+	public static void addCssFiles(IHeaderResponse response, Class<?> scope, String... cssFilenames)
+	{
+		for (String cssFilename : cssFilenames)
+		{
+			HeaderItem item = CssHeaderItem.forReference(new PackageResourceReference(scope,
+				cssFilename));
+			response.render(item);
+		}
 	}
 
 }

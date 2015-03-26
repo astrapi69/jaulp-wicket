@@ -42,12 +42,14 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		PopupoverlayPanel<PersonModel> popupoverlayPanel = new PopupoverlayPanel<PersonModel>(CONTAINER_PANEL_ID, Model.of(new PersonModel()))
+		PopupoverlayPanel<PersonModel> popupoverlayPanel = new PopupoverlayPanel<PersonModel>(
+			CONTAINER_PANEL_ID, Model.of(new PersonModel()))
 		{
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected MarkupContainer newOverlayReference(String id, IModel<PersonModel> model)
 			{

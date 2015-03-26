@@ -64,7 +64,7 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	 */
 	public YesNoPanel(String id, final IModel<T> model, final IModel<String> labelModel)
 	{
-		super(id, model);		
+		super(id, model);
 		add(label = newLabel("message", labelModel));
 		add(yesButton = newYesButton("yesButton"));
 		add(noButton = newNoButton("noButton"));
@@ -102,8 +102,8 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 				onNo(target, form, false);
 			}
 		};
-		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
-			.key("global.no.label").defaultValue("No").build(), this);
+		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key("global.no.label").defaultValue("No").build(), this);
 		ajaxButton.add(newLabel("noLabel", noLabelModel));
 		return ajaxButton;
 	}
@@ -141,8 +141,8 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 			}
 
 		};
-		final IModel<String> yesLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
-			.key("global.yes.label").defaultValue("Yes").build(), this);
+		final IModel<String> yesLabelModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("global.yes.label").defaultValue("Yes").build(), this);
 		ajaxButton.add(newLabel("yesLabel", yesLabelModel));
 		return ajaxButton;
 	}

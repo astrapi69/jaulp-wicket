@@ -27,6 +27,7 @@ import org.apache.wicket.markup.html.form.RadioChoice;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+import org.jaulp.test.objects.enums.Brands;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 

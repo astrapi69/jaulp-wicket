@@ -77,7 +77,7 @@ public class JqueryStatementsBehavior extends Behavior
 			statement.chain(defaultChainableStatement);
 		}
 		this.renderedStatement = statement.render();
-		this.rendered = true;		
+		this.rendered = true;
 		return this.renderedStatement;
 	}
 }

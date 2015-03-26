@@ -32,9 +32,11 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.https.HttpsConfig;
 import org.apache.wicket.protocol.https.HttpsMapper;
 import org.apache.wicket.protocol.https.Scheme;
+import org.apache.wicket.request.Url;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.UrlResourceReference;
 import org.apache.wicket.settings.IExceptionSettings;
 import org.apache.wicket.settings.IResourceSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
@@ -58,8 +60,23 @@ public final class ApplicationUtils
 	}
 
 	/**
-	 * Initializes the given WebApplication with the Spring framework.
+	 * Replace the default jquery resource reference from the given application with the given cdn
+	 * url.
 	 * 
+	 * @param application
+	 *            the WebApplication
+	 * @param cdnjsUrl
+	 *            the given cdn url.
+	 */
+	public static void replaceJQueryReference(WebApplication application, String cdnjsUrl)
+	{
+		application.getJavaScriptLibrarySettings().setJQueryReference(
+			new UrlResourceReference(Url.parse(cdnjsUrl)));
+	}
+
+	/**
+	 * Initializes the given WebApplication with the Spring framework.
+	 *
 	 * @param application
 	 *            the WebApplication
 	 */
@@ -71,7 +88,7 @@ public final class ApplicationUtils
 
 	/**
 	 * Gets the context path from the given WebApplication.
-	 * 
+	 *
 	 * @param application
 	 *            the WebApplication
 	 * @return the context path
@@ -90,7 +107,7 @@ public final class ApplicationUtils
 	 * Gets the real path corresponding to the given virtual path from the given WebApplication.
 	 * This method gets decorated the method of the
 	 * {@link javax.servlet.ServletContext#getRealPath(String)}.
-	 * 
+	 *
 	 * @param application
 	 *            the wicket application
 	 * @param path
@@ -110,7 +127,7 @@ public final class ApplicationUtils
 
 	/**
 	 * Gets the request logger from the given WebApplication.
-	 * 
+	 *
 	 * @param webApplication
 	 *            the web application
 	 * @return the request logger
@@ -131,7 +148,7 @@ public final class ApplicationUtils
 
 	/**
 	 * Gets the request logger of the current WebApplication.
-	 * 
+	 *
 	 * @return the request logger
 	 */
 	public static IRequestLogger getRequestLogger()
@@ -470,7 +487,7 @@ public final class ApplicationUtils
 
 	/**
 	 * Adds the given resourcePath to the resource finder from the given application.
-	 * 
+	 *
 	 * @see IResourceSettings#getResourceFinders()
 	 *
 	 * @param application

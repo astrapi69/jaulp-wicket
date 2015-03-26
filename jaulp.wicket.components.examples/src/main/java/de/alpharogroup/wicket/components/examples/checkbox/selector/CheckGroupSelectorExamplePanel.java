@@ -24,7 +24,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import de.alpharogroup.wicket.components.examples.radios.Company;
+import org.jaulp.test.objects.Company;
 import de.alpharogroup.wicket.components.form.checkbox.CheckGroupSelectorPanel;
 import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
 

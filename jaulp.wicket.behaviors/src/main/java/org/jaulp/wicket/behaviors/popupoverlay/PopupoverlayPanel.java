@@ -25,7 +25,8 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class PopupoverlayPanel is production ready and is also an example how to use the {@link PopupoverlayBehavior}.
+ * The Class PopupoverlayPanel is production ready and is also an example how to use the
+ * {@link PopupoverlayBehavior}.
  *
  * @param <T>
  *            the generic type of the model.
@@ -77,7 +78,7 @@ public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 		addOrReplace(overlayReference = newOverlayReference("overlayReference", getModel()));
 		overlayReference.add(newPopupoverlayBehavior());
 		overlayReference.setOutputMarkupId(true);
-		
+
 		// add class attributte with the markup id from the overlay with the
 		// suffix '_open' that indicates that the overlay shell open...
 		openButton.add(new AttributeModifier("class", overlayReference.getMarkupId() + "_open"));

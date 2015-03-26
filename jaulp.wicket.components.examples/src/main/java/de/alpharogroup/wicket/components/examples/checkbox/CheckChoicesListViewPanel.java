@@ -30,7 +30,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.ListModel;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import de.alpharogroup.wicket.components.examples.radios.Company;
+import org.jaulp.test.objects.Company;
 import de.alpharogroup.wicket.components.form.CheckChoicesListView;
 import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
 

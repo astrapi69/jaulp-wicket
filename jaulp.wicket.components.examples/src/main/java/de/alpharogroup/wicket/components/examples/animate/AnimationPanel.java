@@ -36,11 +36,10 @@ public class AnimationPanel extends Panel
 		add(containerAnimate);
 
 		JqueryStatementsBehavior jqueryStatementsBehavior = new JqueryStatementsBehavior()
-		.add(new BuildableChainableStatement.Builder().label("animate")
-			.args("{height: '300'}").build());
+			.add(new BuildableChainableStatement.Builder().label("animate").args("{height: '300'}")
+				.build());
 		containerAnimate.add(jqueryStatementsBehavior);
 	}
-	
 
 
 	protected AjaxButton newAnimateButton(final String id)
@@ -84,9 +83,10 @@ public class AnimationPanel extends Panel
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
-	
-	protected void onAnimate(final AjaxRequestTarget target, Form<?> form, boolean error) {
-		
+
+	protected void onAnimate(final AjaxRequestTarget target, Form<?> form, boolean error)
+	{
+
 	}
 
 }
