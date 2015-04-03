@@ -48,7 +48,7 @@ public final class ComponentFinder
 
 	/**
 	 * Finds the AjaxRequestTarget from the current RequestCycle.
-	 * 
+	 *
 	 * @return the found AjaxRequestTarget or {@code null}
 	 */
 	public static AjaxRequestTarget findAjaxRequestTarget()
@@ -59,20 +59,55 @@ public final class ComponentFinder
 
 	/**
 	 * Creates a new ajax request target from the given Page.
-	 * 
+	 *
 	 * @param application
 	 *            the web application
 	 * @param page
 	 *            page on which ajax response is made
 	 * @return an AjaxRequestTarget instance
-	 * 
+	 *
 	 * @see WebApplication#newAjaxRequestTarget(Page)
-	 * 
+	 *
 	 */
 	@SuppressWarnings("javadoc")
 	public static AjaxRequestTarget newAjaxRequestTarget(WebApplication application, Page page)
 	{
 		return application.newAjaxRequestTarget(page);
+	}
+
+	/**
+	 * Finds the current {@link AjaxRequestTarget} or creates a new ajax request target from the
+	 * given application and page if the current {@link AjaxRequestTarget} is null.
+	 *
+	 * @param application
+	 *            the web application
+	 * @param page
+	 *            page on which ajax response is made
+	 * @return an AjaxRequestTarget instance
+	 *
+	 * @see WebApplication#newAjaxRequestTarget(Page)
+	 */
+	public static AjaxRequestTarget findOrNewAjaxRequestTarget(WebApplication application, Page page)
+	{
+		AjaxRequestTarget target = findAjaxRequestTarget();
+		if (target != null)
+		{
+			return target;
+		}
+		return newAjaxRequestTarget(application, page);
+	}
+
+	/**
+	 * Finds the current {@link AjaxRequestTarget} or creates a new ajax request target from the
+	 * given application and page if the current {@link AjaxRequestTarget} is null.
+	 *
+	 * @return an AjaxRequestTarget instance
+	 *
+	 * @see WebApplication#newAjaxRequestTarget(Page)
+	 */
+	public static AjaxRequestTarget findOrNewAjaxRequestTarget()
+	{
+		return findOrNewAjaxRequestTarget(WebApplication.get(), getCurrentPage());
 	}
 
 	/**
