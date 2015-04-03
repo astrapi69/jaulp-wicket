@@ -77,7 +77,7 @@ public class LabeledMultiLineLabelPanel<T> extends Panel
 	 */
 	protected MultiLineLabel newMultiLineLabelLabel(String id, IModel<T> model)
 	{
-		IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), id);
+		IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), this.getId());
 		return ComponentFactory.newMultiLineLabel(id, viewableLabelModel);
 	}
 

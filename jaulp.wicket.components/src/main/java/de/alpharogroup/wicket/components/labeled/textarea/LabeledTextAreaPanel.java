@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled.textarea;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -35,6 +37,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The text area. */
+	@Getter
 	private final TextArea<T> textArea;
 
 	/**
@@ -71,6 +74,22 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
+	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
+	 * class and can be overridden so users can provide their own version of a TextArea.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the text area
+	 */
+	protected TextArea<T> newTextArea(String id, IModel<T> model)
+	{
+		IModel<T> textAreaModel = new PropertyModel<>(model.getObject(), getId());
+		return ComponentFactory.newTextArea(id, textAreaModel);
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -86,32 +105,6 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	public String getInput()
 	{
 		return textArea.getInput();
-	}
-
-	/**
-	 * Gets the text area.
-	 *
-	 * @return the text area
-	 */
-	public TextArea<T> getTextArea()
-	{
-		return textArea;
-	}
-
-	/**
-	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a TextArea.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the text area
-	 */
-	protected TextArea<T> newTextArea(String id, IModel<T> model)
-	{
-		IModel<T> textAreaModel = new PropertyModel<>(model.getObject(), id);
-		return ComponentFactory.newTextArea(id, textAreaModel);
 	}
 
 	/**

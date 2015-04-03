@@ -78,7 +78,7 @@ public class LabeledEnumLabelPanel<T> extends Panel
 	@SuppressWarnings({ "rawtypes" })
 	protected EnumLabel newEnumLabel(final String id, IModel<T> model)
 	{
-		IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), id);
+		IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), this.getId());
 		return ComponentFactory.newEnumLabel(id, viewableLabelModel);
 	}
 

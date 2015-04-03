@@ -16,11 +16,13 @@
 package de.alpharogroup.wicket.components.factory;
 
 import java.util.Collection;
+import java.util.Date;
 
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.EnumLabel;
 import org.apache.wicket.markup.html.basic.Label;
@@ -80,6 +82,24 @@ public class ComponentFactory
 		ComponentFeedbackPanel feedbackPanel = new ComponentFeedbackPanel(id, filter);
 		feedbackPanel.setOutputMarkupId(true);
 		return feedbackPanel;
+	}
+	
+
+
+	/**
+	 * Factory method for creating a new DateTextField.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the DateTextField.
+	 */
+	public static DateTimeField newDateTimeField(String id, IModel<Date> model)
+	{
+		DateTimeField dateTextField = new DateTimeField(id, model);
+		dateTextField.setOutputMarkupId(true);
+		return dateTextField;
 	}
 
 	/**

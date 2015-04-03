@@ -39,10 +39,9 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	{
 		super(id, model, labelModel);
 		setDefaultModel(model);
-		PropertyModel<T> pm = new PropertyModel<>(model.getObject(), id);
 		ChoiceRenderer<T> choiceRenderer = new ChoiceRenderer<>("name", "name");
 
-		add(dropdownChoice = newLocalisedDropDownChoice("dropdownChoice", pm, enumValues,
+		add(dropdownChoice = newLocalisedDropDownChoice("dropdownChoice", model, enumValues,
 			choiceRenderer));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dropdownChoice));
@@ -56,10 +55,11 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	}
 
 	protected LocalisedDropDownChoice<T> newLocalisedDropDownChoice(final String id,
-		final IModel<T> model, final List<? extends T> data,
+		final IModel<M> model, final List<? extends T> data,
 		final IChoiceRenderer<? super T> renderer)
 	{
-		LocalisedDropDownChoice<T> ddc = new LocalisedDropDownChoice<>(id, model, data, renderer);
+		PropertyModel<T> pm = new PropertyModel<>(model.getObject(), this.getId());
+		LocalisedDropDownChoice<T> ddc = new LocalisedDropDownChoice<>(id, pm, data, renderer);
 		return ddc;
 	}
 

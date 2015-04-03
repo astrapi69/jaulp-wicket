@@ -15,7 +15,7 @@
  */
 package org.jaulp.wicket.behaviors;
 
-import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.Page;
 
 /**
  * The Class GoogleAnalyticsBehavior adds the application specific js script.
@@ -32,7 +32,7 @@ public class GoogleAnalyticsBehavior extends AddJsResourceReferenceBehavior
 	 * @param pageClass
 	 *            the page class
 	 */
-	public GoogleAnalyticsBehavior(final Class<? extends WebPage> pageClass)
+	public GoogleAnalyticsBehavior(final Class<? extends Page> pageClass)
 	{
 		super(pageClass, "gaq.js", "gaq");
 	}

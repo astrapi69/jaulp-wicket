@@ -19,10 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.TextTemplateResourceReference;
@@ -40,7 +40,7 @@ public class AddJsResourceReferenceBehavior extends Behavior
 	private static final long serialVersionUID = 1L;
 
 	/** The page class. */
-	private final Class<? extends WebPage> pageClass;
+	private final Class<? extends Page> pageClass;
 
 	/** The filename from the file that contains the javascript code. */
 	private final String filename;
@@ -61,7 +61,7 @@ public class AddJsResourceReferenceBehavior extends Behavior
 	 * @param id
 	 *            the id
 	 */
-	public AddJsResourceReferenceBehavior(final Class<? extends WebPage> pageClass,
+	public AddJsResourceReferenceBehavior(final Class<? extends Page> pageClass,
 		final String filename, final String id)
 	{
 		Args.notNull(pageClass, "pageClass");

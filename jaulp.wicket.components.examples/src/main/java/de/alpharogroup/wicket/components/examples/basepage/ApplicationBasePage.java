@@ -36,6 +36,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.settings.IJavaScriptLibrarySettings;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.time.Duration;
@@ -45,7 +46,6 @@ import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.BuildableChainableStatement;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
-import org.jaulp.wicket.behaviors.GoogleAnalyticsBehavior;
 import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
@@ -119,7 +119,6 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	public ApplicationBasePage(PageParameters parameters)
 	{
 		super(parameters);
-		initializeComponents();
 	}
 
 	/**
@@ -131,6 +130,12 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	public ApplicationBasePage(IModel<T> model)
 	{
 		super(model);
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
 		initializeComponents();
 	}
 
@@ -140,7 +145,6 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	private void initializeComponents()
 	{
 		add(new FaviconBehavior());
-		add(new GoogleAnalyticsBehavior(ApplicationBasePage.class));
 		add(new BootstrapBaseBehavior());
 		HeaderResponseContainer headerResponseContainer = new HeaderResponseContainer(
 			WicketBootstrap3Application.FOOTER_FILTER_NAME,
@@ -345,6 +349,10 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		response.render(JavaScriptHeaderItem.forReference(javaScriptSettings.getJQueryReference()));
 		Bootstrap.renderHead(response);
 		WicketComponentUtils.renderHeaderResponse(response, ApplicationBasePage.class);
+		PackageResourceReference gaqResourceReference = new PackageResourceReference(
+			ApplicationBasePage.class, "gaq.js");
+
+		response.render(JavaScriptHeaderItem.forReference(gaqResourceReference));
 	}
 
 	/**

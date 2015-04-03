@@ -50,8 +50,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	public LabeledCheckboxPanel(String id, IModel<T> model, IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
-		PropertyModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), id);
-		add(checkBox = newCheckBox("checkBox", propertyModel));
+		add(checkBox = newCheckBox("checkBox", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
 
@@ -70,9 +69,10 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the created CheckBox
 	 */
-	protected CheckBox newCheckBox(String id, IModel<Boolean> model)
+	protected CheckBox newCheckBox(String id, IModel<T> model)
 	{
-		return ComponentFactory.newCheckBox(id, model);
+		IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), this.getId());
+		return ComponentFactory.newCheckBox(id, propertyModel);
 	}
 
 	/**

@@ -21,6 +21,7 @@ import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
@@ -106,9 +107,8 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 */
 	protected DateTimeField newDateTimeField(String id, IModel<T> model)
 	{
-		PropertyModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
-		DateTimeField dateTextField = new DateTimeField(id, textFieldModel);
-		return dateTextField;
+		IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
+		return ComponentFactory.newDateTimeField(id, textFieldModel);
 	}
 
 	/**

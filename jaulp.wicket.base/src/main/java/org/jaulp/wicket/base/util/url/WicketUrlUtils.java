@@ -15,7 +15,7 @@
  */
 package org.jaulp.wicket.base.util.url;
 
-import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.Page;
 import org.apache.wicket.protocol.https.Scheme;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -37,7 +37,7 @@ public class WicketUrlUtils
 	 *            the page
 	 * @return the string
 	 */
-	public static <C extends WebPage> String absoluteUrlFor(Class<C> page)
+	public static <C extends Page> String absoluteUrlFor(Class<C> page)
 	{
 		return absoluteUrlFor(page, null, false);
 	}
@@ -53,7 +53,7 @@ public class WicketUrlUtils
 	 *            the with server port
 	 * @return the string
 	 */
-	public static <C extends WebPage> String absoluteUrlFor(Class<C> page, boolean withServerPort)
+	public static <C extends Page> String absoluteUrlFor(Class<C> page, boolean withServerPort)
 	{
 		return absoluteUrlFor(page, null, withServerPort);
 	}
@@ -72,7 +72,7 @@ public class WicketUrlUtils
 	 *            the with server port
 	 * @return the string
 	 */
-	public static <C extends WebPage> String absoluteUrlFor(Class<C> page,
+	public static <C extends Page> String absoluteUrlFor(Class<C> page,
 		PageParameters parameters, boolean withServerPort)
 	{
 		StringBuilder url = new StringBuilder();
@@ -88,9 +88,9 @@ public class WicketUrlUtils
 	 *            the page
 	 * @return the page url
 	 */
-	public static Url getPageUrl(WebPage page)
+	public static Url getPageUrl(Page page)
 	{
-		return getPageUrl(page.getClass());
+		return getPageUrl(page.getPageClass());
 	}
 
 	/**
@@ -102,9 +102,9 @@ public class WicketUrlUtils
 	 *            the parameters
 	 * @return the page url
 	 */
-	public static Url getPageUrl(WebPage page, PageParameters parameters)
+	public static Url getPageUrl(Page page, PageParameters parameters)
 	{
-		return getPageUrl(page.getClass(), parameters);
+		return getPageUrl(page.getPageClass(), parameters);
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class WicketUrlUtils
 	 *            the page class
 	 * @return the page url
 	 */
-	public static Url getPageUrl(Class<? extends WebPage> pageClass)
+	public static Url getPageUrl(Class<? extends Page> pageClass)
 	{
 		return getPageUrl(pageClass, null);
 	}
@@ -128,7 +128,7 @@ public class WicketUrlUtils
 	 *            the parameters
 	 * @return the page url
 	 */
-	public static Url getPageUrl(Class<? extends WebPage> pageClass, PageParameters parameters)
+	public static Url getPageUrl(Class<? extends Page> pageClass, PageParameters parameters)
 	{
 		String url = RequestCycle.get().urlFor(pageClass, parameters).toString();
 		return Url.parse(url);
@@ -143,7 +143,7 @@ public class WicketUrlUtils
 	 * @return the page url
 	 * @see Url#canonical()
 	 */
-	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass)
+	public static Url getCanonicalPageUrl(Class<? extends Page> pageClass)
 	{
 		return getCanonicalPageUrl(pageClass, null);
 	}
@@ -159,7 +159,7 @@ public class WicketUrlUtils
 	 * @return the page url
 	 * @see Url#canonical()
 	 */
-	public static Url getCanonicalPageUrl(Class<? extends WebPage> pageClass,
+	public static Url getCanonicalPageUrl(Class<? extends Page> pageClass,
 		PageParameters parameters)
 	{
 		return getPageUrl(pageClass, parameters).canonical();
@@ -172,9 +172,9 @@ public class WicketUrlUtils
 	 *            the page
 	 * @return the base url
 	 */
-	public static Url getBaseUrl(WebPage page)
+	public static Url getBaseUrl(Page page)
 	{
-		return getBaseUrl(page.getClass());
+		return getBaseUrl(page.getPageClass());
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class WicketUrlUtils
 	 *            the page class
 	 * @return the base url
 	 */
-	public static Url getBaseUrl(Class<? extends WebPage> pageClass)
+	public static Url getBaseUrl(Class<? extends Page> pageClass)
 	{
 		return getBaseUrl(pageClass, null);
 	}
@@ -196,7 +196,7 @@ public class WicketUrlUtils
 	 *            the page class
 	 * @return the base url as String.
 	 */
-	public static String toBaseUrl(Class<? extends WebPage> pageClass)
+	public static String toBaseUrl(Class<? extends Page> pageClass)
 	{
 		return getBaseUrl(pageClass).canonical().toString();
 	}
@@ -210,7 +210,7 @@ public class WicketUrlUtils
 	 *            the parameters
 	 * @return the base url
 	 */
-	public static Url getBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters)
+	public static Url getBaseUrl(Class<? extends Page> pageClass, PageParameters parameters)
 	{
 		return RequestCycle.get().mapUrlFor(pageClass, parameters);
 	}
@@ -224,7 +224,7 @@ public class WicketUrlUtils
 	 *            the parameters
 	 * @return the base url as String.
 	 */
-	public static String toBaseUrl(Class<? extends WebPage> pageClass, PageParameters parameters)
+	public static String toBaseUrl(Class<? extends Page> pageClass, PageParameters parameters)
 	{
 		return getBaseUrl(pageClass, parameters).canonical().toString();
 	}
@@ -257,7 +257,7 @@ public class WicketUrlUtils
 	 *            the page
 	 * @return the context path
 	 */
-	public static String getContextPath(WebPage page)
+	public static String getContextPath(Page page)
 	{
 		return page.getRequest().getContextPath();
 	}
@@ -279,9 +279,9 @@ public class WicketUrlUtils
 	 *            the page
 	 * @return the url as string
 	 */
-	public static String getUrlAsString(WebPage page)
+	public static String getUrlAsString(Page page)
 	{
-		return getUrlAsString(page.getClass());
+		return getUrlAsString(page.getPageClass());
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class WicketUrlUtils
 	 *            the page class
 	 * @return the url as string
 	 */
-	public static String getUrlAsString(Class<? extends WebPage> pageClass)
+	public static String getUrlAsString(Class<? extends Page> pageClass)
 	{
 		Url pageUrl = getPageUrl(pageClass);
 		Url url = getBaseUrl(pageClass);

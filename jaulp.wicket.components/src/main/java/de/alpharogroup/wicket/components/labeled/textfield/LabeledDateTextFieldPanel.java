@@ -109,7 +109,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 */
 	protected DateTextField newDateTextField(String id, IModel<T> model)
 	{
-		PropertyModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
+		IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
 
 		DateTextField dateTextField = new DateTextField(id, textFieldModel, new StyleDateConverter(
 			"S-", true))

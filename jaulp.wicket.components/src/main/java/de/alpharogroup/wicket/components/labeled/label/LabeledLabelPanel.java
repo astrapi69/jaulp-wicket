@@ -66,7 +66,7 @@ public class LabeledLabelPanel<T> extends Panel
 
 	protected Label newLabel(String id, IModel<T> model)
 	{
-		PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), id);
+		PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), this.getId());
 		return ComponentFactory.newLabel(id, viewableLabelModel);
 	}
 
