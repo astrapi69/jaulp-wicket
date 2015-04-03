@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.swap;
 
 import lombok.Getter;
 
+import org.apache.log4j.Logger;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Fragment;
@@ -36,6 +37,8 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	/** The Constant logger. */
+	protected static final Logger LOGGER = Logger.getLogger(SwapFragmentPanel.class.getName());
 
 	/** The view fragment. */
 	@Getter
@@ -108,10 +111,18 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	 * @param form
 	 *            the form
 	 */
-	protected void onSwapToEdit(final AjaxRequestTarget target, final Form<?> form)
+	public void onSwapToEdit(final AjaxRequestTarget target, final Form<?> form)
 	{
 		swapFragments();
-		target.add(view);
+		if (target != null)
+		{
+			target.add(view);
+		}
+		else
+		{
+			LOGGER
+				.error("AjaxRequestTarget is null on method SwapFragmentPanel#onSwapToEdit(AjaxRequestTarget, Form)");
+		}
 		modeContext = ModeContext.EDIT_MODE;
 	}
 
@@ -123,9 +134,17 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	 * @param form
 	 *            the form
 	 */
-	protected void onSwapToView(final AjaxRequestTarget target, final Form<?> form)
+	public void onSwapToView(final AjaxRequestTarget target, final Form<?> form)
 	{
-		target.add(edit);
+		if (target != null)
+		{
+			target.add(edit);
+		}
+		else
+		{
+			LOGGER
+				.error("AjaxRequestTarget is null on method SwapFragmentPanel#onSwapToView(AjaxRequestTarget, Form)");
+		}
 		swapFragments();
 		modeContext = ModeContext.VIEW_MODE;
 	}

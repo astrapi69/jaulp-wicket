@@ -40,7 +40,6 @@ import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.resource.IResource;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
@@ -68,7 +67,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new ComponentFeedbackPanel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param filter
@@ -95,7 +94,7 @@ public class ComponentFactory
 	 * @return the enum label
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static <T> EnumLabel newEnumLabel(final String id, final PropertyModel<T> model)
+	public static <T> EnumLabel newEnumLabel(final String id, final IModel<T> model)
 	{
 		EnumLabel enumLabel = new EnumLabel(id, model)
 		{
@@ -129,7 +128,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for creating a new {@link PasswordTextField}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -145,7 +144,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new FeedbackPanel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the FeedbackPanel
@@ -239,26 +238,8 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Label with a {@link PropertyModel}.
-	 *
-	 * @param <T>
-	 *            the generic type of the model
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the label
-	 */
-	public static <T> Label newLabel(final String id, final PropertyModel<T> model)
-	{
-		Label label = new Label(id, model);
-		label.setOutputMarkupId(true);
-		return label;
-	}
-
-	/**
 	 * Factory method for create a new {@link Label} with a {@link ResourceBundleKey}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey
@@ -276,7 +257,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new Label with the for attribute.
-	 * 
+	 *
 	 * @param <T>
 	 *            the generic type of the model
 	 * @param id
@@ -298,7 +279,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new Label with the for attribute.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param forId
@@ -365,7 +346,7 @@ public class ComponentFactory
 	 *            the model
 	 * @return the text area
 	 */
-	public static <T> TextArea<T> newTextArea(final String id, final PropertyModel<T> model)
+	public static <T> TextArea<T> newTextArea(final String id, final IModel<T> model)
 	{
 		TextArea<T> textArea = new TextArea<>(id, model);
 		textArea.setOutputMarkupId(true);
@@ -374,7 +355,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new {@link TextField}.
-	 * 
+	 *
 	 * @param <T>
 	 *            the generic type of the model
 	 * @param id
@@ -388,7 +369,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new {@link TextField}.
-	 * 
+	 *
 	 * @param <T>
 	 *            the generic type of the model
 	 * @param id
