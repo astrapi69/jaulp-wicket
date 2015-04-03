@@ -33,7 +33,6 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
@@ -178,7 +177,7 @@ public abstract class ReportThrowablePanel extends Panel
 	/**
 	 * Factory method for creating the Form. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -243,7 +242,7 @@ public abstract class ReportThrowablePanel extends Panel
 
 			@Override
 			protected TextArea<ReportThrowableModel> newTextArea(String id,
-				PropertyModel<ReportThrowableModel> model)
+				IModel<ReportThrowableModel> model)
 			{
 				TextArea<ReportThrowableModel> textArea = super.newTextArea(id, model);
 				if (placeholderModel != null)

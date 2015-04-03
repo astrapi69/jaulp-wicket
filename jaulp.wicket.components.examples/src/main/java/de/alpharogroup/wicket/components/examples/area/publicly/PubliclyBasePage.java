@@ -18,7 +18,6 @@ package de.alpharogroup.wicket.components.examples.area.publicly;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.alpharogroup.wicket.components.examples.googlecharts.GoogleChartsExamplePage;
 import net.sourceforge.jaulp.locale.LocaleUtils;
 
 import org.apache.log4j.Logger;
@@ -59,6 +58,7 @@ import de.alpharogroup.wicket.components.examples.exceptions.ExceptionPage;
 import de.alpharogroup.wicket.components.examples.fragment.replacewith.ReplaceWithPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonPage;
+import de.alpharogroup.wicket.components.examples.googlecharts.GoogleChartsExamplePage;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
 import de.alpharogroup.wicket.components.examples.labeled.LabeledComponentsPage;

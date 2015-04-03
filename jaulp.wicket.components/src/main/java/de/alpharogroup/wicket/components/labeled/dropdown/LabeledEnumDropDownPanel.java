@@ -13,7 +13,8 @@ public class LabeledEnumDropDownPanel extends Panel
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public LabeledEnumDropDownPanel(String id, IModel<?> model, IModel<String> labelModel, IModel<?> choices)
+	public LabeledEnumDropDownPanel(String id, IModel<?> model, IModel<String> labelModel,
+		IModel<?> choices)
 	{
 		super(id, model);
 		add(new DropDownChoice("edit", model, choices).setLabel(labelModel));

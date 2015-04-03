@@ -18,12 +18,12 @@ package de.alpharogroup.wicket.components.termofuse.rightsandduties;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.Builder;
 import de.alpharogroup.wicket.components.i18n.list.ContentListModel;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
 

@@ -109,6 +109,8 @@ public class WicketApplication extends WicketBootstrap3Application
 				// initialization...
 			}
 		});
+		ApplicationUtils.setRootRequestMapper(this, WicketApplication.DEFAULT_HTTP_PORT,
+			WicketApplication.DEFAULT_HTTPS_PORT);
 	}
 
 	protected void newGlobalSettings(final WebApplication application, final int httpPort,
@@ -127,7 +129,7 @@ public class WicketApplication extends WicketBootstrap3Application
 
 	/**
 	 * Checks if is on development mode.
-	 * 
+	 *
 	 * @return true, if is on development mode
 	 */
 	public boolean isOnDevelopmentMode()
@@ -201,7 +203,7 @@ public class WicketApplication extends WicketBootstrap3Application
 
 	/**
 	 * Initialize resources.
-	 * 
+	 *
 	 * @throws ClassNotFoundException
 	 *             the class not found exception
 	 * @throws IOException
@@ -215,7 +217,7 @@ public class WicketApplication extends WicketBootstrap3Application
 
 	/**
 	 * Gets the WicketApplication.
-	 * 
+	 *
 	 * @return the WicketApplication object.
 	 */
 	public static WicketApplication get()
@@ -233,4 +235,5 @@ public class WicketApplication extends WicketBootstrap3Application
 	{
 		return Arrays.asList();
 	}
+
 }

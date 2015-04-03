@@ -22,9 +22,9 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.jaulp.test.objects.Company;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import org.jaulp.test.objects.Company;
 import de.alpharogroup.wicket.components.form.checkbox.CheckGroupSelectorPanel;
 import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
 

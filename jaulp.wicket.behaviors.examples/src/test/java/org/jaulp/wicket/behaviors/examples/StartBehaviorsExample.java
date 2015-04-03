@@ -15,86 +15,22 @@
  */
 package org.jaulp.wicket.behaviors.examples;
 
-import org.apache.wicket.util.time.Duration;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.bio.SocketConnector;
-import org.eclipse.jetty.server.ssl.SslSocketConnector;
-import org.eclipse.jetty.util.resource.Resource;
-import org.eclipse.jetty.util.ssl.SslContextFactory;
-import org.eclipse.jetty.webapp.WebAppContext;
+import java.io.File;
 
+import net.sourceforge.jaulp.file.search.PathFinder;
+
+import org.jaulp.wicket.base.application.Jetty9Runner;
 
 public class StartBehaviorsExample
 {
-
 	public static void main(String[] args) throws Exception
 	{
-		int timeout = (int)Duration.ONE_HOUR.getMilliseconds();
-
-		Server server = new Server();
-		SocketConnector connector = new SocketConnector();
-
-		// Set some timeout options to make debugging easier.
-		connector.setMaxIdleTime(timeout);
-		connector.setSoLingerTime(-1);
-		connector.setPort(WicketApplication.HTTP_PORT);
-		server.addConnector(connector);
-
-		// check if a keystore for a SSL certificate is available, and
-		// if so, start a SSL connector on port 8443. By default, the
-		// quickstart comes with a Apache Wicket Quickstart Certificate
-		// that expires about half way september 2021. Do not use this
-		// certificate anywhere important as the passwords are available
-		// in the source.
-
-		Resource keystore = Resource.newClassPathResource("/keystore");
-		if (keystore != null && keystore.exists())
-		{
-
-			SslContextFactory factory = new SslContextFactory();
-			factory.setKeyStoreResource(keystore);
-			factory.setKeyStorePassword("wicket");
-			factory.setTrustStoreResource(keystore);
-			factory.setKeyManagerPassword("wicket");
-			SslSocketConnector sslConnector = new SslSocketConnector(factory);
-			sslConnector.setMaxIdleTime(timeout);
-			sslConnector.setPort(WicketApplication.HTTPS_PORT);
-			connector.setConfidentialPort(WicketApplication.HTTPS_PORT);
-			sslConnector.setAcceptors(4);
-			server.addConnector(sslConnector);
-
-			System.out.println("SSL access to the quickstart has been enabled on port 8443");
-			System.out
-				.println("You can access the application using SSL on https://localhost:8443");
-			System.out.println();
-		}
-
-		WebAppContext bb = new WebAppContext();
-		bb.setServer(server);
-		bb.setContextPath("/");
-		bb.setWar("src/main/webapp");
-
-		// START JMX SERVER
-		// MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
-		// MBeanContainer mBeanContainer = new MBeanContainer(mBeanServer);
-		// server.getContainer().addEventListener(mBeanContainer);
-		// mBeanContainer.start();
-
-		server.setHandler(bb);
-
-		try
-		{
-			System.out.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
-			server.start();
-			System.in.read();
-			System.out.println(">>> STOPPING EMBEDDED JETTY SERVER");
-			server.stop();
-			server.join();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			System.exit(1);
-		}
+		System.setProperty("wicket.configuration", "development");
+		String projectname = "jaulp.wicket.behaviors.examples";
+		File projectDirectory = PathFinder.getProjectDirectory();
+		File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
+			"webapp");
+		Jetty9Runner.run(WicketApplication.class, webapp, WicketApplication.DEFAULT_HTTP_PORT,
+			WicketApplication.DEFAULT_HTTPS_PORT);
 	}
 }

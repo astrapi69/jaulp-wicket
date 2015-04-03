@@ -61,8 +61,8 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
-		PropertyModel<T> textAreaModel = new PropertyModel<>(model.getObject(), id);
-		add(textArea = newTextArea("textArea", textAreaModel));
+		setOutputMarkupId(true);
+		add(textArea = newTextArea("textArea", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", textArea));
 
@@ -108,9 +108,10 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the text area
 	 */
-	protected TextArea<T> newTextArea(String id, PropertyModel<T> model)
+	protected TextArea<T> newTextArea(String id, IModel<T> model)
 	{
-		return ComponentFactory.newTextArea(id, model);
+		IModel<T> textAreaModel = new PropertyModel<>(model.getObject(), id);
+		return ComponentFactory.newTextArea(id, textAreaModel);
 	}
 
 	/**

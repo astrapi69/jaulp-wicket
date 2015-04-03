@@ -26,10 +26,16 @@ public class HomePage extends BaseMainPage
 {
 	private static final long serialVersionUID = 1L;
 
+
+	public HomePage()
+	{
+		this(null);
+	}
+
 	public HomePage(final PageParameters parameters)
 	{
 		super(parameters);
-
+		final PageParameters pageParameters = getPageParameters();
 		add(new MenubarPanel("menubarPanel"));
 
 		add(new Label("text", Model.of("This is the home page.")));

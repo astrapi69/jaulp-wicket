@@ -18,13 +18,13 @@ package de.alpharogroup.wicket.components.i18n.content;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.Builder;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 @Getter

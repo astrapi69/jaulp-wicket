@@ -30,8 +30,8 @@ import org.jaulp.wicket.PackageResourceReferences;
  */
 public class WicketApplication extends WebApplication
 {
-	public static final int HTTP_PORT = 9090;
-	public static final int HTTPS_PORT = 9443;
+	public static final int DEFAULT_HTTP_PORT = 9090;
+	public static final int DEFAULT_HTTPS_PORT = 9443;
 
 	@Override
 	public Session newSession(Request request, Response response)
@@ -48,7 +48,7 @@ public class WicketApplication extends WebApplication
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.apache.wicket.protocol.http.WebApplication#init()
 	 */
 	@Override
@@ -71,7 +71,7 @@ public class WicketApplication extends WebApplication
 
 	/**
 	 * Inits the all relevant resources like css and js files.
-	 * 
+	 *
 	 * @throws ClassNotFoundException
 	 *             the class not found exception
 	 * @throws IOException

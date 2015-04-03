@@ -16,12 +16,12 @@
 package de.alpharogroup.wicket.components.search;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.Builder;
 
 import org.apache.wicket.util.io.IClusterable;
 

@@ -16,14 +16,18 @@ public class JqueryStatementsBehaviorTest
 	{
 		CharSequence charSequence = new JsStatement().$().chain("trim", JsUtils.quotes("  abc "))
 			.render();
+		// $.trim(' abc ');
 		System.out.println(charSequence);
 
 		charSequence = new JsStatement().document().chain("ready", "function(){ alert('a'); }")
 			.render();
+		// $(document).ready(function(){
+		// alert('a');
+		// });
 		System.out.println(charSequence);
-
-		charSequence = new JsStatement().document().chain("ready")
-			.css(new Options().put("height", 300)).render();
+		Options options = new Options().put("height", 300);
+		charSequence = new JsStatement().document().chain("ready").css(options).render();
+		// $(document).ready().css({height: 300});
 		System.out.println(charSequence);
 	}
 
@@ -42,7 +46,7 @@ public class JqueryStatementsBehaviorTest
 		};
 		CharSequence charSequence = scope.render();
 		// @formatter:off
-		// function(event){ 
+		// function(event){
 		//      alert('b with event:' + event);
 		// }
 		// @formatter:on
@@ -57,6 +61,9 @@ public class JqueryStatementsBehaviorTest
 				scopeContext.self().chain("find", JsUtils.quotes("ul"));
 			}
 		}.render();
+		// function() {
+		// $(this).find('ul');
+		// }
 		System.out.println(charSequence);
 	}
 
@@ -85,6 +92,21 @@ public class JqueryStatementsBehaviorTest
 		// @formatter:on
 		System.out.println(charSequence);
 
+	}
+
+	@Test
+	public void testBehavior()
+	{
+		final JqueryStatementsBehavior wiQueryStatementBehavior = new JqueryStatementsBehavior()
+			.add(
+				new BuildableChainableStatement.Builder().label("find")
+					.args(JsUtils.quotes("table:first-child")).build()).add(
+				new BuildableChainableStatement.Builder().label("addClass")
+					.args(JsUtils.quotes("tablefix")).build());
+		// $('').find('table:first-child').addClass('tablefix');
+
+		CharSequence renderedStatement = wiQueryStatementBehavior.createRenderedStatement(null);
+		System.out.println(renderedStatement);
 	}
 
 }

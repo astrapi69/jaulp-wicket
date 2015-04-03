@@ -23,6 +23,11 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.wicket.base</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.wicket.data.provider</artifactId>
 		</dependency>
 
@@ -35,7 +40,7 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.time</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>

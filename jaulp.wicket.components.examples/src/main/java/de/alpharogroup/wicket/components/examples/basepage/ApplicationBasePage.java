@@ -43,10 +43,10 @@ import org.jaulp.wicket.base.GenericBasePage;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
-import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
 import org.jaulp.wicket.behaviors.BuildableChainableStatement;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
 import org.jaulp.wicket.behaviors.GoogleAnalyticsBehavior;
+import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
 import de.agilecoders.wicket.core.Bootstrap;

@@ -18,8 +18,9 @@ package org.jaulp.wicket.base.protocol.https;
 import org.apache.wicket.protocol.https.RequireHttps;
 
 /**
- * Implement this interface if the page should be accessible only with ssl(https).
- * 
+ * Implement this interface if webpages should be accessible only over ssl(https). You can secure
+ * webpages by implementing this interface.
+ *
  * @author Asterios Raptis
  */
 @RequireHttps

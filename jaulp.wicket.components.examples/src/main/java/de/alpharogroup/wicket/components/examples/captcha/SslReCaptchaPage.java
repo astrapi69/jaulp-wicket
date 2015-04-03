@@ -18,13 +18,14 @@ package de.alpharogroup.wicket.components.examples.captcha;
 import org.apache.wicket.Component;
 import org.apache.wicket.protocol.https.RequireHttps;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.wicket.base.protocol.https.SSLable;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 @MountPath("public/sslrecaptcha")
 @RequireHttps
-public class SslReCaptchaPage extends PubliclyBasePage<Object>
+public class SslReCaptchaPage extends PubliclyBasePage<Object> implements SSLable
 {
 	private static final long serialVersionUID = 1L;
 

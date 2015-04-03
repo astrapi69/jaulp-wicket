@@ -25,8 +25,8 @@ import org.jaulp.wicket.data.provider.examples.pages.home.HomePage;
  */
 public class WicketApplication extends WebApplication
 {
-	public static final int HTTP_PORT = 9090;
-	public static final int HTTPS_PORT = 9443;
+	public static final int DEFAULT_HTTP_PORT = 9090;
+	public static final int DEFAULT_HTTPS_PORT = 9443;
 
 	/**
 	 * Constructor

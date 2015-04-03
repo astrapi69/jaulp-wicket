@@ -27,9 +27,8 @@ import org.jaulp.wicket.PackageResourceReferences;
  */
 public class WicketApplication extends WebApplication
 {
-
-	public static final int HTTP_PORT = 9090;
-	public static final int HTTPS_PORT = 9443;
+	public static final int DEFAULT_HTTP_PORT = 9090;
+	public static final int DEFAULT_HTTPS_PORT = 9443;
 
 	/**
 	 * Constructor
@@ -46,7 +45,7 @@ public class WicketApplication extends WebApplication
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @see org.apache.wicket.protocol.http.WebApplication#init()
 	 */
 	@Override

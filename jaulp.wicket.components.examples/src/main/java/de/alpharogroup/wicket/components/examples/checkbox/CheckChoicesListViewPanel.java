@@ -28,9 +28,9 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.ListModel;
+import org.jaulp.test.objects.Company;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import org.jaulp.test.objects.Company;
 import de.alpharogroup.wicket.components.form.CheckChoicesListView;
 import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
 
@@ -47,7 +47,7 @@ public class CheckChoicesListViewPanel extends Panel
 		super(id, model);
 		Form<?> form = new Form<>("form");
 		add(form);
-		final CheckboxModel<Company> checkboxModel = new CheckboxModel<Company>();
+		final CheckboxModel<Company> checkboxModel = new CheckboxModel<>();
 		checkboxModel.setChoices(Arrays.asList(Company.builder().name("Ferrari").build(), Company
 			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
 			Company.builder().name("Porsche").build()));

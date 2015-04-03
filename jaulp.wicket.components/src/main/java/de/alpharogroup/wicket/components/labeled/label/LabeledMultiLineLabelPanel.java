@@ -27,7 +27,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * Convenience class for labeled MultiLineLabel for form uneditable components.
- * 
+ *
  * @param <T>
  *            the generic type
  */
@@ -47,7 +47,7 @@ public class LabeledMultiLineLabelPanel<T> extends Panel
 
 	/**
 	 * Instantiates a new LabeledDateTextfieldPanel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -58,11 +58,8 @@ public class LabeledMultiLineLabelPanel<T> extends Panel
 	public LabeledMultiLineLabelPanel(String id, IModel<T> model, IModel<String> labelModel)
 	{
 		super(id, model);
-
-		PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), id);
-
-		add(viewableLabel = newMultiLineLabelLabel("viewableLabel", viewableLabelModel));
-
+		setOutputMarkupId(true);
+		add(viewableLabel = newMultiLineLabelLabel("viewableLabel", model));
 		String markupId = viewableLabel.getMarkupId();
 		add(label = newLabel("label", markupId, labelModel));
 	}
@@ -71,22 +68,23 @@ public class LabeledMultiLineLabelPanel<T> extends Panel
 	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * MultiLineLabel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
-	 * @param viewableLabelModel
+	 * @param model
 	 *            the model
 	 * @return the label
 	 */
-	protected MultiLineLabel newMultiLineLabelLabel(String id, PropertyModel<T> viewableLabelModel)
+	protected MultiLineLabel newMultiLineLabelLabel(String id, IModel<T> model)
 	{
+		IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), id);
 		return ComponentFactory.newMultiLineLabel(id, viewableLabelModel);
 	}
 
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param forId
