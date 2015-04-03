@@ -23,8 +23,8 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
-@MountPath("public/sslrecaptcha")
 @RequireHttps
+@MountPath("public/sslrecaptcha")
 public class SslReCaptchaPage extends PubliclyBasePage<Object> implements SSLable
 {
 	private static final long serialVersionUID = 1L;

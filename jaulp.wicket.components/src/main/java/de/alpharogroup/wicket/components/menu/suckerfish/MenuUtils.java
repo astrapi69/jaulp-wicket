@@ -18,8 +18,9 @@ package de.alpharogroup.wicket.components.menu.suckerfish;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.link.LinkUtils;
 
@@ -72,8 +73,7 @@ public class MenuUtils
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass, parameters);
-		StringResourceModel stringResourceModel = new StringResourceModel(resourceModelKey,
-			component, null);
+		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(resourceModelKey, component);
 		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
 		return menuItem;
 	}
@@ -85,7 +85,7 @@ public class MenuUtils
 	 *            the string resource model
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem createMenuItem(final StringResourceModel stringResourceModel)
+	public static MenuItem createMenuItem(final IModel<String> stringResourceModel)
 	{
 		final MenuItem menuItem = new MenuItem(stringResourceModel);
 		return menuItem;
@@ -107,9 +107,8 @@ public class MenuUtils
 		Component component)
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
-			MenuPanel.LINK_ID, pageClass);
-		StringResourceModel stringResourceModel = new StringResourceModel(resourceModelKey,
-			component, null);
+			MenuPanel.LINK_ID, pageClass);		
+		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(resourceModelKey, component);
 		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
 		return menuItem;
 	}

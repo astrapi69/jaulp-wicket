@@ -32,6 +32,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.https.HttpsConfig;
 import org.apache.wicket.protocol.https.HttpsMapper;
 import org.apache.wicket.protocol.https.Scheme;
+import org.apache.wicket.request.IRequestMapper;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
@@ -421,11 +422,13 @@ public final class ApplicationUtils
 	 * @param httpsPort
 	 *            the https port
 	 */
-	public static void setRootRequestMapper(final Application application, final int httpPort,
+	public static IRequestMapper setRootRequestMapper(final Application application, final int httpPort,
 		final int httpsPort)
 	{
-		application.setRootRequestMapper(new HttpsMapper(application.getRootRequestMapper(),
-			new HttpsConfig(httpPort, httpsPort)));
+		IRequestMapper httpsMapper = new HttpsMapper(application.getRootRequestMapper(),
+			new HttpsConfig(httpPort, httpsPort));
+		application.setRootRequestMapper(httpsMapper);
+		return httpsMapper;
 	}
 
 	/**

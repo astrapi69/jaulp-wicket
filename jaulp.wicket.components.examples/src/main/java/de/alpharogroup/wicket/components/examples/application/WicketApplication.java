@@ -108,9 +108,7 @@ public class WicketApplication extends WicketBootstrap3Application
 				// here can comes code that is needed after the application
 				// initialization...
 			}
-		});
-		ApplicationUtils.setRootRequestMapper(this, WicketApplication.DEFAULT_HTTP_PORT,
-			WicketApplication.DEFAULT_HTTPS_PORT);
+		});		
 	}
 
 	protected void newGlobalSettings(final WebApplication application, final int httpPort,
