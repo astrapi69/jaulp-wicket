@@ -19,9 +19,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * Lightweight menu object that stores a menu and its label.
@@ -35,31 +40,34 @@ public class MenuItem implements Serializable
 	private static final long serialVersionUID = 0L;
 
 	/** The link. */
+	@Getter
 	private final AbstractLink link;
 
 	/** The label. */
+	@Getter
 	private final Label label;
 
 	/** The sub menu items. */
-	private final List<MenuItem> subMenuItems = new ArrayList<MenuItem>();
+	@Getter
+	private final List<MenuItem> children = new ArrayList<MenuItem>();
 
 	/**
 	 * Instantiates a new menu item.
 	 * 
 	 * @param link
 	 *            the link
-	 * @param strLabel
-	 *            the str label
+	 * @param label
+	 *            The label text
 	 */
-	public MenuItem(final AbstractLink link, final String strLabel)
+	public MenuItem(final AbstractLink link, final String label)
 	{
 		if (link != null && !link.getId().equals(MenuPanel.LINK_ID))
 		{
 			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
 		}
 		this.link = link;
-		label = new Label(MenuPanel.LINK_TEXT_ID, strLabel);
-		this.link.add(label);
+		this.label = new Label(MenuPanel.LINK_TEXT_ID, label);
+		this.link.add(this.label);
 	}
 
 	/**
@@ -67,42 +75,42 @@ public class MenuItem implements Serializable
 	 * 
 	 * @param link
 	 *            the link
-	 * @param strLabel
-	 *            the str label
+	 * @param labelModel
+	 *            the model of the label text.
 	 */
-	public MenuItem(final AbstractLink link, final StringResourceModel strLabel)
+	public MenuItem(final AbstractLink link, final IModel<?> labelModel)
 	{
 		if (link != null && !link.getId().equals(MenuPanel.LINK_ID))
 		{
 			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
 		}
 		this.link = link;
-		label = new Label(MenuPanel.LINK_TEXT_ID, strLabel);
+		this.label = ComponentFactory.newLabel(MenuPanel.LINK_TEXT_ID, Model.of(labelModel));
 		this.link.add(label);
 	}
 
 	/**
 	 * Instantiates a new menu item.
 	 * 
-	 * @param strLabel
-	 *            the str label
+	 * @param label
+	 *            The label text
 	 */
-	public MenuItem(final String strLabel)
+	public MenuItem(final String label)
 	{
-		link = null;
-		label = new Label(MenuPanel.LINK_TEXT_ID, strLabel);
+		this.link = null;
+		this.label = ComponentFactory.newLabel(MenuPanel.LINK_TEXT_ID, Model.of(label));
 	}
 
 	/**
 	 * Instantiates a new menu item.
 	 * 
-	 * @param stringResourceModel
-	 *            the string resource model
+	 * @param labelModel
+	 *            the model of the label text.
 	 */
-	public MenuItem(final StringResourceModel stringResourceModel)
+	public MenuItem(final IModel<?> labelModel)
 	{
-		link = null;
-		label = new Label(MenuPanel.LINK_TEXT_ID, stringResourceModel);
+		this.link = null;
+		this.label = ComponentFactory.newLabel(MenuPanel.LINK_TEXT_ID, labelModel);
 	}
 
 	/**
@@ -111,9 +119,10 @@ public class MenuItem implements Serializable
 	 * @param menu
 	 *            the menu
 	 */
-	public void addMenu(final MenuItem menu)
+	public MenuItem addMenu(final MenuItem menu)
 	{
-		subMenuItems.add(menu);
+		this.children.add(menu);
+		return this;
 	}
 
 	/**
@@ -122,42 +131,11 @@ public class MenuItem implements Serializable
 	 * @param menuItems
 	 *            the new menu items
 	 */
-	public void setMenuItems(final List<MenuItem> menuItems)
+	public MenuItem setMenuItems(final List<MenuItem> menuItems)
 	{
-		subMenuItems.clear();
-		for (final MenuItem child : menuItems)
-		{
-			addMenu(child);
-		}
+		this.children.clear();
+		this.children.addAll(menuItems);
+		return this;
 	}
 
-	/**
-	 * Gets the link.
-	 * 
-	 * @return the link
-	 */
-	public AbstractLink getLink()
-	{
-		return link;
-	}
-
-	/**
-	 * Gets the children.
-	 * 
-	 * @return the children
-	 */
-	public List<MenuItem> getChildren()
-	{
-		return subMenuItems;
-	}
-
-	/**
-	 * Gets the label.
-	 * 
-	 * @return the label
-	 */
-	public Label getLabel()
-	{
-		return label;
-	}
 }
