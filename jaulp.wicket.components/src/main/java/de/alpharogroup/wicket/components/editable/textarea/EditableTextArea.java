@@ -130,11 +130,21 @@ public class EditableTextArea extends GenericPanel<String>
 		super.onInitialize();
 		add(this.swapPanel = new SwapComponentsFragmentPanel<String>("swapPanel", getModel())
 		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected Component newViewComponent(String id, IModel<String> model)
 			{
 				return new LabeledMultiLineLabelPanel<String>(id, model, getLabelModel())
 				{
+					/**
+					 * The serialVersionUID
+					 */
+					private static final long serialVersionUID = 1L;
+
 					/**
 					 * Factory method for creating the MultiLineLabel. This method is invoked in the
 					 * constructor from the derived classes and can be overridden so users can
@@ -158,6 +168,11 @@ public class EditableTextArea extends GenericPanel<String>
 			{
 				return new LabeledTextAreaPanel<String>(id, model, getLabelModel())
 				{
+
+					/**
+					 * The serialVersionUID
+					 */
+					private static final long serialVersionUID = 1L;
 
 					/**
 					 * Factory method for creating the TextArea. This method is invoked in the

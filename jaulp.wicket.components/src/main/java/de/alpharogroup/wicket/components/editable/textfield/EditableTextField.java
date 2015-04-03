@@ -122,11 +122,21 @@ public class EditableTextField extends GenericPanel<String>
 		super.onInitialize();
 		add(this.swapPanel = new SwapComponentsFragmentPanel<String>("swapPanel", getModel())
 		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected Component newViewComponent(String id, IModel<String> model)
 			{
 				return new LabeledLabelPanel<String>(id, model, getLabelModel())
 				{
+
+					/**
+					 * The serialVersionUID
+					 */
+					private static final long serialVersionUID = 1L;
 
 					protected Label newLabel(String id, IModel<String> model)
 					{
@@ -140,6 +150,11 @@ public class EditableTextField extends GenericPanel<String>
 			{
 				return new LabeledTextFieldPanel<String>(id, model, getLabelModel())
 				{
+
+					/**
+					 * The serialVersionUID
+					 */
+					private static final long serialVersionUID = 1L;
 
 					/**
 					 * Factory method for creating the TextField. This method is invoked in the
