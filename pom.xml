@@ -70,7 +70,7 @@
 		<!-- WICKET EXTENSION LIBRARIES versions -->
 		<wicketstuff.version>${project.version}</wicketstuff.version>
 		<wiquery-core.version>6.13.0</wiquery-core.version>
-		<wicket-modelfactory.version>0.9.4</wicket-modelfactory.version>
+		<wicket-modelfactory.version>0.9.8</wicket-modelfactory.version>
 		<wicket-source.version>6.0.0.8</wicket-source.version>
 		<!-- LOGGING versions -->
 		<slf4j.version>1.6.4</slf4j.version>
