@@ -15,138 +15,154 @@
  */
 package de.alpharogroup.wicket.components.editable.textfield;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
+import org.jaulp.wicket.base.util.ComponentFinder;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;
+import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
+import de.alpharogroup.wicket.components.swap.ModeContext;
+import de.alpharogroup.wicket.components.swap.SwapComponentsFragmentPanel;
 
 /**
  * An editable TextField that can be switched to a Label.
  */
-public class EditableTextField extends Panel
+public class EditableTextField extends GenericPanel<String>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The flag editable. */
-	private boolean editable;
+	/** The ModeContext shows if the view mode or edit mode is visible. */
+	@Getter
+	@Setter
+	private ModeContext modeContext = ModeContext.VIEW_MODE;
 
-	/** The Label component. */
-	private final Label label;
+	private SwapComponentsFragmentPanel<String> swapPanel;
 
-	/** The text field. */
-	private final TextField<String> textField;
-
-	/**
-	 * Sets the editable.
-	 * 
-	 * @param editable
-	 *            the new editable
-	 */
-	public void setEditable(boolean editable)
+	public IModel<String> getLabelModel()
 	{
-		this.editable = editable;
+		return labelModel;
+	}
+
+	private final IModel<String> labelModel;
+
+	public SwapComponentsFragmentPanel<String> getSwapPanel()
+	{
+		return swapPanel;
 	}
 
 	/**
 	 * Checks if is editable.
-	 * 
+	 *
 	 * @return true, if it is editable
 	 */
 	public boolean isEditable()
 	{
-		return editable;
+		return modeContext.equals(ModeContext.EDIT_MODE);
+	}
+
+	/**
+	 * Swap the ModeContext.
+	 */
+	public void swap()
+	{
+		if (modeContext.equals(ModeContext.VIEW_MODE))
+		{
+			modeContext = ModeContext.EDIT_MODE;
+		}
+		else
+		{
+			modeContext = ModeContext.VIEW_MODE;
+		}
 	}
 
 	/**
 	 * Instantiates a new editable text field.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
 	 */
-	public EditableTextField(String id, IModel<String> model)
+	public EditableTextField(String id, IModel<String> model, IModel<String> labelModel)
+	{
+		this(id, model, labelModel, ModeContext.EDIT_MODE);
+	}
+
+	/**
+	 * Instantiates a new editable text field.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param modeContext
+	 *            the editable flag
+	 */
+	public EditableTextField(String id, IModel<String> model, IModel<String> labelModel,
+		ModeContext modeContext)
 	{
 		super(id, model);
 		this.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		editable = true;
-		add(label = newLabel("label", model));
-		add(textField = newTextField("textField", model));
+		this.labelModel = labelModel;
+		this.modeContext = modeContext;
 	}
 
-	/**
-	 * Factory method for creating the TextField. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a TextField.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the text field
-	 */
-	protected TextField<String> newTextField(String id, IModel<String> model)
+	@Override
+	protected void onInitialize()
 	{
-		TextField<String> textField = new TextField<String>(id, model)
+		super.onInitialize();
+		add(this.swapPanel = new SwapComponentsFragmentPanel<String>("swapPanel", getModel())
 		{
-			private static final long serialVersionUID = 1L;
+			@Override
+			protected Component newViewComponent(String id, IModel<String> model)
+			{
+				return new LabeledLabelPanel<String>(id, model, getLabelModel())
+				{
+
+					protected Label newLabel(String id, IModel<String> model)
+					{
+						return ComponentFactory.newLabel(id, model);
+					}
+				};
+			}
 
 			@Override
-			protected void onConfigure()
+			protected Component newEditComponent(String id, IModel<String> model)
 			{
-				setVisibilityAllowed(isEditable());
-			}
-		};
-		textField.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		return textField;
-	}
+				return new LabeledTextFieldPanel<String>(id, model, getLabelModel())
+				{
 
-	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * MultiLineLabel.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the MultiLineLabel
-	 */
-	protected Label newLabel(String id, IModel<String> model)
-	{
-		Label label = new Label(id, model)
+					/**
+					 * Factory method for creating the TextField. This method is invoked in the
+					 * constructor from the derived classes and can be overridden so users can
+					 * provide their own version of a TextField.
+					 *
+					 * @param id
+					 *            the id
+					 * @param model
+					 *            the model
+					 * @return the text field
+					 */
+					protected TextField<String> newTextField(String id, IModel<String> model)
+					{
+						return ComponentFactory.newTextField(id, model);
+					}
+				};
+			}
+		});
+		if (modeContext.equals(ModeContext.EDIT_MODE))
 		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				setVisibilityAllowed(!isEditable());
-			}
-		};
-		label.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		return label;
-	}
-
-	/**
-	 * Gets the label.
-	 * 
-	 * @return the label
-	 */
-	public Label getLabel()
-	{
-		return label;
-	}
-
-	/**
-	 * Gets the text field.
-	 * 
-	 * @return the text field
-	 */
-	public TextField<String> getTextField()
-	{
-		return textField;
+			this.swapPanel.onSwapToEdit(ComponentFinder.findOrNewAjaxRequestTarget(), null);
+		}
 	}
 
 }

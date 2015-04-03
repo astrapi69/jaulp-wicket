@@ -16,13 +16,16 @@
 package org.jaulp.wicket.base.components.viewmode.examples;
 
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.test.objects.Gender;
 import org.jaulp.test.objects.Person;
@@ -55,11 +58,12 @@ public class ViewOrEditPage extends BasePage
 		final Form<Person> form = new Form<Person>("form", cpm);
 
 		add(form);
-		final EditableTextField nameTextField = new EditableTextField("name",
-			new PropertyModel<String>(person, "name"));
+		final EditableTextField nameTextField = new EditableTextField("name", model(from(person)
+			.getName()), Model.of("Name"));
 		form.add(nameTextField);
-		IModel<String> taModel = new PropertyModel<String>(person, "about");
-		final EditableTextArea about = new EditableTextArea("about", taModel);
+
+		final EditableTextArea about = new EditableTextArea("about",
+			model(from(person).getAbout()), Model.of("About"));
 		form.add(about);
 
 
@@ -69,7 +73,7 @@ public class ViewOrEditPage extends BasePage
 		form.add(married);
 
 		// Create submit button for the form
-		final Button submitButton = new Button("submitButton")
+		final Button submitButton = new AjaxButton("submitButton", form)
 		{
 			/**
 			 * The serialVersionUID.
@@ -77,12 +81,20 @@ public class ViewOrEditPage extends BasePage
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit()
+			public void onSubmit(AjaxRequestTarget target, Form<?> form)
 			{
 				info("Person:" + getDefaultModelObjectAsString());
 				enableFields = !enableFields;
-				about.setEditable(enableFields);
-				nameTextField.setEditable(enableFields);
+				if (enableFields)
+				{
+					about.getSwapPanel().onSwapToEdit(target, form);
+					nameTextField.getSwapPanel().onSwapToEdit(target, form);
+				}
+				else
+				{
+					about.getSwapPanel().onSwapToView(target, form);
+					nameTextField.getSwapPanel().onSwapToView(target, form);
+				}
 
 
 			}

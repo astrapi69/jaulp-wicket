@@ -15,24 +15,51 @@
  */
 package de.alpharogroup.wicket.components.editable.textarea;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
+import org.jaulp.wicket.base.util.ComponentFinder;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.components.labeled.label.LabeledMultiLineLabelPanel;
+import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
+import de.alpharogroup.wicket.components.swap.ModeContext;
+import de.alpharogroup.wicket.components.swap.SwapComponentsFragmentPanel;
 
 /**
  * An editable TextArea that can be switched to a MultilineLabel.
  *
  * @author Asterios Raptis
  */
-public class EditableTextArea extends Panel
+public class EditableTextArea extends GenericPanel<String>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The flag editable. */
-	private boolean editable;
+	/** The ModeContext shows if the view mode or edit mode is visible. */
+	@Getter
+	@Setter
+	private ModeContext modeContext = ModeContext.VIEW_MODE;
+
+	private SwapComponentsFragmentPanel<String> swapPanel;
+
+	public IModel<String> getLabelModel()
+	{
+		return labelModel;
+	}
+
+	private final IModel<String> labelModel;
+
+	public SwapComponentsFragmentPanel<String> getSwapPanel()
+	{
+		return swapPanel;
+	}
 
 	/**
 	 * Checks if is editable.
@@ -41,24 +68,42 @@ public class EditableTextArea extends Panel
 	 */
 	public boolean isEditable()
 	{
-		return editable;
+		return modeContext.equals(ModeContext.EDIT_MODE);
+	}
+
+	/**
+	 * Swap the ModeContext.
+	 */
+	public void swap()
+	{
+		if (modeContext.equals(ModeContext.VIEW_MODE))
+		{
+			modeContext = ModeContext.EDIT_MODE;
+		}
+		else
+		{
+			modeContext = ModeContext.VIEW_MODE;
+		}
 	}
 
 	/** The MultiLineLabel. */
-	private final MultiLineLabel label;
+	private MultiLineLabel label;
 
 	/** The text area. */
-	private final TextArea<String> textArea;
+	private TextArea<String> textArea;
 
 	/**
-	 * Sets the editable.
+	 * Instantiates a new editable text area.
 	 *
-	 * @param editable
-	 *            the new editable
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @see org.apache.wicket.Component#Component(String, IModel)
 	 */
-	public void setEditable(boolean editable)
+	public EditableTextArea(final String id, final IModel<String> model, IModel<String> labelModel)
 	{
-		this.editable = editable;
+		this(id, model, labelModel, ModeContext.EDIT_MODE);
 	}
 
 	/**
@@ -70,13 +115,72 @@ public class EditableTextArea extends Panel
 	 *            the model
 	 * @see org.apache.wicket.Component#Component(String, IModel)
 	 */
-	public EditableTextArea(final String id, final IModel<String> model)
+	public EditableTextArea(final String id, final IModel<String> model, IModel<String> labelModel,
+		ModeContext modeContext)
 	{
 		super(id, model);
-		editable = true;
 		this.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		add(label = newMultiLineLabel("label", model));
-		add(textArea = newTextArea("textarea", model));
+		this.labelModel = labelModel;
+		this.modeContext = modeContext;
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		add(this.swapPanel = new SwapComponentsFragmentPanel<String>("swapPanel", getModel())
+		{
+			@Override
+			protected Component newViewComponent(String id, IModel<String> model)
+			{
+				return new LabeledMultiLineLabelPanel<String>(id, model, getLabelModel())
+				{
+					/**
+					 * Factory method for creating the MultiLineLabel. This method is invoked in the
+					 * constructor from the derived classes and can be overridden so users can
+					 * provide their own version of a MultiLineLabel.
+					 *
+					 * @param id
+					 *            the id
+					 * @param model
+					 *            the model
+					 * @return the label
+					 */
+					protected MultiLineLabel newMultiLineLabelLabel(String id, IModel<String> model)
+					{
+						return ComponentFactory.newMultiLineLabel(id, model);
+					}
+				};
+			}
+
+			@Override
+			protected Component newEditComponent(String id, IModel<String> model)
+			{
+				return new LabeledTextAreaPanel<String>(id, model, getLabelModel())
+				{
+
+					/**
+					 * Factory method for creating the TextArea. This method is invoked in the
+					 * constructor from this class and can be overridden so users can provide their
+					 * own version of a TextArea.
+					 *
+					 * @param id
+					 *            the id
+					 * @param model
+					 *            the model
+					 * @return the text area
+					 */
+					protected TextArea<String> newTextArea(String id, IModel<String> model)
+					{
+						return ComponentFactory.newTextArea(id, model);
+					}
+				};
+			}
+		});
+		if (modeContext.equals(ModeContext.EDIT_MODE))
+		{
+			this.swapPanel.onSwapToEdit(ComponentFinder.findOrNewAjaxRequestTarget(), null);
+		}
 	}
 
 
