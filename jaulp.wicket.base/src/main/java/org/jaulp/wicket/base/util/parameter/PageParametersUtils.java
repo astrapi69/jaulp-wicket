@@ -25,7 +25,9 @@ import org.apache.log4j.Logger;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
+import org.apache.wicket.request.mapper.parameter.INamedParameters;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.string.StringValueConversionException;
 
@@ -117,7 +119,7 @@ public final class PageParametersUtils
 	 *            the StringValue to check, may be null
 	 * @return <code>true</code> if the StringValue is not null and the value of the given
 	 *         StringValue object is not null and the value of the given StringValue object is not
-	 *         empty.
+	 *         empty otherwise false.
 	 */
 	public static final boolean isNotNullOrEmpty(StringValue stringValue)
 	{
@@ -142,7 +144,7 @@ public final class PageParametersUtils
 
 	/**
 	 * Converts the given Map to a {@link PageParameters} object.
-	 * 
+	 *
 	 * @param parameters
 	 *            the {@link Map} with the parameters to set.
 	 * @return the {@link PageParameters}
@@ -159,7 +161,7 @@ public final class PageParametersUtils
 
 	/**
 	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 * 
+	 *
 	 * @param request
 	 *            the request
 	 * @param parameterName
@@ -181,7 +183,7 @@ public final class PageParametersUtils
 	/**
 	 * Gets a map with all parameters. Looks in the query and post parameters. Migration method from
 	 * 1.4.* to 1.5.*.
-	 * 
+	 *
 	 * @return a map with all parameters.
 	 */
 	public static Map<String, String[]> getParameterMap()
@@ -193,7 +195,7 @@ public final class PageParametersUtils
 	/**
 	 * Gets a map with all parameters. Looks in the query and post parameters. Migration method from
 	 * 1.4.* to 1.5.*.
-	 * 
+	 *
 	 * @param request
 	 *            the request
 	 * @return a map with all parameters.
@@ -222,7 +224,7 @@ public final class PageParametersUtils
 
 	/**
 	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 * 
+	 *
 	 * @param parameterName
 	 *            the parameter name
 	 * @return the parameter value
@@ -231,6 +233,29 @@ public final class PageParametersUtils
 	{
 		Request request = RequestCycle.get().getRequest();
 		return getParameter(request, parameterName);
+	}
+
+	/**
+	 * Copies all given source {@link org.apache.wicket.request.mapper.parameter.PageParameters} to
+	 * the given destination {@link org.apache.wicket.request.mapper.parameter.PageParameters}.
+	 * 
+	 * @param source
+	 *            The source {@link org.apache.wicket.request.mapper.parameter.PageParameters}.
+	 * @param destination
+	 *            The destination {@link org.apache.wicket.request.mapper.parameter.PageParameters}.
+	 * @return The destination {@link org.apache.wicket.request.mapper.parameter.PageParameters}
+	 *         with the copied keys and values.
+	 */
+	public static PageParameters copy(final PageParameters source, final PageParameters destination)
+	{
+		Args.notNull(source, "source");
+		Args.notNull(destination, "destination");
+		final List<INamedParameters.NamedPair> namedPairs = source.getAllNamed();
+		for (INamedParameters.NamedPair namedPair : namedPairs)
+		{
+			destination.add(namedPair.getKey(), namedPair.getValue());
+		}
+		return destination;
 	}
 
 }

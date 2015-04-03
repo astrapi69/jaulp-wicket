@@ -25,16 +25,15 @@ public class PageParametersUtilsTest
 	@Test
 	public void testIsNotNullOrEmpty()
 	{
-		boolean expected = false;
 		boolean actual = PageParametersUtils.isNotNullOrEmpty(null);
-		AssertJUnit.assertTrue("Should be false.", expected == actual);
+		AssertJUnit.assertFalse("Should be false.", actual);
 		StringValue sv = StringValue.valueOf("");
 		actual = PageParametersUtils.isNotNullOrEmpty(sv);
-		AssertJUnit.assertTrue("Should be false.", expected == actual);
+		AssertJUnit.assertFalse("Should be false.", actual);
 		String s = null;
 		sv = StringValue.valueOf(s);
 		actual = PageParametersUtils.isNotNullOrEmpty(sv);
-		AssertJUnit.assertTrue("Should be false.", expected == actual);
+		AssertJUnit.assertFalse("Should be false.", actual);
 	}
 
 	@Test
