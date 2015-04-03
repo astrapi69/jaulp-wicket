@@ -26,7 +26,6 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.AddJsQueryBehavior;
@@ -106,7 +105,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey
@@ -122,7 +121,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	 * Factory method for creating the LabeledTextAreaPanel. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a Form.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -145,7 +144,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 
 			@Override
 			protected TextArea<DeregistrationModel> newTextArea(String id,
-				PropertyModel<DeregistrationModel> model)
+				IModel<DeregistrationModel> model)
 			{
 				TextArea<DeregistrationModel> textArea = super.newTextArea(id, model);
 				if (placeholderModel != null)
@@ -161,7 +160,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	/**
 	 * Factory method for creating the Form. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -176,7 +175,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
@@ -199,7 +198,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	/**
 	 * Factory method for creating the Button Label. This method is invoked in the constructor from
 	 * the derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey

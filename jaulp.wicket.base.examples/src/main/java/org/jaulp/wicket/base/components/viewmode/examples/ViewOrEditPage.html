@@ -1,28 +1,32 @@
 <html
-	 xmlns:wicket="http://wicket.apache.org">
+        xmlns:wicket="http://wicket.apache.org">
 <body>
-	<wicket:extend>
-		<form wicket:id="form">
-			<section>
-				
-				
-<div class="fieldset"><label>Name:</label> <div wicket:id="name"></div></div>
-
-<div class="fieldset"><label>About:</label> <div wicket:id="about"></div></div>
-
-				<div wicket:id="married"></div>
+<wicket:extend>
+    <form wicket:id="form">
+        <section>
 
 
-				<div>
-					
-					
-				</div>
+            <div class="fieldset">
+                <div wicket:id="name"></div>
+            </div>
 
-			</section>
-			
-		<input type="submit" wicket:id="submitButton"/>
-		</form>
-		<div wicket:id="feedbackpanel"></div>
-	</wicket:extend>
+            <div class="fieldset">
+                <div wicket:id="about"></div>
+            </div>
+
+            <div wicket:id="married"></div>
+
+
+            <div>
+
+
+            </div>
+
+        </section>
+
+        <input type="submit" wicket:id="submitButton"/>
+    </form>
+    <div wicket:id="feedbackpanel"></div>
+</wicket:extend>
 </body>
 </html>

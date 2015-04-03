@@ -23,9 +23,9 @@ public enum ResourceReferenceType
 
 	/** The type for javascript ResourceReferences. */
 	JS,
-  /** The type for less ResourceReferences. */
-  LESS,
-  /** The type for css ResourceReferences. */
-  CSS;
+	/** The type for less ResourceReferences. */
+	LESS,
+	/** The type for css ResourceReferences. */
+	CSS;
 
 }
