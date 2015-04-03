@@ -35,7 +35,6 @@ public class HomePage extends BaseMainPage
 	public HomePage(final PageParameters parameters)
 	{
 		super(parameters);
-		final PageParameters pageParameters = getPageParameters();
 		add(new MenubarPanel("menubarPanel"));
 
 		add(new Label("text", Model.of("This is the home page.")));
