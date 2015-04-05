@@ -15,11 +15,17 @@
  */
 package de.alpharogroup.wicket.components.captcha.draw;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.request.resource.IResource;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * The class CaptchaPanel.
@@ -33,15 +39,31 @@ public class CaptchaPanel extends Panel
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+	@Getter
+	Image captchaImage;
+	@Getter
+	RequiredTextField<String> captchaInput;
 
-	public CaptchaPanel(String id, CaptchaModel captchaModel)
+	public CaptchaPanel(String id, IModel<CaptchaModel> captchaModel)
 	{
-		super(id);
-		// Create a random Image...
-		Image captchaImage = new Image("captchaImage", captchaModel.getCaptchaImageResource());
+		super(id, captchaModel);		
+		// Add the image to the panel...
+		add(captchaImage = newImage("captchaImage", captchaModel.getObject().getCaptchaImageResource()));
+		// Add the TextField to the panel...
+		add(captchaInput = newRequiredTextField("captchaInput", captchaModel));
+	}
+
+	protected Image newImage(final String id, final IResource imageResource)
+	{
+		return ComponentFactory.newImage(id, imageResource);
+	}
+
+	protected RequiredTextField<String> newRequiredTextField(final String id,
+		IModel<CaptchaModel> captchaModel)
+	{
 		// Create an TextField for the input...
 		RequiredTextField<String> captchaInput = new RequiredTextField<String>("captchaInput",
-			new PropertyModel<String>(captchaModel.getProperties(), "captchaInput"))
+			new PropertyModel<String>(captchaModel.getObject().getProperties(), "captchaInput"))
 		{
 
 			/**
@@ -58,10 +80,7 @@ public class CaptchaPanel extends Panel
 			}
 		};
 		captchaInput.setType(String.class);
-		// Add the image to the panel...
-		add(captchaImage);
-		// Add the TextField to the panel...
-		add(captchaInput);
+		return captchaInput;
 	}
 
 }

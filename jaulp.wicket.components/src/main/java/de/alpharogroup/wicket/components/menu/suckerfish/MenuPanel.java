@@ -43,7 +43,7 @@ public class MenuPanel extends BasePanel<Object>
 	 * This appender is used to add a down or right arrow icon if there are children.
 	 */
 	public static final AttributeAppender menuHasSubmenuAppender = new AttributeAppender("class",
-		new Model<>("menu-has-submenu"), " ");
+		Model.of("menu-has-submenu"), " ");
 
 	/** The top menu items. */
 	private final List<MenuItem> topMenuItems = new ArrayList<>();

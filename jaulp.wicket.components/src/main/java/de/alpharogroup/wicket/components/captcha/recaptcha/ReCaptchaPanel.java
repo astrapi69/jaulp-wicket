@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.captcha.recaptcha;
 
 import java.io.Serializable;
 
+import lombok.Getter;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import net.tanesha.recaptcha.ReCaptcha;
 import net.tanesha.recaptcha.ReCaptchaFactory;
@@ -27,6 +28,7 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.util.ComponentFinder;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
@@ -39,12 +41,19 @@ public abstract class ReCaptchaPanel extends Panel
 	private static final String PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
 	private static final String PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
 	private static final String RECAPTCHA_SERVER_URL = "https://www.google.com/recaptcha/api";
+	@Getter
+	private final FormComponent<Serializable> captcha;
 
 	public ReCaptchaPanel(String id)
 	{
 		super(id);
+		add(captcha = newCaptchaFormComponent("captcha", new Model<Serializable>()));
+	}
 
-		add(new FormComponent<Serializable>("captcha", new Model<Serializable>())
+	protected FormComponent<Serializable> newCaptchaFormComponent(final String id,
+		final IModel<Serializable> model)
+	{
+		return new FormComponent<Serializable>(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -84,7 +93,7 @@ public abstract class ReCaptchaPanel extends Panel
 							.build(), this).getObject());
 				}
 			}
-		});
+		};
 	}
 
 	private ReCaptcha newReCaptcha(String publicKey, String privateKey, boolean includeNoscript)
