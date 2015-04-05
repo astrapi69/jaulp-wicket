@@ -72,13 +72,14 @@
 		<wiquery-core.version>6.13.0</wiquery-core.version>
 		<wicket-modelfactory.version>0.9.8</wicket-modelfactory.version>
 		<wicket-source.version>6.0.0.8</wicket-source.version>
+		<!-- JETTY 9 version -->
+		<jetty9.version>9.2.10.v20150310</jetty9.version>
 		<!-- LOGGING versions -->
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
 		<!-- UNIT TEST versions -->
 		<testng.version>6.8.8</testng.version>
 		<junit.version>4.12</junit.version>
-		<jetty9.version>9.2.10.v20150310</jetty9.version>
 		<!-- JAULP versions -->
 		<jaulp.core.version>3.10.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
@@ -658,7 +659,7 @@
 								<value>${project.build.directory}/test-classes</value>
 							</systemProperty>
 						</systemProperties>
-						<jettyXml>${project.basedir}/src/test/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml>
+						<jettyXml>${project.basedir}/src/test/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml,${project.basedir}/src/test/jetty/jetty-deploy.xml</jettyXml>
 					</configuration>
 				</plugin>
 
