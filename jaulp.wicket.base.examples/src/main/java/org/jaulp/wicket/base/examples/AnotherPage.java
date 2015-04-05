@@ -23,6 +23,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @RequireHttps
+@MountPath("/another")
 public class AnotherPage extends WebPage
 {
 	private static final long serialVersionUID = 1L;
