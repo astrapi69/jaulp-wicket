@@ -35,6 +35,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.HiddenField;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RadioGroup;
+import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.image.Image;
@@ -435,6 +436,23 @@ public class ComponentFactory
 		RadioGroup<T> radioGroup = new RadioGroup<>(id, model);
 		radioGroup.setOutputMarkupId(true);
 		return radioGroup;
+	}
+
+	/**
+	 * Factory method for create a new {@link RequiredTextField}.
+	 *
+	 * @param <T>
+	 *            the generic type of the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link RequiredTextField}
+	 */
+	public static <T> RequiredTextField<T> newRequiredTextField(final String id, final IModel<T> model) {
+		RequiredTextField<T> requiredTextField = new RequiredTextField<T>(id, model);
+		requiredTextField.setOutputMarkupId(true);
+		return requiredTextField;
 	}
 
 	/**
