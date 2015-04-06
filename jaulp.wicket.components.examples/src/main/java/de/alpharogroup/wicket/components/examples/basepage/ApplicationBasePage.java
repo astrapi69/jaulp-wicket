@@ -22,12 +22,14 @@ import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -60,6 +62,7 @@ import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
 import de.alpharogroup.wicket.components.footer.FooterMenuPanel;
 import de.alpharogroup.wicket.components.footer.FooterPanel;
 import de.alpharogroup.wicket.components.i18n.list.LinkListPanel;
+import de.alpharogroup.wicket.components.link.DefaultTargets;
 import de.alpharogroup.wicket.components.link.LinkModel;
 
 /**
@@ -266,6 +269,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 					.add(LinkModel
 						.builder()
 						.url("http://www.alpharogroup.de/")
+						.target(DefaultTargets.BLANK.getTarget())
 						.resourceModelKey(
 							ResourceBundleKey.builder().key("main.footer.copyright.label")
 								.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group")
@@ -302,19 +306,31 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 									ResourceModelFactory.newResourceModel(
 										model.getResourceModelKey(), this));
 								itemLinkLabel.add(new AttributeAppender("class", "a"));
+								// for the target attribute...
+								AttributeModifier target = null;								
+								AbstractLink link = null;
+								if(model.getTarget()!=null && !model.getTarget().isEmpty()) {
+									target = new AttributeModifier("target", Model.of(model.getTarget()));
+								}
 								if (model.getUrl() != null)
 								{
-									return new ExternalLink(id, Model.of(model.getUrl()))
-										.add(itemLinkLabel);
+									link = new ExternalLink(id, Model.of(model.getUrl()));
+								}
+								if(link == null) {
+									link = new BookmarkablePageLink<String>(id, model.getPageClass());									
 								}
 								// add css class to current page.
-								if (model.getPageClass().equals(getPage().getClass()))
+								if (model.getPageClass() != null && model.getPageClass().equals(getPage().getClass()))
 								{
 									itemLinkLabel.add(new AttributeAppender("class", " "
 										+ getCurrentPageCssClass()));
 								}
-								return new BookmarkablePageLink<String>(id, model.getPageClass())
-									.add(itemLinkLabel);
+								link.add(itemLinkLabel);
+								// if target not null then set it...
+								if(target != null) {
+									link.add(target);
+								}
+								return link;
 							}
 
 							@Override

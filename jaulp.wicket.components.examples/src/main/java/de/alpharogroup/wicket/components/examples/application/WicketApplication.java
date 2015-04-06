@@ -115,7 +115,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		final int httpsPort)
 	{
 		ApplicationUtils.setGlobalSettings(application, httpPort, httpsPort, FOOTER_FILTER_NAME,
-			"UTF-8", "+*.css", "+*.png");
+			"UTF-8", "+*.css", "+*.png", "+*.woff2");
 	}
 
 	@Override
