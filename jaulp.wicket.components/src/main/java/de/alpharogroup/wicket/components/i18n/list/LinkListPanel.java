@@ -17,9 +17,11 @@ package de.alpharogroup.wicket.components.i18n.list;
 
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -51,16 +53,31 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 		LinkModel model = item.getModelObject();
 		Label itemLinkLabel = new Label("itemLinkLabel", ResourceModelFactory.newResourceModel(
 			model.getResourceModelKey(), this));
+		// for the target attribute...
+		AttributeModifier target = null;								
+		AbstractLink link = null;
+		if(model.getTarget()!=null && !model.getTarget().isEmpty()) {
+			target = new AttributeModifier("target", Model.of(model.getTarget()));
+		}
 		if (model.getUrl() != null)
 		{
-			return new ExternalLink(id, Model.of(model.getUrl())).add(itemLinkLabel);
+			link = new ExternalLink(id, Model.of(model.getUrl()));
+		}
+		if(link == null) {
+			link = new BookmarkablePageLink<String>(id, model.getPageClass());									
 		}
 		// add css class to current page.
-		if (model.getPageClass().equals(getPage().getClass()))
+		if (model.getPageClass() != null && model.getPageClass().equals(getPage().getClass()))
 		{
-			itemLinkLabel.add(new AttributeAppender("class", " " + getCurrentPageCssClass()));
+			itemLinkLabel.add(new AttributeAppender("class", " "
+				+ getCurrentPageCssClass()));
 		}
-		return new BookmarkablePageLink<String>(id, model.getPageClass()).add(itemLinkLabel);
+		link.add(itemLinkLabel);
+		// if target not null then set it...
+		if(target != null) {
+			link.add(target);
+		}
+		return link;
 	}
 
 	protected String getCurrentPageCssClass()
