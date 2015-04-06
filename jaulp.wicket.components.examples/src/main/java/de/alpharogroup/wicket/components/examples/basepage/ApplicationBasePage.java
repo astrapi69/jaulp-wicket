@@ -269,7 +269,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 					.add(LinkModel
 						.builder()
 						.url("http://www.alpharogroup.de/")
-						.target(DefaultTargets.BLANK.getTarget())
+						.target(DefaultTargets.BLANK.getTarget()) // open in a new tab or window...
 						.resourceModelKey(
 							ResourceBundleKey.builder().key("main.footer.copyright.label")
 								.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group")
