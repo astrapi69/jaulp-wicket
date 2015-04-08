@@ -19,3 +19,7 @@ Add the following maven dependency to your project `pom.xml`:
 </dependency>
 ```
 Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;quick~jaulp.wicket.components) for latest snapshots and releases.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/astrapi69/jaulp.wicket/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
