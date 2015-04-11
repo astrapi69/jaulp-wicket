@@ -63,7 +63,7 @@ public class RadioChoicesListViewExamplePanel extends BasePanel<Company>
 
 		// Wire it all up!
 		final RadioGroup<Company> firstGroup = new RadioGroup<Company>("firstGroup", model(from(
-			radioGroupModel.getObject()).getSelected()));
+			radioGroupModel).getSelected()));
 		firstGroup.add(new RadioChoicesListView<Company>("choice", companies, renderer));
 		form.add(firstGroup);
 		firstGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()

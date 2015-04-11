@@ -62,7 +62,7 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 		IModel<List<Company>> companies = new ListModel<Company>(comps);
 
 		final RadioGroup<Company> group = new RadioGroup<Company>("group", model(from(
-			radioGroupModel.getObject()).getSelected()));
+			radioGroupModel).getSelected()));
 		group.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
 			private static final long serialVersionUID = 1L;
