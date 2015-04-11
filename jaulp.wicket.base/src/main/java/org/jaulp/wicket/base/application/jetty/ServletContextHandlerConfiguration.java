@@ -31,4 +31,6 @@ public class ServletContextHandlerConfiguration
 	private String filterPath;
 	@Singular
 	private Map<String, String> initParameters;
+	@Singular
+	private Map<String, String> contextHandlerInitParameters;
 }
