@@ -73,7 +73,8 @@ public class MenuUtils
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass, parameters);
-		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(resourceModelKey, component);
+		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(
+			resourceModelKey, component);
 		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
 		return menuItem;
 	}
@@ -107,8 +108,9 @@ public class MenuUtils
 		Component component)
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
-			MenuPanel.LINK_ID, pageClass);		
-		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(resourceModelKey, component);
+			MenuPanel.LINK_ID, pageClass);
+		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(
+			resourceModelKey, component);
 		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
 		return menuItem;
 	}

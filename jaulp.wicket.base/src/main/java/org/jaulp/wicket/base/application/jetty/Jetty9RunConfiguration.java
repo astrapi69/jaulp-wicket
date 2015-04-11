@@ -19,7 +19,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 @Builder
 public class Jetty9RunConfiguration
 {
-	
+
 	ServletContextHandler servletContextHandler;
 	int httpPort;
 	int httpsPort;

@@ -34,19 +34,14 @@ public class StartBehaviorsExample
 		File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
 			"webapp");
 
-		ServletContextHandler servletContextHandler = Jetty9Runner.getServletContextHandler(ServletContextHandlerConfiguration.builder()
-				.applicationClass(WicketApplication.class)
-				.contextPath("/")
-				.webapp(webapp)
-				.maxInactiveInterval(300)
-				.filterPath("/*")
-				.build());
+		ServletContextHandler servletContextHandler = Jetty9Runner
+			.getServletContextHandler(ServletContextHandlerConfiguration.builder()
+				.applicationClass(WicketApplication.class).contextPath("/").webapp(webapp)
+				.maxInactiveInterval(300).filterPath("/*").build());
 		Jetty9Runner.run(Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
-			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT)
-			.keyStorePassword("wicket")
-			.keyStorePathResource("/keystore")
-			.build());
+			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
+			.keyStorePathResource("/keystore").build());
 	}
 }

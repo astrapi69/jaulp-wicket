@@ -45,8 +45,10 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	/**
 	 * Instantiates a new link list panel.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 */
 	public LinkListPanel(String id, IModel<List<LinkModel>> model)
 	{
@@ -57,8 +59,10 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	/**
 	 * Instantiates a new link list panel.
 	 *
-	 * @param id the id
-	 * @param list the list
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
 	 */
 	public LinkListPanel(String id, List<LinkModel> list)
 	{
@@ -74,16 +78,18 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	{
 		LinkModel model = item.getModelObject();
 		Label itemLinkLabel = newItemLinkLabel("itemLinkLabel", model);
-		AbstractLink link = newAbstractLink(id, model);		
-		link.add(itemLinkLabel);		
+		AbstractLink link = newAbstractLink(id, model);
+		link.add(itemLinkLabel);
 		return link;
 	}
 
 	/**
-	 * Factory method for create a new item link. 
+	 * Factory method for create a new item link.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the abstract link
 	 */
 	protected AbstractLink newAbstractLink(String id, LinkModel model)
@@ -122,12 +128,14 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	}
 
 	/**
-	 * Factory method for create a new item link Label. This method is invoked in
-	 * the constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a new item link Label.
+	 * Factory method for create a new item link Label. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new item link Label.
 	 *
-	 * @param id the id
-	 * @param model the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the label
 	 */
 	protected Label newItemLinkLabel(final String id, final LinkModel model)

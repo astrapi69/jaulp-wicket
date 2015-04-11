@@ -72,8 +72,8 @@ public class WicketUrlUtils
 	 *            the with server port
 	 * @return the string
 	 */
-	public static <C extends Page> String absoluteUrlFor(Class<C> page,
-		PageParameters parameters, boolean withServerPort)
+	public static <C extends Page> String absoluteUrlFor(Class<C> page, PageParameters parameters,
+		boolean withServerPort)
 	{
 		StringBuilder url = new StringBuilder();
 		url.append(WicketUrlUtils.getDomainUrl(withServerPort));
@@ -159,8 +159,7 @@ public class WicketUrlUtils
 	 * @return the page url
 	 * @see Url#canonical()
 	 */
-	public static Url getCanonicalPageUrl(Class<? extends Page> pageClass,
-		PageParameters parameters)
+	public static Url getCanonicalPageUrl(Class<? extends Page> pageClass, PageParameters parameters)
 	{
 		return getPageUrl(pageClass, parameters).canonical();
 	}

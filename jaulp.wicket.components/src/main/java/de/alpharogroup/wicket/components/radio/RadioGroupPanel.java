@@ -15,6 +15,10 @@
  */
 package de.alpharogroup.wicket.components.radio;
 
+
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -25,7 +29,6 @@ import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
@@ -40,8 +43,9 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 		setOutputMarkupId(true);
 		Form<?> form = new Form<>("form");
 		add(form);
-		final RadioGroup<T> group = new RadioGroup<>("group", new PropertyModel<T>(
-			model.getObject(), "selected"));
+		model(from(model.getObject()).getSelected());
+		final RadioGroup<T> group = new RadioGroup<>("group", model(from(model.getObject())
+			.getSelected()));
 		group.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
 			private static final long serialVersionUID = 1L;
@@ -77,7 +81,7 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 
 	/**
 	 * Factory method for creating a new Label with the for attribute.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param forId

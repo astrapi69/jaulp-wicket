@@ -15,6 +15,9 @@
  */
 package de.alpharogroup.wicket.components.examples.radios;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +28,6 @@ import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.ListModel;
 import org.jaulp.test.objects.Company;
 import org.jaulp.wicket.base.BasePanel;
@@ -60,8 +62,8 @@ public class RadioChoicesListViewExamplePanel extends BasePanel<Company>
 		ChoiceRenderer<Company> renderer = new ChoiceRenderer<Company>("name");
 
 		// Wire it all up!
-		final RadioGroup<Company> firstGroup = new RadioGroup<Company>("firstGroup",
-			new PropertyModel<Company>(radioGroupModel, "selected"));
+		final RadioGroup<Company> firstGroup = new RadioGroup<Company>("firstGroup", model(from(
+			radioGroupModel.getObject()).getSelected()));
 		firstGroup.add(new RadioChoicesListView<Company>("choice", companies, renderer));
 		form.add(firstGroup);
 		firstGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()

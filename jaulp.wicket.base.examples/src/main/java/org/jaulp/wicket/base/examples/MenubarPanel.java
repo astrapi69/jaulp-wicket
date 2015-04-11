@@ -89,13 +89,13 @@ public class MenubarPanel extends BasePanel
 
 		menuBar.addMenu(miLabeled);
 
-    MenuItem miSitemap = MenuUtils.createMenuItem(SiteMapPage.class, "top.menu.sitemap", this);
+		MenuItem miSitemap = MenuUtils.createMenuItem(SiteMapPage.class, "top.menu.sitemap", this);
 
-    menuBar.addMenu(miSitemap);
+		menuBar.addMenu(miSitemap);
 
-    MenuItem miModel = MenuUtils.createMenuItem(ModelPage.class, "top.menu.model", this);
+		MenuItem miModel = MenuUtils.createMenuItem(ModelPage.class, "top.menu.model", this);
 
-    menuBar.addMenu(miModel);
+		menuBar.addMenu(miModel);
 	}
 
 }

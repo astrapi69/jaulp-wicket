@@ -15,6 +15,9 @@
  */
 package org.jaulp.wicket.dropdownchoices.panel.localised;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -24,7 +27,6 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.LocalisedChoiceRenderer;
 import org.jaulp.wicket.dropdownchoices.models.OptionModel;
 
@@ -65,15 +67,16 @@ public class LocalisedDropDownChoicePanel extends Panel
 		add(selectOptionForm);
 		// This should supplied from the database...
 		List<String> values = Arrays.asList("1", "2");
+
 		LocalisedDropDownChoice<String> ddc1 = new LocalisedDropDownChoice<String>("options",
-			new PropertyModel<String>(optionModel, "value"), values, new LocalisedChoiceRenderer(
+			model(from(optionModel).getValue()), values, new LocalisedChoiceRenderer(
 				"option.value", this, this.getClass()));
 
 		selectOptionForm.add(ddc1);
 
 		// LocalisedDropDownChoice< String > ddc2 = new LocalisedDropDownChoice< String >(
 		// "options2",
-		// new PropertyModel< String >( optionModel, "value" ), values,
+		// model(from(optionModel).getValue()), values,
 		// new LocalisedChoiceRenderer( "option.value", this, this
 		// .getClass() ) );
 

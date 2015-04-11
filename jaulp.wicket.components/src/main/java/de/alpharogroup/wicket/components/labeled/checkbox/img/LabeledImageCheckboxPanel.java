@@ -73,7 +73,7 @@ public class LabeledImageCheckboxPanel extends Panel
 	 */
 	protected Image newImage(final String id, final IModel<LabeledImageCheckboxModel> model)
 	{
-		return ComponentFactory.newImage(id,  model.getObject().getImageResource());
+		return ComponentFactory.newImage(id, model.getObject().getImageResource());
 	}
 
 }

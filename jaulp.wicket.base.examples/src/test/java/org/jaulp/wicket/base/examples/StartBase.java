@@ -37,21 +37,16 @@ public class StartBase
 			"webapp");
 
 
-    ServletContextHandler servletContextHandler = Jetty9Runner.getServletContextHandler(ServletContextHandlerConfiguration.builder()
-      .applicationClass(WicketApplication.class)
-      .contextPath("/")
-      .webapp(webapp)
-      .maxInactiveInterval(300)
-      .filterPath("/*")
-      .initParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*")
-      .build());
+		ServletContextHandler servletContextHandler = Jetty9Runner
+			.getServletContextHandler(ServletContextHandlerConfiguration.builder()
+				.applicationClass(WicketApplication.class).contextPath("/").webapp(webapp)
+				.maxInactiveInterval(300).filterPath("/*")
+				.initParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*").build());
 
 		Jetty9Runner.run(Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
-			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT)
-			.keyStorePassword("wicket")
-			.keyStorePathResource("/keystore")
-			.build());
+			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
+			.keyStorePathResource("/keystore").build());
 	}
 }

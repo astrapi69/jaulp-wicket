@@ -15,6 +15,9 @@
  */
 package de.alpharogroup.wicket.components.radio;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.io.Serializable;
 
 import lombok.Getter;
@@ -81,8 +84,8 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	{
 		super(id, model);
 		add(form = newForm("form"));
-		form.add(radioGroup = newRadioGroup("radioGroup", new PropertyModel<T>(model.getObject(),
-			"selected")));
+		form.add(radioGroup = newRadioGroup("radioGroup", model(from(model.getObject())
+			.getSelected())));
 		radioGroup.add(newRadios(radioGroup, model));
 	}
 

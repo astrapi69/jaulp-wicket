@@ -15,8 +15,10 @@
  */
 package de.alpharogroup.wicket.components.form.checkbox;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.util.Collection;
-import java.util.List;
 
 import lombok.Getter;
 
@@ -68,8 +70,7 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 
 		add(form = newForm("form"));
 
-		form.add(checkGroup = newCheckGroup("checkGroup",
-			new PropertyModel<List<T>>(model.getObject(), "selectedItems")));
+		form.add(checkGroup = newCheckGroup("checkGroup", model(from(model).getSelectedItems())));
 
 		checkGroup
 			.add(checkGroupSelector = newCheckGroupSelector("checkGroupSelector", checkGroup));

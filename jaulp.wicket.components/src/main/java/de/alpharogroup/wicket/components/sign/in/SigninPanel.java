@@ -26,7 +26,6 @@ import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,8 +79,8 @@ public class SigninPanel extends Panel
 			@Override
 			protected EmailTextField newEmailTextField(final String id, final IModel<SignInModel> m)
 			{
-				final EmailTextField emailTextField = new EmailTextField(id,
-					new PropertyModel<String>(model.getObject(), "email"));
+				final EmailTextField emailTextField = new EmailTextField(id, model(from(
+					model.getObject()).getEmail()));
 				emailTextField.setOutputMarkupId(true);
 				emailTextField.setRequired(true);
 				if (placeholderModel != null)

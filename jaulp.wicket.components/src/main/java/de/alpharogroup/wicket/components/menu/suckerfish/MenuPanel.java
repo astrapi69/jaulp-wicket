@@ -15,6 +15,9 @@
  */
 package de.alpharogroup.wicket.components.menu.suckerfish;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +26,6 @@ import net.sourceforge.jaulp.io.annotations.ImportResources;
 
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.base.BasePanel;
 
 @ImportResources(resources = { @ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
@@ -50,7 +52,7 @@ public class MenuPanel extends BasePanel<Object>
 
 	/**
 	 * Instantiates a new suckerfish menu panel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 */
@@ -58,13 +60,12 @@ public class MenuPanel extends BasePanel<Object>
 	{
 		super(id);
 		// Add the top menus
-		add(new SubMenuListView("topmenuitems", new PropertyModel<List<MenuItem>>(this,
-			"topMenuItems"), this));
+		add(new SubMenuListView("topmenuitems", model(from(this).topMenuItems), this));
 	}
 
 	/**
 	 * Add one menu item.
-	 * 
+	 *
 	 * @param menu
 	 *            the menu
 	 */
@@ -75,7 +76,7 @@ public class MenuPanel extends BasePanel<Object>
 
 	/**
 	 * Add all menus at once.
-	 * 
+	 *
 	 * @param menuItems
 	 *            the new menu items
 	 */

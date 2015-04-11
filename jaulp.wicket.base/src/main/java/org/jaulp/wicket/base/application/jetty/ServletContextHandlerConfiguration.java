@@ -27,7 +27,8 @@ public class ServletContextHandlerConfiguration
 	private Class<? extends Application> applicationClass;
 	private File webapp;
 	private String contextPath;
-	private int maxInactiveInterval; 
+	private int maxInactiveInterval;
 	private String filterPath;
-	@Singular private Map<String, String> initParameters;
+	@Singular
+	private Map<String, String> initParameters;
 }

@@ -262,10 +262,10 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			{
 				List<LinkModel> linkModel = new ArrayList<LinkModel>();
 				linkModel
-					.add(LinkModel
-						.builder()
+					.add(LinkModel.builder()
 						.url("http://www.alpharogroup.de/")
-						.target(DefaultTargets.BLANK.getTarget()) // open in a new tab or window...
+						.target(DefaultTargets.BLANK.getTarget())
+						// open in a new tab or window...
 						.resourceModelKey(
 							ResourceBundleKey.builder().key("main.footer.copyright.label")
 								.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group")
@@ -297,10 +297,11 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 							protected Component newListComponent(String id, ListItem<LinkModel> item)
 							{
 								LinkModel model = item.getModelObject();
-								Label itemLinkLabel = super.newItemLinkLabel("itemLinkLabel", model);
+								Label itemLinkLabel = super
+									.newItemLinkLabel("itemLinkLabel", model);
 								itemLinkLabel.add(new AttributeAppender("class", " a"));
-								AbstractLink link = super.newAbstractLink(id, model);		
-								link.add(itemLinkLabel);		
+								AbstractLink link = super.newAbstractLink(id, model);
+								link.add(itemLinkLabel);
 								return link;
 							}
 

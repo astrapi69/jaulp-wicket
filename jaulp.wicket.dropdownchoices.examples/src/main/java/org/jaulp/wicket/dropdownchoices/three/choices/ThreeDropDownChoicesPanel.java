@@ -15,6 +15,9 @@
  */
 package org.jaulp.wicket.dropdownchoices.three.choices;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,7 +30,6 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.SelectedValuesChoiceRenderer;
 import org.jaulp.wicket.model.dropdownchoices.StringThreeDropDownChoicesModel;
@@ -81,22 +83,23 @@ public class ThreeDropDownChoicesPanel extends Panel
 		add(selectOptionForm);
 
 		final LocalisedDropDownChoice<String> trademarks = new LocalisedDropDownChoice<String>(
-			"trademarks", new PropertyModel<String>(stringThreeDropDownChoicesModel,
-				"selectedRootOption"), stringThreeDropDownChoicesModel.getRootChoices(),
-			new PropertiesChoiceRenderer(this, this.getClass()));
+			"trademarks", model(from(stringThreeDropDownChoicesModel).getSelectedRootOption()),
+			stringThreeDropDownChoicesModel.getRootChoices(), new PropertiesChoiceRenderer(this,
+				this.getClass()));
 		trademarks.setDefaultChoice(true);
 		trademarks.setOutputMarkupId(true);
 
 		final LocalisedDropDownChoice<String> models = new LocalisedDropDownChoice<String>(
-			"models", new PropertyModel<String>(stringThreeDropDownChoicesModel,
-				"selectedChildOption"), stringThreeDropDownChoicesModel.getChildChoices(),
-			new PropertiesChoiceRenderer(this, this.getClass()));
+			"models", model(from(stringThreeDropDownChoicesModel).getSelectedChildOption()),
+			stringThreeDropDownChoicesModel.getChildChoices(), new PropertiesChoiceRenderer(this,
+				this.getClass()));
 		models.setDefaultChoice(true);
 		models.setOutputMarkupId(true);
 
 		final LocalisedDropDownChoice<String> selectedModels = new LocalisedDropDownChoice<String>(
-			"selectedModels", new PropertyModel<String>(stringThreeDropDownChoicesModel,
-				"selectedValueOption"), stringThreeDropDownChoicesModel.getSelectedValuesChoices(),
+			"selectedModels",
+			model(from(stringThreeDropDownChoicesModel).getSelectedValueOption()),
+			stringThreeDropDownChoicesModel.getSelectedValuesChoices(),
 			new SelectedValuesChoiceRenderer(this, this.getClass()));
 		selectedModels.setDefaultChoice(true);
 		selectedModels.setOutputMarkupId(true);

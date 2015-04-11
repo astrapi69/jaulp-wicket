@@ -15,6 +15,9 @@
  */
 package org.jaulp.wicket.components.i18n.dropdownchoice.panels;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.util.List;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -23,7 +26,6 @@ import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
 
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
@@ -65,13 +67,12 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 
 		setModel(Model.of(stringTwoDropDownChoicesModel));
 
-		rootChoice = newRootChoice("rootChoice", new PropertyModel<String>(
-			stringTwoDropDownChoicesModel, "selectedRootOption"),
-			stringTwoDropDownChoicesModel.getRootChoices(), rootRenderer);
+		rootChoice = newRootChoice("rootChoice", model(from(stringTwoDropDownChoicesModel)
+			.getSelectedRootOption()), stringTwoDropDownChoicesModel.getRootChoices(), rootRenderer);
 
-		childChoice = newChildChoice("childChoice", new PropertyModel<String>(
-			stringTwoDropDownChoicesModel, "selectedChildOption"),
-			stringTwoDropDownChoicesModel.getChildChoices(), childRenderer);
+		childChoice = newChildChoice("childChoice", model(from(stringTwoDropDownChoicesModel)
+			.getSelectedChildOption()), stringTwoDropDownChoicesModel.getChildChoices(),
+			childRenderer);
 
 		add(rootChoice);
 		add(childChoice);

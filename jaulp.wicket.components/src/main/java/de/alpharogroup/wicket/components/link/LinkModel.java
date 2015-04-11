@@ -45,6 +45,6 @@ public class LinkModel implements Serializable
 	private ResourceBundleKey resourceModelKey;
 
 	private String url;
-	
+
 	private String target;
 }

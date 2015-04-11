@@ -41,13 +41,13 @@ public final class PageParametersUtils
 	private static final Logger LOGGER = Logger.getLogger(PageParametersUtils.class.getName());
 
 	/**
-	 * Gets the parameter.
+	 * Gets the parameter or returns null if it does not exists or is empty.
 	 *
 	 * @param parameters
 	 *            the parameters
 	 * @param name
 	 *            the name
-	 * @return the parameter
+	 * @return the parameter or returns null if it does not exists or is empty.
 	 */
 	public static String getParameter(final PageParameters parameters, String name)
 	{
@@ -55,11 +55,11 @@ public final class PageParametersUtils
 	}
 
 	/**
-	 * Gets the string from the given {@link StringValue}.
+	 * Gets the string from the given {@link StringValue} or null if it is null or is empty.
 	 *
 	 * @param value
-	 *            the value
-	 * @return the string
+	 *            the {@link StringValue}
+	 * @return the string or null if it is null or is empty.
 	 */
 	public static String getString(StringValue value)
 	{
@@ -238,7 +238,7 @@ public final class PageParametersUtils
 	/**
 	 * Copies all given source {@link org.apache.wicket.request.mapper.parameter.PageParameters} to
 	 * the given destination {@link org.apache.wicket.request.mapper.parameter.PageParameters}.
-	 * 
+	 *
 	 * @param source
 	 *            The source {@link org.apache.wicket.request.mapper.parameter.PageParameters}.
 	 * @param destination

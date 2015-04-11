@@ -84,7 +84,6 @@ public class ComponentFactory
 		feedbackPanel.setOutputMarkupId(true);
 		return feedbackPanel;
 	}
-	
 
 
 	/**
@@ -449,7 +448,9 @@ public class ComponentFactory
 	 *            the model
 	 * @return the new {@link RequiredTextField}
 	 */
-	public static <T> RequiredTextField<T> newRequiredTextField(final String id, final IModel<T> model) {
+	public static <T> RequiredTextField<T> newRequiredTextField(final String id,
+		final IModel<T> model)
+	{
 		RequiredTextField<T> requiredTextField = new RequiredTextField<T>(id, model);
 		requiredTextField.setOutputMarkupId(true);
 		return requiredTextField;

@@ -108,7 +108,7 @@ public class WicketApplication extends WicketBootstrap3Application
 				// here can comes code that is needed after the application
 				// initialization...
 			}
-		});		
+		});
 	}
 
 	protected void newGlobalSettings(final WebApplication application, final int httpPort,

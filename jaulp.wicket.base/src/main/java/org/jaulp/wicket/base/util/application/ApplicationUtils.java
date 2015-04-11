@@ -422,8 +422,8 @@ public final class ApplicationUtils
 	 * @param httpsPort
 	 *            the https port
 	 */
-	public static IRequestMapper setRootRequestMapper(final Application application, final int httpPort,
-		final int httpsPort)
+	public static IRequestMapper setRootRequestMapper(final Application application,
+		final int httpPort, final int httpsPort)
 	{
 		IRequestMapper httpsMapper = new HttpsMapper(application.getRootRequestMapper(),
 			new HttpsConfig(httpPort, httpsPort));

@@ -58,7 +58,8 @@ public class Jetty9Runner
 		runWithNewServer(getServletContextHandler(applicationClass, webapp), httpPort, httpsPort);
 	}
 
-	public static void runWithNewServer(ServletContextHandler servletContextHandler, int httpPort, int httpsPort)
+	public static void runWithNewServer(ServletContextHandler servletContextHandler, int httpPort,
+		int httpsPort)
 	{
 		runWithNewServer(servletContextHandler, httpPort, httpsPort, "wicket");
 	}
@@ -69,19 +70,22 @@ public class Jetty9Runner
 		run(server, config);
 	}
 
-	public static void runWithNewServer(ServletContextHandler servletContextHandler, int httpPort, int httpsPort, String keyStorePassword)
+	public static void runWithNewServer(ServletContextHandler servletContextHandler, int httpPort,
+		int httpsPort, String keyStorePassword)
 	{
 		Server server = new Server();
 		run(server, servletContextHandler, httpPort, httpsPort, keyStorePassword, "/keystore");
 	}
 
-	public static void run(ServletContextHandler servletContextHandler, int httpPort, int httpsPort, String keyStorePassword)
+	public static void run(ServletContextHandler servletContextHandler, int httpPort,
+		int httpsPort, String keyStorePassword)
 	{
 		Server server = new Server();
 		run(server, servletContextHandler, httpPort, httpsPort, keyStorePassword, "/keystore");
 	}
-	
-	public static void run(Server server, Jetty9RunConfiguration config) {
+
+	public static void run(Server server, Jetty9RunConfiguration config)
+	{
 		HttpConfiguration http_config = new HttpConfiguration();
 		http_config.setSecureScheme("https");
 		http_config.setSecurePort(config.getHttpsPort());
@@ -117,7 +121,8 @@ public class Jetty9Runner
 			https.setIdleTimeout(500000);
 
 			server.addConnector(https);
-			System.out.println("SSL access to the examples has been enabled on port " + config.getHttpsPort());
+			System.out.println("SSL access to the examples has been enabled on port "
+				+ config.getHttpsPort());
 			System.out.println("You can access the application using SSL on https://localhost:"
 				+ config.getHttpsPort());
 			System.out.println();
@@ -145,13 +150,9 @@ public class Jetty9Runner
 	public static void run(Server server, ServletContextHandler servletContextHandler,
 		int httpPort, int httpsPort, String keyStorePassword, String keyStorePathResource)
 	{
-		run(server, Jetty9RunConfiguration.builder()
-			.servletContextHandler(servletContextHandler)
-			.httpPort(httpPort)
-			.httpsPort(httpsPort)
-			.keyStorePassword(keyStorePassword)
-			.keyStorePathResource(keyStorePathResource)
-			.build());
+		run(server, Jetty9RunConfiguration.builder().servletContextHandler(servletContextHandler)
+			.httpPort(httpPort).httpsPort(httpsPort).keyStorePassword(keyStorePassword)
+			.keyStorePathResource(keyStorePathResource).build());
 	}
 
 	public static ServletContextHandler getServletContextHandler(
@@ -161,12 +162,9 @@ public class Jetty9Runner
 		Map<String, String> initParameters = Generics.newHashMap();
 		initParameters.put(WicketFilter.FILTER_MAPPING_PARAM, filterPath);
 		return getServletContextHandler(ServletContextHandlerConfiguration.builder()
-			.applicationClass(applicationClass)
-			.contextPath(contextPath)
-			.webapp(webapp)
+			.applicationClass(applicationClass).contextPath(contextPath).webapp(webapp)
 			.maxInactiveInterval(maxInactiveInterval)
-			.initParameter(WicketFilter.FILTER_MAPPING_PARAM, filterPath)
-			.filterPath(filterPath)
+			.initParameter(WicketFilter.FILTER_MAPPING_PARAM, filterPath).filterPath(filterPath)
 			.build());
 	}
 
@@ -180,16 +178,18 @@ public class Jetty9Runner
 		context.setResourceBase(configuration.getWebapp().getAbsolutePath());
 
 		final FilterHolder filter = new FilterHolder(WicketFilter.class);
-		filter.setInitParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM,
-			configuration.getApplicationClass().getName());
-		for(Entry<String, String> initParameter : configuration.getInitParameters().entrySet() ){
-			filter.setInitParameter(initParameter.getKey(), initParameter.getValue());			
+		filter.setInitParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM, configuration
+			.getApplicationClass().getName());
+		for (Entry<String, String> initParameter : configuration.getInitParameters().entrySet())
+		{
+			filter.setInitParameter(initParameter.getKey(), initParameter.getValue());
 		}
 		context.addFilter(filter, configuration.getFilterPath(),
 			EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR));
 		context.addServlet(DefaultServlet.class, configuration.getFilterPath());
 
-		context.getSessionHandler().getSessionManager().setMaxInactiveInterval(configuration.getMaxInactiveInterval());
+		context.getSessionHandler().getSessionManager()
+			.setMaxInactiveInterval(configuration.getMaxInactiveInterval());
 		return context;
 	}
 

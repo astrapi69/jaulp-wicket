@@ -29,7 +29,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * The class CaptchaPanel.
- * 
+ *
  * @author Asterios Raptis
  */
 public class CaptchaPanel extends Panel
@@ -46,9 +46,10 @@ public class CaptchaPanel extends Panel
 
 	public CaptchaPanel(String id, IModel<CaptchaModel> captchaModel)
 	{
-		super(id, captchaModel);		
+		super(id, captchaModel);
 		// Add the image to the panel...
-		add(captchaImage = newImage("captchaImage", captchaModel.getObject().getCaptchaImageResource()));
+		add(captchaImage = newImage("captchaImage", captchaModel.getObject()
+			.getCaptchaImageResource()));
 		// Add the TextField to the panel...
 		add(captchaInput = newRequiredTextField("captchaInput", captchaModel));
 	}
