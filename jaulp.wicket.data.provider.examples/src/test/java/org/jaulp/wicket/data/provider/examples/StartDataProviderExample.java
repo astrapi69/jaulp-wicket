@@ -19,6 +19,7 @@ import java.io.File;
 
 import net.sourceforge.jaulp.file.search.PathFinder;
 
+import org.apache.wicket.protocol.http.WicketFilter;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.jaulp.wicket.base.application.jetty.Jetty9RunConfiguration;
 import org.jaulp.wicket.base.application.jetty.Jetty9Runner;
@@ -37,7 +38,9 @@ public class StartDataProviderExample
 		ServletContextHandler servletContextHandler = Jetty9Runner
 			.getServletContextHandler(ServletContextHandlerConfiguration.builder()
 				.applicationClass(WicketApplication.class).contextPath("/").webapp(webapp)
-				.maxInactiveInterval(300).filterPath("/*").build());
+				.maxInactiveInterval(300).filterPath("/*")
+				.initParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*").build());
+		
 		Jetty9Runner.run(Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
