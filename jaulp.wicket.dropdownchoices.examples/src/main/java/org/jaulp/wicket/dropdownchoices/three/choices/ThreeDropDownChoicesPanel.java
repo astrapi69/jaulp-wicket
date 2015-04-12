@@ -30,6 +30,8 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.SelectedValuesChoiceRenderer;
 import org.jaulp.wicket.model.dropdownchoices.StringThreeDropDownChoicesModel;
@@ -82,23 +84,34 @@ public class ThreeDropDownChoicesPanel extends Panel
 
 		add(selectOptionForm);
 
+		IModel<String> selectedRootOptionModel = null;
+		// TODO open issue on wicketeer...
+//		selectedRootOptionModel = model(from(stringThreeDropDownChoicesModel).getSelectedRootOption());
+		selectedRootOptionModel = new PropertyModel<String>(stringThreeDropDownChoicesModel, "selectedRootOption");
 		final LocalisedDropDownChoice<String> trademarks = new LocalisedDropDownChoice<String>(
-			"trademarks", model(from(stringThreeDropDownChoicesModel).getSelectedRootOption()),
+			"trademarks", selectedRootOptionModel,
 			stringThreeDropDownChoicesModel.getRootChoices(), new PropertiesChoiceRenderer(this,
 				this.getClass()));
 		trademarks.setDefaultChoice(true);
 		trademarks.setOutputMarkupId(true);
 
+		IModel<String> selectedChildOptionModel = null;
+//		selectedChildOptionModel = model(from(stringThreeDropDownChoicesModel).getSelectedChildOption());
+		selectedChildOptionModel = new PropertyModel<String>(stringThreeDropDownChoicesModel, "selectedChildOption");
 		final LocalisedDropDownChoice<String> models = new LocalisedDropDownChoice<String>(
-			"models", model(from(stringThreeDropDownChoicesModel).getSelectedChildOption()),
+			"models", selectedChildOptionModel,
 			stringThreeDropDownChoicesModel.getChildChoices(), new PropertiesChoiceRenderer(this,
 				this.getClass()));
 		models.setDefaultChoice(true);
 		models.setOutputMarkupId(true);
 
+		IModel<String> selectedValueOptionModel = null;
+//		selectedValueOptionModel = model(from(stringThreeDropDownChoicesModel).getSelectedValueOption());
+		selectedValueOptionModel = new PropertyModel<String>(stringThreeDropDownChoicesModel, "selectedValueOption");
+
 		final LocalisedDropDownChoice<String> selectedModels = new LocalisedDropDownChoice<String>(
 			"selectedModels",
-			model(from(stringThreeDropDownChoicesModel).getSelectedValueOption()),
+			selectedValueOptionModel,
 			stringThreeDropDownChoicesModel.getSelectedValuesChoices(),
 			new SelectedValuesChoiceRenderer(this, this.getClass()));
 		selectedModels.setDefaultChoice(true);
