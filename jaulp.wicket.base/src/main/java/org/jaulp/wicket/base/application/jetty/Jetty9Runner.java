@@ -18,6 +18,7 @@ package org.jaulp.wicket.base.application.jetty;
 import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -26,6 +27,9 @@ import javax.servlet.DispatcherType;
 
 import net.sourceforge.jaulp.file.search.PathFinder;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
@@ -40,6 +44,7 @@ import org.eclipse.jetty.server.SslConnectionFactory;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -191,6 +196,75 @@ public class Jetty9Runner
 		context.getSessionHandler().getSessionManager()
 			.setMaxInactiveInterval(configuration.getMaxInactiveInterval());
 		return context;
+	}
+	public static ServletContextHandler getNewServletContextHandler(
+		ServletContextHandlerConfiguration configuration)
+	{
+		final ServletContextHandler context = new ServletContextHandler(
+			ServletContextHandler.SESSIONS);
+		context.setContextPath(configuration.getContextPath());
+
+		context.setResourceBase(configuration.getWebapp().getAbsolutePath());
+
+		context.getSessionHandler().getSessionManager()
+			.setMaxInactiveInterval(configuration.getMaxInactiveInterval());
+		
+		initializeFilterHolder(configuration, context);
+		
+		initializeServletHolder(configuration, context);
+		
+		for (Entry<String, String> initParameter : configuration.getInitParameters().entrySet())
+		{
+			context.setInitParameter(initParameter.getKey(), initParameter.getValue());
+		}
+		return context;
+	}
+
+	private static void initializeFilterHolder(ServletContextHandlerConfiguration configuration,
+		final ServletContextHandler context)
+	{
+		List<FilterHolderConfiguration> filterHolderConfigurations = configuration.getFilterHolderConfigurations();
+		if(CollectionUtils.isNotEmpty(filterHolderConfigurations)) {
+			for(FilterHolderConfiguration filterHolderConfiguration : filterHolderConfigurations) {
+				final FilterHolder filter = new FilterHolder(filterHolderConfiguration.getFilterClass());
+				if(MapUtils.isNotEmpty(filterHolderConfiguration.getInitParameters())) {
+					for (Entry<String, String> initParameter : filterHolderConfiguration.getInitParameters().entrySet())
+					{
+						filter.setInitParameter(initParameter.getKey(), initParameter.getValue());
+					}					
+				}
+				if(StringUtils.isNotEmpty(filterHolderConfiguration.getFilterPath())) {
+					context.addFilter(filter, filterHolderConfiguration.getFilterPath(),
+						EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR));					
+				}
+			}			
+		}
+	}
+
+	private static void initializeServletHolder(ServletContextHandlerConfiguration configuration,
+		final ServletContextHandler context)
+	{
+		List<ServletHolderConfiguration> servletHolderConfigurations = configuration.getServletHolderConfigurations();
+		if(CollectionUtils.isNotEmpty(servletHolderConfigurations)) {
+			for(ServletHolderConfiguration servletHolderConfiguration : servletHolderConfigurations) {
+				String servletName = servletHolderConfiguration.getName();
+				ServletHolder servletHolder = null;
+				if(StringUtils.isNotEmpty(servletName)) {
+					servletHolder = new ServletHolder(servletName, servletHolderConfiguration.getServletClass());					
+				} else {
+					servletHolder = new ServletHolder(servletHolderConfiguration.getServletClass());					
+				}
+				if(MapUtils.isNotEmpty(servletHolderConfiguration.getInitParameters())) {
+					for (Entry<String, String> initParameter : servletHolderConfiguration.getInitParameters().entrySet())
+					{
+						servletHolder.setInitParameter(initParameter.getKey(), initParameter.getValue());
+					}					
+				}
+				if(StringUtils.isNotEmpty(servletHolderConfiguration.getPathSpec())) {
+					context.addServlet(servletHolder, servletHolderConfiguration.getPathSpec());				
+				}
+			}			
+		}
 	}
 
 	public static ServletContextHandler getServletContextHandler(

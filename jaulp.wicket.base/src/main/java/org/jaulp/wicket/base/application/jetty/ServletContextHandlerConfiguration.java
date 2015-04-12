@@ -1,6 +1,7 @@
 package org.jaulp.wicket.base.application.jetty;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -30,7 +31,14 @@ public class ServletContextHandlerConfiguration
 	private int maxInactiveInterval;
 	private String filterPath;
 	@Singular
-	private Map<String, String> initParameters;
+	private List<FilterHolderConfiguration> filterHolderConfigurations;
 	@Singular
+	private List<ServletHolderConfiguration> servletHolderConfigurations;
+	@Singular
+	private Map<String, String> initParameters;
+	/**
+	 * use instead initParameters.
+	 * */
+	@Singular @Deprecated
 	private Map<String, String> contextHandlerInitParameters;
 }
