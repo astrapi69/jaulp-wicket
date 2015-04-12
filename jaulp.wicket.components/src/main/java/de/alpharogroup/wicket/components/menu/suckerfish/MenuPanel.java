@@ -21,6 +21,7 @@ import static org.wicketeer.modelfactory.ModelFactory.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 
@@ -48,6 +49,7 @@ public class MenuPanel extends BasePanel<Object>
 		Model.of("menu-has-submenu"), " ");
 
 	/** The top menu items. */
+	@Getter
 	private final List<MenuItem> topMenuItems = new ArrayList<>();
 
 	/**
@@ -60,7 +62,7 @@ public class MenuPanel extends BasePanel<Object>
 	{
 		super(id);
 		// Add the top menus
-		add(new SubMenuListView("topmenuitems", model(from(this).topMenuItems), this));
+		add(new SubMenuListView("topmenuitems", model(from(this).getTopMenuItems()), this));
 	}
 
 	/**

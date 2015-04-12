@@ -17,6 +17,10 @@ import org.wicketstuff.annotation.mount.MountPath;
 @MountPath("/models")
 public class ModelPage extends GenericBasePage<Person>
 {
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 	IModel<String> nicknameModel;
 
 	public ModelPage(final PageParameters parameters)
@@ -29,6 +33,7 @@ public class ModelPage extends GenericBasePage<Person>
 		nicknameModel = model(from(getModel()).getNickname());
 		add(new MenubarPanel("menubarPanel"));
 		String nickname = nicknameModel.getObject();
+		System.out.println("nickname is:"+nickname);
 		add(new Label("text", nicknameModel).setOutputMarkupId(true));
 		// TODO add an AjaxLink to change the nickname...
 

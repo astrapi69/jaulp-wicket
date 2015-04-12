@@ -67,11 +67,14 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 
 		setModel(Model.of(stringTwoDropDownChoicesModel));
 
-		rootChoice = newRootChoice("rootChoice", model(from(stringTwoDropDownChoicesModel)
-			.getSelectedRootOption()), stringTwoDropDownChoicesModel.getRootChoices(), rootRenderer);
+		rootChoice = newRootChoice("rootChoice", 
+			model(from(getModel()).getSelectedRootOption()), 
+			stringTwoDropDownChoicesModel.getRootChoices(), 
+			rootRenderer);
 
-		childChoice = newChildChoice("childChoice", model(from(stringTwoDropDownChoicesModel)
-			.getSelectedChildOption()), stringTwoDropDownChoicesModel.getChildChoices(),
+		childChoice = newChildChoice("childChoice", 
+			model(from(stringTwoDropDownChoicesModel).getSelectedChildOption()), 
+			stringTwoDropDownChoicesModel.getChildChoices(),
 			childRenderer);
 
 		add(rootChoice);
