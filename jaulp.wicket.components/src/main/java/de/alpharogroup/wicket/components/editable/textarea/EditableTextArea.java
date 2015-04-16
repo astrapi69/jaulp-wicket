@@ -46,50 +46,17 @@ public class EditableTextArea extends GenericPanel<String>
 	@Getter
 	@Setter
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
-
+	@Getter
 	private SwapComponentsFragmentPanel<String> swapPanel;
-
-	public IModel<String> getLabelModel()
-	{
-		return labelModel;
-	}
-
+	@Getter
 	private final IModel<String> labelModel;
 
-	public SwapComponentsFragmentPanel<String> getSwapPanel()
-	{
-		return swapPanel;
-	}
-
-	/**
-	 * Checks if is editable.
-	 *
-	 * @return true, if it is editable
-	 */
-	public boolean isEditable()
-	{
-		return modeContext.equals(ModeContext.EDIT_MODE);
-	}
-
-	/**
-	 * Swap the ModeContext.
-	 */
-	public void swap()
-	{
-		if (modeContext.equals(ModeContext.VIEW_MODE))
-		{
-			modeContext = ModeContext.EDIT_MODE;
-		}
-		else
-		{
-			modeContext = ModeContext.VIEW_MODE;
-		}
-	}
-
 	/** The MultiLineLabel. */
+	@Getter
 	private MultiLineLabel label;
 
 	/** The text area. */
+	@Getter
 	private TextArea<String> textArea;
 
 	/**
@@ -253,23 +220,28 @@ public class EditableTextArea extends GenericPanel<String>
 	}
 
 	/**
-	 * Gets the label.
+	 * Checks if is editable.
 	 *
-	 * @return the label
+	 * @return true, if it is editable
 	 */
-	public MultiLineLabel getLabel()
+	public boolean isEditable()
 	{
-		return label;
+		return modeContext.equals(ModeContext.EDIT_MODE);
 	}
 
 	/**
-	 * Gets the text area.
-	 *
-	 * @return the text area
+	 * Swap the ModeContext.
 	 */
-	public TextArea<String> getTextArea()
+	public void swap()
 	{
-		return textArea;
+		if (modeContext.equals(ModeContext.VIEW_MODE))
+		{
+			modeContext = ModeContext.EDIT_MODE;
+		}
+		else
+		{
+			modeContext = ModeContext.VIEW_MODE;
+		}
 	}
 
 }

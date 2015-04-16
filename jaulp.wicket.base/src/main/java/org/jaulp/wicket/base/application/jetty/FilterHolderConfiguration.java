@@ -28,12 +28,12 @@ public class FilterHolderConfiguration implements Serializable
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private Class<? extends Filter> filterClass;
 	@Singular
 	private Map<String, String> initParameters;
-	
+
 	private String filterPath;
-	
+
 
 }

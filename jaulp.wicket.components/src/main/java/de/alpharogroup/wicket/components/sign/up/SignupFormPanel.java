@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
@@ -41,15 +42,19 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 
 	public SignupFormPanel(String id)
 	{
-		super(id);
+		this(id, Model.of(new BaseUsernameSignUpModel()));
+	}
+
+	public SignupFormPanel(String id, IModel<BaseUsernameSignUpModel> model)
+	{
+		super(id, model);
 		initComponent();
 	}
 
 	protected void initComponent()
 	{
-		BaseUsernameSignUpModel modelObject = new BaseUsernameSignUpModel();
-		modelObject.setEmail("");
-		IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<>(modelObject);
+		getModelObject().setEmail("");
+		IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<>(getModel());
 		setModel(model);
 		addOrReplace(form = newForm("form", model));
 		form.addOrReplace(signupPanel = newSignupPanel("signupPanel", getModel()));
@@ -64,7 +69,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 * Factory method for creating the SignupPanel. This method is invoked in the constructor from
 	 * the derived classes and can be overridden so users can provide their own version of a
 	 * SignupPanel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -79,7 +84,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	/**
 	 * Factory method for creating the Form. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -95,7 +100,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
@@ -118,7 +123,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	/**
 	 * Factory method for creating the Button Label. This method is invoked in the constructor from
 	 * the derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey

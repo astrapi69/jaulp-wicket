@@ -82,7 +82,7 @@ public class WicketWikiExample extends WebPage
 		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel = new StringTwoDropDownChoicesModel(
 			"trademark.audi", modelsMap);
 
-		TwoDropDownChoicesPanel twoDropDownChoicesPanel = new TrademarksModelsPanel(
+		TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
 			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(
 				this, this.getClass()), new PropertiesChoiceRenderer(this, this.getClass()));
 		add(twoDropDownChoicesPanel);

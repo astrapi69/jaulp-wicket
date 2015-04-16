@@ -19,7 +19,7 @@ import lombok.Getter;
 
 import org.apache.wicket.markup.html.basic.EnumLabel;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
@@ -31,7 +31,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type
  */
-public class LabeledEnumLabelPanel<T> extends Panel
+public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 {
 
 	/** The Constant serialVersionUID. */

@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
+import lombok.Getter;
+
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.model.IModel;
 
@@ -33,18 +35,8 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	private static final long serialVersionUID = 1L;
 
 	/** The text field. */
+	@Getter
 	private final AutoCompleteTextField<T> autoCompleteTextField;
-
-	/**
-	 * Instantiates a new LabeledTextfieldPanel.
-	 *
-	 * @param id
-	 *            the id
-	 */
-	public LabeledAutoCompleteTextFieldPanel(String id)
-	{
-		this(id, null, null);
-	}
 
 	/**
 	 * Instantiates a new LabeledTextfieldPanel.
@@ -84,16 +76,6 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	public String getInput()
 	{
 		return autoCompleteTextField.getInput();
-	}
-
-	/**
-	 * Gets the text field.
-	 *
-	 * @return the text field
-	 */
-	public AutoCompleteTextField<T> getAutoCompleteTextField()
-	{
-		return autoCompleteTextField;
 	}
 
 	/**

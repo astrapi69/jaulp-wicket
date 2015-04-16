@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.captcha.draw;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
 import lombok.Getter;
 
 import org.apache.wicket.markup.ComponentTag;
@@ -22,7 +24,6 @@ import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.resource.IResource;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
@@ -64,7 +65,7 @@ public class CaptchaPanel extends Panel
 	{
 		// Create an TextField for the input...
 		RequiredTextField<String> captchaInput = new RequiredTextField<String>("captchaInput",
-			new PropertyModel<String>(captchaModel.getObject().getProperties(), "captchaInput"))
+			model(from(captchaModel.getObject()).getCaptchaInput()))
 		{
 
 			/**

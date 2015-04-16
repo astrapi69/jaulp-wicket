@@ -17,91 +17,43 @@ package org.jaulp.wicket.behaviors.models;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
 
 /**
  * The Class MailtoModel.
- * 
+ *
  * @author Asterios Raptis
  */
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MailtoModel implements Serializable
 {
-
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/** The mailto addres model. */
+	@Getter
+	@Setter
 	private IModel<String> mailtoAddresModel;
 
 	/** The mailto view model. */
+	@Getter
+	@Setter
 	private IModel<String> mailtoViewModel;
-
-	/**
-	 * Instantiates a new mailto model.
-	 */
-	public MailtoModel()
-	{
-		super();
-	}
-
-	/**
-	 * Instantiates a new mailto model.
-	 * 
-	 * @param mailtoAddresModel
-	 *            the mailto addres model
-	 * @param mailtoViewModel
-	 *            the mailto view model
-	 */
-	public MailtoModel(final IModel<String> mailtoAddresModel, final IModel<String> mailtoViewModel)
-	{
-		super();
-		this.mailtoAddresModel = mailtoAddresModel;
-		this.mailtoViewModel = mailtoViewModel;
-	}
-
-	/**
-	 * Gets the mailto addres model.
-	 * 
-	 * @return the mailto addres model
-	 */
-	public IModel<String> getMailtoAddresModel()
-	{
-		return mailtoAddresModel;
-	}
-
-	/**
-	 * Gets the mailto view model.
-	 * 
-	 * @return the mailto view model
-	 */
-	public IModel<String> getMailtoViewModel()
-	{
-		return mailtoViewModel;
-	}
-
-	/**
-	 * Sets the mailto addres model.
-	 * 
-	 * @param mailtoAddresModel
-	 *            the new mailto addres model
-	 */
-	public void setMailtoAddresModel(final StringResourceModel mailtoAddresModel)
-	{
-		this.mailtoAddresModel = mailtoAddresModel;
-	}
-
-	/**
-	 * Sets the mailto view model.
-	 * 
-	 * @param mailtoViewModel
-	 *            the new mailto view model
-	 */
-	public void setMailtoViewModel(final StringResourceModel mailtoViewModel)
-	{
-		this.mailtoViewModel = mailtoViewModel;
-	}
 
 }

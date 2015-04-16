@@ -17,18 +17,19 @@ package org.jaulp.wicket.annotated.header.contributors.abase;
 
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.AbstractBasePage;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class BasePage.
- * 
+ *
  * @author Asterios Raptis
  */
 @ImportResources(resources = { @ImportResource(resourceName = "BasePage.js", resourceType = "js"),
@@ -54,14 +55,15 @@ public abstract class BasePage extends AbstractBasePage
 
 	/**
 	 * Instantiates a new base page.
-	 * 
+	 *
 	 * @param parameters
 	 *            the parameters
 	 */
 	public BasePage(final PageParameters parameters)
 	{
 		super(parameters);
-		title = new StringResourceModel("page.title", this, null);
+		title = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key("page.title")
+			.defaultValue("").build(), this);
 		add(new Label("title", title));
 	}
 

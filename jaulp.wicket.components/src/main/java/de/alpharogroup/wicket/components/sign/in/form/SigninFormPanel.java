@@ -61,14 +61,13 @@ public abstract class SigninFormPanel extends Panel
 	{
 		super(id, model);
 		add(form = newForm("form", model));
-		form.add(signinPanel = new SigninPanel("signinPanel", model));
+		form.add(signinPanel = newSigninPanel("signinPanel", model));
 		// Create submit button for the form
 		submitButton = newButton("submitButton");
 		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label",
 			"Sign In"));
 		form.add(submitButton);
 	}
-
 
 	/**
 	 * Gets the button label.
@@ -113,7 +112,7 @@ public abstract class SigninFormPanel extends Panel
 	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
@@ -139,7 +138,7 @@ public abstract class SigninFormPanel extends Panel
 	 * Factory method for creating the button Label. This method is invoked in the constructor from
 	 * the derived classes and can be overridden so users can provide their own version of a button
 	 * Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey
@@ -159,7 +158,7 @@ public abstract class SigninFormPanel extends Panel
 	/**
 	 * Factory method for creating the Form. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -184,9 +183,10 @@ public abstract class SigninFormPanel extends Panel
 	 *            the model
 	 * @return the Component
 	 */
-	protected Component newSigninPanel(String id, final IModel<SignInModel> model)
+	protected Component newSigninPanel(String id, final IModel<? extends SignInModel> model)
 	{
-		return new SigninPanel("signinPanel", model);
+		Component component = new SigninPanel(id, model);
+		return component;
 	}
 
 

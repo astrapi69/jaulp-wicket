@@ -29,11 +29,12 @@ import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.component.IRequestablePage;
+import org.apache.wicket.util.lang.Args;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
@@ -42,7 +43,7 @@ import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 /**
  * The Class ReportThrowablePanel can present an exception that is thrown from the application.
  */
-public abstract class ReportThrowablePanel extends Panel
+public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 {
 
 	/** The Constant serialVersionUID. */
@@ -84,9 +85,9 @@ public abstract class ReportThrowablePanel extends Panel
 	 */
 	public ReportThrowablePanel(String id, Throwable throwable)
 	{
-		super(id);
+		super(id, Model.of(Args.notNull(throwable, "throwable")));
 
-		reportThrowableModel = newReportThrowableModel(throwable);
+		reportThrowableModel = newReportThrowableModel(getModelObject());
 
 		IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<>(reportThrowableModel);
 		setDefaultModel(cpm);

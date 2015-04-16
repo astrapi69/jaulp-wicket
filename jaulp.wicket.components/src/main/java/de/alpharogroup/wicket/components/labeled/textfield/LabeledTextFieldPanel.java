@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -35,18 +37,8 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The text field. */
+	@Getter
 	private final TextField<T> textField;
-
-	/**
-	 * Instantiates a new LabeledTextfieldPanel.
-	 *
-	 * @param id
-	 *            the id
-	 */
-	public LabeledTextFieldPanel(String id)
-	{
-		this(id, null, null);
-	}
 
 	/**
 	 * Instantiates a new LabeledTextfieldPanel.
@@ -86,16 +78,6 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	public String getInput()
 	{
 		return textField.getInput();
-	}
-
-	/**
-	 * Gets the text field.
-	 *
-	 * @return the text field
-	 */
-	public TextField<T> getTextField()
-	{
-		return textField;
 	}
 
 	/**

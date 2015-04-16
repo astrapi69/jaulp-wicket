@@ -15,6 +15,8 @@
  */
 package org.jaulp.wicket.behaviors.examples;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -23,9 +25,10 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.util.application.ApplicationUtils;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.AddJavascriptBehavior;
 import org.jaulp.wicket.behaviors.AddJsResourceReferenceBehavior;
 import org.jaulp.wicket.behaviors.FaviconBehavior;
@@ -50,10 +53,12 @@ public class HomePage extends WebPage
 	 */
 	public HomePage(final PageParameters parameters)
 	{
-		StringResourceModel mailtoAddresModel = new StringResourceModel("mailtoAddresModel.value",
-			this, null);
-		StringResourceModel mailtoViewModel = new StringResourceModel("mailtoViewModel.value",
-			this, null);
+		IModel<String> mailtoAddresModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key("mailtoAddresModel.value").defaultValue("").build(), this);
+
+		IModel<String> mailtoViewModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key("mailtoViewModel.value").defaultValue("").build(), this);
+
 		MailtoModel mailtoModel = new MailtoModel(mailtoAddresModel, mailtoViewModel);
 
 		add(new MailtoLabel("mailtoLabel", mailtoModel));
@@ -62,7 +67,7 @@ public class HomePage extends WebPage
 		{
 
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = 1L;
 
@@ -80,7 +85,7 @@ public class HomePage extends WebPage
 		{
 
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = 1L;
 

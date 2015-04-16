@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
@@ -24,7 +26,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * The LabeledFormComponentPanel is base class for labeled components.
- * 
+ *
  * @param <T>
  *            the generic type
  * @see FormComponentPanel
@@ -39,18 +41,8 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	protected Component label;
 
 	/** The ComponentFeedbackPanel for validation information. */
+	@Getter
 	protected ComponentFeedbackPanel feedback;
-
-	/**
-	 * Instantiates a new LabeledFormComponentPanel object.
-	 * 
-	 * @param id
-	 *            the id
-	 */
-	public LabeledFormComponentPanel(String id)
-	{
-		super(id);
-	}
 
 	/**
 	 * Instantiates a new LabeledFormComponentPanel object.
@@ -82,7 +74,7 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	 * Factory method for creating the ComponentFeedbackPanel. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a ComponentFeedbackPanel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param filter
@@ -97,7 +89,7 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param forId

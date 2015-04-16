@@ -18,7 +18,7 @@ package de.alpharogroup.wicket.components.labeled.label;
 import lombok.Getter;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
@@ -30,7 +30,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type
  */
-public class LabeledLabelPanel<T> extends Panel
+public class LabeledLabelPanel<T> extends GenericPanel<T>
 {
 
 	/** The Constant serialVersionUID. */

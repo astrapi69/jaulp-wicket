@@ -25,7 +25,11 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class LocalizedLabel initializes the Label with a StringResourceModel.
+ * 
+ * @deprecated use instead Label from wicket and create IModel with the
+ *             {@link org.jaulp.wicket.base.util.resource.ResourceModelFactory}.
  */
+@Deprecated
 public class LocalizedLabel extends Label
 {
 
@@ -151,7 +155,7 @@ public class LocalizedLabel extends Label
 	public LocalizedLabel(final String id, final ResourceBundleKey resourceBundleKey)
 	{
 		super(id);
-		setDefaultModel(ResourceModelFactory.newResourceModel(resourceBundleKey, getParent()));
+		setDefaultModel(ResourceModelFactory.newResourceModel(resourceBundleKey, this));
 	}
 
 }

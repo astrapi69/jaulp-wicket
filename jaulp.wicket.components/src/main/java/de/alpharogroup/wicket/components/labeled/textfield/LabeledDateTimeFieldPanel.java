@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 
 import java.util.Date;
 
+import lombok.Getter;
+
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -37,23 +39,8 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The text field. */
+	@Getter
 	private final DateTimeField dateTimeField;
-
-	public DateTimeField getDateTimeField()
-	{
-		return dateTimeField;
-	}
-
-	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
-	 *
-	 * @param id
-	 *            the id
-	 */
-	public LabeledDateTimeFieldPanel(String id)
-	{
-		this(id, null, null);
-	}
 
 	/**
 	 * Instantiates a new LabeledDateTextfieldPanel.

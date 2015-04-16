@@ -40,27 +40,23 @@ public class StartHeaderContributorsExamples
 			"webapp");
 
 		String filterPath = "/*";
-		
-		ServletContextHandler servletContextHandler = Jetty9Runner.getNewServletContextHandler(
-			ServletContextHandlerConfiguration.builder()
-			.filterHolderConfiguration(
-				FilterHolderConfiguration.builder()
-				.filterClass(WicketFilter.class)
-				.filterPath(filterPath)
-				.initParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*")
-				.initParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM, WicketApplication.class.getName())
-				.build())
-			.servletHolderConfiguration(
-				ServletHolderConfiguration.builder()
-				.servletClass(DefaultServlet.class)
-				.pathSpec(filterPath)
-				.build())
-			.contextPath("/")
-			.webapp(webapp)
-			.maxInactiveInterval(300)
-			.filterPath("/*")
-			.build());	
-		
+
+		ServletContextHandler servletContextHandler = Jetty9Runner
+			.getNewServletContextHandler(ServletContextHandlerConfiguration
+				.builder()
+				.filterHolderConfiguration(
+					FilterHolderConfiguration
+						.builder()
+						.filterClass(WicketFilter.class)
+						.filterPath(filterPath)
+						.initParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*")
+						.initParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM,
+							WicketApplication.class.getName()).build())
+				.servletHolderConfiguration(
+					ServletHolderConfiguration.builder().servletClass(DefaultServlet.class)
+						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
+				.maxInactiveInterval(300).filterPath("/*").build());
+
 		Jetty9Runner.run(Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)

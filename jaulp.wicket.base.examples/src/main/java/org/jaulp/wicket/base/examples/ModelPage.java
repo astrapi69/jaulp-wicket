@@ -33,7 +33,7 @@ public class ModelPage extends GenericBasePage<Person>
 		nicknameModel = model(from(getModel()).getNickname());
 		add(new MenubarPanel("menubarPanel"));
 		String nickname = nicknameModel.getObject();
-		System.out.println("nickname is:"+nickname);
+		System.out.println("nickname is:" + nickname);
 		add(new Label("text", nicknameModel).setOutputMarkupId(true));
 		// TODO add an AjaxLink to change the nickname...
 
@@ -46,6 +46,7 @@ public class ModelPage extends GenericBasePage<Person>
 			{
 				// set nickname to foo...
 				ModelPage.this.getModelObject().setNickname("foo");
+				System.out.println("nickname is:" + ModelPage.this.getModelObject().getNickname());
 				target.add(ModelPage.this.get("text"));
 			}
 		};

@@ -17,49 +17,34 @@ package de.alpharogroup.wicket.components.captcha.draw;
 
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
 import net.sourceforge.jaulp.random.Constants;
 import net.sourceforge.jaulp.random.RandomUtils;
 
 import org.apache.wicket.extensions.markup.html.captcha.CaptchaImageResource;
-import org.apache.wicket.util.value.ValueMap;
 
 public class CaptchaModel implements Serializable
 {
 
-	private static final String CAPTCHA_INPUT = "captchaInput";
-
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	private final ValueMap properties = new ValueMap();
+	@Getter
+	@Setter
+	private String captchaInput;
 
 	/** Random captcha password to match against. */
-	private final String randomCaptchaString = RandomUtils.getRandomString(Constants.UCCHARSWN, 7);
+	@Getter
+	private String randomCaptchaString;
 
+	@Getter
 	private final CaptchaImageResource captchaImageResource;
 
 	public CaptchaModel()
 	{
-		captchaImageResource = new CaptchaImageResource(randomCaptchaString);
+		captchaImageResource = new CaptchaImageResource(
+			randomCaptchaString = RandomUtils.getRandomString(Constants.UCCHARSWN, 7));
 	}
 
-	public CaptchaImageResource getCaptchaImageResource()
-	{
-		return captchaImageResource;
-	}
-
-	public String getCaptchaInput()
-	{
-		return properties.getString(CAPTCHA_INPUT);
-	}
-
-	public ValueMap getProperties()
-	{
-		return properties;
-	}
-
-	public String getRandomCaptchaString()
-	{
-		return randomCaptchaString;
-	}
 }

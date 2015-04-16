@@ -95,7 +95,7 @@ public class TwoDropDownChoicesPage extends WebPage
 
 		add(selectOptionForm);
 
-		TwoDropDownChoicesPanel twoDropDownChoicesPanel = new TrademarksModelsPanel(
+		TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
 			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(
 				this, this.getClass()), new PropertiesChoiceRenderer(this, this.getClass()));
 		AttributeModifier sam = new AttributeModifier("style", "width: 200px; margin-bottom: 20px;");

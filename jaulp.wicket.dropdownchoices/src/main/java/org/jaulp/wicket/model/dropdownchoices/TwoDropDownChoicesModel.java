@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
@@ -39,15 +42,22 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 	private static final long serialVersionUID = 1L;
 
 	/** The selected root option. */
+	@Getter
+	@Setter
 	private T selectedRootOption;
 
 	/** The selected child option. */
+	@Getter
+	@Setter
 	private T selectedChildOption;
 
 	/** The models map. */
+	@Getter
+	@Setter
 	private Map<T, List<T>> modelsMap = new HashMap<>();
 
 	/** The root choices. */
+	@Getter
 	private final IModel<List<T>> rootChoices;
 
 	/** The child choices. */
@@ -111,73 +121,6 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 
 		};
 		return childChoices;
-	}
-
-	/**
-	 * Gets the models map.
-	 *
-	 * @return the models map
-	 */
-	public Map<T, List<T>> getModelsMap()
-	{
-		return modelsMap;
-	}
-
-	/**
-	 * Gets the root choices.
-	 *
-	 * @return the root choices
-	 */
-	public IModel<List<T>> getRootChoices()
-	{
-		return rootChoices;
-	}
-
-	/**
-	 * Gets the selected child option.
-	 *
-	 * @return the selected child option
-	 */
-	public T getSelectedChildOption()
-	{
-		return selectedChildOption;
-	}
-
-	/**
-	 * Gets the selected root option.
-	 *
-	 * @return the selected root option
-	 */
-	public T getSelectedRootOption()
-	{
-		return selectedRootOption;
-	}
-
-	/**
-	 * Sets the models map.
-	 *
-	 * @param modelsMap
-	 *            the models map
-	 */
-	public void setModelsMap(final Map<T, List<T>> modelsMap)
-	{
-		this.modelsMap = modelsMap;
-	}
-
-	/**
-	 * Sets the selected child option.
-	 *
-	 * @param selectedChildOption
-	 *            the new selected child option
-	 */
-	public void setSelectedChildOption(final T selectedChildOption)
-	{
-		this.selectedChildOption = selectedChildOption;
-	}
-
-	public void setSelectedRootOption(T selectedRootOption)
-	{
-		this.selectedRootOption = selectedRootOption;
 	}
 
 }

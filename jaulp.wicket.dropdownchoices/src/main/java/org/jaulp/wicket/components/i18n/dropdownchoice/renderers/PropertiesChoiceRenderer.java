@@ -17,14 +17,16 @@ package org.jaulp.wicket.components.i18n.dropdownchoice.renderers;
 
 import java.util.List;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class PropertiesChoiceRenderer.
- * 
+ *
  * @author Asterios Raptis
  */
 public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
@@ -41,7 +43,7 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
 
 	/**
 	 * Instantiates a new properties choice renderer.
-	 * 
+	 *
 	 * @param component
 	 *            the component
 	 * @param componentClass
@@ -59,7 +61,8 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
 	@Override
 	public Object getDisplayValue(final String object)
 	{
-		StringResourceModel resourceModel = new StringResourceModel(object, component, null);
+		IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key(object).defaultValue("").build(), component);
 		String value = resourceModel.getObject();
 		return value;
 	}

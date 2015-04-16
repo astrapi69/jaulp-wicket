@@ -15,12 +15,16 @@
  */
 package de.alpharogroup.wicket.components.buttons;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * The Class ButtonPanel.
@@ -32,12 +36,15 @@ public abstract class ButtonPanel extends Panel
 	private static final long serialVersionUID = 1L;
 
 	/** The button component. */
+	@Getter
 	private final Button button;
 
 	/** The Label component. */
+	@Getter
 	private final Component label;
 
 	/** The form. */
+	@Getter
 	private final Form<?> form;
 
 	/**
@@ -75,7 +82,7 @@ public abstract class ButtonPanel extends Panel
 	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
@@ -94,37 +101,7 @@ public abstract class ButtonPanel extends Panel
 	 */
 	protected Label newLabel(String id, IModel<String> model)
 	{
-		return new Label(id, model);
-	}
-
-	/**
-	 * Gets the form.
-	 *
-	 * @return the form
-	 */
-	public Form<?> getForm()
-	{
-		return form;
-	}
-
-	/**
-	 * Gets the button.
-	 *
-	 * @return the button
-	 */
-	public Button getButton()
-	{
-		return button;
-	}
-
-	/**
-	 * Gets the label component.
-	 * 
-	 * @return the label component
-	 */
-	public Component getLabel()
-	{
-		return label;
+		return ComponentFactory.newLabel(id, model);
 	}
 
 }

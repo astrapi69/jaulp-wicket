@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice;
 import java.util.List;
 
 import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
@@ -27,7 +28,7 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	private final LocalisedDropDownChoice<T> dropdownChoice;
+	private final DropDownChoice<T> dropdownChoice;
 
 	public LocalizedDropdownChoicePanel(String id, IModel<T> model, IModel<String> labelModel,
 		List<T> enumValues)
@@ -47,7 +48,7 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 
 	}
 
-	public LocalisedDropDownChoice<T> getDropdownChoice()
+	public DropDownChoice<T> getDropdownChoice()
 	{
 		return dropdownChoice;
 	}

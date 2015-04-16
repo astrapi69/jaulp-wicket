@@ -15,12 +15,12 @@
  */
 package de.alpharogroup.wicket.components.imprint;
 
+import lombok.Getter;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
@@ -30,7 +30,7 @@ import de.alpharogroup.wicket.components.termofuse.disclaimer.DisclaimerPanel;
 
 /**
  * The Class ImprintPanel.
- * 
+ *
  * @author Asterios Raptis
  */
 public abstract class ImprintPanel extends BasePanel<ImprintModel>
@@ -40,16 +40,14 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+	@Getter
 	private final WebMarkupContainer disclaimerContainer;
-
-	public WebMarkupContainer getDisclaimerContainer()
-	{
-		return disclaimerContainer;
-	}
+	@Getter
+	private final WebMarkupContainer imprintContainer;
 
 	/**
 	 * Instantiates a new imprint panel.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 */
@@ -57,8 +55,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	{
 		super(id);
 
-		WebMarkupContainer imprintContainer = newImprintContainer("imprintContainer");
-		add(imprintContainer);
+		add(imprintContainer = newImprintContainer("imprintContainer"));
 
 		final Object[] domainNameParams = { getDomainName() };
 		imprintContainer.add(new Label("imprintHeaderLbl", newImprintHeaderModel()));
@@ -136,7 +133,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a WebMarkupContainer for the disclaimer content. This method is
 	 * invoked in the constructor from this class and can be overridden so users can provide their
 	 * own version of a disclaimer content.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the new {@link WebMarkupContainer} for the disclaimer content.
@@ -151,7 +148,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a WebMarkupContainer for the imprint content. This method is invoked
 	 * in the constructor from this class and can be overridden so users can provide their own
 	 * version of a imprint content.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the new {@link WebMarkupContainer} for the imprint content.
@@ -163,28 +160,29 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 
 	/**
 	 * Hook method for implement the specific domain name.
-	 * 
+	 *
 	 * @return the domain name
 	 */
 	protected abstract String getDomainName();
 
 	/**
-	 * Creates a new StringResourceModel from the given key.
-	 * 
+	 * Creates a new IModel<String> from the given key.
+	 *
 	 * @param key
 	 *            the key
 	 * @return the i model
 	 */
 	protected IModel<String> newIModel(String key)
 	{
-		return new StringResourceModel(key, this, null);
+		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
+			.defaultValue("").build(), this);
 	}
 
 	/**
 	 * Factory method to create a IModel for the 'service from'. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * 'service from'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newServiceFromModel()
@@ -195,22 +193,23 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	/**
 	 * Factory method to create a IModel for the 'slogan'. This method is invoked in the constructor
 	 * from this class and can be overridden so users can provide their own version of a 'slogan'.
-	 * 
+	 *
 	 * @param domainNameParams
 	 *            the domain name params
 	 * @return the i model
 	 */
 	protected IModel<String> newSloganModel(final Object[] domainNameParams)
 	{
-		return new StringResourceModel("main.global.company.url.and.slogan.label", this, null,
-			domainNameParams);
+		return ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("main.global.company.url.and.slogan.label")
+				.parameters(domainNameParams).defaultValue("").build(), this);
 	}
 
 	/**
 	 * Factory method to create a IModel for the 'imprint header'. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * 'imprint header'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newImprintHeaderModel()
@@ -222,7 +221,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'company name'. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * 'company name'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newCompanyNameModel()
@@ -234,7 +233,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'street and number'. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * 'street and number'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newStreetAndNumberModel()
@@ -246,7 +245,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'zip and city'. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * 'zip and city'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newZipAndCityModel()
@@ -257,7 +256,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	/**
 	 * Factory method to create a IModel for the 'state'. This method is invoked in the constructor
 	 * from this class and can be overridden so users can provide their own version of a 'state'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newStateModel()
@@ -269,7 +268,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'authorised representative label'. This method is
 	 * invoked in the constructor from this class and can be overridden so users can provide their
 	 * own version of a 'authorised representative label'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newAuthRepresentLabelModel()
@@ -281,7 +280,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'authorised representative content'. This method is
 	 * invoked in the constructor from this class and can be overridden so users can provide their
 	 * own version of a 'authorised representative content'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newAuthRepresentContentModel()
@@ -293,7 +292,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'company register entry header'. This method is
 	 * invoked in the constructor from this class and can be overridden so users can provide their
 	 * own version of a 'company register entry header'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newCompanyRegisterEntryHeaderModel()
@@ -305,7 +304,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'company register entry content'. This method is
 	 * invoked in the constructor from this class and can be overridden so users can provide their
 	 * own version of a 'company register entry content'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newCompanyRegisterEntryContentModel()
@@ -317,7 +316,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'company register entry number'. This method is
 	 * invoked in the constructor from this class and can be overridden so users can provide their
 	 * own version of a 'company register entry number'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newCompanyRegisterEntryNumberModel()
@@ -329,7 +328,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'company register indedification header'. This
 	 * method is invoked in the constructor from this class and can be overridden so users can
 	 * provide their own version of a 'company register indedification header'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newCompanyRegisterIndedificationHeaderModel()
@@ -341,7 +340,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	 * Factory method to create a IModel for the 'company register indedification content'. This
 	 * method is invoked in the constructor from this class and can be overridden so users can
 	 * provide their own version of a 'company register indedification content'.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newCompanyRegisterIndedificationContentModel()

@@ -67,8 +67,8 @@ public class LabeledImageCheckboxPanel extends Panel
 	 *
 	 * @param id
 	 *            the id
-	 * @param imageResource
-	 *            the IResource object
+	 * @param model
+	 *            the model that contains the IResource object
 	 * @return the created Image
 	 */
 	protected Image newImage(final String id, final IModel<LabeledImageCheckboxModel> model)

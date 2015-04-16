@@ -17,8 +17,11 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice;
 
 import java.util.List;
 
+import lombok.Getter;
+
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -32,7 +35,8 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	private final LocalisedDropDownChoice<T> dropdownChoice;
+	@Getter
+	private final DropDownChoice<T> dropdownChoice;
 
 	public EnumLocalizedDropdownChoicePanel(String id, IModel<M> model, IModel<String> labelModel,
 		List<T> enumValues)
@@ -54,16 +58,15 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 
 	}
 
-	protected LocalisedDropDownChoice<T> newLocalisedDropDownChoice(final String id,
-		final IModel<M> model, final List<? extends T> data,
-		final IChoiceRenderer<? super T> renderer)
+	protected DropDownChoice<T> newLocalisedDropDownChoice(final String id, final IModel<M> model,
+		final List<? extends T> data, final IChoiceRenderer<? super T> renderer)
 	{
 		PropertyModel<T> pm = new PropertyModel<>(model.getObject(), this.getId());
-		LocalisedDropDownChoice<T> ddc = new LocalisedDropDownChoice<>(id, pm, data, renderer);
+		DropDownChoice<T> ddc = new LocalisedDropDownChoice<>(id, pm, data, renderer);
 		return ddc;
 	}
 
-	public LocalisedDropDownChoice<T> getDropdownChoice()
+	public DropDownChoice<T> getDropdownChoice()
 	{
 		return dropdownChoice;
 	}

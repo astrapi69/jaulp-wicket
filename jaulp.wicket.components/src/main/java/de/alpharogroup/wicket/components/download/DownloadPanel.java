@@ -15,11 +15,16 @@
  */
 package de.alpharogroup.wicket.components.download;
 
+import static org.wicketeer.modelfactory.ModelFactory.from;
+import static org.wicketeer.modelfactory.ModelFactory.model;
+
 import java.io.IOException;
 
+import lombok.Getter;
+
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
@@ -28,15 +33,38 @@ import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.application.ApplicationUtils;
 import org.jaulp.wicket.behaviors.AjaxDownloadBehavior;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
 public abstract class DownloadPanel extends BasePanel<DownloadModel>
 {
 
 	private static final long serialVersionUID = 1L;
 
+	@Getter
+	private Component fileNameLabel;
+	@Getter
+	private AjaxLink<Void> downloadLink;
+
 	public DownloadPanel(String id, final IModel<DownloadModel> model)
 	{
 		super(id, model);
 		Args.notNull(model, "model");
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		fileNameLabel = newFileNameLabel("fileName", model(from(getModelObject()).getFilename()));
+		downloadLink = newDownloadLink("downloadLink", getModel());
+		downloadLink.addOrReplace(fileNameLabel);
+		addOrReplace(downloadLink);
+	}
+
+	protected abstract WebApplication getWebApplication();
+
+	protected AjaxLink<Void> newDownloadLink(final String id, final IModel<DownloadModel> model)
+	{
 		final AjaxDownloadBehavior download = new AjaxDownloadBehavior()
 		{
 			private static final long serialVersionUID = 1L;
@@ -62,9 +90,7 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 				return model.getObject().getFilename();
 			}
 		};
-
-		Label fileNameLabel = new Label("fileName", model.getObject().getFilename());
-		AjaxLink<Void> downloadLink = new AjaxLink<Void>("pdfLink")
+		AjaxLink<Void> downloadLink = new AjaxLink<Void>("downloadLink")
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -75,10 +101,12 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 			}
 		};
 		downloadLink.add(download);
-		downloadLink.add(fileNameLabel);
-		addOrReplace(downloadLink);
+		return downloadLink;
 	}
 
-	protected abstract WebApplication getWebApplication();
+	protected Component newFileNameLabel(final String id, IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
+	}
 
 }

@@ -28,14 +28,14 @@ public class ServletHolderConfiguration implements Serializable
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private Class<? extends Servlet> servletClass;
 	@Singular
 	private Map<String, String> initParameters;
-	
+
 	private String pathSpec;
-	
+
 	private String name;
-	
+
 
 }

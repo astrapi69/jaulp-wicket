@@ -39,6 +39,7 @@ public class ServletContextHandlerConfiguration
 	/**
 	 * use instead initParameters.
 	 * */
-	@Singular @Deprecated
+	@Singular
+	@Deprecated
 	private Map<String, String> contextHandlerInitParameters;
 }

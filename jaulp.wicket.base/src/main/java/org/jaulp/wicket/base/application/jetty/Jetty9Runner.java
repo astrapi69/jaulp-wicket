@@ -121,7 +121,10 @@ public class Jetty9Runner
 			https_config.addCustomizer(new SecureRequestCustomizer());
 
 			ServerConnector https = new ServerConnector(server, new SslConnectionFactory(
-				sslContextFactory, "http/1.1"), new HttpConnectionFactory(https_config));
+				sslContextFactory, "http/1.1"), new HttpConnectionFactory(https_config))
+			{
+
+			};
 			https.setPort(config.getHttpsPort());
 			https.setIdleTimeout(500000);
 
@@ -197,6 +200,7 @@ public class Jetty9Runner
 			.setMaxInactiveInterval(configuration.getMaxInactiveInterval());
 		return context;
 	}
+
 	public static ServletContextHandler getNewServletContextHandler(
 		ServletContextHandlerConfiguration configuration)
 	{
@@ -208,11 +212,11 @@ public class Jetty9Runner
 
 		context.getSessionHandler().getSessionManager()
 			.setMaxInactiveInterval(configuration.getMaxInactiveInterval());
-		
+
 		initializeFilterHolder(configuration, context);
-		
+
 		initializeServletHolder(configuration, context);
-		
+
 		for (Entry<String, String> initParameter : configuration.getInitParameters().entrySet())
 		{
 			context.setInitParameter(initParameter.getKey(), initParameter.getValue());
@@ -223,47 +227,65 @@ public class Jetty9Runner
 	private static void initializeFilterHolder(ServletContextHandlerConfiguration configuration,
 		final ServletContextHandler context)
 	{
-		List<FilterHolderConfiguration> filterHolderConfigurations = configuration.getFilterHolderConfigurations();
-		if(CollectionUtils.isNotEmpty(filterHolderConfigurations)) {
-			for(FilterHolderConfiguration filterHolderConfiguration : filterHolderConfigurations) {
-				final FilterHolder filter = new FilterHolder(filterHolderConfiguration.getFilterClass());
-				if(MapUtils.isNotEmpty(filterHolderConfiguration.getInitParameters())) {
-					for (Entry<String, String> initParameter : filterHolderConfiguration.getInitParameters().entrySet())
+		List<FilterHolderConfiguration> filterHolderConfigurations = configuration
+			.getFilterHolderConfigurations();
+		if (CollectionUtils.isNotEmpty(filterHolderConfigurations))
+		{
+			for (FilterHolderConfiguration filterHolderConfiguration : filterHolderConfigurations)
+			{
+				final FilterHolder filter = new FilterHolder(
+					filterHolderConfiguration.getFilterClass());
+				if (MapUtils.isNotEmpty(filterHolderConfiguration.getInitParameters()))
+				{
+					for (Entry<String, String> initParameter : filterHolderConfiguration
+						.getInitParameters().entrySet())
 					{
 						filter.setInitParameter(initParameter.getKey(), initParameter.getValue());
-					}					
+					}
 				}
-				if(StringUtils.isNotEmpty(filterHolderConfiguration.getFilterPath())) {
+				if (StringUtils.isNotEmpty(filterHolderConfiguration.getFilterPath()))
+				{
 					context.addFilter(filter, filterHolderConfiguration.getFilterPath(),
-						EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR));					
+						EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR));
 				}
-			}			
+			}
 		}
 	}
 
 	private static void initializeServletHolder(ServletContextHandlerConfiguration configuration,
 		final ServletContextHandler context)
 	{
-		List<ServletHolderConfiguration> servletHolderConfigurations = configuration.getServletHolderConfigurations();
-		if(CollectionUtils.isNotEmpty(servletHolderConfigurations)) {
-			for(ServletHolderConfiguration servletHolderConfiguration : servletHolderConfigurations) {
+		List<ServletHolderConfiguration> servletHolderConfigurations = configuration
+			.getServletHolderConfigurations();
+		if (CollectionUtils.isNotEmpty(servletHolderConfigurations))
+		{
+			for (ServletHolderConfiguration servletHolderConfiguration : servletHolderConfigurations)
+			{
 				String servletName = servletHolderConfiguration.getName();
 				ServletHolder servletHolder = null;
-				if(StringUtils.isNotEmpty(servletName)) {
-					servletHolder = new ServletHolder(servletName, servletHolderConfiguration.getServletClass());					
-				} else {
-					servletHolder = new ServletHolder(servletHolderConfiguration.getServletClass());					
+				if (StringUtils.isNotEmpty(servletName))
+				{
+					servletHolder = new ServletHolder(servletName,
+						servletHolderConfiguration.getServletClass());
 				}
-				if(MapUtils.isNotEmpty(servletHolderConfiguration.getInitParameters())) {
-					for (Entry<String, String> initParameter : servletHolderConfiguration.getInitParameters().entrySet())
+				else
+				{
+					servletHolder = new ServletHolder(servletHolderConfiguration.getServletClass());
+				}
+				if (MapUtils.isNotEmpty(servletHolderConfiguration.getInitParameters()))
+				{
+					for (Entry<String, String> initParameter : servletHolderConfiguration
+						.getInitParameters().entrySet())
 					{
-						servletHolder.setInitParameter(initParameter.getKey(), initParameter.getValue());
-					}					
+						servletHolder.setInitParameter(initParameter.getKey(),
+							initParameter.getValue());
+					}
 				}
-				if(StringUtils.isNotEmpty(servletHolderConfiguration.getPathSpec())) {
-					context.addServlet(servletHolder, servletHolderConfiguration.getPathSpec());				
+				if (StringUtils.isNotEmpty(servletHolderConfiguration.getPathSpec()))
+				{
+					context.addServlet(servletHolder, servletHolderConfiguration.getPathSpec());
 				}
-			}			
+			}
 		}
 	}
 

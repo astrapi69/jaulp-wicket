@@ -96,6 +96,7 @@ public abstract class AjaxRadio<T> extends Radio<T>
 	 */
 	protected void commonInit()
 	{
+		setOutputMarkupId(true);
 		add(newAjaxEventBehavior("click"));
 	}
 

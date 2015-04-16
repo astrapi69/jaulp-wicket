@@ -15,17 +15,18 @@
  */
 package org.jaulp.wicket.components.i18n.dropdownchoice.renderers;
 
-
 import java.util.List;
+
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class LocalisedChoiceRenderer.
- * 
+ *
  * @author Asterios Raptis
  */
 public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
@@ -45,7 +46,7 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 
 	/**
 	 * Instantiates a new localised choice renderer.
-	 * 
+	 *
 	 * @param propertiesKeyPrefix
 	 *            the properties key prefix
 	 * @param component
@@ -63,7 +64,7 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 
 	/**
 	 * {@inheritDoc}.
-	 * 
+	 *
 	 * @param object
 	 *            the object
 	 * @return the display value
@@ -72,8 +73,8 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 	@Override
 	public Object getDisplayValue(final String object)
 	{
-		StringResourceModel resourceModel = new StringResourceModel(propertiesKeyPrefix + "."
-			+ object, component, null);
+		IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key(propertiesKeyPrefix + "." + object).defaultValue("").build(), component);
 		String value = resourceModel.getObject();
 		return value;
 
@@ -81,7 +82,7 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 
 	/**
 	 * {@inheritDoc}.
-	 * 
+	 *
 	 * @param object
 	 *            the object
 	 * @param index

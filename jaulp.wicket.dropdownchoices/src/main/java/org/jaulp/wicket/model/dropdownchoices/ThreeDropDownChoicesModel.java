@@ -18,6 +18,8 @@ package org.jaulp.wicket.model.dropdownchoices;
 import java.util.List;
 import java.util.Map;
 
+import lombok.Getter;
+
 /**
  * The Class ThreeDropDownChoicesModel.
  *
@@ -32,9 +34,11 @@ public class ThreeDropDownChoicesModel<T> extends TwoDropDownChoicesModel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The selected option. */
+	@Getter
 	private T selectedValueOption;
 
 	/** The child choices. */
+	@Getter
 	private final List<T> selectedValuesChoices;
 
 	/**
@@ -63,8 +67,7 @@ public class ThreeDropDownChoicesModel<T> extends TwoDropDownChoicesModel<T>
 	 */
 	public boolean addSelectedValue(final T selectedValue)
 	{
-		List<T> selectedValues = getSelectedValuesChoicesObject();
-		return selectedValues.add(selectedValue);
+		return getSelectedValuesChoices().add(selectedValue);
 	}
 
 	/**
@@ -76,37 +79,7 @@ public class ThreeDropDownChoicesModel<T> extends TwoDropDownChoicesModel<T>
 	 */
 	public boolean containsSelectedValue(final T selectedValue)
 	{
-		return getSelectedValuesChoicesObject().contains(selectedValue);
-	}
-
-	/**
-	 * Gets the selected value option.
-	 *
-	 * @return the selected value option
-	 */
-	public T getSelectedValueOption()
-	{
-		return selectedValueOption;
-	}
-
-	/**
-	 * Gets the selected values choices.
-	 *
-	 * @return the selected values choices
-	 */
-	public List<T> getSelectedValuesChoices()
-	{
-		return selectedValuesChoices;
-	}
-
-	/**
-	 * Gets the selected values choices object.
-	 *
-	 * @return the selected values choices object
-	 */
-	public List<T> getSelectedValuesChoicesObject()
-	{
-		return this.selectedValuesChoices;
+		return getSelectedValuesChoices().contains(selectedValue);
 	}
 
 	/**
@@ -118,8 +91,7 @@ public class ThreeDropDownChoicesModel<T> extends TwoDropDownChoicesModel<T>
 	 */
 	public boolean removeSelectedValue(final T selectedValue)
 	{
-		List<T> selectedValues = getSelectedValuesChoicesObject();
-		return selectedValues.remove(selectedValue);
+		return getSelectedValuesChoices().remove(selectedValue);
 	}
 
 }

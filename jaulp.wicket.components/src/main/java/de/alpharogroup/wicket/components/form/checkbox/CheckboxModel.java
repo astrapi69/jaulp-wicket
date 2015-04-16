@@ -40,7 +40,7 @@ public class CheckboxModel<T> implements Serializable
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	List<T> selectedItems = new ArrayList<T>();
-	List<T> choices;
+	private List<T> selectedItems = new ArrayList<T>();
+	private List<T> choices;
 	private String labelPropertyExpression;
 }

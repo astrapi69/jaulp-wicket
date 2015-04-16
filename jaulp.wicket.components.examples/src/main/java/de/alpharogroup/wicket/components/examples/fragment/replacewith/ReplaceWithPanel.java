@@ -32,6 +32,7 @@ import org.apache.wicket.model.Model;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.EditPersonPanel;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonModel;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.ViewPersonPanel;
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 public class ReplaceWithPanel extends Panel
 {
@@ -55,9 +56,9 @@ public class ReplaceWithPanel extends Panel
 		List<String> choices = new ArrayList<String>();
 		choices.add("View person");
 		choices.add("Edit person");
-		final RadioChoice<String> radioChoice = new RadioChoice<String>("radioChoice");
-		radioChoice.setModel(new Model<String>(selectedPanel));
-		radioChoice.setChoices(choices);
+		final RadioChoice<String> radioChoice = ComponentFactory.newRadioChoice("radioChoice",
+			new Model<String>(selectedPanel), choices);
+
 		radioChoice.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
 			private static final long serialVersionUID = 1L;

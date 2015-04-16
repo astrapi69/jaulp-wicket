@@ -15,8 +15,8 @@
  */
 package org.jaulp.wicket.behaviors.components;
 
-
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.behaviors.MailtoBehavior;
 import org.jaulp.wicket.behaviors.models.MailtoModel;
 
@@ -44,10 +44,9 @@ public class MailtoLabel extends Label
 	public MailtoLabel(final String id, final MailtoModel mailtoModel)
 	{
 		super(id);
-		final MailtoBehavior<MailtoModel> mailtoBehavior = new MailtoBehavior<MailtoModel>(
-			mailtoModel);
-		this.setDefaultModel(mailtoModel.getMailtoViewModel());
-		this.add(mailtoBehavior);
+		setOutputMarkupId(true);
+		add(new MailtoBehavior<MailtoModel>(mailtoModel)).setDefaultModel(
+			new PropertyModel<Object>(mailtoModel, "mailtoViewModel"));
 	}
 
 }

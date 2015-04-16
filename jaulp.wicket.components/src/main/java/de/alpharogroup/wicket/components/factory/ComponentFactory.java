@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.factory;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
@@ -30,10 +31,13 @@ import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.CheckGroup;
 import org.apache.wicket.markup.html.form.CheckGroupSelector;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.HiddenField;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.form.PasswordTextField;
+import org.apache.wicket.markup.html.form.RadioChoice;
 import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextArea;
@@ -47,7 +51,8 @@ import org.apache.wicket.request.resource.IResource;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * A factory for create Component objects.
+ * A factory for create Component objects. All components are setting
+ * Component#setOutputMarkupId(boolean) to true, so they are ajaxifiable.
  */
 public class ComponentFactory
 {
@@ -100,6 +105,50 @@ public class ComponentFactory
 		DateTimeField dateTextField = new DateTimeField(id, model);
 		dateTextField.setOutputMarkupId(true);
 		return dateTextField;
+	}
+
+	/**
+	 * Factory method for create a new {@link DropDownChoice}.
+	 *
+	 * @param <T>
+	 *            the generic type of the {@link DropDownChoice}
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param choices
+	 *            The collection of choices in the dropdown
+	 * @return the new {@link DropDownChoice}
+	 */
+	public static <T> DropDownChoice<T> newDropDownChoice(final String id, IModel<T> model,
+		final List<? extends T> choices)
+	{
+		DropDownChoice<T> dropDownChoice = new DropDownChoice<T>(id, model, choices);
+		dropDownChoice.setOutputMarkupId(true);
+		return dropDownChoice;
+	}
+
+	/**
+	 * Factory method for create a new {@link DropDownChoice}.
+	 *
+	 * @param <T>
+	 *            the generic type of the {@link DropDownChoice}
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param choices
+	 *            The collection of choices in the dropdown
+	 * @param renderer
+	 *            The rendering engine
+	 * @return the new {@link DropDownChoice}
+	 */
+	public static <T> DropDownChoice<T> newDropDownChoice(final String id, IModel<T> model,
+		final List<? extends T> choices, final IChoiceRenderer<? super T> renderer)
+	{
+		DropDownChoice<T> dropDownChoice = new DropDownChoice<T>(id, model, choices, renderer);
+		dropDownChoice.setOutputMarkupId(true);
+		return dropDownChoice;
 	}
 
 	/**
@@ -435,6 +484,50 @@ public class ComponentFactory
 		RadioGroup<T> radioGroup = new RadioGroup<>(id, model);
 		radioGroup.setOutputMarkupId(true);
 		return radioGroup;
+	}
+
+	/**
+	 * Factory method for create a new {@link RadioChoice}.
+	 *
+	 * @param <T>
+	 *            the generic type of the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param choices
+	 *            The list of choices in the radio choice
+	 * @param renderer
+	 *            the renderer
+	 * @return the new {@link RadioChoice}
+	 */
+	public static <T> RadioChoice<T> newRadioChoice(final String id, IModel<T> model,
+		final List<? extends T> choices, final IChoiceRenderer<? super T> renderer)
+	{
+		RadioChoice<T> radioChoice = new RadioChoice<T>(id, model, choices, renderer);
+		radioChoice.setOutputMarkupId(true);
+		return radioChoice;
+	}
+
+	/**
+	 * Factory method for create a new {@link RadioChoice}.
+	 *
+	 * @param <T>
+	 *            the generic type of the model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param choices
+	 *            The list of choices in the radio choice
+	 * @return the new {@link RadioChoice}
+	 */
+	public static <T> RadioChoice<T> newRadioChoice(final String id, IModel<T> model,
+		final List<? extends T> choices)
+	{
+		RadioChoice<T> radioChoice = new RadioChoice<T>(id, model, choices);
+		radioChoice.setOutputMarkupId(true);
+		return radioChoice;
 	}
 
 	/**

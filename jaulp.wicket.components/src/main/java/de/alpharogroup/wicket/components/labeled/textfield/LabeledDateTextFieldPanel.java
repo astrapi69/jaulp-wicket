@@ -18,6 +18,8 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 import java.util.Date;
 import java.util.Locale;
 
+import lombok.Getter;
+
 import org.apache.wicket.datetime.StyleDateConverter;
 import org.apache.wicket.datetime.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.yui.calendar.DatePicker;
@@ -39,23 +41,8 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The text field. */
+	@Getter
 	private final DateTextField dateTextField;
-
-	public DateTextField getDateTextField()
-	{
-		return dateTextField;
-	}
-
-	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
-	 *
-	 * @param id
-	 *            the id
-	 */
-	public LabeledDateTextFieldPanel(String id)
-	{
-		this(id, null, null);
-	}
 
 	/**
 	 * Instantiates a new LabeledDateTextfieldPanel.

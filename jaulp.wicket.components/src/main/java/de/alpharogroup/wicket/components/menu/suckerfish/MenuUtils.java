@@ -26,7 +26,7 @@ import de.alpharogroup.wicket.components.link.LinkUtils;
 
 /**
  * The Class MenuUtils.
- * 
+ *
  * @author Asterios Raptis
  */
 public class MenuUtils
@@ -34,7 +34,7 @@ public class MenuUtils
 
 	/**
 	 * Creates the bookmarkable page link.
-	 * 
+	 *
 	 * @param linkId
 	 *            the link id
 	 * @param pageClass
@@ -57,7 +57,7 @@ public class MenuUtils
 
 	/**
 	 * Creates the menu item.
-	 * 
+	 *
 	 * @param pageClass
 	 *            the page class
 	 * @param resourceModelKey
@@ -73,29 +73,29 @@ public class MenuUtils
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass, parameters);
-		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(
-			resourceModelKey, component);
-		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceModelKey,
+			component);
+		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, labelModel);
 		return menuItem;
 	}
 
 	/**
 	 * Creates the menu item.
-	 * 
-	 * @param stringResourceModel
-	 *            the string resource model
+	 *
+	 * @param labelModel
+	 *            the label model
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem createMenuItem(final IModel<String> stringResourceModel)
+	public static MenuItem createMenuItem(final IModel<String> labelModel)
 	{
-		final MenuItem menuItem = new MenuItem(stringResourceModel);
+		final MenuItem menuItem = new MenuItem(labelModel);
 		return menuItem;
 	}
 
 
 	/**
 	 * Creates the menu item.
-	 * 
+	 *
 	 * @param pageClass
 	 *            the page class
 	 * @param resourceModelKey
@@ -109,9 +109,9 @@ public class MenuUtils
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass);
-		IModel<String> stringResourceModel = ResourceModelFactory.newResourceModel(
-			resourceModelKey, component);
-		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, stringResourceModel);
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceModelKey,
+			component);
+		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, labelModel);
 		return menuItem;
 	}
 

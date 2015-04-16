@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -35,6 +37,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The EmailTextField. */
+	@Getter
 	private final EmailTextField emailTextField;
 
 	/**
@@ -86,16 +89,6 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	public String getInput()
 	{
 		return emailTextField.getInput();
-	}
-
-	/**
-	 * Gets the EmailTextField.
-	 *
-	 * @return the EmailTextField
-	 */
-	public EmailTextField getEmailTextField()
-	{
-		return emailTextField;
 	}
 
 	/**

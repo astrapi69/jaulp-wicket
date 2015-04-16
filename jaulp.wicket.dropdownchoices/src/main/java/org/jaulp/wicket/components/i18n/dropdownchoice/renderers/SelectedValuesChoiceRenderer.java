@@ -17,14 +17,16 @@ package org.jaulp.wicket.components.i18n.dropdownchoice.renderers;
 
 import java.util.List;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class SelectedValuesChoiceRenderer.
- * 
+ *
  * @author Asterios Raptis
  */
 public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
@@ -46,7 +48,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 
 	/**
 	 * Instantiates a new selected values choice renderer.
-	 * 
+	 *
 	 * @param component
 	 *            the component
 	 * @param componentClass
@@ -60,7 +62,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 
 	/**
 	 * {@inheritDoc}.
-	 * 
+	 *
 	 * @param object
 	 *            the object
 	 * @return the display value
@@ -74,17 +76,19 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 		StringBuilder sb = new StringBuilder();
 		if (splittedValue.length == 1)
 		{
-			StringResourceModel resourceModel = new StringResourceModel(splittedValue[0],
-				component, null);
+			IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+				.builder().key(splittedValue[0]).defaultValue("").build(), component);
 			sb.append(resourceModel.getObject());
 		}
 		else
 		{
-			StringResourceModel resourceModel = new StringResourceModel(splittedValue[0],
-				component, null);
+			IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+				.builder().key(splittedValue[0]).defaultValue("").build(), component);
 			sb.append(resourceModel.getObject());
 			sb.append(splitString);
-			resourceModel = new StringResourceModel(splittedValue[1], component, null);
+			resourceModel = ResourceModelFactory.newResourceModel(
+				ResourceBundleKey.builder().key(splittedValue[1]).defaultValue("").build(),
+				component);
 			sb.append(resourceModel.getObject());
 		}
 		return sb.toString();
@@ -92,7 +96,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 
 	/**
 	 * {@inheritDoc}.
-	 * 
+	 *
 	 * @param object
 	 *            the object
 	 * @param index

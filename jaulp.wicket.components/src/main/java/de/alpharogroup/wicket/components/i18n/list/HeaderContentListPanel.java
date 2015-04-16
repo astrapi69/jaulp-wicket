@@ -15,15 +15,17 @@
  */
 package de.alpharogroup.wicket.components.i18n.list;
 
+import lombok.Getter;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * The Class HeaderContentListPanel takes a header resource key and a list of content resource keys
@@ -36,9 +38,11 @@ public abstract class HeaderContentListPanel extends Panel
 	private static final long serialVersionUID = 1L;
 
 	/** The header. */
+	@Getter
 	private final Component header;
 
 	/** The list panel. */
+	@Getter
 	private final Component listPanel;
 
 	/**
@@ -87,21 +91,6 @@ public abstract class HeaderContentListPanel extends Panel
 	}
 
 	/**
-	 * Gets the header.
-	 *
-	 * @return the header
-	 */
-	public Component getHeader()
-	{
-		return header;
-	}
-
-	public Component getListPanel()
-	{
-		return listPanel;
-	}
-
-	/**
 	 * New header model.
 	 *
 	 * @param resourceKey
@@ -137,8 +126,7 @@ public abstract class HeaderContentListPanel extends Panel
 	 */
 	protected Component newHeaderLabel(String id, IModel<String> model)
 	{
-		Label label = new Label(id, model);
-		return label;
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**

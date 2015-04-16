@@ -15,6 +15,7 @@
  */
 package de.alpharogroup.wicket.components.i18n.content;
 
+import lombok.Getter;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
@@ -28,8 +29,9 @@ public class ContentPanel extends BasePanel<ContentModel>
 {
 
 	private static final long serialVersionUID = 1L;
-
+	@Getter
 	private final Component header;
+	@Getter
 	private final Component content;
 
 	public ContentPanel(String id)
@@ -53,16 +55,6 @@ public class ContentPanel extends BasePanel<ContentModel>
 			add(header = newHeaderLabel("header", newHeaderModel()));
 			add(content = newContentLabel("content", newContentModel()));
 		}
-	}
-
-	public Component getHeader()
-	{
-		return header;
-	}
-
-	public Component getContent()
-	{
-		return content;
 	}
 
 	protected Component newHeaderLabel(String id, IModel<String> model)

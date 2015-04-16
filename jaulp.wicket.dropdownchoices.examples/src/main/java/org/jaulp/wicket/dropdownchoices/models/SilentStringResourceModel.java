@@ -27,7 +27,11 @@ import org.apache.wicket.model.StringResourceModel;
 
 /**
  * The Class SilentStringResourceModel.
+ * 
+ * @deprecated use instead Label from wicket and create IModel with the
+ *             {@link org.jaulp.wicket.base.util.resource.ResourceModelFactory}.
  */
+@Deprecated
 public class SilentStringResourceModel extends StringResourceModel
 {
 	/**

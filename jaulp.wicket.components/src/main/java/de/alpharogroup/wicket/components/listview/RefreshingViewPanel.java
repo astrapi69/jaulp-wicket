@@ -15,25 +15,30 @@
  */
 package de.alpharogroup.wicket.components.listview;
 
+import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 import lombok.Getter;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.markup.repeater.RefreshingView;
+import org.apache.wicket.markup.repeater.util.ModelIteratorAdapter;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * The Class ListViewPanel takes a {@link ListView} of a generic type.
+ * The Class RefreshingViewPanel takes a {@link org.apache.wicket.markup.repeater.RefreshingView} of
+ * a generic type.
  *
  * @param <T>
  *            the generic type
  */
-public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
+public abstract class RefreshingViewPanel<T extends Serializable> extends GenericPanel<List<T>>
 {
 
 	/** The Constant serialVersionUID. */
@@ -41,33 +46,33 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 
 	/** The list view. */
 	@Getter
-	private final ListView<T> listView;
+	private final RefreshingView<T> refreshingView;
 
 	/**
-	 * Instantiates a new {@link ListViewPanel}.
+	 * Instantiates a new {@link de.alpharogroup.wicket.components.listview.RefreshingViewPanel}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param list
 	 *            the list
 	 */
-	public ListViewPanel(String id, List<T> list)
+	public RefreshingViewPanel(String id, List<T> list)
 	{
 		this(id, new ListModel<>(list));
 	}
 
 	/**
-	 * Instantiates a new {@link ListViewPanel}.
+	 * Instantiates a new {@link de.alpharogroup.wicket.components.listview.RefreshingViewPanel}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
 	 */
-	public ListViewPanel(String id, IModel<List<T>> model)
+	public RefreshingViewPanel(String id, IModel<List<T>> model)
 	{
 		super(id, Args.notNull(model, "model"));
-		add(listView = newListView("listView", model));
+		add(refreshingView = newRefreshingView("refreshingView", model));
 	}
 
 	/**
@@ -79,17 +84,36 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 	 *            the model
 	 * @return the list view
 	 */
-	protected ListView<T> newListView(String id, IModel<List<T>> model)
+	protected RefreshingView<T> newRefreshingView(final String id, final IModel<List<T>> model)
 	{
-		ListView<T> listView = new ListView<T>(id, model)
+		RefreshingView<T> listView = new RefreshingView<T>(id, model)
 		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(ListItem<T> item)
+			protected Iterator<IModel<T>> getItemModels()
+			{
+				return new ModelIteratorAdapter<T>(getModelObject().iterator())
+				{
+					@Override
+					protected IModel<T> model(T object)
+					{
+						return Model.of(object);
+					}
+				};
+			}
+
+			@Override
+			protected void populateItem(Item<T> item)
 			{
 				item.add(newListComponent("item", item));
+			}
+
+			@Override
+			protected Item<T> newItem(String id, int index, IModel<T> model)
+			{
+				return RefreshingViewPanel.this.newItem(id, index, model);
 			}
 
 		};
@@ -105,6 +129,10 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 	 *            the item
 	 * @return the component
 	 */
-	protected abstract Component newListComponent(String id, ListItem<T> item);
+	protected abstract Component newListComponent(String id, Item<T> item);
 
+	protected Item<T> newItem(String id, int index, IModel<T> model)
+	{
+		return new Item<T>(id, index, model);
+	}
 }

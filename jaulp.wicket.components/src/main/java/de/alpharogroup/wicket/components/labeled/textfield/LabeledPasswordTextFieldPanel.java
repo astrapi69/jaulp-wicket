@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -24,10 +26,10 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
  * Convenience class for labeled PasswordTextField.
- * 
+ *
  * @param <T>
  *            the generic type
- * 
+ *
  */
 public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 {
@@ -36,28 +38,8 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	private static final long serialVersionUID = 1L;
 
 	/** The text field. */
+	@Getter
 	private final PasswordTextField passwordTextField;
-
-	/**
-	 * Gets the password text field.
-	 *
-	 * @return the password text field
-	 */
-	public PasswordTextField getPasswordTextField()
-	{
-		return passwordTextField;
-	}
-
-	/**
-	 * Instantiates a new LabeledPasswordTextFieldPanel.
-	 * 
-	 * @param id
-	 *            the id
-	 */
-	public LabeledPasswordTextFieldPanel(String id)
-	{
-		this(id, null, null);
-	}
 
 	/**
 	 * Instantiates a new LabeledPasswordTextFieldPanel.
@@ -85,7 +67,7 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 * Factory method for creating the PasswordTextField. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * PasswordTextField.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model

@@ -38,6 +38,7 @@ import org.jaulp.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.radio.RadioGroupModel;
+import de.alpharogroup.wicket.components.radio.RadioGroupPanel;
 
 public class RadioGroupExamplePanel extends BasePanel<Company>
 {
@@ -93,6 +94,18 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 					Model.of(it.getModelObject().getName())));
 			}
 		});
+		RadioGroupPanel radioGroupPanel = new RadioGroupPanel<Company>("radioGroupPanel",
+			Model.of(radioGroupModel))
+		{
+			@Override
+			protected void onUpdate(AjaxRequestTarget target)
+			{
+				super.onUpdate(target);
+				target.add(getFeedback());
+				info("Selected Type : " + radioGroupModel.getSelected());
+			}
+		};
+		add(radioGroupPanel);
 	}
 
 	protected Component getFeedback()

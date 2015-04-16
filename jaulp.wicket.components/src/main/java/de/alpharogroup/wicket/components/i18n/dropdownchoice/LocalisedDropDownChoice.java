@@ -38,6 +38,10 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	// instance block for set the markup id, with other words make this component ajaxifiable...
+	{
+		setOutputMarkupId(true);
+	}
 
 	/**
 	 * Instantiates a new localed drop down choice.

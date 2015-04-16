@@ -24,7 +24,7 @@ import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
  *
  * @author admin
  */
-public class TrademarksModelsPanel extends TwoDropDownChoicesPanel
+public class TrademarksModelsPanel extends TwoDropDownChoicesPanel<String>
 {
 
 	/**

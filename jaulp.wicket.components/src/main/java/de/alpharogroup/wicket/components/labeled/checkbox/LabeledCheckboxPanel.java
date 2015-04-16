@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled.checkbox;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -24,7 +26,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
  * Convenience class for labeled checkbox.
- * 
+ *
  * @param <T>
  *            the generic type
  */
@@ -35,6 +37,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/** The CheckBox component. */
+	@Getter
 	private final CheckBox checkBox;
 
 	/**

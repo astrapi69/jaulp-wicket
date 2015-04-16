@@ -15,11 +15,14 @@
  */
 package de.alpharogroup.wicket.components.deregistration;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import org.apache.wicket.util.io.IClusterable;
 
 /**
  * The Class DeregistrationModel.
- * 
+ *
  * @author Asterios Raptis
  */
 public class DeregistrationModel implements IClusterable
@@ -31,27 +34,8 @@ public class DeregistrationModel implements IClusterable
 	private static final long serialVersionUID = 1L;
 
 	/** The motivation. */
+	@Getter
+	@Setter
 	private String motivation;
-
-	/**
-	 * Gets the motivation.
-	 * 
-	 * @return the motivation
-	 */
-	public String getMotivation()
-	{
-		return motivation;
-	}
-
-	/**
-	 * Sets the motivation.
-	 * 
-	 * @param motivation
-	 *            the new motivation
-	 */
-	public void setMotivation(final String motivation)
-	{
-		this.motivation = motivation;
-	}
 
 }

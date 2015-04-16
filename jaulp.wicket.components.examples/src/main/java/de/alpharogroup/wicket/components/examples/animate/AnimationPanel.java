@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.examples.animate;
 
 import lombok.Getter;
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -24,9 +25,12 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.jaulp.wicket.behaviors.BuildableChainableStatement;
 import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
+import org.odlabs.wiquery.core.effects.EffectBehavior;
+import org.odlabs.wiquery.core.effects.EffectSpeed;
+import org.odlabs.wiquery.core.effects.fading.FadeTo;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
@@ -46,20 +50,28 @@ public class AnimationPanel extends Panel
 	{
 		super(id, model);
 
-		add(animateButton = newAnimateButton("animateButton"));
-		WebMarkupContainer containerAnimate = new WebMarkupContainer("containerAnimate");
-		add(containerAnimate);
+		Form<?> form = ComponentFactory.newForm("form");
+		add(form);
+		form.add(animateButton = newAnimateButton("animateButton", form));
 
-		JqueryStatementsBehavior jqueryStatementsBehavior = new JqueryStatementsBehavior()
-			.add(new BuildableChainableStatement.Builder().label("animate").args("{height: '300'}")
+		WebMarkupContainer containerAnimate = new WebMarkupContainer("containerAnimate");
+		form.add(containerAnimate);
+
+		JqueryStatementsBehavior jqueryStatementsBehavior = new JqueryStatementsBehavior().add(
+			new BuildableChainableStatement.Builder().label("animate").args("{height: '300'}")
+				.build()).add(
+			new BuildableChainableStatement.Builder().label("animate").args("{left: '300px'}")
 				.build());
+		String render = (String)jqueryStatementsBehavior.createRenderedStatement(containerAnimate);
 		containerAnimate.add(jqueryStatementsBehavior);
+		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 0.4f)));
+		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 1.0f)));
 	}
 
 
-	protected AjaxButton newAnimateButton(final String id)
+	protected AjaxButton newAnimateButton(final String id, Form<?> form)
 	{
-		final AjaxButton ajaxButton = new AjaxButton(id)
+		final AjaxButton ajaxButton = new AjaxButton(id, form)
 		{
 			/**
 			 * The serialVersionUID.
@@ -79,7 +91,8 @@ public class AnimationPanel extends Panel
 			}
 
 		};
-		final IModel<String> yesLabelModel = new StringResourceModel("animate.label", this, null);
+		final IModel<String> yesLabelModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("animate.label").defaultValue("").build(), this);
 		ajaxButton.add(newLabel("animateLabel", yesLabelModel));
 		return ajaxButton;
 	}
@@ -87,7 +100,7 @@ public class AnimationPanel extends Panel
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model

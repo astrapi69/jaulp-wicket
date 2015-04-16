@@ -20,14 +20,16 @@ import static org.wicketeer.modelfactory.ModelFactory.model;
 
 import java.util.List;
 
+import lombok.Getter;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-import org.jaulp.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
+import org.jaulp.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
 
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 
@@ -36,17 +38,24 @@ import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownCh
  *
  * @author Asterios Raptis
  */
-public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDropDownChoicesModel>
+public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDownChoicesModel<T>>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	public static final String ROOT_CHOICE_ID = "rootChoice";
+	public static final String CHILD_CHOICE_ID = "childChoice";
 
 	/** The root choice. */
-	private final LocalisedDropDownChoice<String> rootChoice;
+	@Getter
+	private DropDownChoice<T> rootChoice;
 
 	/** The child choice. */
-	private final LocalisedDropDownChoice<String> childChoice;
+	@Getter
+	private DropDownChoice<T> childChoice;
+
+	private IChoiceRenderer<T> rootRenderer;
+	private IChoiceRenderer<T> childRenderer;
 
 	/**
 	 * Instantiates a new two drop down choices panel.
@@ -61,33 +70,41 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 	 *            the child renderer
 	 */
 	public TwoDropDownChoicesPanel(final String id,
-		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel,
-		IChoiceRenderer<String> rootRenderer, IChoiceRenderer<String> childRenderer)
+		final TwoDropDownChoicesModel<T> stringTwoDropDownChoicesModel,
+		IChoiceRenderer<T> rootRenderer, IChoiceRenderer<T> childRenderer)
 	{
-		super(id);
-
-		setModel(Model.of(stringTwoDropDownChoicesModel));
-		IModel<String> selectedRootOptionModel = null;
-//		selectedRootOptionModel = model(from(getModel()).getSelectedRootOption());
-		selectedRootOptionModel = new PropertyModel<String>(stringTwoDropDownChoicesModel, "selectedRootOption");
-		rootChoice = newRootChoice("rootChoice", 
-			selectedRootOptionModel, 
-			stringTwoDropDownChoicesModel.getRootChoices(), 
-			rootRenderer);
-		IModel<String> selectedChildOptionModel = null;
-//		selectedChildOptionModel = model(from(stringTwoDropDownChoicesModel).getSelectedChildOption());
-		selectedChildOptionModel = new PropertyModel<String>(stringTwoDropDownChoicesModel, "selectedChildOption");
-		childChoice = newChildChoice("childChoice", 
-			selectedChildOptionModel, 
-			stringTwoDropDownChoicesModel.getChildChoices(),
-			childRenderer);
+		super(id, Model.of(stringTwoDropDownChoicesModel));
+		IModel<T> selectedRootOptionModel = null;
+		getModelObject().getRootChoices();
+		selectedRootOptionModel = model(from(getModel()).getSelectedRootOption());
+		// selectedRootOptionModel = new PropertyModel<T>(stringTwoDropDownChoicesModel,
+		// "selectedRootOption");
+		rootChoice = newRootChoice(ROOT_CHOICE_ID, selectedRootOptionModel, getModelObject()
+			.getRootChoices(), rootRenderer);
+		IModel<T> selectedChildOptionModel = null;
+		selectedChildOptionModel = model(from(getModel()).getSelectedChildOption());
+		// selectedChildOptionModel = new PropertyModel<T>(stringTwoDropDownChoicesModel,
+		// "selectedChildOption");
+		childChoice = newChildChoice(CHILD_CHOICE_ID, selectedChildOptionModel, getModelObject()
+			.getChildChoices(), childRenderer);
 
 		add(rootChoice);
 		add(childChoice);
 	}
 
 	/**
-	 * Factory method for the root choice.
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+	}
+
+	/**
+	 * Factory method for create a new root choice. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * root choice.
 	 *
 	 * @param id
 	 *            the id
@@ -99,12 +116,10 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 	 *            the renderer
 	 * @return the root choice
 	 */
-	protected LocalisedDropDownChoice<String> newRootChoice(final String id,
-		final IModel<String> model, final IModel<? extends List<? extends String>> choices,
-		final IChoiceRenderer<? super String> renderer)
+	protected DropDownChoice<T> newRootChoice(final String id, final IModel<T> model,
+		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
 	{
-		LocalisedDropDownChoice<String> rc = new LocalisedDropDownChoice<>(id, model, choices,
-			renderer);
+		DropDownChoice<T> rc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
 		rc.add(new AjaxFormComponentUpdatingBehavior("onchange")
 		{
 			/** The Constant serialVersionUID. */
@@ -120,7 +135,9 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 	}
 
 	/**
-	 * Factory method for the child choice.
+	 * Factory method for create a new child choice. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * child choice.
 	 *
 	 * @param id
 	 *            the id
@@ -132,33 +149,12 @@ public abstract class TwoDropDownChoicesPanel extends GenericPanel<StringTwoDrop
 	 *            the renderer
 	 * @return the child choice
 	 */
-	protected LocalisedDropDownChoice<String> newChildChoice(final String id,
-		final IModel<String> model, final IModel<? extends List<? extends String>> choices,
-		final IChoiceRenderer<? super String> renderer)
+	protected DropDownChoice<T> newChildChoice(final String id, final IModel<T> model,
+		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
 	{
-		LocalisedDropDownChoice<String> cc = new LocalisedDropDownChoice<>(id, model, choices,
-			renderer);
+		DropDownChoice<T> cc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
 		cc.setOutputMarkupId(true);
 		return cc;
 	}
 
-	/**
-	 * Gets the child choice.
-	 *
-	 * @return the child choice
-	 */
-	public LocalisedDropDownChoice<String> getChildChoice()
-	{
-		return childChoice;
-	}
-
-	/**
-	 * Gets the root choice.
-	 *
-	 * @return the root choice
-	 */
-	public LocalisedDropDownChoice<String> getRootChoice()
-	{
-		return rootChoice;
-	}
 }

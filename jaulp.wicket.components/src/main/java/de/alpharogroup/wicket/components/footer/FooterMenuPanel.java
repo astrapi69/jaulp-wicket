@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.footer;
 
 import java.util.List;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
@@ -31,13 +33,8 @@ public abstract class FooterMenuPanel extends Panel
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-
+	@Getter
 	private Component linkListPanel;
-
-	public Component getLinkListPanel()
-	{
-		return linkListPanel;
-	}
 
 	public FooterMenuPanel(final String id, List<LinkModel> list)
 	{

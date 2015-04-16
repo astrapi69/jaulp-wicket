@@ -17,17 +17,19 @@ package de.alpharogroup.wicket.components.i18n.list;
 
 import java.util.List;
 
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 
-import de.alpharogroup.wicket.components.listview.ListViewPanel;
-
 /**
- * The Class DivListPanel that holds the ListView in a div.
+ * The Class SpanListPanel that holds the ListView in a span. This is made by overwrite the
+ * onComponentTag of the ListView and set the tagname to span.
  *
  * @param <T>
  *            the generic type of the list
  */
-public abstract class DivListPanel<T> extends ListViewPanel<T>
+public abstract class SpanListPanel<T> extends DivListPanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -41,7 +43,7 @@ public abstract class DivListPanel<T> extends ListViewPanel<T>
 	 * @param list
 	 *            the list
 	 */
-	public DivListPanel(String id, List<T> list)
+	public SpanListPanel(String id, List<T> list)
 	{
 		super(id, list);
 	}
@@ -54,9 +56,44 @@ public abstract class DivListPanel<T> extends ListViewPanel<T>
 	 * @param content
 	 *            the model
 	 */
-	public DivListPanel(String id, IModel<List<T>> content)
+	public SpanListPanel(String id, IModel<List<T>> content)
 	{
 		super(id, content);
+	}
+
+
+	/**
+	 * New list view.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the list view
+	 */
+	protected ListView<T> newListView(String id, IModel<List<T>> model)
+	{
+		ListView<T> listView = new ListView<T>(id, model)
+		{
+			/** The Constant serialVersionUID. */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(ListItem<T> item)
+			{
+				item.add(newListComponent("item", item));
+			}
+
+			@Override
+			protected void onComponentTag(ComponentTag tag)
+			{
+				super.onComponentTag(tag);
+				// Turn the div tag to a span
+				tag.setName("span");
+			}
+
+		};
+		return listView;
 	}
 
 }

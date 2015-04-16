@@ -41,6 +41,10 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	// instance block for set the markup id, with other words make this component ajaxifiable...
+	{
+		setOutputMarkupId(true);
+	}
 
 	/**
 	 * Instantiates a new link list panel.
@@ -53,7 +57,6 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	public LinkListPanel(String id, IModel<List<LinkModel>> model)
 	{
 		super(id, model);
-		setOutputMarkupId(true);
 	}
 
 	/**
@@ -67,7 +70,6 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	public LinkListPanel(String id, List<LinkModel> list)
 	{
 		super(id, list);
-		setOutputMarkupId(true);
 	}
 
 	/**

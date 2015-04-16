@@ -15,11 +15,14 @@
  */
 package de.alpharogroup.wicket.components.termofuse.disclaimer;
 
+import net.sourceforge.jaulp.locale.ResourceBundleKey;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.StringResourceModel;
+import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
 
 public class DisclaimerPanel extends Panel
@@ -35,24 +38,35 @@ public class DisclaimerPanel extends Panel
 		this(id, null);
 	}
 
-
 	public DisclaimerPanel(String id, IModel<HeaderContentListModel> model)
 	{
 		super(id, model);
 
-		add(new Label("disclaimerLbl", newDisclaimerModel()));
-
-		add(new Label("disclaimerContentLbl", newDisclaimerContentModel()));
-
-		add(new Label("disclaimerLinkLabel", newDisclaimerLinkLabelModel()));
+		add(newDisclaimerLabel("disclaimerLbl", newDisclaimerModel())).add(
+			newDisclaimerContentLabel("disclaimerContentLbl", newDisclaimerContentModel())).add(
+			newDisclaimerLinkLabel("disclaimerLinkLabel", newDisclaimerLinkLabelModel()));
 	}
 
+	protected Label newDisclaimerLinkLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
+	}
+
+	protected Label newDisclaimerContentLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
+	}
+
+	protected Label newDisclaimerLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
+	}
 
 	/**
 	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * disclaimer content.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newDisclaimerLinkLabelModel()
@@ -62,21 +76,22 @@ public class DisclaimerPanel extends Panel
 
 	/**
 	 * Creates a new StringResourceModel from the given key.
-	 * 
+	 *
 	 * @param key
 	 *            the key
 	 * @return the i model
 	 */
 	protected IModel<String> newIModel(String key)
 	{
-		return new StringResourceModel(key, this, null);
+		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
+			.defaultValue("").build(), this);
 	}
 
 	/**
 	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * disclaimer content.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newDisclaimerContentModel()
@@ -88,13 +103,12 @@ public class DisclaimerPanel extends Panel
 	 * Factory method to create a IModel for the disclaimer header. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * disclaimer header.
-	 * 
+	 *
 	 * @return the i model
 	 */
 	protected IModel<String> newDisclaimerModel()
 	{
 		return newIModel("imprint.disclaimer.label");
 	}
-
 
 }

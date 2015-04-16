@@ -15,6 +15,7 @@
  */
 package de.alpharogroup.wicket.components.deregistration;
 
+import lombok.Getter;
 import net.sourceforge.jaulp.collections.ListUtils;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
@@ -49,14 +50,15 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
+	@Getter
 	private Label buttonLabel;
-
+	@Getter
 	private Button submitButton;
-
+	@Getter
 	private Component motivation;
-
+	@Getter
 	private Component contentPanel;
-
+	@Getter
 	private Form<?> form;
 
 	/**
@@ -71,7 +73,6 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	{
 		super(id, model);
 	}
-
 
 	public void onBeforeRender()
 	{
@@ -211,31 +212,6 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	{
 		return ComponentFactory.newLabel(id,
 			ResourceModelFactory.newResourceModel(resourceKey, this, defaultValue));
-	}
-
-	public Label getButtonLabel()
-	{
-		return buttonLabel;
-	}
-
-	public Button getSubmitButton()
-	{
-		return submitButton;
-	}
-
-	public Component getMotivation()
-	{
-		return motivation;
-	}
-
-	public Component getContentPanel()
-	{
-		return contentPanel;
-	}
-
-	public Form<?> getForm()
-	{
-		return form;
 	}
 
 	public abstract void onDeregistration();
