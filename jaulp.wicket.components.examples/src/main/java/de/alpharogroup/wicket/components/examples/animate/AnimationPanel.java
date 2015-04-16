@@ -63,6 +63,7 @@ public class AnimationPanel extends Panel
 			new BuildableChainableStatement.Builder().label("animate").args("{left: '300px'}")
 				.build());
 		String render = (String)jqueryStatementsBehavior.createRenderedStatement(containerAnimate);
+		System.out.println(render);
 		containerAnimate.add(jqueryStatementsBehavior);
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 0.4f)));
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 1.0f)));

@@ -66,11 +66,6 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 		return ddc;
 	}
 
-	public DropDownChoice<T> getDropdownChoice()
-	{
-		return dropdownChoice;
-	}
-
 	/**
 	 * {@inheritDoc}
 	 */

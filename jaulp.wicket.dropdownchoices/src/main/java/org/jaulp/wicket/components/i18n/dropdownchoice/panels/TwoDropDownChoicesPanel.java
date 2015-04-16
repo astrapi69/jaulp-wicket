@@ -54,9 +54,6 @@ public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDow
 	@Getter
 	private DropDownChoice<T> childChoice;
 
-	private IChoiceRenderer<T> rootRenderer;
-	private IChoiceRenderer<T> childRenderer;
-
 	/**
 	 * Instantiates a new two drop down choices panel.
 	 *

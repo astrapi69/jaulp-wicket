@@ -94,9 +94,14 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 					Model.of(it.getModelObject().getName())));
 			}
 		});
-		RadioGroupPanel radioGroupPanel = new RadioGroupPanel<Company>("radioGroupPanel",
+		RadioGroupPanel<Company> radioGroupPanel = new RadioGroupPanel<Company>("radioGroupPanel",
 			Model.of(radioGroupModel))
 		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
