@@ -74,6 +74,7 @@
 		<wicket-source.version>6.0.0.8</wicket-source.version>
 		<!-- JETTY 9 version -->
 		<jetty9.version>9.2.10.v20150310</jetty9.version>
+		<wicket-jetty9-runner.version>1.0.0</wicket-jetty9-runner.version>
 		<!-- LOGGING versions -->
 		<slf4j.version>1.6.4</slf4j.version>
 		<log4j.version>1.2.16</log4j.version>
@@ -331,7 +332,7 @@
 				<artifactId>recaptcha4j</artifactId>
 				<version>${recaptcha4j.version}</version>
 			</dependency>
-			<!-- JETTY 9 DEPENDENCIES FOR TESTING -->
+			<!-- JETTY 9 DEPENDENCIES -->
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-server</artifactId>
@@ -356,6 +357,11 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-deploy</artifactId>
 				<version>${jetty9.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-jetty9-runner</artifactId>
+				<version>${wicket-jetty9-runner.version}</version>
 			</dependency>
 			<!-- LOGGING DEPENDENCIES -->
 			<dependency>
@@ -404,7 +410,7 @@
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
 		</dependency>
-		<!-- JETTY 9 DEPENDENCIES FOR TESTING -->
+		<!-- JETTY 9 DEPENDENCIES -->
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-server</artifactId>
@@ -424,6 +430,10 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-deploy</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-jetty9-runner</artifactId>
 		</dependency>
 		<!-- LOGGING DEPENDENCIES -->
 		<dependency>

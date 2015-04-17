@@ -23,11 +23,12 @@ import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.jaulp.wicket.base.application.jetty.FilterHolderConfiguration;
-import org.jaulp.wicket.base.application.jetty.Jetty9RunConfiguration;
-import org.jaulp.wicket.base.application.jetty.Jetty9Runner;
-import org.jaulp.wicket.base.application.jetty.ServletContextHandlerConfiguration;
-import org.jaulp.wicket.base.application.jetty.ServletHolderConfiguration;
+
+import de.alpharogroup.jetty9.runner.Jetty9Runner;
+import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
+import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
+import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
+import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 
 public class StartHeaderContributorsExamples
 {

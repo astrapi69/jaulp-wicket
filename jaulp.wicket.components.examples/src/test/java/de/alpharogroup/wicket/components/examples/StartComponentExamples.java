@@ -21,13 +21,15 @@ import net.sourceforge.jaulp.file.search.PathFinder;
 
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
+import org.apache.wicket.util.time.Duration;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.jaulp.wicket.base.application.jetty.FilterHolderConfiguration;
-import org.jaulp.wicket.base.application.jetty.Jetty9RunConfiguration;
-import org.jaulp.wicket.base.application.jetty.Jetty9Runner;
-import org.jaulp.wicket.base.application.jetty.ServletContextHandlerConfiguration;
-import org.jaulp.wicket.base.application.jetty.ServletHolderConfiguration;
+
+import de.alpharogroup.jetty9.runner.Jetty9Runner;
+import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
+import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
+import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
+import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 
@@ -35,6 +37,7 @@ public class StartComponentExamples
 {
 	public static void main(String[] args) throws Exception
 	{
+		int sessionTimeout = (int) Duration.minutes(30).seconds();// set timeout to 30min(60sec * 30min=1800sec)...
 		System.setProperty("wicket.configuration", "development");
 		String projectname = "jaulp.wicket.components.examples";
 		File projectDirectory = PathFinder.getProjectDirectory();
@@ -50,13 +53,13 @@ public class StartComponentExamples
 						.builder()
 						.filterClass(WicketFilter.class)
 						.filterPath(filterPath)
-						.initParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*")
+						.initParameter(WicketFilter.FILTER_MAPPING_PARAM, filterPath)
 						.initParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM,
 							WicketApplication.class.getName()).build())
 				.servletHolderConfiguration(
 					ServletHolderConfiguration.builder().servletClass(DefaultServlet.class)
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
-				.maxInactiveInterval(300).filterPath("/*").build());
+				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
 
 		Jetty9Runner.run(Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
