@@ -114,10 +114,11 @@ public class MenuItem implements Serializable
 	}
 
 	/**
-	 * Add one menu item.
-	 * 
+	 * Adds the given menu item to this menu item.
+	 *
 	 * @param menu
-	 *            the menu
+	 *            the menu item to add to this menu item.
+	 * @return This menu item
 	 */
 	public MenuItem addMenu(final MenuItem menu)
 	{

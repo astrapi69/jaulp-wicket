@@ -56,6 +56,8 @@ public class EditableTextField extends GenericPanel<String>
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param labelModel
+	 *            the label model
 	 */
 	public EditableTextField(String id, IModel<String> model, IModel<String> labelModel)
 	{
@@ -69,6 +71,8 @@ public class EditableTextField extends GenericPanel<String>
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param labelModel
+	 *            the label model
 	 * @param modeContext
 	 *            the editable flag
 	 */

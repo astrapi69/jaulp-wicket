@@ -49,8 +49,6 @@ public abstract class InfoPanel<T> extends GenericPanel<T>
 	 *
 	 * @param id
 	 *            the id
-	 * @param form
-	 *            the form
 	 * @return the new {@link AjaxButton}
 	 */
 	protected AjaxButton newCloseButton(final String id)

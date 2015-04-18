@@ -23,14 +23,13 @@ import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.jaulp.wicket.dropdownchoices.examples.WicketApplication;
 
 import de.alpharogroup.jetty9.runner.Jetty9Runner;
 import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
-
-import org.jaulp.wicket.dropdownchoices.examples.WicketApplication;
 
 public class StartDropDownChoicesApplication
 {

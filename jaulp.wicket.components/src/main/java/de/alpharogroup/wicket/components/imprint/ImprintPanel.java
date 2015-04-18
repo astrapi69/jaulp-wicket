@@ -166,7 +166,7 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	protected abstract String getDomainName();
 
 	/**
-	 * Creates a new IModel<String> from the given key.
+	 * Creates a new IModel from the given key.
 	 *
 	 * @param key
 	 *            the key

@@ -38,17 +38,13 @@ public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Gets the overlay reference.
-	 *
-	 * @return the overlay reference
+	 * The overlay reference.
 	 */
 	@Getter
 	private MarkupContainer overlayReference;
 
 	/**
-	 * Gets the open button.
-	 *
-	 * @return the open button
+	 * The open button.
 	 */
 	@Getter
 	private Button openButton;

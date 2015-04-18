@@ -77,8 +77,6 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	 *
 	 * @param id
 	 *            the id
-	 * @param form
-	 *            the form
 	 * @return the new {@link AjaxButton}
 	 */
 	protected AjaxButton newNoButton(final String id)
@@ -115,8 +113,6 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	 *
 	 * @param id
 	 *            the id
-	 * @param form
-	 *            the form
 	 * @return the new {@link AjaxButton}
 	 */
 	protected AjaxButton newYesButton(final String id)

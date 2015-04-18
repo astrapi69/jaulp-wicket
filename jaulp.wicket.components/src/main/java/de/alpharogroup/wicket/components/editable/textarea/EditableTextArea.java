@@ -66,7 +66,8 @@ public class EditableTextArea extends GenericPanel<String>
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @see org.apache.wicket.Component#Component(String, IModel)
+	 * @param labelModel
+	 *            the label model
 	 */
 	public EditableTextArea(final String id, final IModel<String> model, IModel<String> labelModel)
 	{
@@ -80,7 +81,10 @@ public class EditableTextArea extends GenericPanel<String>
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @see org.apache.wicket.Component#Component(String, IModel)
+	 * @param labelModel
+	 *            the label model
+	 * @param modeContext
+	 *            the editable flag
 	 */
 	public EditableTextArea(final String id, final IModel<String> model, IModel<String> labelModel,
 		ModeContext modeContext)
