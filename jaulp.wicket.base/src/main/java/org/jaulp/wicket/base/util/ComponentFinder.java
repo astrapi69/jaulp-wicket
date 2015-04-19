@@ -87,7 +87,7 @@ public final class ComponentFinder
 	 *
 	 * @see WebApplication#newAjaxRequestTarget(Page)
 	 */
-	public static AjaxRequestTarget findOrNewAjaxRequestTarget(WebApplication application, Page page)
+	public static AjaxRequestTarget findOrCreateNewAjaxRequestTarget(WebApplication application, Page page)
 	{
 		AjaxRequestTarget target = findAjaxRequestTarget();
 		if (target != null)
@@ -105,9 +105,9 @@ public final class ComponentFinder
 	 *
 	 * @see WebApplication#newAjaxRequestTarget(Page)
 	 */
-	public static AjaxRequestTarget findOrNewAjaxRequestTarget()
+	public static AjaxRequestTarget findOrCreateNewAjaxRequestTarget()
 	{
-		return findOrNewAjaxRequestTarget(WebApplication.get(), getCurrentPage());
+		return findOrCreateNewAjaxRequestTarget(WebApplication.get(), getCurrentPage());
 	}
 
 	/**
