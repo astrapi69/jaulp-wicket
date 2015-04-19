@@ -145,7 +145,7 @@ public class EditableTextField extends GenericPanel<String>
 		});
 		if (modeContext.equals(ModeContext.EDIT_MODE))
 		{
-			this.swapPanel.onSwapToEdit(ComponentFinder.findOrNewAjaxRequestTarget(), null);
+			this.swapPanel.onSwapToEdit(ComponentFinder.findOrCreateNewAjaxRequestTarget(), null);
 		}
 	}
 
