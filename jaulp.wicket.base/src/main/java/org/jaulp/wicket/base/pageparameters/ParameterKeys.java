@@ -25,7 +25,7 @@ public class ParameterKeys
 	public static final String CONFIRMATION_CODE = "forgotten";
 
 	/** The Constant USER_ID. */
-	public static final String USER_ID = "USER_ID";
+	public static final String USER_ID = "user_id";
 
 	/** The Constant USERNAME. */
 	public static final String USERNAME = "username";
@@ -35,4 +35,7 @@ public class ParameterKeys
 
 	/** The Constant INFO_MESSAGE. */
 	public static final String INFO_MESSAGE = "info_massage";
+	
+	/** The Constant EMAIL. */
+	public static final String EMAIL = "email";
 }
