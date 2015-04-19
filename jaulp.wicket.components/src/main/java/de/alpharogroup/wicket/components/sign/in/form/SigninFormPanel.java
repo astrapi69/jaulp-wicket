@@ -18,11 +18,13 @@ package de.alpharogroup.wicket.components.sign.in.form;
 import net.sourceforge.jaulp.auth.models.SignInModel;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
+import org.jaulp.wicket.base.util.ComponentFinder;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
@@ -32,7 +34,7 @@ import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 /**
  * The Class SinginFormPanel.
  */
-public abstract class SigninFormPanel extends Panel
+public abstract class SigninFormPanel<T extends SignInModel> extends GenericPanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -57,7 +59,7 @@ public abstract class SigninFormPanel extends Panel
 	 * @param model
 	 *            the model
 	 */
-	public SigninFormPanel(String id, final IModel<? extends SignInModel> model)
+	public SigninFormPanel(String id, final IModel<T> model)
 	{
 		super(id, model);
 		add(form = newForm("form", model));
@@ -129,7 +131,7 @@ public abstract class SigninFormPanel extends Panel
 			@Override
 			public void onSubmit()
 			{
-				onSignin();
+				onSignin(ComponentFinder.findOrCreateNewAjaxRequestTarget(), getForm());
 			}
 		};
 	}
@@ -193,6 +195,6 @@ public abstract class SigninFormPanel extends Panel
 	/**
 	 * On signin.
 	 */
-	protected abstract void onSignin();
+	protected abstract void onSignin(final AjaxRequestTarget target , final Form<?> form);
 
 }
