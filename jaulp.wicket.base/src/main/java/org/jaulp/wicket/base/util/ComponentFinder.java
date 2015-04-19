@@ -15,6 +15,8 @@
  */
 package org.jaulp.wicket.base.util;
 
+import org.apache.wicket.markup.html.form.Form;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -132,5 +134,21 @@ public final class ComponentFinder
 			parent = parent.getParent();
 		}
 		return parent;
+	}
+
+	/**
+	 * Finds the parent form of the given childComponent.
+	 *
+	 * @param childComponent
+	 *            the child component
+	 * @return the component or null if no form is found.
+	 */
+	public static Component findParentForm(Component childComponent)
+	{
+		Component parent = findParent(childComponent, Form.class);
+		if(parent != null && parent.getClass().equals(Form.class)) {
+			return parent;			
+		}
+		return null;
 	}
 }
