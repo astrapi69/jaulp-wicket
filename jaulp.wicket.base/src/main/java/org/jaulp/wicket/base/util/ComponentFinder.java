@@ -89,7 +89,8 @@ public final class ComponentFinder
 	 *
 	 * @see WebApplication#newAjaxRequestTarget(Page)
 	 */
-	public static AjaxRequestTarget findOrCreateNewAjaxRequestTarget(WebApplication application, Page page)
+	public static AjaxRequestTarget findOrCreateNewAjaxRequestTarget(WebApplication application,
+		Page page)
 	{
 		AjaxRequestTarget target = findAjaxRequestTarget();
 		if (target != null)
@@ -146,8 +147,9 @@ public final class ComponentFinder
 	public static Component findParentForm(Component childComponent)
 	{
 		Component parent = findParent(childComponent, Form.class);
-		if(parent != null && parent.getClass().equals(Form.class)) {
-			return parent;			
+		if (parent != null && parent.getClass().equals(Form.class))
+		{
+			return parent;
 		}
 		return null;
 	}

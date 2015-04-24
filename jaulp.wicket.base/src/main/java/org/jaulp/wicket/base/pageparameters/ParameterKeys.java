@@ -35,7 +35,7 @@ public class ParameterKeys
 
 	/** The Constant INFO_MESSAGE. */
 	public static final String INFO_MESSAGE = "info_massage";
-	
+
 	/** The Constant EMAIL. */
 	public static final String EMAIL = "email";
 }
