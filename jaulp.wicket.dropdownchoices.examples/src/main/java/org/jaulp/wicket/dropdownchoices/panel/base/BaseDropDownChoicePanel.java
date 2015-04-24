@@ -81,7 +81,7 @@ public class BaseDropDownChoicePanel extends Panel
 			}
 		};
 
-		DropDownChoice<Country> country = new DropDownChoice<Country>("country", countries);
+		DropDownChoice<Country> country = new DropDownChoice<>("country", countries);
 		add(country);
 		country.setChoiceRenderer(renderer);
 
