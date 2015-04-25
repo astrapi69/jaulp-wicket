@@ -19,8 +19,8 @@ import java.io.Serializable;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.sourceforge.jaulp.random.Constants;
-import net.sourceforge.jaulp.random.RandomUtils;
+import de.alpharogroup.random.Constants;
+import de.alpharogroup.random.RandomUtils;
 
 import org.apache.wicket.extensions.markup.html.captcha.CaptchaImageResource;
 
