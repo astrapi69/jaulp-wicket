@@ -121,4 +121,14 @@ div.wicket-aa ul li.selected {
 .overlay-panel {
 	background-color: white;
 	background-repeat: repeat;
+}  
+
+.nav-center {
+	width: 100%;
+    text-align: center;
+}
+
+.nav-center > li {    
+      float: none;
+      display: inline-block;
 }

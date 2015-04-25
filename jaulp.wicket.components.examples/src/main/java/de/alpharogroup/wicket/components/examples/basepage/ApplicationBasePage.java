@@ -311,6 +311,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 								return "active";
 							}
 						};
+						listPanel.add(new AttributeAppender("class", " btn"));
 						return listPanel;
 					}
 				};
@@ -319,7 +320,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 					new BuildableChainableStatement.Builder().label("find")
 						.args(JsUtils.quotes("ul")).build()).add(
 					new BuildableChainableStatement.Builder().label("addClass")
-						.args(JsUtils.quotes("nav text-center")).build()));
+						.args(JsUtils.quotes("nav navbar-nav")).build()));
 				return footerMenu;
 			}
 		};
