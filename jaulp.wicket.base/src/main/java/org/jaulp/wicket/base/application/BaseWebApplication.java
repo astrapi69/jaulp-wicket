@@ -94,17 +94,17 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected void onApplicationConfigurations()
 	{
-		// set global settings for both development and deployment mode...
-		newGlobalSettings(this, newHttpPort(), newHttpsPort());
+		// set global configurations for both development and deployment mode...
+		onGlobalSettings();
 		// set configuration for development...
 		if (RuntimeConfigurationType.DEVELOPMENT.equals(this.getConfigurationType()))
 		{
-			newDevelopmentModeSettings();
+			onDevelopmentModeSettings();
 		}
 		// set configuration for deployment...
 		if (RuntimeConfigurationType.DEPLOYMENT.equals(this.getConfigurationType()))
 		{
-			newDeploymentModeSettings();
+			onDeploymentModeSettings();
 		}
 	}
 
@@ -129,33 +129,25 @@ public abstract class BaseWebApplication extends WebApplication
 	}
 
 	/**
-	 * Factory method that can be overwritten to provide application specific deployment mode
+	 * Callback method that can be overwritten to provide application specific deployment mode
 	 * settings.
 	 */
-	protected void newDeploymentModeSettings()
+	protected void onDeploymentModeSettings()
 	{
 	}
 
 	/**
-	 * Factory method that can be overwritten to provide application specific development mode
+	 * Callback method that can be overwritten to provide application specific development mode
 	 * settings.
 	 */
-	protected void newDevelopmentModeSettings()
+	protected void onDevelopmentModeSettings()
 	{
 	}
 
 	/**
-	 * Factory method that can be overwritten to provide application specific global settings.
-	 *
-	 * @param application
-	 *            the application
-	 * @param httpPort
-	 *            the http port
-	 * @param httpsPort
-	 *            the https port
+	 * Callback method that can be overwritten to provide application specific global settings.
 	 */
-	protected void newGlobalSettings(final WebApplication application, final int httpPort,
-		final int httpsPort)
+	protected void onGlobalSettings()
 	{
 	}
 

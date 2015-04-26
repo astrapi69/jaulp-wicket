@@ -26,7 +26,6 @@ import org.apache.wicket.Application;
 import org.apache.wicket.IApplicationListener;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.protocol.http.WebApplication;
 import org.jaulp.wicket.PackageResourceReferences;
 import org.jaulp.wicket.base.util.application.ApplicationUtils;
 
@@ -73,7 +72,7 @@ public class WicketApplication extends WicketBootstrap3Application
 	}
 
 
-	protected void newDeploymentModeSettings()
+	protected void onDeploymentModeSettings()
 	{
 		// set exception handling for custom error page...
 		ApplicationUtils.setExceptionSettingsForDeployment(this,
@@ -81,7 +80,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		ApplicationUtils.setDeploymentModeConfiguration(this);
 	}
 
-	protected void newDevelopmentModeSettings()
+	protected void onDevelopmentModeSettings()
 	{
 		// Adds the references from source code to the browser to reference in eclipse....
 		WicketSource.configure(this);
@@ -111,10 +110,9 @@ public class WicketApplication extends WicketBootstrap3Application
 		});
 	}
 
-	protected void newGlobalSettings(final WebApplication application, final int httpPort,
-		final int httpsPort)
+	protected void onGlobalSettings()
 	{
-		ApplicationUtils.setGlobalSettings(application, httpPort, httpsPort, FOOTER_FILTER_NAME,
+		ApplicationUtils.setGlobalSettings(this, newHttpPort(), newHttpsPort(), FOOTER_FILTER_NAME,
 			"UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
 	}
 
