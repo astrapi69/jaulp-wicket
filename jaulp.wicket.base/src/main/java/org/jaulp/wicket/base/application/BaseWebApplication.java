@@ -61,8 +61,6 @@ public abstract class BaseWebApplication extends WebApplication
 	{
 		this.startupDate = new DateTime();
 		super.init();
-		// set configuration before the application configuration...
-		onBeforeApplicationConfigurations();
 		// set application configuration...
 		onApplicationConfigurations();
 	}
@@ -94,6 +92,8 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected void onApplicationConfigurations()
 	{
+		// set configuration before the application configuration...
+		onBeforeApplicationConfigurations();
 		// set global configurations for both development and deployment mode...
 		onGlobalSettings();
 		// set configuration for development...
