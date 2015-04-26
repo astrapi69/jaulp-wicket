@@ -369,8 +369,10 @@ public final class ApplicationUtils
 	public static void setDefaultDeploymentModeConfiguration(final Application application,
 		final AbstractRequestCycleListener applicationRequestCycleListener)
 	{
-		if(applicationRequestCycleListener != null) {
-			ApplicationUtils.setExceptionSettingsForDeployment(application, applicationRequestCycleListener);			
+		if (applicationRequestCycleListener != null)
+		{
+			ApplicationUtils.setExceptionSettingsForDeployment(application,
+				applicationRequestCycleListener);
 		}
 		ApplicationUtils.setDeploymentModeConfiguration(application);
 	}

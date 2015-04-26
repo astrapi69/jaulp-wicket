@@ -304,8 +304,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 					RadioComponentsExamplePage.class, radiosModel).setIconType(GlyphIconType.book));
 				subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
 					DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
-				subMenu.add(new MenuBookmarkablePageLink<ToastrPage>(
-					ToastrPage.class, toastrExampleModel).setIconType(GlyphIconType.barcode));
+				subMenu.add(new MenuBookmarkablePageLink<ToastrPage>(ToastrPage.class,
+					toastrExampleModel).setIconType(GlyphIconType.barcode));
 				subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(ExceptionPage.class,
 					exceptionModel).setIconType(GlyphIconType.fire));
 

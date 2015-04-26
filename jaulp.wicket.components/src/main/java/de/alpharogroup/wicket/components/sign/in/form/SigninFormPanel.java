@@ -195,6 +195,6 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	/**
 	 * On signin.
 	 */
-	protected abstract void onSignin(final AjaxRequestTarget target , final Form<?> form);
+	protected abstract void onSignin(final AjaxRequestTarget target, final Form<?> form);
 
 }

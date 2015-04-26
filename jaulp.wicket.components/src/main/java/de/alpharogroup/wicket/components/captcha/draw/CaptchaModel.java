@@ -19,10 +19,11 @@ import java.io.Serializable;
 
 import lombok.Getter;
 import lombok.Setter;
-import de.alpharogroup.random.Constants;
-import de.alpharogroup.random.RandomUtils;
 
 import org.apache.wicket.extensions.markup.html.captcha.CaptchaImageResource;
+
+import de.alpharogroup.random.Constants;
+import de.alpharogroup.random.RandomUtils;
 
 public class CaptchaModel implements Serializable
 {

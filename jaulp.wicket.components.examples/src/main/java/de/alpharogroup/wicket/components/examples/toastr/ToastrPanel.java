@@ -42,19 +42,17 @@ public class ToastrPanel extends Panel
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	public ToastrPanel(String id, IModel<?> model)
 	{
 		super(id, model);
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
-			.key("button.label")
-			.defaultValue("Show Toast")
-			.build(), this);
+		IModel<String> labelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key("button.label").defaultValue("Show Toast").build(), this);
 		Form<Object> form = new Form<Object>("form");
 		add(form);
 		form.add(new ButtonPanel("buttonPanel", labelModel, form)
 		{
-			
+
 			/**
 			 * The serialVersionUID
 			 */
@@ -88,20 +86,21 @@ public class ToastrPanel extends Panel
 					{
 					}
 				};
-				indicatingAjaxButton.add(new AttributeAppender("class", Model.of(" btn btn-primary")));
+				indicatingAjaxButton.add(new AttributeAppender("class", Model
+					.of(" btn btn-primary")));
 				return indicatingAjaxButton;
 			}
 		});
 	}
-	
+
 	@Override
 	public void renderHead(IHeaderResponse response)
 	{
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
-		response.render(JavaScriptHeaderItem
-			.forReference(ToastJsGenerator.TOASTR_PLUGIN_REFERENCE));
+		response
+			.render(JavaScriptHeaderItem.forReference(ToastJsGenerator.TOASTR_PLUGIN_REFERENCE));
 	}
 
 }

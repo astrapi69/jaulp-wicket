@@ -45,7 +45,7 @@ public class ToastJsGenerator implements Serializable
 	/** The toastr template. */
 	public static final TextTemplate TOASTR_TEMPLATE = new PackageTextTemplate(
 		ToastJsGenerator.class, "toastr-template.js.tmpl");
-	
+
 	/**
 	 * Gets the settings.
 	 *
@@ -60,21 +60,23 @@ public class ToastJsGenerator implements Serializable
 	public ToastJsGenerator()
 	{
 	}
-	
+
 	/**
 	 * Instantiates a new toast js generator.
 	 *
-	 * @param settings the settings
+	 * @param settings
+	 *            the settings
 	 */
 	public ToastJsGenerator(ToastrSettings settings)
-	{		
+	{
 		this.settings = Args.notNull(settings, "settings");
 	}
 
 	/**
 	 * Generate toastr js.
 	 *
-	 * @param settings the settings
+	 * @param settings
+	 *            the settings
 	 * @return the string
 	 */
 	public String generateToastrJs(ToastrSettings settings)
@@ -85,8 +87,10 @@ public class ToastJsGenerator implements Serializable
 	/**
 	 * Generate toastr js.
 	 *
-	 * @param textTemplate the text template
-	 * @param settings the settings
+	 * @param textTemplate
+	 *            the text template
+	 * @param settings
+	 *            the settings
 	 * @return the string
 	 */
 	public String generateToastrJs(final TextTemplate textTemplate, ToastrSettings settings)
@@ -126,7 +130,8 @@ public class ToastJsGenerator implements Serializable
 	/**
 	 * Gets the command.
 	 *
-	 * @param settings the settings
+	 * @param settings
+	 *            the settings
 	 * @return the command
 	 */
 	public String getCommand(ToastrSettings settings)
