@@ -74,21 +74,18 @@ public class WicketApplication extends WicketBootstrap3Application
 
 	protected void onDeploymentModeSettings()
 	{
-		// set exception handling for custom error page...
-		ApplicationUtils.setExceptionSettingsForDeployment(this,
+		super.onDeploymentModeSettings();
+		ApplicationUtils.setDefaultDeploymentModeConfiguration(this,
 			new ApplicationRequestCycleListener());
-		ApplicationUtils.setDeploymentModeConfiguration(this);
 	}
 
 	protected void onDevelopmentModeSettings()
 	{
+		super.onDevelopmentModeSettings();
 		// Adds the references from source code to the browser to reference in eclipse....
 		WicketSource.configure(this);
-		ApplicationUtils.setHtmlHotDeploy(this);
-		ApplicationUtils.setDebugSettingsForDevelopment(this);
-		ApplicationUtils.setExceptionSettingsForDevelopment(this);
-		// set the behavior if an missing resource is found...
-		this.getResourceSettings().setThrowExceptionOnMissingResource(true);
+		ApplicationUtils.setDefaultDebugSettingsForDevelopment(this);
+
 		// add an applicationListener...
 		this.getApplicationListeners().add(new IApplicationListener()
 		{
@@ -112,6 +109,7 @@ public class WicketApplication extends WicketBootstrap3Application
 
 	protected void onGlobalSettings()
 	{
+		super.onGlobalSettings();
 		ApplicationUtils.setGlobalSettings(this, newHttpPort(), newHttpsPort(), FOOTER_FILTER_NAME,
 			"UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
 	}
