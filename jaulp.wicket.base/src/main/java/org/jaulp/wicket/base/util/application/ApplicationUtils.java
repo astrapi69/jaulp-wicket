@@ -306,6 +306,21 @@ public final class ApplicationUtils
 	}
 
 	/**
+	 * Sets a set of default development settings for development mode for the given application.
+	 *
+	 * @param application
+	 *            the new debug settings for development
+	 */
+	public static void setDefaultDebugSettingsForDevelopment(final WebApplication application)
+	{
+		ApplicationUtils.setHtmlHotDeploy(application);
+		ApplicationUtils.setDebugSettingsForDevelopment(application);
+		ApplicationUtils.setExceptionSettingsForDevelopment(application);
+		// set the behavior if an missing resource is found...
+		application.getResourceSettings().setThrowExceptionOnMissingResource(true);
+	}
+
+	/**
 	 * Sets the debug settings for deployment mode for the given application.
 	 *
 	 * @param application
@@ -319,7 +334,7 @@ public final class ApplicationUtils
 	}
 
 	/**
-	 * Sets the debug settings for deployment mode for the given application.
+	 * Sets the deployment settings for deployment mode for the given application.
 	 *
 	 * @param application
 	 *            the application to set the settings
@@ -343,6 +358,21 @@ public final class ApplicationUtils
 		application.getDebugSettings().setOutputMarkupContainerClassName(false);
 		application.getDebugSettings().setLinePreciseReportingOnAddComponentEnabled(false);
 		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(false);
+	}
+
+	/**
+	 * Sets a set of default deployment settings for deployment mode for the given application.
+	 *
+	 * @param application
+	 *            the application to set the settings
+	 */
+	public static void setDefaultDeploymentModeConfiguration(final Application application,
+		final AbstractRequestCycleListener applicationRequestCycleListener)
+	{
+		if(applicationRequestCycleListener != null) {
+			ApplicationUtils.setExceptionSettingsForDeployment(application, applicationRequestCycleListener);			
+		}
+		ApplicationUtils.setDeploymentModeConfiguration(application);
 	}
 
 	/**
