@@ -71,25 +71,24 @@ public class MenubarPanel extends BasePanel
 		menuBar.addMenu(miAnother);
 
 		MenuItem subMenuFromMiAnother = MenuUtils.newMenuItem(SubmenuPage.class,
-      "top.menu.sub.another.overview", this);
+			"top.menu.sub.another.overview", this);
 		miAnother.addMenu(subMenuFromMiAnother);
 
 		MenuItem subMenuDynamic = MenuUtils.newMenuItem(DynamicPage.class,
-      "top.menu.sub.dynamic.overview", this);
+			"top.menu.sub.dynamic.overview", this);
 		miAnother.addMenu(subMenuDynamic);
 
-    MenuItem textMenu = MenuUtils.newMenuItem(Model.of("Only text"));
-    miAnother.addMenu(textMenu);
+		MenuItem textMenu = MenuUtils.newMenuItem(Model.of("Only text"));
+		miAnother.addMenu(textMenu);
 
 		MenuItem miViewOrEdit = MenuUtils.newMenuItem(ViewOrEditPage.class, "top.menu.viewmode",
-      this);
+			this);
 		menuBar.addMenu(miViewOrEdit);
 
 		MenuItem miUrls = MenuUtils.newMenuItem(WicketUrlPage.class, "top.menu.urls", this);
 		menuBar.addMenu(miUrls);
 
-		MenuItem miLabeled = MenuUtils.newMenuItem(LabeledHomePage.class, "top.menu.labeled",
-      this);
+		MenuItem miLabeled = MenuUtils.newMenuItem(LabeledHomePage.class, "top.menu.labeled", this);
 
 		menuBar.addMenu(miLabeled);
 
