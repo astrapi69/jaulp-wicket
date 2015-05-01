@@ -16,12 +16,14 @@
 package de.alpharogroup.wicket.components.menu.suckerfish;
 
 import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.panel.Fragment;
+import org.apache.wicket.model.Model;
 
 /**
  * The Class MenuItemFragment.
- * 
+ *
  * @author Asterios Raptis
  */
 public final class MenuItemFragment extends Fragment
@@ -32,7 +34,7 @@ public final class MenuItemFragment extends Fragment
 
 	/**
 	 * Instantiates a new menu item fragment.
-	 * 
+	 *
 	 * @param menuItem
 	 *            the menu item
 	 * @param markupProvider
@@ -57,7 +59,8 @@ public final class MenuItemFragment extends Fragment
 		// Add a down or right arrow icon if there are children
 		if (menuItem.getChildren().size() > 0)
 		{
-			menuItem.getLabel().add(MenuPanel.menuHasSubmenuAppender);
+			menuItem.getLabel().add(
+				new AttributeAppender("class", Model.of("menu-has-submenu"), " "));
 		}
 		// Add the submenus
 		menuitemlist.add(new SubMenuListView("menuitemlinks", menuItem.getChildren(),
