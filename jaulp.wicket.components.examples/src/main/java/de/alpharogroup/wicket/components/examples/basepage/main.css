@@ -2,7 +2,7 @@
    Author's custom styles
    ========================================================================== */
 
-.containerMinHeight {	
+.containerMinHeight {
   min-height: 700px;
 }
 
@@ -115,20 +115,26 @@ div.wicket-aa ul li.selected {
 
 .radiobrands label {
 	margin-left: 10px;
-	margin-right: 10px;	
+	margin-right: 10px;
 }
 
 .overlay-panel {
 	background-color: white;
 	background-repeat: repeat;
-}  
+}
 
 .nav-center {
 	width: 100%;
     text-align: center;
 }
 
-.nav-center > li {    
+.nav-center > li {
       float: none;
       display: inline-block;
+}
+
+.footer {
+    padding:0;
+    margin-top: 0;
+    border-top: 0;
 }
