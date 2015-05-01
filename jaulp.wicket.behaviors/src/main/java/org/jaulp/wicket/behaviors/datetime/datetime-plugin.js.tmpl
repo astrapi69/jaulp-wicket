@@ -1,0 +1,8 @@
+$(document).ready(function () {
+    setInterval(function () {
+        var field = $("#${componentId}");
+        // show current time on field...
+        $.setCurrentDateTime(field)
+        // in a interval of one second(1000 milliseconds)...
+    }, 1000);
+});
