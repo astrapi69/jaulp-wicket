@@ -29,12 +29,12 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.filter.HeaderResponseContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.settings.IJavaScriptLibrarySettings;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.time.Duration;
@@ -93,7 +93,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 
 	/**
 	 * Gets the feedback.
-	 * 
+	 *
 	 * @return the feedback
 	 */
 	public FeedbackPanel getFeedback()
@@ -216,14 +216,14 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 
 	/**
 	 * Gets the Container panel.
-	 * 
+	 *
 	 * @return 's the Container panel.
 	 */
 	public abstract Component getContainerPanel();
 
 	/**
 	 * Factory method that can be overwritten for new meta tag content for keywords.
-	 * 
+	 *
 	 * @return the new <code>IModel</code>
 	 */
 	@Override
@@ -235,7 +235,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 
 	/**
 	 * Factory method that can be overwritten for new meta tag content for the title.
-	 * 
+	 *
 	 * @return the new <code>IModel</code>
 	 */
 	@Override
@@ -262,9 +262,11 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			{
 				List<LinkModel> linkModel = new ArrayList<LinkModel>();
 				linkModel
-					.add(LinkModel.builder()
+					.add(LinkModel
+						.builder()
 						.url("http://www.alpharogroup.de/")
 						.target(DefaultTargets.BLANK.getTarget())
+						.linkClass(ExternalLink.class)
 						// open in a new tab or window...
 						.resourceModelKey(
 							ResourceBundleKey.builder().key("main.footer.copyright.label")
@@ -289,7 +291,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 					@Override
 					protected Component newLinkListPanel(String id, IModel<List<LinkModel>> model)
 					{
-						LinkListPanel listPanel = new LinkListPanel(id, model)
+						final LinkListPanel listPanel = new LinkListPanel(id, model)
 						{
 							private static final long serialVersionUID = 1L;
 
@@ -301,6 +303,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 									.newItemLinkLabel("itemLinkLabel", model);
 								itemLinkLabel.add(new AttributeAppender("class", " a"));
 								AbstractLink link = super.newAbstractLink(id, model);
+								link.add(new AttributeAppender("class", " btn btn-default"));
 								link.add(itemLinkLabel);
 								return link;
 							}
@@ -338,10 +341,10 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		response.render(JavaScriptHeaderItem.forReference(javaScriptSettings.getJQueryReference()));
 		Bootstrap.renderHead(response);
 		WicketComponentUtils.renderHeaderResponse(response, ApplicationBasePage.class);
-		PackageResourceReference gaqResourceReference = new PackageResourceReference(
-			ApplicationBasePage.class, "gaq.js");
-
-		response.render(JavaScriptHeaderItem.forReference(gaqResourceReference));
+		// PackageResourceReference gaqResourceReference = new PackageResourceReference(
+		// ApplicationBasePage.class, "gaq.js");
+		//
+		// response.render(JavaScriptHeaderItem.forReference(gaqResourceReference));
 	}
 
 	/**
