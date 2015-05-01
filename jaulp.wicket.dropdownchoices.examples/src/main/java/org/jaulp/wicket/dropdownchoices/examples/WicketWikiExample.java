@@ -15,16 +15,12 @@
  */
 package org.jaulp.wicket.dropdownchoices.examples;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
+import org.jaulp.wicket.dropdownchoices.pages.DatabaseManager;
 import org.jaulp.wicket.dropdownchoices.panel.TrademarksModelsPanel;
 import org.jaulp.wicket.dropdownchoices.panel.WicketWikiExamplePanel;
 import org.jaulp.wicket.dropdownchoices.panel.base.BaseDropDownChoicePanel;
@@ -65,22 +61,8 @@ public class WicketWikiExample extends WebPage
 
 		add(wicketWikiExamplePanel);
 
-		/** The models map. */
-		Map<String, List<String>> modelsMap = new HashMap<String, List<String>>();
-
-		modelsMap.put("trademark.audi",
-			Arrays.asList(new String[] { "audi.a4", "audi.a6", "audi.tt" }));
-		modelsMap.put(
-			"trademark.cadillac",
-			Arrays.asList(new String[] { "cadillac.cts", "cadillac.dts", "cadillac.escalade",
-					"cadillac.srx", "cadillac.deville" }));
-		modelsMap.put(
-			"trademark.ford",
-			Arrays.asList(new String[] { "ford.crown", "ford.escape", "ford.expedition",
-					"ford.explorer", "ford.f_150" }));
-
 		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel = new StringTwoDropDownChoicesModel(
-			"trademark.audi", modelsMap);
+			"trademark.audi", DatabaseManager.initializeModelMap());
 
 		TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
 			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(

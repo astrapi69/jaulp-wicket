@@ -15,11 +15,6 @@
  */
 package org.jaulp.wicket.dropdownchoices.pages;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 
@@ -29,6 +24,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.base.util.WicketComponentUtils;
 import org.jaulp.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
@@ -69,26 +65,9 @@ public class TwoDropDownChoicesPage extends WebPage
 	{
 		super(pageParameters);
 
-
-		/** The models map. */
-		Map<String, List<String>> modelsMap = new HashMap<String, List<String>>();
-
-		modelsMap.put("trademark.audi",
-			Arrays.asList(new String[] { "audi.a4", "audi.a6", "audi.tt" }));
-		modelsMap.put(
-			"trademark.cadillac",
-			Arrays.asList(new String[] { "cadillac.cts", "cadillac.dts", "cadillac.escalade",
-					"cadillac.srx", "cadillac.deville" }));
-		modelsMap.put(
-			"trademark.ford",
-			Arrays.asList(new String[] { "ford.crown", "ford.escape", "ford.expedition",
-					"ford.explorer", "ford.f_150" }));
-
-		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel = new StringTwoDropDownChoicesModel(
-			"trademark.audi", modelsMap);
-
-		final CompoundPropertyModel<StringTwoDropDownChoicesModel> boundOptionModel = new CompoundPropertyModel<StringTwoDropDownChoicesModel>(
-			stringTwoDropDownChoicesModel);
+		final IModel<StringTwoDropDownChoicesModel> boundOptionModel = new CompoundPropertyModel<StringTwoDropDownChoicesModel>(
+			new StringTwoDropDownChoicesModel("trademark.audi",
+				DatabaseManager.initializeModelMap()));
 
 		final Form<StringTwoDropDownChoicesModel> selectOptionForm = new Form<StringTwoDropDownChoicesModel>(
 			"selectOptionForm", boundOptionModel);
@@ -135,6 +114,7 @@ public class TwoDropDownChoicesPage extends WebPage
 		selectOptionForm.add(entryButton);
 
 	}
+
 
 	/**
 	 * {@inheritDoc}

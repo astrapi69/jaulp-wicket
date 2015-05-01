@@ -16,10 +16,6 @@
 package org.jaulp.wicket.dropdownchoices.three.choices;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
@@ -31,6 +27,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
 import org.jaulp.wicket.components.i18n.dropdownchoice.renderers.SelectedValuesChoiceRenderer;
+import org.jaulp.wicket.dropdownchoices.pages.DatabaseManager;
 import org.jaulp.wicket.model.dropdownchoices.StringThreeDropDownChoicesModel;
 
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
@@ -56,22 +53,8 @@ public class ThreeDropDownChoicesPanel extends Panel
 	{
 		super(id);
 
-		/** The models map. */
-		Map<String, List<String>> modelsMap = new HashMap<String, List<String>>();
-
-		modelsMap.put("trademark.audi",
-			Arrays.asList(new String[] { "audi.a4", "audi.a6", "audi.tt" }));
-		modelsMap.put(
-			"trademark.cadillac",
-			Arrays.asList(new String[] { "cadillac.cts", "cadillac.dts", "cadillac.escalade",
-					"cadillac.srx", "cadillac.deville" }));
-		modelsMap.put(
-			"trademark.ford",
-			Arrays.asList(new String[] { "ford.crown", "ford.escape", "ford.expedition",
-					"ford.explorer", "ford.f_150" }));
-
 		final StringThreeDropDownChoicesModel stringThreeDropDownChoicesModel = new StringThreeDropDownChoicesModel(
-			"trademark.audi", modelsMap, new ArrayList<String>());
+			"trademark.audi", DatabaseManager.initializeModelMap(), new ArrayList<String>());
 
 		final CompoundPropertyModel<StringThreeDropDownChoicesModel> boundOptionModel = new CompoundPropertyModel<StringThreeDropDownChoicesModel>(
 			stringThreeDropDownChoicesModel);

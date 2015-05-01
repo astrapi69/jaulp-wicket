@@ -41,9 +41,6 @@ public class LocalisedDropDownChoicePanel extends Panel
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	// private final Map< OptionModel, List< OptionModel >> modelsMap = new HashMap< OptionModel,
-	// List< OptionModel >>(); // map:company->model
-
 	/**
 	 * Instantiates a new localised drop down choice panel.
 	 *
@@ -73,12 +70,6 @@ public class LocalisedDropDownChoicePanel extends Panel
 				"option.value", this, this.getClass()));
 
 		selectOptionForm.add(ddc1);
-
-		// LocalisedDropDownChoice< String > ddc2 = new LocalisedDropDownChoice< String >(
-		// "options2",
-		// model(from(optionModel).getValue()), values,
-		// new LocalisedChoiceRenderer( "option.value", this, this
-		// .getClass() ) );
 
 		// Create submit button for the form
 		final Button entryButton = new Button("entryButton")
