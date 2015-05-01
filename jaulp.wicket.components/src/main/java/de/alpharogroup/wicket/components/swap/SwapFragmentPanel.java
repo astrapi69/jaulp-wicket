@@ -22,7 +22,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.GenericPanel;
-import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
@@ -65,9 +64,7 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	 */
 	public SwapFragmentPanel(String id, IModel<T> model)
 	{
-		super(id, model);
-		setModel(Args.notNull(model, "model"));
-		setDefaultModel(new CompoundPropertyModel<>(model));
+		super(id, Args.notNull(model, "model"));
 		setOutputMarkupPlaceholderTag(true);
 		add(view = newViewFragment(FRAGMENT_ID));
 		edit = newEditFragment(FRAGMENT_ID);

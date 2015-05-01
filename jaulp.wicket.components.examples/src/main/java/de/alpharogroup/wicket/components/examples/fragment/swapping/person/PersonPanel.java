@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.examples.fragment.swapping.person;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.swap.SwapComponentsFragmentPanel;
@@ -30,6 +31,7 @@ public class PersonPanel extends SwapComponentsFragmentPanel<PersonModel>
 	public PersonPanel(String id, IModel<PersonModel> model)
 	{
 		super(id, model);
+		setDefaultModel(new CompoundPropertyModel<>(model));
 	}
 
 	@Override

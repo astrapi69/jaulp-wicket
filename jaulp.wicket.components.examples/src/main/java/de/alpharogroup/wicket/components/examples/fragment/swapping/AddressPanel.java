@@ -18,8 +18,8 @@ package de.alpharogroup.wicket.components.examples.fragment.swapping;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Fragment;
@@ -146,14 +146,18 @@ public class AddressPanel extends Panel
 		form.add(new TextField<>("localNumber"));
 		form.add(new TextField<>("city"));
 		form.add(new TextField<>("code"));
-		form.add(new Button("save")
+		form.add(new AjaxButton("save", form)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit()
+			public void onSubmit(AjaxRequestTarget target, Form<?> form)
 			{
 				swapFragments();
+				if (target != null)
+				{
+					target.add(currentFragment);
+				}
 			}
 		});
 		return form;

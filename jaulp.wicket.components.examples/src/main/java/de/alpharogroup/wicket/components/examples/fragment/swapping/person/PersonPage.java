@@ -36,6 +36,7 @@ public class PersonPage extends PubliclyBasePage<PersonModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		return new PersonPanel(CONTAINER_PANEL_ID, Model.of(new PersonModel()));
+		return new PersonPanel(CONTAINER_PANEL_ID, Model.of(PersonModel.builder().firstName("")
+			.lastName("").age("").gender("").build()));
 	}
 }

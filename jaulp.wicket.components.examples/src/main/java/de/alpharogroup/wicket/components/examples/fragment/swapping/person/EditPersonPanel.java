@@ -17,7 +17,7 @@ package de.alpharogroup.wicket.components.examples.fragment.swapping.person;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -48,7 +48,7 @@ public class EditPersonPanel extends Panel
 
 	protected Component newSubmitButton(String id, Form<?> form)
 	{
-		return new AjaxFallbackButton(id, form)
+		return new AjaxButton(id, form)
 		{
 			private static final long serialVersionUID = 1L;
 
