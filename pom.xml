@@ -97,8 +97,10 @@
 		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
 		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
-		<!-- MYSTIC-CRYPT versions -->		
-		<randomizer.version>3.10.0</randomizer.version>
+		<!-- MYSTIC-CRYPT versions -->	
+		<mystic-crypt.version>3.10.0</mystic-crypt.version>	
+		<crypt-core.version>${mystic-crypt.version}</crypt-core.version>
+		<randomizer.version>${mystic-crypt.version}</randomizer.version>
 		<!-- EXTERNAL LIBRARIES versions -->
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
 		<joda-time.version>2.7</joda-time.version>
