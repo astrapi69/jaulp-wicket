@@ -259,42 +259,45 @@ public class ComponentFactory
 		return form;
 	}
 
-  /**
-   * Factory method for create a new Fragment.
-   * @param id
-   *            the id
-   * @param markupId
-   *            The associated id of the associated markup fragment
-   * @param markupProvider
-   *            The component whose markup contains the fragment's markup
-   * @return The new Fragment.
-   */
-  public static Fragment newFragment(final String id, final String markupId,
-                                 final MarkupContainer markupProvider) {
-    return newFragment(id, markupId, markupProvider, null);
-  }
+	/**
+	 * Factory method for create a new Fragment.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param markupId
+	 *            The associated id of the associated markup fragment
+	 * @param markupProvider
+	 *            The component whose markup contains the fragment's markup
+	 * @return The new Fragment.
+	 */
+	public static Fragment newFragment(final String id, final String markupId,
+		final MarkupContainer markupProvider)
+	{
+		return newFragment(id, markupId, markupProvider, null);
+	}
 
-  /**
-   * Factory method for create a new Fragment.
-   * @param id
-   *            the id
-   * @param markupId
-   *            The associated id of the associated markup fragment
-   * @param markupProvider
-   *            The component whose markup contains the fragment's markup
-   * @param model
-   *            The model for this fragment
-   * @return The new Fragment.
-   */
-  public static <T> Fragment newFragment(final String id, final String markupId,
-                                 final MarkupContainer markupProvider,
-                                 final IModel<T> model) {
-    Fragment fragment = new Fragment(id, markupId, markupProvider, model);
-    fragment.setOutputMarkupId(true);
-    return fragment;
-  }
+	/**
+	 * Factory method for create a new Fragment.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param markupId
+	 *            The associated id of the associated markup fragment
+	 * @param markupProvider
+	 *            The component whose markup contains the fragment's markup
+	 * @param model
+	 *            The model for this fragment
+	 * @return The new Fragment.
+	 */
+	public static <T> Fragment newFragment(final String id, final String markupId,
+		final MarkupContainer markupProvider, final IModel<T> model)
+	{
+		Fragment fragment = new Fragment(id, markupId, markupProvider, model);
+		fragment.setOutputMarkupId(true);
+		return fragment;
+	}
 
-  /**
+	/**
 	 * Factory method for create a new hidden field.
 	 *
 	 * @param id
