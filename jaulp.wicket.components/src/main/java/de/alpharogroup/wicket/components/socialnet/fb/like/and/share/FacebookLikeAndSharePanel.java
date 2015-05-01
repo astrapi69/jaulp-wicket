@@ -45,7 +45,8 @@ public class FacebookLikeAndSharePanel extends BasePanel<FacebookLikeAndShareMod
 		values.put("data-show-faces", model.getObject().getDataShowFaces().toString());
 		Model<HashMap<String, String>> context = Model.of(values);
 
-		UrlResourceStream template = new UrlResourceStream(getClass().getResource("fbLikeShare.vm"));
+		UrlResourceStream template = new UrlResourceStream(
+			FacebookLikeAndSharePanel.class.getResource("fbLikeShare.vm"));
 		add(VelocityPanel.forTemplateResource("velocityPanel", context, template));
 	}
 
