@@ -25,6 +25,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -70,8 +71,6 @@ import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
 import de.alpharogroup.wicket.components.examples.toastr.ToastrPage;
 import de.alpharogroup.wicket.components.examples.urls.WicketUrlPage;
-import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndShareModel;
-import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndSharePanel;
 import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusShareModel;
 import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusSharePanel;
 import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowModel;
@@ -138,9 +137,15 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 
 	protected Component newFacebookLikeAndSharePanel(String id)
 	{
-		FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(id,
-			new FacebookLikeAndShareModel.Builder().build().toModel());
-		return facebookLikeAndSharePanel;
+		// FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(id,
+		// new FacebookLikeAndShareModel.Builder().build().toModel()) {
+		// @Override
+		// protected void onConfigure() {
+		// super.onConfigure();
+		// setVisibilityAllowed(false);
+		// }
+		// };
+		return new EmptyPanel(id);
 	}
 
 	protected Component newGooglePlusSharePanel(String id)
@@ -150,7 +155,15 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
 			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
 			.dataHref(WicketUrlUtils.absoluteUrlFor(this.getClass(), false)).build().toModel();
-		return new GooglePlusSharePanel(id, model);
+		return new GooglePlusSharePanel(id, model)
+		{
+			@Override
+			protected void onConfigure()
+			{
+				super.onConfigure();
+				setVisibilityAllowed(false);
+			}
+		};
 	}
 
 	protected Component newTwitterSharePanel(String id)
@@ -159,7 +172,15 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 		IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
 			.shareUrl("https://twitter.com/share").dataUrl(dataUrl)
 			.via(WicketApplication.get().getDomainName()).counturl(dataUrl).build().toModel();
-		return new TwitterSharePanel(id, model);
+		return new TwitterSharePanel(id, model)
+		{
+			@Override
+			protected void onConfigure()
+			{
+				super.onConfigure();
+				setVisibilityAllowed(false);
+			}
+		};
 	}
 
 	protected Component newTwitterFollowPanel(String id)
@@ -167,7 +188,15 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 		String username = "jaulp.wicket";
 		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
 			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
-			.toModel());
+			.toModel())
+		{
+			@Override
+			protected void onConfigure()
+			{
+				super.onConfigure();
+				setVisibilityAllowed(false);
+			}
+		};
 	}
 
 	/**
