@@ -48,9 +48,7 @@ public class ToastJsGenerator implements Serializable
 		ToastJsGenerator.class, "toastr-template.js.tmpl");
 
 	/**
-	 * Gets the settings.
-	 *
-	 * @return the settings
+	 * The settings.
 	 */
 	@Getter
 	private ToastrSettings settings;
