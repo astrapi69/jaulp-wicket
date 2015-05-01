@@ -18,6 +18,11 @@ public class SimpleSearchPanelTest
 		tester = new WicketTester();
 		simpleSearchPanel = new SimpleSearchPanel("simpleSearchPanel")
 		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void onSearch()
 			{
@@ -26,15 +31,13 @@ public class SimpleSearchPanelTest
 	}
 
 	@Test
-	public void homepageRendersSuccessfully()
+	public void testSimpleSearchPanel()
 	{
 		// start and render the test page
 		tester.startComponentInPage(simpleSearchPanel);
 
 		// assert rendered panel class
 		tester.assertNoErrorMessage();
-
-		tester.startComponent(simpleSearchPanel);
 	}
 
 

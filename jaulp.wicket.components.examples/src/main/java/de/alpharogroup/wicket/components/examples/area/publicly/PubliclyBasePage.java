@@ -157,6 +157,11 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			.dataHref(WicketUrlUtils.absoluteUrlFor(this.getClass(), false)).build().toModel();
 		return new GooglePlusSharePanel(id, model)
 		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void onConfigure()
 			{
@@ -174,6 +179,11 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			.via(WicketApplication.get().getDomainName()).counturl(dataUrl).build().toModel();
 		return new TwitterSharePanel(id, model)
 		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void onConfigure()
 			{
@@ -190,6 +200,11 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
 			.toModel())
 		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void onConfigure()
 			{
