@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.link;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ import lombok.Setter;
 import lombok.ToString;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 
 @Getter
@@ -41,10 +43,15 @@ public class LinkModel implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	private Class<? extends Page> pageClass;
+
+	private Class<? extends Component> linkClass;
 	@NonNull
 	private ResourceBundleKey resourceModelKey;
 
 	private String url;
 
 	private String target;
+
+	private Map<String, String> parameters;
+
 }
