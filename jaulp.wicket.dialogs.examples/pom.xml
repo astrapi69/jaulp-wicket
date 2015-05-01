@@ -21,10 +21,15 @@
 
 	<dependencies>
 
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.wicket.dialogs</artifactId>
-		</dependency>
+    <dependency>
+      <groupId>de.alpharogroup</groupId>
+      <artifactId>jaulp.wicket.dialogs</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>de.alpharogroup</groupId>
+      <artifactId>jaulp.wicket.components</artifactId>
+    </dependency>
 
 	</dependencies>
 

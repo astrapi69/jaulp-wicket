@@ -15,17 +15,15 @@
  */
 package org.jaulp.wicket.dialogs.ajax.modal;
 
-import java.util.EventObject;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.event.Broadcast;
-import org.apache.wicket.event.IEventSink;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
+
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * The Class BaseModalPanel.
@@ -33,12 +31,16 @@ import org.apache.wicket.model.CompoundPropertyModel;
  * @param <T>
  *            the generic type
  */
-public abstract class BaseModalPanel<T> extends Panel
+public abstract class BaseModalPanel<T> extends GenericPanel<T>
 {
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+	private Form<T> form;
+	private TextArea note;
+	private AjaxButton cancel;
+	private AjaxButton ok;
 
 	/**
 	 * Instantiates a new base modal panel.
@@ -48,21 +50,28 @@ public abstract class BaseModalPanel<T> extends Panel
 	 * @param model
 	 *            the model
 	 */
-	public BaseModalPanel(final String id, final CompoundPropertyModel<T> model)
+	public BaseModalPanel(final String id, final IModel<T> model)
 	{
-		super(id);
+		super(id, model);
+		setOutputMarkupId(true);
+		add(form = newForm("form", model));
+		form.add(note = newTextArea("messageContent", model));
+		form.add(cancel = newCancelButton("cancelButton"));
+		form.add(ok = newOkButton("okButton"));
+	}
 
-		final Form<T> form = new Form<>("form", model);
-		form.setOutputMarkupId(true);
-		form.clearInput();
-		add(form);
-
-		final TextArea<String> note = new TextArea<>("messageContent");
-
-		note.clearInput();
-		// IT IS VERY IMPORTANT TO SET THE OUTPUTMARKUPID TO TRUE...
-		note.setOutputMarkupId(true);
-		note.add(new OnChangeAjaxBehavior()
+	/**
+	 * Factory method for creating a new ok Button. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new ok
+	 * Button.
+	 *
+	 * @param id
+	 *            the wicket id
+	 * @return the Button
+	 */
+	protected AjaxButton newOkButton(final String id)
+	{
+		final AjaxButton ok = new AjaxButton(id)
 		{
 			/**
 			 * The serialVersionUID.
@@ -70,14 +79,34 @@ public abstract class BaseModalPanel<T> extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onUpdate(final AjaxRequestTarget target)
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
-				// Do nothing...
+				final T obj = BaseModalPanel.this.getModelObject();
+				onSelect(target, obj);
 			}
-		});
-		form.add(note);
 
-		final AjaxButton close = new AjaxButton("cancelButton")
+			@Override
+			protected void onError(AjaxRequestTarget target, Form<?> form)
+			{
+				final T obj = BaseModalPanel.this.getModelObject();
+				onSelect(target, obj);
+			}
+		};
+		return ok;
+	}
+
+	/**
+	 * Factory method for creating a new cancel Button. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new cancel Button.
+	 *
+	 * @param id
+	 *            the wicket id
+	 * @return the Button
+	 */
+	protected AjaxButton newCancelButton(final String id)
+	{
+		final AjaxButton close = new AjaxButton(id)
 		{
 			/**
 			 * The serialVersionUID.
@@ -89,56 +118,46 @@ public abstract class BaseModalPanel<T> extends Panel
 			{
 				target.add(note);
 				onCancel(target);
-
-			}
-
-			@SuppressWarnings("unused")
-			public <E extends EventObject> void send(final IEventSink sink,
-				final Broadcast broadcast, final E payload)
-			{
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			protected void onError(AjaxRequestTarget target, Form<?> form)
 			{
-				// TODO Auto-generated method stub
-
+				target.add(note);
+				onCancel(target);
 			}
 		};
-		form.add(close);
+		return close;
+	}
 
-		final AjaxButton selectionButton = new AjaxButton("okButton")
-		{
-			/**
-			 * The serialVersionUID.
-			 */
-			private static final long serialVersionUID = 1L;
+	/**
+	 * Factory method for creating a new TextArea. This method is invoked in the constructor from
+	 * this class and can be overridden so users can provide their own version of a new TextArea.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the text area
+	 */
+	protected TextArea newTextArea(final String id, final IModel<T> model)
+	{
+		return ComponentFactory.newTextArea(id, new PropertyModel<String>(model, "messageContent"));
+	}
 
-			@Override
-			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-			{
-				final T obj = model.getObject();
-				onSelect(target, obj);
-			}
-
-			@SuppressWarnings("unused")
-			public <E extends EventObject> void send(IEventSink sink, Broadcast broadcast, E payload)
-			{
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form)
-			{
-				// TODO Auto-generated method stub
-
-			}
-		};
-		form.add(selectionButton);
-
+	/**
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the form
+	 */
+	protected Form<T> newForm(final String id, final IModel<T> model)
+	{
+		return ComponentFactory.newForm(id, model);
 	}
 
 	/**

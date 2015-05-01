@@ -15,13 +15,14 @@
  */
 package org.jaulp.wicket.dialogs.ajax.modal;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
-import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 
 /**
  * The Class BaseModalWindow.
- * 
+ *
  * @param <T>
  *            the generic type
  */
@@ -35,7 +36,7 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 
 	/**
 	 * Instantiates a new base modal window.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param title
@@ -47,15 +48,44 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 	 * @param model
 	 *            the model
 	 */
+	@Deprecated
 	public BaseModalWindow(final String id, final String title, final int initialWidth,
-		final int initialHeight, final CompoundPropertyModel<T> model)
+		final int initialHeight, final IModel<T> model)
 	{
-		super(id);
+		this(id, model, title, initialWidth, initialHeight);
 		setInitialWidth(initialWidth);
 		setInitialHeight(initialHeight);
 		setTitle(title);
+		setContent(newContent(this.getContentId(), model));
+	}
 
-		setContent(new BaseModalPanel<T>(this.getContentId(), model)
+	/**
+	 * Instantiates a new base modal window.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param title
+	 *            the title
+	 * @param initialWidth
+	 *            the initial width
+	 * @param initialHeight
+	 *            the initial height
+	 */
+	public BaseModalWindow(final String id, final IModel<T> model, final String title,
+		final int initialWidth, final int initialHeight)
+	{
+		super(id, model);
+		setInitialWidth(initialWidth);
+		setInitialHeight(initialHeight);
+		setTitle(title);
+		setContent(newContent(this.getContentId(), model));
+	}
+
+	protected Component newContent(final String contentId, final IModel<T> model)
+	{
+		return new BaseModalPanel<T>(contentId, model)
 		{
 			/**
 			 * The serialVersionUID.
@@ -73,12 +103,12 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 			{
 				BaseModalWindow.this.onSelect(target, object);
 			}
-		});
+		};
 	}
 
 	/**
 	 * On cancel.
-	 * 
+	 *
 	 * @param target
 	 *            the target
 	 */
@@ -86,7 +116,7 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 
 	/**
 	 * On select.
-	 * 
+	 *
 	 * @param target
 	 *            the target
 	 * @param object

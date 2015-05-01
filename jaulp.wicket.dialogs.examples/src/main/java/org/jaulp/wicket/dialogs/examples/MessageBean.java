@@ -17,9 +17,20 @@ package org.jaulp.wicket.dialogs.examples;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 /**
  * The Class MessageBean.
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Accessors(chain = true)
 public class MessageBean implements Serializable
 {
 
@@ -27,36 +38,6 @@ public class MessageBean implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	/** The message content. */
-	String messageContent;
-
-	/**
-	 * Gets the message content.
-	 *
-	 * @return the message content
-	 */
-	public String getMessageContent()
-	{
-		return messageContent;
-	}
-
-	/**
-	 * Sets the message content.
-	 *
-	 * @param messageContent
-	 *            the new message content
-	 */
-	public void setMessageContent(String messageContent)
-	{
-		this.messageContent = messageContent;
-	}
-
-	/**
-	 * Instantiates a new message bean.
-	 */
-	public MessageBean()
-	{
-		super();
-	}
-
+	private String messageContent;
 
 }

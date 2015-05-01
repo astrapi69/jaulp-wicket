@@ -29,6 +29,8 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.dialogs.ajax.modal.BaseModalWindow;
 import org.jaulp.wicket.dialogs.examples.panel.ModalDialogWithStylePanel;
@@ -58,8 +60,9 @@ public class HomePage extends WebPage
 		final List<MessageBean> noteList = new ArrayList<MessageBean>();
 		final MessageBean messageBean = new MessageBean();
 		messageBean.setMessageContent("hello");
+		final IModel<MessageBean> dialogModel = new CompoundPropertyModel<MessageBean>(messageBean);
 		final ModalWindow modalWindow = new BaseModalWindow<MessageBean>("baseModalWindow",
-			"Title", 350, 160, new CompoundPropertyModel<MessageBean>(messageBean))
+			dialogModel, "Title", 350, 160)
 		{
 			/**
 			 * The serialVersionUID.
@@ -148,7 +151,7 @@ public class HomePage extends WebPage
 		};
 		add(showUploadPage);
 
-		add(new ModalDialogWithStylePanel("modalDialogWithStylePanel"));
+		add(new ModalDialogWithStylePanel("modalDialogWithStylePanel", Model.of("")));
 
 	}
 }
