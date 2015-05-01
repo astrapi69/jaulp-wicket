@@ -19,6 +19,7 @@ import net.sourceforge.jaulp.io.annotations.ImportResource;
 import net.sourceforge.jaulp.io.annotations.ImportResources;
 
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.components.labeled.examples.LabeledHomePage;
 import org.jaulp.wicket.base.components.viewmode.examples.ViewOrEditPage;
@@ -61,39 +62,42 @@ public class MenubarPanel extends BasePanel
 	private void initializeMenu(MenuPanel menuBar)
 	{
 
-		MenuItem miHome = MenuUtils.createMenuItem(HomePage.class, "top.menu.home", this);
+		MenuItem miHome = MenuUtils.newMenuItem(HomePage.class, "top.menu.home", this);
 
 		menuBar.addMenu(miHome);
 
-		MenuItem miAnother = MenuUtils.createMenuItem(AnotherPage.class, "top.menu.another", this);
+		MenuItem miAnother = MenuUtils.newMenuItem(AnotherPage.class, "top.menu.another", this);
 
 		menuBar.addMenu(miAnother);
 
-		MenuItem subMenuFromMiAnother = MenuUtils.createMenuItem(SubmenuPage.class,
-			"top.menu.sub.another.overview", this);
+		MenuItem subMenuFromMiAnother = MenuUtils.newMenuItem(SubmenuPage.class,
+      "top.menu.sub.another.overview", this);
 		miAnother.addMenu(subMenuFromMiAnother);
 
-		MenuItem subMenuDynamic = MenuUtils.createMenuItem(DynamicPage.class,
-			"top.menu.sub.dynamic.overview", this);
+		MenuItem subMenuDynamic = MenuUtils.newMenuItem(DynamicPage.class,
+      "top.menu.sub.dynamic.overview", this);
 		miAnother.addMenu(subMenuDynamic);
 
-		MenuItem miViewOrEdit = MenuUtils.createMenuItem(ViewOrEditPage.class, "top.menu.viewmode",
-			this);
+    MenuItem textMenu = MenuUtils.newMenuItem(Model.of("Only text"));
+    miAnother.addMenu(textMenu);
+
+		MenuItem miViewOrEdit = MenuUtils.newMenuItem(ViewOrEditPage.class, "top.menu.viewmode",
+      this);
 		menuBar.addMenu(miViewOrEdit);
 
-		MenuItem miUrls = MenuUtils.createMenuItem(WicketUrlPage.class, "top.menu.urls", this);
+		MenuItem miUrls = MenuUtils.newMenuItem(WicketUrlPage.class, "top.menu.urls", this);
 		menuBar.addMenu(miUrls);
 
-		MenuItem miLabeled = MenuUtils.createMenuItem(LabeledHomePage.class, "top.menu.labeled",
-			this);
+		MenuItem miLabeled = MenuUtils.newMenuItem(LabeledHomePage.class, "top.menu.labeled",
+      this);
 
 		menuBar.addMenu(miLabeled);
 
-		MenuItem miSitemap = MenuUtils.createMenuItem(SiteMapPage.class, "top.menu.sitemap", this);
+		MenuItem miSitemap = MenuUtils.newMenuItem(SiteMapPage.class, "top.menu.sitemap", this);
 
 		menuBar.addMenu(miSitemap);
 
-		MenuItem miModel = MenuUtils.createMenuItem(ModelPage.class, "top.menu.model", this);
+		MenuItem miModel = MenuUtils.newMenuItem(ModelPage.class, "top.menu.model", this);
 
 		menuBar.addMenu(miModel);
 	}

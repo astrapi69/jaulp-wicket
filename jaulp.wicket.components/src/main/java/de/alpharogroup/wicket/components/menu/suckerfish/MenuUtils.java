@@ -47,9 +47,9 @@ public class MenuUtils
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> createBookmarkablePageLink(String linkId,
-		Class<? extends Page> pageClass, String labelId, String resourceModelKey,
-		Component component)
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(String linkId,
+                                                                     Class<? extends Page> pageClass, String labelId, String resourceModelKey,
+                                                                     Component component)
 	{
 		return LinkUtils.newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey,
 			component);
@@ -68,8 +68,8 @@ public class MenuUtils
 	 *            the {@link PageParameters}
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem createMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
-		Component component, final PageParameters parameters)
+	public static MenuItem newMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
+                                     Component component, final PageParameters parameters)
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass, parameters);
@@ -85,8 +85,8 @@ public class MenuUtils
 	 * @param labelModel
 	 *            the label model
 	 * @return the suckerfish menu panel. menu item
-	 */
-	public static MenuItem createMenuItem(final IModel<String> labelModel)
+	 */ // TODO delete...
+	public static MenuItem newMenuItem(final IModel<String> labelModel)
 	{
 		final MenuItem menuItem = new MenuItem(labelModel);
 		return menuItem;
@@ -104,8 +104,8 @@ public class MenuUtils
 	 *            the component
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem createMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
-		Component component)
+	public static MenuItem newMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
+                                     Component component)
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass);
