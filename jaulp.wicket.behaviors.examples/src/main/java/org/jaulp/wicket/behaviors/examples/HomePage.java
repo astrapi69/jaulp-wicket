@@ -15,7 +15,7 @@
  */
 package org.jaulp.wicket.behaviors.examples;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;

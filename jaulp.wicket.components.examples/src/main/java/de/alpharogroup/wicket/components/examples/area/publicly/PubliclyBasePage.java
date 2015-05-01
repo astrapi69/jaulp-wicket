@@ -18,7 +18,7 @@ package de.alpharogroup.wicket.components.examples.area.publicly;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.jaulp.locale.LocaleUtils;
+import de.alpharogroup.locale.LocaleUtils;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.Component;

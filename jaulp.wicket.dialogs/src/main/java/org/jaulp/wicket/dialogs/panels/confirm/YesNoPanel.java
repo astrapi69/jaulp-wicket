@@ -16,7 +16,7 @@
 package org.jaulp.wicket.dialogs.panels.confirm;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;

@@ -17,8 +17,8 @@ package de.alpharogroup.wicket.components.examples.termofuse;
 
 import java.io.Serializable;
 
-import net.sourceforge.jaulp.collections.ListUtils;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.collections.ListUtils;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import com.google.common.collect.ImmutableList;
 

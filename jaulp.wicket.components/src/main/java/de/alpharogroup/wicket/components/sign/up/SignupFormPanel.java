@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.up;
 
-import net.sourceforge.jaulp.auth.models.BaseUsernameSignUpModel;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -26,6 +24,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
+
+import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
 
 public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 {

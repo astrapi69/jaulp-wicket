@@ -16,7 +16,7 @@
 package de.alpharogroup.wicket.components.i18n.content;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;

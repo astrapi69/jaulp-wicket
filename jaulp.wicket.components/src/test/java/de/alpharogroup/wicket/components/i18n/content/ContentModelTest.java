@@ -15,7 +15,7 @@
  */
 package de.alpharogroup.wicket.components.i18n.content;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.testng.annotations.Test;
 

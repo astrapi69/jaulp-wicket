@@ -19,7 +19,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import net.sourceforge.jaulp.lang.PropertiesUtils;
+import de.alpharogroup.lang.PropertiesUtils;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;

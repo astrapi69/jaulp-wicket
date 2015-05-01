@@ -15,8 +15,8 @@
  */
 package org.jaulp.wicket.base.examples;
 
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;

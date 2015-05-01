@@ -16,8 +16,8 @@
 package de.alpharogroup.wicket.components.deregistration;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.collections.ListUtils;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.collections.ListUtils;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;

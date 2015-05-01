@@ -15,13 +15,12 @@
  */
 package de.alpharogroup.wicket.components.examples.sign.in;
 
-import net.sourceforge.jaulp.auth.models.BaseSignInModel;
-import net.sourceforge.jaulp.auth.models.SignInModel;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.alpharogroup.auth.models.BaseSignInModel;
+import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 @MountPath("public/signin")

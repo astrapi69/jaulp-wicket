@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import net.sourceforge.jaulp.lang.AnnotationUtils;
+import de.alpharogroup.lang.AnnotationUtils;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.markup.MarkupType;

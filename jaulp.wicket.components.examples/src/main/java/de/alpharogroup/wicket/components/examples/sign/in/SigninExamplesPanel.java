@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.examples.sign.in;
 
-import net.sourceforge.jaulp.auth.models.SignInModel;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -29,6 +27,7 @@ import org.jaulp.wicket.behaviors.BuildableChainableStatement;
 import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
+import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;

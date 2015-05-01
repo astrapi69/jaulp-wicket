@@ -15,7 +15,7 @@
  */
 package de.alpharogroup.wicket.components.termofuse.disclaimer;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;

@@ -21,7 +21,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sourceforge.jaulp.lang.AnnotationUtils;
+import de.alpharogroup.lang.AnnotationUtils;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;

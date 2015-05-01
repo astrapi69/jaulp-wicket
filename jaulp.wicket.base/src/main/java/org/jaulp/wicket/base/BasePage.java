@@ -16,7 +16,7 @@
 package org.jaulp.wicket.base;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;

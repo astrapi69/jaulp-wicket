@@ -27,8 +27,8 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.test.objects.Gender;
-import org.jaulp.test.objects.Person;
+import de.alpharogroup.test.objects.Gender;
+import de.alpharogroup.test.objects.Person;
 import org.jaulp.wicket.base.BasePage;
 
 import de.alpharogroup.wicket.components.editable.textarea.EditableTextArea;

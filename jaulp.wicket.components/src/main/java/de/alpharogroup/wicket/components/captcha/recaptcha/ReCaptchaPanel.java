@@ -18,7 +18,7 @@ package de.alpharogroup.wicket.components.captcha.recaptcha;
 import java.io.Serializable;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 import net.tanesha.recaptcha.ReCaptcha;
 import net.tanesha.recaptcha.ReCaptchaFactory;
 import net.tanesha.recaptcha.ReCaptchaImpl;

@@ -16,7 +16,7 @@
 package de.alpharogroup.wicket.components.i18n.list;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.list.ListItem;

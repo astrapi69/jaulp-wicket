@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sourceforge.jaulp.xml.tag.SimpleTag;
+import de.alpharogroup.xml.tag.SimpleTag;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;

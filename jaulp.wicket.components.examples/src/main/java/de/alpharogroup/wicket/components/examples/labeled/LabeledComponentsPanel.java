@@ -25,8 +25,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
-import org.jaulp.test.objects.Gender;
-import org.jaulp.test.objects.Member;
+import de.alpharogroup.test.objects.Gender;
+import de.alpharogroup.test.objects.Member;
 import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;

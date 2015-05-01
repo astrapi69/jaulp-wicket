@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.Model;

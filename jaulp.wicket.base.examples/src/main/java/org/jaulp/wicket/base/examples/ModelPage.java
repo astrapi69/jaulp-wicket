@@ -25,7 +25,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.test.objects.Person;
+import de.alpharogroup.test.objects.Person;
 import org.jaulp.wicket.base.GenericBasePage;
 import org.wicketstuff.annotation.mount.MountPath;
 

@@ -26,8 +26,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.jaulp.test.objects.Customer;
-import org.jaulp.test.objects.annotations.Mandatory;
+import de.alpharogroup.test.objects.Customer;
+import de.alpharogroup.test.objects.annotations.Mandatory;
 
 import de.alpharogroup.wicket.components.beaneditor.BeanEditorPanel;
 import de.alpharogroup.wicket.components.labeled.dropdown.LabeledEnumDropDownPanel;

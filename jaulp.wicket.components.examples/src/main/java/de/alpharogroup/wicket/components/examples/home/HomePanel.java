@@ -15,7 +15,7 @@
  */
 package de.alpharogroup.wicket.components.examples.home;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.BasePanel;

@@ -17,8 +17,8 @@ package org.jaulp.wicket.base.components.labeled.examples;
 
 import java.util.Date;
 
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -26,8 +26,8 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.test.objects.Gender;
-import org.jaulp.test.objects.Member;
+import de.alpharogroup.test.objects.Gender;
+import de.alpharogroup.test.objects.Member;
 import org.jaulp.wicket.base.BasePage;
 
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;

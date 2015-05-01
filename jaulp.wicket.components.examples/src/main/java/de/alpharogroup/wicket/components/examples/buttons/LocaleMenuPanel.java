@@ -17,9 +17,9 @@ package de.alpharogroup.wicket.components.examples.buttons;
 
 import java.util.Locale;
 
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
-import net.sourceforge.jaulp.locale.Locales;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
+import de.alpharogroup.locale.Locales;
 
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.request.resource.PackageResourceReference;

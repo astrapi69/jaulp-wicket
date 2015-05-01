@@ -15,7 +15,7 @@
  */
 package de.alpharogroup.wicket.components.mailto;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;

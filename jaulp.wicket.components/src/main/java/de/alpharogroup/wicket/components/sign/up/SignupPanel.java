@@ -17,7 +17,6 @@ package de.alpharogroup.wicket.components.sign.up;
 
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
-import net.sourceforge.jaulp.auth.models.BaseUsernameSignUpModel;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -29,6 +28,7 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;

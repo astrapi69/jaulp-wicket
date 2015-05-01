@@ -15,8 +15,8 @@
  */
 package org.jaulp.wicket.annotated.header.contributors.examples;
 
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.jaulp.wicket.annotated.header.contributors.abase.BasePage;

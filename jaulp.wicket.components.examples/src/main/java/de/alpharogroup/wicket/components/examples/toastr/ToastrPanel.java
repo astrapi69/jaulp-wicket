@@ -15,7 +15,7 @@
  */
 package de.alpharogroup.wicket.components.examples.toastr;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.ajax.AjaxRequestTarget;

@@ -16,7 +16,7 @@
 package de.alpharogroup.wicket.components.report;
 
 import lombok.Getter;
-import net.sourceforge.jaulp.exception.ExceptionUtils;
+import de.alpharogroup.exception.ExceptionUtils;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.AttributeModifier;

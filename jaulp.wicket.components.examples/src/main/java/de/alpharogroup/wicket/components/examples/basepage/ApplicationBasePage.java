@@ -18,9 +18,9 @@ package de.alpharogroup.wicket.components.examples.basepage;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;

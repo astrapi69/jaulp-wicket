@@ -15,8 +15,8 @@
  */
 package org.jaulp.wicket.annotated.header.contributors.examples.panels.footer;
 
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.jaulp.wicket.base.BasePanel;

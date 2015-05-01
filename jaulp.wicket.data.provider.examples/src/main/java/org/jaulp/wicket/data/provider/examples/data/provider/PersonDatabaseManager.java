@@ -19,8 +19,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.jaulp.date.DatePatterns;
-import net.sourceforge.jaulp.date.ParseDateUtils;
+import de.alpharogroup.date.DatePatterns;
+import de.alpharogroup.date.ParseDateUtils;
 
 public final class PersonDatabaseManager
 {

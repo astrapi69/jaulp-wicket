@@ -17,8 +17,8 @@ package de.alpharogroup.wicket.components.examples.ajaxtabs.addtab;
 
 import java.util.ArrayList;
 
-import net.sourceforge.jaulp.io.annotations.ImportResource;
-import net.sourceforge.jaulp.io.annotations.ImportResources;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;

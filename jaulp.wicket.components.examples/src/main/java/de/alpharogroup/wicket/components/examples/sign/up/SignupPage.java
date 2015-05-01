@@ -15,11 +15,10 @@
  */
 package de.alpharogroup.wicket.components.examples.sign.up;
 
-import net.sourceforge.jaulp.auth.models.BaseUsernameSignUpModel;
-
 import org.apache.wicket.Component;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.sign.up.SignupFormPanel;
 

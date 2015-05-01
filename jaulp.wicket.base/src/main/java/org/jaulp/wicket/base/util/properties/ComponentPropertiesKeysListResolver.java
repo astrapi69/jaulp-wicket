@@ -18,8 +18,8 @@ package org.jaulp.wicket.base.util.properties;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.jaulp.locale.PropertiesKeysListResolver;
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.PropertiesKeysListResolver;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;

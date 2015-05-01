@@ -15,7 +15,7 @@
  */
 package de.alpharogroup.wicket.components.velocity;
 
-import net.sourceforge.jaulp.xml.tag.SimpleTag;
+import de.alpharogroup.xml.tag.SimpleTag;
 
 import org.apache.wicket.Component;
 

@@ -32,7 +32,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.ListModel;
-import org.jaulp.test.objects.Company;
+import de.alpharogroup.test.objects.Company;
 import org.jaulp.wicket.base.BasePanel;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;

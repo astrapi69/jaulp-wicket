@@ -84,7 +84,7 @@
 		<testng.version>6.8.8</testng.version>
 		<junit.version>4.12</junit.version>
 		<!-- JAULP versions -->
-		<jaulp.core.version>3.10.0</jaulp.core.version>
+		<jaulp.core.version>3.11.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
 		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
@@ -92,12 +92,13 @@
 		<jaulp.generic.tree.version>${jaulp.core.version}</jaulp.generic.tree.version>
 		<jaulp.lang.version>${jaulp.core.version}</jaulp.lang.version>
 		<jaulp.net.version>${jaulp.core.version}</jaulp.net.version>
-		<randomizer.version>${jaulp.core.version}</randomizer.version>
 		<jaulp.security.version>${jaulp.core.version}</jaulp.security.version>
 		<jaulp.swing.version>${jaulp.core.version}</jaulp.swing.version>
 		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
 		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
+		<!-- MYSTIC-CRYPT versions -->		
+		<randomizer.version>3.10.0</randomizer.version>
 		<!-- EXTERNAL LIBRARIES versions -->
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
 		<joda-time.version>2.7</joda-time.version>

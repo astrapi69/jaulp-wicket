@@ -17,7 +17,7 @@ package org.jaulp.wicket.base.examples;
 
 import java.io.File;
 
-import net.sourceforge.jaulp.file.search.PathFinder;
+import de.alpharogroup.file.search.PathFinder;
 
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;

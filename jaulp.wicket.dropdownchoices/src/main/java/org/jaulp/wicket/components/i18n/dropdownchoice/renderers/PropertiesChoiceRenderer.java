@@ -17,7 +17,7 @@ package org.jaulp.wicket.components.i18n.dropdownchoice.renderers;
 
 import java.util.List;
 
-import net.sourceforge.jaulp.locale.ResourceBundleKey;
+import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;

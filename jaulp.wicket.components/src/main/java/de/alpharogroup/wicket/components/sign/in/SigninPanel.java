@@ -18,7 +18,6 @@ package de.alpharogroup.wicket.components.sign.in;
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
 import lombok.Getter;
-import net.sourceforge.jaulp.auth.models.SignInModel;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -30,6 +29,7 @@ import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
 

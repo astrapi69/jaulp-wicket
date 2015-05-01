@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.in.form;
 
-import net.sourceforge.jaulp.auth.models.SignInModel;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
@@ -27,6 +25,7 @@ import org.apache.wicket.model.IModel;
 import org.jaulp.wicket.base.util.ComponentFinder;
 import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
+import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 
