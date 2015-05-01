@@ -22,6 +22,7 @@ import java.util.List;
 import net.sourceforge.jaulp.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -45,6 +46,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.IResource;
@@ -257,7 +259,42 @@ public class ComponentFactory
 		return form;
 	}
 
-	/**
+  /**
+   * Factory method for create a new Fragment.
+   * @param id
+   *            the id
+   * @param markupId
+   *            The associated id of the associated markup fragment
+   * @param markupProvider
+   *            The component whose markup contains the fragment's markup
+   * @return The new Fragment.
+   */
+  public static Fragment newFragment(final String id, final String markupId,
+                                 final MarkupContainer markupProvider) {
+    return newFragment(id, markupId, markupProvider, null);
+  }
+
+  /**
+   * Factory method for create a new Fragment.
+   * @param id
+   *            the id
+   * @param markupId
+   *            The associated id of the associated markup fragment
+   * @param markupProvider
+   *            The component whose markup contains the fragment's markup
+   * @param model
+   *            The model for this fragment
+   * @return The new Fragment.
+   */
+  public static <T> Fragment newFragment(final String id, final String markupId,
+                                 final MarkupContainer markupProvider,
+                                 final IModel<T> model) {
+    Fragment fragment = new Fragment(id, markupId, markupProvider, model);
+    fragment.setOutputMarkupId(true);
+    return fragment;
+  }
+
+  /**
 	 * Factory method for create a new hidden field.
 	 *
 	 * @param id
