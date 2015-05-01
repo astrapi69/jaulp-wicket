@@ -20,7 +20,9 @@ import net.sourceforge.jaulp.locale.ResourceBundleKey;
 import org.apache.wicket.model.Model;
 import org.jaulp.wicket.base.BasePanel;
 import org.jaulp.wicket.behaviors.AddJsQueryBehavior;
+import org.jaulp.wicket.behaviors.datetime.CurrentDatetimeBehavior;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.content.ContentModel;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
 
@@ -39,6 +41,8 @@ public class HomePanel extends BasePanel<Object>
 		contentPanel.getHeader().add(new AddJsQueryBehavior("wrap", "<h1></h1>"));
 		contentPanel.getContent().add(new AddJsQueryBehavior("wrap", "<p class=\"lead\"></p>"));
 		add(contentPanel);
+		add(ComponentFactory.newLabel("currentTimeLabel", Model.of("")).add(
+			new CurrentDatetimeBehavior()));
 
 	}
 
