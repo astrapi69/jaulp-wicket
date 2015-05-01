@@ -31,7 +31,7 @@ import org.jaulp.wicket.dialogs.ajax.modal.ModalDialogFragmentPanel;
 
 import de.alpharogroup.wicket.components.link.LinkPanel;
 
-public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel
+public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 {
 
 	/**
@@ -41,16 +41,21 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel
 	private static ResourceReference CSS = new PackageResourceReference(CustomModalWindow.class,
 		"cart_global.css");
 
-	public ModalDialogWithStylePanel(String id, IModel model)
+	public ModalDialogWithStylePanel(String id, IModel<String> model)
 	{
 		super(id, model);
 	}
 
 	@Override
-	protected Component newFragmentContent(String id, IModel model)
+	protected Component newFragmentContent(String id, IModel<String> model)
 	{
 		return new LinkPanel(id, Model.of("Change opacity"))
 		{
+
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected AbstractLink newLink(final String id)
@@ -73,7 +78,7 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel
 	}
 
 	@Override
-	protected ModalWindow newModalWindow(String id, IModel model)
+	protected ModalWindow newModalWindow(String id, IModel<String> model)
 	{
 		ModalWindow modalWindow = super.newModalWindow(id, model);
 		modalWindow.setCssClassName("w_vegas");
@@ -82,10 +87,15 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel
 	}
 
 	@Override
-	protected Component newOpenModalLink(final String id, final IModel model)
+	protected Component newOpenModalLink(final String id, final IModel<String> model)
 	{
 		return new LinkPanel(id, Model.of("Press me"))
 		{
+
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected AbstractLink newLink(final String id)

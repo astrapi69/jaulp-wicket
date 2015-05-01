@@ -15,6 +15,8 @@
  */
 package org.jaulp.wicket.dialogs.ajax.modal;
 
+import lombok.Getter;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
@@ -38,8 +40,10 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	 */
 	private static final long serialVersionUID = 1L;
 	private Form<T> form;
-	private TextArea note;
+	private TextArea<String> note;
+	@Getter
 	private AjaxButton cancel;
+	@Getter
 	private AjaxButton ok;
 
 	/**
@@ -140,7 +144,7 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	 *            the model
 	 * @return the text area
 	 */
-	protected TextArea newTextArea(final String id, final IModel<T> model)
+	protected TextArea<String> newTextArea(final String id, final IModel<T> model)
 	{
 		return ComponentFactory.newTextArea(id, new PropertyModel<String>(model, "messageContent"));
 	}

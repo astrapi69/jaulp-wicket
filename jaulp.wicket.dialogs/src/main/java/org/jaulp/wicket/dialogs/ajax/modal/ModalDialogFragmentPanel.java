@@ -27,7 +27,7 @@ public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
 	private ModalWindow modalWindow;
 
 	private Fragment modalFragment;
-
+	@Getter
 	private Component openModalLink;
 
 	public ModalDialogFragmentPanel(final String id, final IModel<T> model)
