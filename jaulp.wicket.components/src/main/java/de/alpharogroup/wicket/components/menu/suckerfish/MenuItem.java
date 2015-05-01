@@ -30,7 +30,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * Lightweight menu object that stores a menu and its label.
- * 
+ *
  * @author Asterios Raptis
  */
 public class MenuItem implements Serializable
@@ -53,7 +53,7 @@ public class MenuItem implements Serializable
 
 	/**
 	 * Instantiates a new menu item.
-	 * 
+	 *
 	 * @param link
 	 *            the link
 	 * @param label
@@ -61,56 +61,63 @@ public class MenuItem implements Serializable
 	 */
 	public MenuItem(final AbstractLink link, final String label)
 	{
-		if (link != null && !link.getId().equals(MenuPanel.LINK_ID))
-		{
-			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
-		}
-		this.link = link;
-		this.label = new Label(MenuPanel.LINK_TEXT_ID, label);
-		this.link.add(this.label);
+		this(link, Model.of(label));
 	}
 
 	/**
 	 * Instantiates a new menu item.
-	 * 
+	 *
 	 * @param link
 	 *            the link
 	 * @param labelModel
 	 *            the model of the label text.
 	 */
-	public MenuItem(final AbstractLink link, final IModel<?> labelModel)
+	public MenuItem(final AbstractLink link, final IModel<String> labelModel)
 	{
 		if (link != null && !link.getId().equals(MenuPanel.LINK_ID))
 		{
 			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
 		}
 		this.link = link;
-		this.label = ComponentFactory.newLabel(MenuPanel.LINK_TEXT_ID, Model.of(labelModel));
-		this.link.add(label);
+		this.link.add(this.label = newLabel(MenuPanel.LINK_TEXT_ID, labelModel));
 	}
 
 	/**
 	 * Instantiates a new menu item.
-	 * 
+	 *
 	 * @param label
 	 *            The label text
 	 */
 	public MenuItem(final String label)
 	{
-		this.link = null;
-		this.label = ComponentFactory.newLabel(MenuPanel.LINK_TEXT_ID, Model.of(label));
+		this(Model.of(label));
 	}
 
 	/**
 	 * Instantiates a new menu item.
-	 * 
+	 *
 	 * @param labelModel
 	 *            the model of the label text.
 	 */
-	public MenuItem(final IModel<?> labelModel)
+	public MenuItem(final IModel<String> labelModel)
 	{
 		this.link = null;
-		this.label = ComponentFactory.newLabel(MenuPanel.LINK_TEXT_ID, labelModel);
+		this.label = newLabel(MenuPanel.LINK_TEXT_ID, labelModel);
+	}
+
+	/**
+	 * Factory method for creating a new Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a new Label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
+	protected Label newLabel(String id, IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**
@@ -128,7 +135,7 @@ public class MenuItem implements Serializable
 
 	/**
 	 * Add all menus at once.
-	 * 
+	 *
 	 * @param menuItems
 	 *            the new menu items
 	 */
