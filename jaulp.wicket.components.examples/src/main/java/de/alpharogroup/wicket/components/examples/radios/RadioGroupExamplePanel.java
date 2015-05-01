@@ -32,9 +32,9 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.ListModel;
-import de.alpharogroup.test.objects.Company;
-import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.test.objects.Company;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.radio.RadioGroupModel;

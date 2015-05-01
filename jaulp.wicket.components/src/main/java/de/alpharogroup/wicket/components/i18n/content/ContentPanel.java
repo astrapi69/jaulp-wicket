@@ -20,9 +20,9 @@ import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
-import org.jaulp.wicket.base.BasePanel;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
+import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 public class ContentPanel extends BasePanel<ContentModel>

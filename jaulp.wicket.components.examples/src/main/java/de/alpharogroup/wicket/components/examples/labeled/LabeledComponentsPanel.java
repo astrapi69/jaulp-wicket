@@ -25,10 +25,10 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+
 import de.alpharogroup.test.objects.Gender;
 import de.alpharogroup.test.objects.Member;
-import org.jaulp.wicket.base.BasePanel;
-
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledEnumLabelPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;

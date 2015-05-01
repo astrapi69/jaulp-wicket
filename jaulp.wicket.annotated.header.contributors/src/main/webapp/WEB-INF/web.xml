@@ -227,7 +227,7 @@
  		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>org.jaulp.wicket.WicketApplication</param-value>
+			<param-value>de.alpharogroup.wicket.WicketApplication</param-value>
  		</init-param>
  	</filter>
 

@@ -32,9 +32,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.jaulp.wicket.base.util.ComponentFinder;
-import org.jaulp.wicket.dialogs.panels.save.SaveDialogPanel;
 
+import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.AbstractContentTab;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.AjaxAddableTabbedPanel;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.ICloseableTab;
@@ -42,6 +41,7 @@ import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabModel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabPanel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabbedPanelModels;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.dialogs.panels.save.SaveDialogPanel;
 
 public class AddableTabbedPanel extends Panel
 {

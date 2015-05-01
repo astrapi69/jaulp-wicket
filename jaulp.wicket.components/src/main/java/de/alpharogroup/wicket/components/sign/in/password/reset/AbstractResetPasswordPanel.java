@@ -18,7 +18,8 @@ package de.alpharogroup.wicket.components.sign.in.password.reset;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.pageparameters.ParameterKeys;
+
+import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
 
 
 /**

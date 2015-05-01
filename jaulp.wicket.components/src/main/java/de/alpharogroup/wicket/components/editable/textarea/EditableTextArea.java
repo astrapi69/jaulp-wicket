@@ -23,8 +23,8 @@ import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
-import org.jaulp.wicket.base.util.ComponentFinder;
 
+import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.label.LabeledMultiLineLabelPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;

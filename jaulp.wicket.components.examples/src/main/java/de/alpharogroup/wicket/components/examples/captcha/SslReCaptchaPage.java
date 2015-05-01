@@ -18,9 +18,9 @@ package de.alpharogroup.wicket.components.examples.captcha;
 import org.apache.wicket.Component;
 import org.apache.wicket.protocol.https.RequireHttps;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.protocol.https.SSLable;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.alpharogroup.wicket.base.protocol.https.SSLable;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 @RequireHttps

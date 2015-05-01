@@ -24,10 +24,10 @@ import java.util.List;
 import lombok.Getter;
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
+import de.alpharogroup.wicket.base.BasePanel;
 
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.model.Model;
-import org.jaulp.wicket.base.BasePanel;
 
 @ImportResources(resources = { @ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
 public class MenuPanel extends BasePanel<Object>

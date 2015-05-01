@@ -26,9 +26,9 @@ import org.apache.wicket.Application;
 import org.apache.wicket.IApplicationListener;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.WebPage;
-import org.jaulp.wicket.PackageResourceReferences;
-import org.jaulp.wicket.base.util.application.ApplicationUtils;
 
+import de.alpharogroup.wicket.PackageResourceReferences;
+import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 

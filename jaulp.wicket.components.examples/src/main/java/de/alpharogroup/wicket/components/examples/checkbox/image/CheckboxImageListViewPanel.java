@@ -31,8 +31,8 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.PackageResourceReference;
-import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.examples.buttons.LocaleMenuPanel;
 import de.alpharogroup.wicket.components.form.checkbox.image.ImageCheckboxModel;
 import de.alpharogroup.wicket.components.form.checkbox.image.ImageChoicesModel;

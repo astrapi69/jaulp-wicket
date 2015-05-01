@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.link;
 
 import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -23,7 +24,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.model.Model;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class MenuUtils.

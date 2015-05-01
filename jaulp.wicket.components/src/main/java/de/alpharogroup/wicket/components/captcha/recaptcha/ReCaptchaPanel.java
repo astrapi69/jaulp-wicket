@@ -19,6 +19,10 @@ import java.io.Serializable;
 
 import lombok.Getter;
 import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.util.ComponentFinder;
+import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import net.tanesha.recaptcha.ReCaptcha;
 import net.tanesha.recaptcha.ReCaptchaFactory;
 import net.tanesha.recaptcha.ReCaptchaImpl;
@@ -30,10 +34,6 @@ import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.jaulp.wicket.base.util.ComponentFinder;
-import org.jaulp.wicket.base.util.WicketComponentUtils;
-import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
 
 public abstract class ReCaptchaPanel extends Panel
 {

@@ -28,11 +28,11 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
-import org.jaulp.wicket.behaviors.toastr.Position;
-import org.jaulp.wicket.behaviors.toastr.ToastJsGenerator;
-import org.jaulp.wicket.behaviors.toastr.ToastrSettings;
 
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import de.alpharogroup.wicket.behaviors.toastr.Position;
+import de.alpharogroup.wicket.behaviors.toastr.ToastJsGenerator;
+import de.alpharogroup.wicket.behaviors.toastr.ToastrSettings;
 import de.alpharogroup.wicket.components.buttons.ButtonPanel;
 
 public class ToastrPanel extends Panel

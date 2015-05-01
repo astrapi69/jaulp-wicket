@@ -21,7 +21,8 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.resource.PackageResourceReference;
-import org.jaulp.wicket.base.BasePanel;
+
+import de.alpharogroup.wicket.base.BasePanel;
 
 public class TwitterSharePanel extends BasePanel<TwitterShareModel>
 {

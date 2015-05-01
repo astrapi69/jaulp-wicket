@@ -29,9 +29,9 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
-import de.alpharogroup.test.objects.Company;
-import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.test.objects.Company;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.form.RadioChoicesListView;
 import de.alpharogroup.wicket.components.radio.RadioGroupModel;

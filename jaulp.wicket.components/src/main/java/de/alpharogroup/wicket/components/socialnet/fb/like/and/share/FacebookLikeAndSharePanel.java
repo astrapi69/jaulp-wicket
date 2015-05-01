@@ -24,7 +24,8 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.velocity.markup.html.VelocityPanel;
-import org.jaulp.wicket.base.BasePanel;
+
+import de.alpharogroup.wicket.base.BasePanel;
 
 public class FacebookLikeAndSharePanel extends BasePanel<FacebookLikeAndShareModel>
 {

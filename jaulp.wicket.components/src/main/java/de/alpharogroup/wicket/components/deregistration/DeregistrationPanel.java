@@ -27,10 +27,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.jaulp.wicket.base.BasePanel;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
-import org.jaulp.wicket.behaviors.AddJsQueryBehavior;
 
+import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import de.alpharogroup.wicket.behaviors.AddJsQueryBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.content.ContentModel;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;

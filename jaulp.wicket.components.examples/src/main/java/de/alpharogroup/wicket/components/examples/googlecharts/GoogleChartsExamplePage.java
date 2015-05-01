@@ -17,9 +17,9 @@ package de.alpharogroup.wicket.components.examples.googlecharts;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.behaviors.resource.references.TimelineChartPanel;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.alpharogroup.wicket.behaviors.resource.references.TimelineChartPanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 @MountPath("public/googlecharts")

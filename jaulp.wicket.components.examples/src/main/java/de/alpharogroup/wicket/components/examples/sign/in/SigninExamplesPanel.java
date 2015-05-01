@@ -23,11 +23,11 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.jaulp.wicket.behaviors.BuildableChainableStatement;
-import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
 import de.alpharogroup.auth.models.SignInModel;
+import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
+import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;

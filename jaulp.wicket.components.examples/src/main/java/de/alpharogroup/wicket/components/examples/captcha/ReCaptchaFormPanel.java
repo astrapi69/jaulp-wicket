@@ -17,8 +17,8 @@ package de.alpharogroup.wicket.components.examples.captcha;
 
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.jaulp.wicket.base.BasePanel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.captcha.recaptcha.ReCaptchaPanel;
 
 public class ReCaptchaFormPanel extends BasePanel<Object>

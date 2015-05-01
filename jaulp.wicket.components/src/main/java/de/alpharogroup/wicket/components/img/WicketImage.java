@@ -19,7 +19,8 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.WebApplication;
-import org.jaulp.wicket.base.util.application.ApplicationUtils;
+
+import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
 
 /**
  * The Class WicketImage.

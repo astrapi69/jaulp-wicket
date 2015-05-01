@@ -16,12 +16,12 @@
 package de.alpharogroup.wicket.components.mailto;
 
 import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import de.alpharogroup.wicket.behaviors.components.MailtoLabel;
+import de.alpharogroup.wicket.behaviors.models.MailtoModel;
 
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
-import org.jaulp.wicket.behaviors.components.MailtoLabel;
-import org.jaulp.wicket.behaviors.models.MailtoModel;
 
 /**
  * The Class MailToPanel.

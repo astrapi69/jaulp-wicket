@@ -21,10 +21,10 @@ import java.util.Map;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.jaulp.wicket.base.BasePanel;
-import org.jaulp.wicket.base.util.parameter.PageParametersUtils;
-import org.jaulp.wicket.base.util.url.WicketUrlUtils;
 
+import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
+import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
 
 

@@ -25,13 +25,13 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import org.jaulp.wicket.base.util.resource.ResourceModelFactory;
-import org.jaulp.wicket.behaviors.BuildableChainableStatement;
-import org.jaulp.wicket.behaviors.JqueryStatementsBehavior;
 import org.odlabs.wiquery.core.effects.EffectBehavior;
 import org.odlabs.wiquery.core.effects.EffectSpeed;
 import org.odlabs.wiquery.core.effects.fading.FadeTo;
 
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
+import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 public class AnimationPanel extends Panel

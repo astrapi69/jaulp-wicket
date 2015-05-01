@@ -19,7 +19,8 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Button;
-import org.jaulp.wicket.base.BasePanel;
+
+import de.alpharogroup.wicket.base.BasePanel;
 
 public class AlertsPanel extends BasePanel<Object>
 {

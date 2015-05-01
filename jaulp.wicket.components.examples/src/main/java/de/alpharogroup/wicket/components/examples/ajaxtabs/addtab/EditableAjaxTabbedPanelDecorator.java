@@ -28,8 +28,8 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.jaulp.wicket.base.util.ComponentFinder;
 
+import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.AbstractContentTab;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.AjaxCloseableTabbedPanel;
 import de.alpharogroup.wicket.components.ajax.editable.tabs.ICloseableTab;
