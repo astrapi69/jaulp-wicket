@@ -59,7 +59,7 @@ public class WicketApplication extends WebApplication
 
 	public String getPackageToScan()
 	{
-		return "org.jaulp.wicket.base";
+		return "de.alpharogroup.wicket.base";
 	}
 
 	/**

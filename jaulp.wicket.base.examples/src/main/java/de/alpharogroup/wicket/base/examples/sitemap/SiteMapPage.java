@@ -48,7 +48,7 @@ public class SiteMapPage extends AbstractSiteMapPage
 	@Override
 	protected String getPackageName()
 	{
-		return "org.jaulp.wicket.base";
+		return "de.alpharogroup.wicket.base";
 	}
 
 }

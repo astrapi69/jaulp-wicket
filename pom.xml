@@ -98,7 +98,7 @@
 		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
 		<!-- MYSTIC-CRYPT versions -->	
-		<mystic-crypt.version>3.10.0</mystic-crypt.version>	
+		<mystic-crypt.version>3.11.0</mystic-crypt.version>	
 		<crypt-core.version>${mystic-crypt.version}</crypt-core.version>
 		<randomizer.version>${mystic-crypt.version}</randomizer.version>
 		<!-- EXTERNAL LIBRARIES versions -->
