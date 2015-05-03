@@ -16,6 +16,9 @@
 package de.alpharogroup.wicket.components.examples.pdfdownload;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -37,7 +40,7 @@ public class PdfDownloadPage extends PubliclyBasePage<Object>
 	{
 		DownloadModel downloadModel = DownloadModel.builder().filename("download.pdf")
 			.path("pdf/download.pdf").contentType("application/pdf").build();
-		return new DownloadPanel(CONTAINER_PANEL_ID, Model.of(downloadModel))
+		DownloadPanel downloadPanel = new DownloadPanel(CONTAINER_PANEL_ID, Model.of(downloadModel))
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -46,8 +49,17 @@ public class PdfDownloadPage extends PubliclyBasePage<Object>
 			{
 				return WicketApplication.get();
 			}
+			
+			@Override
+			protected AjaxLink<Void> newDownloadLink(String id, IModel<DownloadModel> model)
+			{
+				AjaxLink<Void> downloadLink = super.newDownloadLink(id, model);
+				downloadLink.add(new AttributeAppender("class", " btn btn-primary"));
+				return downloadLink;
+			}
 
 		};
+		return downloadPanel;
 	}
 
 	public PdfDownloadPage(final PageParameters parameters)
