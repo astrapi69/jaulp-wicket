@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.sign.up;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -25,6 +26,7 @@ import org.apache.wicket.model.Model;
 
 import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
 import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
@@ -48,6 +50,12 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	public SignupFormPanel(String id, IModel<BaseUsernameSignUpModel> model)
 	{
 		super(id, model);
+	}
+	
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
 		initComponent();
 	}
 
@@ -115,7 +123,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 			@Override
 			public void onSubmit()
 			{
-				onSignup();
+				onSignup(ComponentFinder.findOrCreateNewAjaxRequestTarget(), getForm());
 			}
 		};
 	}
@@ -141,7 +149,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 		return label;
 	}
 
-	protected abstract void onSignup();
+	protected abstract void onSignup(final AjaxRequestTarget target, final Form<?> form);
 
 	public Component getSignupPanel()
 	{
