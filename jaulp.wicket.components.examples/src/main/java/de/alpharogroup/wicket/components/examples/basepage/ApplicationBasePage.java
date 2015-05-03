@@ -59,7 +59,7 @@ import de.alpharogroup.wicket.components.footer.FooterMenuPanel;
 import de.alpharogroup.wicket.components.footer.FooterPanel;
 import de.alpharogroup.wicket.components.i18n.list.LinkListPanel;
 import de.alpharogroup.wicket.components.link.DefaultTargets;
-import de.alpharogroup.wicket.components.link.LinkModel;
+import de.alpharogroup.wicket.components.link.LinkItem;
 
 /**
  * The Class ApplicationBasePage.
@@ -260,9 +260,9 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			@Override
 			protected Component newFooterMenuPanel(String id)
 			{
-				List<LinkModel> linkModel = new ArrayList<LinkModel>();
+				List<LinkItem> linkModel = new ArrayList<LinkItem>();
 				linkModel
-					.add(LinkModel
+					.add(LinkItem
 						.builder()
 						.url("http://www.alpharogroup.de/")
 						.target(DefaultTargets.BLANK.getTarget())
@@ -272,13 +272,13 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 							ResourceBundleKey.builder().key("main.footer.copyright.label")
 								.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group")
 								.build()).build());
-				linkModel.add(LinkModel
+				linkModel.add(LinkItem
 					.builder()
 					.pageClass(ImprintPage.class)
 					.resourceModelKey(
 						ResourceBundleKey.builder().key("main.global.menu.masthead.label")
 							.defaultValue("Imprint").build()).build());
-				linkModel.add(LinkModel
+				linkModel.add(LinkItem
 					.builder()
 					.pageClass(TermOfUsePage.class)
 					.resourceModelKey(
@@ -289,16 +289,16 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					protected Component newLinkListPanel(String id, IModel<List<LinkModel>> model)
+					protected Component newLinkListPanel(String id, IModel<List<LinkItem>> model)
 					{
 						final LinkListPanel listPanel = new LinkListPanel(id, model)
 						{
 							private static final long serialVersionUID = 1L;
 
 							@Override
-							protected Component newListComponent(String id, ListItem<LinkModel> item)
+							protected Component newListComponent(String id, ListItem<LinkItem> item)
 							{
-								LinkModel model = item.getModelObject();
+								LinkItem model = item.getModelObject();
 								Label itemLinkLabel = super
 									.newItemLinkLabel("itemLinkLabel", model);
 								itemLinkLabel.add(new AttributeAppender("class", " a"));

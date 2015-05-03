@@ -30,13 +30,13 @@ import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
-import de.alpharogroup.wicket.components.link.LinkModel;
+import de.alpharogroup.wicket.components.link.LinkItem;
 import de.alpharogroup.wicket.components.listview.ListViewPanel;
 
 /**
  * This Panel holds a list with links and labels.
  */
-public class LinkListPanel extends ListViewPanel<LinkModel>
+public class LinkListPanel extends ListViewPanel<LinkItem>
 {
 
 	/** The Constant serialVersionUID. */
@@ -54,7 +54,7 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	 * @param model
 	 *            the model
 	 */
-	public LinkListPanel(String id, IModel<List<LinkModel>> model)
+	public LinkListPanel(String id, IModel<List<LinkItem>> model)
 	{
 		super(id, model);
 	}
@@ -67,7 +67,7 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	 * @param list
 	 *            the list
 	 */
-	public LinkListPanel(String id, List<LinkModel> list)
+	public LinkListPanel(String id, List<LinkItem> list)
 	{
 		super(id, list);
 	}
@@ -76,9 +76,9 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected Component newListComponent(String id, ListItem<LinkModel> item)
+	protected Component newListComponent(String id, ListItem<LinkItem> item)
 	{
-		LinkModel model = item.getModelObject();
+		LinkItem model = item.getModelObject();
 		Label itemLinkLabel = newItemLinkLabel("itemLinkLabel", model);
 		AbstractLink link = newAbstractLink(id, model);
 		link.add(itemLinkLabel);
@@ -94,7 +94,7 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	 *            the model
 	 * @return the abstract link
 	 */
-	protected AbstractLink newAbstractLink(String id, LinkModel model)
+	protected AbstractLink newAbstractLink(String id, LinkItem model)
 	{
 		AttributeModifier target = null;
 		AbstractLink link = null;
@@ -140,7 +140,7 @@ public class LinkListPanel extends ListViewPanel<LinkModel>
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newItemLinkLabel(final String id, final LinkModel model)
+	protected Label newItemLinkLabel(final String id, final LinkItem model)
 	{
 		Label itemLinkLabel = ComponentFactory.newLabel(id,
 			ResourceModelFactory.newResourceModel(model.getResourceModelKey(), this));

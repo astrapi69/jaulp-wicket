@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.link;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -25,12 +26,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.Singular;
 import lombok.ToString;
 import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.behavior.Behavior;
 
+/**
+ *  The LinkItem is a bean that holds the data for building a link component. 
+ **/
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -38,20 +44,38 @@ import org.apache.wicket.Page;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LinkModel implements Serializable
+public class LinkItem implements Serializable
 {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The page class. */
 	private Class<? extends Page> pageClass;
 
+	/** The link class. */
 	private Class<? extends Component> linkClass;
+	
+	/** The resource model key. */
 	@NonNull
 	private ResourceBundleKey resourceModelKey;
 
+	/** The url. */
 	private String url;
 
+	/** The target. */
 	private String target;
-
+	
+	/** The parameters. */
+	@Singular
 	private Map<String, String> parameters;
+	
+	/** The children. */
+	@Singular(value="child")	
+	private List<LinkItem> children;
+	
+	/** The behaviors for the link item. */
+	@Singular
+	private List<Behavior> behaviors;
 
 }

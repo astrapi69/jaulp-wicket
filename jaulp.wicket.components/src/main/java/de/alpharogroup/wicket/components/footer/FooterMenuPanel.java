@@ -24,7 +24,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
 
-import de.alpharogroup.wicket.components.link.LinkModel;
+import de.alpharogroup.wicket.components.link.LinkItem;
 
 public abstract class FooterMenuPanel extends Panel
 {
@@ -36,17 +36,17 @@ public abstract class FooterMenuPanel extends Panel
 	@Getter
 	private Component linkListPanel;
 
-	public FooterMenuPanel(final String id, List<LinkModel> list)
+	public FooterMenuPanel(final String id, List<LinkItem> list)
 	{
 		this(id, new ListModel<>(list));
 	}
 
-	public FooterMenuPanel(final String id, IModel<List<LinkModel>> model)
+	public FooterMenuPanel(final String id, IModel<List<LinkItem>> model)
 	{
 		super(id);
 		add(linkListPanel = newLinkListPanel("linkListPanel", model));
 	}
 
-	protected abstract Component newLinkListPanel(final String id, IModel<List<LinkModel>> model);
+	protected abstract Component newLinkListPanel(final String id, IModel<List<LinkItem>> model);
 
 }
