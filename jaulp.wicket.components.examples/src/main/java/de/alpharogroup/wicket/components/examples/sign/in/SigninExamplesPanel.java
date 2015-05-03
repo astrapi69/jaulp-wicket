@@ -41,6 +41,9 @@ public class SigninExamplesPanel extends GenericPanel<SignInModel>
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private int labelSize = 2;
+	private int inputSize = 4;
 
 	public SigninExamplesPanel(final String id, final IModel<SignInModel> model)
 	{
@@ -78,8 +81,8 @@ public class SigninExamplesPanel extends GenericPanel<SignInModel>
 						.build())).add(
 					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
 						.label("wrap")
-						.args(JsUtils.quotes("<div class=\"col-sm-offset-2 col-sm-10\"></div>"))
-						.build()));
+						.args(
+							JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-" + inputSize + "\"></div>")).build()));
 				button.add(new AttributeAppender("class", " btn btn-default"));
 				return button;
 			}
@@ -106,11 +109,11 @@ public class SigninExamplesPanel extends GenericPanel<SignInModel>
 							.add(
 								new JqueryStatementsBehavior()
 									.add(new BuildableChainableStatement.Builder().label("wrap")
-										.args(JsUtils.quotes("<div class=\"col-sm-10\"></div>"))
+										.args(JsUtils.quotes("<div class=\"col-sm-" + inputSize + "\"></div>"))
 										.build()))
 							.add(new AttributeAppender("class", " form-control"));
 						emailTextField.getLabelComponent().add(
-							new AttributeAppender("class", " control-label col-sm-2"));
+							new AttributeAppender("class", " control-label col-sm-" + labelSize));
 						return emailTextField;
 					}
 
@@ -126,11 +129,11 @@ public class SigninExamplesPanel extends GenericPanel<SignInModel>
 							.add(
 								new JqueryStatementsBehavior()
 									.add(new BuildableChainableStatement.Builder().label("wrap")
-										.args(JsUtils.quotes("<div class=\"col-sm-10\"></div>"))
+										.args(JsUtils.quotes("<div class=\"col-sm-" + inputSize + "\"></div>"))
 										.build()))
 							.add(new AttributeAppender("class", " form-control"));
 						pwTextField.getLabelComponent().add(
-							new AttributeAppender("class", " control-label col-sm-2"));
+							new AttributeAppender("class", " control-label col-sm-" + labelSize));
 						return pwTextField;
 					}
 				};
