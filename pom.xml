@@ -148,8 +148,8 @@
 		<!-- TOMCAT7 MAVEN PLUGIN versions -->
 		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>		
 		<!-- COVERAGE MAVEN PLUGIN versions -->
-		<cobertura-maven-plugin.version>2.6</cobertura-maven-plugin>
-		<coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin>
+		<cobertura-maven-plugin.version>2.6</cobertura-maven-plugin.version>
+		<coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
