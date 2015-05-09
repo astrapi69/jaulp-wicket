@@ -183,6 +183,11 @@ public final class PageParametersUtils
 			parameterValue = request.getQueryParameters().getParameterValue(parameterName)
 				.toString();
 		}
+		if (parameterValue == null || parameterValue.isEmpty())
+		{
+			parameterValue = request.getRequestParameters().getParameterValue(parameterName)
+				.toString();
+		}
 		return parameterValue;
 	}
 
@@ -199,7 +204,7 @@ public final class PageParametersUtils
 	}
 
 	/**
-	 * Gets a map with all parameters. Looks in the query and post parameters. Migration method from
+	 * Gets a map with all parameters. Looks in the query, request and post parameters. Migration method from
 	 * 1.4.* to 1.5.*.
 	 *
 	 * @param request
@@ -216,6 +221,23 @@ public final class PageParametersUtils
 	}
 
 	/**
+	 * Gets a map with all parameters. Looks in the query, request and post parameters. Migration method from
+	 * 1.4.* to 1.5.*.
+	 *
+	 * @param request
+	 *            the request
+	 * @return a map with all parameters.
+	 */
+	public static Map<String, List<StringValue>> getPageParametersMap(Request request)
+	{
+		final Map<String, List<StringValue>> map = new HashMap<>();
+		addToParameters(request.getRequestParameters(), map);
+		addToParameters(request.getQueryParameters(), map);
+		addToParameters(request.getPostParameters(), map);
+		return map;
+	}
+
+	/**
 	 * Adds the given parameters to the given map.
 	 * 
 	 * @param parameters
@@ -223,7 +245,7 @@ public final class PageParametersUtils
 	 * @param parameterMap
 	 *            The map to add the parameters.
 	 */
-	private static void addParameters(final IRequestParameters parameters,
+	public static void addParameters(final IRequestParameters parameters,
 		final Map<String, String[]> parameterMap)
 	{
 		Set<String> parameterNames = parameters.getParameterNames();
@@ -244,6 +266,24 @@ public final class PageParametersUtils
 				}
 			}
 			parameterMap.put(parameterName, stringArray);
+		}
+	}
+
+	/**
+	 * Adds the given parameters to the given map.
+	 * 
+	 * @param parameters
+	 *            The parameters to add to the map.
+	 * @param parameterMap
+	 *            The map to add the parameters.
+	 */
+	public static void addToParameters(final IRequestParameters parameters,
+		final Map<String, List<StringValue>> parameterMap)
+	{
+		for (String parameterName : parameters.getParameterNames())
+		{
+			List<StringValue> parameterValues = parameters.getParameterValues(parameterName);			
+			parameterMap.put(parameterName, parameterValues);
 		}
 	}
 
