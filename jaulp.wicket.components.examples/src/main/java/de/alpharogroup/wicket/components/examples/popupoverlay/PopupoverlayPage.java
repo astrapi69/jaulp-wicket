@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.examples.popupoverlay;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -54,10 +55,17 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 			protected MarkupContainer newOverlayReference(String id, IModel<PersonModel> model)
 			{
 				PersonPanel panel = new PersonPanel(id, model);
-				panel.add(new AttributeAppender("style", " height: 800px; width: 600px;"));
-				panel.add(new AttributeAppender("class", " overlay-panel"));
+				panel.add(new AttributeAppender("class", " container well"));
 				panel.setOutputMarkupId(true);
 				return panel;
+			}
+
+			@Override
+			protected Button newOpenButton(final String id)
+			{
+				Button button = new Button(id);
+				button.add(new AttributeAppender("class", " btn btn-primary"));
+				return button;
 			}
 		};
 

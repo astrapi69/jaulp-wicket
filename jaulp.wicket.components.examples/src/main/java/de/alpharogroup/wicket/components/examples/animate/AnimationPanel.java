@@ -16,7 +16,6 @@
 package de.alpharogroup.wicket.components.examples.animate;
 
 import lombok.Getter;
-import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -29,6 +28,7 @@ import org.odlabs.wiquery.core.effects.EffectBehavior;
 import org.odlabs.wiquery.core.effects.EffectSpeed;
 import org.odlabs.wiquery.core.effects.fading.FadeTo;
 
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;

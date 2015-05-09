@@ -17,9 +17,6 @@ package de.alpharogroup.wicket.base.components.labeled.examples;
 
 import java.util.Date;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResources;
-
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -27,6 +24,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.test.objects.Gender;
 import de.alpharogroup.test.objects.Member;
 import de.alpharogroup.wicket.base.BasePage;

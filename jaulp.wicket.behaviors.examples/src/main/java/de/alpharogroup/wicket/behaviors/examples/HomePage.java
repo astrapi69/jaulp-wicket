@@ -15,15 +15,6 @@
  */
 package de.alpharogroup.wicket.behaviors.examples;
 
-import de.alpharogroup.locale.ResourceBundleKey;
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
-import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-import de.alpharogroup.wicket.behaviors.AddJavascriptBehavior;
-import de.alpharogroup.wicket.behaviors.AddJsResourceReferenceBehavior;
-import de.alpharogroup.wicket.behaviors.FaviconBehavior;
-import de.alpharogroup.wicket.behaviors.components.MailtoLabel;
-import de.alpharogroup.wicket.behaviors.models.MailtoModel;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -34,6 +25,15 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+
+import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import de.alpharogroup.wicket.behaviors.AddJavascriptBehavior;
+import de.alpharogroup.wicket.behaviors.AddJsResourceReferenceBehavior;
+import de.alpharogroup.wicket.behaviors.FaviconBehavior;
+import de.alpharogroup.wicket.behaviors.components.MailtoLabel;
+import de.alpharogroup.wicket.behaviors.models.MailtoModel;
 
 /**
  * Homepage

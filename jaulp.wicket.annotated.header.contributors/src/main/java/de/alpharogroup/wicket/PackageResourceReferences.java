@@ -22,15 +22,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResourcesUtils;
-import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
-
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.PackageResourceReference;
+
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResourcesUtils;
+import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 
 /**
  * The Class PackageResourceReferences.

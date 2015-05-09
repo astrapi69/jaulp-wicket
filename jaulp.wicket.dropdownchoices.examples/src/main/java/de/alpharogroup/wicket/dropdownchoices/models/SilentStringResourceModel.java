@@ -19,11 +19,11 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import de.alpharogroup.lang.PropertiesUtils;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
+
+import de.alpharogroup.lang.PropertiesUtils;
 
 /**
  * The Class SilentStringResourceModel.

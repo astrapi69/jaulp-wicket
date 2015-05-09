@@ -22,7 +22,8 @@ import lombok.Getter;
  */
 public enum HideMethod
 {
-	HIDE("hide"), FADE_OUT("fadeOut"), SLIDE_UP("slideUp");
+	HIDE("hide"), FADE_OUT(EffectMethods.FADE_OUT.getValue()), SLIDE_UP(EffectMethods.SLIDE_UP
+		.getValue());
 
 	/**
 	 * The value of the easing.

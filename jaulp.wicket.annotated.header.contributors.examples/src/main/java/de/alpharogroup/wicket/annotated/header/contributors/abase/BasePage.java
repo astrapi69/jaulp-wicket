@@ -15,17 +15,17 @@
  */
 package de.alpharogroup.wicket.annotated.header.contributors.abase;
 
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.AbstractBasePage;
 import de.alpharogroup.wicket.base.util.WicketComponentUtils;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
  * The Class BasePage.

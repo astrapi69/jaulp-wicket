@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.log4j.Logger;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
@@ -177,6 +178,11 @@ public final class PageParametersUtils
 			parameterValue = request.getPostParameters().getParameterValue(parameterName)
 				.toString();
 		}
+		if (parameterValue == null || parameterValue.isEmpty())
+		{
+			parameterValue = request.getQueryParameters().getParameterValue(parameterName)
+				.toString();
+		}
 		return parameterValue;
 	}
 
@@ -202,8 +208,24 @@ public final class PageParametersUtils
 	 */
 	public static Map<String, String[]> getParameterMap(Request request)
 	{
-		IRequestParameters parameters = request.getRequestParameters();
 		final Map<String, String[]> map = new HashMap<>();
+		addParameters(request.getRequestParameters(), map);
+		addParameters(request.getQueryParameters(), map);
+		addParameters(request.getPostParameters(), map);
+		return map;
+	}
+
+	/**
+	 * Adds the given parameters to the given map.
+	 * 
+	 * @param parameters
+	 *            The parameters to add to the map.
+	 * @param parameterMap
+	 *            The map to add the parameters.
+	 */
+	private static void addParameters(final IRequestParameters parameters,
+		final Map<String, String[]> parameterMap)
+	{
 		Set<String> parameterNames = parameters.getParameterNames();
 		for (String parameterName : parameterNames)
 		{
@@ -216,10 +238,13 @@ public final class PageParametersUtils
 				{
 					stringArray[i] = parameterValues.get(i).toString();
 				}
+				if (parameterMap.containsKey(parameterName))
+				{
+					stringArray = ArrayUtils.addAll(parameterMap.get(parameterName), stringArray);
+				}
 			}
-			map.put(parameterName, stringArray);
+			parameterMap.put(parameterName, stringArray);
 		}
-		return map;
 	}
 
 	/**

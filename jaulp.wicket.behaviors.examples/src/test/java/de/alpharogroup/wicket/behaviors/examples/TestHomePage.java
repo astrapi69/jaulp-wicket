@@ -19,9 +19,6 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.wicket.behaviors.examples.HomePage;
-import de.alpharogroup.wicket.behaviors.examples.WicketApplication;
-
 /**
  * Simple test using the WicketTester
  */

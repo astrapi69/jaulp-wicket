@@ -16,7 +16,6 @@
 package de.alpharogroup.wicket.components.report;
 
 import lombok.Getter;
-import de.alpharogroup.exception.ExceptionUtils;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.AttributeModifier;
@@ -36,6 +35,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.util.lang.Args;
 
+import de.alpharogroup.exception.ExceptionUtils;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;

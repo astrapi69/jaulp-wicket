@@ -23,9 +23,6 @@ import org.odlabs.wiquery.core.javascript.JsStatement;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 import org.odlabs.wiquery.core.options.Options;
 
-import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
-import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
-
 public class JqueryStatementsBehaviorTest
 {
 

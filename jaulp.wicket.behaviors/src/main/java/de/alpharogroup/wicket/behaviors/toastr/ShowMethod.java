@@ -26,9 +26,9 @@ public enum ShowMethod
 	/** The show. */
 	SHOW("show"),
 	/** The fade in. */
-	FADE_IN("fadeIn"),
+	FADE_IN(EffectMethods.FADE_IN.getValue()),
 	/** The slide down. */
-	SLIDE_DOWN("slideDown");
+	SLIDE_DOWN(EffectMethods.SLIDE_DOWN.getValue());
 
 	/**
 	 * The value of the easing.

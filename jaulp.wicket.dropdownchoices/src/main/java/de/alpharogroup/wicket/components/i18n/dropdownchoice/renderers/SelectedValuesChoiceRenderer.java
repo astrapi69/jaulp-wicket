@@ -17,12 +17,12 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice.renderers;
 
 import java.util.List;
 
-import de.alpharogroup.locale.ResourceBundleKey;
-import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
+
+import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class SelectedValuesChoiceRenderer.

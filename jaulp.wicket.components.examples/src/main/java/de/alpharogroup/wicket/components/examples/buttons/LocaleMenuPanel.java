@@ -17,13 +17,12 @@ package de.alpharogroup.wicket.components.examples.buttons;
 
 import java.util.Locale;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResources;
-import de.alpharogroup.locale.Locales;
-
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.request.resource.PackageResourceReference;
 
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
+import de.alpharogroup.locale.Locales;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.buttons.LocaleImageButton;
 

@@ -15,9 +15,9 @@
  */
 package de.alpharogroup.wicket.components.i18n.content;
 
-import de.alpharogroup.locale.ResourceBundleKey;
-
 import org.testng.annotations.Test;
+
+import de.alpharogroup.locale.ResourceBundleKey;
 
 
 public class ContentModelTest

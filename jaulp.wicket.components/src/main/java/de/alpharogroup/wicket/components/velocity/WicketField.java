@@ -15,9 +15,9 @@
  */
 package de.alpharogroup.wicket.components.velocity;
 
-import de.alpharogroup.xml.tag.SimpleTag;
-
 import org.apache.wicket.Component;
+
+import de.alpharogroup.xml.tag.SimpleTag;
 
 /**
  * The Class WicketField encapsulates a wicket component and can create its own html tag for this

@@ -17,13 +17,6 @@ package de.alpharogroup.wicket.base.mainbase;
 
 import java.util.Set;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResources;
-import de.alpharogroup.wicket.PackageResourceReferenceWrapper;
-import de.alpharogroup.wicket.PackageResourceReferences;
-import de.alpharogroup.wicket.base.BasePage;
-import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
-
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -32,6 +25,13 @@ import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
+
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
+import de.alpharogroup.wicket.PackageResourceReferenceWrapper;
+import de.alpharogroup.wicket.PackageResourceReferences;
+import de.alpharogroup.wicket.base.BasePage;
+import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 
 /**
  * The Class BasePage.

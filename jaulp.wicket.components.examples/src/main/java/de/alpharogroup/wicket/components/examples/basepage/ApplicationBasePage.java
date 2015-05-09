@@ -18,10 +18,6 @@ package de.alpharogroup.wicket.components.examples.basepage;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResources;
-import de.alpharogroup.locale.ResourceBundleKey;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -44,6 +40,9 @@ import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.markup.html.bootstrap.behavior.BootstrapBaseBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.GenericBasePage;
 import de.alpharogroup.wicket.base.util.WicketComponentUtils;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;

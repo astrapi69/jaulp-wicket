@@ -16,11 +16,11 @@
 package de.alpharogroup.wicket.components.i18n.content;
 
 import lombok.Getter;
-import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;

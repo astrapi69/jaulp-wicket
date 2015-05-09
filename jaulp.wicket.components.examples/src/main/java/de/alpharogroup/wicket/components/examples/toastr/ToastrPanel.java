@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.examples.toastr;
 
-import de.alpharogroup.locale.ResourceBundleKey;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -29,6 +27,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.toastr.Position;
 import de.alpharogroup.wicket.behaviors.toastr.ToastJsGenerator;

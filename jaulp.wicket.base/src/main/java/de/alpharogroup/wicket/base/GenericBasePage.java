@@ -16,13 +16,14 @@
 package de.alpharogroup.wicket.base;
 
 import lombok.Getter;
-import de.alpharogroup.locale.ResourceBundleKey;
-import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+
+import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class GenericBasePage.

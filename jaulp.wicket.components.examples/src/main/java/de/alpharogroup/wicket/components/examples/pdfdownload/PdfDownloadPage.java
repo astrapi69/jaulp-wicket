@@ -49,7 +49,7 @@ public class PdfDownloadPage extends PubliclyBasePage<Object>
 			{
 				return WicketApplication.get();
 			}
-			
+
 			@Override
 			protected AjaxLink<Void> newDownloadLink(String id, IModel<DownloadModel> model)
 			{

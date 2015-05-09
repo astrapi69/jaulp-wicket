@@ -15,12 +15,11 @@
  */
 package de.alpharogroup.wicket.base.examples;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResources;
-
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.components.labeled.examples.LabeledHomePage;
 import de.alpharogroup.wicket.base.components.viewmode.examples.ViewOrEditPage;

@@ -31,8 +31,8 @@ import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.form.RadioChoice;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-import de.alpharogroup.test.objects.enums.Brands;
 
+import de.alpharogroup.test.objects.enums.Brands;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 

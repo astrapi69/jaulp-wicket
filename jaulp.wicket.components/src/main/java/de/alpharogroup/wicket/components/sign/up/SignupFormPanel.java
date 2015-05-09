@@ -51,7 +51,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	{
 		super(id, model);
 	}
-	
+
 	@Override
 	protected void onInitialize()
 	{

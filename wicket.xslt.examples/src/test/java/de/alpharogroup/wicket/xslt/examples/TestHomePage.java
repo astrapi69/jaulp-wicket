@@ -19,7 +19,6 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.wicket.xslt.examples.WicketApplication;
 import de.alpharogroup.wicket.xslt.examples.pages.HomePage;
 
 /**

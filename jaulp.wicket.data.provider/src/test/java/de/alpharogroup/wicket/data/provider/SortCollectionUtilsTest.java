@@ -21,8 +21,6 @@ import java.util.List;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.wicket.data.provider.SortCollectionUtils;
-
 public class SortCollectionUtilsTest
 {
 

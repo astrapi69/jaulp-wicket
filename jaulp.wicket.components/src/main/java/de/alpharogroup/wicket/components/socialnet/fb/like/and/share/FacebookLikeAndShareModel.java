@@ -81,7 +81,7 @@ public class FacebookLikeAndShareModel implements Serializable
 		}
 	}
 
-	private FacebookLikeAndShareModel(Builder builder)
+	public FacebookLikeAndShareModel(Builder builder)
 	{
 		this.dataShare = builder.dataShare;
 		this.dataWith = builder.dataWith;

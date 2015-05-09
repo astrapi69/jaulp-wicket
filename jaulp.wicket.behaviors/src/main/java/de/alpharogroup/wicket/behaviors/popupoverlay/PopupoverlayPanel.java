@@ -17,9 +17,9 @@ package de.alpharogroup.wicket.behaviors.popupoverlay;
 
 import lombok.Getter;
 
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
@@ -69,15 +69,16 @@ public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 	public void onBeforeRender()
 	{
 
-		addOrReplace(openButton = newOpenButton("openButton"));
 
 		addOrReplace(overlayReference = newOverlayReference("overlayReference", getModel()));
 		overlayReference.add(newPopupoverlayBehavior());
 		overlayReference.setOutputMarkupId(true);
 
+		addOrReplace(openButton = newOpenButton("openButton"));
 		// add class attributte with the markup id from the overlay with the
 		// suffix '_open' that indicates that the overlay shell open...
-		openButton.add(new AttributeModifier("class", overlayReference.getMarkupId() + "_open"));
+		openButton.add(new AttributeAppender("class", " " + overlayReference.getMarkupId()
+			+ "_open"));
 		super.onBeforeRender();
 	}
 
@@ -85,7 +86,7 @@ public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 	 * Factory method for create the Button. This method is invoked in the method
 	 * {@link Component#onBeforeRender()} from the derived classes and can be overridden so users
 	 * can provide their own version of a Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
@@ -99,13 +100,13 @@ public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 	 * Abstract factory method for create the new overlay reference MarkupContainer. This method is
 	 * invoked in the method {@link Component#onBeforeRender()} from the derived classes and must be
 	 * overridden so users can provide their own version of the overlay component.
-	 * 
+	 *
 	 * Note: If you have in your settings the attribute 'blur' set to false than you have to provide
 	 * a close component. As from the documentation of the popupoverlay plugin this component have
 	 * to provide the class attribute with the value 'overlayReference.getMarkupId() + "_close"'.
-	 * 
+	 *
 	 * For instance:
-	 * 
+	 *
 	 * <pre>
 	 * Button button = new Button(&quot;button&quot;);
 	 * getOverlayReference().add(button);

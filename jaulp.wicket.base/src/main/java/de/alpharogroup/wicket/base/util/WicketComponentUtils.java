@@ -21,13 +21,6 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.alpharogroup.lang.AnnotationUtils;
-import de.alpharogroup.wicket.PackageResourceReferenceWrapper;
-import de.alpharogroup.wicket.PackageResourceReferences;
-import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
-import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
@@ -48,6 +41,13 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.time.Time;
+
+import de.alpharogroup.lang.AnnotationUtils;
+import de.alpharogroup.wicket.PackageResourceReferenceWrapper;
+import de.alpharogroup.wicket.PackageResourceReferences;
+import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
+import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
 
 /**
  * The Class WicketComponentUtils is a helper class for the migration from wicket-version 1.4.x to

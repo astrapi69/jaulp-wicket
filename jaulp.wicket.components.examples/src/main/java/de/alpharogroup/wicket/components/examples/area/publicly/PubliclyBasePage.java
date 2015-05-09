@@ -18,14 +18,10 @@ package de.alpharogroup.wicket.components.examples.area.publicly;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.alpharogroup.locale.LocaleUtils;
-
 import org.apache.log4j.Logger;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
-import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -43,11 +39,9 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.NavbarDropDownBut
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import de.agilecoders.wicket.core.settings.ITheme;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.addtab.EditableAjaxTabbedPage;
 import de.alpharogroup.wicket.components.examples.alerts.AlertsPage;
 import de.alpharogroup.wicket.components.examples.animate.AnimationPage;
-import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePage;
 import de.alpharogroup.wicket.components.examples.beaneditor.example.BeanEditorExamplePage;
 import de.alpharogroup.wicket.components.examples.buttons.ButtonsPage;
@@ -71,12 +65,6 @@ import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
 import de.alpharogroup.wicket.components.examples.toastr.ToastrPage;
 import de.alpharogroup.wicket.components.examples.urls.WicketUrlPage;
-import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusShareModel;
-import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusSharePanel;
-import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowModel;
-import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowPanel;
-import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterShareModel;
-import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterSharePanel;
 
 /**
  * The Class BasePage.
@@ -125,93 +113,10 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 
 	private void initializeComponents()
 	{
-		add(newFacebookLikeAndSharePanel("facebookLikeAndSharePanel"));
-		add(newTwitterSharePanel("twitterSharePanel"));
-		add(newTwitterFollowPanel("twitterFollowPanel"));
-		add(newGooglePlusSharePanel("googleplusSharePanel"));
 		add(getNavbarPanel());
 		add(feedback = newFeedbackPanel("feedback"));
 		add(getContainerPanel());
 		add(newFooterPanel("footer"));
-	}
-
-	protected Component newFacebookLikeAndSharePanel(String id)
-	{
-		// FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(id,
-		// new FacebookLikeAndShareModel.Builder().build().toModel()) {
-		// @Override
-		// protected void onConfigure() {
-		// super.onConfigure();
-		// setVisibilityAllowed(false);
-		// }
-		// };
-		return new EmptyPanel(id);
-	}
-
-	protected Component newGooglePlusSharePanel(String id)
-	{
-		IModel<GooglePlusShareModel> model = new GooglePlusShareModel.Builder()
-			.scriptSrc("https://apis.google.com/js/platform.js")
-			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
-			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
-			.dataHref(WicketUrlUtils.absoluteUrlFor(this.getClass(), false)).build().toModel();
-		return new GooglePlusSharePanel(id, model)
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				super.onConfigure();
-				setVisibilityAllowed(false);
-			}
-		};
-	}
-
-	protected Component newTwitterSharePanel(String id)
-	{
-		String dataUrl = "http://www." + WicketApplication.get().getDomainName();
-		IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
-			.shareUrl("https://twitter.com/share").dataUrl(dataUrl)
-			.via(WicketApplication.get().getDomainName()).counturl(dataUrl).build().toModel();
-		return new TwitterSharePanel(id, model)
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				super.onConfigure();
-				setVisibilityAllowed(false);
-			}
-		};
-	}
-
-	protected Component newTwitterFollowPanel(String id)
-	{
-		String username = "jaulp.wicket";
-		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
-			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
-			.toModel())
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				super.onConfigure();
-				setVisibilityAllowed(false);
-			}
-		};
 	}
 
 	/**

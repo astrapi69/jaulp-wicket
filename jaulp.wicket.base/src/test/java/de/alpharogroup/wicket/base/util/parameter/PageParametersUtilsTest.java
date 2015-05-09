@@ -19,8 +19,6 @@ import org.apache.wicket.util.string.StringValue;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
-
 public class PageParametersUtilsTest
 {
 

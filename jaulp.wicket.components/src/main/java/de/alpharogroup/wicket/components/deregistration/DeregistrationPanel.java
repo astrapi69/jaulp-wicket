@@ -16,8 +16,6 @@
 package de.alpharogroup.wicket.components.deregistration;
 
 import lombok.Getter;
-import de.alpharogroup.collections.ListUtils;
-import de.alpharogroup.locale.ResourceBundleKey;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -28,6 +26,8 @@ import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.alpharogroup.collections.ListUtils;
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.AddJsQueryBehavior;

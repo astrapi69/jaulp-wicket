@@ -21,9 +21,6 @@ import static org.wicketeer.modelfactory.ModelFactory.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResources;
-
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.image.Image;
@@ -32,6 +29,8 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.PackageResourceReference;
 
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.examples.buttons.LocaleMenuPanel;
 import de.alpharogroup.wicket.components.form.checkbox.image.ImageCheckboxModel;

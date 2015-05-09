@@ -17,13 +17,12 @@ package de.alpharogroup.wicket.components.examples.ajaxtabs.addtab;
 
 import java.util.ArrayList;
 
-import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResources;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import de.alpharogroup.io.annotations.ImportResource;
+import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.addable.AddableTabbedPanel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabModel;
 import de.alpharogroup.wicket.components.examples.ajaxtabs.tabpanels.TabbedPanelModels;

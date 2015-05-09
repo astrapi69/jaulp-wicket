@@ -15,13 +15,13 @@
  */
 package de.alpharogroup.wicket.annotated.header.contributors.examples;
 
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.annotated.header.contributors.abase.BasePage;
 import de.alpharogroup.wicket.annotated.header.contributors.examples.panels.footer.FooterPanel;
 import de.alpharogroup.wicket.annotated.header.contributors.examples.panels.home.HomePanel;
-
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 /**
  * Homepage

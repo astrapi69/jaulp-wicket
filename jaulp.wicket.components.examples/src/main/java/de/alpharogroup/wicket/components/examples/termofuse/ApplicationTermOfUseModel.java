@@ -17,11 +17,10 @@ package de.alpharogroup.wicket.components.examples.termofuse;
 
 import java.io.Serializable;
 
-import de.alpharogroup.collections.ListUtils;
-import de.alpharogroup.locale.ResourceBundleKey;
-
 import com.google.common.collect.ImmutableList;
 
+import de.alpharogroup.collections.ListUtils;
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.i18n.list.ContentListModel;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;

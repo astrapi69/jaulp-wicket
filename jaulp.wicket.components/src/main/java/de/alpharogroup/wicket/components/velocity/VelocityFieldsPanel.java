@@ -19,8 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.alpharogroup.xml.tag.SimpleTag;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -29,6 +27,8 @@ import org.apache.wicket.model.util.MapModel;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.velocity.markup.html.VelocityPanel;
+
+import de.alpharogroup.xml.tag.SimpleTag;
 
 /**
  * The Class VelocityFieldsPanel.

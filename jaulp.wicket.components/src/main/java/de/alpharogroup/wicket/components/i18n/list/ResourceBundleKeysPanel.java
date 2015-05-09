@@ -17,9 +17,9 @@ package de.alpharogroup.wicket.components.i18n.list;
 
 import java.util.List;
 
-import de.alpharogroup.locale.ResourceBundleKey;
-
 import org.apache.wicket.model.IModel;
+
+import de.alpharogroup.locale.ResourceBundleKey;
 
 /**
  * The Class ResourceBundleKeysPanel takes a list of content resource keys that should be in a

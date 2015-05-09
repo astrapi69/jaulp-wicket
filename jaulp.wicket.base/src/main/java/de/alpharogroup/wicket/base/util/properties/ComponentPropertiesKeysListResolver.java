@@ -18,11 +18,11 @@ package de.alpharogroup.wicket.base.util.properties;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.wicket.Component;
+
 import de.alpharogroup.locale.PropertiesKeysListResolver;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-
-import org.apache.wicket.Component;
 
 /**
  * The Class ComponentPropertiesKeysListResolver creates a list with the properties keys from the

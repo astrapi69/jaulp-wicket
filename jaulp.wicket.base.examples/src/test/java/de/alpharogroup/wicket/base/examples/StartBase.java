@@ -17,13 +17,12 @@ package de.alpharogroup.wicket.base.examples;
 
 import java.io.File;
 
-import de.alpharogroup.file.search.PathFinder;
-
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
+import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.jetty9.runner.Jetty9Runner;
 import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;

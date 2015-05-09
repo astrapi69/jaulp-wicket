@@ -15,17 +15,33 @@
  */
 package de.alpharogroup.wicket.base.util.resource;
 
-import de.alpharogroup.locale.ResourceBundleKey;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.StringResourceModel;
+
+import de.alpharogroup.locale.ResourceBundleKey;
 
 /**
  * A factory for creating StringResourceModel objects.
  */
 public final class ResourceModelFactory
 {
+
+	/**
+	 * Factory method to create a new {@link StringResourceModel} from the given ResourceBundleKey.
+	 *
+	 * @param resourceBundleKey
+	 *            the resource bundle key
+	 * @return a new {@link StringResourceModel} as an {@link IModel}
+	 */
+	public static IModel<String> newResourceModel(final ResourceBundleKey resourceBundleKey)
+	{
+		IModel<String> resourceModel;
+		String resourceKey = resourceBundleKey.getKey();
+		resourceModel = newResourceModel(resourceKey, resourceBundleKey.getParameters(), null,
+			resourceBundleKey.getDefaultValue());
+		return resourceModel;
+	}
 
 	/**
 	 * Factory method to create a new {@link StringResourceModel} from the given ResourceBundleKey.

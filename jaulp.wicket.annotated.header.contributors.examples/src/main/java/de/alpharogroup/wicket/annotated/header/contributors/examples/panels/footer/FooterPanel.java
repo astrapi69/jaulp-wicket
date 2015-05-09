@@ -15,11 +15,11 @@
  */
 package de.alpharogroup.wicket.annotated.header.contributors.examples.panels.footer;
 
+import org.apache.wicket.markup.html.basic.Label;
+
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.base.BasePanel;
-
-import org.apache.wicket.markup.html.basic.Label;
 
 /**
  * @author admin
