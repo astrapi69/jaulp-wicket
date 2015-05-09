@@ -62,6 +62,7 @@ import de.alpharogroup.wicket.components.examples.popupoverlay.PopupoverlayPage;
 import de.alpharogroup.wicket.components.examples.radios.RadioComponentsExamplePage;
 import de.alpharogroup.wicket.components.examples.sign.in.SigninPage;
 import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
+import de.alpharogroup.wicket.components.examples.socialnet.SocialNetworksExamplePage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
 import de.alpharogroup.wicket.components.examples.toastr.ToastrPage;
 import de.alpharogroup.wicket.components.examples.urls.WicketUrlPage;
@@ -203,6 +204,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			"global.menu.googlecharts.label", this);
 		final IModel<String> toastrExampleModel = ResourceModelFactory.newResourceModel(
 			"global.menu.toastr.label", this);
+		final IModel<String> socialNetExampleModel = ResourceModelFactory.newResourceModel(
+			"global.menu.social.network.label", this);
 		return new NavbarDropDownButton(featuresMainModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -255,6 +258,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 					DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
 				subMenu.add(new MenuBookmarkablePageLink<ToastrPage>(ToastrPage.class,
 					toastrExampleModel).setIconType(GlyphIconType.barcode));
+				subMenu.add(new MenuBookmarkablePageLink<SocialNetworksExamplePage>(SocialNetworksExamplePage.class,
+					socialNetExampleModel).setIconType(GlyphIconType.eyeopen));
 				subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(ExceptionPage.class,
 					exceptionModel).setIconType(GlyphIconType.fire));
 

@@ -7,4 +7,9 @@ import java.io.Serializable;
  */
 public class SocialNetworkBean implements Serializable
 {
+
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 }

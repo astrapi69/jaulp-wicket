@@ -8,7 +8,6 @@ import org.apache.wicket.model.Model;
 import de.alpharogroup.locale.LocaleUtils;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
-import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndShareModel;
 import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndSharePanel;
 import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusShareModel;
@@ -28,11 +27,16 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 	public SocialNetworksExamplePanel(String id)
 	{
 		super(id);
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
 		add(newFacebookLikeAndSharePanel("facebookLikeAndSharePanel"));
 		add(newTwitterSharePanel("twitterSharePanel"));
 		add(newTwitterFollowPanel("twitterFollowPanel"));
 		add(newGooglePlusSharePanel("googleplusSharePanel"));
-
 	}
 
 	protected Component newFacebookLikeAndSharePanel(String id)
@@ -51,42 +55,16 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
 			.dataHref(WicketUrlUtils.absoluteUrlFor(this.getPage().getClass(), false)).build()
 			.toModel();
-		return new GooglePlusSharePanel(id, model)
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				super.onConfigure();
-				setVisibilityAllowed(false);
-			}
-		};
+		return new GooglePlusSharePanel(id, model);
 	}
 
 	protected Component newTwitterSharePanel(String id)
 	{
-		String dataUrl = "http://www." + WicketApplication.get().getDomainName();
+		String dataUrl = "http://www.jaulp-wicket-components.com";
 		IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
-			.shareUrl("https://twitter.com/share").dataUrl(dataUrl)
-			.via(WicketApplication.get().getDomainName()).counturl(dataUrl).build().toModel();
-		return new TwitterSharePanel(id, model)
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				super.onConfigure();
-				setVisibilityAllowed(false);
-			}
-		};
+			.shareUrl("https://twitter.com/share").dataUrl(dataUrl).via(dataUrl).counturl(dataUrl)
+			.build().toModel();
+		return new TwitterSharePanel(id, model);
 	}
 
 	protected Component newTwitterFollowPanel(String id)
@@ -94,19 +72,6 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 		String username = "jaulp.wicket";
 		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
 			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
-			.toModel())
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				super.onConfigure();
-				setVisibilityAllowed(false);
-			}
-		};
+			.toModel());
 	}
 }
