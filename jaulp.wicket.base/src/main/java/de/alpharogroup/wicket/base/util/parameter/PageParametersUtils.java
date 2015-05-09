@@ -221,8 +221,7 @@ public final class PageParametersUtils
 	}
 
 	/**
-	 * Gets a map with all parameters. Looks in the query, request and post parameters. Migration method from
-	 * 1.4.* to 1.5.*.
+	 * Gets a map with all parameters. Looks in the query, request and post parameters.
 	 *
 	 * @param request
 	 *            the request
