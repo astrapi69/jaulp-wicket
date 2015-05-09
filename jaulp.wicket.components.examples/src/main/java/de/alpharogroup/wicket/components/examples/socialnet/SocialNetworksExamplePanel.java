@@ -1,0 +1,112 @@
+package de.alpharogroup.wicket.components.examples.socialnet;
+
+import org.apache.wicket.Component;
+import org.apache.wicket.Session;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+
+import de.alpharogroup.locale.LocaleUtils;
+import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
+import de.alpharogroup.wicket.components.examples.application.WicketApplication;
+import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndShareModel;
+import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndSharePanel;
+import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusShareModel;
+import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusSharePanel;
+import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowModel;
+import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowPanel;
+import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterShareModel;
+import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterSharePanel;
+
+/**
+ * Panel for social networks like fb, twitter, google+ etc.
+ */
+public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
+{
+	private static final long serialVersionUID = 1L;
+
+	public SocialNetworksExamplePanel(String id)
+	{
+		super(id);
+		add(newFacebookLikeAndSharePanel("facebookLikeAndSharePanel"));
+		add(newTwitterSharePanel("twitterSharePanel"));
+		add(newTwitterFollowPanel("twitterFollowPanel"));
+		add(newGooglePlusSharePanel("googleplusSharePanel"));
+
+	}
+
+	protected Component newFacebookLikeAndSharePanel(String id)
+	{
+		FacebookLikeAndShareModel model = new FacebookLikeAndShareModel.Builder().build();
+		FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(id,
+			Model.of(model));
+		return facebookLikeAndSharePanel;
+	}
+
+	protected Component newGooglePlusSharePanel(String id)
+	{
+		IModel<GooglePlusShareModel> model = new GooglePlusShareModel.Builder()
+			.scriptSrc("https://apis.google.com/js/platform.js")
+			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
+			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
+			.dataHref(WicketUrlUtils.absoluteUrlFor(this.getPage().getClass(), false)).build()
+			.toModel();
+		return new GooglePlusSharePanel(id, model)
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onConfigure()
+			{
+				super.onConfigure();
+				setVisibilityAllowed(false);
+			}
+		};
+	}
+
+	protected Component newTwitterSharePanel(String id)
+	{
+		String dataUrl = "http://www." + WicketApplication.get().getDomainName();
+		IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
+			.shareUrl("https://twitter.com/share").dataUrl(dataUrl)
+			.via(WicketApplication.get().getDomainName()).counturl(dataUrl).build().toModel();
+		return new TwitterSharePanel(id, model)
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onConfigure()
+			{
+				super.onConfigure();
+				setVisibilityAllowed(false);
+			}
+		};
+	}
+
+	protected Component newTwitterFollowPanel(String id)
+	{
+		String username = "jaulp.wicket";
+		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
+			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
+			.toModel())
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onConfigure()
+			{
+				super.onConfigure();
+				setVisibilityAllowed(false);
+			}
+		};
+	}
+}
