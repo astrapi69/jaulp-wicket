@@ -97,8 +97,8 @@
 		<jaulp.test.objects.version>${jaulp.core.version}</jaulp.test.objects.version>
 		<jaulp.time.version>${jaulp.core.version}</jaulp.time.version>
 		<jaulp.xml.version>${jaulp.core.version}</jaulp.xml.version>
-		<!-- MYSTIC-CRYPT versions -->	
-		<mystic-crypt.version>3.11.0</mystic-crypt.version>	
+		<!-- MYSTIC-CRYPT versions -->
+		<mystic-crypt.version>3.11.0</mystic-crypt.version>
 		<crypt-core.version>${mystic-crypt.version}</crypt-core.version>
 		<randomizer.version>${mystic-crypt.version}</randomizer.version>
 		<!-- EXTERNAL LIBRARIES versions -->
@@ -144,9 +144,9 @@
 		<!-- MAVEN WAR PLUGIN versions -->
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<!-- MAVEN INSTALL PLUGIN versions -->
-		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>		
+		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
 		<!-- TOMCAT7 MAVEN PLUGIN versions -->
-		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>		
+		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
 		<!-- COVERAGE MAVEN PLUGIN versions -->
 		<cobertura-maven-plugin.version>2.6</cobertura-maven-plugin.version>
 		<coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
@@ -868,26 +868,25 @@
 						</execution>
 					</executions>
 				</plugin>
-				
-				
+
+
 				<plugin>
-		                    <groupId>org.eluder.coveralls</groupId>
-		                    <artifactId>coveralls-maven-plugin</artifactId>
-		                    <version>${coveralls-maven-plugin.version}</version>
-                		</plugin>
-                		
-		                <plugin>
-		                    <groupId>org.codehaus.mojo</groupId>
-		                    <artifactId>cobertura-maven-plugin</artifactId>
-		                    <version>${cobertura-maven-plugin.version}</version>
-		                    <configuration>
-		                        <format>xml</format>
-		                        <maxmem>256m</maxmem>
-		                        <!-- aggregated reports for multi-module projects -->
-		                        <aggregate>true</aggregate>
-		                    </configuration>
-		                </plugin>
-                
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>${coveralls-maven-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>${cobertura-maven-plugin.version}</version>
+					<configuration>
+						<format>xml</format>
+						<maxmem>256m</maxmem>
+						<!-- aggregated reports for multi-module projects -->
+						<aggregate>true</aggregate>
+					</configuration>
+				</plugin>
 
 			</plugins>
 
