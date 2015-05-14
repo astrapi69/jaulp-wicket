@@ -26,11 +26,14 @@ import org.apache.wicket.Application;
 import org.apache.wicket.IApplicationListener;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.resource.loader.BundleStringResourceLoader;
 
+import de.alpharogroup.collections.ListUtils;
 import de.alpharogroup.wicket.PackageResourceReferences;
 import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
+import de.alpharogroup.wicket.components.examples.resource.loading.MessageSource;
 
 
 /**
@@ -69,6 +72,8 @@ public class WicketApplication extends WicketBootstrap3Application
 	{
 		// initialize all header contributors
 		initializeAllHeaderContributors();
+		getResourceSettings().getStringResourceLoaders().add(
+			new BundleStringResourceLoader(MessageSource.class.getName()));
 	}
 
 
@@ -222,12 +227,18 @@ public class WicketApplication extends WicketBootstrap3Application
 	@Override
 	public String getPackageToScan()
 	{
-		return "de.alpharogroup.wicket.components.examples";
+		return ListUtils.getFirst(getPackagesToScan());
+	}
+
+	public String[] getPackagesToScanAsArray()
+	{
+		String[] packagesToScan = { "de.alpharogroup.wicket.components.examples" };
+		return packagesToScan;
 	}
 
 	public List<String> getPackagesToScan()
 	{
-		return Arrays.asList();
+		return Arrays.asList(getPackagesToScanAsArray());
 	}
 
 }

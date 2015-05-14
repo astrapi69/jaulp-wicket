@@ -60,6 +60,7 @@ import de.alpharogroup.wicket.components.examples.labeled.LabeledComponentsPage;
 import de.alpharogroup.wicket.components.examples.pdfdownload.PdfDownloadPage;
 import de.alpharogroup.wicket.components.examples.popupoverlay.PopupoverlayPage;
 import de.alpharogroup.wicket.components.examples.radios.RadioComponentsExamplePage;
+import de.alpharogroup.wicket.components.examples.resource.loading.ResourceLoadingExamplesPage;
 import de.alpharogroup.wicket.components.examples.sign.in.SigninPage;
 import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
 import de.alpharogroup.wicket.components.examples.socialnet.SocialNetworksExamplePage;
@@ -206,6 +207,8 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			"global.menu.toastr.label", this);
 		final IModel<String> socialNetExampleModel = ResourceModelFactory.newResourceModel(
 			"global.menu.social.network.label", this);
+		final IModel<String> resourceLoadingExampleModel = ResourceModelFactory.newResourceModel(
+			"global.menu.resource.loading.label", this);
 		return new NavbarDropDownButton(featuresMainModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -258,8 +261,12 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 					DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
 				subMenu.add(new MenuBookmarkablePageLink<ToastrPage>(ToastrPage.class,
 					toastrExampleModel).setIconType(GlyphIconType.barcode));
-				subMenu.add(new MenuBookmarkablePageLink<SocialNetworksExamplePage>(SocialNetworksExamplePage.class,
-					socialNetExampleModel).setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<SocialNetworksExamplePage>(
+					SocialNetworksExamplePage.class, socialNetExampleModel)
+					.setIconType(GlyphIconType.eyeopen));
+				subMenu.add(new MenuBookmarkablePageLink<ResourceLoadingExamplesPage>(
+					ResourceLoadingExamplesPage.class, resourceLoadingExampleModel)
+					.setIconType(GlyphIconType.pencil));
 				subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(ExceptionPage.class,
 					exceptionModel).setIconType(GlyphIconType.fire));
 
