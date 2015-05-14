@@ -19,11 +19,14 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.Application;
+import org.apache.wicket.core.request.mapper.CryptoMapper;
+import org.apache.wicket.core.util.crypt.KeyInSessionSunJceCryptFactory;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 import de.alpharogroup.wicket.PackageResourceReferences;
 import de.alpharogroup.wicket.base.examples.HomePage;
+import de.alpharogroup.wicket.base.request.mapper.HighScoreRequestMapper;
 
 /**
  * Application object for your web application. If you want to run this application without
@@ -52,6 +55,11 @@ public class WicketApplication extends WebApplication
 	public void init()
 	{
 		super.init();
+
+		// install crypto mapper to encrypt all application urls
+		getSecuritySettings().setCryptFactory(new KeyInSessionSunJceCryptFactory());
+		setRootRequestMapper(new HighScoreRequestMapper().register(new CryptoMapper(
+			getRootRequestMapper(), this)));
 		initializeAllHeaderContributors();
 		new AnnotatedMountScanner().scanPackage(getPackageToScan()).mount(this);
 		// add your configuration here

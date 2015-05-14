@@ -152,7 +152,7 @@ public class HomePage extends WebPage
 		};
 		add(showUploadPage);
 
-		add(new ModalDialogWithStylePanel("modalDialogWithStylePanel", Model.of("")));
+		add(new ModalDialogWithStylePanel("modalDialogWithStylePanel", Model.of("bla")));
 
 	}
 }
