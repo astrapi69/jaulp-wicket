@@ -2,11 +2,14 @@ package de.alpharogroup.wicket.components.examples.socialnet;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Session;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.locale.LocaleUtils;
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
 import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndShareModel;
 import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndSharePanel;
@@ -37,6 +40,9 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 		add(newTwitterSharePanel("twitterSharePanel"));
 		add(newTwitterFollowPanel("twitterFollowPanel"));
 		add(newGooglePlusSharePanel("googleplusSharePanel"));
+
+		add(new Label("messageSourceLabel", ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key("foo.bar.bla").build())));
 	}
 
 	protected Component newFacebookLikeAndSharePanel(String id)
