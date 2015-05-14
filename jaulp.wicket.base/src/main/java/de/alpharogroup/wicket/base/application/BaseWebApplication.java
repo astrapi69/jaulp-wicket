@@ -188,8 +188,7 @@ public abstract class BaseWebApplication extends WebApplication
 	}
 
 	/**
-	 * Mounts a page class to the given path with the given {@IPageParametersEncoder
-	 * }.
+	 * Mounts a page class to the given path with the given {@link IPageParametersEncoder}.
 	 *
 	 * @param <T>
 	 *            type of page
