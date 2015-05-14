@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.dialogs.examples.panel;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
@@ -87,7 +88,7 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 	}
 
 	@Override
-	protected Component newOpenModalLink(final String id, final IModel<String> model)
+	protected MarkupContainer newOpenModalLink(final String id, final IModel<String> model)
 	{
 		return new LinkPanel(id, Model.of("Press me"))
 		{

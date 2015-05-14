@@ -23,12 +23,21 @@ public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The constant for the javascript to prevent to show confirmation dialog from browser(IE and
+	 * Firefox). This is how to prevent IE and Firefox dialog popup when trying to setResponsePage()
+	 * or set an info message from a wicket modalWindow per below. Dialog popup demands an answer
+	 * to:
+	 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
+	 **/
+	public static final String WICKET_WINDOW_UNLOAD_CONFIRMATION_FALSE_JS = "Wicket.Window.unloadConfirmation = false;";
 	@Getter
 	private ModalWindow modalWindow;
 
 	private Fragment modalFragment;
 	@Getter
-	private Component openModalLink;
+	private MarkupContainer openModalLink;
 
 	public ModalDialogFragmentPanel(final String id, final IModel<T> model)
 	{
@@ -59,7 +68,7 @@ public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
 	 *            the model
 	 * @return the Component to open the modal dialog.
 	 */
-	protected Component newOpenModalLink(final String id, final IModel<T> model)
+	protected MarkupContainer newOpenModalLink(final String id, final IModel<T> model)
 	{
 		return new AjaxLink<Void>(id)
 		{
@@ -68,16 +77,38 @@ public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
 			@Override
 			public void onClick(AjaxRequestTarget target)
 			{
-				/**
-				 * This is how to prevent IE and Firefox dialog popup when trying to
-				 * setResponsePage() or set an info message from a wicket modalWindow per below.
-				 * Dialog popup demands an answer to:
-				 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
-				 **/
-				target.prependJavaScript("Wicket.Window.unloadConfirmation = false;");
-				modalWindow.show(target);
+				ModalDialogFragmentPanel.this.onShow(target);
 			}
 		};
+	}
+
+	/**
+	 * Callback method to hang on when the dialog is open.
+	 * 
+	 * @param target
+	 *            the ajax request target.
+	 */
+	protected void onShow(final AjaxRequestTarget target)
+	{
+		/**
+		 * This is how to prevent IE and Firefox dialog popup when trying to setResponsePage() or
+		 * set an info message from a wicket modalWindow per below. Dialog popup demands an answer
+		 * to:
+		 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
+		 **/
+		target.prependJavaScript(WICKET_WINDOW_UNLOAD_CONFIRMATION_FALSE_JS);
+		getModalWindow().show(target);
+	}
+
+	/**
+	 * Callback method to hang on when the dialog is close.
+	 * 
+	 * @param target
+	 *            the ajax request target.
+	 */
+	protected void onClose(final AjaxRequestTarget target)
+	{
+		getModalWindow().close(target);
 	}
 
 	/**
