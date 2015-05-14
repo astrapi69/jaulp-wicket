@@ -20,10 +20,13 @@ import java.io.File;
 import lombok.Getter;
 
 import org.apache.log4j.Logger;
+import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
+import org.apache.wicket.core.request.mapper.MountedMapper;
 import org.apache.wicket.pageStore.DiskDataStore;
 import org.apache.wicket.pageStore.IDataStore;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.mapper.parameter.IPageParametersEncoder;
 import org.apache.wicket.settings.IStoreSettings;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Duration;
@@ -154,9 +157,9 @@ public abstract class BaseWebApplication extends WebApplication
 	/**
 	 * Factory method that can be overwritten to provide an application data store. Here the default
 	 * will be returned.
-	 * 
+	 *
 	 * For instance:
-	 * 
+	 *
 	 * <pre>
 	 * public void init() {
 	 * ...
@@ -173,7 +176,7 @@ public abstract class BaseWebApplication extends WebApplication
 	 * ...
 	 * }
 	 * </pre>
-	 * 
+	 *
 	 * @return the IDataStore.
 	 */
 	protected IDataStore newApplicationDataStore()
@@ -182,6 +185,26 @@ public abstract class BaseWebApplication extends WebApplication
 		Bytes maxSizePerSession = storeSettings.getMaxSizePerSession();
 		File fileStoreFolder = storeSettings.getFileStoreFolder();
 		return new DiskDataStore(this.getName(), fileStoreFolder, maxSizePerSession);
+	}
+
+	/**
+	 * Mounts a page class to the given path with the given {@IPageParametersEncoder
+	 * }.
+	 *
+	 * @param <T>
+	 *            type of page
+	 *
+	 * @param path
+	 *            the path to mount the page class on
+	 * @param pageClass
+	 *            the page class to be mounted
+	 * @param pageParametersEncoder
+	 *            the encoder for the page parameter to be mounted
+	 */
+	public <T extends Page> void mountPage(final String path, final Class<T> pageClass,
+		final IPageParametersEncoder pageParametersEncoder)
+	{
+		mount(new MountedMapper(path, pageClass, pageParametersEncoder));
 	}
 
 }
