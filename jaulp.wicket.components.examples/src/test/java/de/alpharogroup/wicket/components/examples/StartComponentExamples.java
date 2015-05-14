@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.examples;
 import java.io.File;
 
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
+import org.apache.wicket.protocol.http.WicketFilter;
 import org.apache.wicket.util.time.Duration;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -28,7 +29,6 @@ import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
-import de.alpharogroup.wicket.components.examples.application.MyReloadingFilter;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 
 public class StartComponentExamples
@@ -50,9 +50,9 @@ public class StartComponentExamples
 				.filterHolderConfiguration(
 					FilterHolderConfiguration
 						.builder()
-						.filterClass(MyReloadingFilter.class)
+						.filterClass(WicketFilter.class)
 						.filterPath(filterPath)
-						.initParameter(MyReloadingFilter.FILTER_MAPPING_PARAM, filterPath)
+						.initParameter(WicketFilter.FILTER_MAPPING_PARAM, filterPath)
 						.initParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM,
 							WicketApplication.class.getName()).build())
 				.servletHolderConfiguration(
