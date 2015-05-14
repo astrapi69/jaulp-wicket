@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.log4j.Logger;
+import org.apache.wicket.Session;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -204,8 +205,8 @@ public final class PageParametersUtils
 	}
 
 	/**
-	 * Gets a map with all parameters. Looks in the query, request and post parameters. Migration method from
-	 * 1.4.* to 1.5.*.
+	 * Gets a map with all parameters. Looks in the query, request and post parameters. Migration
+	 * method from 1.4.* to 1.5.*.
 	 *
 	 * @param request
 	 *            the request
@@ -238,7 +239,7 @@ public final class PageParametersUtils
 
 	/**
 	 * Adds the given parameters to the given map.
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to add to the map.
 	 * @param parameterMap
@@ -270,7 +271,7 @@ public final class PageParametersUtils
 
 	/**
 	 * Adds the given parameters to the given map.
-	 * 
+	 *
 	 * @param parameters
 	 *            The parameters to add to the map.
 	 * @param parameterMap
@@ -281,7 +282,7 @@ public final class PageParametersUtils
 	{
 		for (String parameterName : parameters.getParameterNames())
 		{
-			List<StringValue> parameterValues = parameters.getParameterValues(parameterName);			
+			List<StringValue> parameterValues = parameters.getParameterValues(parameterName);
 			parameterMap.put(parameterName, parameterValues);
 		}
 	}
@@ -320,6 +321,25 @@ public final class PageParametersUtils
 			destination.add(namedPair.getKey(), namedPair.getValue());
 		}
 		return destination;
+	}
+
+	/**
+	 * Copies all given source {@link org.apache.wicket.request.mapper.parameter.PageParameters} to
+	 * the given session {@link org.apache.wicket.Session}.
+	 * 
+	 * @param source
+	 *            The source {@link org.apache.wicket.request.mapper.parameter.PageParameters}.
+	 * @param session
+	 *            The session where the
+	 *            {@link org.apache.wicket.request.mapper.parameter.PageParameters} are stored.
+	 */
+	public static void copyToWicketSession(final PageParameters source, final Session session)
+	{
+		final List<INamedParameters.NamedPair> namedPairs = source.getAllNamed();
+		for (INamedParameters.NamedPair namedPair : namedPairs)
+		{
+			session.setAttribute(namedPair.getKey(), namedPair.getValue());
+		}
 	}
 
 }
