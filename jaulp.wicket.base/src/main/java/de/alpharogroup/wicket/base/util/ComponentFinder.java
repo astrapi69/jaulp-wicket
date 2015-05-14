@@ -19,6 +19,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.core.request.handler.IPageRequestHandler;
+import org.apache.wicket.core.request.handler.RequestSettingRequestHandler;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.IRequestHandler;
@@ -38,6 +39,27 @@ public final class ComponentFinder
 	public static Page getCurrentPage()
 	{
 		IRequestHandler requestHandler = RequestCycle.get().getActiveRequestHandler();
+		Page page = getPage(requestHandler);
+		if (page != null)
+		{
+			return page;
+		}
+		if (requestHandler instanceof RequestSettingRequestHandler)
+		{
+			RequestSettingRequestHandler requestSettingRequestHandler = (RequestSettingRequestHandler)requestHandler;
+			return getPage(requestSettingRequestHandler.getDelegateHandler());
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the page if the request handler is instance of IPageRequestHandler.
+	 * 
+	 * @param requestHandler
+	 * @return The page or null if not found.
+	 */
+	public static Page getPage(IRequestHandler requestHandler)
+	{
 		if (requestHandler instanceof IPageRequestHandler)
 		{
 			IPageRequestHandler pageRequestHandler = (IPageRequestHandler)requestHandler;
