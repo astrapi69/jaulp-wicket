@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.examples.sign.in;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.Button;
@@ -31,10 +32,11 @@ import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
+import de.alpharogroup.wicket.components.sign.in.SignInWithRedirectionBean;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 import de.alpharogroup.wicket.components.sign.in.form.SigninFormPanel;
 
-public class SigninExamplesPanel extends GenericPanel<SignInModel>
+public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 {
 
 	/**
@@ -45,23 +47,17 @@ public class SigninExamplesPanel extends GenericPanel<SignInModel>
 	private int labelSize = 2;
 	private int inputSize = 4;
 
-	public SigninExamplesPanel(final String id, final IModel<SignInModel> model)
+	public SigninExamplesPanel(final String id, final IModel<SignInWithRedirectionBean> model)
 	{
-		super(id);
-
-		final IModel<SignInModel> cpm = new CompoundPropertyModel<SignInModel>(model);
-		SigninFormPanel<SignInModel> signFormPanel = new SigninFormPanel<SignInModel>(
-			"horizantalFormPanel", cpm)
+		super(id, model);
+		add(newSigninFormPanel("horizantalFormPanel", model));
+	}
+	
+	protected Component newSigninFormPanel(final String id, final IModel<SignInWithRedirectionBean> model) {
+		final SigninFormPanel<SignInWithRedirectionBean> signFormPanel = new SigninFormPanel<SignInWithRedirectionBean>(
+			id, new CompoundPropertyModel<SignInWithRedirectionBean>(model))
 		{
 			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onSignin(AjaxRequestTarget target, Form<?> form)
-			{
-				target.add(getFeedback());
-				info("Email: " + getModelObject().getEmail() + "\nPassword:"
-					+ getModelObject().getPassword());
-			}
 
 			@Override
 			protected Form<?> newForm(String id, IModel<?> model)
@@ -86,6 +82,15 @@ public class SigninExamplesPanel extends GenericPanel<SignInModel>
 								+ inputSize + "\"></div>")).build()));
 				button.add(new AttributeAppender("class", " btn btn-default"));
 				return button;
+			}
+
+			@Override
+			protected MarkupContainer newPasswordForgottenLink(String id,
+				IModel<SignInWithRedirectionBean> model)
+			{
+				MarkupContainer passwordForgottenLink = super.newPasswordForgottenLink(id, model);
+				passwordForgottenLink.add(new AttributeAppender("class", " btn btn-link"));
+				return passwordForgottenLink;
 			}
 
 			@Override
@@ -145,8 +150,24 @@ public class SigninExamplesPanel extends GenericPanel<SignInModel>
 				return signinPanel;
 			}
 
+			@Override
+			protected void onSignin(AjaxRequestTarget target, Form<?> form)
+			{
+				target.add(getFeedback());
+				info("Email: " + getModelObject().getEmail() + "\nPassword:"
+					+ getModelObject().getPassword());
+			}
+
+			@Override
+			protected void onPasswordForgotten(AjaxRequestTarget target, Form<?> form)
+			{
+				target.add(getFeedback());
+				info("Email: " + getModelObject().getEmail() + "\nPassword:"
+					+ getModelObject().getPassword());
+			}
+
 		};
-		add(signFormPanel);
+		return signFormPanel;
 	}
 
 	protected Component getFeedback()

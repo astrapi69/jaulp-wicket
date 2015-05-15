@@ -252,37 +252,37 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	 */
 	protected Panel newFooterPanel(String id)
 	{
+		final List<LinkItem> linkModel = new ArrayList<LinkItem>();
+		linkModel
+			.add(LinkItem
+				.builder()
+				.url("http://www.alpharogroup.de/")
+				.target(DefaultTargets.BLANK.getTarget())
+				.linkClass(ExternalLink.class)
+				// open in a new tab or window...
+				.resourceModelKey(
+					ResourceBundleKey.builder().key("main.footer.copyright.label")
+						.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group")
+						.build()).build());
+		linkModel.add(LinkItem
+			.builder()
+			.pageClass(ImprintPage.class)
+			.resourceModelKey(
+				ResourceBundleKey.builder().key("main.global.menu.masthead.label")
+					.defaultValue("Imprint").build()).build());
+		linkModel.add(LinkItem
+			.builder()
+			.pageClass(TermOfUsePage.class)
+			.resourceModelKey(
+				ResourceBundleKey.builder().key("main.global.menu.term.of.use.label")
+					.defaultValue("AGBs").build()).build());
 		return new FooterPanel(id)
 		{
 			private static final long serialVersionUID = 1L;
-
 			@Override
 			protected Component newFooterMenuPanel(String id)
 			{
-				List<LinkItem> linkModel = new ArrayList<LinkItem>();
-				linkModel
-					.add(LinkItem
-						.builder()
-						.url("http://www.alpharogroup.de/")
-						.target(DefaultTargets.BLANK.getTarget())
-						.linkClass(ExternalLink.class)
-						// open in a new tab or window...
-						.resourceModelKey(
-							ResourceBundleKey.builder().key("main.footer.copyright.label")
-								.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group")
-								.build()).build());
-				linkModel.add(LinkItem
-					.builder()
-					.pageClass(ImprintPage.class)
-					.resourceModelKey(
-						ResourceBundleKey.builder().key("main.global.menu.masthead.label")
-							.defaultValue("Imprint").build()).build());
-				linkModel.add(LinkItem
-					.builder()
-					.pageClass(TermOfUsePage.class)
-					.resourceModelKey(
-						ResourceBundleKey.builder().key("main.global.menu.term.of.use.label")
-							.defaultValue("AGBs").build()).build());
+
 				FooterMenuPanel footerMenu = new FooterMenuPanel(id, linkModel)
 				{
 					private static final long serialVersionUID = 1L;
@@ -322,7 +322,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 					new BuildableChainableStatement.Builder().label("find")
 						.args(JsUtils.quotes("ul")).build()).add(
 					new BuildableChainableStatement.Builder().label("addClass")
-						.args(JsUtils.quotes("nav navbar-nav")).build()));
+						.args(JsUtils.quotes("nav navbar-nav list-inline a")).build()));
 				return footerMenu;
 			}
 		};

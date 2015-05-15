@@ -19,9 +19,9 @@ import org.apache.wicket.Component;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import de.alpharogroup.auth.models.BaseSignInModel;
 import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
+import de.alpharogroup.wicket.components.sign.in.SignInWithRedirectionBean;
 
 @MountPath("public/signin")
 public class SigninPage extends PubliclyBasePage<SignInModel>
@@ -31,7 +31,7 @@ public class SigninPage extends PubliclyBasePage<SignInModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		return new SigninExamplesPanel(CONTAINER_PANEL_ID, new CompoundPropertyModel<SignInModel>(
-			new BaseSignInModel()));
+		return new SigninExamplesPanel(CONTAINER_PANEL_ID, new CompoundPropertyModel<SignInWithRedirectionBean>(
+			new SignInWithRedirectionBean()));
 	}
 }

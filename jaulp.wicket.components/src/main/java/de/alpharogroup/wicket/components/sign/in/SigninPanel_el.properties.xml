@@ -7,4 +7,5 @@
 	<entry key="global.password.label">Κωδικός πρόσβασης</entry>
 	<entry key="global.enter.your.password.label">Πληκτρολόγησε εδώ τον κωδικό πρόσβασης</entry>
 	<entry key="global.button.sign.in.label">Είσοδος</entry>
+<entry key="password.forgotten.label">Ξέχασα τον κωδικό μου πρόσβασης</entry>
 </properties>

@@ -17,6 +17,9 @@ package de.alpharogroup.wicket.components.sign.in.password.reset;
 
 import java.io.Serializable;
 
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+
+import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -32,9 +35,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResetPasswordModel implements Serializable
+public class ResetPasswordBean implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String confirmationCode;
+	
+	public static ResetPasswordBean getResetPasswordBean(final PageParameters parameters) {
+		ResetPasswordBean bean = ResetPasswordBean.builder()
+			.username(parameters.get(ParameterKeys.USERNAME).toString())
+			.confirmationCode(parameters.get(ParameterKeys.CONFIRMATION_CODE).toString().trim())
+			.build();
+		return bean;
+	}
 }

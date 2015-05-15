@@ -18,12 +18,10 @@ package de.alpharogroup.wicket.dialogs.examples.panel;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.PackageResourceReference;
@@ -59,21 +57,11 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected AbstractLink newLink(final String id)
+			public void onClick(AjaxRequestTarget target)
 			{
-				AjaxLink<Void> changeOpacity = new AjaxLink<Void>(id)
-				{
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick(AjaxRequestTarget target)
-					{
-						target
-							.appendJavaScript("var originalStyle = $('.wicket-modal').attr('style');"
-								+ "$('.wicket-modal').attr('style', originalStyle + 'opacity: 0.5;');");
-					}
-				};
-				return changeOpacity;
+				target
+				.appendJavaScript("var originalStyle = $('.wicket-modal').attr('style');"
+					+ "$('.wicket-modal').attr('style', originalStyle + 'opacity: 0.5;');");				
 			}
 		};
 	}
@@ -99,25 +87,16 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected AbstractLink newLink(final String id)
+			public void onClick(AjaxRequestTarget target)
 			{
-				return new AjaxLink<Void>(id)
-				{
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick(AjaxRequestTarget target)
-					{
-						/**
-						 * This is how to prevent IE and Firefox dialog popup when trying to
-						 * setResponsePage() or set an info message from a wicket modalWindow per
-						 * below. Dialog popup demands an answer to:
-						 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
-						 **/
-						target.prependJavaScript("Wicket.Window.unloadConfirmation = false;");
-						getModalWindow().show(target);
-					}
-				};
+				/**
+				 * This is how to prevent IE and Firefox dialog popup when trying to
+				 * setResponsePage() or set an info message from a wicket modalWindow per
+				 * below. Dialog popup demands an answer to:
+				 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
+				 **/
+				target.prependJavaScript("Wicket.Window.unloadConfirmation = false;");
+				getModalWindow().show(target);				
 			}
 		};
 	}

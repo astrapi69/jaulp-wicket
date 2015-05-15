@@ -15,11 +15,10 @@
  */
 package de.alpharogroup.wicket.components.sign.in.password.reset;
 
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-
-import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
 
 
 /**
@@ -27,7 +26,7 @@ import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
  * 
  * @author Asterios Raptis
  */
-public abstract class AbstractResetPasswordPanel extends Panel
+public abstract class AbstractResetPasswordPanel extends GenericPanel<ResetPasswordBean>
 {
 
 	/**
@@ -37,15 +36,10 @@ public abstract class AbstractResetPasswordPanel extends Panel
 
 	public AbstractResetPasswordPanel(final String id, final PageParameters parameters)
 	{
-		super(id);
-		ResetPasswordModel model = ResetPasswordModel.builder()
-			.username(parameters.get(ParameterKeys.USERNAME).toString())
-			.confirmationCode(parameters.get(ParameterKeys.CONFIRMATION_CODE).toString().trim())
-			.build();
-		onReset(model.getUsername(), model.getConfirmationCode());
+		this(id, Model.of(ResetPasswordBean.getResetPasswordBean(parameters)));
 	}
 
-	public AbstractResetPasswordPanel(final String id, final IModel<ResetPasswordModel> model)
+	public AbstractResetPasswordPanel(final String id, final IModel<ResetPasswordBean> model)
 	{
 		super(id, model);
 		onReset(model.getObject().getUsername(), model.getObject().getConfirmationCode());

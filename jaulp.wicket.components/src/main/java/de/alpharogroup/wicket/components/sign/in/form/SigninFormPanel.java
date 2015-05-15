@@ -15,7 +15,10 @@
  */
 package de.alpharogroup.wicket.components.sign.in.form;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -24,14 +27,18 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.auth.models.SignInModel;
+import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.components.link.LinkPanel;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;
-
 
 /**
  * The Class SinginFormPanel.
+ *
+ * @param <T>
+ *            the generic type
  */
 public abstract class SigninFormPanel<T extends SignInModel> extends GenericPanel<T>
 {
@@ -40,15 +47,23 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
+	@Getter
 	private final Label buttonLabel;
 	/** The form. */
+	@Getter
 	private final Form<?> form;
 
 	/** The signin panel. */
+	@Getter
 	private final Component signinPanel;
 
 	/** The submit button. */
+	@Getter
 	private final Button submitButton;
+
+	/** The password forgotten link. */
+	@Getter
+	private final MarkupContainer passwordForgottenLink;
 
 	/**
 	 * Instantiates a new singin form panel.
@@ -68,46 +83,39 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label",
 			"Sign In"));
 		form.add(submitButton);
+		passwordForgottenLink = newPasswordForgottenLink("passwordForgottenLink", model);
+		add(passwordForgottenLink);
+
 	}
 
 	/**
-	 * Gets the button label.
+	 * New password forgotten link.
 	 *
-	 * @return the button label
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the markup container
 	 */
-	public Label getButtonLabel()
+	protected MarkupContainer newPasswordForgottenLink(final String id, final IModel<T> model)
 	{
-		return buttonLabel;
-	}
+		LinkPanel linkPanel = new LinkPanel(id,
+			ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+				.key("password.forgotten.label").defaultValue("Password forgotten").build()))
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
 
-	/**
-	 * Gets the form.
-	 *
-	 * @return the form
-	 */
-	public Form<?> getForm()
-	{
-		return form;
-	}
+			@Override
+			public void onClick(AjaxRequestTarget target)
+			{
+				onPasswordForgotten(target, form);
+			}
 
-	/**
-	 * Gets the signin panel.
-	 *
-	 * @return the signin panel
-	 */
-	public Component getSigninPanel()
-	{
-		return signinPanel;
-	}
-
-	/**
-	 * Gets the submit button.
-	 *
-	 * @return the submit button
-	 */
-	public Button getSubmitButton()
-	{
-		return submitButton;
+		};
+		return linkPanel;
 	}
 
 	/**
@@ -190,10 +198,24 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 		return component;
 	}
 
-
 	/**
-	 * On signin.
+	 * Callback method that is called on signin.
+	 *
+	 * @param target
+	 *            the target
+	 * @param form
+	 *            the form
 	 */
 	protected abstract void onSignin(final AjaxRequestTarget target, final Form<?> form);
+
+	/**
+	 * Callback method that is called on password forgotten.
+	 *
+	 * @param target
+	 *            the target
+	 * @param form
+	 *            the form
+	 */
+	protected abstract void onPasswordForgotten(final AjaxRequestTarget target, final Form<?> form);
 
 }
