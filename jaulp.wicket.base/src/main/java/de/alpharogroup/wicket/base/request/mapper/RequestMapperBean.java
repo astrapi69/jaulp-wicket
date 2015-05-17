@@ -23,10 +23,14 @@ import org.apache.wicket.request.IRequestMapper;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * TODO Document
+ * Bean that holds the {@link IRequestMapper} and the compatibility score of it.
  */
 public class RequestMapperBean implements Serializable
 {
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 	@Getter
 	private int compatibilityScore;
 	@Getter
