@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.labeled;
 
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.components.form.input.TwoFormComponentBean;
+import de.alpharogroup.wicket.components.form.input.TwoFormComponentPanel;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 
@@ -69,6 +71,25 @@ public class LabeledComponentFactory
 			labelModel);
 		labeledTextField.setOutputMarkupId(true);
 		return labeledTextField;
+	}
+	
+
+
+	/**
+	 * Factory method for create a new {@link TwoFormComponentPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link TwoFormComponentPanel}
+	 */
+	public static <L, R> TwoFormComponentPanel<L, R> newTwoFormComponentPanel(String id,
+		IModel<TwoFormComponentBean<L, R>> model)
+	{
+		TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(id,
+			model);
+		return twoFormComponentPanel;
 	}
 
 }
