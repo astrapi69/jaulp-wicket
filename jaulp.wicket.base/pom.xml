@@ -43,6 +43,11 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.xml</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.lang</artifactId>
+		</dependency>
 		<!-- WICKETSTUFF -->
 		<dependency>
 			<groupId>org.wicketstuff</groupId>
