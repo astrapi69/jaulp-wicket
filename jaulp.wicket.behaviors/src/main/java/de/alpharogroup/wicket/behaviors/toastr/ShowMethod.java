@@ -15,12 +15,13 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
  * The Enum ShowMethod.
  */
-public enum ShowMethod
+public enum ShowMethod implements ValueEnum
 {
 
 	/** The show. */

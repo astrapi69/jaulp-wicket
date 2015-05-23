@@ -15,12 +15,13 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
  * The Enum Position.
  */
-public enum Position
+public enum Position implements ValueEnum
 {
 
 	/** The top. */
@@ -44,16 +45,16 @@ public enum Position
 	 * The value of the vertical position.
 	 */
 	@Getter
-	private final String position;
+	private final String value;
 
 	/**
-	 * Constructor with a given vertical position.
+	 * Constructor with a given vertical value.
 	 *
-	 * @param position
-	 *            the position
+	 * @param value
+	 *            the value
 	 */
-	private Position(String position)
+	private Position(String value)
 	{
-		this.position = position;
+		this.value = value;
 	}
 }

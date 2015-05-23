@@ -15,12 +15,13 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
  * The Enum Easing.
  */
-public enum Easing
+public enum Easing implements ValueEnum
 {
 
 	/** The constant for the easing type 'linear'. */

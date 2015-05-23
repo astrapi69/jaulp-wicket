@@ -15,12 +15,13 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
  * An enum for a few of the effect methods in jquery.
  */
-public enum EffectMethods
+public enum EffectMethods implements ValueEnum
 {
 	SLIDE_TOGGLE("slideToggle"), FADE_TOGGLE("fadeToggle"), SLIDE_UP("slideUp"), SLIDE_DOWN(
 		"slideDown"), FADE_OUT("fadeOut"), FADE_IN("fadeIn");

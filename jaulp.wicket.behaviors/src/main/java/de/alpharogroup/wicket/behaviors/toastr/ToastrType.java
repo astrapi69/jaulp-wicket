@@ -15,12 +15,13 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
  * The Enum ToastrType.
  */
-public enum ToastrType
+public enum ToastrType implements ValueEnum
 {
 	/** The success value. */
 	SUCCESS("success"),
@@ -35,16 +36,16 @@ public enum ToastrType
 	 * The value of the type.
 	 */
 	@Getter
-	private final String type;
+	private final String value;
 
 	/**
 	 * Constructor with a given type.
 	 *
 	 * @param type
-	 *            the type
+	 *            the value of the type.
 	 */
 	private ToastrType(String type)
 	{
-		this.type = type;
+		this.value = type;
 	}
 }

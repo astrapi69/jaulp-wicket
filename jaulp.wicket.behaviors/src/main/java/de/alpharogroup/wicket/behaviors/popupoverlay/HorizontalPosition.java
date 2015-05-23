@@ -15,13 +15,14 @@
  */
 package de.alpharogroup.wicket.behaviors.popupoverlay;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
  * This enum encapsulates the five possible values from the attribute 'horizontal' in the
  * jquery.popupoverlay plugin.
  */
-public enum HorizontalPosition
+public enum HorizontalPosition implements ValueEnum
 {
 
 	/** The center value. */
@@ -39,16 +40,16 @@ public enum HorizontalPosition
 	 * The value of the horizontal position.
 	 */
 	@Getter
-	private final String position;
+	private final String value;
 
 	/**
 	 * Constructor with a given horizontal position.
 	 *
 	 * @param position
-	 *            the position
+	 *            the value of the position.
 	 */
 	private HorizontalPosition(String position)
 	{
-		this.position = position;
+		this.value = position;
 	}
 }

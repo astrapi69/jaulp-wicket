@@ -15,12 +15,13 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
  * The Enum HideMethod.
  */
-public enum HideMethod
+public enum HideMethod implements ValueEnum
 {
 	HIDE("hide"), FADE_OUT(EffectMethods.FADE_OUT.getValue()), SLIDE_UP(EffectMethods.SLIDE_UP
 		.getValue());
