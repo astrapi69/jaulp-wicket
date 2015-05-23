@@ -25,6 +25,8 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.RequestCycle;
 
+import de.alpharogroup.lang.ClassUtils;
+
 /**
  * The Class ComponentFinder.
  */
@@ -54,7 +56,7 @@ public final class ComponentFinder
 
 	/**
 	 * Gets the page if the request handler is instance of IPageRequestHandler.
-	 * 
+	 *
 	 * @param requestHandler
 	 * @return The page or null if not found.
 	 */
@@ -135,6 +137,38 @@ public final class ComponentFinder
 	}
 
 	/**
+	 * Finds the first parent of the given childComponent from the given parentClass and a flag if
+	 * the search shell be continued with the class name if the search with the given parentClass
+	 * returns null.
+	 *
+	 * @param childComponent
+	 *            the child component
+	 * @param parentClass
+	 *            the parent class
+	 * @param byClassname
+	 *            the flag to search by classname if the search with given parentClass returns null.
+	 * @return the component
+	 */
+	public static Component findParent(Component childComponent,
+		Class<? extends Component> parentClass, boolean byClassname)
+	{
+		Component parent = childComponent.getParent();
+		while (parent != null)
+		{
+			if (parent.getClass().equals(parentClass))
+			{
+				break;
+			}
+			parent = parent.getParent();
+		}
+		if (parent == null && byClassname)
+		{
+			return findParentByClassname(childComponent, parentClass);
+		}
+		return parent;
+	}
+
+	/**
 	 * Finds the first parent of the given childComponent from the given parentClass.
 	 *
 	 * @param childComponent
@@ -146,10 +180,29 @@ public final class ComponentFinder
 	public static Component findParent(Component childComponent,
 		Class<? extends Component> parentClass)
 	{
+		return findParent(childComponent, parentClass, true);
+	}
+
+	/**
+	 * Finds the first parent of the given childComponent from the given parentClass.
+	 *
+	 * @param childComponent
+	 *            the child component
+	 * @param parentClass
+	 *            the parent class
+	 * @return the component
+	 */
+	public static Component findParentByClassname(Component childComponent,
+		Class<? extends Component> parentClass)
+	{
 		Component parent = childComponent.getParent();
 		while (parent != null)
 		{
-			if (parent.getClass().equals(parentClass))
+			String parentNormalizedClassName = ClassUtils.normalizeQualifiedClassName(parentClass
+				.getName());
+			String currentParentNormalizedClassName = ClassUtils.normalizeQualifiedClassName(parent
+				.getClass().getName());
+			if (currentParentNormalizedClassName.equals(parentNormalizedClassName))
 			{
 				break;
 			}
