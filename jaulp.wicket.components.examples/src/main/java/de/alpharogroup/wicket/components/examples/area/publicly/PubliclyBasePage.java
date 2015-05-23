@@ -65,7 +65,8 @@ import de.alpharogroup.wicket.components.examples.sign.in.SigninPage;
 import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
 import de.alpharogroup.wicket.components.examples.socialnet.SocialNetworksExamplePage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
-import de.alpharogroup.wicket.components.examples.toastr.ToastrPage;
+import de.alpharogroup.wicket.components.examples.toastr.NotificationExamplesPage;
+import de.alpharogroup.wicket.components.examples.tooltips.TooltipsExamplePage;
 import de.alpharogroup.wicket.components.examples.urls.WicketUrlPage;
 
 /**
@@ -207,8 +208,10 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			"global.menu.toastr.label", this);
 		final IModel<String> socialNetExampleModel = ResourceModelFactory.newResourceModel(
 			"global.menu.social.network.label", this);
-		final IModel<String> resourceLoadingExampleModel = ResourceModelFactory.newResourceModel(
-			"global.menu.resource.loading.label", this);
+    final IModel<String> resourceLoadingExampleModel = ResourceModelFactory.newResourceModel(
+      "global.menu.resource.loading.label", this);
+    final IModel<String> tooltipsExampleModel = ResourceModelFactory.newResourceModel(
+      "global.menu.tooltips.label", this);
 		return new NavbarDropDownButton(featuresMainModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -259,14 +262,17 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 					RadioComponentsExamplePage.class, radiosModel).setIconType(GlyphIconType.book));
 				subMenu.add(new MenuBookmarkablePageLink<DeregistrationPage>(
 					DeregistrationPage.class, deregistrationModel).setIconType(GlyphIconType.book));
-				subMenu.add(new MenuBookmarkablePageLink<ToastrPage>(ToastrPage.class,
+				subMenu.add(new MenuBookmarkablePageLink<NotificationExamplesPage>(NotificationExamplesPage.class,
 					toastrExampleModel).setIconType(GlyphIconType.barcode));
 				subMenu.add(new MenuBookmarkablePageLink<SocialNetworksExamplePage>(
 					SocialNetworksExamplePage.class, socialNetExampleModel)
 					.setIconType(GlyphIconType.eyeopen));
-				subMenu.add(new MenuBookmarkablePageLink<ResourceLoadingExamplesPage>(
-					ResourceLoadingExamplesPage.class, resourceLoadingExampleModel)
-					.setIconType(GlyphIconType.pencil));
+        subMenu.add(new MenuBookmarkablePageLink<ResourceLoadingExamplesPage>(
+          ResourceLoadingExamplesPage.class, resourceLoadingExampleModel)
+          .setIconType(GlyphIconType.pencil));
+        subMenu.add(new MenuBookmarkablePageLink<TooltipsExamplePage>(
+          TooltipsExamplePage.class, tooltipsExampleModel)
+          .setIconType(GlyphIconType.bancircle));
 				subMenu.add(new MenuBookmarkablePageLink<ExceptionPage>(ExceptionPage.class,
 					exceptionModel).setIconType(GlyphIconType.fire));
 
