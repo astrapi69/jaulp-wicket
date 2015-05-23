@@ -15,13 +15,14 @@
  */
 package de.alpharogroup.wicket.behaviors.popupoverlay;
 
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
 
 /**
- * This enum encapsulates the two possible values from the attribute 'type' in the
+ * This enum encapsulates the two possible values from the attribute 'value' in the
  * jquery.popupoverlay plugin.
  */
-public enum PopupoverlayType
+public enum PopupoverlayType implements ValueEnum
 {
 
 	/** The overlay value. */
@@ -33,16 +34,16 @@ public enum PopupoverlayType
 	 * The value of the type.
 	 */
 	@Getter
-	private final String type;
+	private final String value;
 
 	/**
 	 * Constructor with a given type.
 	 *
 	 * @param type
-	 *            the type
+	 *            the value of the type.
 	 */
 	private PopupoverlayType(String type)
 	{
-		this.type = type;
+		this.value = type;
 	}
 }

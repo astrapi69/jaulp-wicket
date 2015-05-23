@@ -15,7 +15,8 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -23,6 +24,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import de.alpharogroup.wicket.base.util.template.Settings;
+import de.alpharogroup.wicket.base.util.template.StringTextType;
+import de.alpharogroup.wicket.base.util.template.StringTextValue;
 
 /**
  * This class encapsulates various settings for the toastr jquery plugin. See the documentation for
@@ -34,67 +38,150 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ToastrSettings implements Serializable
+public class ToastrSettings implements Settings
 {
 
 	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** Shows a close button if true; defaults to false;. */
-	private boolean closeButton = false;
+	/**
+	 * Shows a close button if true. Default: false
+	 */
+	private StringTextValue<Boolean> closeButton = new StringTextValue<Boolean>("closeButton",
+		StringTextType.BOOLEAN);
 
-	/** Shows a debug messages if true; defaults to false;. */
-	private boolean debug = false;
-
-	/** Shows the newest notification if true; defaults to false;. */
-	private boolean newestOnTop = false;
-
-	/** Shows a progress bar if true; defaults to false;. */
-	private boolean progressBar = false;
-
-	/** The position where to show the notifications; defaults to Position.TOP_CENTER; */
-	private Position positionClass = Position.TOP_CENTER;
-
-	/** If true duplicate notifications will be prevent; defaults to false;. */
-	private boolean preventDuplicates = false;
-
-	/** Document please; defaults to false;. */
-	private boolean tapToDismiss = false;
-
-	private String onclick = null;
 
 	/**
-	 * The duration to show. (defaults to 300)
+	 * Shows a debug messages if true. Default: false
 	 */
-	private int showDuration = 300;
+	private StringTextValue<Boolean> debug = new StringTextValue<Boolean>("debug",
+		StringTextType.BOOLEAN);
 
 	/**
-	 * The duration to hide. (defaults to 1000)
+	 * Shows the newest notification if true. Default: false
 	 */
-	private int hideDuration = 1000;
+	private StringTextValue<Boolean> newestOnTop = new StringTextValue<Boolean>("newestOnTop",
+		StringTextType.BOOLEAN);
 
 	/**
-	 * The timeOut. (defaults to 5000)
+	 * Shows a progress bar if true. Default: false
 	 */
-	private int timeOut = 5000;
+	private StringTextValue<Boolean> progressBar = new StringTextValue<Boolean>("progressBar",
+		StringTextType.BOOLEAN);
 
 	/**
-	 * The extended timeOut. (defaults to 1000)
+	 * The position where to show the notifications. Default: toast-top-center
 	 */
-	private int extendedTimeOut = 1000;
+	private StringTextValue<Position> positionClass = new StringTextValue<Position>(
+		"positionClass", Position.TOP_CENTER, StringTextType.ENUM);
 
-	private Easing showEasing = Easing.SWING;
+	/**
+	 * If true duplicate notifications will be prevent. Default: false
+	 */
+	private StringTextValue<Boolean> preventDuplicates = new StringTextValue<Boolean>(
+		"preventDuplicates", StringTextType.BOOLEAN);
 
-	private Easing hideEasing = Easing.LINEAR;
+	/**
+	 * Document please. Default: false
+	 */
+	private StringTextValue<Boolean> tapToDismiss = new StringTextValue<Boolean>("tapToDismiss",
+		StringTextType.BOOLEAN);
 
-	private ShowMethod showMethod = ShowMethod.FADE_IN;
+	/**
+	 * on click. Default: null
+	 */
+	private StringTextValue<String> onclick = new StringTextValue<String>("onclick",
+		StringTextType.STRING);
 
-	private HideMethod hideMethod = HideMethod.FADE_OUT;
+	/**
+	 * The duration to show. Default: 300
+	 */
+	private StringTextValue<Integer> showDuration = new StringTextValue<Integer>("showDuration",
+		300, StringTextType.INTEGER);
 
-	private ToastrType toastrType = ToastrType.SUCCESS;
+	/**
+	 * The duration to hide. Default: 1000
+	 */
+	private StringTextValue<Integer> hideDuration = new StringTextValue<Integer>("hideDuration",
+		1000, StringTextType.INTEGER);
 
-	private String notificationContent = null;
+	/**
+	 * The timeOut. Default: 5000
+	 */
+	private StringTextValue<Integer> timeOut = new StringTextValue<Integer>("timeOut", 5000,
+		StringTextType.INTEGER);
 
-	private String notificationTitle = null;
+	/**
+	 * The extended timeOut. Default: 1000
+	 */
+	private StringTextValue<Integer> extendedTimeOut = new StringTextValue<Integer>(
+		"extendedTimeOut", 1000, StringTextType.INTEGER);
 
+	/**
+	 * The value of the easing when show. Default: swing
+	 */
+	private StringTextValue<Easing> showEasing = new StringTextValue<Easing>("showEasing",
+		Easing.SWING, StringTextType.ENUM);
+
+	/**
+	 * The value of the easing when hide. Default: linear
+	 */
+	private StringTextValue<Easing> hideEasing = new StringTextValue<Easing>("hideEasing",
+		Easing.LINEAR, StringTextType.ENUM);
+
+	/**
+	 * The method when show. Default: fadeIn
+	 */
+	private StringTextValue<ShowMethod> showMethod = new StringTextValue<>("showMethod",
+		ShowMethod.FADE_IN, StringTextType.ENUM);
+
+	/**
+	 * The method when hide. Default: fadeOut
+	 */
+	private StringTextValue<HideMethod> hideMethod = new StringTextValue<>("hideMethod",
+		HideMethod.FADE_OUT, StringTextType.ENUM);
+
+	/**
+	 * The type of the notification. Default: success
+	 */
+	private StringTextValue<ToastrType> toastrType = new StringTextValue<>("toastrType",
+		ToastrType.SUCCESS, StringTextType.ENUM);
+
+	/**
+	 * The content of the notification. Default: null
+	 */
+	private StringTextValue<String> notificationContent = new StringTextValue<String>(
+		"notificationContent", StringTextType.STRING);
+
+	/**
+	 * The title of the notification. Default: null
+	 */
+	private StringTextValue<String> notificationTitle = new StringTextValue<String>(
+		"notificationTitle", StringTextType.STRING);
+
+	@Override
+	public Set<StringTextValue<?>> asSet()
+	{
+		Set<StringTextValue<?>> allSettings = new HashSet<>();
+		allSettings.add(getCloseButton());
+		allSettings.add(getDebug());
+		allSettings.add(getExtendedTimeOut());
+		allSettings.add(getHideDuration());
+		allSettings.add(getHideEasing());
+		allSettings.add(getHideMethod());
+		allSettings.add(getNewestOnTop());
+		allSettings.add(getNotificationContent());
+		allSettings.add(getNotificationTitle());
+		allSettings.add(getOnclick());
+		allSettings.add(getPositionClass());
+		allSettings.add(getPreventDuplicates());
+		allSettings.add(getProgressBar());
+		allSettings.add(getShowDuration());
+		allSettings.add(getShowEasing());
+		allSettings.add(getShowMethod());
+		allSettings.add(getTapToDismiss());
+		allSettings.add(getTimeOut());
+		allSettings.add(getToastrType());
+		return allSettings;
+	}
 }

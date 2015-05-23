@@ -26,12 +26,12 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.behaviors.popupoverlay.PopupoverlayPanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonModel;
+import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonBean;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonPanel;
 
 
 @MountPath("public/popupoverlay")
-public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
+public class PopupoverlayPage extends PubliclyBasePage<PersonBean>
 {
 	private static final long serialVersionUID = 1L;
 
@@ -43,8 +43,8 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		PopupoverlayPanel<PersonModel> popupoverlayPanel = new PopupoverlayPanel<PersonModel>(
-			CONTAINER_PANEL_ID, Model.of(new PersonModel()))
+		PopupoverlayPanel<PersonBean> popupoverlayPanel = new PopupoverlayPanel<PersonBean>(
+			CONTAINER_PANEL_ID, Model.of(new PersonBean()))
 		{
 			/**
 			 * The serialVersionUID.
@@ -52,7 +52,7 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonModel>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected MarkupContainer newOverlayReference(String id, IModel<PersonModel> model)
+			protected MarkupContainer newOverlayReference(String id, IModel<PersonBean> model)
 			{
 				PersonPanel panel = new PersonPanel(id, model);
 				panel.add(new AttributeAppender("class", " container well"));

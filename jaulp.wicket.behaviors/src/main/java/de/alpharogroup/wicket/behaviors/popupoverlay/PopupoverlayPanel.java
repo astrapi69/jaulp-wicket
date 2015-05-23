@@ -34,10 +34,12 @@ import org.apache.wicket.model.IModel;
 public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 {
 
-	/** The serialVersionUID. */
+  /** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+  public static final String OPEN_OVERLAY_SUFFIX = "_open";
+  public static final String CLOSE_OVERLAY_SUFFIX = "_close";
 
-	/**
+  /**
 	 * The overlay reference.
 	 */
 	@Getter
@@ -78,7 +80,7 @@ public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 		// add class attributte with the markup id from the overlay with the
 		// suffix '_open' that indicates that the overlay shell open...
 		openButton.add(new AttributeAppender("class", " " + overlayReference.getMarkupId()
-			+ "_open"));
+			+ OPEN_OVERLAY_SUFFIX));
 		super.onBeforeRender();
 	}
 

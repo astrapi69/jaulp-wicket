@@ -27,7 +27,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.template.TextTemplate;
 
-import de.alpharogroup.wicket.behaviors.util.TextTemplateUtils;
+import de.alpharogroup.wicket.base.util.template.TextTemplateUtils;
 
 /**
  * The Class ToastJsGenerator generates the javascript with a ToastrSettings object.
@@ -80,7 +80,8 @@ public class ToastJsGenerator implements Serializable
 	 */
 	public String generateToastrJs(ToastrSettings settings)
 	{
-		return generateToastrJs(TOASTR_TEMPLATE, settings);
+		return generateToastrJs(TOASTR_TEMPLATE, settings);		
+//		return null;
 	}
 
 	/**
@@ -96,23 +97,23 @@ public class ToastJsGenerator implements Serializable
 	{
 		final Map<String, Object> variables = new HashMap<>();
 		variables.put("command", getCommand(settings));
-		variables.put("closeButton", settings.isCloseButton());
-		variables.put("debug", settings.isDebug());
-		variables.put("newestOnTop", settings.isNewestOnTop());
-		variables.put("progressBar", settings.isProgressBar());
+		variables.put("closeButton", settings.getCloseButton().getValue());
+		variables.put("debug", settings.getDebug().getValue());
+		variables.put("newestOnTop", settings.getNewestOnTop().getValue());
+		variables.put("progressBar", settings.getProgressBar().getValue());
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("positionClass", settings
-			.getPositionClass().getPosition(), variables);
-		variables.put("preventDuplicates", settings.isPreventDuplicates());
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("onclick", settings.getOnclick(),
+			.getPositionClass().getValue(), variables);
+		variables.put("preventDuplicates", settings.getPreventDuplicates().getValue());
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("onclick", settings.getOnclick().getValue(),
 			variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("showDuration",
-			settings.getShowDuration(), variables);
+			settings.getShowDuration().getValue(), variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("hideDuration",
-			settings.getHideDuration(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("timeOut", settings.getTimeOut(),
+			settings.getHideDuration().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("timeOut", settings.getTimeOut().getValue(),
 			variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("extendedTimeOut",
-			settings.getExtendedTimeOut(), variables);
+			settings.getExtendedTimeOut().getValue(), variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("showEasing", settings
 			.getShowEasing().getValue(), variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("hideEasing", settings
@@ -121,7 +122,7 @@ public class ToastJsGenerator implements Serializable
 			.getShowMethod().getValue(), variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("hideMethod", settings
 			.getHideMethod().getValue(), variables);
-		variables.put("tapToDismiss", settings.isTapToDismiss());
+		variables.put("tapToDismiss", settings.getTapToDismiss().getValue());
 		textTemplate.interpolate(variables);
 		return textTemplate.asString();
 	}
@@ -137,14 +138,14 @@ public class ToastJsGenerator implements Serializable
 	{
 		StringBuilder sb = new StringBuilder();
 		sb.append("toastr.");
-		sb.append(settings.getToastrType().getType());
+		sb.append(settings.getToastrType().getValue());
 		sb.append("('");
-		sb.append(settings.getNotificationContent());
+		sb.append(settings.getNotificationContent().getValue());
 		sb.append("'");
-		if (StringUtils.isNotEmpty(settings.getNotificationTitle()))
+		if (StringUtils.isNotEmpty(settings.getNotificationTitle().getValue()))
 		{
 			sb.append(", '");
-			sb.append(settings.getNotificationTitle());
+			sb.append(settings.getNotificationTitle().getValue());
 			sb.append("'");
 		}
 		sb.append(")");
