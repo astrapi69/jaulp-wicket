@@ -100,7 +100,6 @@ public class DynamicPage extends WebPage
 			@Override
 			protected void onSubmit(AjaxRequestTarget target, Form<?> f)
 			{
-				// TODO Auto-generated method stub
 				System.out.println(textWicketField.getComponent().getDefaultModelObjectAsString());
 				super.onSubmit(target, form);
 			}

@@ -104,7 +104,7 @@ public class LabeledHomePage extends BasePage
 		//
 		// List<Member> choices = new ArrayList<Member>(10);
 		//
-		// // TODO return a list of Members...
+		// // return a list of Members...
 		// return null;
 		// }
 		// };
