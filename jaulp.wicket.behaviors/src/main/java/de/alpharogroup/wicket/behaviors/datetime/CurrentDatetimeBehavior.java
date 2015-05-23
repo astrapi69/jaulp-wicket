@@ -34,7 +34,7 @@ import org.apache.wicket.util.template.TextTemplate;
 import de.alpharogroup.wicket.behaviors.popupoverlay.PopupoverlaySettings;
 
 /**
- * TODO Document
+ * This behavior adds the current time to a component.
  */
 public class CurrentDatetimeBehavior extends Behavior
 {
