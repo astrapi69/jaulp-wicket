@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.behaviors;
 
+import java.util.UUID;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -22,9 +24,9 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * The Class AddJavascriptBehavior adds javascript code as String with an id.
- */
-public class AddJavascriptBehavior extends Behavior
+ * The Class JavascriptAppenderBehavior adds javascript code as String with an id.
+ */ 
+public class JavascriptAppenderBehavior extends Behavior
 {
 
 	/** The Constant serialVersionUID. */
@@ -39,21 +41,35 @@ public class AddJavascriptBehavior extends Behavior
 	/** The javascript code to be rendered. */
 	private final CharSequence javascript;
 
-	/**
-	 * Instantiates a new adds the javascript behavior.
-	 * 
-	 * @param javascript
-	 *            javascript content to be add.
-	 * @param id
-	 *            unique id for the javascript element.
-	 */
-	public AddJavascriptBehavior(CharSequence javascript, String id)
-	{
-		super();
-		Args.notNull(javascript, "javascript");
-		this.javascript = javascript;
-		this.id = id;
-	}
+  /**
+   * Instantiates a new adds the javascript behavior. The id will be generated.
+   *
+   * @param javascript
+   *            javascript content to be add.
+   */
+  public JavascriptAppenderBehavior(CharSequence javascript)
+  {
+    this(javascript, String.valueOf(UUID.randomUUID()));
+  }
+
+  /**
+   * Instantiates a new adds the javascript behavior.
+   *
+   * @param javascript
+   *            javascript content to be add.
+   * @param id
+   *            unique id for the javascript element.
+   */
+  public JavascriptAppenderBehavior(CharSequence javascript, String id)
+  {
+    super();
+    Args.notNull(javascript, "javascript");
+    this.javascript = javascript;
+    if(id == null) {
+      id = String.valueOf(UUID.randomUUID());
+    }
+    this.id = id;
+  }
 
 	/**
 	 * {@inheritDoc}

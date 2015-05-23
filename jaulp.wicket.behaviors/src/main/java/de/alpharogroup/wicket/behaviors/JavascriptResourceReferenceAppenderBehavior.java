@@ -34,7 +34,7 @@ import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
  * The Class AddJsResourceReferenceBehavior adds a javascript file to given WebPage class as a
  * JavaScriptHeaderItem.
  */
-public class AddJsResourceReferenceBehavior extends Behavior
+public class JavascriptResourceReferenceAppenderBehavior extends Behavior
 {
 
 	/** The Constant serialVersionUID. */
@@ -62,7 +62,7 @@ public class AddJsResourceReferenceBehavior extends Behavior
 	 * @param id
 	 *            the id
 	 */
-	public AddJsResourceReferenceBehavior(final Class<? extends Page> pageClass,
+	public JavascriptResourceReferenceAppenderBehavior(final Class<? extends Page> pageClass,
 		final String filename, final String id)
 	{
 		Args.notNull(pageClass, "pageClass");

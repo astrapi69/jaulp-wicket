@@ -25,10 +25,10 @@ import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
-public class AddJsQueryBehavior extends Behavior
+public class JQueryJsAppenderBehavior extends Behavior
 {
 	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger.getLogger(AddJsQueryBehavior.class.getName());
+	protected static final Logger LOGGER = Logger.getLogger(JQueryJsAppenderBehavior.class.getName());
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -36,7 +36,7 @@ public class AddJsQueryBehavior extends Behavior
 	CharSequence statementLabel;
 	CharSequence statementArgs;
 
-	public AddJsQueryBehavior(CharSequence statementLabel, CharSequence statementArgs)
+	public JQueryJsAppenderBehavior(CharSequence statementLabel, CharSequence statementArgs)
 	{
 		Args.notNull(statementLabel, "statementLabel");
 		Args.notNull(statementArgs, "statementArgs");
