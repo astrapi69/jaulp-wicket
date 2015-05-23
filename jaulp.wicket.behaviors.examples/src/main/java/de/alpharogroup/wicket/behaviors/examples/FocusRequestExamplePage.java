@@ -20,7 +20,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import de.alpharogroup.wicket.behaviors.AddJavascriptBehavior;
+import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.FocusRequestBehavior;
 
 /**
@@ -41,7 +41,7 @@ public class FocusRequestExamplePage extends WebPage
 	 */
 	public FocusRequestExamplePage(final PageParameters parameters)
 	{
-		add(new AddJavascriptBehavior("alert('foo bar');", "xy"));
+		add(new JavascriptAppenderBehavior("alert('foo bar');", "xy"));
 		// message field
 		final TextField<String> messageField = new TextField<String>("message");
 		messageField.add(new FocusRequestBehavior());

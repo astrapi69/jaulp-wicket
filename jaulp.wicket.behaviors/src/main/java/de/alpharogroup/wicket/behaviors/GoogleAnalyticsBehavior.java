@@ -20,7 +20,7 @@ import org.apache.wicket.Page;
 /**
  * The Class GoogleAnalyticsBehavior adds the application specific js script.
  */
-public class GoogleAnalyticsBehavior extends AddJsResourceReferenceBehavior
+public class GoogleAnalyticsBehavior extends JavascriptResourceReferenceAppenderBehavior
 {
 
 	/** The Constant serialVersionUID. */
