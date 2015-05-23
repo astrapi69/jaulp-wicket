@@ -15,9 +15,15 @@
  */
 package de.alpharogroup.wicket.components.examples.resource.loading;
 
+import java.io.Serializable;
+
 /**
- * TODO Document
+ * The message source.
  */
-public class MessageSource
+public class MessageSource implements Serializable
 {
+  /**
+   * The serialVersionUID
+   */
+  private static final long serialVersionUID = 1L;
 }

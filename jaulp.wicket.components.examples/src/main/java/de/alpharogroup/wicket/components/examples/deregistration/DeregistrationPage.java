@@ -47,7 +47,6 @@ public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel>
 			@Override
 			public void onDeregistration()
 			{
-				// TODO action...
 				IModel<DeregistrationModel> m = getModel();
 				Object mo = getModelObject();
 				System.out.println(mo + m.toString());

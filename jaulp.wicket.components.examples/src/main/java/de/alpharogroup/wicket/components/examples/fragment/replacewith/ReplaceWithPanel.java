@@ -30,7 +30,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.EditPersonPanel;
-import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonModel;
+import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonBean;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.ViewPersonPanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
@@ -47,7 +47,7 @@ public class ReplaceWithPanel extends Panel
 	private Component editComponent;
 	private String selectedPanel = "View person";
 
-	public ReplaceWithPanel(String id, final IModel<PersonModel> model)
+	public ReplaceWithPanel(String id, final IModel<PersonBean> model)
 	{
 		super(id, model);
 		setDefaultModel(model);
@@ -89,7 +89,7 @@ public class ReplaceWithPanel extends Panel
 		this.add(form);
 	}
 
-	protected Component newEditPersonPanel(String id, IModel<PersonModel> model)
+	protected Component newEditPersonPanel(String id, IModel<PersonBean> model)
 	{
 		return new EditPersonPanel(id, model)
 		{
@@ -113,7 +113,7 @@ public class ReplaceWithPanel extends Panel
 		};
 	}
 
-	protected Component newViewPersonPanel(String id, final IModel<PersonModel> model)
+	protected Component newViewPersonPanel(String id, final IModel<PersonBean> model)
 	{
 		return new ViewPersonPanel(id, model)
 		{

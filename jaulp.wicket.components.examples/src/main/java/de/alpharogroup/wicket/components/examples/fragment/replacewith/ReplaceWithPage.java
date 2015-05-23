@@ -21,10 +21,10 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonModel;
+import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonBean;
 
 @MountPath("public/replace/with/panels")
-public class ReplaceWithPage extends PubliclyBasePage<PersonModel>
+public class ReplaceWithPage extends PubliclyBasePage<PersonBean>
 {
 
 	/**
@@ -39,6 +39,6 @@ public class ReplaceWithPage extends PubliclyBasePage<PersonModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		return new ReplaceWithPanel(CONTAINER_PANEL_ID, Model.of(new PersonModel()));
+		return new ReplaceWithPanel(CONTAINER_PANEL_ID, Model.of(new PersonBean()));
 	}
 }

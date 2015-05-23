@@ -19,7 +19,7 @@ import org.apache.wicket.model.Model;
 
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.behaviors.AddJsQueryBehavior;
+import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.datetime.CurrentDatetimeBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.content.ContentModel;
@@ -37,8 +37,8 @@ public class HomePanel extends BasePanel<Object>
 			.headerResourceKey(ResourceBundleKey.builder().key("home.header.label").build())
 			.contentResourceKey(ResourceBundleKey.builder().key("home.content.label").build())
 			.build()));
-		contentPanel.getHeader().add(new AddJsQueryBehavior("wrap", "<h1></h1>"));
-		contentPanel.getContent().add(new AddJsQueryBehavior("wrap", "<p class=\"lead\"></p>"));
+		contentPanel.getHeader().add(new JQueryJsAppenderBehavior("wrap", "<h1></h1>"));
+		contentPanel.getContent().add(new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
 		add(contentPanel);
 		add(ComponentFactory.newLabel("currentTimeLabel", Model.of("")).add(
 			new CurrentDatetimeBehavior()));

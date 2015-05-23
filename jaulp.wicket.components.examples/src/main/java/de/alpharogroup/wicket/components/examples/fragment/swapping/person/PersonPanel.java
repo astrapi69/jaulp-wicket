@@ -23,19 +23,19 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.swap.SwapComponentsFragmentPanel;
 
-public class PersonPanel extends SwapComponentsFragmentPanel<PersonModel>
+public class PersonPanel extends SwapComponentsFragmentPanel<PersonBean>
 {
 
 	private static final long serialVersionUID = 1L;
 
-	public PersonPanel(String id, IModel<PersonModel> model)
+	public PersonPanel(String id, IModel<PersonBean> model)
 	{
 		super(id, model);
 		setDefaultModel(new CompoundPropertyModel<>(model));
 	}
 
 	@Override
-	protected Component newViewComponent(String id, IModel<PersonModel> model)
+	protected Component newViewComponent(String id, IModel<PersonBean> model)
 	{
 		return new ViewPersonPanel(id, model)
 		{
@@ -50,7 +50,7 @@ public class PersonPanel extends SwapComponentsFragmentPanel<PersonModel>
 	}
 
 	@Override
-	protected Component newEditComponent(String id, IModel<PersonModel> model)
+	protected Component newEditComponent(String id, IModel<PersonBean> model)
 	{
 		return new EditPersonPanel(id, model)
 		{

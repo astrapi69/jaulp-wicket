@@ -65,7 +65,6 @@ public class ThreeDropDownChoicesPanel extends Panel
 		add(selectOptionForm);
 
 		IModel<String> selectedRootOptionModel = null;
-		// TODO open issue on wicketeer...
 		// selectedRootOptionModel =
 		// model(from(stringThreeDropDownChoicesModel).getSelectedRootOption());
 		selectedRootOptionModel = new PropertyModel<String>(stringThreeDropDownChoicesModel,

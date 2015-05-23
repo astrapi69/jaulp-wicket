@@ -29,7 +29,7 @@ public class ViewPersonPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ViewPersonPanel(String id, IModel<PersonModel> model)
+	public ViewPersonPanel(String id, IModel<PersonBean> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);

@@ -31,12 +31,12 @@ public class EditPersonPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditPersonPanel(String id, IModel<PersonModel> model)
+	public EditPersonPanel(String id, IModel<PersonBean> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
 		setDefaultModel(model);
-		Form<PersonModel> form = new Form<PersonModel>("editPersonForm");
+		Form<PersonBean> form = new Form<PersonBean>("editPersonForm");
 		form.setOutputMarkupId(true);
 		add(form);
 		form.add(new TextField<String>("firstName").setOutputMarkupId(true));

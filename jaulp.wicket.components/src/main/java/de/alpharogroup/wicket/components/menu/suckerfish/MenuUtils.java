@@ -86,7 +86,6 @@ public class MenuUtils
 	 *            the label model
 	 * @return the suckerfish menu panel. menu item
 	 */
-	// TODO delete...
 	public static MenuItem newMenuItem(final IModel<String> labelModel)
 	{
 		final MenuItem menuItem = new MenuItem(labelModel);

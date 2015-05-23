@@ -21,7 +21,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.locale.ResourceBundleKey;
-import de.alpharogroup.wicket.behaviors.AddJsQueryBehavior;
+import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
 
@@ -43,14 +43,14 @@ public class DataProtectionPanel extends HeaderContentListPanel
 	@Override
 	protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
 	{
-		return new Label(id, newContentResourceModel(item.getModel())).add(new AddJsQueryBehavior(
+		return new Label(id, newContentResourceModel(item.getModel())).add(new JQueryJsAppenderBehavior(
 			"wrap", "<p></p>"));
 	}
 
 	@Override
 	protected Component newHeaderLabel(String id, IModel<String> model)
 	{
-		return super.newHeaderLabel(id, model).add(new AddJsQueryBehavior("wrap", "<h2></h2>"));
+		return super.newHeaderLabel(id, model).add(new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
 	}
 
 }

@@ -30,7 +30,7 @@ import de.alpharogroup.collections.ListUtils;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-import de.alpharogroup.wicket.behaviors.AddJsQueryBehavior;
+import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.content.ContentModel;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
@@ -97,8 +97,8 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 			.contentResourceKey(
 				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
 					.parameters(ListUtils.toObjectArray(getDomainName())).build()).build()));
-		contentPanel.getHeader().add(new AddJsQueryBehavior("wrap", "<h1></h1>"));
-		contentPanel.getContent().add(new AddJsQueryBehavior("wrap", "<p class=\"lead\"></p>"));
+		contentPanel.getHeader().add(new JQueryJsAppenderBehavior("wrap", "<h1></h1>"));
+		contentPanel.getContent().add(new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
 		return contentPanel;
 
 	}
