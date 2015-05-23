@@ -21,15 +21,17 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
-import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonModel;
+import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonBean;
 
-
-@MountPath("public/toastr")
-public class ToastrPage extends PubliclyBasePage<PersonModel>
+/**
+ * Example page for the notification plugins.
+ */ 
+@MountPath("public/notifications")
+public class NotificationExamplesPage extends PubliclyBasePage<PersonBean>
 {
 	private static final long serialVersionUID = 1L;
 
-	public ToastrPage(final PageParameters parameters)
+	public NotificationExamplesPage(final PageParameters parameters)
 	{
 		super(parameters);
 	}
@@ -37,6 +39,6 @@ public class ToastrPage extends PubliclyBasePage<PersonModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		return new ToastrPanel(CONTAINER_PANEL_ID, Model.of(""));
+		return new NotificationExamplesPanel(CONTAINER_PANEL_ID, Model.of(""));
 	}
 }
