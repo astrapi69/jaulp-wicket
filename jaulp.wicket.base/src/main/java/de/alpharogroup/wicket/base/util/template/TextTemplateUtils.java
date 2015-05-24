@@ -18,11 +18,19 @@ package de.alpharogroup.wicket.base.util.template;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The Class TextTemplateUtils.
+ */
 public class TextTemplateUtils
 {
 
+	/** The Constant COMPONENT_ID. */
 	public static final String COMPONENT_ID = "componentId";
+	
+	/** The Constant DOCUMENT_READY_FUNCTION_PREFIX. */
 	public static final String DOCUMENT_READY_FUNCTION_PREFIX = "$(document).ready(function() {";
+	
+	/** The Constant DOCUMENT_READY_FUNCTION_SUFFIX. */
 	public static final String DOCUMENT_READY_FUNCTION_SUFFIX = "})";
 
 	/**
@@ -201,5 +209,48 @@ public class TextTemplateUtils
 				}
 			}
 		}
+	}
+
+	/**
+	 * Converts the given {@link Set} of {@link StringTextValue} to a javascript array.
+	 *
+	 * @param settings the settings
+	 * @return the generated javascript array.
+	 */
+	public static String asJavascriptArray(Set<StringTextValue<?>> settings)
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("{\n");
+		int count = 1;
+		for (StringTextValue<?> textValue : settings)
+		{
+			switch (textValue.getType())
+			{
+				case STRING :
+					if (textValue.getQuotationMarkType().equals(QuotationMarkType.NONE))
+					{
+						sb.append(textValue.getName());
+						sb.append(":");
+						sb.append(textValue.getValue());
+						break;
+					}
+					sb.append(textValue.getName());
+					sb.append(":");
+					sb.append("\"" + textValue.getValue() + "\"");
+					break;
+				default :
+					sb.append(textValue.getName());
+					sb.append(":");
+					sb.append(textValue.getValue());
+					break;
+			}
+			if (count < settings.size())
+			{
+				sb.append(",\n");
+			}
+			count++;
+		}
+		sb.append("\n}");
+		return sb.toString();
 	}
 }

@@ -24,18 +24,6 @@ import org.slf4j.LoggerFactory;
 public class JavascriptGenerator<S extends Settings> implements Serializable
 {
 
-	/**
-	 * Instantiates a new javascript generator.
-	 *
-	 * @param settings
-	 *            the settings
-	 */
-	public JavascriptGenerator(S settings)
-	{
-		this.settings = settings;
-	}
-
-
 	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
@@ -63,6 +51,17 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 
 	/** The settings. */
 	private S settings;
+
+	/**
+	 * Instantiates a new javascript generator.
+	 *
+	 * @param settings
+	 *            the settings
+	 */
+	public JavascriptGenerator(S settings)
+	{
+		this.settings = settings;
+	}
 
 	/**
 	 * Generate the javascript code.

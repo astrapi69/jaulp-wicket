@@ -18,7 +18,6 @@ package de.alpharogroup.wicket.behaviors.popupoverlay;
 import java.util.HashSet;
 import java.util.Set;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +36,6 @@ import de.alpharogroup.wicket.base.util.template.StringTextValue;
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 public class PopupoverlaySettings implements Settings
 {
 

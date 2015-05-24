@@ -1,21 +1,17 @@
 package de.alpharogroup.wicket.behaviors.pnotify;
 
-import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 import lombok.Getter;
 
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.util.lang.Args;
 
-import de.alpharogroup.wicket.base.util.template.StringTextTemplate;
-import de.alpharogroup.wicket.base.util.template.TextTemplateUtils;
+import de.alpharogroup.wicket.base.util.template.JavascriptGenerator;
 
 /**
  * The Class PnotifyJsGenerator generates the javascript with a PnotifySettings object.
  */
-public class PnotifyJsGenerator implements Serializable
+public class PnotifyJsGenerator extends JavascriptGenerator<PnotifySettings>
 {
 
 	/**
@@ -33,12 +29,12 @@ public class PnotifyJsGenerator implements Serializable
 	 * The pnotifySettings.
 	 */
 	@Getter
-	private final PnotifySettings pnotifySettings;
+	private PnotifySettings pnotifySettings;
 
 
-	public PnotifyJsGenerator(final PnotifySettings pnotifySettings)
+	public PnotifyJsGenerator(PnotifySettings settings)
 	{
-		this.pnotifySettings = Args.notNull(pnotifySettings, "pnotifySettings");
+		super(settings);
 	}
 
 	public static void main(String... args)
@@ -46,35 +42,26 @@ public class PnotifyJsGenerator implements Serializable
 		PnotifySettings pnotifySettings = new PnotifySettings();
 		pnotifySettings.getTitle().setValue("Test title");
 		pnotifySettings.getText().setValue("a text");
+
 		PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(pnotifySettings);
 		String result = pnotifyJsGenerator.generateJs(pnotifySettings);
+
+		System.out.println(result);
+		System.out.println("================================");
+
+		StackSettings stackSettings = new StackSettings();
+		stackSettings.getDir2().setValue("right");
+		pnotifySettings.getStack().setValue(stackSettings.asJavascriptArray());
+
+		result = pnotifyJsGenerator.generateJs(pnotifySettings);
+
 		System.out.println(result);
 	}
 
-
-	/**
-	 * Generate toastr js.
-	 *
-	 * @param pnotifySettings
-	 *            the pnotifySettings
-	 * @return the string
-	 */
-	public String generateJs(final PnotifySettings pnotifySettings)
+	public String generateJs(PnotifySettings settings)
 	{
-		// 1. Create an empty map...
-		final Map<String, Object> variables = new HashMap<>();
-		// 2. Initialize the map with the pnotifySettings...
-		TextTemplateUtils.initializeVariables(variables, pnotifySettings.asSet());
-		// 3. Generate the js template with the map and the method name...
-		String stringTemplateContent = generateJavascriptTemplateContent(variables, "PNotify");
-		// 4. Create the StringTextTemplate with the generated template...
-		StringTextTemplate stringTextTemplate = new StringTextTemplate(stringTemplateContent);
-		// 5. Interpolate the template with the values of the map...
-		stringTextTemplate.interpolate(variables);
-		// 6. return it as String...
-		return stringTextTemplate.asString();
+		return generateJs(settings, "PNotify");
 	}
-
 
 	/**
 	 * Generates the javascript template code from the given map and the given method name that will
@@ -90,7 +77,7 @@ public class PnotifyJsGenerator implements Serializable
 		String methodName)
 	{
 		StringBuilder sb = new StringBuilder();
-		if (!this.pnotifySettings.getStack().isDefaultValue())
+		if (!getSettings().getStack().isDefaultValue())
 		{
 			String customStack = "customStack";
 			String stack = (String)variables.get("stack");

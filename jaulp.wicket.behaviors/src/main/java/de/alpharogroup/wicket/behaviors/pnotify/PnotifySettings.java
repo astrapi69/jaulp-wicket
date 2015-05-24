@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import de.alpharogroup.wicket.base.util.template.QuotationMarkType;
+import de.alpharogroup.wicket.base.util.template.Settings;
 import de.alpharogroup.wicket.base.util.template.StringTextType;
 import de.alpharogroup.wicket.base.util.template.StringTextValue;
 
@@ -17,8 +18,13 @@ import de.alpharogroup.wicket.base.util.template.StringTextValue;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class PnotifySettings
+public class PnotifySettings implements Settings
 {
+
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Gets all settings in a {@link java.util.Set}.

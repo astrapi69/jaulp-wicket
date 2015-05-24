@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.base.util.template;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -14,8 +16,13 @@ import org.apache.wicket.util.lang.Args;
  *            the generic type of the value.
  */
 @Getter
-public class StringTextValue<T>
+public class StringTextValue<T> implements Serializable
 {
+
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/** The value. */
 	private T value;

@@ -9,6 +9,7 @@ import lombok.ToString;
 import de.alpharogroup.wicket.base.util.template.QuotationMarkType;
 import de.alpharogroup.wicket.base.util.template.StringTextType;
 import de.alpharogroup.wicket.base.util.template.StringTextValue;
+import de.alpharogroup.wicket.base.util.template.TextTemplateUtils;
 
 /**
  * This class encapsulates various settings for the pnotify stack. See the documentation for the
@@ -61,9 +62,9 @@ public class StackSettings
 	 * 
 	 * @return all settings in a {@link java.util.Set}.
 	 */
-	public Set<StringTextValue> asSet()
+	public Set<StringTextValue<?>> asSet()
 	{
-		Set allSettings = new HashSet();
+		Set<StringTextValue<?>> allSettings = new HashSet<>();
 		allSettings.add(getContext());
 		allSettings.add(getDir1());
 		allSettings.add(getDir2());
@@ -73,41 +74,13 @@ public class StackSettings
 		return allSettings;
 	}
 
+	/**
+	 * This settings as a javascript array.
+	 *
+	 * @return This settings as a javascript array.
+	 */
 	public String asJavascriptArray()
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append("{\n");
-		Set<StringTextValue> allSettings = asSet();
-		int count = 1;
-		for (StringTextValue textValue : allSettings)
-		{
-			switch (textValue.getType())
-			{
-				case STRING :
-					if (textValue.getQuotationMarkType().equals(QuotationMarkType.NONE))
-					{
-						sb.append(textValue.getName());
-						sb.append(":");
-						sb.append(textValue.getValue());
-						break;
-					}
-					sb.append(textValue.getName());
-					sb.append(":");
-					sb.append("\"" + textValue.getValue() + "\"");
-					break;
-				default :
-					sb.append(textValue.getName());
-					sb.append(":");
-					sb.append(textValue.getValue());
-					break;
-			}
-			if (count < allSettings.size())
-			{
-				sb.append(",\n");
-			}
-			count++;
-		}
-		sb.append("\n}");
-		return sb.toString();
+		return TextTemplateUtils.asJavascriptArray(asSet());
 	}
 }
