@@ -197,7 +197,7 @@ public final class ComponentFinder
 	{
 		Component parent = childComponent.getParent();
 		while (parent != null)
-		{			
+		{
 			if (ClassUtils.equalsByClassName(parentClass, parent.getClass()))
 			{
 				break;

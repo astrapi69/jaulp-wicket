@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 /**
  * Bean that holds the content of the two FormComponent.
  * 
@@ -30,11 +31,11 @@ public class TwoFormComponentBean<L, R> implements Serializable
 	/**
 	 * The serialVersionUID
 	 */
-	private static final long serialVersionUID = 1L;	
-	
+	private static final long serialVersionUID = 1L;
+
 	/** The left content. */
 	L leftContent;
-	
+
 	/** The right content. */
 	R rightContent;
 

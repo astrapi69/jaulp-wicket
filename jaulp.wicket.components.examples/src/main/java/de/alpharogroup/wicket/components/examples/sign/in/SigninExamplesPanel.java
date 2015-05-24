@@ -52,8 +52,10 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 		super(id, model);
 		add(newSigninFormPanel("horizantalFormPanel", model));
 	}
-	
-	protected Component newSigninFormPanel(final String id, final IModel<SignInWithRedirectionBean> model) {
+
+	protected Component newSigninFormPanel(final String id,
+		final IModel<SignInWithRedirectionBean> model)
+	{
 		final SigninFormPanel<SignInWithRedirectionBean> signFormPanel = new SigninFormPanel<SignInWithRedirectionBean>(
 			id, new CompoundPropertyModel<SignInWithRedirectionBean>(model))
 		{

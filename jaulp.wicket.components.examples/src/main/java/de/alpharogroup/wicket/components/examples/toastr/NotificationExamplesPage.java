@@ -25,7 +25,7 @@ import de.alpharogroup.wicket.components.examples.fragment.swapping.person.Perso
 
 /**
  * Example page for the notification plugins.
- */ 
+ */
 @MountPath("public/notifications")
 public class NotificationExamplesPage extends PubliclyBasePage<PersonBean>
 {

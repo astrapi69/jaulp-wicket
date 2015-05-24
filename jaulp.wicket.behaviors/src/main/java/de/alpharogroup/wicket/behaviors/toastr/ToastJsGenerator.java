@@ -80,8 +80,8 @@ public class ToastJsGenerator implements Serializable
 	 */
 	public String generateToastrJs(ToastrSettings settings)
 	{
-		return generateToastrJs(TOASTR_TEMPLATE, settings);		
-//		return null;
+		return generateToastrJs(TOASTR_TEMPLATE, settings);
+		// return null;
 	}
 
 	/**
@@ -104,16 +104,16 @@ public class ToastJsGenerator implements Serializable
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("positionClass", settings
 			.getPositionClass().getValue(), variables);
 		variables.put("preventDuplicates", settings.getPreventDuplicates().getValue());
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("onclick", settings.getOnclick().getValue(),
-			variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("showDuration",
-			settings.getShowDuration().getValue(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("hideDuration",
-			settings.getHideDuration().getValue(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("timeOut", settings.getTimeOut().getValue(),
-			variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("extendedTimeOut",
-			settings.getExtendedTimeOut().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("onclick", settings.getOnclick()
+			.getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("showDuration", settings
+			.getShowDuration().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("hideDuration", settings
+			.getHideDuration().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("timeOut", settings.getTimeOut()
+			.getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("extendedTimeOut", settings
+			.getExtendedTimeOut().getValue(), variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("showEasing", settings
 			.getShowEasing().getValue(), variables);
 		TextTemplateUtils.setVariableWithSingleQuotationMarks("hideEasing", settings

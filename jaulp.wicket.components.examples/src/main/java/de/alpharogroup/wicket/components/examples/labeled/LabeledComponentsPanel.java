@@ -103,9 +103,11 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 
 		};
 		form.add(dateofMarriage);
-		
-		IModel<TwoFormComponentBean<String, String>> twoFormCompModel = Model.of(new TwoFormComponentBean<String, String>());
-		form.add(new LabeledTwoFormComponentPanel<String, String>("twoFormComponentPanel", twoFormCompModel, Model.of("Street / number:")));
+
+		IModel<TwoFormComponentBean<String, String>> twoFormCompModel = Model
+			.of(new TwoFormComponentBean<String, String>());
+		form.add(new LabeledTwoFormComponentPanel<String, String>("twoFormComponentPanel",
+			twoFormCompModel, Model.of("Street / number:")));
 		// Create submit button for the form
 		final Button submitButton = new Button("submitButton")
 		{

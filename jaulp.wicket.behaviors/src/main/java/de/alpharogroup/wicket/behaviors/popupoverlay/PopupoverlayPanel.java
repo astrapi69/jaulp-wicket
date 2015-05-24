@@ -34,12 +34,12 @@ import org.apache.wicket.model.IModel;
 public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 {
 
-  /** The serialVersionUID. */
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-  public static final String OPEN_OVERLAY_SUFFIX = "_open";
-  public static final String CLOSE_OVERLAY_SUFFIX = "_close";
+	public static final String OPEN_OVERLAY_SUFFIX = "_open";
+	public static final String CLOSE_OVERLAY_SUFFIX = "_close";
 
-  /**
+	/**
 	 * The overlay reference.
 	 */
 	@Getter

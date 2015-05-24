@@ -253,17 +253,16 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	protected Panel newFooterPanel(String id)
 	{
 		final List<LinkItem> linkModel = new ArrayList<LinkItem>();
-		linkModel
-			.add(LinkItem
-				.builder()
-				.url("http://www.alpharogroup.de/")
-				.target(DefaultTargets.BLANK.getTarget())
-				.linkClass(ExternalLink.class)
-				// open in a new tab or window...
-				.resourceModelKey(
-					ResourceBundleKey.builder().key("main.footer.copyright.label")
-						.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group")
-						.build()).build());
+		linkModel.add(LinkItem
+			.builder()
+			.url("http://www.alpharogroup.de/")
+			.target(DefaultTargets.BLANK.getTarget())
+			.linkClass(ExternalLink.class)
+			// open in a new tab or window...
+			.resourceModelKey(
+				ResourceBundleKey.builder().key("main.footer.copyright.label")
+					.defaultValue("\u0040 copyright 2012 Design by Alpha Ro Group").build())
+			.build());
 		linkModel.add(LinkItem
 			.builder()
 			.pageClass(ImprintPage.class)
@@ -279,6 +278,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		return new FooterPanel(id)
 		{
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected Component newFooterMenuPanel(String id)
 			{

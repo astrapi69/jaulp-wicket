@@ -31,7 +31,7 @@ public class SigninPage extends PubliclyBasePage<SignInModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		return new SigninExamplesPanel(CONTAINER_PANEL_ID, new CompoundPropertyModel<SignInWithRedirectionBean>(
-			new SignInWithRedirectionBean()));
+		return new SigninExamplesPanel(CONTAINER_PANEL_ID,
+			new CompoundPropertyModel<SignInWithRedirectionBean>(new SignInWithRedirectionBean()));
 	}
 }

@@ -16,17 +16,19 @@ import org.slf4j.LoggerFactory;
  * Base class for javascript generation for the
  * {@link de.alpharogroup.wicket.base.util.template.StringTextTemplate}.
  *
- * @param <S> the generic type
+ * @param <S>
+ *            the generic type
  */
-@Getter 
+@Getter
 @Setter
 public class JavascriptGenerator<S extends Settings> implements Serializable
 {
-	
+
 	/**
 	 * Instantiates a new javascript generator.
 	 *
-	 * @param settings the settings
+	 * @param settings
+	 *            the settings
 	 */
 	public JavascriptGenerator(S settings)
 	{
@@ -36,13 +38,13 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 
 	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The Constant COMPONENT_ID. */
 	public static final String COMPONENT_ID = "componentId";
-	
+
 	/** The Constant DOCUMENT_READY_FUNCTION_PREFIX. */
 	public static final String DOCUMENT_READY_FUNCTION_PREFIX = "$(document).ready(function() {";
-	
+
 	/** The Constant DOCUMENT_READY_FUNCTION_SUFFIX. */
 	public static final String DOCUMENT_READY_FUNCTION_SUFFIX = "})";
 
@@ -58,15 +60,17 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 
 	/** The method name. */
 	private String methodName;
-	
+
 	/** The settings. */
 	private S settings;
 
 	/**
 	 * Generate the javascript code.
 	 *
-	 * @param settings            the settings
-	 * @param methodName the method name
+	 * @param settings
+	 *            the settings
+	 * @param methodName
+	 *            the method name
 	 * @return the string
 	 */
 	public String generateJs(final Settings settings, final String methodName)
@@ -112,12 +116,8 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 		String methodName)
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.append(DOCUMENT_READY_FUNCTION_PREFIX)
-		.append("\n")
-		.append("$('#${").append(COMPONENT_ID).append("}')")
-		.append(".")
-		.append(methodName)
-		.append("(");
+		sb.append(DOCUMENT_READY_FUNCTION_PREFIX).append("\n").append("$('#${")
+			.append(COMPONENT_ID).append("}')").append(".").append(methodName).append("(");
 		if (1 < variables.size())
 		{
 			sb.append("{\n");
@@ -141,9 +141,7 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 			variables.put(COMPONENT_ID, localComponentId);
 			sb.append("}");
 		}
-		sb.append(");")
-		.append("\n")
-		.append(DOCUMENT_READY_FUNCTION_SUFFIX);
+		sb.append(");").append("\n").append(DOCUMENT_READY_FUNCTION_SUFFIX);
 		return sb.toString();
 	}
 
@@ -152,7 +150,8 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 	 * Sets the values to the map. If the default value is set than it will not be added to the map
 	 * for later not to generate js for it.
 	 *
-	 * @param allSettings            All settings as a list of StringTextValue(s).
+	 * @param allSettings
+	 *            All settings as a list of StringTextValue(s).
 	 * @return the map
 	 */
 	protected final Map<String, Object> initializeVariables(

@@ -48,8 +48,10 @@ public class NotificationExamplesPanel extends Panel
 	public NotificationExamplesPanel(String id, IModel<?> model)
 	{
 		super(id, model);
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-			.builder().key("button.toastr.label").defaultValue("Show toastr notice.").build(), this);
+		IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel(
+				ResourceBundleKey.builder().key("button.toastr.label")
+					.defaultValue("Show toastr notice.").build(), this);
 		Form<Object> form = new Form<Object>("form");
 		add(form);
 		form.add(new ButtonPanel("toastrButtonPanel", labelModel, form)
@@ -93,48 +95,49 @@ public class NotificationExamplesPanel extends Panel
 				return indicatingAjaxButton;
 			}
 		});
-    IModel<String> pnotifyLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-      .builder().key("button.label").defaultValue("Show pnotify notice.").build(), this);
-    form.add(new ButtonPanel("pnotifyButtonPanel", pnotifyLabelModel, form)
-    {
+		IModel<String> pnotifyLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key("button.label").defaultValue("Show pnotify notice.").build(), this);
+		form.add(new ButtonPanel("pnotifyButtonPanel", pnotifyLabelModel, form)
+		{
 
-      /**
-       * The serialVersionUID
-       */
-      private static final long serialVersionUID = 1L;
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
 
-      @Override
-      protected Button newButton(String id)
-      {
-        IndicatingAjaxButton indicatingAjaxButton = new IndicatingAjaxButton(id, getForm())
-        {
-          /**
-           * The serialVersionUID.
-           */
-          private static final long serialVersionUID = 1L;
+			@Override
+			protected Button newButton(String id)
+			{
+				IndicatingAjaxButton indicatingAjaxButton = new IndicatingAjaxButton(id, getForm())
+				{
+					/**
+					 * The serialVersionUID.
+					 */
+					private static final long serialVersionUID = 1L;
 
-          @Override
-          protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-          {
-            target.add(form);
-            PnotifySettings pnotifySettings = new PnotifySettings();
-            pnotifySettings.getTitle().setValue("Test title");
-            pnotifySettings.getText().setValue("a text");
-            PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(pnotifySettings);
-            String js = pnotifyJsGenerator.generateJs(pnotifySettings);
-            target.prependJavaScript(js);
-          }
+					@Override
+					protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+					{
+						target.add(form);
+						PnotifySettings pnotifySettings = new PnotifySettings();
+						pnotifySettings.getTitle().setValue("Test title");
+						pnotifySettings.getText().setValue("a text");
+						PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(
+							pnotifySettings);
+						String js = pnotifyJsGenerator.generateJs(pnotifySettings);
+						target.prependJavaScript(js);
+					}
 
-          @Override
-          protected void onError(AjaxRequestTarget target, Form<?> form)
-          {
-          }
-        };
-        indicatingAjaxButton.add(new AttributeAppender("class", Model
-          .of(" btn btn-primary")));
-        return indicatingAjaxButton;
-      }
-    });
+					@Override
+					protected void onError(AjaxRequestTarget target, Form<?> form)
+					{
+					}
+				};
+				indicatingAjaxButton.add(new AttributeAppender("class", Model
+					.of(" btn btn-primary")));
+				return indicatingAjaxButton;
+			}
+		});
 	}
 
 	@Override
@@ -143,10 +146,9 @@ public class NotificationExamplesPanel extends Panel
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
-    response
-      .render(JavaScriptHeaderItem.forReference(ToastJsGenerator.TOASTR_PLUGIN_REFERENCE));
-    response
-      .render(JavaScriptHeaderItem.forReference(PnotifyJsReference.INSTANCE));
+		response
+			.render(JavaScriptHeaderItem.forReference(ToastJsGenerator.TOASTR_PLUGIN_REFERENCE));
+		response.render(JavaScriptHeaderItem.forReference(PnotifyJsReference.INSTANCE));
 	}
 
 }

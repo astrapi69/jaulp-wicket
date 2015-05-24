@@ -25,7 +25,7 @@ import org.apache.wicket.util.lang.Args;
 
 /**
  * The Class JavascriptAppenderBehavior adds javascript code as String with an id.
- */ 
+ */
 public class JavascriptAppenderBehavior extends Behavior
 {
 
@@ -41,35 +41,36 @@ public class JavascriptAppenderBehavior extends Behavior
 	/** The javascript code to be rendered. */
 	private final CharSequence javascript;
 
-  /**
-   * Instantiates a new adds the javascript behavior. The id will be generated.
-   *
-   * @param javascript
-   *            javascript content to be add.
-   */
-  public JavascriptAppenderBehavior(CharSequence javascript)
-  {
-    this(javascript, String.valueOf(UUID.randomUUID()));
-  }
+	/**
+	 * Instantiates a new adds the javascript behavior. The id will be generated.
+	 *
+	 * @param javascript
+	 *            javascript content to be add.
+	 */
+	public JavascriptAppenderBehavior(CharSequence javascript)
+	{
+		this(javascript, String.valueOf(UUID.randomUUID()));
+	}
 
-  /**
-   * Instantiates a new adds the javascript behavior.
-   *
-   * @param javascript
-   *            javascript content to be add.
-   * @param id
-   *            unique id for the javascript element.
-   */
-  public JavascriptAppenderBehavior(CharSequence javascript, String id)
-  {
-    super();
-    Args.notNull(javascript, "javascript");
-    this.javascript = javascript;
-    if(id == null) {
-      id = String.valueOf(UUID.randomUUID());
-    }
-    this.id = id;
-  }
+	/**
+	 * Instantiates a new adds the javascript behavior.
+	 *
+	 * @param javascript
+	 *            javascript content to be add.
+	 * @param id
+	 *            unique id for the javascript element.
+	 */
+	public JavascriptAppenderBehavior(CharSequence javascript, String id)
+	{
+		super();
+		Args.notNull(javascript, "javascript");
+		this.javascript = javascript;
+		if (id == null)
+		{
+			id = String.valueOf(UUID.randomUUID());
+		}
+		this.id = id;
+	}
 
 	/**
 	 * {@inheritDoc}

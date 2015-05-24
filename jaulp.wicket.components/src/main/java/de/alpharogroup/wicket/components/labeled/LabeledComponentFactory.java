@@ -72,7 +72,6 @@ public class LabeledComponentFactory
 		labeledTextField.setOutputMarkupId(true);
 		return labeledTextField;
 	}
-	
 
 
 	/**

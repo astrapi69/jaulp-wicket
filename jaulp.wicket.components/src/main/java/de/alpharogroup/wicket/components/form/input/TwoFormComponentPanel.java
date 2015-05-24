@@ -38,7 +38,7 @@ public class TwoFormComponentPanel<L, R> extends FormComponentPanel<TwoFormCompo
 	 */
 	@Getter
 	private FormComponent<R> rightFormComponent;
-	
+
 	/** The Label component. */
 	protected Component betweenLabel;
 
@@ -66,9 +66,8 @@ public class TwoFormComponentPanel<L, R> extends FormComponentPanel<TwoFormCompo
 		super(id, model);
 		setOutputMarkupId(true);
 		setType(TwoFormComponentBean.class);
-		add(leftFormComponent = newLeftFormComponent("leftTextField", model))
-		.add(newBetweenLabel("betweenLabel", Model.of("/")))
-		.add(
+		add(leftFormComponent = newLeftFormComponent("leftTextField", model)).add(
+			newBetweenLabel("betweenLabel", Model.of("/"))).add(
 			rightFormComponent = newRightFormComponent("rightTextField", model));
 	}
 

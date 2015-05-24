@@ -59,9 +59,8 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 			@Override
 			public void onClick(AjaxRequestTarget target)
 			{
-				target
-				.appendJavaScript("var originalStyle = $('.wicket-modal').attr('style');"
-					+ "$('.wicket-modal').attr('style', originalStyle + 'opacity: 0.5;');");				
+				target.appendJavaScript("var originalStyle = $('.wicket-modal').attr('style');"
+					+ "$('.wicket-modal').attr('style', originalStyle + 'opacity: 0.5;');");
 			}
 		};
 	}
@@ -91,12 +90,12 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 			{
 				/**
 				 * This is how to prevent IE and Firefox dialog popup when trying to
-				 * setResponsePage() or set an info message from a wicket modalWindow per
-				 * below. Dialog popup demands an answer to:
+				 * setResponsePage() or set an info message from a wicket modalWindow per below.
+				 * Dialog popup demands an answer to:
 				 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
 				 **/
 				target.prependJavaScript("Wicket.Window.unloadConfirmation = false;");
-				getModalWindow().show(target);				
+				getModalWindow().show(target);
 			}
 		};
 	}

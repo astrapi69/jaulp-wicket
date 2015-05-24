@@ -81,8 +81,9 @@ public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<
 	}
 
 	/**
-	 * Factory method for creating a new RequiredTextField. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a RequiredTextField.
+	 * Factory method for creating a new RequiredTextField. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a RequiredTextField.
 	 *
 	 * @param id
 	 *            the id
@@ -92,7 +93,8 @@ public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 */
 	protected RequiredTextField<T> newRequiredTextField(String id, IModel<T> model)
 	{
-		return ComponentFactory.newRequiredTextField(id, new PropertyModel<T>(model.getObject(), getId()));
+		return ComponentFactory.newRequiredTextField(id, new PropertyModel<T>(model.getObject(),
+			getId()));
 	}
 
 	/**

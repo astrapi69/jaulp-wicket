@@ -98,7 +98,8 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
 					.parameters(ListUtils.toObjectArray(getDomainName())).build()).build()));
 		contentPanel.getHeader().add(new JQueryJsAppenderBehavior("wrap", "<h1></h1>"));
-		contentPanel.getContent().add(new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
+		contentPanel.getContent().add(
+			new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
 		return contentPanel;
 
 	}

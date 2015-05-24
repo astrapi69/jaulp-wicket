@@ -19,7 +19,7 @@ import de.alpharogroup.auth.models.UsernameSignInModel;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SignInWithRedirectionBean implements UsernameSignInModel 
+public class SignInWithRedirectionBean implements UsernameSignInModel
 {
 	/**
 	 * The serialVersionUID.

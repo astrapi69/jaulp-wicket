@@ -103,11 +103,11 @@ public abstract class LinkPanel extends GenericPanel<String>
 			public void onClick(AjaxRequestTarget target)
 			{
 				LinkPanel.this.onClick(target);
-				
+
 			}
 		};
 	}
-	
+
 	public abstract void onClick(AjaxRequestTarget target);
 
 	/**

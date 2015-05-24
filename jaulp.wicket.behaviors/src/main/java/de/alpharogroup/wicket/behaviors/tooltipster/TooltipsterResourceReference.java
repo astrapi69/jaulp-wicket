@@ -24,7 +24,8 @@ import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 /**
- * The Class TooltipsterResourceReference holds the references(js and css) for the jquery plugin tooltipster.
+ * The Class TooltipsterResourceReference holds the references(js and css) for the jquery plugin
+ * tooltipster.
  */
 public class TooltipsterResourceReference extends JavaScriptResourceReference
 {

@@ -14,7 +14,7 @@ public class PopupoverlayJsGenerator extends JavascriptGenerator<PopupoverlaySet
 		 */
 		setWithComponentId(true);
 	}
-	
+
 	public PopupoverlayJsGenerator(PopupoverlaySettings popupoverlaySettings)
 	{
 		super(popupoverlaySettings);

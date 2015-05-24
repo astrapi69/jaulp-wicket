@@ -37,7 +37,7 @@ import lombok.Getter;
 public class TooltipsterJsGenerator implements Serializable
 {
 
-  /**
+	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
@@ -45,29 +45,33 @@ public class TooltipsterJsGenerator implements Serializable
 	/** The LOGGER. */
 	static final Logger LOGGER = LoggerFactory.getLogger(TooltipsterJsGenerator.class.getName());
 
-	/** The {@link org.apache.wicket.request.resource.ResourceReference} constant for the js and css-file from the tooltipster plugin. */
+	/**
+	 * The {@link org.apache.wicket.request.resource.ResourceReference} constant for the js and
+	 * css-file from the tooltipster plugin.
+	 */
 	public static final ResourceReference TOOLTIPSTER_PLUGIN_REFERENCE = new TooltipsterResourceReference();
 
-  public static void main(String... args) {
-    TooltipsterSettings tooltipsterSettings = new TooltipsterSettings();
-    tooltipsterSettings.getAnimation().setValue("grow");
-    tooltipsterSettings.getArrow().setValue(false);
-    tooltipsterSettings.getContent().setValue("Loading...");
-    TooltipsterJsGenerator generator = new TooltipsterJsGenerator(tooltipsterSettings, null);
-    String result = generator.generateJs(tooltipsterSettings, "foo");
-    System.out.println(result);
-  }
+	public static void main(String... args)
+	{
+		TooltipsterSettings tooltipsterSettings = new TooltipsterSettings();
+		tooltipsterSettings.getAnimation().setValue("grow");
+		tooltipsterSettings.getArrow().setValue(false);
+		tooltipsterSettings.getContent().setValue("Loading...");
+		TooltipsterJsGenerator generator = new TooltipsterJsGenerator(tooltipsterSettings, null);
+		String result = generator.generateJs(tooltipsterSettings, "foo");
+		System.out.println(result);
+	}
 
-  /**
+	/**
 	 * The settings.
 	 */
 	@Getter
 	private final TooltipsterSettings settings;
 
-  /**
-   * The component.
-   */
-  private Component component;
+	/**
+	 * The component.
+	 */
+	private Component component;
 
 	/**
 	 * Instantiates a new tooltipster js generator.
@@ -78,63 +82,70 @@ public class TooltipsterJsGenerator implements Serializable
 	public TooltipsterJsGenerator(final TooltipsterSettings settings, final Component component)
 	{
 		this.settings = Args.notNull(settings, "settings");
-    this.component = component;
+		this.component = component;
 	}
 
-  /**
-   * Generates javascript from the settings and the component.
-   * @return The generated javascript from the settings and the component.
-   */
-  public String generateJs() {
-    return generateJs(this.settings, component.getMarkupId());
-  }
+	/**
+	 * Generates javascript from the settings and the component.
+	 * 
+	 * @return The generated javascript from the settings and the component.
+	 */
+	public String generateJs()
+	{
+		return generateJs(this.settings, component.getMarkupId());
+	}
 
-  /**
-   * Generate tooltipster js.
-   *
-   * @param settings
-   *            the settings
-   * @return the string
-   */
-  public String generateJs(Settings settings, String componentId, final String methodName)
-  {
-    // 1. Create an empty map...
-    final Map<String, Object> variables = new HashMap<>();
-    // 2. put the component id that is the initiator for the js code...
-    variables.put(TextTemplateUtils.COMPONENT_ID, componentId);
-    // 3. Initialize the map with the settings...
-    TextTemplateUtils.initializeVariables(variables, settings.asSet());
-    // 4. Generate the js template with the map and the method name...
-    String stringTemplateContent = TextTemplateUtils.generateJavascriptTemplateContent(variables, methodName);
-    // 5. Create the StringTextTemplate with the generated template...
-    StringTextTemplate stringTextTemplate = new StringTextTemplate(stringTemplateContent);
-    // 6. Interpolate the template with the values of the map...
-    stringTextTemplate.interpolate(variables);
-    try{
-        // 7. return it as String...
-        return stringTextTemplate.asString();
-    	
-    } finally {
-    	try
+	/**
+	 * Generate tooltipster js.
+	 *
+	 * @param settings
+	 *            the settings
+	 * @return the string
+	 */
+	public String generateJs(Settings settings, String componentId, final String methodName)
+	{
+		// 1. Create an empty map...
+		final Map<String, Object> variables = new HashMap<>();
+		// 2. put the component id that is the initiator for the js code...
+		variables.put(TextTemplateUtils.COMPONENT_ID, componentId);
+		// 3. Initialize the map with the settings...
+		TextTemplateUtils.initializeVariables(variables, settings.asSet());
+		// 4. Generate the js template with the map and the method name...
+		String stringTemplateContent = TextTemplateUtils.generateJavascriptTemplateContent(
+			variables, methodName);
+		// 5. Create the StringTextTemplate with the generated template...
+		StringTextTemplate stringTextTemplate = new StringTextTemplate(stringTemplateContent);
+		// 6. Interpolate the template with the values of the map...
+		stringTextTemplate.interpolate(variables);
+		try
 		{
-			stringTextTemplate.close();
+			// 7. return it as String...
+			return stringTextTemplate.asString();
+
 		}
-		catch (IOException e)
+		finally
 		{
-			LOGGER.error(e.getMessage(), e);
+			try
+			{
+				stringTextTemplate.close();
+			}
+			catch (IOException e)
+			{
+				LOGGER.error(e.getMessage(), e);
+			}
 		}
-    }
-  }
-  /**
-   * Generate tooltipster js.
-   *
-   * @param settings
-   *            the settings
-   * @return the string
-   */
-  public String generateJs(Settings settings, String componentId)
-  {
-    return generateJs(settings, componentId, "tooltipster");
-  }
+	}
+
+	/**
+	 * Generate tooltipster js.
+	 *
+	 * @param settings
+	 *            the settings
+	 * @return the string
+	 */
+	public String generateJs(Settings settings, String componentId)
+	{
+		return generateJs(settings, componentId, "tooltipster");
+	}
 
 }

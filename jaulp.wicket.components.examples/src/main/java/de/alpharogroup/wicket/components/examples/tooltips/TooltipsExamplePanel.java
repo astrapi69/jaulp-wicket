@@ -19,35 +19,38 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 public class TooltipsExamplePanel extends Panel
 {
 
-  /**
-   * The serialVersionUID
-   */
-  private static final long serialVersionUID = 1L;
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 
-  public TooltipsExamplePanel(final String id, final IModel<?> model) {
-    super(id, model);
-    Label label = ComponentFactory.newLabel("tooltipTestLabel", Model.of("Im example for tooltipster."));
-    TooltipsterSettings tooltipsterSettings = new TooltipsterSettings();
-//    tooltipsterSettings.getAnimation().setValue("grow");
-//    tooltipsterSettings.getArrow().setValue(false);
-    tooltipsterSettings.getContent().setValue("Loading...");
-    TooltipsterJsGenerator tooltipsterJsGenerator = new TooltipsterJsGenerator(tooltipsterSettings, label);
-    String js = tooltipsterJsGenerator.generateJs();
-    label.add(new JavascriptAppenderBehavior(js, "tooltip_" + label.getMarkupId()));
-    add(label);
-  }
+	public TooltipsExamplePanel(final String id, final IModel<?> model)
+	{
+		super(id, model);
+		Label label = ComponentFactory.newLabel("tooltipTestLabel",
+			Model.of("Im example for tooltipster."));
+		TooltipsterSettings tooltipsterSettings = new TooltipsterSettings();
+		// tooltipsterSettings.getAnimation().setValue("grow");
+		// tooltipsterSettings.getArrow().setValue(false);
+		tooltipsterSettings.getContent().setValue("Loading...");
+		TooltipsterJsGenerator tooltipsterJsGenerator = new TooltipsterJsGenerator(
+			tooltipsterSettings, label);
+		String js = tooltipsterJsGenerator.generateJs();
+		label.add(new JavascriptAppenderBehavior(js, "tooltip_" + label.getMarkupId()));
+		add(label);
+	}
 
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void renderHead(IHeaderResponse response)
-  {
-    super.renderHead(response);
-    response.render(JavaScriptHeaderItem.forReference(Application.get()
-      .getJavaScriptLibrarySettings().getJQueryReference()));
-    response.render(JavaScriptHeaderItem
-      .forReference(TooltipsterJsGenerator.TOOLTIPSTER_PLUGIN_REFERENCE));
-  }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void renderHead(IHeaderResponse response)
+	{
+		super.renderHead(response);
+		response.render(JavaScriptHeaderItem.forReference(Application.get()
+			.getJavaScriptLibrarySettings().getJQueryReference()));
+		response.render(JavaScriptHeaderItem
+			.forReference(TooltipsterJsGenerator.TOOLTIPSTER_PLUGIN_REFERENCE));
+	}
 }

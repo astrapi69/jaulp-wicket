@@ -8,7 +8,7 @@ import java.util.Set;
  */
 public interface Settings extends Serializable
 {
-	
+
 	/**
 	 * Returns a set with all settings.
 	 *

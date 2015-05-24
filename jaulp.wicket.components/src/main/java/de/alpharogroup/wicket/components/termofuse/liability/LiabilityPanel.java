@@ -43,14 +43,15 @@ public class LiabilityPanel extends HeaderContentListPanel
 	@Override
 	protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
 	{
-		return new Label(id, newContentResourceModel(item.getModel())).add(new JQueryJsAppenderBehavior(
-			"wrap", "<p></p>"));
+		return new Label(id, newContentResourceModel(item.getModel()))
+			.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
 	}
 
 	@Override
 	protected Component newHeaderLabel(String id, IModel<String> model)
 	{
-		return super.newHeaderLabel(id, model).add(new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
+		return super.newHeaderLabel(id, model).add(
+			new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
 	}
 
 }

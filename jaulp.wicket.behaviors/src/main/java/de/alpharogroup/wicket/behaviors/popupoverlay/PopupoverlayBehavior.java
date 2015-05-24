@@ -101,20 +101,20 @@ public class PopupoverlayBehavior extends Behavior
 	{
 		final Map<String, Object> variables = new HashMap<>();
 		variables.put("componentId", this.component.getMarkupId());
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("type", this.settings.getType().getValue(),
-			variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("type", this.settings.getType()
+			.getValue(), variables);
 		variables.put("autoopen", this.settings.getAutoopen().getValue());
 		variables.put("scrolllock", this.settings.getScrolllock().getValue());
 		variables.put("background", this.settings.getBackground().getValue());
 		variables.put("backgroundactive", this.settings.getBackgroundactive().getValue());
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("color", this.settings.getColor().getValue(),
-			variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("opacity",
-			this.settings.getOpacity().getValue(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("horizontal",
-			this.settings.getHorizontal().getValue(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("vertical",
-			this.settings.getVertical().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("color", this.settings.getColor()
+			.getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("opacity", this.settings.getOpacity()
+			.getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("horizontal", this.settings
+			.getHorizontal().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("vertical", this.settings
+			.getVertical().getValue(), variables);
 		variables.put("offsettop", this.settings.getOffsettop().getValue());
 		variables.put("offsetleft", this.settings.getOffsetleft().getValue());
 		variables.put("escape", this.settings.getEscape().getValue());
@@ -122,28 +122,29 @@ public class PopupoverlayBehavior extends Behavior
 		variables.put("setzindex", this.settings.getSetzindex().getValue());
 		variables.put("autozindex", this.settings.getAutozindex().getValue());
 		variables.put("keepfocus", this.settings.getKeepfocus().getValue());
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("focuselement",
-			this.settings.getFocuselement().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("focuselement", this.settings
+			.getFocuselement().getValue(), variables);
 		variables.put("focusdelay", this.settings.getFocusdelay().getValue());
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("pagecontainer",
-			this.settings.getPagecontainer().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("pagecontainer", this.settings
+			.getPagecontainer().getValue(), variables);
 		variables.put("outline", this.settings.getOutline().getValue());
 		variables.put("detach", this.settings.getDetach());
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("openelement",
-			this.settings.getOpenelement().getValue(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("closeelement",
-			this.settings.getCloseelement().getValue(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("transition",
-			this.settings.getTransition().getValue(), variables);
-		TextTemplateUtils.setVariableWithSingleQuotationMarks("tooltipanchor",
-			this.settings.getTooltipanchor().getValue(), variables);
-		TextTemplateUtils.setVariable("beforeopen", this.settings.getBeforeopen().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("openelement", this.settings
+			.getOpenelement().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("closeelement", this.settings
+			.getCloseelement().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("transition", this.settings
+			.getTransition().getValue(), variables);
+		TextTemplateUtils.setVariableWithSingleQuotationMarks("tooltipanchor", this.settings
+			.getTooltipanchor().getValue(), variables);
+		TextTemplateUtils.setVariable("beforeopen", this.settings.getBeforeopen().getValue(),
+			variables);
 		TextTemplateUtils.setVariable("onopen", this.settings.getOnopen().getValue(), variables);
 		TextTemplateUtils.setVariable("onclose", this.settings.getOnclose().getValue(), variables);
-		TextTemplateUtils.setVariable("opentransitionend", this.settings.getOpentransitionend().getValue(),
-			variables);
-		TextTemplateUtils.setVariable("closetransitionend", this.settings.getClosetransitionend().getValue(),
-			variables);
+		TextTemplateUtils.setVariable("opentransitionend", this.settings.getOpentransitionend()
+			.getValue(), variables);
+		TextTemplateUtils.setVariable("closetransitionend", this.settings.getClosetransitionend()
+			.getValue(), variables);
 		textTemplate.interpolate(variables);
 		return textTemplate.asString();
 	}
