@@ -197,12 +197,8 @@ public final class ComponentFinder
 	{
 		Component parent = childComponent.getParent();
 		while (parent != null)
-		{
-			String parentNormalizedClassName = ClassUtils.normalizeQualifiedClassName(parentClass
-				.getName());
-			String currentParentNormalizedClassName = ClassUtils.normalizeQualifiedClassName(parent
-				.getClass().getName());
-			if (currentParentNormalizedClassName.equals(parentNormalizedClassName))
+		{			
+			if (ClassUtils.equalsByClassName(parentClass, parent.getClass()))
 			{
 				break;
 			}
