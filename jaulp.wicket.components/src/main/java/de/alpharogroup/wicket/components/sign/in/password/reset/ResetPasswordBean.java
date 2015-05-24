@@ -17,9 +17,6 @@ package de.alpharogroup.wicket.components.sign.in.password.reset;
 
 import java.io.Serializable;
 
-import org.apache.wicket.request.mapper.parameter.PageParameters;
-
-import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -27,6 +24,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+
+import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
 
 @Getter
 @Setter

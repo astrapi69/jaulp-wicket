@@ -15,8 +15,8 @@
  */
 package de.alpharogroup.wicket.behaviors.popupoverlay;
 
-import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 
 /**
  * This enum encapsulates the two possible values from the attribute 'value' in the

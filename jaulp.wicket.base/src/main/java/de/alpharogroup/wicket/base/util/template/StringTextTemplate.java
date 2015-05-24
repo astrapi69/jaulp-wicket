@@ -3,14 +3,14 @@ package de.alpharogroup.wicket.base.util.template;
 import java.io.IOException;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.wicket.util.io.Streams;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.util.string.interpolator.MapVariableInterpolator;
 import org.apache.wicket.util.template.TextTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A {@link TextTemplate} that is build from a String.

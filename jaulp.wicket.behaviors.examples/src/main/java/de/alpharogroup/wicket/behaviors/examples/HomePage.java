@@ -29,9 +29,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import de.alpharogroup.wicket.behaviors.FaviconBehavior;
 import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.JavascriptResourceReferenceAppenderBehavior;
-import de.alpharogroup.wicket.behaviors.FaviconBehavior;
 import de.alpharogroup.wicket.behaviors.components.MailtoLabel;
 import de.alpharogroup.wicket.behaviors.models.MailtoModel;
 

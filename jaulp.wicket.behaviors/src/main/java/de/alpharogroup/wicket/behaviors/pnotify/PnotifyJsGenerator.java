@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Getter;
+
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.wicket.base.util.template.StringTextTemplate;
 import de.alpharogroup.wicket.base.util.template.TextTemplateUtils;
-import lombok.Getter;
 
 /**
  * The Class PnotifyJsGenerator generates the javascript with a PnotifySettings object.

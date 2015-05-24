@@ -3,12 +3,12 @@ package de.alpharogroup.wicket.behaviors.pnotify;
 import java.util.HashSet;
 import java.util.Set;
 
-import de.alpharogroup.wicket.base.util.template.QuotationMarkType;
-import de.alpharogroup.wicket.base.util.template.StringTextType;
-import de.alpharogroup.wicket.base.util.template.StringTextValue;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import de.alpharogroup.wicket.base.util.template.QuotationMarkType;
+import de.alpharogroup.wicket.base.util.template.StringTextType;
+import de.alpharogroup.wicket.base.util.template.StringTextValue;
 
 /**
  * This class encapsulates various settings for the pnotify stack. See the documentation for the

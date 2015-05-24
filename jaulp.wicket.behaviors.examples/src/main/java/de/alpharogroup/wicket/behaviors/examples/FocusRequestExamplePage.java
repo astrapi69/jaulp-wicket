@@ -20,8 +20,8 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.FocusRequestBehavior;
+import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 
 /**
  * FocusRequestExamplePage

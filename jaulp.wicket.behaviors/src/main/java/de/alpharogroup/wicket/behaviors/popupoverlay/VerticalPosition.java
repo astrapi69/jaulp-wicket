@@ -15,8 +15,8 @@
  */
 package de.alpharogroup.wicket.behaviors.popupoverlay;
 
-import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 
 /**
  * This enum encapsulates the five possible values from the attribute 'vertical' in the

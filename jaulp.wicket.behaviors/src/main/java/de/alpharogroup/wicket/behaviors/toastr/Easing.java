@@ -15,8 +15,8 @@
  */
 package de.alpharogroup.wicket.behaviors.toastr;
 
-import de.alpharogroup.wicket.base.util.template.ValueEnum;
 import lombok.Getter;
+import de.alpharogroup.wicket.base.util.template.ValueEnum;
 
 /**
  * The Enum Easing.
