@@ -33,10 +33,12 @@ public class ToastrResourceReference extends JavaScriptResourceReference
 	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instantiates a new toastr resource reference.
-	 */
-	public ToastrResourceReference()
+  public static final ToastrResourceReference INSTANCE = new ToastrResourceReference();
+
+  /**
+   * Instantiates a new toastr resource reference.
+   */
+  private ToastrResourceReference()
 	{
 		super(ToastrResourceReference.class, "toastr.min.js");
 	}
