@@ -58,6 +58,12 @@
 			<version>6.18.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-component-expressions</artifactId>
+			<version>6.18.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

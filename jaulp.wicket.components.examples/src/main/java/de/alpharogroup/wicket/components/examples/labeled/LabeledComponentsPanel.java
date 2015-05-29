@@ -17,6 +17,9 @@ package de.alpharogroup.wicket.components.examples.labeled;
 
 import java.util.Date;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -29,6 +32,12 @@ import org.apache.wicket.model.PropertyModel;
 import de.alpharogroup.test.objects.Gender;
 import de.alpharogroup.test.objects.Member;
 import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.ComponentFinder;
+import de.alpharogroup.wicket.component.search.ComponentExpression;
+import de.alpharogroup.wicket.component.search.ComponentExpressionFinder;
+import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
+import de.alpharogroup.wicket.components.examples.fragment.swapping.HomeAddress;
+import de.alpharogroup.wicket.components.examples.labeled.address.AddressPanel;
 import de.alpharogroup.wicket.components.form.input.TwoFormComponentBean;
 import de.alpharogroup.wicket.components.labeled.LabeledTwoFormComponentPanel;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
@@ -43,6 +52,8 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 {
 	private static final long serialVersionUID = 1L;
 	private FeedbackPanel feedbackPanel;
+	
+	AddressPanel addressPanel;
 
 	public LabeledComponentsPanel(String id)
 	{
@@ -108,8 +119,9 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 			.of(new TwoFormComponentBean<String, String>());
 		form.add(new LabeledTwoFormComponentPanel<String, String>("twoFormComponentPanel",
 			twoFormCompModel, Model.of("Street / number:")));
+		final IModel<HomeAddress> addressModel = Model.of(HomeAddress.builder().street("").localNumber("").code("").city("").build());
 		// Create submit button for the form
-		final Button submitButton = new Button("submitButton")
+		final AjaxButton submitButton = new AjaxButton("submitButton", form)
 		{
 			/**
 			 * The serialVersionUID.
@@ -117,15 +129,26 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit()
+			public void onSubmit(AjaxRequestTarget target, Form<?> form)
 			{
 				info("Member:" + person.toString());
+				info(":::Address::" + addressModel.toString());
+				Component comp = ComponentExpression.findComponent(LabeledComponentsPanel.this, "addressPanel");
+				target.add(comp);
 			}
 		};
 
 		form.add(submitButton);
+		
+		add(addressPanel = new AddressPanel("addressPanel", addressModel));
 
 		add(feedbackPanel = new FeedbackPanel("feedbackpanel"));
 		feedbackPanel.setOutputMarkupId(true);
+	}
+
+	protected Component getFeedback()
+	{
+		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		return basePage.getFeedback();
 	}
 }

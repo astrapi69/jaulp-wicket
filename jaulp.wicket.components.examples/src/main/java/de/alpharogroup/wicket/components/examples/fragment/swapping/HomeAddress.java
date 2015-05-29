@@ -17,6 +17,21 @@ package de.alpharogroup.wicket.components.examples.fragment.swapping;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class HomeAddress implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -25,43 +40,4 @@ public class HomeAddress implements Serializable
 	private String city;
 	private String code;
 
-	public String getStreet()
-	{
-		return street;
-	}
-
-	public void setStreet(String street)
-	{
-		this.street = street;
-	}
-
-	public String getLocalNumber()
-	{
-		return localNumber;
-	}
-
-	public void setLocalNumber(String localNumber)
-	{
-		this.localNumber = localNumber;
-	}
-
-	public String getCity()
-	{
-		return city;
-	}
-
-	public void setCity(String city)
-	{
-		this.city = city;
-	}
-
-	public String getCode()
-	{
-		return code;
-	}
-
-	public void setCode(String code)
-	{
-		this.code = code;
-	}
 }

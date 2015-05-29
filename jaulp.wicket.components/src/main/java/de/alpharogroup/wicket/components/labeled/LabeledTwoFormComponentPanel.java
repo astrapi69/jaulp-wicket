@@ -69,22 +69,6 @@ public class LabeledTwoFormComponentPanel<L, R>
 	}
 
 	/**
-	 * New right text field.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the form component
-	 */
-	protected FormComponent<R> newRightFormComponent(String id,
-		IModel<TwoFormComponentBean<L, R>> model)
-	{
-		return ComponentFactory.newTextField(id, new PropertyModel<R>(model, "rightContent"));
-	}
-
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
