@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.behaviors;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -54,7 +55,7 @@ public class JavascriptResourceReferenceAppenderBehavior extends Behavior
 
 	/**
 	 * Instantiates a new adds the js resource reference behavior.
-	 * 
+	 *
 	 * @param pageClass
 	 *            the page class
 	 * @param filename
@@ -63,18 +64,22 @@ public class JavascriptResourceReferenceAppenderBehavior extends Behavior
 	 *            the id
 	 */
 	public JavascriptResourceReferenceAppenderBehavior(final Class<? extends Page> pageClass,
-		final String filename, final String id)
+		final String filename, String id)
 	{
 		Args.notNull(pageClass, "pageClass");
 		Args.notNull(filename, "filename");
 		this.pageClass = pageClass;
 		this.filename = filename;
+    if (id == null)
+    {
+      id = String.valueOf(UUID.randomUUID());
+    }
 		this.id = id;
 	}
 
 	/**
 	 * Gets the resource reference.
-	 * 
+	 *
 	 * @return the resource reference
 	 */
 	private ResourceReference getResourceReference()
