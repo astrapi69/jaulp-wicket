@@ -5,10 +5,10 @@ package de.alpharogroup.wicket.base.util.template;
  */
 public enum QuotationMarkType
 {
-	/** The none. */
+	/** The NONE indicates there are not quotation marks. */
 	NONE,
-	/** The single. */
+	/** The SINGLE indicates there are single quotation marks. */
 	SINGLE,
-	/** The double. */
+	/** The DOUBLE indicates there are double quotation marks. */
 	DOUBLE
 }
