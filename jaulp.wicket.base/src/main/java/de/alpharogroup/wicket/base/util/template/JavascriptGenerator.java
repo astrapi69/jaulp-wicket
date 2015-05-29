@@ -9,6 +9,7 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.apache.wicket.util.lang.Args;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,7 @@ import org.slf4j.LoggerFactory;
  * {@link de.alpharogroup.wicket.base.util.template.StringTextTemplate}.
  *
  * @param <S>
- *            the generic type
+ *            the generic type of the Settings object
  */
 @Getter
 @Setter
@@ -60,8 +61,12 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 	 */
 	public JavascriptGenerator(S settings)
 	{
-		this.settings = settings;
+		this.settings = Args.notNull(settings, "settings");
 	}
+
+  public String generateJs() {
+    return generateJs(getSettings(), getMethodName());
+  }
 
 	/**
 	 * Generate the javascript code.
@@ -74,7 +79,6 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 	 */
 	public String generateJs(final Settings settings, final String methodName)
 	{
-
 		// 1. Create an empty map...
 		final Map<String, Object> variables = initializeVariables(settings.asSet());
 		// 4. Generate the js template with the map and the method name...
@@ -104,7 +108,7 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 	/**
 	 * Generates the javascript template code from the given map and the given method name that will
 	 * be used to interpolate with the values of the given map.
-	 * 
+	 *
 	 * @param variables
 	 *            the map with the javascript options.
 	 * @param methodName
@@ -144,7 +148,6 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 		return sb.toString();
 	}
 
-
 	/**
 	 * Sets the values to the map. If the default value is set than it will not be added to the map
 	 * for later not to generate js for it.
@@ -153,7 +156,7 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 	 *            All settings as a list of StringTextValue(s).
 	 * @return the map
 	 */
-	protected final Map<String, Object> initializeVariables(
+	protected Map<String, Object> initializeVariables(
 		final Set<StringTextValue<?>> allSettings)
 	{
 		final Map<String, Object> variables = new HashMap<>();
@@ -161,7 +164,7 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 		// 2. put the component id that is the initiator for the js code...
 		if (withComponentId)
 		{
-			variables.put(TextTemplateUtils.COMPONENT_ID, componentId);
+			variables.put(JavascriptGenerator.COMPONENT_ID, componentId);
 		}
 		for (StringTextValue<?> textValue : allSettings)
 		{
@@ -194,4 +197,5 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 		}
 		return variables;
 	}
+
 }
