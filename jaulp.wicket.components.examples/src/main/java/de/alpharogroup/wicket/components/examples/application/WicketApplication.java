@@ -28,7 +28,7 @@ import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.resource.loader.BundleStringResourceLoader;
 
-import de.alpharogroup.collections.ListUtils;
+import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.wicket.PackageResourceReferences;
 import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
@@ -227,7 +227,7 @@ public class WicketApplication extends WicketBootstrap3Application
 	@Override
 	public String getPackageToScan()
 	{
-		return ListUtils.getFirst(getPackagesToScan());
+		return ListExtensions.getFirst(getPackagesToScan());
 	}
 
 	public String[] getPackagesToScanAsArray()
