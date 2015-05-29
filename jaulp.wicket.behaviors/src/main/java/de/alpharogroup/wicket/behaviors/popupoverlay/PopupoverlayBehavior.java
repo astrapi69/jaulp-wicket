@@ -90,11 +90,11 @@ public class PopupoverlayBehavior extends Behavior
 			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(JavaScriptHeaderItem
 			.forReference(PopupoverlayBehavior.POPUPOVERLAY_PLUGIN_REFERENCE));
-		
+
 		PopupoverlayJsGenerator generator = new PopupoverlayJsGenerator(this.settings);
 		generator.setComponentId(this.component.getMarkupId());
 		String javascript = generator.generatePopupoverlayJs(this.settings);
-		
+
 		response.render(OnLoadHeaderItem.forScript(javascript));
 	}
 

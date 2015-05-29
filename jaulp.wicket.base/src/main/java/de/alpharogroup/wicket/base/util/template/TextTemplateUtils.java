@@ -26,10 +26,10 @@ public class TextTemplateUtils
 
 	/** The Constant COMPONENT_ID. */
 	public static final String COMPONENT_ID = "componentId";
-	
+
 	/** The Constant DOCUMENT_READY_FUNCTION_PREFIX. */
 	public static final String DOCUMENT_READY_FUNCTION_PREFIX = "$(document).ready(function() {";
-	
+
 	/** The Constant DOCUMENT_READY_FUNCTION_SUFFIX. */
 	public static final String DOCUMENT_READY_FUNCTION_SUFFIX = "})";
 
@@ -214,7 +214,8 @@ public class TextTemplateUtils
 	/**
 	 * Converts the given {@link Set} of {@link StringTextValue} to a javascript array.
 	 *
-	 * @param settings the settings
+	 * @param settings
+	 *            the settings
 	 * @return the generated javascript array.
 	 */
 	public static String asJavascriptArray(Set<StringTextValue<?>> settings)

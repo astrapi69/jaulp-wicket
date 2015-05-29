@@ -24,22 +24,20 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 			.of(new TwoFormComponentBean<String, String>());
 		streetNumberCompModel.getObject().setLeftContent(model.getObject().getStreet());
 		streetNumberCompModel.getObject().setRightContent(model.getObject().getLocalNumber());
-		
-		LabeledTwoFormComponentPanel<String, String> streetNumberPanel = 
-			new LabeledTwoFormComponentPanel<String, String>("streetNumberPanel",
-				streetNumberCompModel, Model.of("Street / number:"));
-		
-		add(streetNumberPanel);		
-		
+
+		LabeledTwoFormComponentPanel<String, String> streetNumberPanel = new LabeledTwoFormComponentPanel<String, String>(
+			"streetNumberPanel", streetNumberCompModel, Model.of("Street / number:"));
+
+		add(streetNumberPanel);
+
 		IModel<TwoFormComponentBean<String, String>> zipcodeCityCompModel = Model
 			.of(new TwoFormComponentBean<String, String>());
 		zipcodeCityCompModel.getObject().setLeftContent(model.getObject().getCode());
 		zipcodeCityCompModel.getObject().setRightContent(model.getObject().getCity());
-		
-		LabeledTwoFormComponentPanel<String,String> zipcodeCityPanel = 
-			new LabeledTwoFormComponentPanel<String,String>("zipcodeCityPanel",
-				zipcodeCityCompModel, Model.of("Zip / City:"));
-		
+
+		LabeledTwoFormComponentPanel<String, String> zipcodeCityPanel = new LabeledTwoFormComponentPanel<String, String>(
+			"zipcodeCityPanel", zipcodeCityCompModel, Model.of("Zip / City:"));
+
 		add(zipcodeCityPanel);
 	}
 

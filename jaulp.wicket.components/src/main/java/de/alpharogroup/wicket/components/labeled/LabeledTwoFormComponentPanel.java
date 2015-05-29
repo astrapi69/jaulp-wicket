@@ -2,11 +2,8 @@ package de.alpharogroup.wicket.components.labeled;
 
 import lombok.Getter;
 
-import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 
-import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.form.input.TwoFormComponentBean;
 import de.alpharogroup.wicket.components.form.input.TwoFormComponentPanel;
 
