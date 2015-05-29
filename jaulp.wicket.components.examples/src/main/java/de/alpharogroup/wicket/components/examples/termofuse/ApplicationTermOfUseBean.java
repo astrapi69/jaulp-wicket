@@ -19,7 +19,7 @@ import java.io.Serializable;
 
 import com.google.common.collect.ImmutableList;
 
-import de.alpharogroup.collections.ListUtils;
+import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.i18n.list.ContentListModel;
@@ -28,19 +28,19 @@ import de.alpharogroup.wicket.components.termofuse.TermOfUseModel;
 import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
 
 
-public final class ApplicationTermOfUseModel implements Serializable
+public final class ApplicationTermOfUseBean implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
 
-	private static ApplicationTermOfUseModel instance;
+	private static ApplicationTermOfUseBean instance;
 
 
-	public static synchronized ApplicationTermOfUseModel getInstance()
+	public static synchronized ApplicationTermOfUseBean getInstance()
 	{
 		if (instance == null)
 		{
-			instance = new ApplicationTermOfUseModel();
+			instance = new ApplicationTermOfUseBean();
 		}
 		return instance;
 	}
@@ -222,7 +222,7 @@ public final class ApplicationTermOfUseModel implements Serializable
 
 	private TermOfUseModel model;
 
-	private ApplicationTermOfUseModel()
+	private ApplicationTermOfUseBean()
 	{
 		init();
 	}
@@ -240,7 +240,7 @@ public final class ApplicationTermOfUseModel implements Serializable
 					.builder()
 					.key(
 						"term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel")
-					.parameters(ListUtils.toObjectArray(parameter)).build()).build();
+					.parameters(ListExtensions.toObjectArray(parameter)).build()).build();
 
 		ImmutableList<ResourceBundleKey> generalTermsAndConditionsContentResourceKeys = new ImmutableList.Builder<ResourceBundleKey>()
 			.add(
@@ -248,7 +248,7 @@ public final class ApplicationTermOfUseModel implements Serializable
 					.builder()
 					.key("term.of.use.main.head.content.paragraph.first.label")
 					.parameters(
-						ListUtils.toObjectArray("www." + WicketApplication.get().getDomainName()))
+						ListExtensions.toObjectArray("www." + WicketApplication.get().getDomainName()))
 					.build())
 			.add(
 				ResourceBundleKey.builder()
