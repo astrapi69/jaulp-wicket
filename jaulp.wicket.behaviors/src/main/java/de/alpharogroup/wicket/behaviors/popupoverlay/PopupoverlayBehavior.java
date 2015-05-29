@@ -23,8 +23,6 @@ import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.OnLoadHeaderItem;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
 
 /**
@@ -37,10 +35,6 @@ public class PopupoverlayBehavior extends Behavior
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/** The {@link ResourceReference} constant for the js-file from the jquery.popupoverlay plugin. */
-	public static final ResourceReference POPUPOVERLAY_PLUGIN_REFERENCE = new JavaScriptResourceReference(
-		PopupoverlayBehavior.class, "jquery.popupoverlay.js");
 
 	/** The component. */
 	private Component component;
@@ -65,8 +59,7 @@ public class PopupoverlayBehavior extends Behavior
 	 */
 	public PopupoverlayBehavior(PopupoverlaySettings settings)
 	{
-		Args.notNull(settings, "settings");
-		this.settings = settings;
+		this.settings = Args.notNull(settings, "settings");
 	}
 
 	/**
@@ -89,11 +82,9 @@ public class PopupoverlayBehavior extends Behavior
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(JavaScriptHeaderItem
-			.forReference(PopupoverlayBehavior.POPUPOVERLAY_PLUGIN_REFERENCE));
-
-		PopupoverlayJsGenerator generator = new PopupoverlayJsGenerator(this.settings);
-		generator.setComponentId(this.component.getMarkupId());
-		String javascript = generator.generatePopupoverlayJs(this.settings);
+			.forReference(PopupoverlayResourceReference.INSTANCE));
+		PopupoverlayJsGenerator generator = new PopupoverlayJsGenerator(this.settings, this.component.getMarkupId());
+		String javascript = generator.generateJs();
 
 		response.render(OnLoadHeaderItem.forScript(javascript));
 	}
