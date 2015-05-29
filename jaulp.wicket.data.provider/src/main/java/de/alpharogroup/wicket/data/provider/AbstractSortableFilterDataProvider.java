@@ -29,6 +29,8 @@ import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import de.alpharogroup.collections.ListExtensions;
+
 /**
  * The Class AbstractSortableFilterDataProvider is an abstract generic implementation for the
  * ISortableDataProvider and the IFilterStateLocator interface.
@@ -199,7 +201,7 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 		{
 			String property = (String)sortParam.getProperty();
 			boolean ascending = sortParam.isAscending();
-			SortCollectionUtils.sortList(unsortedList, property, ascending);
+			ListExtensions.sortWithProperty(unsortedList, property, ascending);
 		}
 		return unsortedList;
 	}
