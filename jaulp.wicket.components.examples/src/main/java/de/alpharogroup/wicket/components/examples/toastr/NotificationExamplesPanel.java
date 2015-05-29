@@ -34,6 +34,7 @@ import de.alpharogroup.wicket.behaviors.pnotify.PnotifyJsReference;
 import de.alpharogroup.wicket.behaviors.pnotify.PnotifySettings;
 import de.alpharogroup.wicket.behaviors.toastr.Position;
 import de.alpharogroup.wicket.behaviors.toastr.ToastJsGenerator;
+import de.alpharogroup.wicket.behaviors.toastr.ToastrResourceReference;
 import de.alpharogroup.wicket.behaviors.toastr.ToastrSettings;
 import de.alpharogroup.wicket.components.buttons.ButtonPanel;
 
@@ -78,10 +79,10 @@ public class NotificationExamplesPanel extends Panel
 						target.add(form);
 						ToastJsGenerator jsGenerator = new ToastJsGenerator();
 
-						ToastrSettings settings = new ToastrSettings();
+						ToastrSettings settings = jsGenerator.getSettings();
 						settings.getPositionClass().setValue(Position.TOP_RIGHT);
 						settings.getNotificationContent().setValue("This is a notification");
-						String js = jsGenerator.generateToastrJs(settings);
+						String js = jsGenerator.generateJs();
 						target.prependJavaScript(js);
 					}
 
@@ -124,7 +125,7 @@ public class NotificationExamplesPanel extends Panel
 						pnotifySettings.getText().setValue("a text");
 						PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(
 							pnotifySettings);
-						String js = pnotifyJsGenerator.generateJs(pnotifySettings);
+						String js = pnotifyJsGenerator.generateJs();
 						target.prependJavaScript(js);
 					}
 
@@ -147,7 +148,7 @@ public class NotificationExamplesPanel extends Panel
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response
-			.render(JavaScriptHeaderItem.forReference(ToastJsGenerator.TOASTR_PLUGIN_REFERENCE));
+			.render(JavaScriptHeaderItem.forReference(ToastrResourceReference.INSTANCE));
 		response.render(JavaScriptHeaderItem.forReference(PnotifyJsReference.INSTANCE));
 	}
 
