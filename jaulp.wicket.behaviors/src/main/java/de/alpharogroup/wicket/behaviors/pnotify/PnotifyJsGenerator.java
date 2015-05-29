@@ -2,10 +2,6 @@ package de.alpharogroup.wicket.behaviors.pnotify;
 
 import java.util.Map;
 
-import lombok.Getter;
-
-import org.apache.wicket.request.resource.ResourceReference;
-
 import de.alpharogroup.wicket.base.util.template.JavascriptGenerator;
 
 /**
@@ -19,54 +15,30 @@ public class PnotifyJsGenerator extends JavascriptGenerator<PnotifySettings>
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * The {@link org.apache.wicket.request.resource.ResourceReference} constant for the js and
-	 * css-file from the Pnotify.
-	 */
-	public static final ResourceReference PNOTIFY_REFERENCE = PnotifyJsReference.INSTANCE;
+  /**
+   * Instantiates a new {@link PnotifyJsGenerator}.
+   */
+  public PnotifyJsGenerator()
+  {
+    this(new PnotifySettings());
+  }
 
-	/**
-	 * The pnotifySettings.
-	 */
-	@Getter
-	private PnotifySettings pnotifySettings;
-
-
-	public PnotifyJsGenerator(PnotifySettings settings)
-	{
-		super(settings);
-	}
-
-	public static void main(String... args)
-	{
-		PnotifySettings pnotifySettings = new PnotifySettings();
-		pnotifySettings.getTitle().setValue("Test title");
-		pnotifySettings.getText().setValue("a text");
-
-		PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(pnotifySettings);
-		String result = pnotifyJsGenerator.generateJs(pnotifySettings);
-
-		System.out.println(result);
-		System.out.println("================================");
-
-		StackSettings stackSettings = new StackSettings();
-		stackSettings.getDir2().setValue("right");
-		pnotifySettings.getStack().setValue(stackSettings.asJavascriptArray());
-
-		result = pnotifyJsGenerator.generateJs(pnotifySettings);
-
-		System.out.println(result);
-	}
-
-	public String generateJs(PnotifySettings settings)
-	{
-		return generateJs(settings, "PNotify");
-	}
+  /**
+   * Instantiates a new {@link PnotifyJsGenerator} with the given {@link PnotifySettings}.
+   *
+   * @param settings
+   *            the settings for the toastr plugin.
+   */
+  public PnotifyJsGenerator(PnotifySettings settings)
+  {
+    super(settings);
+    setMethodName("PNotify");
+  }
 
 	/**
 	 * Generates the javascript template code from the given map and the given method name that will
 	 * be used to interpolate with the values of the given map.
-	 * 
+	 *
 	 * @param variables
 	 *            the map with the javascript options.
 	 * @param methodName

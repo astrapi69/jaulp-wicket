@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.behaviors.popupoverlay;
 
+import org.apache.wicket.util.lang.Args;
+
 import de.alpharogroup.wicket.base.util.template.JavascriptGenerator;
 
 /**
@@ -8,38 +10,37 @@ import de.alpharogroup.wicket.base.util.template.JavascriptGenerator;
 public class PopupoverlayJsGenerator extends JavascriptGenerator<PopupoverlaySettings>
 {
 
-	{
-		/**
-		 * The jQuery Popup Overlay plugin needs a selector to build the javascript code.
-		 */
-		setWithComponentId(true);
-	}
-
-	public PopupoverlayJsGenerator(PopupoverlaySettings popupoverlaySettings)
-	{
-		super(popupoverlaySettings);
-	}
-
 	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static void main(String... args)
-	{
-		PopupoverlaySettings popupoverlaySettings = new PopupoverlaySettings();
-		popupoverlaySettings.getEscape().setValue(false);
-		popupoverlaySettings.getFocusdelay().setValue(400);
-		popupoverlaySettings.getHorizontal().setValue(HorizontalPosition.LEFT);
-		PopupoverlayJsGenerator generator = new PopupoverlayJsGenerator(popupoverlaySettings);
-		generator.setComponentId("aComponent");
-		String result = generator.generatePopupoverlayJs(popupoverlaySettings);
+  /**
+   * Instantiates a new {@link PopupoverlayJsGenerator}.
+   *
+   * @param componentId
+   *            the component id
+   */
+  public PopupoverlayJsGenerator(final String componentId)
+  {
+    this(new PopupoverlaySettings(), componentId);
+  }
 
-		System.out.println(result);
-	}
+  /**
+   * Instantiates a new {@link PopupoverlayJsGenerator} with the given {@link PopupoverlaySettings}.
+   *
+   * @param settings
+   *            the settings for the jquery-popup-overlay plugin.
+   *
+   * @param componentId
+   *            the component id
+   */
+  public PopupoverlayJsGenerator(PopupoverlaySettings settings, final String componentId)
+  {
+    super(settings);
+    setComponentId(Args.notEmpty(componentId, "componentId"));
+    setWithComponentId(true);
+    setMethodName("popup");
+  }
 
-	public String generatePopupoverlayJs(PopupoverlaySettings settings)
-	{
-		return generateJs(settings, "popup");
-	}
 }
