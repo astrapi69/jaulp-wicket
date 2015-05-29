@@ -10,6 +10,7 @@ import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.tooltipster.TooltipsterJsGenerator;
+import de.alpharogroup.wicket.behaviors.tooltipster.TooltipsterResourceReference;
 import de.alpharogroup.wicket.behaviors.tooltipster.TooltipsterSettings;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
@@ -30,11 +31,11 @@ public class TooltipsExamplePanel extends Panel
 		Label label = ComponentFactory.newLabel("tooltipTestLabel",
 			Model.of("Im example for tooltipster."));
 		TooltipsterSettings tooltipsterSettings = new TooltipsterSettings();
-		// tooltipsterSettings.getAnimation().setValue("grow");
-		// tooltipsterSettings.getArrow().setValue(false);
-		tooltipsterSettings.getContent().setValue("Loading...");
+		tooltipsterSettings.getAnimation().setValue("grow");
+		tooltipsterSettings.getArrow().setValue(false);
+		tooltipsterSettings.getContent().setValue("Loading foo...");
 		TooltipsterJsGenerator tooltipsterJsGenerator = new TooltipsterJsGenerator(
-			tooltipsterSettings, label);
+			tooltipsterSettings, label.getMarkupId());
 		String js = tooltipsterJsGenerator.generateJs();
 		label.add(new JavascriptAppenderBehavior(js, "tooltip_" + label.getMarkupId()));
 		add(label);
@@ -51,6 +52,6 @@ public class TooltipsExamplePanel extends Panel
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(JavaScriptHeaderItem
-			.forReference(TooltipsterJsGenerator.TOOLTIPSTER_PLUGIN_REFERENCE));
+			.forReference(TooltipsterResourceReference.INSTANCE));
 	}
 }
