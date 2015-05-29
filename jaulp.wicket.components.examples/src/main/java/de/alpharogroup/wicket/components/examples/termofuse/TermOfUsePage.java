@@ -29,7 +29,7 @@ public class TermOfUsePage extends PubliclyBasePage<Object>
 	@Override
 	public Component getContainerPanel()
 	{
-		return new ApplicationTermOfUsePanel(CONTAINER_PANEL_ID, Model.of(ApplicationTermOfUseModel
+		return new ApplicationTermOfUsePanel(CONTAINER_PANEL_ID, Model.of(ApplicationTermOfUseBean
 			.getInstance().getModel()));
 	}
 }
