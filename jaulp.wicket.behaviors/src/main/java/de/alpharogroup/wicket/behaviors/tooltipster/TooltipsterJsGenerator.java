@@ -15,23 +15,13 @@
  */
 package de.alpharogroup.wicket.behaviors.tooltipster;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
-import de.alpharogroup.wicket.base.util.template.JavascriptGenerator;
-import lombok.Getter;
-
-import org.apache.wicket.Component;
-import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.alpharogroup.wicket.base.util.template.Settings;
-import de.alpharogroup.wicket.base.util.template.StringTextTemplate;
-import de.alpharogroup.wicket.base.util.template.TextTemplateUtils;
+import de.alpharogroup.wicket.base.util.template.JavascriptGenerator;
 
 /**
  * The Class TooltipsterJsGenerator generates the javascript with a TooltipsterSettings object and a given component id.
