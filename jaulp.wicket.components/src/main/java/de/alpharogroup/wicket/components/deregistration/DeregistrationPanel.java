@@ -26,7 +26,7 @@ import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import de.alpharogroup.collections.ListUtils;
+import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
@@ -93,10 +93,10 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 			.builder()
 			.headerResourceKey(
 				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
-					.parameters(ListUtils.toObjectArray(getDomainName())).build())
+					.parameters(ListExtensions.toObjectArray(getDomainName())).build())
 			.contentResourceKey(
 				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
-					.parameters(ListUtils.toObjectArray(getDomainName())).build()).build()));
+					.parameters(ListExtensions.toObjectArray(getDomainName())).build()).build()));
 		contentPanel.getHeader().add(new JQueryJsAppenderBehavior("wrap", "<h1></h1>"));
 		contentPanel.getContent().add(
 			new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
@@ -135,7 +135,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			ResourceBundleKey.builder().key("sem.main.feedback.deregistration.user.label")
 				.defaultValue("Please confirm the deregistration")
-				.parameters(ListUtils.toObjectArray(getDomainName())).build(), this);
+				.parameters(ListExtensions.toObjectArray(getDomainName())).build(), this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.deregistration.motivation.label", this,
 			"Enter here your deregistration motivation.");
