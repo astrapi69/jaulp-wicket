@@ -1,0 +1,20 @@
+de.alpharogroup.wicket.behaviors.pnotify
+  Contains pnotify.custom.min.js and pnotify.custom.min.css (http://sciactive.com/pnotify/) javascript library released under GPL/LGPL/MPL license.
+  pnotify.custom.min.js and pnotify.custom.min.css author Hunter Perrin
+  wicket-pnotify licensed under same terms as pnotify.custom.min.js and pnotify.custom.min.css.
+
+de.alpharogroup.wicket.behaviors.popupoverlay
+  Contains jquery.popupoverlay.js (http://dev.vast.com/jquery-popup-overlay/) javascript library released under MIT license.
+  jquery.popupoverlay.js author Vast Engineering
+  wicket-popupoverlay licensed under same terms as jquery.popupoverlay.js.
+
+de.alpharogroup.wicket.behaviors.toastr
+  Contains toastr.min.js, toastr.js.map and toastr.min.css (http://codeseven.github.io/toastr/) javascript library released under MIT license - http://www.opensource.org/licenses/mit-license.php
+  toastr.min.js, toastr.js.map and toastr.min.css authors John Papa(http://twitter.com/John_Papa), Tim Ferrell(http://twitter.com/ferrell_tim), Hans Fjällemark(http://twitter.com/hfjallemark)
+  wicket-toastr licensed under same terms as toastr.min.js, toastr.js.map and toastr.min.css.
+
+de.alpharogroup.wicket.behaviors.tooltipster
+  Contains jquery.tooltipster.min.js and tooltipster.css (http://iamceege.github.io/tooltipster/) javascript library released under MIT license - http://www.opensource.org/licenses/mit-license.php
+  jquery.tooltipster.min.js and tooltipster.css authors: Caleb Jacob(http://calebjacob.com)
+                                                maintainers: Caleb Jacob(http://calebjacob.com), Louis Ameline(https://github.com/louisameline)
+  wicket-tooltipster licensed under same terms as jquery.tooltipster.min.js and tooltipster.css.
