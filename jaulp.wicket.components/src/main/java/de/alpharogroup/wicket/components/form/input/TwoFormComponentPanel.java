@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.form.input;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 
 import org.apache.wicket.Component;
@@ -21,7 +23,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <R>
  *            the generic type of the model from the left FormComponent
  */
-public class TwoFormComponentPanel<L, R> extends FormComponentPanel<TwoFormComponentBean<L, R>>
+public class TwoFormComponentPanel<L extends Serializable, R extends Serializable> extends FormComponentPanel<TwoFormComponentBean<L, R>>
 {
 
 	/** The serialVersionUID. */
@@ -66,9 +68,9 @@ public class TwoFormComponentPanel<L, R> extends FormComponentPanel<TwoFormCompo
 		super(id, model);
 		setOutputMarkupId(true);
 		setType(TwoFormComponentBean.class);
-		add(leftFormComponent = newLeftFormComponent("leftTextField", model)).add(
+		add(leftFormComponent = newLeftFormComponent("leftTextField", new PropertyModel<L>(model, "leftContent"))).add(
 			newBetweenLabel("betweenLabel", Model.of("/"))).add(
-			rightFormComponent = newRightFormComponent("rightTextField", model));
+			rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(model, "rightContent")));
 	}
 
 
@@ -98,9 +100,9 @@ public class TwoFormComponentPanel<L, R> extends FormComponentPanel<TwoFormCompo
 	 * @return the form component
 	 */
 	protected FormComponent<L> newLeftFormComponent(String id,
-		IModel<TwoFormComponentBean<L, R>> model)
+		IModel<L> model)
 	{
-		return ComponentFactory.newTextField(id, new PropertyModel<L>(model, "leftContent"));
+		return ComponentFactory.newTextField(id, model);
 	}
 
 	/**
@@ -113,9 +115,9 @@ public class TwoFormComponentPanel<L, R> extends FormComponentPanel<TwoFormCompo
 	 * @return the form component
 	 */
 	protected FormComponent<R> newRightFormComponent(String id,
-		IModel<TwoFormComponentBean<L, R>> model)
+		IModel<R> model)
 	{
-		return ComponentFactory.newTextField(id, new PropertyModel<R>(model, "rightContent"));
+		return ComponentFactory.newTextField(id, model);
 	}
 
 
@@ -125,6 +127,8 @@ public class TwoFormComponentPanel<L, R> extends FormComponentPanel<TwoFormCompo
 	@Override
 	protected void convertInput()
 	{
+		getModelObject().setLeftContent(getLeftFormComponent().getModelObject());
+		getLeftFormComponent().getModelObject();
 		setConvertedInput(getModelObject());
 	}
 

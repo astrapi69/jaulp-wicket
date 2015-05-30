@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled;
 
+import java.io.Serializable;
+
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.form.input.TwoFormComponentBean;
@@ -83,7 +85,7 @@ public class LabeledComponentFactory
 	 *            the model
 	 * @return the new {@link TwoFormComponentPanel}
 	 */
-	public static <L, R> TwoFormComponentPanel<L, R> newTwoFormComponentPanel(String id,
+	public static <L extends Serializable, R extends Serializable>  TwoFormComponentPanel<L, R> newTwoFormComponentPanel(String id,
 		IModel<TwoFormComponentBean<L, R>> model)
 	{
 		TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(id,

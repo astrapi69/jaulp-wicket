@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.examples.labeled;
 
 import java.util.Date;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -31,7 +33,6 @@ import org.apache.wicket.model.PropertyModel;
 import de.alpharogroup.test.objects.Gender;
 import de.alpharogroup.test.objects.Member;
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.component.search.ComponentExpression;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.HomeAddress;
 import de.alpharogroup.wicket.components.examples.labeled.address.AddressPanel;
@@ -49,12 +50,15 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 {
 	private static final long serialVersionUID = 1L;
 	private FeedbackPanel feedbackPanel;
-
+	@Getter
 	AddressPanel addressPanel;
+	
+	final IModel<HomeAddress> addressModel;
 
 	public LabeledComponentsPanel(String id)
 	{
 		super(id);
+		setOutputMarkupId(true);
 		final Member person = new Member();
 		person.setGender(Gender.UNDEFINED);
 		person.setName("foo");
@@ -116,8 +120,10 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 			.of(new TwoFormComponentBean<String, String>());
 		form.add(new LabeledTwoFormComponentPanel<String, String>("twoFormComponentPanel",
 			twoFormCompModel, Model.of("Street / number:")));
-		final IModel<HomeAddress> addressModel = Model.of(HomeAddress.builder().street("")
+		addressModel = Model.of(HomeAddress.builder().street("")
 			.localNumber("").code("").city("").build());
+
+		form.add(addressPanel = new AddressPanel("addressPanel", addressModel));
 		// Create submit button for the form
 		final AjaxButton submitButton = new AjaxButton("submitButton", form)
 		{
@@ -131,15 +137,13 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 			{
 				info("Member:" + person.toString());
 				info(":::Address::" + addressModel.toString());
-				Component comp = ComponentExpression.findComponent(LabeledComponentsPanel.this,
-					"addressPanel");
-				target.add(comp);
+				target.add(getAddressPanel());
+				target.add(getFeedback());
 			}
 		};
 
 		form.add(submitButton);
 
-		add(addressPanel = new AddressPanel("addressPanel", addressModel));
 
 		add(feedbackPanel = new FeedbackPanel("feedbackpanel"));
 		feedbackPanel.setOutputMarkupId(true);

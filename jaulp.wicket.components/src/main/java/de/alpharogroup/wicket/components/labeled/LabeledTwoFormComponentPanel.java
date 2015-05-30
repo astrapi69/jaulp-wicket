@@ -1,5 +1,7 @@
 package de.alpharogroup.wicket.components.labeled;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 
 import org.apache.wicket.model.IModel;
@@ -16,7 +18,7 @@ import de.alpharogroup.wicket.components.form.input.TwoFormComponentPanel;
  * @param <R>
  *            the generic type of the model from the left FormComponent
  */
-public class LabeledTwoFormComponentPanel<L, R>
+public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Serializable> 
 	extends
 		LabeledFormComponentPanel<TwoFormComponentBean<L, R>>
 {
