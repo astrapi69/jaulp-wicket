@@ -201,7 +201,7 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 		{
 			String property = (String)sortParam.getProperty();
 			boolean ascending = sortParam.isAscending();
-			ListExtensions.sortWithProperty(unsortedList, property, ascending);
+			ListExtensions.sortByProperty(unsortedList, property, ascending);
 		}
 		return unsortedList;
 	}
