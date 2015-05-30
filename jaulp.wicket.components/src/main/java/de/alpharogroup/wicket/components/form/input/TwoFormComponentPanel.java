@@ -23,7 +23,9 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <R>
  *            the generic type of the model from the left FormComponent
  */
-public class TwoFormComponentPanel<L extends Serializable, R extends Serializable> extends FormComponentPanel<TwoFormComponentBean<L, R>>
+public class TwoFormComponentPanel<L extends Serializable, R extends Serializable>
+	extends
+		FormComponentPanel<TwoFormComponentBean<L, R>>
 {
 
 	/** The serialVersionUID. */
@@ -68,9 +70,11 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 		super(id, model);
 		setOutputMarkupId(true);
 		setType(TwoFormComponentBean.class);
-		add(leftFormComponent = newLeftFormComponent("leftTextField", new PropertyModel<L>(model, "leftContent"))).add(
-			newBetweenLabel("betweenLabel", Model.of("/"))).add(
-			rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(model, "rightContent")));
+		add(
+			leftFormComponent = newLeftFormComponent("leftTextField", new PropertyModel<L>(model,
+				"leftContent"))).add(newBetweenLabel("betweenLabel", Model.of("/"))).add(
+			rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(
+				model, "rightContent")));
 	}
 
 
@@ -99,8 +103,7 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	 *            the model
 	 * @return the form component
 	 */
-	protected FormComponent<L> newLeftFormComponent(String id,
-		IModel<L> model)
+	protected FormComponent<L> newLeftFormComponent(String id, IModel<L> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
@@ -114,8 +117,7 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	 *            the model
 	 * @return the form component
 	 */
-	protected FormComponent<R> newRightFormComponent(String id,
-		IModel<R> model)
+	protected FormComponent<R> newRightFormComponent(String id, IModel<R> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
@@ -127,8 +129,6 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	@Override
 	protected void convertInput()
 	{
-		getModelObject().setLeftContent(getLeftFormComponent().getModelObject());
-		getLeftFormComponent().getModelObject();
 		setConvertedInput(getModelObject());
 	}
 

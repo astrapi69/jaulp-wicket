@@ -28,8 +28,8 @@ import de.alpharogroup.wicket.base.util.template.StringTextType;
 import de.alpharogroup.wicket.base.util.template.StringTextValue;
 
 /**
- * This class encapsulates various settings for the jquery popupoverlay plugin. See the documentation
- * for the jquery popupoverlay plugin for further information.
+ * This class encapsulates various settings for the jquery popupoverlay plugin. See the
+ * documentation for the jquery popupoverlay plugin for further information.
  */
 @Getter
 @Setter

@@ -64,9 +64,10 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 		this.settings = Args.notNull(settings, "settings");
 	}
 
-  public String generateJs() {
-    return generateJs(getSettings(), getMethodName());
-  }
+	public String generateJs()
+	{
+		return generateJs(getSettings(), getMethodName());
+	}
 
 	/**
 	 * Generate the javascript code.
@@ -156,8 +157,7 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 	 *            All settings as a list of StringTextValue(s).
 	 * @return the map
 	 */
-	protected Map<String, Object> initializeVariables(
-		final Set<StringTextValue<?>> allSettings)
+	protected Map<String, Object> initializeVariables(final Set<StringTextValue<?>> allSettings)
 	{
 		final Map<String, Object> variables = new HashMap<>();
 

@@ -24,33 +24,34 @@ import java.util.Set;
 public class TextTemplateUtils
 {
 
-  /**
-   * Sets the variable with singe quotation marks.
-   *
-   * @param variablename
-   *            the variablename
-   * @param object
-   *            the object
-   * @param variables
-   *            the variables
-   */
-  public static void setVariableWithSingleQuotationMarks(String variablename, Object object,
-                                                         final Map<String, Object> variables)
-  {
-    if (object != null)
-    {
-      variables.put(variablename, "'" + object + "'");
-    }
-    else
-    {
-      variables.put(variablename, "null");
-    }
-  }
+	/**
+	 * Sets the variable with singe quotation marks.
+	 *
+	 * @param variablename
+	 *            the variablename
+	 * @param object
+	 *            the object
+	 * @param variables
+	 *            the variables
+	 */
+	public static void setVariableWithSingleQuotationMarks(String variablename, Object object,
+		final Map<String, Object> variables)
+	{
+		if (object != null)
+		{
+			variables.put(variablename, "'" + object + "'");
+		}
+		else
+		{
+			variables.put(variablename, "null");
+		}
+	}
 
 	/**
 	 * Converts the given {@link Set} of {@link StringTextValue} to a javascript array.
 	 *
-	 * @param settings the settings
+	 * @param settings
+	 *            the settings
 	 * @return the generated javascript array.
 	 */
 	public static String asJavascriptArray(Set<StringTextValue<?>> settings)

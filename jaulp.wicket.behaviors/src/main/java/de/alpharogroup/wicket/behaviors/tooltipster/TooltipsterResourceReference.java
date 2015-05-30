@@ -33,12 +33,12 @@ public class TooltipsterResourceReference extends JavaScriptResourceReference
 	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-  public static final TooltipsterResourceReference INSTANCE = new TooltipsterResourceReference();
+	public static final TooltipsterResourceReference INSTANCE = new TooltipsterResourceReference();
 
-  /**
-   * Instantiates a new TooltipsterResourceReference.
-   */
-  private TooltipsterResourceReference()
+	/**
+	 * Instantiates a new TooltipsterResourceReference.
+	 */
+	private TooltipsterResourceReference()
 	{
 		super(TooltipsterResourceReference.class, "jquery.tooltipster.min.js");
 	}

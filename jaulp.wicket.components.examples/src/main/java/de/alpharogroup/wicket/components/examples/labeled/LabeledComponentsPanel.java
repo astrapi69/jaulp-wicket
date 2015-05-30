@@ -52,7 +52,7 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 	private FeedbackPanel feedbackPanel;
 	@Getter
 	AddressPanel addressPanel;
-	
+
 	final IModel<HomeAddress> addressModel;
 
 	public LabeledComponentsPanel(String id)
@@ -120,8 +120,8 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 			.of(new TwoFormComponentBean<String, String>());
 		form.add(new LabeledTwoFormComponentPanel<String, String>("twoFormComponentPanel",
 			twoFormCompModel, Model.of("Street / number:")));
-		addressModel = Model.of(HomeAddress.builder().street("")
-			.localNumber("").code("").city("").build());
+		addressModel = Model.of(HomeAddress.builder().street("").localNumber("").code("").city("")
+			.build());
 
 		form.add(addressPanel = new AddressPanel("addressPanel", addressModel));
 		// Create submit button for the form

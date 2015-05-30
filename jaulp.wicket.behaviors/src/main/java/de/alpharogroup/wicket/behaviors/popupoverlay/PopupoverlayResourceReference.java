@@ -9,12 +9,13 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 public class PopupoverlayResourceReference extends JavaScriptResourceReference
 {
 
-  /** The serialVersionUID. */
-  private static final long serialVersionUID = 1L;
+	/** The serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-  public static final PopupoverlayResourceReference INSTANCE = new PopupoverlayResourceReference();
+	public static final PopupoverlayResourceReference INSTANCE = new PopupoverlayResourceReference();
 
-  private PopupoverlayResourceReference() {
-    super(PopupoverlayResourceReference.class, "jquery.popupoverlay.js");
-  }
+	private PopupoverlayResourceReference()
+	{
+		super(PopupoverlayResourceReference.class, "jquery.popupoverlay.js");
+	}
 }

@@ -47,8 +47,8 @@ public class ToastrSettings implements Settings
 	/**
 	 * Shows a close button if true. Default: false
 	 */
-	private StringTextValue<Boolean> closeButton = new StringTextValue<Boolean>("toastr.options.closeButton",
-		StringTextType.BOOLEAN);
+	private StringTextValue<Boolean> closeButton = new StringTextValue<Boolean>(
+		"toastr.options.closeButton", StringTextType.BOOLEAN);
 
 
 	/**
@@ -60,14 +60,14 @@ public class ToastrSettings implements Settings
 	/**
 	 * Shows the newest notification if true. Default: false
 	 */
-	private StringTextValue<Boolean> newestOnTop = new StringTextValue<Boolean>("toastr.options.newestOnTop",
-		StringTextType.BOOLEAN);
+	private StringTextValue<Boolean> newestOnTop = new StringTextValue<Boolean>(
+		"toastr.options.newestOnTop", StringTextType.BOOLEAN);
 
 	/**
 	 * Shows a progress bar if true. Default: false
 	 */
-	private StringTextValue<Boolean> progressBar = new StringTextValue<Boolean>("toastr.options.progressBar",
-		StringTextType.BOOLEAN);
+	private StringTextValue<Boolean> progressBar = new StringTextValue<Boolean>(
+		"toastr.options.progressBar", StringTextType.BOOLEAN);
 
 	/**
 	 * The position where to show the notifications. Default: toast-top-center
@@ -84,8 +84,8 @@ public class ToastrSettings implements Settings
 	/**
 	 * Document please. Default: false
 	 */
-	private StringTextValue<Boolean> tapToDismiss = new StringTextValue<Boolean>("toastr.options.tapToDismiss",
-		StringTextType.BOOLEAN);
+	private StringTextValue<Boolean> tapToDismiss = new StringTextValue<Boolean>(
+		"toastr.options.tapToDismiss", StringTextType.BOOLEAN);
 
 	/**
 	 * on click. Default: null
@@ -96,20 +96,20 @@ public class ToastrSettings implements Settings
 	/**
 	 * The duration to show. Default: 300
 	 */
-	private StringTextValue<Integer> showDuration = new StringTextValue<Integer>("toastr.options.showDuration",
-		300, StringTextType.INTEGER);
+	private StringTextValue<Integer> showDuration = new StringTextValue<Integer>(
+		"toastr.options.showDuration", 300, StringTextType.INTEGER);
 
 	/**
 	 * The duration to hide. Default: 1000
 	 */
-	private StringTextValue<Integer> hideDuration = new StringTextValue<Integer>("toastr.options.hideDuration",
-		1000, StringTextType.INTEGER);
+	private StringTextValue<Integer> hideDuration = new StringTextValue<Integer>(
+		"toastr.options.hideDuration", 1000, StringTextType.INTEGER);
 
 	/**
 	 * The timeOut. Default: 5000
 	 */
-	private StringTextValue<Integer> timeOut = new StringTextValue<Integer>("toastr.options.timeOut", 5000,
-		StringTextType.INTEGER);
+	private StringTextValue<Integer> timeOut = new StringTextValue<Integer>(
+		"toastr.options.timeOut", 5000, StringTextType.INTEGER);
 
 	/**
 	 * The extended timeOut. Default: 1000
@@ -120,32 +120,32 @@ public class ToastrSettings implements Settings
 	/**
 	 * The value of the easing when show. Default: swing
 	 */
-	private StringTextValue<Easing> showEasing = new StringTextValue<Easing>("toastr.options.showEasing",
-		Easing.SWING, StringTextType.ENUM);
+	private StringTextValue<Easing> showEasing = new StringTextValue<Easing>(
+		"toastr.options.showEasing", Easing.SWING, StringTextType.ENUM);
 
 	/**
 	 * The value of the easing when hide. Default: linear
 	 */
-	private StringTextValue<Easing> hideEasing = new StringTextValue<Easing>("toastr.options.hideEasing",
-		Easing.LINEAR, StringTextType.ENUM);
+	private StringTextValue<Easing> hideEasing = new StringTextValue<Easing>(
+		"toastr.options.hideEasing", Easing.LINEAR, StringTextType.ENUM);
 
 	/**
 	 * The method when show. Default: fadeIn
 	 */
-	private StringTextValue<ShowMethod> showMethod = new StringTextValue<>("toastr.options.showMethod",
-		ShowMethod.FADE_IN, StringTextType.ENUM);
+	private StringTextValue<ShowMethod> showMethod = new StringTextValue<>(
+		"toastr.options.showMethod", ShowMethod.FADE_IN, StringTextType.ENUM);
 
 	/**
 	 * The method when hide. Default: fadeOut
 	 */
-	private StringTextValue<HideMethod> hideMethod = new StringTextValue<>("toastr.options.hideMethod",
-		HideMethod.FADE_OUT, StringTextType.ENUM);
+	private StringTextValue<HideMethod> hideMethod = new StringTextValue<>(
+		"toastr.options.hideMethod", HideMethod.FADE_OUT, StringTextType.ENUM);
 
 	/**
 	 * The type of the notification. Default: success
 	 */
-	private StringTextValue<ToastrType> toastrType = new StringTextValue<>("toastr.options.toastrType",
-		ToastrType.SUCCESS, StringTextType.ENUM);
+	private StringTextValue<ToastrType> toastrType = new StringTextValue<>(
+		"toastr.options.toastrType", ToastrType.SUCCESS, StringTextType.ENUM);
 
 	/**
 	 * The content of the notification. Default: null

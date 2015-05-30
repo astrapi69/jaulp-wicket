@@ -248,8 +248,8 @@ public final class ApplicationTermOfUseBean implements Serializable
 					.builder()
 					.key("term.of.use.main.head.content.paragraph.first.label")
 					.parameters(
-						ListExtensions.toObjectArray("www." + WicketApplication.get().getDomainName()))
-					.build())
+						ListExtensions.toObjectArray("www."
+							+ WicketApplication.get().getDomainName())).build())
 			.add(
 				ResourceBundleKey.builder()
 					.key("term.of.use.main.head.content.paragraph.second.label").build()).build();

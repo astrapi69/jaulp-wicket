@@ -70,10 +70,10 @@ public class JavascriptResourceReferenceAppenderBehavior extends Behavior
 		Args.notNull(filename, "filename");
 		this.pageClass = pageClass;
 		this.filename = filename;
-    if (id == null)
-    {
-      id = String.valueOf(UUID.randomUUID());
-    }
+		if (id == null)
+		{
+			id = String.valueOf(UUID.randomUUID());
+		}
 		this.id = id;
 	}
 

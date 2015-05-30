@@ -15,25 +15,25 @@ public class PnotifyJsGenerator extends JavascriptGenerator<PnotifySettings>
 	 */
 	private static final long serialVersionUID = 1L;
 
-  /**
-   * Instantiates a new {@link PnotifyJsGenerator}.
-   */
-  public PnotifyJsGenerator()
-  {
-    this(new PnotifySettings());
-  }
+	/**
+	 * Instantiates a new {@link PnotifyJsGenerator}.
+	 */
+	public PnotifyJsGenerator()
+	{
+		this(new PnotifySettings());
+	}
 
-  /**
-   * Instantiates a new {@link PnotifyJsGenerator} with the given {@link PnotifySettings}.
-   *
-   * @param settings
-   *            the settings for the toastr plugin.
-   */
-  public PnotifyJsGenerator(PnotifySettings settings)
-  {
-    super(settings);
-    setMethodName("PNotify");
-  }
+	/**
+	 * Instantiates a new {@link PnotifyJsGenerator} with the given {@link PnotifySettings}.
+	 *
+	 * @param settings
+	 *            the settings for the toastr plugin.
+	 */
+	public PnotifyJsGenerator(PnotifySettings settings)
+	{
+		super(settings);
+		setMethodName("PNotify");
+	}
 
 	/**
 	 * Generates the javascript template code from the given map and the given method name that will

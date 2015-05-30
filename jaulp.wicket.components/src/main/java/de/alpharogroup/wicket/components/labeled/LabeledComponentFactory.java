@@ -85,8 +85,8 @@ public class LabeledComponentFactory
 	 *            the model
 	 * @return the new {@link TwoFormComponentPanel}
 	 */
-	public static <L extends Serializable, R extends Serializable>  TwoFormComponentPanel<L, R> newTwoFormComponentPanel(String id,
-		IModel<TwoFormComponentBean<L, R>> model)
+	public static <L extends Serializable, R extends Serializable> TwoFormComponentPanel<L, R> newTwoFormComponentPanel(
+		String id, IModel<TwoFormComponentBean<L, R>> model)
 	{
 		TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(id,
 			model);

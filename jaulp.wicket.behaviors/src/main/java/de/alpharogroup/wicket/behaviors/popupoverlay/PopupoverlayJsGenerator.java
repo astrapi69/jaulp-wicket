@@ -15,32 +15,33 @@ public class PopupoverlayJsGenerator extends JavascriptGenerator<PopupoverlaySet
 	 */
 	private static final long serialVersionUID = 1L;
 
-  /**
-   * Instantiates a new {@link PopupoverlayJsGenerator}.
-   *
-   * @param componentId
-   *            the component id
-   */
-  public PopupoverlayJsGenerator(final String componentId)
-  {
-    this(new PopupoverlaySettings(), componentId);
-  }
+	/**
+	 * Instantiates a new {@link PopupoverlayJsGenerator}.
+	 *
+	 * @param componentId
+	 *            the component id
+	 */
+	public PopupoverlayJsGenerator(final String componentId)
+	{
+		this(new PopupoverlaySettings(), componentId);
+	}
 
-  /**
-   * Instantiates a new {@link PopupoverlayJsGenerator} with the given {@link PopupoverlaySettings}.
-   *
-   * @param settings
-   *            the settings for the jquery-popup-overlay plugin.
-   *
-   * @param componentId
-   *            the component id
-   */
-  public PopupoverlayJsGenerator(PopupoverlaySettings settings, final String componentId)
-  {
-    super(settings);
-    setComponentId(Args.notEmpty(componentId, "componentId"));
-    setWithComponentId(true);
-    setMethodName("popup");
-  }
+	/**
+	 * Instantiates a new {@link PopupoverlayJsGenerator} with the given
+	 * {@link PopupoverlaySettings}.
+	 *
+	 * @param settings
+	 *            the settings for the jquery-popup-overlay plugin.
+	 *
+	 * @param componentId
+	 *            the component id
+	 */
+	public PopupoverlayJsGenerator(PopupoverlaySettings settings, final String componentId)
+	{
+		super(settings);
+		setComponentId(Args.notEmpty(componentId, "componentId"));
+		setWithComponentId(true);
+		setMethodName("popup");
+	}
 
 }

@@ -147,8 +147,7 @@ public class NotificationExamplesPanel extends Panel
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
-		response
-			.render(JavaScriptHeaderItem.forReference(ToastrResourceReference.INSTANCE));
+		response.render(JavaScriptHeaderItem.forReference(ToastrResourceReference.INSTANCE));
 		response.render(JavaScriptHeaderItem.forReference(PnotifyJsReference.INSTANCE));
 	}
 
