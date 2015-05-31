@@ -57,6 +57,7 @@ import de.alpharogroup.wicket.components.examples.googlecharts.GoogleChartsExamp
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
 import de.alpharogroup.wicket.components.examples.labeled.LabeledComponentsPage;
+import de.alpharogroup.wicket.components.examples.notifications.NotificationExamplesPage;
 import de.alpharogroup.wicket.components.examples.pdfdownload.PdfDownloadPage;
 import de.alpharogroup.wicket.components.examples.popupoverlay.PopupoverlayPage;
 import de.alpharogroup.wicket.components.examples.radios.RadioComponentsExamplePage;
@@ -65,7 +66,6 @@ import de.alpharogroup.wicket.components.examples.sign.in.SigninPage;
 import de.alpharogroup.wicket.components.examples.sign.up.SignupPage;
 import de.alpharogroup.wicket.components.examples.socialnet.SocialNetworksExamplePage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
-import de.alpharogroup.wicket.components.examples.toastr.NotificationExamplesPage;
 import de.alpharogroup.wicket.components.examples.tooltips.TooltipsExamplePage;
 import de.alpharogroup.wicket.components.examples.urls.WicketUrlPage;
 
