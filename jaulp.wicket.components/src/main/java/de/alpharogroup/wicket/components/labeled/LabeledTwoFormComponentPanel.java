@@ -99,6 +99,11 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 			{
 				return LabeledTwoFormComponentPanel.this.newRightFormComponent(id, model);
 			}
+			
+			protected IModel<String> newBetweenLabelModel(final String betweenLabel)
+			{
+				return LabeledTwoFormComponentPanel.this.newBetweenLabelModel(betweenLabel);
+			}
 
 		};
 		return twoFormComponentPanel;
@@ -132,6 +137,17 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 		return ComponentFactory.newTextField(id, model);
 	}
 
+	/**
+	 * Factory method for create a new Label for what characters will be between the two components.
+	 *
+	 * @param betweenLabel
+	 *            the characters
+	 * @return the {@link IModel} with the characters.
+	 */
+	protected IModel<String> newBetweenLabelModel(final String betweenLabel)
+	{
+		return Model.of(betweenLabel);
+	}
 
 	/**
 	 * {@inheritDoc}

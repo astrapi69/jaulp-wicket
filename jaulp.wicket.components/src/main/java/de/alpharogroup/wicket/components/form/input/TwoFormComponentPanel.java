@@ -72,7 +72,7 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 		setType(TwoFormComponentBean.class);
 		add(
 			leftFormComponent = newLeftFormComponent("leftTextField", new PropertyModel<L>(model,
-				"leftContent"))).add(newBetweenLabel("betweenLabel", Model.of("/"))).add(
+				"leftContent"))).add(newBetweenLabel("betweenLabel", newBetweenLabelModel("/"))).add(
 			rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(
 				model, "rightContent")));
 	}
@@ -92,6 +92,18 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	protected Label newBetweenLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
+	}
+
+	/**
+	 * Factory method for create a new Label for what characters will be between the two components.
+	 *
+	 * @param betweenLabel
+	 *            the characters
+	 * @return the {@link IModel} with the characters.
+	 */
+	protected IModel<String> newBetweenLabelModel(final String betweenLabel)
+	{
+		return Model.of(betweenLabel);
 	}
 
 	/**
