@@ -15,10 +15,6 @@
  */
 package de.alpharogroup.wicket.components.examples.animate;
 
-import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
-import de.alpharogroup.wicket.behaviors.spin.SpinJsGenerator;
-import de.alpharogroup.wicket.behaviors.spin.SpinResourceReference;
-import de.alpharogroup.wicket.behaviors.spin.SpinSettings;
 import lombok.Getter;
 
 import org.apache.wicket.Application;
@@ -38,7 +34,11 @@ import org.odlabs.wiquery.core.effects.fading.FadeTo;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
+import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
+import de.alpharogroup.wicket.behaviors.spin.SpinJsGenerator;
+import de.alpharogroup.wicket.behaviors.spin.SpinResourceReference;
+import de.alpharogroup.wicket.behaviors.spin.SpinSettings;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 public class AnimationPanel extends Panel
@@ -75,14 +75,14 @@ public class AnimationPanel extends Panel
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 0.4f)));
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 1.0f)));
 
-    // add a spinner...
-    SpinSettings spinSettings = new SpinSettings();
-    spinSettings.getColor().setValue("#00ff00");
-    spinSettings.getDirection().setValue(-1);
-    spinSettings.getSpeed().setValue(1.2f);
-    spinSettings.getPosition().setValue("relative");
-    String js = new SpinJsGenerator(spinSettings, animateButton.getMarkupId()).generateJs();
-    add(new JavascriptAppenderBehavior(js));
+		// add a spinner...
+		SpinSettings spinSettings = new SpinSettings();
+		spinSettings.getColor().setValue("#00ff00");
+		spinSettings.getDirection().setValue(-1);
+		spinSettings.getSpeed().setValue(1.2f);
+		spinSettings.getPosition().setValue("relative");
+		String js = new SpinJsGenerator(spinSettings, animateButton.getMarkupId()).generateJs();
+		add(new JavascriptAppenderBehavior(js));
 	}
 
 
@@ -134,11 +134,12 @@ public class AnimationPanel extends Panel
 
 	}
 
-  @Override
-  public void renderHead(final IHeaderResponse response) {
-    super.renderHead(response);
-    response.render(JavaScriptHeaderItem.forReference(Application.get()
-      .getJavaScriptLibrarySettings().getJQueryReference()));
-    response.render(JavaScriptHeaderItem.forReference(SpinResourceReference.get()));
-  }
+	@Override
+	public void renderHead(final IHeaderResponse response)
+	{
+		super.renderHead(response);
+		response.render(JavaScriptHeaderItem.forReference(Application.get()
+			.getJavaScriptLibrarySettings().getJQueryReference()));
+		response.render(JavaScriptHeaderItem.forReference(SpinResourceReference.get()));
+	}
 }

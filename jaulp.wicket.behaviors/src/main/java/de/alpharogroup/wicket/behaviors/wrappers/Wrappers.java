@@ -1,9 +1,10 @@
 package de.alpharogroup.wicket.behaviors.wrappers;
 
+import org.odlabs.wiquery.core.javascript.JsUtils;
+
+import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
-import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
-import org.odlabs.wiquery.core.javascript.JsUtils;
 
 
 /**

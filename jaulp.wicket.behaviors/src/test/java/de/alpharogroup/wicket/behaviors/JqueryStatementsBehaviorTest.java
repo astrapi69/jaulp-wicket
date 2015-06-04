@@ -115,16 +115,15 @@ public class JqueryStatementsBehaviorTest
 	{
 		final JqueryStatementsBehavior wiQueryStatementBehavior = new JqueryStatementsBehavior()
 			.add(
-				new BuildableChainableStatement.Builder()
-          .label("find").args(JsUtils.quotes("table:first-child")).build())
-      .add(
-				new BuildableChainableStatement.Builder()
-          .label("addClass").args(JsUtils.quotes("tablefix")).build());
+				new BuildableChainableStatement.Builder().label("find")
+					.args(JsUtils.quotes("table:first-child")).build()).add(
+				new BuildableChainableStatement.Builder().label("addClass")
+					.args(JsUtils.quotes("tablefix")).build());
 		// $('').find('table:first-child').addClass('tablefix');
 
 		CharSequence actual = wiQueryStatementBehavior.createRenderedStatement(null);
-    String expected = ".find('table:first-child').addClass('tablefix');";
-    Assert.assertEquals(expected, actual);
+		String expected = ".find('table:first-child').addClass('tablefix');";
+		Assert.assertEquals(expected, actual);
 	}
 
 }

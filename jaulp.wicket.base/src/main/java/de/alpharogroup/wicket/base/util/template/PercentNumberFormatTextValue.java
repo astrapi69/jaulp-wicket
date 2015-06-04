@@ -18,8 +18,8 @@ package de.alpharogroup.wicket.base.util.template;
 import java.text.NumberFormat;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.wicket.util.lang.Args;
 import org.apache.log4j.Logger;
+import org.apache.wicket.util.lang.Args;
 
 /**
  * A StringTextValue that formats the given Integer to percent. Posible values are between 0 to 100.
@@ -36,7 +36,8 @@ public class PercentNumberFormatTextValue extends StringTextValue<String>
 	/**
 	 * Instantiates a new {@link PercentNumberFormatTextValue} object.
 	 *
-	 * @param name the name
+	 * @param name
+	 *            the name
 	 */
 	public PercentNumberFormatTextValue(final String name)
 	{
@@ -46,8 +47,10 @@ public class PercentNumberFormatTextValue extends StringTextValue<String>
 	/**
 	 * Instantiates a new {@link PercentNumberFormatTextValue} object.
 	 *
-	 * @param name the name
-	 * @param value the value
+	 * @param name
+	 *            the name
+	 * @param value
+	 *            the value
 	 */
 	public PercentNumberFormatTextValue(final String name, final Integer value)
 	{
@@ -56,10 +59,13 @@ public class PercentNumberFormatTextValue extends StringTextValue<String>
 	}
 
 	/**
-	 * Checks the given value if it is between 0 to 100 quietly. If not a default value from 50 will be set.
+	 * Checks the given value if it is between 0 to 100 quietly. If not a default value from 50 will
+	 * be set.
 	 *
-	 * @param name the name
-	 * @param value the value
+	 * @param name
+	 *            the name
+	 * @param value
+	 *            the value
 	 * @return the integer
 	 */
 	private static Integer checkQuietly(final String name, final Integer value)
@@ -84,7 +90,8 @@ public class PercentNumberFormatTextValue extends StringTextValue<String>
 	/**
 	 * Check string.
 	 *
-	 * @param value the value
+	 * @param value
+	 *            the value
 	 * @return the integer
 	 */
 	private Integer checkString(final String value)
@@ -128,7 +135,8 @@ public class PercentNumberFormatTextValue extends StringTextValue<String>
 	/**
 	 * Gets the percent formatted.
 	 *
-	 * @param value the value
+	 * @param value
+	 *            the value
 	 * @return the percent formatted
 	 */
 	private String getPercentFormatted(final Integer value)
@@ -137,7 +145,7 @@ public class PercentNumberFormatTextValue extends StringTextValue<String>
 		return NumberFormat.getPercentInstance().format((double)val / 100);
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override

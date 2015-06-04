@@ -99,7 +99,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 			{
 				return LabeledTwoFormComponentPanel.this.newRightFormComponent(id, model);
 			}
-			
+
 			protected IModel<String> newBetweenLabelModel(final String betweenLabel)
 			{
 				return LabeledTwoFormComponentPanel.this.newBetweenLabelModel(betweenLabel);

@@ -75,11 +75,11 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 			{
 				Button button = super.newButton(id);
 				button.add(Wrappers.FORM_GROUP_ELEMENT).add(
-          new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-            .label("wrap")
-            .args(
-              JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-"
-                + inputSize + "\"></div>")).build()));
+					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+						.label("wrap")
+						.args(
+							JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-"
+								+ inputSize + "\"></div>")).build()));
 				button.add(new AttributeAppender("class", " btn btn-default"));
 				return button;
 			}
