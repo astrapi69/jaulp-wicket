@@ -15,6 +15,7 @@
  */
 package de.alpharogroup.wicket.behaviors;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsScope;
@@ -114,14 +115,16 @@ public class JqueryStatementsBehaviorTest
 	{
 		final JqueryStatementsBehavior wiQueryStatementBehavior = new JqueryStatementsBehavior()
 			.add(
-				new BuildableChainableStatement.Builder().label("find")
-					.args(JsUtils.quotes("table:first-child")).build()).add(
-				new BuildableChainableStatement.Builder().label("addClass")
-					.args(JsUtils.quotes("tablefix")).build());
+				new BuildableChainableStatement.Builder()
+          .label("find").args(JsUtils.quotes("table:first-child")).build())
+      .add(
+				new BuildableChainableStatement.Builder()
+          .label("addClass").args(JsUtils.quotes("tablefix")).build());
 		// $('').find('table:first-child').addClass('tablefix');
 
-		CharSequence renderedStatement = wiQueryStatementBehavior.createRenderedStatement(null);
-		System.out.println(renderedStatement);
+		CharSequence actual = wiQueryStatementBehavior.createRenderedStatement(null);
+    String expected = ".find('table:first-child').addClass('tablefix');";
+    Assert.assertEquals(expected, actual);
 	}
 
 }
