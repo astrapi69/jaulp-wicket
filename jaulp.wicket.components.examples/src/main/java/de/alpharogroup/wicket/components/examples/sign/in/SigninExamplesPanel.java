@@ -29,6 +29,7 @@ import org.odlabs.wiquery.core.javascript.JsUtils;
 import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
+import de.alpharogroup.wicket.behaviors.wrappers.Wrappers;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
@@ -73,15 +74,12 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 			protected Button newButton(String id)
 			{
 				Button button = super.newButton(id);
-				button.add(
-					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-						.label("wrap").args(JsUtils.quotes("<div class=\"form-group\"></div>"))
-						.build())).add(
-					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-						.label("wrap")
-						.args(
-							JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-"
-								+ inputSize + "\"></div>")).build()));
+				button.add(Wrappers.FORM_GROUP_ELEMENT).add(
+          new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+            .label("wrap")
+            .args(
+              JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-"
+                + inputSize + "\"></div>")).build()));
 				button.add(new AttributeAppender("class", " btn btn-default"));
 				return button;
 			}
