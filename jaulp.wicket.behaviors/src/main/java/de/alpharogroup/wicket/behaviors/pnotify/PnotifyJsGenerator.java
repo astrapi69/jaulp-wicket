@@ -49,7 +49,7 @@ public class PnotifyJsGenerator extends JavascriptGenerator<PnotifySettings>
 		String methodName)
 	{
 		StringBuilder sb = new StringBuilder();
-		if (!getSettings().getStack().isDefaultValue())
+		if (!getSettings().getStack().isInitialValue())
 		{
 			String customStack = "customStack";
 			String stack = (String)variables.get("stack");
