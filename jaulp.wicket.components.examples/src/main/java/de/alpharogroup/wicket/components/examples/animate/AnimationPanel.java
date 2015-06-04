@@ -15,10 +15,17 @@
  */
 package de.alpharogroup.wicket.components.examples.animate;
 
+import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
+import de.alpharogroup.wicket.behaviors.spin.SpinJsGenerator;
+import de.alpharogroup.wicket.behaviors.spin.SpinResourceReference;
+import de.alpharogroup.wicket.behaviors.spin.SpinSettings;
 import lombok.Getter;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -67,6 +74,15 @@ public class AnimationPanel extends Panel
 		containerAnimate.add(jqueryStatementsBehavior);
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 0.4f)));
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 1.0f)));
+
+    // add a spinner...
+    SpinSettings spinSettings = new SpinSettings();
+    spinSettings.getColor().setValue("#00ff00");
+    spinSettings.getDirection().setValue(-1);
+    spinSettings.getSpeed().setValue(1.2f);
+    spinSettings.getPosition().setValue("relative");
+    String js = new SpinJsGenerator(spinSettings, animateButton.getMarkupId()).generateJs();
+    add(new JavascriptAppenderBehavior(js));
 	}
 
 
@@ -118,4 +134,11 @@ public class AnimationPanel extends Panel
 
 	}
 
+  @Override
+  public void renderHead(final IHeaderResponse response) {
+    super.renderHead(response);
+    response.render(JavaScriptHeaderItem.forReference(Application.get()
+      .getJavaScriptLibrarySettings().getJQueryReference()));
+    response.render(JavaScriptHeaderItem.forReference(SpinResourceReference.get()));
+  }
 }

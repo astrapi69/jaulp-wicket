@@ -18,3 +18,8 @@ de.alpharogroup.wicket.behaviors.tooltipster
   jquery.tooltipster.min.js and tooltipster.css authors: Caleb Jacob(http://calebjacob.com)
                                                 maintainers: Caleb Jacob(http://calebjacob.com), Louis Ameline(https://github.com/louisameline)
   wicket-tooltipster licensed under same terms as jquery.tooltipster.min.js and tooltipster.css.
+
+de.alpharogroup.wicket.behaviors.spin
+  Contains spin.min.js (http://spin.js.org) javascript library released under MIT license - http://www.opensource.org/licenses/mit-license.php
+  spin.min.js author Felix Gnass
+  wicket-spin licensed under same terms as spin.min.js.
