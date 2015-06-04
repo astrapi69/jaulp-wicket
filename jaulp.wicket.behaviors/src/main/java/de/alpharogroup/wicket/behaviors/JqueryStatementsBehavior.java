@@ -70,8 +70,14 @@ public class JqueryStatementsBehavior extends Behavior
 
 	public CharSequence createRenderedStatement(Component component)
 	{
-		component.setOutputMarkupId(true);
-		JsStatement statement = new JsStatement().$(component);
+    JsStatement statement;
+    if(component != null) {
+      component.setOutputMarkupId(true);
+      statement = new JsStatement().$(component);
+    } else {
+      statement = new JsStatement();
+    }
+
 		for (ChainableStatement defaultChainableStatement : chainableStatement)
 		{
 			statement.chain(defaultChainableStatement);
