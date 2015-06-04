@@ -10,6 +10,10 @@ import de.alpharogroup.wicket.base.util.template.Settings;
 import de.alpharogroup.wicket.base.util.template.StringTextType;
 import de.alpharogroup.wicket.base.util.template.StringTextValue;
 
+/**
+ * This class encapsulates various settings for the tooltipster js library. See the documentation
+ * for the tooltipster js library for further information.
+ */
 @Getter
 @EqualsAndHashCode
 @ToString
@@ -280,7 +284,7 @@ public class TooltipsterSettings implements Settings
 
 	/**
 	 * Gets all settings in a {@link java.util.Set}.
-	 * 
+	 *
 	 * @return all settings in a {@link java.util.Set}.
 	 */
 	public Set<StringTextValue<?>> asSet()
