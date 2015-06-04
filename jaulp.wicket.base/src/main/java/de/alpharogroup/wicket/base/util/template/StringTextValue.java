@@ -28,7 +28,15 @@ public class StringTextValue<T> implements Serializable
 	private T value;
 
 	/** The default value. */
-	private boolean defaultValue;
+	private final T defaultValue;
+
+	/**
+	 * The initial value flag indicates if the initial value is also the default value. This flag is
+	 * taken for the generation of javascript code, if false(default value is set) this
+	 * {@link StringTextValue} will be ignored in the generation of javascript code to keep the
+	 * generated code as small as possible.
+	 */
+	private boolean initialValue;
 
 	/**
 	 * Sets the quotation mark type.
@@ -62,7 +70,7 @@ public class StringTextValue<T> implements Serializable
 	}
 
 	/**
-	 * Instantiates a new string text value.
+	 * Instantiates a new {@link StringTextValue} object.
 	 *
 	 * @param name
 	 *            the name
@@ -77,7 +85,7 @@ public class StringTextValue<T> implements Serializable
 	}
 
 	/**
-	 * Instantiates a new string text value.
+	 * Instantiates a new {@link StringTextValue} object.
 	 *
 	 * @param name
 	 *            the name
@@ -85,17 +93,20 @@ public class StringTextValue<T> implements Serializable
 	 *            the value
 	 * @param stringTextType
 	 *            the string text type
-	 * @param defaultValue
-	 *            the default value
+	 * @param initialValue
+	 *            the flag if the initial value is also the default value. This flag is taken for
+	 *            the generation of javascript, if false this {@link StringTextValue} will be not
+	 *            added.
 	 */
 	@SuppressWarnings("unchecked")
 	public StringTextValue(final String name, final T value, StringTextType stringTextType,
-		boolean defaultValue)
+		boolean initialValue)
 	{
 		Args.notNull(stringTextType, "type");
 		this.value = value;
+		this.defaultValue = value;
 		this.type = stringTextType;
-		this.defaultValue = defaultValue;
+		this.initialValue = initialValue;
 		this.name = name;
 		if (stringTextType.equals(StringTextType.BOOLEAN))
 		{
@@ -117,7 +128,7 @@ public class StringTextValue<T> implements Serializable
 	 */
 	public StringTextValue<T> setValue(final T value)
 	{
-		this.defaultValue = false;
+		this.initialValue = false;
 		this.value = value;
 		return this;
 	}

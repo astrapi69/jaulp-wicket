@@ -168,7 +168,7 @@ public class JavascriptGenerator<S extends Settings> implements Serializable
 		}
 		for (StringTextValue<?> textValue : allSettings)
 		{
-			if (!textValue.isDefaultValue())
+			if (!textValue.isInitialValue())
 			{
 				switch (textValue.getType())
 				{
