@@ -133,3 +133,29 @@ div.wicket-aa ul li.selected {
     margin-top: 0;
     border-top: 0;
 }
+
+.no-border {
+    border: 0;
+    box-shadow: none;
+}
+
+// get a larger input, and align it with submit button
+.form-inline .form-group > div.col-xs-8 {
+    padding-left: 0;
+    padding-right: 0;
+}
+// vertical align label
+.form-inline label {
+    line-height: 34px;
+}
+// force inline control to fit container width
+// http://getbootstrap.com/css/#forms-inline
+.form-inline .form-control {
+    width: 100%;
+}
+// Reset margin-bottom for our multiline form
+@media (min-width: 768px) {
+  .form-inline .form-group {
+    margin-bottom: 15px;
+  }
+}

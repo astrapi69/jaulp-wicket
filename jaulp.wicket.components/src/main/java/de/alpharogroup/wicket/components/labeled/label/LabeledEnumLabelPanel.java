@@ -75,10 +75,10 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	 *            the model
 	 * @return the enum label
 	 */
-	@SuppressWarnings({ "rawtypes" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected EnumLabel newEnumLabel(final String id, IModel<T> model)
 	{
-		IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), this.getId());
+		IModel viewableLabelModel = new PropertyModel(model.getObject(), this.getId());
 		return ComponentFactory.newEnumLabel(id, viewableLabelModel);
 	}
 

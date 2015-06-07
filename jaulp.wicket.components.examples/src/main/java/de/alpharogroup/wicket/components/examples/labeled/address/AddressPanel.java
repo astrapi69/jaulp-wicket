@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.examples.labeled.address;
 
+import lombok.Getter;
+
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
@@ -32,39 +34,22 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
+	@Getter
+	LabeledTwoFormComponentPanel<String, String> zipcodeCityPanel;
+	@Getter
+	LabeledTwoFormComponentPanel<String, String> streetNumberPanel;
 
 	public AddressPanel(String id, final IModel<HomeAddress> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
-
-		LabeledTwoFormComponentPanel<String, String> streetNumberPanel = new LabeledTwoFormComponentPanel<String, String>(
-			"streetNumberPanel", Model.of("Street / number:"))
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected FormComponent<String> newLeftFormComponent(String id, IModel<String> model)
-			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "street"));
-			}
-
-			@Override
-			protected FormComponent<String> newRightFormComponent(String id, IModel<String> model)
-			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "localNumber"));
-			}
-		};
-
-		add(streetNumberPanel);
-
+		add(streetNumberPanel = newStreetNumberPanel("streetNumberPanel", Model.of("Street / number:")));
+		add(zipcodeCityPanel = newZipcodeCityPanel("zipcodeCityPanel", Model.of("Zip / City:")));
+	}
+	
+	protected LabeledTwoFormComponentPanel<String, String> newZipcodeCityPanel(String id, IModel<String> labelModel) {
 		LabeledTwoFormComponentPanel<String, String> zipcodeCityPanel = new LabeledTwoFormComponentPanel<String, String>(
-			"zipcodeCityPanel", Model.of("Zip / City:"))
+			id, labelModel)
 		{
 			/**
 			 * The serialVersionUID
@@ -85,8 +70,34 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 					AddressPanel.this.getModelObject(), "city"));
 			}
 		};
+		return zipcodeCityPanel;
+	}
+	
+	protected LabeledTwoFormComponentPanel<String, String> newStreetNumberPanel(String id, IModel<String> labelModel) {
 
-		add(zipcodeCityPanel);
+		LabeledTwoFormComponentPanel<String, String> streetNumberPanel = new LabeledTwoFormComponentPanel<String, String>(
+			id, labelModel)
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected FormComponent<String> newLeftFormComponent(String id, IModel<String> model)
+			{
+				return ComponentFactory.newTextField(id, new PropertyModel<String>(
+					AddressPanel.this.getModelObject(), "street"));
+			}
+
+			@Override
+			protected FormComponent<String> newRightFormComponent(String id, IModel<String> model)
+			{
+				return ComponentFactory.newTextField(id, new PropertyModel<String>(
+					AddressPanel.this.getModelObject(), "localNumber"));
+			}
+		};
+		return streetNumberPanel;
 	}
 
 }

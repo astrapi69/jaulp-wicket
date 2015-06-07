@@ -164,15 +164,14 @@ public class ComponentFactory
 	 *            the model of the label
 	 * @return the enum label
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static <T> EnumLabel newEnumLabel(final String id, final IModel<T> model)
+	public static <T extends Enum<T>> EnumLabel<T> newEnumLabel(final String id, final IModel<T> model)
 	{
-		EnumLabel enumLabel = new EnumLabel(id, model)
+		EnumLabel<T> enumLabel = new EnumLabel<T>(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected String resourceKey(Enum value)
+			protected String resourceKey(T value)
 			{
 				return value.name();
 			}

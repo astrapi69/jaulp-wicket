@@ -20,6 +20,7 @@ import lombok.Getter;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -28,7 +29,6 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.locale.ResourceBundleKey;
-import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.link.LinkPanel;
@@ -128,7 +128,7 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 */
 	protected Button newButton(String id)
 	{
-		return new Button(id)
+		return new AjaxButton(id)
 		{
 			/**
 			 * The serialVersionUID.
@@ -136,9 +136,9 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit()
+			public void onSubmit(AjaxRequestTarget target, Form<?> form)
 			{
-				onSignin(ComponentFinder.findOrCreateNewAjaxRequestTarget(), getForm());
+				onSignin(target, getForm());
 			}
 		};
 	}
