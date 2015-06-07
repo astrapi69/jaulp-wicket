@@ -151,20 +151,15 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 	protected AddressPanel newAddressPanel(String id, final IModel<HomeAddress> model) {
 		AddressPanel addressPanel = new AddressPanel(id, model);
 		addressPanel
-		.add(new AttributeAppender("class", " form-inline"));
+		.add(new AttributeAppender("class", ""));
 		
 		addressPanel.getStreetNumberPanel().getTwoFormComponent()
-		.add(new AttributeAppender("class", " form-group"));		
+		.add(new AttributeAppender("class", " form-group row"));		
 		addressPanel.getStreetNumberPanel().getTwoFormComponent().getLeftFormComponent().add(
 			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_2 + "\"></div>"))
+			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_3 + "\"></div>"))
 			.build())).add(new AttributeAppender("class", " form-control"));
-		addressPanel.getStreetNumberPanel().getTwoFormComponent().getBetweenLabel()
-		.add(
-			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_1 + "\"></div>"))
-			.build()))
-			.add(new AttributeAppender("class", " form-control no-border"));
+		
 		addressPanel.getStreetNumberPanel().getTwoFormComponent().getRightFormComponent()
 		.add(
 			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
@@ -174,7 +169,7 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 		addressPanel.getStreetNumberPanel().getLabelComponent().add(
 			new AttributeAppender("class", " control-label " + COL_SM_2));
 		addressPanel.getZipcodeCityPanel().getTwoFormComponent()
-		.add(new AttributeAppender("class", " form-group"));		
+		.add(new AttributeAppender("class", " form-group row "));		
 		addressPanel.getZipcodeCityPanel().getTwoFormComponent().getLeftFormComponent().add(
 			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
 			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_1 + "\"></div>"))
