@@ -83,6 +83,7 @@ public class FocusRequestBehavior extends Behavior
 	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
+		super.renderHead(component, response);
 		component.setOutputMarkupId(true);
 		response.render(OnLoadHeaderItem.forScript(createJavaScript(component)));
 		super.renderHead(component, response);

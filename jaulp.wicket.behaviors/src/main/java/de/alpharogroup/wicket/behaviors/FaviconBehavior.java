@@ -35,6 +35,7 @@ public class FaviconBehavior extends Behavior
 	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
+		super.renderHead(component, response);
 		response.render(new StringHeaderItem(
 			"<link type=\"image/x-icon\" rel=\"shortcut icon\" href=\"favicon.ico\" />"));
 

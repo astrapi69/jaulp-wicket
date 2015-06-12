@@ -48,6 +48,7 @@ public class JQueryJsAppenderBehavior extends Behavior
 	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
+		super.renderHead(component, response);
 		CharSequence renderedStatement = createRenderedStatement(component);
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}

@@ -41,14 +41,14 @@ public class PopupoverlayBehavior extends Behavior
 
 	/** The settings. */
 	@Setter
-	private PopupoverlaySettings settings = new PopupoverlaySettings();
+	private PopupoverlaySettings settings;
 
 	/**
 	 * Default constructor.
 	 */
 	public PopupoverlayBehavior()
 	{
-		this(new PopupoverlaySettings());
+		this(PopupoverlaySettings.builder().build());
 	}
 
 	/**
@@ -79,6 +79,7 @@ public class PopupoverlayBehavior extends Behavior
 	@Override
 	public void renderHead(Component component, final IHeaderResponse response)
 	{
+		super.renderHead(component, response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(JavaScriptHeaderItem.forReference(PopupoverlayResourceReference.INSTANCE));

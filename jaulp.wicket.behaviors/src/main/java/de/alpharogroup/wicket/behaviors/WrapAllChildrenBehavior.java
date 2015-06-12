@@ -45,6 +45,7 @@ public class WrapAllChildrenBehavior extends Behavior
 	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
+		super.renderHead(component, response);
 		JsStatement statement = new JsQuery(component).$().chain("children")
 			.chain(statementLabel, JsUtils.quotes(statementArgs));
 		// $('#component').children().wrapAll('<fieldset></fieldset>');

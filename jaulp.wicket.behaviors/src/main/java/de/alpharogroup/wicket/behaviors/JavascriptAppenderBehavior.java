@@ -62,9 +62,7 @@ public class JavascriptAppenderBehavior extends Behavior
 	 */
 	public JavascriptAppenderBehavior(CharSequence javascript, String id)
 	{
-		super();
-		Args.notNull(javascript, "javascript");
-		this.javascript = javascript;
+		this.javascript = Args.notNull(javascript, "javascript");
 		if (id == null)
 		{
 			id = String.valueOf(UUID.randomUUID());
@@ -78,8 +76,8 @@ public class JavascriptAppenderBehavior extends Behavior
 	@Override
 	public void renderHead(Component component, IHeaderResponse response)
 	{
-		response.render(JavaScriptHeaderItem.forScript(this.javascript, this.id));
 		super.renderHead(component, response);
+		response.render(JavaScriptHeaderItem.forScript(this.javascript, this.id));
 	}
 
 }

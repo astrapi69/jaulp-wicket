@@ -18,8 +18,6 @@ package de.alpharogroup.wicket.behaviors.datetime;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.Setter;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -30,8 +28,6 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.template.TextTemplate;
-
-import de.alpharogroup.wicket.behaviors.popupoverlay.PopupoverlaySettings;
 
 /**
  * This behavior adds the current time to a component.
@@ -53,10 +49,6 @@ public class CurrentDatetimeBehavior extends Behavior
 
 	/** The component. */
 	private Component component;
-
-	/** The settings. */
-	@Setter
-	private PopupoverlaySettings settings = new PopupoverlaySettings();
 
 	/** The popupoverlay template. */
 	private final TextTemplate datetimeTemplate = new PackageTextTemplate(
@@ -100,8 +92,9 @@ public class CurrentDatetimeBehavior extends Behavior
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(Component c, final IHeaderResponse response)
+	public void renderHead(Component component, final IHeaderResponse response)
 	{
+		super.renderHead(component, response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(JavaScriptHeaderItem

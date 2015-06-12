@@ -75,6 +75,7 @@ public abstract class BaseMainPage extends BasePage
 	@Override
 	public void renderHead(IHeaderResponse response)
 	{
+    	super.renderHead(response);
 		Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
 			.getInstance().getPackageResourceReference(BaseMainPage.class);
 		if (null != headerContributors && !headerContributors.isEmpty())
