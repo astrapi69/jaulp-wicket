@@ -143,7 +143,22 @@ public class StringTextValue<T> implements Serializable
 	 */
 	public StringTextValue<T> setValue(final T value)
 	{
-		this.initialValue = false;
+		return setValue(value, false);
+	}
+
+	/**
+	 * Sets the given value and set the initalValue flag if the flag should keep his state.
+	 *
+	 * @param value
+	 *            the value
+	 * @param initialValue
+	 *            this flag tells the generator if the value is initial. This flag is taken for the
+	 *            generation of javascript, if false this {@link StringTextValue} will be not added.
+	 * @return the string text value
+	 */
+	public StringTextValue<T> setValue(final T value, boolean initialValue)
+	{
+		this.initialValue = initialValue;
 		this.value = value;
 		return this;
 	}
