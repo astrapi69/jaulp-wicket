@@ -104,8 +104,8 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 
 		form.add(married);
 
-		LabeledDateTextFieldPanel<Member> dateofbirth = newLabeledDateTextFieldPanel(
-			"dateofbirth", cpm, Model.of("Date of birth:"));
+		LabeledDateTextFieldPanel<Member> dateofbirth = newLabeledDateTextFieldPanel("dateofbirth",
+			cpm, Model.of("Date of birth:"));
 		form.add(dateofbirth);
 
 
@@ -147,39 +147,53 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
-	
-	protected AddressPanel newAddressPanel(String id, final IModel<HomeAddress> model) {
+
+	protected AddressPanel newAddressPanel(String id, final IModel<HomeAddress> model)
+	{
 		AddressPanel addressPanel = new AddressPanel(id, model);
-		addressPanel
-		.add(new AttributeAppender("class", ""));
-		
+		addressPanel.add(new AttributeAppender("class", ""));
+
 		addressPanel.getStreetNumberPanel().getTwoFormComponent()
-		.add(new AttributeAppender("class", " form-group row"));		
-		addressPanel.getStreetNumberPanel().getTwoFormComponent().getLeftFormComponent().add(
-			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_3 + "\"></div>"))
-			.build())).add(new AttributeAppender("class", " form-control"));
-		
-		addressPanel.getStreetNumberPanel().getTwoFormComponent().getRightFormComponent()
-		.add(
-			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_1 + "\"></div>"))
-			.build()))
-			.add(new AttributeAppender("class", " form-control"));
-		addressPanel.getStreetNumberPanel().getLabelComponent().add(
-			new AttributeAppender("class", " control-label " + COL_SM_2));
+			.add(new AttributeAppender("class", " form-group row"));
+		addressPanel
+			.getStreetNumberPanel()
+			.getTwoFormComponent()
+			.getLeftFormComponent()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_3 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control"));
+
+		addressPanel
+			.getStreetNumberPanel()
+			.getTwoFormComponent()
+			.getRightFormComponent()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_1 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control"));
+		addressPanel.getStreetNumberPanel().getLabelComponent()
+			.add(new AttributeAppender("class", " control-label " + COL_SM_2));
 		addressPanel.getZipcodeCityPanel().getTwoFormComponent()
-		.add(new AttributeAppender("class", " form-group row "));		
-		addressPanel.getZipcodeCityPanel().getTwoFormComponent().getLeftFormComponent().add(
-			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_1 + "\"></div>"))
-			.build())).add(new AttributeAppender("class", " form-control"));
-		addressPanel.getZipcodeCityPanel().getTwoFormComponent().getRightFormComponent().add(
-			new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-			.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_3 + "\"></div>"))
-			.build())).add(new AttributeAppender("class", " form-control"));
-		addressPanel.getZipcodeCityPanel().getLabelComponent().add(
-			new AttributeAppender("class", " control-label " + COL_SM_2));
+			.add(new AttributeAppender("class", " form-group row "));
+		addressPanel
+			.getZipcodeCityPanel()
+			.getTwoFormComponent()
+			.getLeftFormComponent()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_1 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control"));
+		addressPanel
+			.getZipcodeCityPanel()
+			.getTwoFormComponent()
+			.getRightFormComponent()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_3 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control"));
+		addressPanel.getZipcodeCityPanel().getLabelComponent()
+			.add(new AttributeAppender("class", " control-label " + COL_SM_2));
 		return addressPanel;
 	}
 
@@ -249,7 +263,7 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 
 	protected LabeledCheckboxPanel<Member> newLabeledCheckboxPanel(String id, IModel<Member> model,
 		IModel<String> labelModel)
-	{ 
+	{
 		LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<Member>(id, model,
 			labelModel);
 		married.add(new AttributeAppender("class", " form-group"));
@@ -258,20 +272,24 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 			.add(
 				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
 					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
-					.build())).add(new JqueryStatementsBehavior()
-					.add(new BuildableChainableStatement.Builder().label("wrap")
-						.args(JsUtils.quotes("<div class=\"checkbox\"></div>")).build()))
-						.add(new JqueryStatementsBehavior()
-					.add(new BuildableChainableStatement.Builder().label("wrap")
-						.args(JsUtils.quotes("<label></label>")).build()))
-					.add(new AttributeAppender("class", " checkbox"));
-		married.getLabelComponent().add(new AttributeAppender("class", " control-label " + COL_SM_2));
+					.build()))
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"checkbox\"></div>")).build()))
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<label></label>")).build()))
+			.add(new AttributeAppender("class", " checkbox"));
+		married.getLabelComponent().add(
+			new AttributeAppender("class", " control-label " + COL_SM_2));
 		return married;
 	}
-	
-	protected LabeledDateTextFieldPanel<Member> newLabeledDateTextFieldPanel(String id, IModel<Member> model, IModel<String> labelModel){
-		LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>(
-			id, model, labelModel);
+
+	protected LabeledDateTextFieldPanel<Member> newLabeledDateTextFieldPanel(String id,
+		IModel<Member> model, IModel<String> labelModel)
+	{
+		LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>(id,
+			model, labelModel);
 		dateofbirth.add(new AttributeAppender("class", " form-group"));
 		dateofbirth
 			.getDateTextField()
@@ -279,11 +297,14 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
 					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
 					.build())).add(new AttributeAppender("class", " form-control"));
-		dateofbirth.getLabelComponent().add(new AttributeAppender("class", " control-label " + COL_SM_2));
+		dateofbirth.getLabelComponent().add(
+			new AttributeAppender("class", " control-label " + COL_SM_2));
 		return dateofbirth;
 	}
-	
-	protected LabeledDateTimeFieldPanel<Member> newLabeledDateTimeFieldPanel(String id, IModel<Member> model, IModel<String> labelModel) {
+
+	protected LabeledDateTimeFieldPanel<Member> newLabeledDateTimeFieldPanel(String id,
+		IModel<Member> model, IModel<String> labelModel)
+	{
 
 		LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>(
 			id, model, labelModel)
@@ -307,7 +328,8 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
 					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
 					.build())).add(new AttributeAppender("class", " form-control no-border"));
-		dateofMarriage.getLabelComponent().add(new AttributeAppender("class", " control-label " + COL_SM_2));
+		dateofMarriage.getLabelComponent().add(
+			new AttributeAppender("class", " control-label " + COL_SM_2));
 		return dateofMarriage;
 	}
 }

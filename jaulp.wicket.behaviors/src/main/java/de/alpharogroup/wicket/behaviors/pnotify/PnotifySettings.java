@@ -168,8 +168,8 @@ public class PnotifySettings implements Settings
 	/**
 	 * Reset the hide timer if the mouse moves over the notice. Default: true
 	 */
-	private final StringTextValue<Boolean> mouse_reset = new StringTextValue<>("mouse_reset",
-		true, StringTextType.BOOLEAN);
+	private final StringTextValue<Boolean> mouse_reset = new StringTextValue<>("mouse_reset", true,
+		StringTextType.BOOLEAN);
 
 	/**
 	 * Remove the notice's elements from the DOM after it is removed. Default: true
@@ -197,37 +197,37 @@ public class PnotifySettings implements Settings
 		new StackSettings().asJavascriptArray(), StringTextType.STRING)
 		.setQuotationMarkType(QuotationMarkType.NONE);
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Set<StringTextValue<?>> asSet()
-  {
-    Set<StringTextValue<?>> allSettings = new HashSet<>();
-    allSettings.add(getAddclass());
-    allSettings.add(getAnimation());
-    allSettings.add(getAnimation_speed());
-    allSettings.add(getAuto_display());
-    allSettings.add(getCornerclass());
-    allSettings.add(getDelay());
-    allSettings.add(getDestroy());
-    allSettings.add(getHide());
-    allSettings.add(getIcon());
-    allSettings.add(getInsert_brs());
-    allSettings.add(getMin_height());
-    allSettings.add(getMouse_reset());
-    allSettings.add(getOpacity());
-    allSettings.add(getPosition_animate_speed());
-    allSettings.add(getRemove());
-    allSettings.add(getShadow());
-    allSettings.add(getStack());
-    allSettings.add(getStyling());
-    allSettings.add(getText());
-    allSettings.add(getText_escape());
-    allSettings.add(getTitle());
-    allSettings.add(getTitle_escape());
-    allSettings.add(getType());
-    allSettings.add(getWidth());
-    return allSettings;
-  }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Set<StringTextValue<?>> asSet()
+	{
+		Set<StringTextValue<?>> allSettings = new HashSet<>();
+		allSettings.add(getAddclass());
+		allSettings.add(getAnimation());
+		allSettings.add(getAnimation_speed());
+		allSettings.add(getAuto_display());
+		allSettings.add(getCornerclass());
+		allSettings.add(getDelay());
+		allSettings.add(getDestroy());
+		allSettings.add(getHide());
+		allSettings.add(getIcon());
+		allSettings.add(getInsert_brs());
+		allSettings.add(getMin_height());
+		allSettings.add(getMouse_reset());
+		allSettings.add(getOpacity());
+		allSettings.add(getPosition_animate_speed());
+		allSettings.add(getRemove());
+		allSettings.add(getShadow());
+		allSettings.add(getStack());
+		allSettings.add(getStyling());
+		allSettings.add(getText());
+		allSettings.add(getText_escape());
+		allSettings.add(getTitle());
+		allSettings.add(getTitle_escape());
+		allSettings.add(getType());
+		allSettings.add(getWidth());
+		return allSettings;
+	}
 }

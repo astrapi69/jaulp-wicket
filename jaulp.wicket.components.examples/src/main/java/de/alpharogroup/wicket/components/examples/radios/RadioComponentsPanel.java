@@ -48,7 +48,7 @@ public class RadioComponentsPanel extends Panel
 			@Override
 			public void renderHead(IHeaderResponse response)
 			{
-        super.renderHead(response);
+				super.renderHead(response);
 				response.render(CssHeaderItem.forReference(new CssResourceReference(
 					AjaxRadioExamplePanel.class, "AjaxRadioPanel.css")));
 

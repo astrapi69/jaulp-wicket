@@ -83,10 +83,9 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 		setType(TwoFormComponentBean.class);
 		add(
 			leftFormComponent = newLeftFormComponent("leftTextField", new PropertyModel<L>(model,
-				"leftContent")))
-			.add(
-				rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(
-					model, "rightContent")));
+				"leftContent"))).add(
+			rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(
+				model, "rightContent")));
 	}
 
 

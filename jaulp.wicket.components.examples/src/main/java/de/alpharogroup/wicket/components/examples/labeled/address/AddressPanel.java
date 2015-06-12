@@ -43,11 +43,14 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 	{
 		super(id, model);
 		setOutputMarkupId(true);
-		add(streetNumberPanel = newStreetNumberPanel("streetNumberPanel", Model.of("Street / number:")));
+		add(streetNumberPanel = newStreetNumberPanel("streetNumberPanel",
+			Model.of("Street / number:")));
 		add(zipcodeCityPanel = newZipcodeCityPanel("zipcodeCityPanel", Model.of("Zip / City:")));
 	}
-	
-	protected LabeledTwoFormComponentPanel<String, String> newZipcodeCityPanel(String id, IModel<String> labelModel) {
+
+	protected LabeledTwoFormComponentPanel<String, String> newZipcodeCityPanel(String id,
+		IModel<String> labelModel)
+	{
 		LabeledTwoFormComponentPanel<String, String> zipcodeCityPanel = new LabeledTwoFormComponentPanel<String, String>(
 			id, labelModel)
 		{
@@ -72,8 +75,10 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 		};
 		return zipcodeCityPanel;
 	}
-	
-	protected LabeledTwoFormComponentPanel<String, String> newStreetNumberPanel(String id, IModel<String> labelModel) {
+
+	protected LabeledTwoFormComponentPanel<String, String> newStreetNumberPanel(String id,
+		IModel<String> labelModel)
+	{
 
 		LabeledTwoFormComponentPanel<String, String> streetNumberPanel = new LabeledTwoFormComponentPanel<String, String>(
 			id, labelModel)

@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.examples;
 
 import java.io.File;
 
+import lombok.experimental.ExtensionMethod;
+
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -39,7 +41,6 @@ import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
-import lombok.experimental.ExtensionMethod;
 
 @ExtensionMethod(LoggerExtensions.class)
 public class StartComponentExamples
@@ -73,40 +74,43 @@ public class StartComponentExamples
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
 
-    Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
-      .servletContextHandler(servletContextHandler)
-      .httpPort(WicketApplication.DEFAULT_HTTP_PORT)
-      .httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
-      .keyStorePathResource("/keystore").build();
-    Server server = new Server();
-    Jetty9Runner.run(server, config);
+		Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
+			.servletContextHandler(servletContextHandler)
+			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
+			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
+			.keyStorePathResource("/keystore").build();
+		Server server = new Server();
+		Jetty9Runner.run(server, config);
 	}
-  // see:http://git.eclipse.org/c/jetty/org.eclipse.jetty.project.git/tree/examples/embedded/src/main/java/org/eclipse/jetty/embedded/LikeJettyXml.java
-  public static DeploymentManager getDeploymentManager(ContextHandlerCollection contexts, String monitoredDirNamePrefix, String defaultsDescriptorPrefix) {
-    DeploymentManager deployer = new DeploymentManager();
-    deployer.setContexts(contexts);
-    deployer.setContextAttribute(
-      "org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
-      ".*/servlet-api-[^/]*\\.jar$");
-    WebAppProvider webAppProvider = new WebAppProvider();
-    webAppProvider.setMonitoredDirName(monitoredDirNamePrefix + "/webapps");
-//    webAppProvider.setDefaultsDescriptor(defaultsDescriptorPrefix + "/etc/webdefault.xml");
-    webAppProvider.setScanInterval(1);
-    webAppProvider.setExtractWars(true);
-    webAppProvider.setConfigurationManager(new PropertiesConfigurationManager());
 
-    deployer.addAppProvider(webAppProvider);
-    return deployer;
-  }
+	// see:http://git.eclipse.org/c/jetty/org.eclipse.jetty.project.git/tree/examples/embedded/src/main/java/org/eclipse/jetty/embedded/LikeJettyXml.java
+	public static DeploymentManager getDeploymentManager(ContextHandlerCollection contexts,
+		String monitoredDirNamePrefix, String defaultsDescriptorPrefix)
+	{
+		DeploymentManager deployer = new DeploymentManager();
+		deployer.setContexts(contexts);
+		deployer.setContextAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
+			".*/servlet-api-[^/]*\\.jar$");
+		WebAppProvider webAppProvider = new WebAppProvider();
+		webAppProvider.setMonitoredDirName(monitoredDirNamePrefix + "/webapps");
+		// webAppProvider.setDefaultsDescriptor(defaultsDescriptorPrefix + "/etc/webdefault.xml");
+		webAppProvider.setScanInterval(1);
+		webAppProvider.setExtractWars(true);
+		webAppProvider.setConfigurationManager(new PropertiesConfigurationManager());
 
-  private static FileAppender newFileAppender(String logFilePath) {
-    FileAppender appender = new FileAppender();
-    appender.setName("MyFileAppender");
-    appender.setLayout(new PatternLayout("%d %-5p [%c{1}] %m%n"));
-    appender.setFile(logFilePath);
-    appender.setAppend(true);
-    appender.setThreshold(Level.DEBUG);
-    appender.activateOptions();
-    return appender;
-  }
+		deployer.addAppProvider(webAppProvider);
+		return deployer;
+	}
+
+	private static FileAppender newFileAppender(String logFilePath)
+	{
+		FileAppender appender = new FileAppender();
+		appender.setName("MyFileAppender");
+		appender.setLayout(new PatternLayout("%d %-5p [%c{1}] %m%n"));
+		appender.setFile(logFilePath);
+		appender.setAppend(true);
+		appender.setThreshold(Level.DEBUG);
+		appender.activateOptions();
+		return appender;
+	}
 }

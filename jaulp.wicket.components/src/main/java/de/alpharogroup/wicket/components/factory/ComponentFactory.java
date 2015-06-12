@@ -164,7 +164,8 @@ public class ComponentFactory
 	 *            the model of the label
 	 * @return the enum label
 	 */
-	public static <T extends Enum<T>> EnumLabel<T> newEnumLabel(final String id, final IModel<T> model)
+	public static <T extends Enum<T>> EnumLabel<T> newEnumLabel(final String id,
+		final IModel<T> model)
 	{
 		EnumLabel<T> enumLabel = new EnumLabel<T>(id, model)
 		{
