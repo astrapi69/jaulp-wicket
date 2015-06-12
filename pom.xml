@@ -127,6 +127,8 @@
 		<maven-javadoc-plugin.version>2.10.1</maven-javadoc-plugin.version>
 		<!-- MAVEN SOURCE PLUGIN version -->
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
+		<!-- MAVEN CLEAN PLUGIN version -->
+		<maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
 		<!-- MAVEN GPG PLUGIN version -->
 		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
 		<!-- MAVEN RELEASE PLUGIN version -->
@@ -566,6 +568,19 @@
 							</goals>
 						</execution>
 					</executions>
+				</plugin>
+				<!-- Configuring maven clean plugin: deletes the generated test-output directories that are generated from testng. -->
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean-plugin.version}</version>
+					<configuration>
+						<filesets>
+							<fileset>
+								<directory>test-output</directory>
+								<followSymlinks>false</followSymlinks>
+							</fileset>
+						</filesets>
+					</configuration>
 				</plugin>
 				<!-- Configuring Maven Javadoc Plugin: To attach javadoc artifacts to
 					your build we execute the javadoc:jar goal from the javadoc plugin. -->
