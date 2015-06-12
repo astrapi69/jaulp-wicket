@@ -36,7 +36,7 @@ public class SessionCountUtils
 
 	/**
 	 * Gets the request logger of the current WebApplication.
-	 * 
+	 *
 	 * @return the request logger
 	 */
 	public static IRequestLogger getRequestLogger()
@@ -46,7 +46,7 @@ public class SessionCountUtils
 
 	/**
 	 * Gets the request logger from the given WebApplication.
-	 * 
+	 *
 	 * @param webApplication
 	 *            the web application
 	 * @return the request logger
@@ -67,7 +67,7 @@ public class SessionCountUtils
 
 	/**
 	 * Gets the live sessions.
-	 * 
+	 *
 	 * @return the live sessions
 	 */
 	public static List<SessionData> getLiveSessions()
@@ -92,29 +92,45 @@ public class SessionCountUtils
 	 */
 	public static int getSessionTimeout()
 	{
-		HttpServletRequest request = WicketComponentUtils.getHttpServletRequest();
-		if (request != null)
+		HttpSession session = getHttpSession();
+		if (session != null)
 		{
-			HttpSession session = request.getSession();
-			if (session != null)
-			{
-				return session.getMaxInactiveInterval();
-			}
+			return session.getMaxInactiveInterval();
 		}
 		return -1;
 	}
 
 	/**
-	 * Gets the http session.
+	 * Sets the given interval(in seconds) that will be set the session timeout.
 	 *
-	 * @return the http session
+	 * @param interval
+	 *            The number of seconds.
+	 *
+	 * @return the given interval(in seconds) or -1 if the {@link javax.servlet.http.HttpSession} is
+	 *         null.
+	 */
+	public static int setSessionTimeout(final int interval)
+	{
+		HttpSession session = getHttpSession();
+		if (session != null)
+		{
+			session.setMaxInactiveInterval(interval);
+			return interval;
+		}
+		return -1;
+	}
+
+	/**
+	 * Gets the current http session.
+	 *
+	 * @return the current http session.
 	 */
 	public static HttpSession getHttpSession()
 	{
 		HttpServletRequest request = WicketComponentUtils.getHttpServletRequest();
 		if (request != null)
 		{
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(false);
 			if (session != null)
 			{
 				return session;
@@ -122,5 +138,6 @@ public class SessionCountUtils
 		}
 		return null;
 	}
+
 
 }
