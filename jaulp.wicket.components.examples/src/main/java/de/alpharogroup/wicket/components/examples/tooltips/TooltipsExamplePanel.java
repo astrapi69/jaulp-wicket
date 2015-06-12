@@ -24,10 +24,10 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
-import de.alpharogroup.wicket.behaviors.tooltipster.TooltipsterJsGenerator;
-import de.alpharogroup.wicket.behaviors.tooltipster.TooltipsterResourceReference;
-import de.alpharogroup.wicket.behaviors.tooltipster.TooltipsterSettings;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.js.addon.tooltipster.TooltipsterJsGenerator;
+import de.alpharogroup.wicket.js.addon.tooltipster.TooltipsterResourceReference;
+import de.alpharogroup.wicket.js.addon.tooltipster.TooltipsterSettings;
 
 /**
  * The Panel for the example page with the several tooltips like tooltipster or bootstrap tooltip.

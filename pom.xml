@@ -11,6 +11,14 @@
 
 	<description>Parent project for the projects in the jaulp.wicket.</description>
 
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<url>https://github.com/astrapi69/jaulp.wicket</url>
 
 	<scm>
@@ -33,14 +41,6 @@
 		</developer>
 
 	</developers>
-
-	<licenses>
-		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
 
 	<modules>
 		<module>jaulp.wicket.annotated.header.contributors</module>
@@ -72,6 +72,7 @@
 		<wiquery-core.version>6.13.0</wiquery-core.version>
 		<wicket-modelfactory.version>0.9.8</wicket-modelfactory.version>
 		<wicket-source.version>6.0.0.8</wicket-source.version>
+		<wicket-js-addons.version>${project.version}</wicket-js-addons.version>
 		<!-- JETTY 9 version -->
 		<jetty9.version>9.2.10.v20150310</jetty9.version>
 		<wicket-jetty9-runner.version>1.0.1</wicket-jetty9-runner.version>
@@ -106,7 +107,7 @@
 		<joda-time.version>2.7</joda-time.version>
 		<!-- APACHE COMMONS LIBRARIES versions -->
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
-    <commons-collections4.version>4.0</commons-collections4.version>
+		<commons-collections4.version>4.0</commons-collections4.version>
 		<guava.version>18.0</guava.version>
 		<commons-lang3.version>3.3.1</commons-lang3.version>
 		<!-- MAVEN PLUGIN versions -->
@@ -229,6 +230,32 @@
 				<artifactId>wicket-source</artifactId>
 				<version>${wicket-source.version}</version>
 			</dependency>
+			<!-- WICKET-JS-ADDONS DEPENDENCIES -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-pnotify</artifactId>
+				<version>${wicket-js-addons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-popupoverlay</artifactId>
+				<version>${wicket-js-addons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-spin.js</artifactId>
+				<version>${wicket-js-addons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-toastr</artifactId>
+				<version>${wicket-js-addons.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-tooltipster</artifactId>
+				<version>${wicket-js-addons.version}</version>
+			</dependency>
 			<!-- JAULP WICKET DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -332,14 +359,14 @@
 				<version>${commons-beanutils.version}</version>
 			</dependency>
 
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-collections4</artifactId>
-        <version>${commons-collections4.version}</version>
-      </dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons-collections4.version}</version>
+			</dependency>
 
 
-      <dependency>
+			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
@@ -493,7 +520,6 @@
 			<artifactId>jaulp.file</artifactId>
 		</dependency>
 
-
 	</dependencies>
 
 	<build>
@@ -539,7 +565,7 @@
 
 				<plugin>
 					<inherited>true</inherited>
-					<!-- NOTE: We don't need a groupId specification because the group is
+					<!-- NOTE: We don't need a groupId specification because the group is 
 						org.apache.maven.plugins ...which is assumed by default. -->
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven-compiler-plugin.version}</version>
@@ -553,8 +579,8 @@
 						<debug>${maven-compiler-plugin.debug}</debug>
 					</configuration>
 				</plugin>
-				<!-- Configuring Maven Source Plugin: To attach source artifacts to your
-					build we execute the source:jar goal from the source plugin during the package
+				<!-- Configuring Maven Source Plugin: To attach source artifacts to your 
+					build we execute the source:jar goal from the source plugin during the package 
 					phase. -->
 				<plugin>
 					<inherited>true</inherited>
@@ -569,7 +595,8 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!-- Configuring maven clean plugin: deletes the generated test-output directories that are generated from testng. -->
+				<!-- Configuring maven clean plugin: deletes the generated test-output 
+					directories that are generated from testng. -->
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>${maven-clean-plugin.version}</version>
@@ -582,7 +609,7 @@
 						</filesets>
 					</configuration>
 				</plugin>
-				<!-- Configuring Maven Javadoc Plugin: To attach javadoc artifacts to
+				<!-- Configuring Maven Javadoc Plugin: To attach javadoc artifacts to 
 					your build we execute the javadoc:jar goal from the javadoc plugin. -->
 				<plugin>
 					<inherited>true</inherited>
@@ -637,13 +664,13 @@
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>${maven-deploy-plugin.version}</version>
 				</plugin>
-				<!-- The Nexus Staging Maven Plugin is the recommended way to deploy
-					your components to OSSRH and release them to the Central Repository. _______________
-					If your version is a release version (does not end in -SNAPSHOT) and with
-					this setup in place, you can run a deployment to OSSRH and an automated release
-					to the Central Repository with the usual: mvn clean deploy _________________________
-					With the property autoReleaseAfterClose set to false you can manually inspect
-					the staging repository in Nexus and trigger a release of the staging repository
+				<!-- The Nexus Staging Maven Plugin is the recommended way to deploy 
+					your components to OSSRH and release them to the Central Repository. _______________ 
+					If your version is a release version (does not end in -SNAPSHOT) and with 
+					this setup in place, you can run a deployment to OSSRH and an automated release 
+					to the Central Repository with the usual: mvn clean deploy _________________________ 
+					With the property autoReleaseAfterClose set to false you can manually inspect 
+					the staging repository in Nexus and trigger a release of the staging repository 
 					later with: mvn nexus-staging:release. -->
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
@@ -992,7 +1019,7 @@
 
 		<profile>
 			<id>oss.sonatype.org-staged-release</id>
-			<!-- This is the profile to use for releasing into the staged release
+			<!-- This is the profile to use for releasing into the staged release 
 				repo. We need to sign the artifacts. -->
 			<activation>
 				<property>
@@ -1080,8 +1107,8 @@
 		</profile>
 
 		<profile>
-			<!-- This profile is for generate or update the license header from source
-				files. for generate or update the license header you have to run this profile
+			<!-- This profile is for generate or update the license header from source 
+				files. for generate or update the license header you have to run this profile 
 				with this goal license:format. -->
 			<id>update-license-header</id>
 			<activation>

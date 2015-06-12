@@ -63,6 +63,27 @@
 			<artifactId>wicket-component-expressions</artifactId>
 			<version>6.18.0</version>
 		</dependency>
+		<!-- WICKET-JS-ADDONS DEPENDENCIES -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-pnotify</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-popupoverlay</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-spin.js</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-toastr</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-tooltipster</artifactId>
+		</dependency>
 
 	</dependencies>
 

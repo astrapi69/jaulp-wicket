@@ -29,14 +29,14 @@ import org.apache.wicket.model.Model;
 
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-import de.alpharogroup.wicket.behaviors.pnotify.PnotifyJsGenerator;
-import de.alpharogroup.wicket.behaviors.pnotify.PnotifyJsReference;
-import de.alpharogroup.wicket.behaviors.pnotify.PnotifySettings;
-import de.alpharogroup.wicket.behaviors.toastr.Position;
-import de.alpharogroup.wicket.behaviors.toastr.ToastJsGenerator;
-import de.alpharogroup.wicket.behaviors.toastr.ToastrResourceReference;
-import de.alpharogroup.wicket.behaviors.toastr.ToastrSettings;
 import de.alpharogroup.wicket.components.buttons.ButtonPanel;
+import de.alpharogroup.wicket.js.addon.pnotify.PnotifyJsGenerator;
+import de.alpharogroup.wicket.js.addon.pnotify.PnotifyJsReference;
+import de.alpharogroup.wicket.js.addon.pnotify.PnotifySettings;
+import de.alpharogroup.wicket.js.addon.toastr.Position;
+import de.alpharogroup.wicket.js.addon.toastr.ToastJsGenerator;
+import de.alpharogroup.wicket.js.addon.toastr.ToastrResourceReference;
+import de.alpharogroup.wicket.js.addon.toastr.ToastrSettings;
 
 public class NotificationExamplesPanel extends Panel
 {

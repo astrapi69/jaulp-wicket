@@ -36,10 +36,10 @@ import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
-import de.alpharogroup.wicket.behaviors.spin.SpinJsGenerator;
-import de.alpharogroup.wicket.behaviors.spin.SpinResourceReference;
-import de.alpharogroup.wicket.behaviors.spin.SpinSettings;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import de.alpharogroup.wicket.js.addon.spin.SpinJsGenerator;
+import de.alpharogroup.wicket.js.addon.spin.SpinResourceReference;
+import de.alpharogroup.wicket.js.addon.spin.SpinSettings;
 
 public class AnimationPanel extends Panel
 {

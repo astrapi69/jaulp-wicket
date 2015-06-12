@@ -24,10 +24,10 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import de.alpharogroup.wicket.behaviors.popupoverlay.PopupoverlayPanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonBean;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.person.PersonPanel;
+import de.alpharogroup.wicket.js.addon.popupoverlay.PopupoverlayPanel;
 
 
 @MountPath("public/popupoverlay")
