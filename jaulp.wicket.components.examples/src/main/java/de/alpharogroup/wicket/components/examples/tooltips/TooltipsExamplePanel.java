@@ -45,7 +45,7 @@ public class TooltipsExamplePanel extends Panel
 		super(id, model);
 		Label label = ComponentFactory.newLabel("tooltipTestLabel",
 			Model.of("Im example for tooltipster."));
-		TooltipsterSettings tooltipsterSettings = new TooltipsterSettings();
+		TooltipsterSettings tooltipsterSettings = TooltipsterSettings.builder().build();
 		tooltipsterSettings.getAnimation().setValue("grow");
 		tooltipsterSettings.getArrow().setValue(false);
 		tooltipsterSettings.getContent().setValue("Loading foo...");

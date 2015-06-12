@@ -25,7 +25,7 @@ public class PnotifyJsGeneratorTest
 	@Test
 	public void testGenerator()
 	{
-		PnotifySettings pnotifySettings = new PnotifySettings();
+		PnotifySettings pnotifySettings = PnotifySettings.builder().build();
 		pnotifySettings.getTitle().setValue("Test title");
 		pnotifySettings.getText().setValue("a text");
 

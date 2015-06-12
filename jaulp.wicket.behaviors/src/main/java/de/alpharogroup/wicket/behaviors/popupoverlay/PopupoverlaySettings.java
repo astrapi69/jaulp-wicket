@@ -18,10 +18,11 @@ package de.alpharogroup.wicket.behaviors.popupoverlay;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.wicket.base.util.template.Settings;
 import de.alpharogroup.wicket.base.util.template.StringTextType;
@@ -32,10 +33,10 @@ import de.alpharogroup.wicket.base.util.template.StringTextValue;
  * documentation for the jquery popupoverlay plugin for further information.
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class PopupoverlaySettings implements Settings
 {
 
@@ -45,44 +46,44 @@ public class PopupoverlaySettings implements Settings
 	/**
 	 * Sets popup type to overlay or tooltip. Default: overlay
 	 */
-	private StringTextValue<PopupoverlayType> type = new StringTextValue<PopupoverlayType>("type",
+	private final StringTextValue<PopupoverlayType> type = new StringTextValue<>("type",
 		PopupoverlayType.OVERLAY, StringTextType.ENUM);
 
 	/**
 	 * Shows the popup when initialized. Default: false
 	 */
-	private StringTextValue<Boolean> autoopen = new StringTextValue<Boolean>("autoopen",
+	private final StringTextValue<Boolean> autoopen = new StringTextValue<>("autoopen",
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Disables scrolling of background content while the popup is visible. Default: false
 	 */
-	private StringTextValue<Boolean> scrolllock = new StringTextValue<Boolean>("scrolllock",
+	private final StringTextValue<Boolean> scrolllock = new StringTextValue<>("scrolllock",
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Enables background cover. Disabled for tooltips. Default: true
 	 */
-	private StringTextValue<Boolean> background = new StringTextValue<Boolean>("background", true,
+	private final StringTextValue<Boolean> background = new StringTextValue<>("background", true,
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Disable background cover and keep background elements active. Implies background, blur and
 	 * scrolllock to false. Default: false
 	 */
-	private StringTextValue<Boolean> backgroundactive = new StringTextValue<Boolean>(
+	private final StringTextValue<Boolean> backgroundactive = new StringTextValue<>(
 		"backgroundactive", StringTextType.BOOLEAN);
 
 	/**
 	 * Sets background color. Default: #000
 	 */
-	private StringTextValue<String> color = new StringTextValue<String>("color", "#000",
+	private final StringTextValue<String> color = new StringTextValue<>("color", "#000",
 		StringTextType.STRING);
 
 	/**
 	 * The opacity of the notice. Default: 1
 	 */
-	private StringTextValue<Float> opacity = new StringTextValue<Float>("opacity", 0.5f,
+	private final StringTextValue<Float> opacity = new StringTextValue<>("opacity", 0.5f,
 		StringTextType.FLOAT);
 
 	/**
@@ -90,7 +91,7 @@ public class PopupoverlaySettings implements Settings
 	 * and will align the tooltip to the left or right edge of the opening element (`openelement`).
 	 * Default: center
 	 */
-	private StringTextValue<HorizontalPosition> horizontal = new StringTextValue<HorizontalPosition>(
+	private final StringTextValue<HorizontalPosition> horizontal = new StringTextValue<>(
 		"horizontal", HorizontalPosition.CENTER, StringTextType.ENUM);
 
 	/**
@@ -98,56 +99,56 @@ public class PopupoverlaySettings implements Settings
 	 * will align the tooltip to the top or bottom edge of the opening element (`openelement`).
 	 * Default: center
 	 */
-	private StringTextValue<VerticalPosition> vertical = new StringTextValue<VerticalPosition>(
-		"vertical", VerticalPosition.CENTER, StringTextType.ENUM);
+	private final StringTextValue<VerticalPosition> vertical = new StringTextValue<>("vertical",
+		VerticalPosition.CENTER, StringTextType.ENUM);
 
 	/**
 	 * Sets top offset to tooltip or overlay. Default: 0
 	 */
-	private StringTextValue<Integer> offsettop = new StringTextValue<Integer>("offsettop", 0,
+	private final StringTextValue<Integer> offsettop = new StringTextValue<>("offsettop", 0,
 		StringTextType.INTEGER);
 
 	/**
 	 * Sets left offset to tooltip or overlay. Default: 0
 	 */
-	private StringTextValue<Integer> offsetleft = new StringTextValue<Integer>("offsetleft", 0,
+	private final StringTextValue<Integer> offsetleft = new StringTextValue<>("offsetleft", 0,
 		StringTextType.INTEGER);
 
 	/**
 	 * Closes the popup when Escape key is pressed. Default: true
 	 */
-	private StringTextValue<Boolean> escape = new StringTextValue<Boolean>("escape", true,
+	private final StringTextValue<Boolean> escape = new StringTextValue<>("escape", true,
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Closes the popup when clicked outside of it. Default: true
 	 */
-	private StringTextValue<Boolean> blur = new StringTextValue<Boolean>("blur", true,
+	private final StringTextValue<Boolean> blur = new StringTextValue<>("blur", true,
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Sets default z-index to the popup (2001) and to the background (2000). Default: true
 	 */
-	private StringTextValue<Boolean> setzindex = new StringTextValue<Boolean>("setzindex", true,
+	private final StringTextValue<Boolean> setzindex = new StringTextValue<>("setzindex", true,
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Sets highest z-index on the page to the popup. Default: false
 	 */
-	private StringTextValue<Boolean> autozindex = new StringTextValue<Boolean>("autozindex",
+	private final StringTextValue<Boolean> autozindex = new StringTextValue<>("autozindex",
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Lock keyboard focus inside of popup. Recommended to be enabled. Default: true
 	 */
-	private StringTextValue<Boolean> keepfocus = new StringTextValue<Boolean>("keepfocus", true,
+	private final StringTextValue<Boolean> keepfocus = new StringTextValue<>("keepfocus", true,
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Enables you to specify the element which will be focused upon showing the popup. By default,
 	 * the popup element #my_popup will receive the initial focus. Default: my_popup
 	 */
-	private StringTextValue<String> focuselement = new StringTextValue<String>("focuselement",
+	private final StringTextValue<String> focuselement = new StringTextValue<>("focuselement",
 		StringTextType.STRING);
 
 	/**
@@ -155,7 +156,7 @@ public class PopupoverlaySettings implements Settings
 	 * during opening transition, as browsers will try to move the viewport to an element which
 	 * received the focus. Default: 50
 	 */
-	private StringTextValue<Integer> focusdelay = new StringTextValue<Integer>("focusdelay", 50,
+	private final StringTextValue<Integer> focusdelay = new StringTextValue<>("focusdelay", 50,
 		StringTextType.INTEGER);
 
 	/**
@@ -168,7 +169,7 @@ public class PopupoverlaySettings implements Settings
 	 * closes. You can set `pagecontainer` once per website (e.g. $.fn.popup.defaults.pagecontainer
 	 * = '.container'). Default: not set
 	 */
-	private StringTextValue<String> pagecontainer = new StringTextValue<String>("pagecontainer",
+	private final StringTextValue<String> pagecontainer = new StringTextValue<>("pagecontainer",
 		StringTextType.STRING);
 
 	/**
@@ -176,27 +177,27 @@ public class PopupoverlaySettings implements Settings
 	 *
 	 * Setting to false is equivalent to #my_popup{outline: none;}; Default: false
 	 */
-	private StringTextValue<Boolean> outline = new StringTextValue<Boolean>("outline",
+	private final StringTextValue<Boolean> outline = new StringTextValue<>("outline",
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Removes popup element from the DOM after closing transition. Default: false
 	 */
-	private StringTextValue<Boolean> detach = new StringTextValue<Boolean>("detach",
+	private final StringTextValue<Boolean> detach = new StringTextValue<>("detach",
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Enables you to define custom element which will open the popup on click. Default:
 	 * .{popup_id}_open
 	 */
-	private StringTextValue<String> openelement = new StringTextValue<String>("openelement",
+	private final StringTextValue<String> openelement = new StringTextValue<>("openelement",
 		StringTextType.STRING);
 
 	/**
 	 * Enables you to define custom element which will close the popup on click. Default:
 	 * .{popup_id}_close
 	 */
-	private StringTextValue<String> closeelement = new StringTextValue<String>("closeelement",
+	private final StringTextValue<String> closeelement = new StringTextValue<>("closeelement",
 		StringTextType.STRING);
 
 	/**
@@ -213,7 +214,7 @@ public class PopupoverlaySettings implements Settings
 	 * is equivalent to .popup_content, .popup_wrapper, .popup_background {transition: all 0.3s;}
 	 * Default: not set
 	 */
-	private StringTextValue<String> transition = new StringTextValue<String>("transition",
+	private final StringTextValue<String> transition = new StringTextValue<>("transition",
 		StringTextType.STRING);
 
 	/**
@@ -227,28 +228,28 @@ public class PopupoverlaySettings implements Settings
 	 * event.target, autoopen: true, type: 'tooltip' }); }, mouseleave: function() {
 	 * $('#my_popup').popup('hide'); } }); Default: not set
 	 */
-	private StringTextValue<String> tooltipanchor = new StringTextValue<String>("tooltipanchor",
+	private final StringTextValue<String> tooltipanchor = new StringTextValue<>("tooltipanchor",
 		StringTextType.STRING);
 
 	/**
 	 * Type: function Description: Callback function which will execute before the popup is opened.
 	 * Default: not set
 	 */
-	private StringTextValue<String> beforeopen = new StringTextValue<String>("beforeopen",
+	private final StringTextValue<String> beforeopen = new StringTextValue<>("beforeopen",
 		StringTextType.STRING);
 
 	/**
 	 * Type: function Description: Callback function which will execute when the popup starts to
 	 * open. Default: not set
 	 */
-	private StringTextValue<String> onopen = new StringTextValue<String>("onopen",
+	private final StringTextValue<String> onopen = new StringTextValue<>("onopen",
 		StringTextType.STRING);
 
 	/**
 	 * Type: function Description: Callback function which will execute when the popup starts to
 	 * close. Default: not set
 	 */
-	private StringTextValue<String> onclose = new StringTextValue<String>("onclose",
+	private final StringTextValue<String> onclose = new StringTextValue<>("onclose",
 		StringTextType.STRING);
 
 	/**
@@ -256,7 +257,7 @@ public class PopupoverlaySettings implements Settings
 	 * transition is over, only if transition actually occurs and if supported by the browser.
 	 * Default: not set
 	 */
-	private StringTextValue<String> opentransitionend = new StringTextValue<String>(
+	private final StringTextValue<String> opentransitionend = new StringTextValue<>(
 		"opentransitionend", StringTextType.STRING);
 
 	/**
@@ -264,9 +265,12 @@ public class PopupoverlaySettings implements Settings
 	 * transition is over, only if transition actually occurs and if supported by the browser.
 	 * Default: not set
 	 */
-	private StringTextValue<String> closetransitionend = new StringTextValue<String>(
+	private final StringTextValue<String> closetransitionend = new StringTextValue<>(
 		"closetransitionend", StringTextType.STRING);
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Set<StringTextValue<?>> asSet()
 	{

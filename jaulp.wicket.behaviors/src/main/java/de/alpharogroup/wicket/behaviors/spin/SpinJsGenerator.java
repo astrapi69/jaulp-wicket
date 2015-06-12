@@ -43,7 +43,7 @@ public class SpinJsGenerator extends JavascriptGenerator<SpinSettings>
 	 */
 	public SpinJsGenerator()
 	{
-		this(new SpinSettings());
+		this(SpinSettings.builder().build());
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class SpinJsGenerator extends JavascriptGenerator<SpinSettings>
 	 */
 	public SpinJsGenerator(final String componentId)
 	{
-		this(new SpinSettings(), componentId);
+		this(SpinSettings.builder().build(), componentId);
 	}
 
 	/**

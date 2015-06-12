@@ -134,7 +134,7 @@ public abstract class PopupoverlayPanel<T> extends GenericPanel<T>
 	 */
 	protected PopupoverlaySettings newPopupoverlaySettings()
 	{
-		PopupoverlaySettings settings = new PopupoverlaySettings();
+		PopupoverlaySettings settings = PopupoverlaySettings.builder().build();
 		return settings;
 	}
 

@@ -18,7 +18,12 @@ package de.alpharogroup.wicket.behaviors.spin;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import de.alpharogroup.wicket.base.util.template.PercentNumberFormatTextValue;
 import de.alpharogroup.wicket.base.util.template.Settings;
 import de.alpharogroup.wicket.base.util.template.StringTextType;
@@ -29,6 +34,10 @@ import de.alpharogroup.wicket.base.util.template.StringTextValue;
  * spin js library for further information.
  */
 @Getter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class SpinSettings implements Settings
 {
 

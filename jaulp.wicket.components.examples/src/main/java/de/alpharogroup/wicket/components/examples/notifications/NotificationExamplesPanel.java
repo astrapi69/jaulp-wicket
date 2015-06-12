@@ -120,7 +120,7 @@ public class NotificationExamplesPanel extends Panel
 					protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 					{
 						target.add(form);
-						PnotifySettings pnotifySettings = new PnotifySettings();
+						PnotifySettings pnotifySettings = PnotifySettings.builder().build();
 						pnotifySettings.getTitle().setValue("Test title");
 						pnotifySettings.getText().setValue("a text");
 						PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(

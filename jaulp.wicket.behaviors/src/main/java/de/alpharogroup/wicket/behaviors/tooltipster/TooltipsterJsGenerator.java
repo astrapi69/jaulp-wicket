@@ -49,7 +49,7 @@ public class TooltipsterJsGenerator extends JavascriptGenerator<TooltipsterSetti
 	 */
 	public TooltipsterJsGenerator(final String componentId)
 	{
-		this(new TooltipsterSettings(), componentId);
+		this(TooltipsterSettings.builder().build(), componentId);
 	}
 
 	/**

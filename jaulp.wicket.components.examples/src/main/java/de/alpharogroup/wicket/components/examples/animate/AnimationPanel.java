@@ -76,7 +76,7 @@ public class AnimationPanel extends Panel
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 1.0f)));
 
 		// add a spinner...
-		SpinSettings spinSettings = new SpinSettings();
+		SpinSettings spinSettings = SpinSettings.builder().build();
 		spinSettings.getColor().setValue("#00ff00");
 		spinSettings.getDirection().setValue(-1);
 		spinSettings.getSpeed().setValue(1.2f);

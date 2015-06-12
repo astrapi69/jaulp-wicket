@@ -25,7 +25,7 @@ public class ToastJsGeneratorTest
 	@Test
 	public void testGenerator()
 	{
-		ToastrSettings settings = new ToastrSettings();
+		ToastrSettings settings = ToastrSettings.builder().build();
 		settings.getPositionClass().setValue(Position.TOP_RIGHT);
 		settings.getNotificationContent().setValue("This is a notification");
 		settings.getNotificationTitle().setValue("This is the title");

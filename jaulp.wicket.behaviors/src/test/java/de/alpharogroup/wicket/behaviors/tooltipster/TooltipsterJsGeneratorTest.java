@@ -28,7 +28,7 @@ public class TooltipsterJsGeneratorTest
 	@Test
 	public void testGenerator()
 	{
-		TooltipsterSettings tooltipsterSettings = new TooltipsterSettings();
+		TooltipsterSettings tooltipsterSettings = TooltipsterSettings.builder().build();
 		tooltipsterSettings.getAnimation().setValue("grow");
 		tooltipsterSettings.getArrow().setValue(false);
 		tooltipsterSettings.getContent().setValue("Loading...");

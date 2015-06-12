@@ -18,11 +18,11 @@ package de.alpharogroup.wicket.behaviors.toastr;
 import java.util.HashSet;
 import java.util.Set;
 
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.wicket.base.util.template.Settings;
 import de.alpharogroup.wicket.base.util.template.StringTextType;
@@ -33,11 +33,10 @@ import de.alpharogroup.wicket.base.util.template.StringTextValue;
  * the jquery toastr plugin for further information.
  */
 @Getter
-@Setter
 @EqualsAndHashCode
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 public class ToastrSettings implements Settings
 {
 
@@ -47,118 +46,121 @@ public class ToastrSettings implements Settings
 	/**
 	 * Shows a close button if true. Default: false
 	 */
-	private StringTextValue<Boolean> closeButton = new StringTextValue<Boolean>(
+	private final StringTextValue<Boolean> closeButton = new StringTextValue<>(
 		"toastr.options.closeButton", StringTextType.BOOLEAN);
 
 
 	/**
 	 * Shows a debug messages if true. Default: false
 	 */
-	private StringTextValue<Boolean> debug = new StringTextValue<Boolean>("toastr.options.debug",
+	private final StringTextValue<Boolean> debug = new StringTextValue<>("toastr.options.debug",
 		StringTextType.BOOLEAN);
 
 	/**
 	 * Shows the newest notification if true. Default: false
 	 */
-	private StringTextValue<Boolean> newestOnTop = new StringTextValue<Boolean>(
+	private final StringTextValue<Boolean> newestOnTop = new StringTextValue<>(
 		"toastr.options.newestOnTop", StringTextType.BOOLEAN);
 
 	/**
 	 * Shows a progress bar if true. Default: false
 	 */
-	private StringTextValue<Boolean> progressBar = new StringTextValue<Boolean>(
+	private final StringTextValue<Boolean> progressBar = new StringTextValue<>(
 		"toastr.options.progressBar", StringTextType.BOOLEAN);
 
 	/**
 	 * The position where to show the notifications. Default: toast-top-center
 	 */
-	private StringTextValue<Position> positionClass = new StringTextValue<Position>(
+	private final StringTextValue<Position> positionClass = new StringTextValue<>(
 		"toastr.options.positionClass", Position.TOP_CENTER, StringTextType.ENUM);
 
 	/**
 	 * If true duplicate notifications will be prevent. Default: false
 	 */
-	private StringTextValue<Boolean> preventDuplicates = new StringTextValue<Boolean>(
+	private final StringTextValue<Boolean> preventDuplicates = new StringTextValue<>(
 		"toastr.options.preventDuplicates", StringTextType.BOOLEAN);
 
 	/**
 	 * Document please. Default: false
 	 */
-	private StringTextValue<Boolean> tapToDismiss = new StringTextValue<Boolean>(
+	private final StringTextValue<Boolean> tapToDismiss = new StringTextValue<>(
 		"toastr.options.tapToDismiss", StringTextType.BOOLEAN);
 
 	/**
 	 * on click. Default: null
 	 */
-	private StringTextValue<String> onclick = new StringTextValue<String>("toastr.options.onclick",
+	private final StringTextValue<String> onclick = new StringTextValue<>("toastr.options.onclick",
 		StringTextType.STRING);
 
 	/**
 	 * The duration to show. Default: 300
 	 */
-	private StringTextValue<Integer> showDuration = new StringTextValue<Integer>(
+	private final StringTextValue<Integer> showDuration = new StringTextValue<>(
 		"toastr.options.showDuration", 300, StringTextType.INTEGER);
 
 	/**
 	 * The duration to hide. Default: 1000
 	 */
-	private StringTextValue<Integer> hideDuration = new StringTextValue<Integer>(
+	private final StringTextValue<Integer> hideDuration = new StringTextValue<>(
 		"toastr.options.hideDuration", 1000, StringTextType.INTEGER);
 
 	/**
 	 * The timeOut. Default: 5000
 	 */
-	private StringTextValue<Integer> timeOut = new StringTextValue<Integer>(
+	private final StringTextValue<Integer> timeOut = new StringTextValue<>(
 		"toastr.options.timeOut", 5000, StringTextType.INTEGER);
 
 	/**
 	 * The extended timeOut. Default: 1000
 	 */
-	private StringTextValue<Integer> extendedTimeOut = new StringTextValue<Integer>(
+	private final StringTextValue<Integer> extendedTimeOut = new StringTextValue<>(
 		"toastr.options.extendedTimeOut", 1000, StringTextType.INTEGER);
 
 	/**
 	 * The value of the easing when show. Default: swing
 	 */
-	private StringTextValue<Easing> showEasing = new StringTextValue<Easing>(
+	private final StringTextValue<Easing> showEasing = new StringTextValue<>(
 		"toastr.options.showEasing", Easing.SWING, StringTextType.ENUM);
 
 	/**
 	 * The value of the easing when hide. Default: linear
 	 */
-	private StringTextValue<Easing> hideEasing = new StringTextValue<Easing>(
+	private final StringTextValue<Easing> hideEasing = new StringTextValue<>(
 		"toastr.options.hideEasing", Easing.LINEAR, StringTextType.ENUM);
 
 	/**
 	 * The method when show. Default: fadeIn
 	 */
-	private StringTextValue<ShowMethod> showMethod = new StringTextValue<>(
+	private final StringTextValue<ShowMethod> showMethod = new StringTextValue<>(
 		"toastr.options.showMethod", ShowMethod.FADE_IN, StringTextType.ENUM);
 
 	/**
 	 * The method when hide. Default: fadeOut
 	 */
-	private StringTextValue<HideMethod> hideMethod = new StringTextValue<>(
+	private final StringTextValue<HideMethod> hideMethod = new StringTextValue<>(
 		"toastr.options.hideMethod", HideMethod.FADE_OUT, StringTextType.ENUM);
 
 	/**
 	 * The type of the notification. Default: success
 	 */
-	private StringTextValue<ToastrType> toastrType = new StringTextValue<>(
+	private final StringTextValue<ToastrType> toastrType = new StringTextValue<>(
 		"toastr.options.toastrType", ToastrType.SUCCESS, StringTextType.ENUM);
 
 	/**
 	 * The content of the notification. Default: null
 	 */
-	private StringTextValue<String> notificationContent = new StringTextValue<String>(
+	private final StringTextValue<String> notificationContent = new StringTextValue<>(
 		"toastr.options.notificationContent", StringTextType.STRING);
 
 	/**
 	 * The title of the notification. Default: null
 	 */
-	private StringTextValue<String> notificationTitle = new StringTextValue<String>(
+	private final StringTextValue<String> notificationTitle = new StringTextValue<>(
 		"toastr.options.notificationTitle", StringTextType.STRING);
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Set<StringTextValue<?>> asSet()
 	{

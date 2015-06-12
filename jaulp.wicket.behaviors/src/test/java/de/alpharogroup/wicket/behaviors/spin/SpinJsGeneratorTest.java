@@ -26,7 +26,7 @@ public class SpinJsGeneratorTest
 	@Test
 	public void testGenerator()
 	{
-		SpinSettings spinSettings = new SpinSettings();
+		SpinSettings spinSettings = SpinSettings.builder().build();
 		spinSettings.getClassName().setValue("fancy");
 		spinSettings.getTop().setValue("3");
 		SpinJsGenerator generator = new SpinJsGenerator(spinSettings, "aComponent");

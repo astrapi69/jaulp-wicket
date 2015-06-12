@@ -35,7 +35,7 @@ public class PnotifyJsGenerator extends JavascriptGenerator<PnotifySettings>
 	 */
 	public PnotifyJsGenerator()
 	{
-		this(new PnotifySettings());
+		this(PnotifySettings.builder().build());
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class PnotifyJsGenerator extends JavascriptGenerator<PnotifySettings>
 	 * @param settings
 	 *            the settings for the toastr plugin.
 	 */
-	public PnotifyJsGenerator(PnotifySettings settings)
+	public PnotifyJsGenerator(final PnotifySettings settings)
 	{
 		super(settings);
 		setMethodName("PNotify");

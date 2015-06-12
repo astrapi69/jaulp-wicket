@@ -46,12 +46,12 @@ public class ToastJsGenerator extends JavascriptGenerator<ToastrSettings> implem
 	 */
 	public ToastJsGenerator()
 	{
-		this(new ToastrSettings());
+		this(ToastrSettings.builder().build());
 	}
 
 	/**
 	 * Instantiates a new {@link ToastJsGenerator} with the given {@link ToastrSettings}.
-	 * 
+	 *
 	 * @param settings
 	 *            the settings for the toastr plugin.
 	 */
@@ -74,7 +74,7 @@ public class ToastJsGenerator extends JavascriptGenerator<ToastrSettings> implem
 	/**
 	 * Generates the javascript template code from the given map and the given method name that will
 	 * be used to interpolate with the values of the given map.
-	 * 
+	 *
 	 * @param variables
 	 *            the map with the javascript options.
 	 * @param methodName
@@ -104,7 +104,7 @@ public class ToastJsGenerator extends JavascriptGenerator<ToastrSettings> implem
 
 	/**
 	 * Gets the command.
-	 * 
+	 *
 	 * @param settings
 	 *            the toastrSettings
 	 * @return the command

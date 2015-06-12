@@ -25,7 +25,7 @@ public class PopupoverlayJsGeneratorTest
 	@Test
 	public void testGenerator()
 	{
-		PopupoverlaySettings popupoverlaySettings = new PopupoverlaySettings();
+		PopupoverlaySettings popupoverlaySettings = PopupoverlaySettings.builder().build();
 		popupoverlaySettings.getEscape().setValue(false);
 		popupoverlaySettings.getFocusdelay().setValue(400);
 		popupoverlaySettings.getHorizontal().setValue(HorizontalPosition.LEFT);
