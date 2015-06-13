@@ -24,7 +24,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * The Class JavascriptAppenderBehavior adds javascript code as String with an id.
+ * The Class JavascriptAppenderBehavior simply adds the given javascript code as String with an id in the html page as script block.
  */
 public class JavascriptAppenderBehavior extends Behavior
 {
