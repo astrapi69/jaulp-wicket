@@ -47,7 +47,7 @@ public class StartComponentExamples
 {
 	public static void main(String[] args) throws Exception
 	{
-		int sessionTimeout = (int)Duration.minutes(30).seconds();// set timeout to 30min(60sec *
+		int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec *
 																	// 30min=1800sec)...
 		System.setProperty("wicket.configuration", "development");
 		String projectname = "jaulp.wicket.components.examples";

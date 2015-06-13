@@ -256,6 +256,11 @@
 				<artifactId>wicket-tooltipster</artifactId>
 				<version>${wicket-js-addons.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-session-timeout</artifactId>
+				<version>${wicket-js-addons.version}</version>
+			</dependency>
 			<!-- JAULP WICKET DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>

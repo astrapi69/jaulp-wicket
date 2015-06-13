@@ -44,11 +44,13 @@ import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.GenericBasePage;
+import de.alpharogroup.wicket.base.util.SessionCountUtils;
 import de.alpharogroup.wicket.base.util.WicketComponentUtils;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.FaviconBehavior;
+import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
@@ -59,6 +61,9 @@ import de.alpharogroup.wicket.components.footer.FooterPanel;
 import de.alpharogroup.wicket.components.i18n.list.LinkListPanel;
 import de.alpharogroup.wicket.components.link.DefaultTargets;
 import de.alpharogroup.wicket.components.link.LinkItem;
+import de.alpharogroup.wicket.js.addon.sessiontimeout.BootstrapSessionTimeoutResourceReference;
+import de.alpharogroup.wicket.js.addon.sessiontimeout.SessionTimeoutJsGenerator;
+import de.alpharogroup.wicket.js.addon.sessiontimeout.SessionTimeoutSettings;
 
 /**
  * The Class ApplicationBasePage.
@@ -148,6 +153,21 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			WicketBootstrap3Application.FOOTER_FILTER_NAME,
 			WicketBootstrap3Application.FOOTER_FILTER_NAME);
 		add(headerResponseContainer);
+		
+		int sessionTimeout = SessionCountUtils.getSessionTimeout();
+		if(0 < sessionTimeout) {
+			SessionTimeoutSettings settings = SessionTimeoutSettings.builder().build();
+			settings.getTitle().setValue("Session timeout warning");
+			settings.getMessage().setValue("Your session will be timeouted...");
+			settings.getWarnAfter().setValue(3000);
+			settings.getRedirAfter().setValue(40000);
+			settings.getRedirUrl().setValue("/public/home");
+			settings.getLogoutUrl().setValue("/public/home");
+			
+			SessionTimeoutJsGenerator generator = new SessionTimeoutJsGenerator(settings);			
+			String jsCode = generator.generateJs();
+			add(new JavascriptAppenderBehavior(jsCode, "sessionTimeoutNotification"));
+		}
 	}
 
 	/**
@@ -344,6 +364,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		// ApplicationBasePage.class, "gaq.js");
 		//
 		// response.render(JavaScriptHeaderItem.forReference(gaqResourceReference));
+		response.render(JavaScriptHeaderItem.forReference(BootstrapSessionTimeoutResourceReference.get()));
 	}
 
 	/**
