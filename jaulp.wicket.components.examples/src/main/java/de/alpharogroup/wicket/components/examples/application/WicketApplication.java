@@ -25,7 +25,10 @@ import org.apache.log4j.Logger;
 import org.apache.wicket.Application;
 import org.apache.wicket.IApplicationListener;
 import org.apache.wicket.RuntimeConfigurationType;
+import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 import org.apache.wicket.resource.loader.BundleStringResourceLoader;
 
 import de.alpharogroup.collections.ListExtensions;
@@ -54,6 +57,17 @@ public class WicketApplication extends WicketBootstrap3Application
 	public Class<? extends WebPage> getHomePage()
 	{
 		return HomePage.class;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Session newSession(final Request request, final Response response) {
+		final WicketSession session = new WicketSession(request);
+		session.bind();
+		LOGGER.info("new session:" + session.getId());
+		return session;
 	}
 
 	/**

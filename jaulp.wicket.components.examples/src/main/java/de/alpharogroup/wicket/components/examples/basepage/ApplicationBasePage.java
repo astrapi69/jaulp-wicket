@@ -44,7 +44,6 @@ import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.GenericBasePage;
-import de.alpharogroup.wicket.base.util.SessionCountUtils;
 import de.alpharogroup.wicket.base.util.WicketComponentUtils;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
@@ -54,6 +53,7 @@ import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
+import de.alpharogroup.wicket.components.examples.application.WicketSession;
 import de.alpharogroup.wicket.components.examples.imprint.ImprintPage;
 import de.alpharogroup.wicket.components.examples.termofuse.TermOfUsePage;
 import de.alpharogroup.wicket.components.footer.FooterMenuPanel;
@@ -154,15 +154,17 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			WicketBootstrap3Application.FOOTER_FILTER_NAME);
 		add(headerResponseContainer);
 		
-		int sessionTimeout = SessionCountUtils.getSessionTimeout();
+		int sessionTimeout = WicketSession.get().getSessionTimeout();
 		if(0 < sessionTimeout) {
+			int oneThirdOfWarnAfter = (sessionTimeout *1000)/3;
+			int twoThirdOfWarnAfter = oneThirdOfWarnAfter*2;			
 			SessionTimeoutSettings settings = SessionTimeoutSettings.builder().build();
 			settings.getTitle().setValue("Session timeout warning");
 			settings.getMessage().setValue("Your session will be timeouted...");
-			settings.getWarnAfter().setValue(3000);
-			settings.getRedirAfter().setValue(40000);
-			settings.getRedirUrl().setValue("/public/home");
-			settings.getLogoutUrl().setValue("/public/home");
+			settings.getWarnAfter().setValue(oneThirdOfWarnAfter);
+			settings.getRedirAfter().setValue(twoThirdOfWarnAfter);
+			settings.getRedirUrl().setValue("/public/imprint");
+			settings.getLogoutUrl().setValue("/public/imprint");
 			
 			SessionTimeoutJsGenerator generator = new SessionTimeoutJsGenerator(settings);			
 			String jsCode = generator.generateJs();
