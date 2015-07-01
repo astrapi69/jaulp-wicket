@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.18.0</version>
+		<version>6.20.0</version>
 	</parent>
 	<artifactId>jaulp.wicket.components.examples</artifactId>
 	<packaging>war</packaging>
