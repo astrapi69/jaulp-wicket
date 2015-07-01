@@ -74,7 +74,7 @@
 		<wicket-source.version>6.0.0.8</wicket-source.version>
 		<wicket-js-addons.version>${project.version}</wicket-js-addons.version>
 		<!-- JETTY 9 version -->
-		<jetty9.version>9.2.10.v20150310</jetty9.version>
+		<jetty9.version>9.3.0.v20150612</jetty9.version>
 		<wicket-jetty9-runner.version>1.0.1</wicket-jetty9-runner.version>
 		<!-- TOMCAT version -->
 		<tomcat.version>7.0.57</tomcat.version>
@@ -1044,6 +1044,11 @@
 					<plugin>
 						<inherited>true</inherited>
 						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
 					</plugin>
 
 					<plugin>
