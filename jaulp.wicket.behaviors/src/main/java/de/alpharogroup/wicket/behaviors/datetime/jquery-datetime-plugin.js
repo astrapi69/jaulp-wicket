@@ -13,6 +13,10 @@ jQuery.extend({
     now = day + '.' + month + '.' + fullYear + ' ' + hours + ':' + minutes + ':' + seconds;
     return now;
   },
+  
+  countdown: function() {
+	  
+  },
 
   normalizeTimeUnit: function (timeunit) {
     if (timeunit < 10) {
