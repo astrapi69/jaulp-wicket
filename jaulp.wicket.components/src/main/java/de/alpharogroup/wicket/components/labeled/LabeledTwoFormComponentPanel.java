@@ -56,8 +56,8 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
+	 * @param labelModel
+	 *            the model for the label
 	 */
 	public LabeledTwoFormComponentPanel(String id, IModel<String> labelModel)
 	{

@@ -88,12 +88,9 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 				model, "rightContent")));
 	}
 
-
 	/**
 	 * Factory method for create a new Label with a {@link IModel}.
 	 *
-	 * @param <T>
-	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model

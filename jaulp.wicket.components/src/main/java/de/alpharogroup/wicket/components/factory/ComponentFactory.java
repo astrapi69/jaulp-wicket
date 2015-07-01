@@ -277,8 +277,27 @@ public class ComponentFactory
 	}
 
 	/**
+	 * New fragment.
+	 *
+	 * @param <T>
+	 *            the generic type
+	 * @param id
+	 *            the id
+	 * @param markupId
+	 *            the markup id
+	 * @param markupProvider
+	 *            the markup provider
+	 * @param model
+	 *            the model
+	 * @return the fragment
+	 */
+
+
+	/**
 	 * Factory method for create a new Fragment.
 	 * 
+	 * @param <T>
+	 *            the generic type
 	 * @param id
 	 *            the id
 	 * @param markupId

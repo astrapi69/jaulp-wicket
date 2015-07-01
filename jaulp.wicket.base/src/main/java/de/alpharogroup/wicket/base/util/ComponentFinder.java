@@ -57,7 +57,7 @@ public final class ComponentFinder
 	/**
 	 * Gets the page if the request handler is instance of IPageRequestHandler.
 	 *
-	 * @param requestHandler
+	 * @param requestHandler The {@link IRequestHandler} to get the page.
 	 * @return The page or null if not found.
 	 */
 	public static Page getPage(IRequestHandler requestHandler)

@@ -138,6 +138,7 @@ public class MenuItem implements Serializable
 	 *
 	 * @param menuItems
 	 *            the new menu items
+	 * @return this {@link MenuItem}
 	 */
 	public MenuItem setMenuItems(final List<MenuItem> menuItems)
 	{

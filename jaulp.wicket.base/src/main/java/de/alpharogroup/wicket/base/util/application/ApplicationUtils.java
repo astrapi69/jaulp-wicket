@@ -366,6 +366,8 @@ public final class ApplicationUtils
 	 *
 	 * @param application
 	 *            the application to set the settings
+	 * @param applicationRequestCycleListener
+	 *            the {@link AbstractRequestCycleListener} to set.
 	 */
 	public static void setDefaultDeploymentModeConfiguration(final Application application,
 		final AbstractRequestCycleListener applicationRequestCycleListener)
@@ -454,6 +456,7 @@ public final class ApplicationUtils
 	 *            the http port
 	 * @param httpsPort
 	 *            the https port
+	 * @return the i request mapper
 	 */
 	public static IRequestMapper setRootRequestMapper(final Application application,
 		final int httpPort, final int httpsPort)
@@ -524,12 +527,11 @@ public final class ApplicationUtils
 	/**
 	 * Adds the given resourcePath to the resource finder from the given application.
 	 *
-	 * @see IResourceSettings#getResourceFinders()
-	 *
 	 * @param application
 	 *            the application
 	 * @param resourcePath
 	 *            the resource path
+	 * @see IResourceSettings#getResourceFinders()
 	 */
 	public static void addResourceFinder(final WebApplication application, String resourcePath)
 	{

@@ -70,7 +70,7 @@ public class SessionLocal<T extends Serializable>
 	/**
 	 * Gets the object from the MetaDataEntry.
 	 * 
-	 * @return
+	 * @return the object from the MetaDataEntry.
 	 */
 	public T get()
 	{
