@@ -15,7 +15,7 @@
  */
 package de.alpharogroup.wicket.behaviors.resource.references;
 
-import de.alpharogroup.wicket.base.util.template.JavascriptGenerator;
+import de.alpharogroup.wicket.js.addon.core.JavascriptGenerator;
 
 /**
  * The Class TimelineChartJsGenerator generates the javascript with a TimelineChartSettings object.

@@ -164,6 +164,11 @@
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>wicket-js-addons-core</artifactId>
+				<version>${wicket-js-addons.version}</version>
+			</dependency>
 			<!-- WICKET DEPENDENCIES -->
 			<dependency>
 				<groupId>org.apache.wicket</groupId>

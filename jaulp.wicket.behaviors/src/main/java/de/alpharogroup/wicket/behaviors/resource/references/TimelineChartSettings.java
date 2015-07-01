@@ -17,8 +17,9 @@ package de.alpharogroup.wicket.behaviors.resource.references;
 
 import java.util.Set;
 
-import de.alpharogroup.wicket.base.util.template.Settings;
-import de.alpharogroup.wicket.base.util.template.StringTextValue;
+import de.alpharogroup.wicket.js.addon.core.Settings;
+import de.alpharogroup.wicket.js.addon.core.StringTextValue;
+
 
 /**
  * This class encapsulates various settings for the timeline chart. See the documentation for the

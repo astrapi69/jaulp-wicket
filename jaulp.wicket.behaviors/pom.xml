@@ -22,6 +22,10 @@
 			<groupId>org.odlabs.wiquery</groupId>
 			<artifactId>wiquery-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>wicket-js-addons-core</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
