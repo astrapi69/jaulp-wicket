@@ -60,9 +60,12 @@ public class StartComponentExamples
 		// Add a file appender to the logger programatically
 		// Logger logger = org.apache.log4j.LogManager.getLogger("org.eclipse.jetty");
 		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender("./application.log"));
+		ContextHandlerCollection contexts = new ContextHandlerCollection();
+		
 		ServletContextHandler servletContextHandler = Jetty9Runner
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
+				.parent(contexts)
 				.filterHolderConfiguration(
 					FilterHolderConfiguration
 						.builder()
@@ -75,7 +78,7 @@ public class StartComponentExamples
 					ServletHolderConfiguration.builder().servletClass(DefaultServlet.class)
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
-		ContextHandlerCollection contexts = new ContextHandlerCollection();
+		
 		DeploymentManager deployer = Jetty9Runner.getDeploymentManager(contexts, webapp.getAbsolutePath(), null);
 		Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
