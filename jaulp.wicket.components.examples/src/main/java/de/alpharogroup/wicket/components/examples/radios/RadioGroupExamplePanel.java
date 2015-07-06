@@ -15,9 +15,6 @@
  */
 package de.alpharogroup.wicket.components.examples.radios;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,6 +28,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.ListModel;
 
 import de.alpharogroup.test.objects.Company;
@@ -62,8 +60,8 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 
 		IModel<List<Company>> companies = new ListModel<Company>(comps);
 
-		final RadioGroup<Company> group = new RadioGroup<Company>("group", model(from(
-			radioGroupModel).getSelected()));
+		final RadioGroup<Company> group = new RadioGroup<Company>("group",
+			new PropertyModel<Company>(radioGroupModel, "selected"));
 		group.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
 			private static final long serialVersionUID = 1L;
