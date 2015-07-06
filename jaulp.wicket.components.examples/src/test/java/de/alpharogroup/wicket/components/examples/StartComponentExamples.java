@@ -19,16 +19,11 @@ import java.io.File;
 
 import lombok.experimental.ExtensionMethod;
 
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
 import org.apache.wicket.util.time.Duration;
 import org.eclipse.jetty.deploy.DeploymentManager;
-import org.eclipse.jetty.deploy.PropertiesConfigurationManager;
-import org.eclipse.jetty.deploy.providers.WebAppProvider;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.servlet.DefaultServlet;
@@ -40,6 +35,7 @@ import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
+import de.alpharogroup.jetty9.runner.log.LoggerExtensions;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 
 @ExtensionMethod(LoggerExtensions.class)
@@ -52,12 +48,18 @@ public class StartComponentExamples
 		System.setProperty("wicket.configuration", "development");
 		String projectname = "jaulp.wicket.components.examples";
 		File projectDirectory = PathFinder.getProjectDirectory();
-		File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
-			"webapp");
+		File webapp;
+		if(projectDirectory.getAbsolutePath().endsWith(projectname)) {
+			webapp = PathFinder.getRelativePath(projectDirectory, "src", "main",
+				"webapp");			
+		} else {
+			webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
+				"webapp");
+		}
 		String filterPath = "/*";
 		// Add a file appender to the logger programatically
 		// Logger logger = org.apache.log4j.LogManager.getLogger("org.eclipse.jetty");
-		Logger.getRootLogger().addFileAppender(newFileAppender("./application.log"));
+		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender("./application.log"));
 		ServletContextHandler servletContextHandler = Jetty9Runner
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
@@ -73,44 +75,17 @@ public class StartComponentExamples
 					ServletHolderConfiguration.builder().servletClass(DefaultServlet.class)
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
-
+		ContextHandlerCollection contexts = new ContextHandlerCollection();
+		DeploymentManager deployer = Jetty9Runner.getDeploymentManager(contexts, webapp.getAbsolutePath(), null);
 		Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
+			.contexts(contexts)
+			.deployer(deployer)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
-			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
+			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT)
+			.keyStorePassword("wicket")
 			.keyStorePathResource("/keystore").build();
 		Server server = new Server();
 		Jetty9Runner.run(server, config);
-	}
-
-	// see:http://git.eclipse.org/c/jetty/org.eclipse.jetty.project.git/tree/examples/embedded/src/main/java/org/eclipse/jetty/embedded/LikeJettyXml.java
-	public static DeploymentManager getDeploymentManager(ContextHandlerCollection contexts,
-		String monitoredDirNamePrefix, String defaultsDescriptorPrefix)
-	{
-		DeploymentManager deployer = new DeploymentManager();
-		deployer.setContexts(contexts);
-		deployer.setContextAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
-			".*/servlet-api-[^/]*\\.jar$");
-		WebAppProvider webAppProvider = new WebAppProvider();
-		webAppProvider.setMonitoredDirName(monitoredDirNamePrefix + "/webapps");
-		// webAppProvider.setDefaultsDescriptor(defaultsDescriptorPrefix + "/etc/webdefault.xml");
-		webAppProvider.setScanInterval(1);
-		webAppProvider.setExtractWars(true);
-		webAppProvider.setConfigurationManager(new PropertiesConfigurationManager());
-
-		deployer.addAppProvider(webAppProvider);
-		return deployer;
-	}
-
-	private static FileAppender newFileAppender(String logFilePath)
-	{
-		FileAppender appender = new FileAppender();
-		appender.setName("MyFileAppender");
-		appender.setLayout(new PatternLayout("%d %-5p [%c{1}] %m%n"));
-		appender.setFile(logFilePath);
-		appender.setAppend(true);
-		appender.setThreshold(Level.DEBUG);
-		appender.activateOptions();
-		return appender;
 	}
 }
