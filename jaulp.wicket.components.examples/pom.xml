@@ -148,7 +148,6 @@
 			</plugins>
 		</pluginManagement>
 
-
 		<plugins>
 
 			<plugin>
@@ -178,6 +177,17 @@
 				<artifactId>maven-deploy-plugin</artifactId>
 				<configuration>
 					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<!-- skip this project from deploy and staging. -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
 				</configuration>
 			</plugin>
 
