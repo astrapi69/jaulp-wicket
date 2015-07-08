@@ -24,6 +24,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.jetty9.runner.Jetty9Runner;
+import de.alpharogroup.jetty9.runner.ServletContextHandlerFactory;
 import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
@@ -41,7 +42,7 @@ public class StartHeaderContributorsExamples
 
 		String filterPath = "/*";
 
-		ServletContextHandler servletContextHandler = Jetty9Runner
+		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.filterHolderConfiguration(

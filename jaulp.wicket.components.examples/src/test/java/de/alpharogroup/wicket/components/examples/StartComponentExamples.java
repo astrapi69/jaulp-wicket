@@ -35,6 +35,8 @@ import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
+import de.alpharogroup.jetty9.runner.factories.DeploymentManagerFactory;
+import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 import de.alpharogroup.jetty9.runner.log.LoggerExtensions;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 
@@ -62,7 +64,7 @@ public class StartComponentExamples
 		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender("./application.log"));
 		ContextHandlerCollection contexts = new ContextHandlerCollection();
 		
-		ServletContextHandler servletContextHandler = Jetty9Runner
+		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.parent(contexts)
@@ -79,7 +81,7 @@ public class StartComponentExamples
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
 		
-		DeploymentManager deployer = Jetty9Runner.newDeploymentManager(contexts, webapp.getAbsolutePath(), null);
+		DeploymentManager deployer = DeploymentManagerFactory.newDeploymentManager(contexts, webapp.getAbsolutePath(), null);
 		Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.contexts(contexts)

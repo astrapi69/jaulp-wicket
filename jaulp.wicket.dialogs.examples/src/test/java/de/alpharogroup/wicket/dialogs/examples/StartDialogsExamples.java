@@ -28,6 +28,7 @@ import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
+import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 
 /**
  * The Class StartDialogsExamples.
@@ -52,7 +53,7 @@ public class StartDialogsExamples
 			"webapp");
 		String filterPath = "/*";
 
-		ServletContextHandler servletContextHandler = Jetty9Runner
+		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.filterHolderConfiguration(

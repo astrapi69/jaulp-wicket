@@ -28,6 +28,7 @@ import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
 import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
+import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 
 public class StartXsltExamples
 {
@@ -40,7 +41,7 @@ public class StartXsltExamples
 			"webapp");
 		String filterPath = "/*";
 
-		ServletContextHandler servletContextHandler = Jetty9Runner
+		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.filterHolderConfiguration(
