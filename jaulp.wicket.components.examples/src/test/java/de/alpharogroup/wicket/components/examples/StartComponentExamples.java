@@ -79,7 +79,7 @@ public class StartComponentExamples
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
 		
-		DeploymentManager deployer = Jetty9Runner.getDeploymentManager(contexts, webapp.getAbsolutePath(), null);
+		DeploymentManager deployer = Jetty9Runner.newDeploymentManager(contexts, webapp.getAbsolutePath(), null);
 		Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.contexts(contexts)
