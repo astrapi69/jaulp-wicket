@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.examples;
 
 import java.io.File;
+import java.io.IOException;
 
 import lombok.experimental.ExtensionMethod;
 
@@ -29,6 +30,7 @@ import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
+import de.alpharogroup.file.delete.DeleteFileUtils;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.jetty9.runner.Jetty9Runner;
 import de.alpharogroup.jetty9.runner.config.FilterHolderConfiguration;
@@ -43,7 +45,7 @@ import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 @ExtensionMethod(LoggerExtensions.class)
 public class StartComponentExamples
 {
-	public static void main(String[] args) throws Exception
+	public static void main(String[] args)
 	{
 		int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec *
 																	// 30min=1800sec)...
@@ -58,10 +60,18 @@ public class StartComponentExamples
 			webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
 				"webapp");
 		}
+		File logfile = new File(projectDirectory, "application.log");
+		if(logfile.exists()) {
+			try {
+				DeleteFileUtils.delete(logfile);
+			} catch (IOException e) {
+				Logger.getRootLogger().error("logfile could not deleted.", e);
+			}
+		}
+		String absolutePathFromLogfile = logfile.getAbsolutePath();
 		String filterPath = "/*";
 		// Add a file appender to the logger programatically
-		// Logger logger = org.apache.log4j.LogManager.getLogger("org.eclipse.jetty");
-		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender("./application.log"));
+		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender(absolutePathFromLogfile));
 		ContextHandlerCollection contexts = new ContextHandlerCollection();
 		
 		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
