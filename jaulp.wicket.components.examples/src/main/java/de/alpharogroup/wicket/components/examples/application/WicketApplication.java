@@ -53,7 +53,6 @@ public class WicketApplication extends WicketBootstrap3Application
 	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
-	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
 		return HomePage.class;
@@ -62,7 +61,6 @@ public class WicketApplication extends WicketBootstrap3Application
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Session newSession(final Request request, final Response response) {
 		final WicketSession session = new WicketSession(request);
 		session.bind();
@@ -73,7 +71,6 @@ public class WicketApplication extends WicketBootstrap3Application
 	/**
 	 * @see org.apache.wicket.Application#init()
 	 */
-	@Override
 	public void init()
 	{
 		super.init();
@@ -108,7 +105,6 @@ public class WicketApplication extends WicketBootstrap3Application
 		// add an applicationListener...
 		this.getApplicationListeners().add(new IApplicationListener()
 		{
-			@Override
 			public void onBeforeDestroyed(Application application)
 			{
 				LOGGER.info("Wicket application is destroyed");
@@ -116,7 +112,6 @@ public class WicketApplication extends WicketBootstrap3Application
 				// been destroyed...
 			}
 
-			@Override
 			public void onAfterInitialized(Application application)
 			{
 				LOGGER.info("Wicket application is initialized");
@@ -133,7 +128,6 @@ public class WicketApplication extends WicketBootstrap3Application
 			"UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
 	}
 
-	@Override
 	public RuntimeConfigurationType getConfigurationType()
 	{
 		RuntimeConfigurationType configType = super.getConfigurationType();
@@ -238,7 +232,6 @@ public class WicketApplication extends WicketBootstrap3Application
 		return (WicketApplication)Application.get();
 	}
 
-	@Override
 	public String getPackageToScan()
 	{
 		return ListExtensions.getFirst(getPackagesToScan());
