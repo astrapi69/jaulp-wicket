@@ -17,17 +17,19 @@ package de.alpharogroup.wicket.components.actions;
 
 import org.apache.wicket.util.io.IClusterable;
 
-
 /**
  * The Interface Action implements the command Pattern.
- * 
+ *
  * @author Asterios Raptis
+ * @param <R> the generic type of the return type of the execute method.
  */
-public interface Action extends IClusterable
+public interface Action<R> extends IClusterable
 {
 
 	/**
-	 * Execute.
+	 * Execute a command.
+	 *
+	 * @return the optional return type of the command.
 	 */
-	void execute();
+	R execute();
 }

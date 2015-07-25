@@ -47,7 +47,7 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	 *
 	 * @return the action
 	 */
-	protected abstract Action getAction();
+	protected abstract Action<?> getAction();
 
 	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
