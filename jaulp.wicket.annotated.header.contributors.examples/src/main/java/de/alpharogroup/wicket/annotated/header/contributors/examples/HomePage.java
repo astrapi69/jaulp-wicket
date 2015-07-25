@@ -15,7 +15,11 @@
  */
 package de.alpharogroup.wicket.annotated.header.contributors.examples;
 
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.ContextRelativeResourceReference;
+import org.apache.wicket.request.resource.ResourceReference;
 
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
@@ -31,6 +35,8 @@ public class HomePage extends BasePage
 {
 
 	private static final long serialVersionUID = 1L;
+	// 15.5 Context-relative resources https://ci.apache.org/projects/wicket/guide/6.x/guide/resources.html#resources_5
+	public static final ResourceReference MAIN_CSS = new ContextRelativeResourceReference("css/main.css", false);
 
 	/**
 	 * Constructor that is invoked when page is invoked without a session.
@@ -46,6 +52,12 @@ public class HomePage extends BasePage
 
 		add(new FooterPanel("footerPanel"));
 
+	}
+	
+	@Override
+	public void renderHead(IHeaderResponse response) {
+	    super.renderHead(response);
+	    response.render(CssHeaderItem.forReference(MAIN_CSS));
 	}
 
 }
