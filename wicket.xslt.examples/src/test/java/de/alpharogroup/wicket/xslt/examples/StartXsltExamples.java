@@ -19,6 +19,7 @@ import java.io.File;
 
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
+import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
@@ -57,10 +58,20 @@ public class StartXsltExamples
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(300).filterPath("/*").build());
 
-		Jetty9Runner.run(Jetty9RunConfiguration.builder()
+		final Jetty9RunConfiguration config = newJetty9RunConfiguration(servletContextHandler);
+
+		Server server = new Server();
+		Jetty9Runner.runServletContextHandler(server, config);
+	}
+
+	private static Jetty9RunConfiguration newJetty9RunConfiguration(final ServletContextHandler servletContextHandler)
+	{
+		final Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
-			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
-			.keyStorePathResource("/keystore").build());
+			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT)
+			.keyStorePassword("wicket")
+			.keyStorePathResource("/keystore").build();
+		return config;
 	}
 }

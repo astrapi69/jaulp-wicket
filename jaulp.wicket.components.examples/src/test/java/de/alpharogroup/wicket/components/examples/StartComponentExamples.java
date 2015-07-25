@@ -45,14 +45,14 @@ import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 @ExtensionMethod(LoggerExtensions.class)
 public class StartComponentExamples
 {
-	public static void main(String[] args)
+	public static void main(final String[] args)
 	{
-		int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec *
+		final int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec *
 																	// 30min=1800sec)...
 		System.setProperty("wicket.configuration", "development");
-		String projectname = "jaulp.wicket.components.examples";
-		File projectDirectory = PathFinder.getProjectDirectory();
-		File webapp;
+		final String projectname = "jaulp.wicket.components.examples";
+		final File projectDirectory = PathFinder.getProjectDirectory();
+		final File webapp;
 		if(projectDirectory.getAbsolutePath().endsWith(projectname)) {
 			webapp = PathFinder.getRelativePath(projectDirectory, "src", "main",
 				"webapp");			
@@ -60,7 +60,7 @@ public class StartComponentExamples
 			webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
 				"webapp");
 		}
-		File logfile = new File(projectDirectory, "application.log");
+		final File logfile = new File(projectDirectory, "application.log");
 		if(logfile.exists()) {
 			try {
 				DeleteFileUtils.delete(logfile);
@@ -68,13 +68,13 @@ public class StartComponentExamples
 				Logger.getRootLogger().error("logfile could not deleted.", e);
 			}
 		}
-		String absolutePathFromLogfile = logfile.getAbsolutePath();
-		String filterPath = "/*";
+		final String absolutePathFromLogfile = logfile.getAbsolutePath();
+		final String filterPath = "/*";
 		// Add a file appender to the logger programatically
 		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender(absolutePathFromLogfile));
-		ContextHandlerCollection contexts = new ContextHandlerCollection();
+		final ContextHandlerCollection contexts = new ContextHandlerCollection();
 		
-		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
+		final ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.parent(contexts)
@@ -91,8 +91,18 @@ public class StartComponentExamples
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
 		
-		DeploymentManager deployer = DeploymentManagerFactory.newDeploymentManager(contexts, webapp.getAbsolutePath(), null);
-		Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
+		final DeploymentManager deployer = DeploymentManagerFactory.newDeploymentManager(contexts, webapp.getAbsolutePath(), null);
+		
+		final Jetty9RunConfiguration config = newJetty9RunConfiguration(servletContextHandler, contexts, deployer);
+		final Server server = new Server();
+		Jetty9Runner.runServletContextHandler(server, config);
+	}
+	
+
+	private static Jetty9RunConfiguration newJetty9RunConfiguration(final ServletContextHandler servletContextHandler, 
+		final ContextHandlerCollection contexts, final DeploymentManager deployer)
+	{
+		final Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.contexts(contexts)
 			.deployer(deployer)
@@ -100,7 +110,6 @@ public class StartComponentExamples
 			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT)
 			.keyStorePassword("wicket")
 			.keyStorePathResource("/keystore").build();
-		Server server = new Server();
-		Jetty9Runner.run(server, config);
+		return config;
 	}
 }
