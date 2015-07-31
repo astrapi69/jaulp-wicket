@@ -26,9 +26,10 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * The Class JavascriptAppenderBehavior simply adds the given javascript code as String with an id in the html page as script block.
+ * The Class JavascriptAppenderBehavior simply adds the given javascript code as String with an id
+ * in the html page as script block.
  */
- @Builder
+@Builder
 public class JavascriptAppenderBehavior extends Behavior
 {
 
@@ -45,32 +46,35 @@ public class JavascriptAppenderBehavior extends Behavior
 	private final CharSequence javascript;
 
 	/**
-	 * Instantiates a new adds the javascript behavior. The id will be generated.
+	 * Instantiates a new {@link JavascriptAppenderBehavior}. The id will be generated.
 	 *
 	 * @param javascript
 	 *            javascript content to be add.
 	 */
 	public JavascriptAppenderBehavior(final CharSequence javascript)
 	{
-		this(javascript, String.valueOf(UUID.randomUUID()));
+		this(String.valueOf(UUID.randomUUID()), javascript);
 	}
 
 	/**
-	 * Instantiates a new adds the javascript behavior.
+	 * Instantiates a new {@link JavascriptAppenderBehavior}.
 	 *
 	 * @param javascript
 	 *            javascript content to be add.
 	 * @param id
 	 *            unique id for the javascript element.
 	 */
-	public JavascriptAppenderBehavior(final  String id, final CharSequence javascript)
+	public JavascriptAppenderBehavior(final String id, final CharSequence javascript)
 	{
 		this.javascript = Args.notNull(javascript, "javascript");
 		if (id == null)
 		{
-			id = String.valueOf(UUID.randomUUID());
+			this.id = String.valueOf(UUID.randomUUID());
 		}
-		this.id = id;
+		else
+		{
+			this.id = id;
+		}
 	}
 
 	/**
