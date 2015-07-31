@@ -96,6 +96,15 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
+//        final IModel<T> m = getModel();
+//        final T t = m.getObject();
+//        try {
+//            String input = getInput();
+//            BeanUtils.setProperty(t, getId(), input);
+//        } catch (IllegalAccessException | InvocationTargetException e) {
+//            LOGGER.error("Set password bean failed.", e);
+//        }
+//        setConvertedInput(t);
 	}
 
 	/**
