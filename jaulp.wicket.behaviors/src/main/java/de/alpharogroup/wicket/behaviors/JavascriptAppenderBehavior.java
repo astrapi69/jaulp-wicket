@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.behaviors;
 
 import java.util.UUID;
 
+import lombok.Builder;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -26,6 +28,7 @@ import org.apache.wicket.util.lang.Args;
 /**
  * The Class JavascriptAppenderBehavior simply adds the given javascript code as String with an id in the html page as script block.
  */
+ @Builder
 public class JavascriptAppenderBehavior extends Behavior
 {
 
@@ -47,7 +50,7 @@ public class JavascriptAppenderBehavior extends Behavior
 	 * @param javascript
 	 *            javascript content to be add.
 	 */
-	public JavascriptAppenderBehavior(CharSequence javascript)
+	public JavascriptAppenderBehavior(final CharSequence javascript)
 	{
 		this(javascript, String.valueOf(UUID.randomUUID()));
 	}
@@ -60,7 +63,7 @@ public class JavascriptAppenderBehavior extends Behavior
 	 * @param id
 	 *            unique id for the javascript element.
 	 */
-	public JavascriptAppenderBehavior(CharSequence javascript, String id)
+	public JavascriptAppenderBehavior(final  String id, final CharSequence javascript)
 	{
 		this.javascript = Args.notNull(javascript, "javascript");
 		if (id == null)
@@ -74,7 +77,7 @@ public class JavascriptAppenderBehavior extends Behavior
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(Component component, IHeaderResponse response)
+	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
 		response.render(JavaScriptHeaderItem.forScript(this.javascript, this.id));
