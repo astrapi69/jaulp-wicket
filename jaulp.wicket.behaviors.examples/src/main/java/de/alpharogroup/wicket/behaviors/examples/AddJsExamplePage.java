@@ -41,7 +41,7 @@ public class AddJsExamplePage extends WebPage
 	 */
 	public AddJsExamplePage(final PageParameters parameters)
 	{
-		add(new JavascriptAppenderBehavior("alert('foo bar');", "xy"));
+		add(JavascriptAppenderBehavior.builder().id("xy").javascript("alert('foo bar');").build());
 		// message field
 		final TextField<String> messageField = new TextField<String>("message");
 		messageField.add(new FocusRequestBehavior());

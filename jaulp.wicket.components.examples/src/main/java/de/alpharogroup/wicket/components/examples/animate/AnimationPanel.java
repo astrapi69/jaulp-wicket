@@ -82,7 +82,7 @@ public class AnimationPanel extends Panel
 		spinSettings.getSpeed().setValue(1.2f);
 		spinSettings.getPosition().setValue("relative");
 		String js = new SpinJsGenerator(spinSettings, animateButton.getMarkupId()).generateJs();
-		add(new JavascriptAppenderBehavior(js));
+		add(JavascriptAppenderBehavior.builder().javascript(js).build());
 	}
 
 

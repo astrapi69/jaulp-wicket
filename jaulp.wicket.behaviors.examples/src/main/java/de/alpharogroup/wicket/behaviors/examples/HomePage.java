@@ -79,7 +79,7 @@ public class HomePage extends WebPage
 
 		};
 		add(new JavascriptResourceReferenceAppenderBehavior(this.getClass(), "functions.js", "func"));
-		add(new JavascriptAppenderBehavior("alertnow();", "xy"));
+		add(JavascriptAppenderBehavior.builder().id("xy").javascript("alertnow();").build());
 
 		add(new Link<String>("focusRequestExamplePage")
 		{

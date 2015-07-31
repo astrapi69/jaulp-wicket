@@ -52,7 +52,9 @@ public class TooltipsExamplePanel extends Panel
 		TooltipsterJsGenerator tooltipsterJsGenerator = new TooltipsterJsGenerator(
 			tooltipsterSettings, label.getMarkupId());
 		String js = tooltipsterJsGenerator.generateJs();
-		label.add(new JavascriptAppenderBehavior(js, "tooltip_" + label.getMarkupId()));
+		label.add(JavascriptAppenderBehavior.builder()
+			.id("tooltip_" + label.getMarkupId())
+			.javascript(js).build());
 		add(label);
 	}
 

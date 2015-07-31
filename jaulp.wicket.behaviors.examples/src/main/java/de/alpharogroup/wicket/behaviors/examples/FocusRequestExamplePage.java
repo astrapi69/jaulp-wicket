@@ -41,7 +41,6 @@ public class FocusRequestExamplePage extends WebPage
 	 */
 	public FocusRequestExamplePage(final PageParameters parameters)
 	{
-		add(new JavascriptAppenderBehavior("alert('foo bar');", "xy"));
 		// message field
 		final TextField<String> messageField = new TextField<String>("message");
 		messageField.add(new FocusRequestBehavior());

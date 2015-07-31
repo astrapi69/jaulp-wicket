@@ -153,11 +153,12 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			WicketBootstrap3Application.FOOTER_FILTER_NAME,
 			WicketBootstrap3Application.FOOTER_FILTER_NAME);
 		add(headerResponseContainer);
-		
+
 		int sessionTimeout = WicketSession.get().getSessionTimeout();
-		if(0 < sessionTimeout) {
-			int oneThirdOfWarnAfter = (sessionTimeout *1000)/3;
-			int twoThirdOfWarnAfter = oneThirdOfWarnAfter*2;			
+		if (0 < sessionTimeout)
+		{
+			int oneThirdOfWarnAfter = (sessionTimeout * 1000) / 3;
+			int twoThirdOfWarnAfter = oneThirdOfWarnAfter * 2;
 			SessionTimeoutSettings settings = SessionTimeoutSettings.builder().build();
 			settings.getTitle().setValue("Session timeout warning");
 			settings.getMessage().setValue("Your session will be timeouted...");
@@ -165,10 +166,11 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			settings.getRedirAfter().setValue(twoThirdOfWarnAfter);
 			settings.getRedirUrl().setValue("/public/imprint");
 			settings.getLogoutUrl().setValue("/public/imprint");
-			
-			SessionTimeoutJsGenerator generator = new SessionTimeoutJsGenerator(settings);			
+
+			SessionTimeoutJsGenerator generator = new SessionTimeoutJsGenerator(settings);
 			String jsCode = generator.generateJs();
-			add(new JavascriptAppenderBehavior(jsCode, "sessionTimeoutNotification"));
+			add(JavascriptAppenderBehavior.builder().id("sessionTimeoutNotification")
+				.javascript(jsCode).build());
 		}
 	}
 
@@ -366,7 +368,8 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		// ApplicationBasePage.class, "gaq.js");
 		//
 		// response.render(JavaScriptHeaderItem.forReference(gaqResourceReference));
-		response.render(JavaScriptHeaderItem.forReference(BootstrapSessionTimeoutResourceReference.get()));
+		response.render(JavaScriptHeaderItem.forReference(BootstrapSessionTimeoutResourceReference
+			.get()));
 	}
 
 	/**
