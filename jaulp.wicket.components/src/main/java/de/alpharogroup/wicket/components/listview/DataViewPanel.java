@@ -43,7 +43,10 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
     /** The data view. */
     @Getter
     private final DataView<T> dataView;
-    // instance block for set the markup id, with other words make this component ajaxifiable...
+    
+    /**
+     *  instance block for set the markup id, with other words make this component ajaxifiable. 
+     **/
     {
         setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
@@ -75,19 +78,22 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
     }
 
     /**
-     * New list view.
+     * New DataView.
      *
      * @param id
      *            the id
-     * @param model
-     *            the model
-     * @return the list view
+     * @param dataProvider
+     *            the data provider
+     * @return the DataView
      */
     protected DataView<T> newDataView(final String id, final IDataProvider<T> dataProvider) {
         DataView<T> dataView = new DataView<T>(id, dataProvider) {
             /** The Constant serialVersionUID. */
             private static final long serialVersionUID = 1L;
 
+        	/**
+        	 * {@inheritDoc}
+        	 */
             @Override
             protected void populateItem(Item<T> item) {
                 item.add(newListComponent("item", item));
@@ -98,21 +104,34 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
         return dataView;
     }
 
+    /**
+     * New items per page.
+     *
+     * @return the long
+     */
     protected long newItemsPerPage() {
         return 10;
     }
 
     /**
-     * New list component.
+     * Abstract factory method that creates a new list component.
      *
      * @param id
      *            the id
      * @param item
      *            the item
-     * @return the component
+     * @return the new list component.
      */
     protected abstract Component newListComponent(String id, Item<T> item);
 
+    /**
+     * Abstract factory method that creates a new {@link IDataProvider}.  This method is invoked in the
+	 * constructor from the derived classes and must be implemented so users can provide their own
+	 * version of a {@link IDataProvider}.
+     *
+     * @param model the model
+     * @return the new {@link IDataProvider}.
+     */
     protected abstract IDataProvider<T> newDataProvider(final IModel<List<T>> model);
 
 }

@@ -74,7 +74,7 @@ public abstract class ByteArrayResourceStreamWriter extends AbstractResourceStre
 	 * @see org.apache.wicket.util.resource.IResourceStreamWriter#write(java.io.OutputStream)
 	 */
 	@Override
-	public void write(OutputStream output) throws IOException
+	public void write(final OutputStream output) throws IOException
 	{
 		initialize();
 		if (content == null)

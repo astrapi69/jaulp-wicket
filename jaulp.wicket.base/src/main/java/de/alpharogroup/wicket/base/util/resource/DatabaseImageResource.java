@@ -44,7 +44,7 @@ public class DatabaseImageResource extends ByteArrayResource
 	 * @param data
 	 *            the data
 	 */
-	public DatabaseImageResource(String contentType, byte[] data)
+	public DatabaseImageResource(final String contentType, final byte[] data)
 	{
 		super(contentType, data);
 		this.contentType = contentType;

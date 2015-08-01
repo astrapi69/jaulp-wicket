@@ -66,14 +66,14 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	private final MarkupContainer passwordForgottenLink;
 
 	/**
-	 * Instantiates a new singin form panel.
+	 * Instantiates a new {@link SigninFormPanel}.
 	 *
 	 * @param id
-	 *            the id
+	 *            the component id
 	 * @param model
-	 *            the model
+	 *            the component model
 	 */
-	public SigninFormPanel(String id, final IModel<T> model)
+	public SigninFormPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
 		add(form = newForm("form", model));
@@ -89,36 +89,6 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	}
 
 	/**
-	 * New password forgotten link.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the markup container
-	 */
-	protected MarkupContainer newPasswordForgottenLink(final String id, final IModel<T> model)
-	{
-		LinkPanel linkPanel = new LinkPanel(id,
-			ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
-				.key("password.forgotten.label").defaultValue("Password forgotten").build()))
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick(AjaxRequestTarget target)
-			{
-				onPasswordForgotten(target, form);
-			}
-
-		};
-		return linkPanel;
-	}
-
-	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 *
@@ -126,7 +96,7 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id)
+	protected Button newButton(final String id)
 	{
 		return new AjaxButton(id)
 		{
@@ -135,8 +105,11 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			public void onSubmit(AjaxRequestTarget target, Form<?> form)
+			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				onSignin(target, getForm());
 			}
@@ -156,7 +129,8 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	protected Label newButtonLabel(final String id, final String resourceKey,
+		final String defaultValue)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, this,
 			defaultValue);
@@ -174,9 +148,42 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id, IModel<?> model)
+	protected Form<?> newForm(final String id, final IModel<?> model)
 	{
 		return ComponentFactory.newForm(id, model);
+	}
+
+	/**
+	 * New password forgotten link.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the markup container
+	 */
+	protected MarkupContainer newPasswordForgottenLink(final String id, final IModel<T> model)
+	{
+		final LinkPanel linkPanel = new LinkPanel(id,
+			ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+				.key("password.forgotten.label").defaultValue("Password forgotten").build()))
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void onClick(final AjaxRequestTarget target)
+			{
+				onPasswordForgotten(target, form);
+			}
+
+		};
+		return linkPanel;
 	}
 
 
@@ -192,21 +199,11 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 *            the model
 	 * @return the Component
 	 */
-	protected Component newSigninPanel(String id, final IModel<? extends SignInModel> model)
+	protected Component newSigninPanel(final String id, final IModel<? extends SignInModel> model)
 	{
-		Component component = new SigninPanel(id, model);
+		final Component component = new SigninPanel(id, model);
 		return component;
 	}
-
-	/**
-	 * Callback method that is called on signin.
-	 *
-	 * @param target
-	 *            the target
-	 * @param form
-	 *            the form
-	 */
-	protected abstract void onSignin(final AjaxRequestTarget target, final Form<?> form);
 
 	/**
 	 * Callback method that is called on password forgotten.
@@ -217,5 +214,15 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 *            the form
 	 */
 	protected abstract void onPasswordForgotten(final AjaxRequestTarget target, final Form<?> form);
+
+	/**
+	 * Callback method that is called on signin.
+	 *
+	 * @param target
+	 *            the target
+	 * @param form
+	 *            the form
+	 */
+	protected abstract void onSignin(final AjaxRequestTarget target, final Form<?> form);
 
 }
