@@ -49,10 +49,93 @@ public class OnlineUsers<USER, ID> implements Serializable
 	 *            the session id
 	 * @return the string
 	 */
-	public synchronized ID addOnline(USER user, ID sessionId)
+	public synchronized ID addOnline(final USER user, final ID sessionId)
 	{
 		sessionIdToUser.put(sessionId, user);
 		return usersOnline.put(user, sessionId);
+	}
+
+	/**
+	 * Gets the session id.
+	 *
+	 * @param user
+	 *            the user
+	 * @return the session id
+	 */
+	public ID getSessionId(final USER user)
+	{
+		return usersOnline.get(user);
+	}
+
+	/**
+	 * Gets the size of the online users.
+	 * 
+	 * @return how many users are at this moment online.
+	 */
+	public int getSize()
+	{
+		return usersOnline.size();
+	}
+
+	/**
+	 * Gets the user over the sessionId.
+	 * 
+	 * @param sessionId
+	 *            the session id
+	 * @return the user
+	 */
+	public USER getUser(final ID sessionId)
+	{
+		return sessionIdToUser.get(sessionId);
+	}
+
+	/**
+	 * Checks if the given user is online.
+	 * 
+	 * @param user
+	 *            the user
+	 * @return true, if the user is online
+	 */
+	public boolean isOnline(final USER user)
+	{
+		return usersOnline.containsKey(user);
+	}
+
+	/**
+	 * Removes the user from the map with the session id.
+	 *
+	 * @param sessionId
+	 *            the session id
+	 * @return the user
+	 */
+	public synchronized USER remove(final ID sessionId)
+	{
+		final USER user = getUser(sessionId);
+		if (user != null)
+		{
+			usersOnline.remove(user);
+		}
+		sessionIdToUser.remove(sessionId);
+		return user;
+	}
+
+	/**
+	 * Removes the user from the map. This method shell be invoked when the session is unbounded
+	 * from the Application. In wicket is the best way to do that in the
+	 * {@code WebApplication#sessionUnbound(String)}.
+	 * 
+	 * @param user
+	 *            the user
+	 * @return the session id
+	 */
+	public synchronized ID removeOnline(final USER user)
+	{
+		final ID sessionId = usersOnline.remove(user);
+		if (sessionId != null)
+		{
+			sessionIdToUser.remove(sessionId);
+		}
+		return sessionId;
 	}
 
 	/**
@@ -66,92 +149,10 @@ public class OnlineUsers<USER, ID> implements Serializable
 	 *            the new session id
 	 * @return the new session id that is associated with the given user.
 	 */
-	public synchronized ID replaceSessionId(USER user, ID oldSessionId, ID newSessionId)
+	public synchronized ID replaceSessionId(final USER user, final ID oldSessionId,
+		final ID newSessionId)
 	{
 		remove(oldSessionId);
 		return addOnline(user, newSessionId);
-	}
-
-	/**
-	 * Removes the user from the map. This method shell be invoked when the session is unbounded
-	 * from the Application. In wicket is the best way to do that in the
-	 * {@code WebApplication#sessionUnbound(String)}.
-	 * 
-	 * @param user
-	 *            the user
-	 * @return the session id
-	 */
-	public synchronized ID removeOnline(USER user)
-	{
-		ID sessionId = usersOnline.remove(user);
-		if (sessionId != null)
-		{
-			sessionIdToUser.remove(sessionId);
-		}
-		return sessionId;
-	}
-
-	/**
-	 * Removes the user from the map with the session id.
-	 *
-	 * @param sessionId
-	 *            the session id
-	 * @return the user
-	 */
-	public synchronized USER remove(ID sessionId)
-	{
-		USER user = getUser(sessionId);
-		if (user != null)
-		{
-			usersOnline.remove(user);
-		}
-		sessionIdToUser.remove(sessionId);
-		return user;
-	}
-
-	/**
-	 * Checks if the given user is online.
-	 * 
-	 * @param user
-	 *            the user
-	 * @return true, if the user is online
-	 */
-	public boolean isOnline(USER user)
-	{
-		return usersOnline.containsKey(user);
-	}
-
-	/**
-	 * Gets the session id.
-	 *
-	 * @param user
-	 *            the user
-	 * @return the session id
-	 */
-	public ID getSessionId(USER user)
-	{
-		return usersOnline.get(user);
-	}
-
-	/**
-	 * Gets the user over the sessionId.
-	 * 
-	 * @param sessionId
-	 *            the session id
-	 * @return the user
-	 */
-	public USER getUser(ID sessionId)
-	{
-		return sessionIdToUser.get(sessionId);
-	}
-
-	/**
-	 * Gets the size of the online users.
-	 * 
-	 * @return how many users are at this moment online.
-	 */
-	public int getSize()
-	{
-		return usersOnline.size();
 	}
 }

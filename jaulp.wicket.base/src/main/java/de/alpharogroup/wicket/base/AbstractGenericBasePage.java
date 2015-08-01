@@ -31,21 +31,6 @@ public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T>
 {
 
 	/**
-	 * Instantiates a new base page with an IModel object.
-	 *
-	 * @param model
-	 *            the model
-	 */
-	public AbstractGenericBasePage(IModel<T> model)
-	{
-		super(model);
-		if (model != null)
-		{
-			setModel(model);
-		}
-	}
-
-	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
@@ -55,6 +40,21 @@ public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T>
 	 */
 	public AbstractGenericBasePage()
 	{
+	}
+
+	/**
+	 * Instantiates a new base page with an IModel object.
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public AbstractGenericBasePage(final IModel<T> model)
+	{
+		super(model);
+		if (model != null)
+		{
+			setModel(model);
+		}
 	}
 
 	/**

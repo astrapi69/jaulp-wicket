@@ -35,34 +35,22 @@ public class SessionCountUtils
 {
 
 	/**
-	 * Gets the request logger of the current WebApplication.
+	 * Gets the current http session.
 	 *
-	 * @return the request logger
+	 * @return the current http session.
 	 */
-	public static IRequestLogger getRequestLogger()
+	public static HttpSession getHttpSession()
 	{
-		return getRequestLogger(null);
-	}
-
-	/**
-	 * Gets the request logger from the given WebApplication.
-	 *
-	 * @param webApplication
-	 *            the web application
-	 * @return the request logger
-	 */
-	public static IRequestLogger getRequestLogger(WebApplication webApplication)
-	{
-		if (webApplication == null)
+		final HttpServletRequest request = WicketComponentUtils.getHttpServletRequest();
+		if (request != null)
 		{
-			webApplication = (WebApplication)Application.get();
+			final HttpSession session = request.getSession(false);
+			if (session != null)
+			{
+				return session;
+			}
 		}
-		IRequestLogger requestLogger = webApplication.getRequestLogger();
-		if (requestLogger == null)
-		{
-			requestLogger = new RequestLogger();
-		}
-		return requestLogger;
+		return null;
 	}
 
 	/**
@@ -86,13 +74,49 @@ public class SessionCountUtils
 	}
 
 	/**
+	 * Gets the request logger of the current WebApplication.
+	 *
+	 * @return the request logger
+	 */
+	public static IRequestLogger getRequestLogger()
+	{
+		return getRequestLogger(null);
+	}
+
+	/**
+	 * Gets the request logger from the given WebApplication.
+	 *
+	 * @param webApplication
+	 *            the web application
+	 * @return the request logger
+	 */
+	public static IRequestLogger getRequestLogger(final WebApplication webApplication)
+	{
+		IRequestLogger requestLogger;
+		if (webApplication == null)
+		{
+			requestLogger = ((WebApplication)Application.get()).getRequestLogger();
+		}
+		else
+		{
+			requestLogger = webApplication.getRequestLogger();
+		}
+
+		if (requestLogger == null)
+		{
+			requestLogger = new RequestLogger();
+		}
+		return requestLogger;
+	}
+
+	/**
 	 * Gets the session timeout.
 	 *
 	 * @return the session timeout
 	 */
 	public static int getSessionTimeout()
 	{
-		HttpSession session = getHttpSession();
+		final HttpSession session = getHttpSession();
 		if (session != null)
 		{
 			return session.getMaxInactiveInterval();
@@ -111,32 +135,13 @@ public class SessionCountUtils
 	 */
 	public static int setSessionTimeout(final int interval)
 	{
-		HttpSession session = getHttpSession();
+		final HttpSession session = getHttpSession();
 		if (session != null)
 		{
 			session.setMaxInactiveInterval(interval);
 			return interval;
 		}
 		return -1;
-	}
-
-	/**
-	 * Gets the current http session.
-	 *
-	 * @return the current http session.
-	 */
-	public static HttpSession getHttpSession()
-	{
-		HttpServletRequest request = WicketComponentUtils.getHttpServletRequest();
-		if (request != null)
-		{
-			HttpSession session = request.getSession(false);
-			if (session != null)
-			{
-				return session;
-			}
-		}
-		return null;
 	}
 
 

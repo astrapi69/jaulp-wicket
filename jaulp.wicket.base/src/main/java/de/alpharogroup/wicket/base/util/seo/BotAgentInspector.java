@@ -18,9 +18,12 @@ package de.alpharogroup.wicket.base.util.seo;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * The Class BotAgentInspector has on method that checks for agent strings.
  */
+@UtilityClass
 public class BotAgentInspector
 {
 
@@ -93,7 +96,7 @@ public class BotAgentInspector
 		if (agent != null)
 		{
 			final String lowerAgent = agent.toLowerCase();
-			for (String noBot : NO_BOT_AGENTS)
+			for (final String noBot : NO_BOT_AGENTS)
 			{
 				if (lowerAgent.contains(noBot))
 				{

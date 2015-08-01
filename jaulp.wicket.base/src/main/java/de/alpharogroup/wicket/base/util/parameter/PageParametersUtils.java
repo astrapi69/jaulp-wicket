@@ -43,201 +43,6 @@ public final class PageParametersUtils
 	private static final Logger LOGGER = Logger.getLogger(PageParametersUtils.class.getName());
 
 	/**
-	 * Gets the parameter or returns null if it does not exists or is empty.
-	 *
-	 * @param parameters
-	 *            the parameters
-	 * @param name
-	 *            the name
-	 * @return the parameter or returns null if it does not exists or is empty.
-	 */
-	public static String getParameter(final PageParameters parameters, String name)
-	{
-		return getString(parameters.get(name));
-	}
-
-	/**
-	 * Gets the string from the given {@link StringValue} or null if it is null or is empty.
-	 *
-	 * @param value
-	 *            the {@link StringValue}
-	 * @return the string or null if it is null or is empty.
-	 */
-	public static String getString(StringValue value)
-	{
-		if (isNotNullOrEmpty(value))
-		{
-			return value.toString();
-		}
-		return null;
-	}
-
-	/**
-	 * Gets the Integer object or returns null if the given StringValue is null or empty.
-	 *
-	 * @param stringValue
-	 *            the user id as StringValue object
-	 * @return the Integer object or null if the given StringValue is null or empty.
-	 * @deprecated use instead the {@link PageParametersUtils#toInteger(StringValue)}
-	 */
-	@Deprecated
-	public static Integer getInteger(StringValue stringValue)
-	{
-		return toInteger(stringValue);
-	}
-
-
-	/**
-	 * Gets the Integer object or returns null if the given StringValue is null or empty.
-	 *
-	 * @param stringValue
-	 *            the user id as StringValue object
-	 * @return the Integer object or null if the given StringValue is null or empty.
-	 */
-	public static Integer toInteger(StringValue stringValue)
-	{
-		Integer value = null;
-		if (isNotNullOrEmpty(stringValue))
-		{
-			try
-			{
-				value = stringValue.toInteger();
-			}
-			catch (StringValueConversionException e)
-			{
-				LOGGER.error("Error by converting the given StringValue.", e);
-			}
-		}
-		return value;
-	}
-
-	/**
-	 * <p>
-	 * Checks if the given StringValue is not null and the value of the given StringValue object is
-	 * not null and the value of the given StringValue object is not empty.
-	 * </p>
-	 *
-	 * @param stringValue
-	 *            the StringValue to check, may be null
-	 * @return <code>true</code> if the StringValue is not null and the value of the given
-	 *         StringValue object is not null and the value of the given StringValue object is not
-	 *         empty otherwise false.
-	 */
-	public static final boolean isNotNullOrEmpty(StringValue stringValue)
-	{
-		return stringValue != null && !stringValue.isNull() && !stringValue.isEmpty();
-	}
-
-	/**
-	 * <p>
-	 * Checks if the given StringValue is null or the value of the given StringValue object is null
-	 * or the value of the given StringValue object is empty.
-	 * </p>
-	 *
-	 * @param stringValue
-	 *            the StringValue to check, may be null
-	 * @return <code>true</code> if the StringValue is null or the value of the given StringValue
-	 *         object is null or the value of the given StringValue object is empty.
-	 */
-	public static final boolean isNullOrEmpty(StringValue stringValue)
-	{
-		return stringValue == null || stringValue.isNull() || stringValue.isEmpty();
-	}
-
-	/**
-	 * Converts the given Map to a {@link PageParameters} object.
-	 *
-	 * @param parameters
-	 *            the {@link Map} with the parameters to set.
-	 * @return the {@link PageParameters}
-	 */
-	public static PageParameters toPageParameters(Map<String, String> parameters)
-	{
-		PageParameters param = new PageParameters();
-		for (Entry<String, String> parameter : parameters.entrySet())
-		{
-			param.add(parameter.getKey(), parameter.getValue());
-		}
-		return param;
-	}
-
-	/**
-	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 *
-	 * @param request
-	 *            the request
-	 * @param parameterName
-	 *            the parameter name
-	 * @return the parameter value
-	 */
-	public static String getParameter(Request request, String parameterName)
-	{
-		String parameterValue = request.getRequestParameters().getParameterValue(parameterName)
-			.toString();
-		if (parameterValue == null || parameterValue.isEmpty())
-		{
-			parameterValue = request.getPostParameters().getParameterValue(parameterName)
-				.toString();
-		}
-		if (parameterValue == null || parameterValue.isEmpty())
-		{
-			parameterValue = request.getQueryParameters().getParameterValue(parameterName)
-				.toString();
-		}
-		if (parameterValue == null || parameterValue.isEmpty())
-		{
-			parameterValue = request.getRequestParameters().getParameterValue(parameterName)
-				.toString();
-		}
-		return parameterValue;
-	}
-
-	/**
-	 * Gets a map with all parameters. Looks in the query and post parameters. Migration method from
-	 * 1.4.* to 1.5.*.
-	 *
-	 * @return a map with all parameters.
-	 */
-	public static Map<String, String[]> getParameterMap()
-	{
-		Request request = RequestCycle.get().getRequest();
-		return getParameterMap(request);
-	}
-
-	/**
-	 * Gets a map with all parameters. Looks in the query, request and post parameters. Migration
-	 * method from 1.4.* to 1.5.*.
-	 *
-	 * @param request
-	 *            the request
-	 * @return a map with all parameters.
-	 */
-	public static Map<String, String[]> getParameterMap(Request request)
-	{
-		final Map<String, String[]> map = new HashMap<>();
-		addParameters(request.getRequestParameters(), map);
-		addParameters(request.getQueryParameters(), map);
-		addParameters(request.getPostParameters(), map);
-		return map;
-	}
-
-	/**
-	 * Gets a map with all parameters. Looks in the query, request and post parameters.
-	 *
-	 * @param request
-	 *            the request
-	 * @return a map with all parameters.
-	 */
-	public static Map<String, List<StringValue>> getPageParametersMap(Request request)
-	{
-		final Map<String, List<StringValue>> map = new HashMap<>();
-		addToParameters(request.getRequestParameters(), map);
-		addToParameters(request.getQueryParameters(), map);
-		addToParameters(request.getPostParameters(), map);
-		return map;
-	}
-
-	/**
 	 * Adds the given parameters to the given map.
 	 *
 	 * @param parameters
@@ -248,12 +53,12 @@ public final class PageParametersUtils
 	public static void addParameters(final IRequestParameters parameters,
 		final Map<String, String[]> parameterMap)
 	{
-		Set<String> parameterNames = parameters.getParameterNames();
-		for (String parameterName : parameterNames)
+		final Set<String> parameterNames = parameters.getParameterNames();
+		for (final String parameterName : parameterNames)
 		{
-			List<StringValue> parameterValues = parameters.getParameterValues(parameterName);
+			final List<StringValue> parameterValues = parameters.getParameterValues(parameterName);
 			String[] stringArray = { };
-			if (parameterValues != null && !parameterValues.isEmpty())
+			if ((parameterValues != null) && !parameterValues.isEmpty())
 			{
 				stringArray = new String[parameterValues.size()];
 				for (int i = 0; i < parameterValues.size(); i++)
@@ -280,24 +85,11 @@ public final class PageParametersUtils
 	public static void addToParameters(final IRequestParameters parameters,
 		final Map<String, List<StringValue>> parameterMap)
 	{
-		for (String parameterName : parameters.getParameterNames())
+		for (final String parameterName : parameters.getParameterNames())
 		{
-			List<StringValue> parameterValues = parameters.getParameterValues(parameterName);
+			final List<StringValue> parameterValues = parameters.getParameterValues(parameterName);
 			parameterMap.put(parameterName, parameterValues);
 		}
-	}
-
-	/**
-	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 *
-	 * @param parameterName
-	 *            the parameter name
-	 * @return the parameter value
-	 */
-	public static String getParameter(String parameterName)
-	{
-		Request request = RequestCycle.get().getRequest();
-		return getParameter(request, parameterName);
 	}
 
 	/**
@@ -316,12 +108,13 @@ public final class PageParametersUtils
 		Args.notNull(source, "source");
 		Args.notNull(destination, "destination");
 		final List<INamedParameters.NamedPair> namedPairs = source.getAllNamed();
-		for (INamedParameters.NamedPair namedPair : namedPairs)
+		for (final INamedParameters.NamedPair namedPair : namedPairs)
 		{
 			destination.add(namedPair.getKey(), namedPair.getValue());
 		}
 		return destination;
 	}
+
 
 	/**
 	 * Copies all given source {@link org.apache.wicket.request.mapper.parameter.PageParameters} to
@@ -336,10 +129,217 @@ public final class PageParametersUtils
 	public static void copyToWicketSession(final PageParameters source, final Session session)
 	{
 		final List<INamedParameters.NamedPair> namedPairs = source.getAllNamed();
-		for (INamedParameters.NamedPair namedPair : namedPairs)
+		for (final INamedParameters.NamedPair namedPair : namedPairs)
 		{
 			session.setAttribute(namedPair.getKey(), namedPair.getValue());
 		}
+	}
+
+	/**
+	 * Gets the Integer object or returns null if the given StringValue is null or empty.
+	 *
+	 * @param stringValue
+	 *            the user id as StringValue object
+	 * @return the Integer object or null if the given StringValue is null or empty.
+	 * @deprecated use instead the {@link PageParametersUtils#toInteger(StringValue)}
+	 */
+	@Deprecated
+	public static Integer getInteger(final StringValue stringValue)
+	{
+		return toInteger(stringValue);
+	}
+
+	/**
+	 * Gets a map with all parameters. Looks in the query, request and post parameters.
+	 *
+	 * @param request
+	 *            the request
+	 * @return a map with all parameters.
+	 */
+	public static Map<String, List<StringValue>> getPageParametersMap(final Request request)
+	{
+		final Map<String, List<StringValue>> map = new HashMap<>();
+		addToParameters(request.getRequestParameters(), map);
+		addToParameters(request.getQueryParameters(), map);
+		addToParameters(request.getPostParameters(), map);
+		return map;
+	}
+
+	/**
+	 * Gets the parameter or returns null if it does not exists or is empty.
+	 *
+	 * @param parameters
+	 *            the parameters
+	 * @param name
+	 *            the name
+	 * @return the parameter or returns null if it does not exists or is empty.
+	 */
+	public static String getParameter(final PageParameters parameters, final String name)
+	{
+		return getString(parameters.get(name));
+	}
+
+	/**
+	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
+	 *
+	 * @param request
+	 *            the request
+	 * @param parameterName
+	 *            the parameter name
+	 * @return the parameter value
+	 */
+	public static String getParameter(final Request request, final String parameterName)
+	{
+		String parameterValue = request.getRequestParameters().getParameterValue(parameterName)
+			.toString();
+		if ((parameterValue == null) || parameterValue.isEmpty())
+		{
+			parameterValue = request.getPostParameters().getParameterValue(parameterName)
+				.toString();
+		}
+		if ((parameterValue == null) || parameterValue.isEmpty())
+		{
+			parameterValue = request.getQueryParameters().getParameterValue(parameterName)
+				.toString();
+		}
+		if ((parameterValue == null) || parameterValue.isEmpty())
+		{
+			parameterValue = request.getRequestParameters().getParameterValue(parameterName)
+				.toString();
+		}
+		return parameterValue;
+	}
+
+	/**
+	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
+	 *
+	 * @param parameterName
+	 *            the parameter name
+	 * @return the parameter value
+	 */
+	public static String getParameter(final String parameterName)
+	{
+		final Request request = RequestCycle.get().getRequest();
+		return getParameter(request, parameterName);
+	}
+
+	/**
+	 * Gets a map with all parameters. Looks in the query and post parameters. Migration method from
+	 * 1.4.* to 1.5.*.
+	 *
+	 * @return a map with all parameters.
+	 */
+	public static Map<String, String[]> getParameterMap()
+	{
+		final Request request = RequestCycle.get().getRequest();
+		return getParameterMap(request);
+	}
+
+	/**
+	 * Gets a map with all parameters. Looks in the query, request and post parameters. Migration
+	 * method from 1.4.* to 1.5.*.
+	 *
+	 * @param request
+	 *            the request
+	 * @return a map with all parameters.
+	 */
+	public static Map<String, String[]> getParameterMap(final Request request)
+	{
+		final Map<String, String[]> map = new HashMap<>();
+		addParameters(request.getRequestParameters(), map);
+		addParameters(request.getQueryParameters(), map);
+		addParameters(request.getPostParameters(), map);
+		return map;
+	}
+
+	/**
+	 * Gets the string from the given {@link StringValue} or null if it is null or is empty.
+	 *
+	 * @param value
+	 *            the {@link StringValue}
+	 * @return the string or null if it is null or is empty.
+	 */
+	public static String getString(final StringValue value)
+	{
+		if (isNotNullOrEmpty(value))
+		{
+			return value.toString();
+		}
+		return null;
+	}
+
+	/**
+	 * <p>
+	 * Checks if the given StringValue is not null and the value of the given StringValue object is
+	 * not null and the value of the given StringValue object is not empty.
+	 * </p>
+	 *
+	 * @param stringValue
+	 *            the StringValue to check, may be null
+	 * @return <code>true</code> if the StringValue is not null and the value of the given
+	 *         StringValue object is not null and the value of the given StringValue object is not
+	 *         empty otherwise false.
+	 */
+	public static final boolean isNotNullOrEmpty(final StringValue stringValue)
+	{
+		return (stringValue != null) && !stringValue.isNull() && !stringValue.isEmpty();
+	}
+
+	/**
+	 * <p>
+	 * Checks if the given StringValue is null or the value of the given StringValue object is null
+	 * or the value of the given StringValue object is empty.
+	 * </p>
+	 *
+	 * @param stringValue
+	 *            the StringValue to check, may be null
+	 * @return <code>true</code> if the StringValue is null or the value of the given StringValue
+	 *         object is null or the value of the given StringValue object is empty.
+	 */
+	public static final boolean isNullOrEmpty(final StringValue stringValue)
+	{
+		return (stringValue == null) || stringValue.isNull() || stringValue.isEmpty();
+	}
+
+	/**
+	 * Gets the Integer object or returns null if the given StringValue is null or empty.
+	 *
+	 * @param stringValue
+	 *            the user id as StringValue object
+	 * @return the Integer object or null if the given StringValue is null or empty.
+	 */
+	public static Integer toInteger(final StringValue stringValue)
+	{
+		Integer value = null;
+		if (isNotNullOrEmpty(stringValue))
+		{
+			try
+			{
+				value = stringValue.toInteger();
+			}
+			catch (final StringValueConversionException e)
+			{
+				LOGGER.error("Error by converting the given StringValue.", e);
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * Converts the given Map to a {@link PageParameters} object.
+	 *
+	 * @param parameters
+	 *            the {@link Map} with the parameters to set.
+	 * @return the {@link PageParameters}
+	 */
+	public static PageParameters toPageParameters(final Map<String, String> parameters)
+	{
+		final PageParameters param = new PageParameters();
+		for (final Entry<String, String> parameter : parameters.entrySet())
+		{
+			param.add(parameter.getKey(), parameter.getValue());
+		}
+		return param;
 	}
 
 }

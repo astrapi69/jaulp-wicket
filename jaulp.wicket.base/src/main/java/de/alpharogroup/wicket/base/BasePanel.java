@@ -36,7 +36,7 @@ public abstract class BasePanel<T> extends GenericPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new base panel.
+	 * Instantiates a new {@link BasePanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -47,7 +47,7 @@ public abstract class BasePanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Instantiates a new base panel.
+	 * Instantiates a new {@link BasePanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -67,7 +67,7 @@ public abstract class BasePanel<T> extends GenericPanel<T>
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		WicketComponentUtils.renderHeaderResponse(response, this.getClass());

@@ -52,8 +52,8 @@ public class ComponentPropertiesKeysListResolver
 	 * @param values
 	 *            the values
 	 */
-	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix, Component component,
-		List<ResourceBundleKey> values)
+	public ComponentPropertiesKeysListResolver(final String propertiesKeyPrefix,
+		final Component component, final List<ResourceBundleKey> values)
 	{
 		this(propertiesKeyPrefix, null, component, values);
 	}
@@ -70,8 +70,9 @@ public class ComponentPropertiesKeysListResolver
 	 * @param values
 	 *            the values
 	 */
-	public ComponentPropertiesKeysListResolver(String propertiesKeyPrefix,
-		String propertiesKeySuffix, Component component, List<ResourceBundleKey> values)
+	public ComponentPropertiesKeysListResolver(final String propertiesKeyPrefix,
+		final String propertiesKeySuffix, final Component component,
+		final List<ResourceBundleKey> values)
 	{
 		super(propertiesKeyPrefix, propertiesKeySuffix, values);
 		this.component = component;
@@ -99,10 +100,10 @@ public class ComponentPropertiesKeysListResolver
 	 */
 	public List<ResourceBundleKey> getDisplayValues()
 	{
-		List<ResourceBundleKey> rbk = new ArrayList<>();
-		for (ResourceBundleKey key : getValues())
+		final List<ResourceBundleKey> rbk = new ArrayList<>();
+		for (final ResourceBundleKey key : getValues())
 		{
-			ResourceBundleKey clone = (ResourceBundleKey)key.clone();
+			final ResourceBundleKey clone = (ResourceBundleKey)key.clone();
 			clone.setKey(getPropertiesKey(key.getKey()));
 			rbk.add(clone);
 		}

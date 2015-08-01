@@ -42,11 +42,33 @@ public abstract class AbstractSiteMapPage extends WebPage
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
 	/** The Constant logger. */
 	private static final Logger LOGGER = Logger.getLogger(AbstractSiteMapPage.class.getName());
 
 	/** The Constant PATTERN. */
 	private static final Pattern PATTERN = Pattern.compile("^\\./");
+
+
+	/**
+	 * Instantiates a new abstract site map page.
+	 */
+	public AbstractSiteMapPage()
+	{
+		this.add(new PropertyListView<SiteUrl>("urls", this.newListModel())
+		{
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(final ListItem<SiteUrl> item)
+			{
+				item.add(new Label("loc"));
+				item.add(new Label("lastmod", "2014-05-08"));
+			}
+
+		});
+	}
 
 	/**
 	 * Gets the all page classes.
@@ -54,14 +76,6 @@ public abstract class AbstractSiteMapPage extends WebPage
 	 * @return the all page classes
 	 */
 	protected abstract List<? extends Class<? extends WebPage>> getAllPageClasses();
-
-
-	/**
-	 * Gets the package name where to search for page classes.
-	 *
-	 * @return the package name
-	 */
-	protected abstract String getPackageName();
 
 	/**
 	 * Gets the all page classes quietly.
@@ -71,27 +85,27 @@ public abstract class AbstractSiteMapPage extends WebPage
 	@SuppressWarnings("unchecked")
 	protected List<? extends Class<? extends WebPage>> getAllPageClassesQuietly()
 	{
-		List<Class<? extends WebPage>> pages = new ArrayList<>();
+		final List<Class<? extends WebPage>> pages = new ArrayList<>();
 		try
 		{
-			Set<Class<?>> set = AnnotationUtils.getAllAnnotatedClasses(getPackageName(),
+			final Set<Class<?>> set = AnnotationUtils.getAllAnnotatedClasses(getPackageName(),
 				MountPath.class);
-			for (Class<?> class1 : set)
+			for (final Class<?> class1 : set)
 			{
 				pages.add((Class<? extends WebPage>)class1);
 			}
 		}
-		catch (ClassCastException e)
+		catch (final ClassCastException e)
 		{
 			LOGGER.error(e.getClass().getName()
 				+ " occured while scanning for MountPath annotations.", e);
 		}
-		catch (ClassNotFoundException e)
+		catch (final ClassNotFoundException e)
 		{
 			LOGGER.error(e.getClass().getName()
 				+ " occured while scanning for MountPath annotations.", e);
 		}
-		catch (IOException e)
+		catch (final IOException e)
 		{
 			LOGGER.error(e.getClass().getName()
 				+ " occured while scanning for MountPath annotations.", e);
@@ -110,24 +124,20 @@ public abstract class AbstractSiteMapPage extends WebPage
 	}
 
 	/**
-	 * Instantiates a new abstract site map page.
+	 * {@inheritDoc}
 	 */
-	public AbstractSiteMapPage()
+	@Override
+	public MarkupType getMarkupType()
 	{
-		this.add(new PropertyListView<SiteUrl>("urls", this.newListModel())
-		{
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void populateItem(ListItem<SiteUrl> item)
-			{
-				item.add(new Label("loc"));
-				item.add(new Label("lastmod", "2014-05-08"));
-			}
-
-		});
+		return new MarkupType("html", "text/xml");
 	}
+
+	/**
+	 * Gets the package name where to search for page classes.
+	 *
+	 * @return the package name
+	 */
+	protected abstract String getPackageName();
 
 	/**
 	 * New list model.
@@ -146,7 +156,7 @@ public abstract class AbstractSiteMapPage extends WebPage
 			{
 				final List<SiteUrl> list = new ArrayList<>();
 
-				for (Class<? extends WebPage> type : getAllPageClasses())
+				for (final Class<? extends WebPage> type : getAllPageClasses())
 				{
 					String loc = PATTERN.matcher(AbstractSiteMapPage.this.urlFor(type, null))
 						.replaceFirst(getBaseUrl());
@@ -162,45 +172,5 @@ public abstract class AbstractSiteMapPage extends WebPage
 				return list;
 			}
 		};
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public MarkupType getMarkupType()
-	{
-		return new MarkupType("html", "text/xml");
-	}
-
-	/**
-	 * The Class SiteUrl.
-	 */
-	class SiteUrl
-	{
-
-		/** The loc. */
-		private final String loc;
-
-		/**
-		 * Instantiates a new site url.
-		 *
-		 * @param loc
-		 *            the loc
-		 */
-		public SiteUrl(String loc)
-		{
-			this.loc = loc;
-		}
-
-		/**
-		 * Gets the loc.
-		 *
-		 * @return the loc
-		 */
-		public String getLoc()
-		{
-			return this.loc;
-		}
 	}
 }

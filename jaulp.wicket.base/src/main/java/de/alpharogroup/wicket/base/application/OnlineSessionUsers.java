@@ -49,10 +49,68 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends OnlineUsers<USER, ID>
 	 *            the session object
 	 * @return the session id
 	 */
-	public synchronized ID addOnline(USER user, ID sessionId, SESSION session)
+	public synchronized ID addOnline(final USER user, final ID sessionId, final SESSION session)
 	{
 		sessionIdToSession.put(sessionId, session);
 		return super.addOnline(user, sessionId);
+	}
+
+	/**
+	 * Gets the session from the given user.
+	 *
+	 * @param user
+	 *            the user
+	 * @return the session
+	 */
+	public synchronized SESSION get(final USER user)
+	{
+		return sessionIdToSession.get(getSessionId(user));
+	}
+
+	/**
+	 * Gets the session from the given session id.
+	 *
+	 * @param sessionId
+	 *            the session id
+	 * @return the session
+	 */
+	public synchronized SESSION getSession(final ID sessionId)
+	{
+		return sessionIdToSession.get(sessionId);
+	}
+
+	/**
+	 * Removes the user from the map with the session id.
+	 *
+	 * @param sessionId
+	 *            the session id
+	 * @return the user
+	 */
+	@Override
+	public synchronized USER remove(final ID sessionId)
+	{
+		sessionIdToSession.remove(sessionId);
+		return super.remove(sessionId);
+	}
+
+	/**
+	 * Removes the user from the map. This method shell be invoked when the session is unbounded
+	 * from the Application. In wicket is the best way to do that in the
+	 * {@code WebApplication#sessionUnbound(String)}.
+	 * 
+	 * @param user
+	 *            the user
+	 * @return the session id
+	 */
+	@Override
+	public synchronized ID removeOnline(final USER user)
+	{
+		final ID sessionId = super.removeOnline(user);
+		if (sessionId != null)
+		{
+			sessionIdToSession.remove(sessionId);
+		}
+		return sessionId;
 	}
 
 	/**
@@ -68,69 +126,11 @@ public class OnlineSessionUsers<USER, ID, SESSION> extends OnlineUsers<USER, ID>
 	 *            the new session object
 	 * @return the new session id that is associated with the given user.
 	 */
-	public synchronized ID replaceSessionId(USER user, ID oldSessionId, ID newSessionId,
-		SESSION newSession)
+	public synchronized ID replaceSessionId(final USER user, final ID oldSessionId,
+		final ID newSessionId, final SESSION newSession)
 	{
 		remove(oldSessionId);
 		return addOnline(user, newSessionId, newSession);
-	}
-
-	/**
-	 * Removes the user from the map. This method shell be invoked when the session is unbounded
-	 * from the Application. In wicket is the best way to do that in the
-	 * {@code WebApplication#sessionUnbound(String)}.
-	 * 
-	 * @param user
-	 *            the user
-	 * @return the session id
-	 */
-	@Override
-	public synchronized ID removeOnline(USER user)
-	{
-		ID sessionId = super.removeOnline(user);
-		if (sessionId != null)
-		{
-			sessionIdToSession.remove(sessionId);
-		}
-		return sessionId;
-	}
-
-	/**
-	 * Removes the user from the map with the session id.
-	 *
-	 * @param sessionId
-	 *            the session id
-	 * @return the user
-	 */
-	@Override
-	public synchronized USER remove(ID sessionId)
-	{
-		sessionIdToSession.remove(sessionId);
-		return super.remove(sessionId);
-	}
-
-	/**
-	 * Gets the session from the given session id.
-	 *
-	 * @param sessionId
-	 *            the session id
-	 * @return the session
-	 */
-	public synchronized SESSION getSession(ID sessionId)
-	{
-		return sessionIdToSession.get(sessionId);
-	}
-
-	/**
-	 * Gets the session from the given user.
-	 *
-	 * @param user
-	 *            the user
-	 * @return the session
-	 */
-	public synchronized SESSION get(USER user)
-	{
-		return sessionIdToSession.get(getSessionId(user));
 	}
 
 }

@@ -20,7 +20,7 @@ import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.WebApplication;
 
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 
 /**
  * The Class WicketImage.
@@ -68,7 +68,7 @@ public class WicketImage extends WebComponent
 		checkComponentTag(tag, "img");
 		super.onComponentTag(tag);
 		final String modelObjectAsString = getDefaultModelObjectAsString();
-		final String contextPath = ApplicationUtils
+		final String contextPath = ApplicationExtensions
 			.getContextPath((WebApplication)getApplication());
 		final String imagePath = contextPath + modelObjectAsString;
 		tag.put("src", imagePath);

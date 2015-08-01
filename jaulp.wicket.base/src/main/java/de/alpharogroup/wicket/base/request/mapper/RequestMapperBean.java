@@ -27,15 +27,30 @@ import org.apache.wicket.util.lang.Args;
  */
 public class RequestMapperBean implements Serializable
 {
-	/**
-	 * The serialVersionUID
-	 */
+
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The compatibility score.
+	 */
 	@Getter
 	private int compatibilityScore;
+
+	/**
+	 * The mapper.
+	 */
 	@Getter
 	private IRequestMapper mapper;
 
+	/**
+	 * Instantiates a new {@link RequestMapperBean}.
+	 *
+	 * @param mapper
+	 *            the mapper
+	 * @param compatibilityScore
+	 *            the compatibility score
+	 */
 	public RequestMapperBean(final IRequestMapper mapper, final int compatibilityScore)
 	{
 		this.mapper = Args.notNull(mapper, "mapper");

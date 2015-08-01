@@ -31,7 +31,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.behaviors.AjaxDownloadBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
@@ -74,7 +74,7 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 			{
 				try
 				{
-					return ApplicationUtils.getResourceStream(getWebApplication(), model
+					return ApplicationExtensions.getResourceStream(getWebApplication(), model
 						.getObject().getPath(), model.getObject().getContentType());
 				}
 				catch (IOException e)

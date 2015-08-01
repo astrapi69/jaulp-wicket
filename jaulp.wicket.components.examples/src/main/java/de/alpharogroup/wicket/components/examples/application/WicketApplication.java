@@ -33,7 +33,7 @@ import org.apache.wicket.resource.loader.BundleStringResourceLoader;
 
 import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.wicket.PackageResourceReferences;
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
 import de.alpharogroup.wicket.components.examples.resource.loading.MessageSource;
@@ -91,7 +91,7 @@ public class WicketApplication extends WicketBootstrap3Application
 	protected void onDeploymentModeSettings()
 	{
 		super.onDeploymentModeSettings();
-		ApplicationUtils.setDefaultDeploymentModeConfiguration(this,
+		ApplicationExtensions.setDefaultDeploymentModeConfiguration(this,
 			new ApplicationRequestCycleListener());
 	}
 
@@ -100,7 +100,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		super.onDevelopmentModeSettings();
 		// Adds the references from source code to the browser to reference in eclipse....
 		WicketSource.configure(this);
-		ApplicationUtils.setDefaultDebugSettingsForDevelopment(this);
+		ApplicationExtensions.setDefaultDebugSettingsForDevelopment(this);
 
 		// add an applicationListener...
 		this.getApplicationListeners().add(new IApplicationListener()
@@ -124,7 +124,7 @@ public class WicketApplication extends WicketBootstrap3Application
 	protected void onGlobalSettings()
 	{
 		super.onGlobalSettings();
-		ApplicationUtils.setGlobalSettings(this, newHttpPort(), newHttpsPort(), FOOTER_FILTER_NAME,
+		ApplicationExtensions.setGlobalSettings(this, newHttpPort(), newHttpsPort(), FOOTER_FILTER_NAME,
 			"UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
 	}
 

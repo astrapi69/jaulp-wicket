@@ -46,7 +46,7 @@ import de.alpharogroup.lang.AnnotationUtils;
 import de.alpharogroup.wicket.PackageResourceReferenceWrapper;
 import de.alpharogroup.wicket.PackageResourceReferences;
 import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
 
 /**
@@ -59,14 +59,65 @@ public final class WicketComponentUtils
 {
 
 	/**
-	 * Gets the request url.
+	 * Disables caching from a WebPage. To disable the cache override the WebPage.setHeader() and
+	 * invoke this method. For instance:<code>
+	 * protected void setHeaders(WebResponse response) {
+	 * &nbsp;&nbsp;&nbsp;&nbsp;WicketComponentUtils.disableCaching(response);
+	 * }
+	 * </code>
 	 * 
-	 * @return the request url
+	 * @param response
+	 *            the response
 	 */
-	public static String getRequestURL()
+	public static void disableCaching(final WebResponse response)
 	{
-		StringBuffer url = WicketComponentUtils.getHttpServletRequest().getRequestURL();
-		return url.toString();
+		response.setLastModifiedTime(Time.now());
+		final HttpServletResponse httpServletResponse = getHttpServletResponse(response);
+		if (httpServletResponse != null)
+		{
+			httpServletResponse.addHeader("Cache-Control", "max-age=0");
+			httpServletResponse.setDateHeader("Expires", 0);
+		}
+	}
+
+	/**
+	 * Gets the context path from the given WebApplication.
+	 * 
+	 * @param application
+	 *            the WebApplication
+	 * @return the context path
+	 * @deprecated use instead {@link ApplicationExtensions#getContextPath(WebApplication)}
+	 */
+	@Deprecated
+	public static String getContextPath(final WebApplication application)
+	{
+		final String contextPath = application.getServletContext().getContextPath();
+		if ((null != contextPath) && !contextPath.isEmpty())
+		{
+			return contextPath;
+		}
+		return "";
+	}
+
+	/**
+	 * Gets the header contributor for favicon.
+	 * 
+	 * @return the header contributor for favicon
+	 */
+	public static Behavior getHeaderContributorForFavicon()
+	{
+		return new Behavior()
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void renderHead(final Component component, final IHeaderResponse response)
+			{
+				super.renderHead(component, response);
+				response.render(new StringHeaderItem(
+					"<link type=\"image/x-icon\" rel=\"shortcut icon\" href=\"favicon.ico\" />"));
+			}
+		};
 	}
 
 	/**
@@ -76,7 +127,7 @@ public final class WicketComponentUtils
 	 */
 	public static HttpServletRequest getHttpServletRequest()
 	{
-		Request request = RequestCycle.get().getRequest();
+		final Request request = RequestCycle.get().getRequest();
 		return getHttpServletRequest(request);
 	}
 
@@ -87,10 +138,10 @@ public final class WicketComponentUtils
 	 *            the request
 	 * @return the http servlet request
 	 */
-	public static HttpServletRequest getHttpServletRequest(Request request)
+	public static HttpServletRequest getHttpServletRequest(final Request request)
 	{
-		WebRequest webRequest = (WebRequest)request;
-		HttpServletRequest httpServletRequest = (HttpServletRequest)webRequest
+		final WebRequest webRequest = (WebRequest)request;
+		final HttpServletRequest httpServletRequest = (HttpServletRequest)webRequest
 			.getContainerRequest();
 		return httpServletRequest;
 	}
@@ -102,7 +153,7 @@ public final class WicketComponentUtils
 	 */
 	public static HttpServletResponse getHttpServletResponse()
 	{
-		Response response = RequestCycle.get().getResponse();
+		final Response response = RequestCycle.get().getResponse();
 		return getHttpServletResponse(response);
 	}
 
@@ -113,12 +164,23 @@ public final class WicketComponentUtils
 	 *            the response
 	 * @return the http servlet response
 	 */
-	public static HttpServletResponse getHttpServletResponse(Response response)
+	public static HttpServletResponse getHttpServletResponse(final Response response)
 	{
-		WebResponse webResponse = (WebResponse)response;
-		HttpServletResponse httpServletResponse = (HttpServletResponse)webResponse
+		final WebResponse webResponse = (WebResponse)response;
+		final HttpServletResponse httpServletResponse = (HttpServletResponse)webResponse
 			.getContainerResponse();
 		return httpServletResponse;
+	}
+
+	/**
+	 * Gets the ip address.
+	 * 
+	 * @return the ip address
+	 */
+	public static String getIpAddress()
+	{
+		final String ipAddress = getHttpServletRequest().getRemoteHost();
+		return ipAddress;
 	}
 
 	/**
@@ -132,9 +194,23 @@ public final class WicketComponentUtils
 	 * @deprecated use instead {@link PageParametersUtils#getParameter(Request, String)}
 	 */
 	@Deprecated
-	public static String getParameter(Request request, String parameterName)
+	public static String getParameter(final Request request, final String parameterName)
 	{
 		return PageParametersUtils.getParameter(request, parameterName);
+	}
+
+	/**
+	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
+	 * 
+	 * @param parameterName
+	 *            the parameter name
+	 * @return the parameter value
+	 * @deprecated use instead {@link PageParametersUtils#getParameter(String)}
+	 */
+	@Deprecated
+	public static String getParameter(final String parameterName)
+	{
+		return PageParametersUtils.getParameter(parameterName);
 	}
 
 	/**
@@ -160,48 +236,9 @@ public final class WicketComponentUtils
 	 * @deprecated use instead {@link PageParametersUtils#getParameterMap(Request)}
 	 */
 	@Deprecated
-	public static Map<String, String[]> getParameterMap(Request request)
+	public static Map<String, String[]> getParameterMap(final Request request)
 	{
 		return PageParametersUtils.getParameterMap(request);
-	}
-
-	/**
-	 * Converts the given Map to a {@link PageParameters} object.
-	 * 
-	 * @param parameters
-	 *            the {@link Map} with the parameters to set.
-	 * @return the {@link PageParameters}
-	 * @deprecated use instead {@link PageParametersUtils#toPageParameters(Map)}
-	 */
-	@Deprecated
-	public static PageParameters toPageParameters(Map<String, String> parameters)
-	{
-		return PageParametersUtils.toPageParameters(parameters);
-	}
-
-	/**
-	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 * 
-	 * @param parameterName
-	 *            the parameter name
-	 * @return the parameter value
-	 * @deprecated use instead {@link PageParametersUtils#getParameter(String)}
-	 */
-	@Deprecated
-	public static String getParameter(String parameterName)
-	{
-		return PageParametersUtils.getParameter(parameterName);
-	}
-
-	/**
-	 * Gets the ip address.
-	 * 
-	 * @return the ip address
-	 */
-	public static String getIpAddress()
-	{
-		String ipAddress = getHttpServletRequest().getRemoteHost();
-		return ipAddress;
 	}
 
 	/**
@@ -211,50 +248,90 @@ public final class WicketComponentUtils
 	 */
 	public static String getRemoteAddr()
 	{
-		String ipAddress = getHttpServletRequest().getRemoteAddr();
+		final String ipAddress = getHttpServletRequest().getRemoteAddr();
 		return ipAddress;
 	}
 
 	/**
-	 * Gets the header contributor for favicon.
+	 * Gets the request url.
 	 * 
-	 * @return the header contributor for favicon
+	 * @return the request url
 	 */
-	public static Behavior getHeaderContributorForFavicon()
+	public static String getRequestURL()
 	{
-		return new Behavior()
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void renderHead(Component component, IHeaderResponse response)
-			{
-				super.renderHead(component, response);
-				response.render(new StringHeaderItem(
-					"<link type=\"image/x-icon\" rel=\"shortcut icon\" href=\"favicon.ico\" />"));
-			}
-		};
+		final StringBuffer url = WicketComponentUtils.getHttpServletRequest().getRequestURL();
+		return url.toString();
 	}
 
 	/**
-	 * Disables caching from a WebPage. To disable the cache override the WebPage.setHeader() and
-	 * invoke this method. For instance:<code>
-	 * protected void setHeaders(WebResponse response) {
-	 * &nbsp;&nbsp;&nbsp;&nbsp;WicketComponentUtils.disableCaching(response);
-	 * }
-	 * </code>
+	 * Checks if the current request has the scheme 'https'.
+	 * 
+	 * @return true if the current request has the scheme 'https', otherwise false
+	 */
+	public static boolean isHttps()
+	{
+		return WicketComponentUtils.getHttpServletRequest().getScheme().equalsIgnoreCase("https");
+	}
+
+	/**
+	 * Checks if the given component has as parent a page that is annotated with
+	 * {@link RequireHttps}.
+	 * 
+	 * @param component
+	 *            the component to check
+	 * @return true if the component is inside a page that require https, otherwise false
+	 */
+	public static boolean isSecure(final Component component)
+	{
+		if (AnnotationUtils.isAnnotationPresentInSuperClassesOrInterfaces(component.getClass(),
+			RequireHttps.class))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Render header response.
 	 * 
 	 * @param response
 	 *            the response
+	 * @param componentClass
+	 *            the component class
 	 */
-	public static void disableCaching(WebResponse response)
+	public static void renderHeaderResponse(final IHeaderResponse response,
+		final Class<?> componentClass)
 	{
-		response.setLastModifiedTime(Time.now());
-		HttpServletResponse httpServletResponse = getHttpServletResponse(response);
-		if (httpServletResponse != null)
+		final Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
+			.getInstance().getPackageResourceReference(componentClass);
+		if ((null != headerContributors) && !headerContributors.isEmpty())
 		{
-			httpServletResponse.addHeader("Cache-Control", "max-age=0");
-			httpServletResponse.setDateHeader("Expires", 0);
+			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors)
+			{
+				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
+				{
+					final JavaScriptResourceReference reference = new JavaScriptResourceReference(
+						componentClass, packageResourceReference.getPackageResourceReference()
+							.getName());
+					if (!response.wasRendered(reference))
+					{
+						final JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
+							.forReference(reference);
+						response.render(headerItem);
+					}
+				}
+				if (packageResourceReference.getType().equals(ResourceReferenceType.CSS))
+				{
+					final CssResourceReference reference = new CssResourceReference(componentClass,
+						packageResourceReference.getPackageResourceReference().getName());
+					if (!response.wasRendered(reference))
+					{
+						final CssReferenceHeaderItem headerItem = CssHeaderItem
+							.forReference(reference);
+						response.render(headerItem);
+					}
+				}
+			}
 		}
 	}
 
@@ -267,98 +344,23 @@ public final class WicketComponentUtils
 	 */
 	public static String toAbsolutePath(final String relativePagePath)
 	{
-		HttpServletRequest req = (HttpServletRequest)((WebRequest)RequestCycle.get().getRequest())
-			.getContainerRequest();
+		final HttpServletRequest req = (HttpServletRequest)((WebRequest)RequestCycle.get()
+			.getRequest()).getContainerRequest();
 		return RequestUtils.toAbsolutePath(req.getRequestURL().toString(), relativePagePath);
 	}
 
 	/**
-	 * Gets the context path from the given WebApplication.
+	 * Converts the given Map to a {@link PageParameters} object.
 	 * 
-	 * @param application
-	 *            the WebApplication
-	 * @return the context path
-	 * @deprecated use instead {@link ApplicationUtils#getContextPath(WebApplication)}
+	 * @param parameters
+	 *            the {@link Map} with the parameters to set.
+	 * @return the {@link PageParameters}
+	 * @deprecated use instead {@link PageParametersUtils#toPageParameters(Map)}
 	 */
 	@Deprecated
-	public static String getContextPath(final WebApplication application)
+	public static PageParameters toPageParameters(final Map<String, String> parameters)
 	{
-		String contextPath = application.getServletContext().getContextPath();
-		if (null != contextPath && !contextPath.isEmpty())
-		{
-			return contextPath;
-		}
-		return "";
-	}
-
-	/**
-	 * Render header response.
-	 * 
-	 * @param response
-	 *            the response
-	 * @param componentClass
-	 *            the component class
-	 */
-	public static void renderHeaderResponse(IHeaderResponse response, Class<?> componentClass)
-	{
-		Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
-			.getInstance().getPackageResourceReference(componentClass);
-		if (null != headerContributors && !headerContributors.isEmpty())
-		{
-			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors)
-			{
-				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
-				{
-					JavaScriptResourceReference reference = new JavaScriptResourceReference(
-						componentClass, packageResourceReference.getPackageResourceReference()
-							.getName());
-					if (!response.wasRendered(reference))
-					{
-						JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
-							.forReference(reference);
-						response.render(headerItem);
-					}
-				}
-				if (packageResourceReference.getType().equals(ResourceReferenceType.CSS))
-				{
-					CssResourceReference reference = new CssResourceReference(componentClass,
-						packageResourceReference.getPackageResourceReference().getName());
-					if (!response.wasRendered(reference))
-					{
-						CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(reference);
-						response.render(headerItem);
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * Checks if the given component has as parent a page that is annotated with
-	 * {@link RequireHttps}.
-	 * 
-	 * @param component
-	 *            the component to check
-	 * @return true if the component is inside a page that require https, otherwise false
-	 */
-	public static boolean isSecure(Component component)
-	{
-		if (AnnotationUtils.isAnnotationPresentInSuperClassesOrInterfaces(component.getClass(),
-			RequireHttps.class))
-		{
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Checks if the current request has the scheme 'https'.
-	 * 
-	 * @return true if the current request has the scheme 'https', otherwise false
-	 */
-	public static boolean isHttps()
-	{
-		return WicketComponentUtils.getHttpServletRequest().getScheme().equalsIgnoreCase("https");
+		return PageParametersUtils.toPageParameters(parameters);
 	}
 
 }

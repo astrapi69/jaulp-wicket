@@ -28,17 +28,6 @@ public abstract class AbstractBasePage extends WebPage
 {
 
 	/**
-	 * Instantiates a new base page with an IModel object.
-	 *
-	 * @param model
-	 *            the model
-	 */
-	public AbstractBasePage(IModel<?> model)
-	{
-		super(model);
-	}
-
-	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
@@ -48,6 +37,17 @@ public abstract class AbstractBasePage extends WebPage
 	 */
 	public AbstractBasePage()
 	{
+	}
+
+	/**
+	 * Instantiates a new base page with an IModel object.
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public AbstractBasePage(final IModel<?> model)
+	{
+		super(model);
 	}
 
 	/**

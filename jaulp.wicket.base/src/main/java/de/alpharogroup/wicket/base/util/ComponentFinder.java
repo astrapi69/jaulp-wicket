@@ -34,44 +34,6 @@ public final class ComponentFinder
 {
 
 	/**
-	 * Gets the current page.
-	 *
-	 * @return the current page
-	 */
-	public static Page getCurrentPage()
-	{
-		IRequestHandler requestHandler = RequestCycle.get().getActiveRequestHandler();
-		Page page = getPage(requestHandler);
-		if (page != null)
-		{
-			return page;
-		}
-		if (requestHandler instanceof RequestSettingRequestHandler)
-		{
-			RequestSettingRequestHandler requestSettingRequestHandler = (RequestSettingRequestHandler)requestHandler;
-			return getPage(requestSettingRequestHandler.getDelegateHandler());
-		}
-		return null;
-	}
-
-	/**
-	 * Gets the page if the request handler is instance of IPageRequestHandler.
-	 *
-	 * @param requestHandler The {@link IRequestHandler} to get the page.
-	 * @return The page or null if not found.
-	 */
-	public static Page getPage(IRequestHandler requestHandler)
-	{
-		if (requestHandler instanceof IPageRequestHandler)
-		{
-			IPageRequestHandler pageRequestHandler = (IPageRequestHandler)requestHandler;
-			return (Page)pageRequestHandler.getPage();
-		}
-		return null;
-	}
-
-
-	/**
 	 * Finds the AjaxRequestTarget from the current RequestCycle.
 	 *
 	 * @return the found AjaxRequestTarget or {@code null}
@@ -79,48 +41,6 @@ public final class ComponentFinder
 	public static AjaxRequestTarget findAjaxRequestTarget()
 	{
 		return RequestCycle.get().find(AjaxRequestTarget.class);
-	}
-
-
-	/**
-	 * Creates a new ajax request target from the given Page.
-	 *
-	 * @param application
-	 *            the web application
-	 * @param page
-	 *            page on which ajax response is made
-	 * @return an AjaxRequestTarget instance
-	 *
-	 * @see WebApplication#newAjaxRequestTarget(Page)
-	 *
-	 */
-	@SuppressWarnings("javadoc")
-	public static AjaxRequestTarget newAjaxRequestTarget(WebApplication application, Page page)
-	{
-		return application.newAjaxRequestTarget(page);
-	}
-
-	/**
-	 * Finds the current {@link AjaxRequestTarget} or creates a new ajax request target from the
-	 * given application and page if the current {@link AjaxRequestTarget} is null.
-	 *
-	 * @param application
-	 *            the web application
-	 * @param page
-	 *            page on which ajax response is made
-	 * @return an AjaxRequestTarget instance
-	 *
-	 * @see WebApplication#newAjaxRequestTarget(Page)
-	 */
-	public static AjaxRequestTarget findOrCreateNewAjaxRequestTarget(WebApplication application,
-		Page page)
-	{
-		AjaxRequestTarget target = findAjaxRequestTarget();
-		if (target != null)
-		{
-			return target;
-		}
-		return newAjaxRequestTarget(application, page);
 	}
 
 	/**
@@ -136,6 +56,46 @@ public final class ComponentFinder
 		return findOrCreateNewAjaxRequestTarget(WebApplication.get(), getCurrentPage());
 	}
 
+
+	/**
+	 * Finds the current {@link AjaxRequestTarget} or creates a new ajax request target from the
+	 * given application and page if the current {@link AjaxRequestTarget} is null.
+	 *
+	 * @param application
+	 *            the web application
+	 * @param page
+	 *            page on which ajax response is made
+	 * @return an AjaxRequestTarget instance
+	 *
+	 * @see WebApplication#newAjaxRequestTarget(Page)
+	 */
+	public static AjaxRequestTarget findOrCreateNewAjaxRequestTarget(
+		final WebApplication application, final Page page)
+	{
+		final AjaxRequestTarget target = findAjaxRequestTarget();
+		if (target != null)
+		{
+			return target;
+		}
+		return newAjaxRequestTarget(application, page);
+	}
+
+
+	/**
+	 * Finds the first parent of the given childComponent from the given parentClass.
+	 *
+	 * @param childComponent
+	 *            the child component
+	 * @param parentClass
+	 *            the parent class
+	 * @return the component
+	 */
+	public static Component findParent(final Component childComponent,
+		final Class<? extends Component> parentClass)
+	{
+		return findParent(childComponent, parentClass, true);
+	}
+
 	/**
 	 * Finds the first parent of the given childComponent from the given parentClass and a flag if
 	 * the search shell be continued with the class name if the search with the given parentClass
@@ -149,8 +109,8 @@ public final class ComponentFinder
 	 *            the flag to search by classname if the search with given parentClass returns null.
 	 * @return the component
 	 */
-	public static Component findParent(Component childComponent,
-		Class<? extends Component> parentClass, boolean byClassname)
+	public static Component findParent(final Component childComponent,
+		final Class<? extends Component> parentClass, final boolean byClassname)
 	{
 		Component parent = childComponent.getParent();
 		while (parent != null)
@@ -161,7 +121,7 @@ public final class ComponentFinder
 			}
 			parent = parent.getParent();
 		}
-		if (parent == null && byClassname)
+		if ((parent == null) && byClassname)
 		{
 			return findParentByClassname(childComponent, parentClass);
 		}
@@ -177,23 +137,8 @@ public final class ComponentFinder
 	 *            the parent class
 	 * @return the component
 	 */
-	public static Component findParent(Component childComponent,
-		Class<? extends Component> parentClass)
-	{
-		return findParent(childComponent, parentClass, true);
-	}
-
-	/**
-	 * Finds the first parent of the given childComponent from the given parentClass.
-	 *
-	 * @param childComponent
-	 *            the child component
-	 * @param parentClass
-	 *            the parent class
-	 * @return the component
-	 */
-	public static Component findParentByClassname(Component childComponent,
-		Class<? extends Component> parentClass)
+	public static Component findParentByClassname(final Component childComponent,
+		final Class<? extends Component> parentClass)
 	{
 		Component parent = childComponent.getParent();
 		while (parent != null)
@@ -214,13 +159,70 @@ public final class ComponentFinder
 	 *            the child component
 	 * @return the component or null if no form is found.
 	 */
-	public static Component findParentForm(Component childComponent)
+	public static Component findParentForm(final Component childComponent)
 	{
-		Component parent = findParent(childComponent, Form.class);
-		if (parent != null && parent.getClass().equals(Form.class))
+		final Component parent = findParent(childComponent, Form.class);
+		if ((parent != null) && parent.getClass().equals(Form.class))
 		{
 			return parent;
 		}
 		return null;
+	}
+
+	/**
+	 * Gets the current page.
+	 *
+	 * @return the current page
+	 */
+	public static Page getCurrentPage()
+	{
+		final IRequestHandler requestHandler = RequestCycle.get().getActiveRequestHandler();
+		final Page page = getPage(requestHandler);
+		if (page != null)
+		{
+			return page;
+		}
+		if (requestHandler instanceof RequestSettingRequestHandler)
+		{
+			final RequestSettingRequestHandler requestSettingRequestHandler = (RequestSettingRequestHandler)requestHandler;
+			return getPage(requestSettingRequestHandler.getDelegateHandler());
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the page if the request handler is instance of IPageRequestHandler.
+	 *
+	 * @param requestHandler
+	 *            The {@link IRequestHandler} to get the page.
+	 * @return The page or null if not found.
+	 */
+	public static Page getPage(final IRequestHandler requestHandler)
+	{
+		if (requestHandler instanceof IPageRequestHandler)
+		{
+			final IPageRequestHandler pageRequestHandler = (IPageRequestHandler)requestHandler;
+			return (Page)pageRequestHandler.getPage();
+		}
+		return null;
+	}
+
+	/**
+	 * Creates a new ajax request target from the given Page.
+	 *
+	 * @param application
+	 *            the web application
+	 * @param page
+	 *            page on which ajax response is made
+	 * @return an AjaxRequestTarget instance
+	 *
+	 * @see WebApplication#newAjaxRequestTarget(Page)
+	 *
+	 */
+	@SuppressWarnings("javadoc")
+	public static AjaxRequestTarget newAjaxRequestTarget(final WebApplication application,
+		final Page page)
+	{
+		return application.newAjaxRequestTarget(page);
 	}
 }

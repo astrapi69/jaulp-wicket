@@ -33,7 +33,7 @@ public final class CookieUtils
 	 * @param cookie
 	 *            the cookie
 	 */
-	public static void addCookie(Cookie cookie)
+	public static void addCookie(final Cookie cookie)
 	{
 		((WebResponse)RequestCycle.get().getResponse()).addCookie(cookie);
 	}
@@ -44,7 +44,7 @@ public final class CookieUtils
 	 * @param cookie
 	 *            the cookie to clear.
 	 */
-	public static void clearCookie(Cookie cookie)
+	public static void clearCookie(final Cookie cookie)
 	{
 		((WebResponse)RequestCycle.get().getResponse()).clearCookie(cookie);
 	}
@@ -56,7 +56,7 @@ public final class CookieUtils
 	 *            the name
 	 * @return the cookie
 	 */
-	public static Cookie getCookie(String name)
+	public static Cookie getCookie(final String name)
 	{
 		return ((WebRequest)RequestCycle.get().getRequest()).getCookie(name);
 	}
@@ -80,10 +80,10 @@ public final class CookieUtils
 	 *            the secure
 	 * @return the cookie
 	 */
-	public static Cookie newCookie(String name, String value, String purpose, String domain,
-		int maxAge, String path, boolean secure)
+	public static Cookie newCookie(final String name, final String value, final String purpose,
+		final String domain, final int maxAge, final String path, final boolean secure)
 	{
-		Cookie cookie = new Cookie(name, value);
+		final Cookie cookie = new Cookie(name, value);
 		cookie.setComment(purpose);
 		cookie.setDomain(domain);
 		cookie.setMaxAge(maxAge);

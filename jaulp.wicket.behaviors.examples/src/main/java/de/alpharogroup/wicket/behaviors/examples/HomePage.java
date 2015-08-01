@@ -27,7 +27,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.locale.ResourceBundleKey;
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.FaviconBehavior;
 import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
@@ -129,7 +129,7 @@ public class HomePage extends WebPage
 	public void renderHead(IHeaderResponse response)
 	{
 		super.renderHead(response);
-		response.render(JavaScriptHeaderItem.forReference(ApplicationUtils.getJQueryReference()));
+		response.render(JavaScriptHeaderItem.forReference(ApplicationExtensions.getJQueryReference()));
 
 	}
 

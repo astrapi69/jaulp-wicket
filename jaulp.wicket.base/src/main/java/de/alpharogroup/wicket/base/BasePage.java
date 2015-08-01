@@ -61,40 +61,23 @@ public abstract class BasePage extends AbstractBasePage
 	/**
 	 * Instantiates a new BasePage.
 	 *
+	 * @param model
+	 *            the model
+	 */
+	public BasePage(final IModel<?> model)
+	{
+		super(model);
+	}
+
+	/**
+	 * Instantiates a new BasePage.
+	 *
 	 * @param parameters
 	 *            the parameters
 	 */
 	public BasePage(final PageParameters parameters)
 	{
 		super(parameters);
-	}
-
-	/**
-	 * Instantiates a new BasePage.
-	 *
-	 * @param model
-	 *            the model
-	 */
-	public BasePage(IModel<?> model)
-	{
-		super(model);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
-		// set content of the <title> tag
-		addOrReplace(new Label("title", title = newTitle()));
-		// set content attribute of the <meta name="keywords"> tag
-		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content",
-			keywords = newKeywords(), " ")));
-		// set content attribute of the <meta name="description"> tag
-		addOrReplace(new Label("description", "").add(new AttributeAppender("content",
-			description = newDescription(), " ")));
 	}
 
 	/**
@@ -129,6 +112,23 @@ public abstract class BasePage extends AbstractBasePage
 	{
 		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key("page.title")
 			.defaultValue("Home page").build(), this);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		// set content of the <title> tag
+		addOrReplace(new Label("title", title = newTitle()));
+		// set content attribute of the <meta name="keywords"> tag
+		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content",
+			keywords = newKeywords(), " ")));
+		// set content attribute of the <meta name="description"> tag
+		addOrReplace(new Label("description", "").add(new AttributeAppender("content",
+			description = newDescription(), " ")));
 	}
 
 }

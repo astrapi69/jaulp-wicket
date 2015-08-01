@@ -24,7 +24,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import de.alpharogroup.wicket.base.examples.MenubarPanel;
 import de.alpharogroup.wicket.base.examples.application.WicketApplication;
 import de.alpharogroup.wicket.base.util.WicketComponentUtils;
-import de.alpharogroup.wicket.base.util.application.ApplicationUtils;
+import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
 
 @MountPath("/urlpageexample")
@@ -49,7 +49,7 @@ public class WicketUrlPage extends WebPage
 		add(new Label("urlAsStringClass", Model.of(WicketUrlUtils
 			.getUrlAsString(WicketUrlPage.class))));
 		add(new Label("urlAsStringPage", Model.of(WicketUrlUtils.getUrlAsString(this))));
-		add(new Label("contextPathApplication", Model.of(ApplicationUtils
+		add(new Label("contextPathApplication", Model.of(ApplicationExtensions
 			.getContextPath(WicketApplication.get()))));
 		add(new Label("requestURL", Model.of(WicketComponentUtils.getRequestURL())));
 		add(new Label("remoteHost", Model.of(WicketComponentUtils.getIpAddress())));

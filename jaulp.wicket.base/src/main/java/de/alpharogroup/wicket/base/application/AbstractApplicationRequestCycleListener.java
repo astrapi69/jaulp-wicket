@@ -41,7 +41,7 @@ public abstract class AbstractApplicationRequestCycleListener extends AbstractRe
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IRequestHandler onException(RequestCycle cycle, Exception e)
+	public IRequestHandler onException(final RequestCycle cycle, final Exception e)
 	{
 		return new RenderPageRequestHandler(new PageProvider(getExceptionPage(e)));
 	}
@@ -53,6 +53,6 @@ public abstract class AbstractApplicationRequestCycleListener extends AbstractRe
 	 *            the e
 	 * @return the exception page
 	 */
-	public abstract IRequestablePage getExceptionPage(Exception e);
+	public abstract IRequestablePage getExceptionPage(final Exception e);
 
 }
