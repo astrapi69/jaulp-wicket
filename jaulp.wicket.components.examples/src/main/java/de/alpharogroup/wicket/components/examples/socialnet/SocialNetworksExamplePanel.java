@@ -25,7 +25,7 @@ import de.alpharogroup.locale.LocaleUtils;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
+import de.alpharogroup.wicket.base.util.url.WicketUrlExtensions;
 import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndShareModel;
 import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndSharePanel;
 import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusShareModel;
@@ -74,7 +74,7 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 			.scriptSrc("https://apis.google.com/js/platform.js")
 			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
 			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
-			.dataHref(WicketUrlUtils.absoluteUrlFor(this.getPage().getClass(), false)).build()
+			.dataHref(WicketUrlExtensions.absoluteUrlFor(this.getPage().getClass(), false)).build()
 			.toModel();
 		return new GooglePlusSharePanel(id, model);
 	}

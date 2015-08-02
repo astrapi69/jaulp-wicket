@@ -32,7 +32,7 @@ import org.apache.wicket.model.LoadableDetachableModel;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.lang.AnnotationUtils;
-import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
+import de.alpharogroup.wicket.base.util.url.WicketUrlExtensions;
 
 /**
  * The Class AbstractSiteMapPage is the base class for subclass a SiteMapPage.
@@ -120,7 +120,7 @@ public abstract class AbstractSiteMapPage extends WebPage
 	 */
 	protected String getBaseUrl()
 	{
-		return WicketUrlUtils.getDomainUrl(false);
+		return WicketUrlExtensions.getDomainUrl(false);
 	}
 
 	/**

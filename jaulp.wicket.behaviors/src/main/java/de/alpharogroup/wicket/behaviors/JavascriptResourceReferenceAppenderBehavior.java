@@ -29,7 +29,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.TextTemplateResourceReference;
 import org.apache.wicket.util.lang.Args;
 
-import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
+import de.alpharogroup.wicket.base.util.url.WicketUrlExtensions;
 
 /**
  * The Class AddJsResourceReferenceBehavior adds a javascript file to given WebPage class as a
@@ -85,7 +85,7 @@ public class JavascriptResourceReferenceAppenderBehavior extends Behavior
 	private ResourceReference getResourceReference()
 	{
 		Map<String, Object> map = new HashMap<>();
-		map.put("url", WicketUrlUtils.getUrlAsString(pageClass));
+		map.put("url", WicketUrlExtensions.getUrlAsString(pageClass));
 		ResourceReference resourceReference = new TextTemplateResourceReference(pageClass,
 			this.filename, "text/javascript", Model.ofMap(map));
 		return resourceReference;

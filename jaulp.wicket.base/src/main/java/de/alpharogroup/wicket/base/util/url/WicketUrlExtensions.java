@@ -26,7 +26,7 @@ import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 /**
  * The Class WicketUrlUtils.
  */
-public class WicketUrlUtils
+public class WicketUrlExtensions
 {
 
 	/**
@@ -78,8 +78,8 @@ public class WicketUrlUtils
 		final PageParameters parameters, final boolean withServerPort)
 	{
 		final StringBuilder url = new StringBuilder();
-		url.append(WicketUrlUtils.getDomainUrl(withServerPort));
-		url.append(WicketUrlUtils.getBaseUrl(page, parameters).canonical().toString());
+		url.append(WicketUrlExtensions.getDomainUrl(withServerPort));
+		url.append(WicketUrlExtensions.getBaseUrl(page, parameters).canonical().toString());
 		return url.toString();
 	}
 
@@ -237,7 +237,7 @@ public class WicketUrlUtils
 		final boolean withSlashAtTheEnd)
 	{
 		return newDomainUrl(ssl ? Scheme.HTTPS.urlName() : Scheme.HTTP.urlName(),
-			WicketUrlUtils.getServerName(), WicketComponentExtensions.getHttpServletRequest()
+			WicketUrlExtensions.getServerName(), WicketComponentExtensions.getHttpServletRequest()
 				.getServerPort(), withServerPort, withSlashAtTheEnd);
 	}
 
