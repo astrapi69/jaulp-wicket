@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import lombok.NoArgsConstructor;
+
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -35,11 +37,54 @@ import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 /**
  * The Class PackageResourceReferences.
  */
+@NoArgsConstructor
 public class PackageResourceReferences
 {
 
 	/** The Constant instance. */
 	private final static PackageResourceReferences instance = new PackageResourceReferences();
+
+	/**
+	 * Adds the given css files to the given response object in the given scope.
+	 * 
+	 * @param response
+	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
+	 * @param scope
+	 *            The scope of the css files.
+	 * @param cssFilenames
+	 *            The css file names.
+	 */
+	public static void addCssFiles(final IHeaderResponse response, final Class<?> scope,
+		final String... cssFilenames)
+	{
+		for (final String cssFilename : cssFilenames)
+		{
+			final HeaderItem item = CssHeaderItem.forReference(new PackageResourceReference(scope,
+				cssFilename));
+			response.render(item);
+		}
+	}
+
+	/**
+	 * Adds the given javascript files to the given response object in the given scope.
+	 * 
+	 * @param response
+	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
+	 * @param scope
+	 *            The scope of the javascript files.
+	 * @param jsFilenames
+	 *            The javascript file names.
+	 */
+	public static void addJsFiles(final IHeaderResponse response, final Class<?> scope,
+		final String... jsFilenames)
+	{
+		for (final String jsFilename : jsFilenames)
+		{
+			final HeaderItem item = JavaScriptHeaderItem.forReference(new PackageResourceReference(
+				scope, jsFilename));
+			response.render(item);
+		}
+	}
 
 	/**
 	 * Gets the single instance of PackageResourceReferences.
@@ -55,21 +100,38 @@ public class PackageResourceReferences
 	private final Map<Class<?>, Set<PackageResourceReferenceWrapper>> packageResourceReferenceMap = new LinkedHashMap<>();
 
 	/**
-	 * Instantiates a new package resource references.
-	 */
-	private PackageResourceReferences()
-	{
-		super();
-	}
-
-	/**
-	 * Gets the package resource reference map.
+	 * Adds the found package resource references.
 	 *
-	 * @return the package resource reference map
+	 * @param packageResourceReferences
+	 *            the package resource references
+	 * @param iface
+	 *            the iface
+	 * @return the sets the
 	 */
-	public Map<Class<?>, Set<PackageResourceReferenceWrapper>> getPackageResourceReferenceMap()
+	private Set<PackageResourceReferenceWrapper> addFoundPackageResourceReferences(
+		Set<PackageResourceReferenceWrapper> packageResourceReferences, final Class<?> iface)
 	{
-		return packageResourceReferenceMap;
+		final Set<PackageResourceReferenceWrapper> prr = PackageResourceReferences.getInstance()
+			.getPackageResourceReferenceMap().get(iface);
+		if ((packageResourceReferences != null) && !packageResourceReferences.isEmpty())
+		{
+			if ((prr != null) && !prr.isEmpty())
+			{
+				packageResourceReferences.addAll(prr);
+			}
+			else
+			{
+
+			}
+		}
+		else
+		{
+			if ((prr != null) && !prr.isEmpty())
+			{
+				packageResourceReferences = prr;
+			}
+		}
+		return packageResourceReferences;
 	}
 
 	/**
@@ -94,54 +156,30 @@ public class PackageResourceReferences
 	}
 
 	/**
-	 * Adds the found package resource references.
-	 *
-	 * @param packageResourceReferences
-	 *            the package resource references
-	 * @param iface
-	 *            the iface
-	 * @return the sets the
-	 */
-	private Set<PackageResourceReferenceWrapper> addFoundPackageResourceReferences(
-		Set<PackageResourceReferenceWrapper> packageResourceReferences, final Class<?> iface)
-	{
-		final Set<PackageResourceReferenceWrapper> prr = PackageResourceReferences.getInstance()
-			.getPackageResourceReferenceMap().get(iface);
-		if (packageResourceReferences != null && !packageResourceReferences.isEmpty())
-		{
-			if (prr != null && !prr.isEmpty())
-			{
-				packageResourceReferences.addAll(prr);
-			}
-			else
-			{
-
-			}
-		}
-		else
-		{
-			if (prr != null && !prr.isEmpty())
-			{
-				packageResourceReferences = prr;
-			}
-		}
-		return packageResourceReferences;
-	}
-
-	/**
 	 * Gets the package resource reference.
 	 *
 	 * @param componentClass
 	 *            the component class
 	 * @return the package resource reference
 	 */
-	public Set<PackageResourceReferenceWrapper> getPackageResourceReference(Class<?> componentClass)
+	public Set<PackageResourceReferenceWrapper> getPackageResourceReference(
+		final Class<?> componentClass)
 	{
 		Set<PackageResourceReferenceWrapper> packageResourceReference = PackageResourceReferences
 			.getInstance().getPackageResourceReferenceMap().get(componentClass);
 		packageResourceReference = addPackageResourceReferenceFromInterfaces(
 			packageResourceReference, componentClass);
 		return packageResourceReference;
+	}
+
+	/**
+	 * Gets the package resource reference map.
+	 *
+	 * @return the package resource reference map
+	 */
+	public Map<Class<?>, Set<PackageResourceReferenceWrapper>> getPackageResourceReferenceMap()
+	{
+		return packageResourceReferenceMap;
 	}
 
 	/**
@@ -154,12 +192,13 @@ public class PackageResourceReferences
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void initializeResources(String packageName) throws ClassNotFoundException, IOException
+	public void initializeResources(final String packageName) throws ClassNotFoundException,
+		IOException
 	{
 		final Map<Class<?>, ImportResource[]> resourcesMap = ImportResourcesUtils
 			.getImportResources(packageName);
 
-		for (Entry<Class<?>, ImportResource[]> entry : resourcesMap.entrySet())
+		for (final Entry<Class<?>, ImportResource[]> entry : resourcesMap.entrySet())
 		{
 			final Class<?> key = entry.getKey();
 			final ImportResource[] value = entry.getValue();
@@ -168,7 +207,7 @@ public class PackageResourceReferences
 			{
 				if (importResource.resourceType().equalsIgnoreCase("js"))
 				{
-					PackageResourceReference t = new PackageResourceReference(key,
+					final PackageResourceReference t = new PackageResourceReference(key,
 						importResource.resourceName());
 
 					packageResourceReferences.add(new PackageResourceReferenceWrapper(t,
@@ -176,7 +215,7 @@ public class PackageResourceReferences
 				}
 				else if (importResource.resourceType().equalsIgnoreCase("css"))
 				{
-					PackageResourceReference t = new PackageResourceReference(key,
+					final PackageResourceReference t = new PackageResourceReference(key,
 						importResource.resourceName());
 					packageResourceReferences.add(new PackageResourceReferenceWrapper(t,
 						ResourceReferenceType.CSS));
@@ -186,46 +225,6 @@ public class PackageResourceReferences
 				.put(key, packageResourceReferences);
 		}
 
-	}
-
-	/**
-	 * Adds the given javascript files to the given response object in the given scope.
-	 * 
-	 * @param response
-	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
-	 * @param scope
-	 *            The scope of the javascript files.
-	 * @param jsFilenames
-	 *            The javascript file names.
-	 */
-	public static void addJsFiles(IHeaderResponse response, Class<?> scope, String... jsFilenames)
-	{
-		for (String jsFilename : jsFilenames)
-		{
-			HeaderItem item = JavaScriptHeaderItem.forReference(new PackageResourceReference(scope,
-				jsFilename));
-			response.render(item);
-		}
-	}
-
-	/**
-	 * Adds the given css files to the given response object in the given scope.
-	 * 
-	 * @param response
-	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
-	 * @param scope
-	 *            The scope of the css files.
-	 * @param cssFilenames
-	 *            The css file names.
-	 */
-	public static void addCssFiles(IHeaderResponse response, Class<?> scope, String... cssFilenames)
-	{
-		for (String cssFilename : cssFilenames)
-		{
-			HeaderItem item = CssHeaderItem.forReference(new PackageResourceReference(scope,
-				cssFilename));
-			response.render(item);
-		}
 	}
 
 }

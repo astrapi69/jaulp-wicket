@@ -15,6 +15,10 @@
  */
 package de.alpharogroup.wicket;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
+
 import org.apache.wicket.request.resource.PackageResourceReference;
 
 import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
@@ -22,6 +26,9 @@ import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 /**
  * The Class PackageResourceReferenceWrapper.
  */
+@Getter
+@ToString
+@AllArgsConstructor
 public class PackageResourceReferenceWrapper
 {
 
@@ -30,57 +37,5 @@ public class PackageResourceReferenceWrapper
 
 	/** The type. */
 	private final ResourceReferenceType type;
-
-	/**
-	 * The Constructor.
-	 *
-	 * @param packageResourceReference
-	 *            the package resource reference
-	 * @param type
-	 *            the type
-	 */
-	public PackageResourceReferenceWrapper(PackageResourceReference packageResourceReference,
-		ResourceReferenceType type)
-	{
-		super();
-		this.packageResourceReference = packageResourceReference;
-		this.type = type;
-	}
-
-	/**
-	 * Gets the package resource reference.
-	 *
-	 * @return the package resource reference
-	 */
-	public PackageResourceReference getPackageResourceReference()
-	{
-		return packageResourceReference;
-	}
-
-	/**
-	 * Gets the type.
-	 *
-	 * @return the type
-	 */
-	public ResourceReferenceType getType()
-	{
-		return type;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String toString()
-	{
-		StringBuilder buffer = new StringBuilder();
-		buffer.append("[PackageResourceReferenceWrapper:");
-		buffer.append(" packageResourceReference: ");
-		buffer.append(packageResourceReference);
-		buffer.append(" type: ");
-		buffer.append(type);
-		buffer.append("]");
-		return buffer.toString();
-	}
 
 }
