@@ -43,6 +43,20 @@ public class LocalizedLabel extends Label
 	 *
 	 * @param id
 	 *            the id
+	 * @param resourceBundleKey
+	 *            the resourceBundleKey
+	 */
+	public LocalizedLabel(final String id, final ResourceBundleKey resourceBundleKey)
+	{
+		super(id);
+		setDefaultModel(ResourceModelFactory.newResourceModel(resourceBundleKey, this));
+	}
+
+	/**
+	 * Instantiates a new localized label.
+	 *
+	 * @param id
+	 *            the id
 	 * @param resourceKey
 	 *            the resource key
 	 * @param component
@@ -54,52 +68,6 @@ public class LocalizedLabel extends Label
 		// Get the localized model for the label from the properties file
 		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
 			component, null);
-		setDefaultModel(stringResourceModel);
-	}
-
-	/**
-	 * Instantiates a new localized label.
-	 *
-	 * @param id
-	 *            the id
-	 * @param resourceKey
-	 *            the resource key
-	 * @param component
-	 *            the component
-	 * @param defaultValue
-	 *            the default value
-	 */
-	public LocalizedLabel(final String id, final String resourceKey, final Component component,
-		final String defaultValue)
-	{
-		super(id);
-		// Get the localized model for the label from the properties file
-		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
-			component, null, defaultValue);
-		setDefaultModel(stringResourceModel);
-	}
-
-	/**
-	 * Instantiates a new localized label.
-	 *
-	 * @param id
-	 *            the id
-	 * @param resourceKey
-	 *            the resource key
-	 * @param component
-	 *            the component
-	 * @param parameters
-	 *            the parameters
-	 */
-	public LocalizedLabel(final String id, final String resourceKey, final Component component,
-		final Object... parameters)
-	{
-		super(id);
-		// Get the localized model for the label from the properties file with
-		// object parameters
-		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
-			component, null, parameters);
-
 		setDefaultModel(stringResourceModel);
 	}
 
@@ -136,12 +104,23 @@ public class LocalizedLabel extends Label
 	 *
 	 * @param id
 	 *            the id
-	 * @param stringResourceModel
-	 *            the string resource model
+	 * @param resourceKey
+	 *            the resource key
+	 * @param component
+	 *            the component
+	 * @param parameters
+	 *            the parameters
 	 */
-	public LocalizedLabel(final String id, final StringResourceModel stringResourceModel)
+	public LocalizedLabel(final String id, final String resourceKey, final Component component,
+		final Object... parameters)
 	{
-		super(id, stringResourceModel);
+		super(id);
+		// Get the localized model for the label from the properties file with
+		// object parameters
+		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
+			component, null, parameters);
+
+		setDefaultModel(stringResourceModel);
 	}
 
 	/**
@@ -149,13 +128,34 @@ public class LocalizedLabel extends Label
 	 *
 	 * @param id
 	 *            the id
-	 * @param resourceBundleKey
-	 *            the resourceBundleKey
+	 * @param resourceKey
+	 *            the resource key
+	 * @param component
+	 *            the component
+	 * @param defaultValue
+	 *            the default value
 	 */
-	public LocalizedLabel(final String id, final ResourceBundleKey resourceBundleKey)
+	public LocalizedLabel(final String id, final String resourceKey, final Component component,
+		final String defaultValue)
 	{
 		super(id);
-		setDefaultModel(ResourceModelFactory.newResourceModel(resourceBundleKey, this));
+		// Get the localized model for the label from the properties file
+		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
+			component, null, defaultValue);
+		setDefaultModel(stringResourceModel);
+	}
+
+	/**
+	 * Instantiates a new localized label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param stringResourceModel
+	 *            the string resource model
+	 */
+	public LocalizedLabel(final String id, final StringResourceModel stringResourceModel)
+	{
+		super(id, stringResourceModel);
 	}
 
 }

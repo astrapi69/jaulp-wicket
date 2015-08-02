@@ -39,6 +39,9 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	/** The Constant logger. */
 	protected static final Logger LOGGER = Logger.getLogger(SwapFragmentPanel.class.getName());
 
+	/** The id for the placeholder where to swap the fragments. */
+	private static final String FRAGMENT_ID = "fragment-placeholder";
+
 	/** The view fragment. */
 	@Getter
 	private Fragment view;
@@ -51,9 +54,6 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	@Getter
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
 
-	/** The id for the placeholder where to swap the fragments. */
-	private static final String FRAGMENT_ID = "fragment-placeholder";
-
 	/**
 	 * Instantiates a new swap fragment panel.
 	 *
@@ -62,7 +62,7 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	 * @param model
 	 *            the model
 	 */
-	public SwapFragmentPanel(String id, IModel<T> model)
+	public SwapFragmentPanel(final String id, final IModel<T> model)
 	{
 		super(id, Args.notNull(model, "model"));
 		setOutputMarkupPlaceholderTag(true);
@@ -71,15 +71,13 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Swap the fragments.
+	 * Abstract factory method for the edit fragment.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the edit fragment
 	 */
-	private void swapFragments()
-	{
-		Fragment fragment = view;
-		view.replaceWith(edit);
-		view = edit;
-		edit = fragment;
-	}
+	protected abstract Fragment newEditFragment(final String id);
 
 	/**
 	 * Abstract factory method for the view fragment.
@@ -90,15 +88,6 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	 */
 	protected abstract Fragment newViewFragment(final String id);
 
-
-	/**
-	 * Abstract factory method for the edit fragment.
-	 *
-	 * @param id
-	 *            the id
-	 * @return the edit fragment
-	 */
-	protected abstract Fragment newEditFragment(final String id);
 
 	/**
 	 * Swaps from the view fragment to the edit fragment.
@@ -144,6 +133,17 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 		}
 		swapFragments();
 		modeContext = ModeContext.VIEW_MODE;
+	}
+
+	/**
+	 * Swap the fragments.
+	 */
+	private void swapFragments()
+	{
+		final Fragment fragment = view;
+		view.replaceWith(edit);
+		view = edit;
+		edit = fragment;
 	}
 
 	/**

@@ -19,7 +19,7 @@ import org.apache.wicket.util.string.StringValue;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-public class PageParametersUtilsTest
+public class PageParametersExtensionsTest
 {
 
 	@Test
@@ -30,7 +30,7 @@ public class PageParametersUtilsTest
 		StringValue sv = StringValue.valueOf("");
 		actual = PageParametersExtensions.isNotNullOrEmpty(sv);
 		AssertJUnit.assertFalse("Should be false.", actual);
-		String s = null;
+		final String s = null;
 		sv = StringValue.valueOf(s);
 		actual = PageParametersExtensions.isNotNullOrEmpty(sv);
 		AssertJUnit.assertFalse("Should be false.", actual);
@@ -39,16 +39,15 @@ public class PageParametersUtilsTest
 	@Test
 	public void testIsNullOrEmpty()
 	{
-		boolean expected = true;
 		boolean actual = PageParametersExtensions.isNullOrEmpty(null);
-		AssertJUnit.assertTrue("Should be true.", expected == actual);
+		AssertJUnit.assertTrue("Should be true.", actual);
 		StringValue sv = StringValue.valueOf("");
 		actual = PageParametersExtensions.isNullOrEmpty(sv);
-		AssertJUnit.assertTrue("Should be true.", expected == actual);
-		String s = null;
+		AssertJUnit.assertTrue("Should be true.", actual);
+		final String s = null;
 		sv = StringValue.valueOf(s);
 		actual = PageParametersExtensions.isNullOrEmpty(sv);
-		AssertJUnit.assertTrue("Should be true.", expected == actual);
+		AssertJUnit.assertTrue("Should be true.", actual);
 	}
 
 }

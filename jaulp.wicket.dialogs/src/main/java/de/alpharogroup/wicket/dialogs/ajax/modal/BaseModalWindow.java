@@ -112,7 +112,7 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 	 * @param target
 	 *            the target
 	 */
-	public abstract void onCancel(AjaxRequestTarget target);
+	public abstract void onCancel(final AjaxRequestTarget target);
 
 	/**
 	 * On select.
@@ -122,6 +122,6 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 	 * @param object
 	 *            the object
 	 */
-	public abstract void onSelect(AjaxRequestTarget target, T object);
+	public abstract void onSelect(final AjaxRequestTarget target, final T object);
 
 }

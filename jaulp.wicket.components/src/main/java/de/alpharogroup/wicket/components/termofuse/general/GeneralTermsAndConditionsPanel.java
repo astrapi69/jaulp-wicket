@@ -43,28 +43,29 @@ public class GeneralTermsAndConditionsPanel extends HeaderContentListPanel
 	 * @param id
 	 *            the id
 	 */
-	public GeneralTermsAndConditionsPanel(String id)
+	public GeneralTermsAndConditionsPanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public GeneralTermsAndConditionsPanel(String id, IModel<HeaderContentListModel> model)
+	public GeneralTermsAndConditionsPanel(final String id,
+		final IModel<HeaderContentListModel> model)
 	{
 		super(id, model);
 	}
 
 	@Override
-	protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
-	{
-		return new Label(id, newContentResourceModel(item.getModel()))
-			.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
-	}
-
-	@Override
-	protected Component newHeaderLabel(String id, IModel<String> model)
+	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
 		return super.newHeaderLabel(id, model).add(
 			new JQueryJsAppenderBehavior("wrap", "<h1></h1>"));
+	}
+
+	@Override
+	protected Component newListComponent(final String id, final ListItem<ResourceBundleKey> item)
+	{
+		return new Label(id, newContentResourceModel(item.getModel()))
+			.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
 	}
 
 }

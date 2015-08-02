@@ -40,13 +40,13 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 	private static ResourceReference CSS = new PackageResourceReference(CustomModalWindow.class,
 		"cart_global.css");
 
-	public ModalDialogWithStylePanel(String id, IModel<String> model)
+	public ModalDialogWithStylePanel(final String id, final IModel<String> model)
 	{
 		super(id, model);
 	}
 
 	@Override
-	protected Component newFragmentContent(String id, IModel<String> model)
+	protected Component newFragmentContent(final String id, final IModel<String> model)
 	{
 		return new LinkPanel(id, Model.of("Change opacity"))
 		{
@@ -57,7 +57,7 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				target.appendJavaScript("var originalStyle = $('.wicket-modal').attr('style');"
 					+ "$('.wicket-modal').attr('style', originalStyle + 'opacity: 0.5;');");
@@ -66,9 +66,9 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 	}
 
 	@Override
-	protected ModalWindow newModalWindow(String id, IModel<String> model)
+	protected ModalWindow newModalWindow(final String id, final IModel<String> model)
 	{
-		ModalWindow modalWindow = super.newModalWindow(id, model);
+		final ModalWindow modalWindow = super.newModalWindow(id, model);
 		modalWindow.setCssClassName("w_vegas");
 		modalWindow.setTitle("Trivial Modal");
 		return modalWindow;
@@ -86,7 +86,7 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				/**
 				 * This is how to prevent IE and Firefox dialog popup when trying to
@@ -101,10 +101,10 @@ public class ModalDialogWithStylePanel extends ModalDialogFragmentPanel<String>
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(CSS);
+		final CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(CSS);
 		response.render(headerItem);
 	}
 

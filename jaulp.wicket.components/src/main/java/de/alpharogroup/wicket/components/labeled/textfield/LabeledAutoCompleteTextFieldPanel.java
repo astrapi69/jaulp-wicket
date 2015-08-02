@@ -48,7 +48,8 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledAutoCompleteTextFieldPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledAutoCompleteTextFieldPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 
@@ -56,7 +57,7 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 
 		add(feedback = newComponentFeedbackPanel("feedback", autoCompleteTextField));
 
-		String markupId = autoCompleteTextField.getMarkupId();
+		final String markupId = autoCompleteTextField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 	}
 
@@ -89,7 +90,8 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	 *            the model
 	 * @return the AutoCompleteTextField
 	 */
-	protected abstract AutoCompleteTextField<T> newAutoCompleteTextField(String id, IModel<T> model);
+	protected abstract AutoCompleteTextField<T> newAutoCompleteTextField(final String id,
+		final IModel<T> model);
 
 	/**
 	 * {@inheritDoc}

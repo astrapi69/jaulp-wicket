@@ -130,6 +130,110 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 
 
 	/**
+	 * Hook method for implement the specific domain name.
+	 *
+	 * @return the domain name
+	 */
+	protected abstract String getDomainName();
+
+
+	/**
+	 * Factory method to create a IModel for the 'authorised representative content'. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a 'authorised representative content'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newAuthRepresentContentModel()
+	{
+		return newIModel("main.global.company.authorised.representative");
+	}
+
+	/**
+	 * Factory method to create a IModel for the 'authorised representative label'. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a 'authorised representative label'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newAuthRepresentLabelModel()
+	{
+		return newIModel("main.global.company.authorised.representative.label");
+	}
+
+	/**
+	 * Factory method to create a IModel for the 'company name'. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * 'company name'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newCompanyNameModel()
+	{
+		return newIModel("main.global.company.name.label");
+	}
+
+	/**
+	 * Factory method to create a IModel for the 'company register entry content'. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a 'company register entry content'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newCompanyRegisterEntryContentModel()
+	{
+		return newIModel("main.global.company.register.entry.label");
+	}
+
+	/**
+	 * Factory method to create a IModel for the 'company register entry header'. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a 'company register entry header'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newCompanyRegisterEntryHeaderModel()
+	{
+		return newIModel("main.global.company.register.entry.header.label");
+	}
+
+	/**
+	 * Factory method to create a IModel for the 'company register entry number'. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a 'company register entry number'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newCompanyRegisterEntryNumberModel()
+	{
+		return newIModel("main.global.company.register.entry.court.number");
+	}
+
+	/**
+	 * Factory method to create a IModel for the 'company register indedification content'. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a 'company register indedification content'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newCompanyRegisterIndedificationContentModel()
+	{
+		return newIModel("main.global.company.register.identification.label");
+	}
+
+	/**
+	 * Factory method to create a IModel for the 'company register indedification header'. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a 'company register indedification header'.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newCompanyRegisterIndedificationHeaderModel()
+	{
+		return newIModel("main.global.company.register.identification.header.label");
+	}
+
+	/**
 	 * Factory method to create a WebMarkupContainer for the disclaimer content. This method is
 	 * invoked in the constructor from this class and can be overridden so users can provide their
 	 * own version of a disclaimer content.
@@ -143,6 +247,18 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 		return ComponentFactory.newWebMarkupContainer(id);
 	}
 
+	/**
+	 * Creates a new IModel from the given key.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the i model
+	 */
+	protected IModel<String> newIModel(final String key)
+	{
+		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
+			.defaultValue("").build(), this);
+	}
 
 	/**
 	 * Factory method to create a WebMarkupContainer for the imprint content. This method is invoked
@@ -159,23 +275,15 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Hook method for implement the specific domain name.
+	 * Factory method to create a IModel for the 'imprint header'. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * 'imprint header'.
 	 *
-	 * @return the domain name
-	 */
-	protected abstract String getDomainName();
-
-	/**
-	 * Creates a new IModel from the given key.
-	 *
-	 * @param key
-	 *            the key
 	 * @return the i model
 	 */
-	protected IModel<String> newIModel(String key)
+	protected IModel<String> newImprintHeaderModel()
 	{
-		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
-			.defaultValue("").build(), this);
+		return newIModel("main.global.company.masthead.label");
 	}
 
 	/**
@@ -206,27 +314,14 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'imprint header'. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * 'imprint header'.
+	 * Factory method to create a IModel for the 'state'. This method is invoked in the constructor
+	 * from this class and can be overridden so users can provide their own version of a 'state'.
 	 *
 	 * @return the i model
 	 */
-	protected IModel<String> newImprintHeaderModel()
+	protected IModel<String> newStateModel()
 	{
-		return newIModel("main.global.company.masthead.label");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'company name'. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * 'company name'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newCompanyNameModel()
-	{
-		return newIModel("main.global.company.name.label");
+		return newIModel("main.global.company.state.label");
 	}
 
 	/**
@@ -251,100 +346,5 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	protected IModel<String> newZipAndCityModel()
 	{
 		return newIModel("main.global.company.zipcode.and.city.label");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'state'. This method is invoked in the constructor
-	 * from this class and can be overridden so users can provide their own version of a 'state'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newStateModel()
-	{
-		return newIModel("main.global.company.state.label");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'authorised representative label'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'authorised representative label'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newAuthRepresentLabelModel()
-	{
-		return newIModel("main.global.company.authorised.representative.label");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'authorised representative content'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'authorised representative content'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newAuthRepresentContentModel()
-	{
-		return newIModel("main.global.company.authorised.representative");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'company register entry header'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'company register entry header'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newCompanyRegisterEntryHeaderModel()
-	{
-		return newIModel("main.global.company.register.entry.header.label");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'company register entry content'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'company register entry content'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newCompanyRegisterEntryContentModel()
-	{
-		return newIModel("main.global.company.register.entry.label");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'company register entry number'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'company register entry number'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newCompanyRegisterEntryNumberModel()
-	{
-		return newIModel("main.global.company.register.entry.court.number");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'company register indedification header'. This
-	 * method is invoked in the constructor from this class and can be overridden so users can
-	 * provide their own version of a 'company register indedification header'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newCompanyRegisterIndedificationHeaderModel()
-	{
-		return newIModel("main.global.company.register.identification.header.label");
-	}
-
-	/**
-	 * Factory method to create a IModel for the 'company register indedification content'. This
-	 * method is invoked in the constructor from this class and can be overridden so users can
-	 * provide their own version of a 'company register indedification content'.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newCompanyRegisterIndedificationContentModel()
-	{
-		return newIModel("main.global.company.register.identification.label");
 	}
 }

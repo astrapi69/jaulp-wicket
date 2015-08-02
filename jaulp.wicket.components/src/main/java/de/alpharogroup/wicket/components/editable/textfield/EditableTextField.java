@@ -59,7 +59,8 @@ public class EditableTextField extends GenericPanel<String>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public EditableTextField(String id, IModel<String> model, IModel<String> labelModel)
+	public EditableTextField(final String id, final IModel<String> model,
+		final IModel<String> labelModel)
 	{
 		this(id, model, labelModel, ModeContext.EDIT_MODE);
 	}
@@ -76,13 +77,23 @@ public class EditableTextField extends GenericPanel<String>
 	 * @param modeContext
 	 *            the editable flag
 	 */
-	public EditableTextField(String id, IModel<String> model, IModel<String> labelModel,
-		ModeContext modeContext)
+	public EditableTextField(final String id, final IModel<String> model,
+		final IModel<String> labelModel, final ModeContext modeContext)
 	{
 		super(id, model);
 		this.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		this.labelModel = labelModel;
 		this.modeContext = modeContext;
+	}
+
+	/**
+	 * Checks if is editable.
+	 *
+	 * @return true, if it is editable
+	 */
+	public boolean isEditable()
+	{
+		return modeContext.equals(ModeContext.EDIT_MODE);
 	}
 
 	@Override
@@ -97,25 +108,7 @@ public class EditableTextField extends GenericPanel<String>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newViewComponent(String id, IModel<String> model)
-			{
-				return new LabeledLabelPanel<String>(id, model, getLabelModel())
-				{
-
-					/**
-					 * The serialVersionUID
-					 */
-					private static final long serialVersionUID = 1L;
-
-					protected Label newLabel(String id, IModel<String> model)
-					{
-						return ComponentFactory.newLabel(id, model);
-					}
-				};
-			}
-
-			@Override
-			protected Component newEditComponent(String id, IModel<String> model)
+			protected Component newEditComponent(final String id, final IModel<String> model)
 			{
 				return new LabeledTextFieldPanel<String>(id, model, getLabelModel())
 				{
@@ -136,9 +129,30 @@ public class EditableTextField extends GenericPanel<String>
 					 *            the model
 					 * @return the text field
 					 */
-					protected TextField<String> newTextField(String id, IModel<String> model)
+					@Override
+					protected TextField<String> newTextField(final String id,
+						final IModel<String> model)
 					{
 						return ComponentFactory.newTextField(id, model);
+					}
+				};
+			}
+
+			@Override
+			protected Component newViewComponent(final String id, final IModel<String> model)
+			{
+				return new LabeledLabelPanel<String>(id, model, getLabelModel())
+				{
+
+					/**
+					 * The serialVersionUID
+					 */
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					protected Label newLabel(final String id, final IModel<String> model)
+					{
+						return ComponentFactory.newLabel(id, model);
 					}
 				};
 			}
@@ -147,16 +161,6 @@ public class EditableTextField extends GenericPanel<String>
 		{
 			this.swapPanel.onSwapToEdit(ComponentFinder.findOrCreateNewAjaxRequestTarget(), null);
 		}
-	}
-
-	/**
-	 * Checks if is editable.
-	 *
-	 * @return true, if it is editable
-	 */
-	public boolean isEditable()
-	{
-		return modeContext.equals(ModeContext.EDIT_MODE);
 	}
 
 	/**

@@ -23,7 +23,7 @@ public class ApplicationImprintPanel extends ImprintPanel
 
 	private static final long serialVersionUID = 1L;
 
-	public ApplicationImprintPanel(String id)
+	public ApplicationImprintPanel(final String id)
 	{
 		super(id);
 	}

@@ -53,60 +53,9 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 	 * @param value
 	 *            the value
 	 */
-	public DisableAjaxButtonAjaxCallListener(String value)
+	public DisableAjaxButtonAjaxCallListener(final String value)
 	{
 		this.value = value;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getBeforeHandler(org.apache.wicket.Component
-	 * )
-	 */
-	@Override
-	public CharSequence getBeforeHandler(Component component)
-	{
-		return null;
-	}
-
-	private String getJsScript(Component component)
-	{
-		StringBuilder sb = new StringBuilder();
-		if (this.value != null)
-		{
-			sb.append("component.value=\"").append(this.value).append("\";");
-		}
-		String jsscript = "var component = document.getElementById(\"" + component.getMarkupId()
-			+ "\");" + "component.disabled=true;" + sb.toString();
-		return jsscript;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getBeforeSendHandler(org.apache.wicket
-	 * .Component)
-	 */
-	@Override
-	public CharSequence getBeforeSendHandler(Component component)
-	{
-		return getJsScript(component);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getPrecondition(org.apache.wicket.Component
-	 * )
-	 */
-	@Override
-	public CharSequence getPrecondition(Component component)
-	{
-		return null;
 	}
 
 	/*
@@ -117,7 +66,7 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 	 * )
 	 */
 	@Override
-	public CharSequence getAfterHandler(Component component)
+	public CharSequence getAfterHandler(final Component component)
 	{
 		return null;
 	}
@@ -126,11 +75,37 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getSuccessHandler(org.apache.wicket.Component
+	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getBeforeHandler(org.apache.wicket.Component
 	 * )
 	 */
 	@Override
-	public CharSequence getSuccessHandler(Component component)
+	public CharSequence getBeforeHandler(final Component component)
+	{
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getBeforeSendHandler(org.apache.wicket
+	 * .Component)
+	 */
+	@Override
+	public CharSequence getBeforeSendHandler(final Component component)
+	{
+		return getJsScript(component);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getCompleteHandler(org.apache.wicket.
+	 * Component)
+	 */
+	@Override
+	public CharSequence getCompleteHandler(final Component component)
 	{
 		return null;
 	}
@@ -143,7 +118,32 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 	 * )
 	 */
 	@Override
-	public CharSequence getFailureHandler(Component component)
+	public CharSequence getFailureHandler(final Component component)
+	{
+		return null;
+	}
+
+	private String getJsScript(final Component component)
+	{
+		final StringBuilder sb = new StringBuilder();
+		if (this.value != null)
+		{
+			sb.append("component.value=\"").append(this.value).append("\";");
+		}
+		final String jsscript = "var component = document.getElementById(\""
+			+ component.getMarkupId() + "\");" + "component.disabled=true;" + sb.toString();
+		return jsscript;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getPrecondition(org.apache.wicket.Component
+	 * )
+	 */
+	@Override
+	public CharSequence getPrecondition(final Component component)
 	{
 		return null;
 	}
@@ -152,11 +152,11 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getCompleteHandler(org.apache.wicket.
-	 * Component)
+	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getSuccessHandler(org.apache.wicket.Component
+	 * )
 	 */
 	@Override
-	public CharSequence getCompleteHandler(Component component)
+	public CharSequence getSuccessHandler(final Component component)
 	{
 		return null;
 	}

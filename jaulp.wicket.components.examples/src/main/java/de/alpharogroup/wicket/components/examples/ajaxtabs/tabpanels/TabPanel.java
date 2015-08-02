@@ -24,7 +24,7 @@ public class TabPanel extends Panel
 
 	private static final long serialVersionUID = 1L;
 
-	public TabPanel(String id, IModel<String> model)
+	public TabPanel(final String id, final IModel<String> model)
 	{
 		super(id, model);
 		add(new Label("label", model));

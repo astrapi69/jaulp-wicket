@@ -37,7 +37,7 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	 * @param labelModel
 	 *            the label model
 	 */
-	public ActionButtonPanel(String id, IModel<String> labelModel)
+	public ActionButtonPanel(final String id, final IModel<String> labelModel)
 	{
 		super(id, labelModel);
 	}
@@ -58,7 +58,7 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	 * @return the Button
 	 */
 	@Override
-	protected Button newButton(String id)
+	protected Button newButton(final String id)
 	{
 		return new Button(id)
 		{

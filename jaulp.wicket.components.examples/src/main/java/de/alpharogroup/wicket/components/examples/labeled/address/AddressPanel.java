@@ -39,7 +39,7 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 	@Getter
 	LabeledTwoFormComponentPanel<String, String> streetNumberPanel;
 
-	public AddressPanel(String id, final IModel<HomeAddress> model)
+	public AddressPanel(final String id, final IModel<HomeAddress> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -48,10 +48,11 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 		add(zipcodeCityPanel = newZipcodeCityPanel("zipcodeCityPanel", Model.of("Zip / City:")));
 	}
 
-	protected LabeledTwoFormComponentPanel<String, String> newZipcodeCityPanel(String id,
-		IModel<String> labelModel)
+	protected LabeledTwoFormComponentPanel<String, String> newStreetNumberPanel(final String id,
+		final IModel<String> labelModel)
 	{
-		LabeledTwoFormComponentPanel<String, String> zipcodeCityPanel = new LabeledTwoFormComponentPanel<String, String>(
+
+		final LabeledTwoFormComponentPanel<String, String> streetNumberPanel = new LabeledTwoFormComponentPanel<String, String>(
 			id, labelModel)
 		{
 			/**
@@ -60,49 +61,52 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected FormComponent<String> newLeftFormComponent(String id, IModel<String> model02)
-			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "code"));
-			}
-
-			@Override
-			protected FormComponent<String> newRightFormComponent(String id, IModel<String> model)
-			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "city"));
-			}
-		};
-		return zipcodeCityPanel;
-	}
-
-	protected LabeledTwoFormComponentPanel<String, String> newStreetNumberPanel(String id,
-		IModel<String> labelModel)
-	{
-
-		LabeledTwoFormComponentPanel<String, String> streetNumberPanel = new LabeledTwoFormComponentPanel<String, String>(
-			id, labelModel)
-		{
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected FormComponent<String> newLeftFormComponent(String id, IModel<String> model)
+			protected FormComponent<String> newLeftFormComponent(final String id,
+				final IModel<String> model)
 			{
 				return ComponentFactory.newTextField(id, new PropertyModel<String>(
 					AddressPanel.this.getModelObject(), "street"));
 			}
 
 			@Override
-			protected FormComponent<String> newRightFormComponent(String id, IModel<String> model)
+			protected FormComponent<String> newRightFormComponent(final String id,
+				final IModel<String> model)
 			{
 				return ComponentFactory.newTextField(id, new PropertyModel<String>(
 					AddressPanel.this.getModelObject(), "localNumber"));
 			}
 		};
 		return streetNumberPanel;
+	}
+
+	protected LabeledTwoFormComponentPanel<String, String> newZipcodeCityPanel(final String id,
+		final IModel<String> labelModel)
+	{
+		final LabeledTwoFormComponentPanel<String, String> zipcodeCityPanel = new LabeledTwoFormComponentPanel<String, String>(
+			id, labelModel)
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected FormComponent<String> newLeftFormComponent(final String id,
+				final IModel<String> model02)
+			{
+				return ComponentFactory.newTextField(id, new PropertyModel<String>(
+					AddressPanel.this.getModelObject(), "code"));
+			}
+
+			@Override
+			protected FormComponent<String> newRightFormComponent(final String id,
+				final IModel<String> model)
+			{
+				return ComponentFactory.newTextField(id, new PropertyModel<String>(
+					AddressPanel.this.getModelObject(), "city"));
+			}
+		};
+		return zipcodeCityPanel;
 	}
 
 }

@@ -47,13 +47,13 @@ public class ReplaceWithPanel extends Panel
 	private Component editComponent;
 	private String selectedPanel = "View person";
 
-	public ReplaceWithPanel(String id, final IModel<PersonBean> model)
+	public ReplaceWithPanel(final String id, final IModel<PersonBean> model)
 	{
 		super(id, model);
 		setDefaultModel(model);
 		viewComponent = newViewPersonPanel(PLACEHOLDER_ID, model);
 		editComponent = newEditPersonPanel(PLACEHOLDER_ID, model);
-		List<String> choices = new ArrayList<String>();
+		final List<String> choices = new ArrayList<String>();
 		choices.add("View person");
 		choices.add("Edit person");
 		final RadioChoice<String> radioChoice = ComponentFactory.newRadioChoice("radioChoice",
@@ -64,7 +64,7 @@ public class ReplaceWithPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
 				Component newComponent = null;
 				if ("View person".equals(radioChoice.getModelObject()))
@@ -83,20 +83,20 @@ public class ReplaceWithPanel extends Panel
 		});
 		placeholderComponent = newViewPersonPanel(PLACEHOLDER_ID, model);
 		placeholderComponent.setOutputMarkupId(true);
-		Form<String> form = new Form<String>("form");
+		final Form<String> form = new Form<String>("form");
 		form.add(radioChoice);
 		form.add(placeholderComponent);
 		this.add(form);
 	}
 
-	protected Component newEditPersonPanel(String id, IModel<PersonBean> model)
+	protected Component newEditPersonPanel(final String id, final IModel<PersonBean> model)
 	{
 		return new EditPersonPanel(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newSubmitButton(String id, Form<?> form)
+			protected Component newSubmitButton(final String id, final Form<?> form)
 			{
 				return new AjaxFallbackButton(id, form)
 				{
@@ -113,21 +113,21 @@ public class ReplaceWithPanel extends Panel
 		};
 	}
 
-	protected Component newViewPersonPanel(String id, final IModel<PersonBean> model)
+	protected Component newViewPersonPanel(final String id, final IModel<PersonBean> model)
 	{
 		return new ViewPersonPanel(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected AjaxFallbackLink<Object> newEditLink(String id)
+			protected AjaxFallbackLink<Object> newEditLink(final String id)
 			{
 				return new AjaxFallbackLink<Object>(id)
 				{
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					public void onClick(AjaxRequestTarget target)
+					public void onClick(final AjaxRequestTarget target)
 					{
 					}
 

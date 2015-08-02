@@ -43,10 +43,10 @@ public class LabeledComponentFactory
 	 *            the label model
 	 * @return the new {@link LabeledCheckboxPanel}
 	 */
-	public static <T> LabeledCheckboxPanel<T> newLabeledCheckboxPanel(String id, IModel<T> model,
-		IModel<String> labelModel)
+	public static <T> LabeledCheckboxPanel<T> newLabeledCheckboxPanel(final String id,
+		final IModel<T> model, final IModel<String> labelModel)
 	{
-		LabeledCheckboxPanel<T> labeledCheckboxPanel = new LabeledCheckboxPanel<T>(id, model,
+		final LabeledCheckboxPanel<T> labeledCheckboxPanel = new LabeledCheckboxPanel<T>(id, model,
 			labelModel);
 		labeledCheckboxPanel.setOutputMarkupId(true);
 		return labeledCheckboxPanel;
@@ -66,10 +66,10 @@ public class LabeledComponentFactory
 	 *            the label model
 	 * @return the new {@link LabeledTextFieldPanel}
 	 */
-	public static <T> LabeledTextFieldPanel<T> newLabeledTextFieldPanel(String id, IModel<T> model,
-		IModel<String> labelModel)
+	public static <T> LabeledTextFieldPanel<T> newLabeledTextFieldPanel(final String id,
+		final IModel<T> model, final IModel<String> labelModel)
 	{
-		LabeledTextFieldPanel<T> labeledTextField = new LabeledTextFieldPanel<T>(id, model,
+		final LabeledTextFieldPanel<T> labeledTextField = new LabeledTextFieldPanel<T>(id, model,
 			labelModel);
 		labeledTextField.setOutputMarkupId(true);
 		return labeledTextField;
@@ -89,10 +89,10 @@ public class LabeledComponentFactory
 	 * @return the new {@link TwoFormComponentPanel}
 	 */
 	public static <L extends Serializable, R extends Serializable> TwoFormComponentPanel<L, R> newTwoFormComponentPanel(
-		String id, IModel<TwoFormComponentBean<L, R>> model)
+		final String id, final IModel<TwoFormComponentBean<L, R>> model)
 	{
-		TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(id,
-			model);
+		final TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(
+			id, model);
 		return twoFormComponentPanel;
 	}
 

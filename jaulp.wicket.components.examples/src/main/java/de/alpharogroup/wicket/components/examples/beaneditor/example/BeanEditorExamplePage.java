@@ -30,7 +30,7 @@ public class BeanEditorExamplePage extends PubliclyBasePage<Customer>
 {
 	private static final long serialVersionUID = 1L;
 
-	public BeanEditorExamplePage(IModel<Customer> model)
+	public BeanEditorExamplePage(final IModel<Customer> model)
 	{
 		super(model);
 	}
@@ -46,7 +46,7 @@ public class BeanEditorExamplePage extends PubliclyBasePage<Customer>
 		IModel<Customer> model = getModel();
 		if (model == null)
 		{
-			Customer customer = new Customer();
+			final Customer customer = new Customer();
 			model = Model.of(customer);
 		}
 		return new BeanEditorExamplePanel(CONTAINER_PANEL_ID, model);

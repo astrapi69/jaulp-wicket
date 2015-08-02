@@ -27,16 +27,18 @@ public class RemoveCssClass extends AttributeModifier
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public RemoveCssClass(String cssClass)
+	public RemoveCssClass(final String cssClass)
 	{
 		super("class", new Model<>(cssClass));
 	}
 
 	@Override
-	protected String newValue(String currentValue, String cssClass)
+	protected String newValue(final String currentValue, final String cssClass)
 	{
 		if (currentValue != null)
+		{
 			return currentValue.replaceAll(cssClass, "");
+		}
 		return "";
 	}
 }

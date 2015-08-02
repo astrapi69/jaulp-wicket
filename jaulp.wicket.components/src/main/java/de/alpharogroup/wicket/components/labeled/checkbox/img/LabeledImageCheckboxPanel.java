@@ -38,7 +38,7 @@ public class LabeledImageCheckboxPanel extends Panel
 	@Getter
 	private final Image image;
 
-	public LabeledImageCheckboxPanel(String id, IModel<LabeledImageCheckboxModel> model)
+	public LabeledImageCheckboxPanel(final String id, final IModel<LabeledImageCheckboxModel> model)
 	{
 		super(id, model);
 		add(checkBox = newCheckBox("checkBox", model));
@@ -55,9 +55,9 @@ public class LabeledImageCheckboxPanel extends Panel
 	 *            the model
 	 * @return the created CheckBox
 	 */
-	protected CheckBox newCheckBox(String id, IModel<LabeledImageCheckboxModel> model)
+	protected CheckBox newCheckBox(final String id, final IModel<LabeledImageCheckboxModel> model)
 	{
-		IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), "checked");
+		final IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), "checked");
 		return ComponentFactory.newCheckBox(id, propertyModel);
 	}
 

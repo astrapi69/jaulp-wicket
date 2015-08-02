@@ -27,7 +27,8 @@ public class BooleanEditorPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public BooleanEditorPanel(String id, IModel<Boolean> model, IModel<String> labelModel)
+	public BooleanEditorPanel(final String id, final IModel<Boolean> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model);
 		add(new CheckBox("edit", model).setLabel(labelModel));

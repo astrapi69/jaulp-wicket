@@ -43,15 +43,15 @@ public class ReCaptchaPanelTest
 			private final static String PRIVATE_KEY = "6LdVBfwSAAAAAKsMpZcDlpl_F1pji5JcnmNt-Hon";
 
 			@Override
-			public String getPublicKey()
-			{
-				return PUBLIC_KEY;
-			}
-
-			@Override
 			public String getPrivateKey()
 			{
 				return PRIVATE_KEY;
+			}
+
+			@Override
+			public String getPublicKey()
+			{
+				return PUBLIC_KEY;
 			}
 
 		});

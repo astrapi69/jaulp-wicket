@@ -28,8 +28,8 @@ public class StringEditorPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public StringEditorPanel(String id, IModel<String> model, IModel<String> labelModel,
-		boolean required)
+	public StringEditorPanel(final String id, final IModel<String> model,
+		final IModel<String> labelModel, final boolean required)
 	{
 		super(id, model);
 		add(new TextField<String>("edit", model).setLabel(labelModel).setRequired(required));

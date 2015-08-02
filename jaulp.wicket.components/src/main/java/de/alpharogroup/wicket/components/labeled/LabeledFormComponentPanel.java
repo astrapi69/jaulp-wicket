@@ -54,7 +54,8 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledFormComponentPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledFormComponentPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model);
 		setLabel(labelModel);
@@ -81,7 +82,8 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	 *            the filter
 	 * @return the component feedback panel
 	 */
-	protected ComponentFeedbackPanel newComponentFeedbackPanel(String id, Component filter)
+	protected ComponentFeedbackPanel newComponentFeedbackPanel(final String id,
+		final Component filter)
 	{
 		return ComponentFactory.newComponentFeedbackPanel(id, filter);
 	}
@@ -98,7 +100,7 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	 *            the model
 	 * @return the label
 	 */
-	protected Component newLabel(String id, String forId, IModel<String> model)
+	protected Component newLabel(final String id, final String forId, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}

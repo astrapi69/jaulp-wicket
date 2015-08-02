@@ -27,13 +27,13 @@ public class TimelineChartPanel extends Panel
 	 */
 	private static final long serialVersionUID = -8437630842183347649L;
 
-	public TimelineChartPanel(String id)
+	public TimelineChartPanel(final String id)
 	{
 		super(id);
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem

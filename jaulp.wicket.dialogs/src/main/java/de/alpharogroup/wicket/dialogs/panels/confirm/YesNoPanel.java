@@ -62,12 +62,27 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public YesNoPanel(String id, final IModel<T> model, final IModel<String> labelModel)
+	public YesNoPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
 	{
 		super(id, model);
 		add(label = newLabel("message", labelModel));
 		add(yesButton = newYesButton("yesButton"));
 		add(noButton = newNoButton("noButton"));
+	}
+
+	/**
+	 * Factory method for creating the Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
+	protected Label newLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**
@@ -81,7 +96,7 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	 */
 	protected AjaxButton newNoButton(final String id)
 	{
-		AjaxButton ajaxButton = new AjaxButton(id)
+		final AjaxButton ajaxButton = new AjaxButton(id)
 		{
 			/**
 			 * The serialVersionUID.
@@ -105,6 +120,7 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 		ajaxButton.add(newLabel("noLabel", noLabelModel));
 		return ajaxButton;
 	}
+
 
 	/**
 	 * Factory method for creating a new yes {@link AjaxButton}. This method is invoked in the
@@ -143,7 +159,6 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 		return ajaxButton;
 	}
 
-
 	/**
 	 * On no.
 	 * 
@@ -154,7 +169,9 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	 * @param error
 	 *            the flag if an error occured.
 	 */
-	public abstract void onNo(final AjaxRequestTarget target, Form<?> form, boolean error);
+	public abstract void onNo(final AjaxRequestTarget target, final Form<?> form,
+		final boolean error);
+
 
 	/**
 	 * On yes.
@@ -166,22 +183,7 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	 * @param error
 	 *            the flag if an error occured.
 	 */
-	public abstract void onYes(final AjaxRequestTarget target, Form<?> form, boolean error);
-
-
-	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the label
-	 */
-	protected Label newLabel(String id, IModel<String> model)
-	{
-		return ComponentFactory.newLabel(id, model);
-	}
+	public abstract void onYes(final AjaxRequestTarget target, final Form<?> form,
+		final boolean error);
 
 }

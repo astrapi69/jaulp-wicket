@@ -41,11 +41,6 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	/** The component class. */
 	private final Class<?> componentClass;
 
-	public Class<?> getComponentClass()
-	{
-		return componentClass;
-	}
-
 	/**
 	 * Instantiates a new selected values choice renderer.
 	 *
@@ -60,6 +55,11 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 		this.componentClass = componentClass;
 	}
 
+	public Class<?> getComponentClass()
+	{
+		return componentClass;
+	}
+
 	/**
 	 * {@inheritDoc}.
 	 *
@@ -71,13 +71,14 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	@Override
 	public Object getDisplayValue(final String object)
 	{
-		String splitString = "=>";
-		String[] splittedValue = object.split(splitString);
-		StringBuilder sb = new StringBuilder();
+		final String splitString = "=>";
+		final String[] splittedValue = object.split(splitString);
+		final StringBuilder sb = new StringBuilder();
 		if (splittedValue.length == 1)
 		{
-			IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-				.builder().key(splittedValue[0]).defaultValue("").build(), component);
+			final IModel<String> resourceModel = ResourceModelFactory.newResourceModel(
+				ResourceBundleKey.builder().key(splittedValue[0]).defaultValue("").build(),
+				component);
 			sb.append(resourceModel.getObject());
 		}
 		else
@@ -111,7 +112,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	}
 
 
-	public String getObject(String id, IModel<? extends List<? extends String>> choices)
+	public String getObject(final String id, final IModel<? extends List<? extends String>> choices)
 	{
 		return null;
 	}

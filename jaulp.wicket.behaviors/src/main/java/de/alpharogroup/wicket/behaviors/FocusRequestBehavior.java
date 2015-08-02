@@ -50,7 +50,7 @@ public class FocusRequestBehavior extends Behavior
 	 * @param clearValue
 	 *            The flag if the value may be clear.
 	 */
-	public FocusRequestBehavior(boolean clearValue)
+	public FocusRequestBehavior(final boolean clearValue)
 	{
 		this.clearValue = clearValue;
 	}
@@ -62,9 +62,9 @@ public class FocusRequestBehavior extends Behavior
 	 *            the component
 	 * @return the string
 	 */
-	private String createJavaScript(Component component)
+	private String createJavaScript(final Component component)
 	{
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		sb.append("setTimeout(" + "function() {" + "var component = document.getElementById(\"")
 			.append(component.getMarkupId()).append("\");");
 		if (clearValue)
@@ -81,7 +81,7 @@ public class FocusRequestBehavior extends Behavior
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(Component component, IHeaderResponse response)
+	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
 		component.setOutputMarkupId(true);

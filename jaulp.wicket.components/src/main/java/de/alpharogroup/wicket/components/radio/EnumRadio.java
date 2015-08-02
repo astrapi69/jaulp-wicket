@@ -39,38 +39,8 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 	 * 
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
-	 * @param group
-	 *            the group
 	 */
-	public EnumRadio(String id, IModel<T> model, RadioGroup<T> group)
-	{
-		super(id, model, group);
-		commonInit();
-	}
-
-	/**
-	 * Instantiates a new enum radio.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param group
-	 *            the group
-	 */
-	public EnumRadio(String id, RadioGroup<T> group)
-	{
-		super(id, group);
-		commonInit();
-	}
-
-	/**
-	 * Instantiates a new enum radio.
-	 * 
-	 * @param id
-	 *            the id
-	 */
-	public EnumRadio(String id)
+	public EnumRadio(final String id)
 	{
 		super(id);
 		commonInit();
@@ -84,9 +54,39 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 	 * @param model
 	 *            the model
 	 */
-	public EnumRadio(String id, IModel<T> model)
+	public EnumRadio(final String id, final IModel<T> model)
 	{
 		super(id, model);
+		commonInit();
+	}
+
+	/**
+	 * Instantiates a new enum radio.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param group
+	 *            the group
+	 */
+	public EnumRadio(final String id, final IModel<T> model, final RadioGroup<T> group)
+	{
+		super(id, model, group);
+		commonInit();
+	}
+
+	/**
+	 * Instantiates a new enum radio.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param group
+	 *            the group
+	 */
+	public EnumRadio(final String id, final RadioGroup<T> group)
+	{
+		super(id, group);
 		commonInit();
 	}
 

@@ -23,6 +23,57 @@ import org.apache.wicket.model.Model;
 public class TwitterShareModel implements Serializable
 {
 
+	public static class Builder
+	{
+		private String shareUrl;
+		private String dataUrl;
+		private String via;
+		private String counturl;
+		private Boolean showCount = Boolean.FALSE;
+		private String countAlign;
+
+		public TwitterShareModel build()
+		{
+			return new TwitterShareModel(this);
+		}
+
+		public Builder countAlign(final String countAlign)
+		{
+			this.countAlign = countAlign;
+			return this;
+		}
+
+		public Builder counturl(final String counturl)
+		{
+			this.counturl = counturl;
+			return this;
+		}
+
+		public Builder dataUrl(final String dataUrl)
+		{
+			this.dataUrl = dataUrl;
+			return this;
+		}
+
+		public Builder shareUrl(final String shareUrl)
+		{
+			this.shareUrl = shareUrl;
+			return this;
+		}
+
+		public Builder showCount(final Boolean showCount)
+		{
+			this.showCount = showCount;
+			return this;
+		}
+
+		public Builder via(final String via)
+		{
+			this.via = via;
+			return this;
+		}
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	private final String shareUrl;
@@ -37,93 +88,7 @@ public class TwitterShareModel implements Serializable
 
 	private final String countAlign;
 
-	public String getShareUrl()
-	{
-		return shareUrl;
-	}
-
-	public String getDataUrl()
-	{
-		return dataUrl;
-	}
-
-	public String getVia()
-	{
-		return via;
-	}
-
-	public String getCounturl()
-	{
-		return counturl;
-	}
-
-	public Boolean getShowCount()
-	{
-		return showCount;
-	}
-
-	public String getCountAlign()
-	{
-		return countAlign;
-	}
-
-	public IModel<TwitterShareModel> toModel()
-	{
-		return Model.of(this);
-	}
-
-	public static class Builder
-	{
-		private String shareUrl;
-		private String dataUrl;
-		private String via;
-		private String counturl;
-		private Boolean showCount = Boolean.FALSE;
-		private String countAlign;
-
-		public Builder shareUrl(String shareUrl)
-		{
-			this.shareUrl = shareUrl;
-			return this;
-		}
-
-		public Builder dataUrl(String dataUrl)
-		{
-			this.dataUrl = dataUrl;
-			return this;
-		}
-
-		public Builder via(String via)
-		{
-			this.via = via;
-			return this;
-		}
-
-		public Builder counturl(String counturl)
-		{
-			this.counturl = counturl;
-			return this;
-		}
-
-		public Builder showCount(Boolean showCount)
-		{
-			this.showCount = showCount;
-			return this;
-		}
-
-		public Builder countAlign(String countAlign)
-		{
-			this.countAlign = countAlign;
-			return this;
-		}
-
-		public TwitterShareModel build()
-		{
-			return new TwitterShareModel(this);
-		}
-	}
-
-	private TwitterShareModel(Builder builder)
+	private TwitterShareModel(final Builder builder)
 	{
 		this.shareUrl = builder.shareUrl;
 		this.dataUrl = builder.dataUrl;
@@ -131,5 +96,40 @@ public class TwitterShareModel implements Serializable
 		this.counturl = builder.counturl;
 		this.showCount = builder.showCount;
 		this.countAlign = builder.countAlign;
+	}
+
+	public String getCountAlign()
+	{
+		return countAlign;
+	}
+
+	public String getCounturl()
+	{
+		return counturl;
+	}
+
+	public String getDataUrl()
+	{
+		return dataUrl;
+	}
+
+	public String getShareUrl()
+	{
+		return shareUrl;
+	}
+
+	public Boolean getShowCount()
+	{
+		return showCount;
+	}
+
+	public String getVia()
+	{
+		return via;
+	}
+
+	public IModel<TwitterShareModel> toModel()
+	{
+		return Model.of(this);
 	}
 }

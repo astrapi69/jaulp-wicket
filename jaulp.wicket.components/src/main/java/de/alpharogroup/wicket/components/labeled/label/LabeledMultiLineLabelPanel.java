@@ -55,30 +55,14 @@ public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledMultiLineLabelPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledMultiLineLabelPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
 		add(viewableLabel = newMultiLineLabelLabel("viewableLabel", model));
-		String markupId = viewableLabel.getMarkupId();
+		final String markupId = viewableLabel.getMarkupId();
 		add(label = newLabel("label", markupId, labelModel));
-	}
-
-	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * MultiLineLabel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the label
-	 */
-	protected MultiLineLabel newMultiLineLabelLabel(String id, IModel<T> model)
-	{
-		IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), this.getId());
-		return ComponentFactory.newMultiLineLabel(id, viewableLabelModel);
 	}
 
 	/**
@@ -93,8 +77,25 @@ public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<String> model)
+	protected Label newLabel(final String id, final String forId, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, forId, model);
+	}
+
+	/**
+	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * MultiLineLabel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
+	protected MultiLineLabel newMultiLineLabelLabel(final String id, final IModel<T> model)
+	{
+		final IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), this.getId());
+		return ComponentFactory.newMultiLineLabel(id, viewableLabelModel);
 	}
 }

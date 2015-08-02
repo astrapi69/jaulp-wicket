@@ -67,8 +67,8 @@ public class ViewOrEditPage extends BasePage
 		form.add(about);
 
 
-		LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married", cpm,
-			Model.of("Married:"));
+		final LabeledCheckboxPanel<Person> married = new LabeledCheckboxPanel<Person>("married",
+			cpm, Model.of("Married:"));
 
 		form.add(married);
 
@@ -81,7 +81,7 @@ public class ViewOrEditPage extends BasePage
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit(AjaxRequestTarget target, Form<?> form)
+			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				info("Person:" + getDefaultModelObjectAsString());
 				enableFields = !enableFields;

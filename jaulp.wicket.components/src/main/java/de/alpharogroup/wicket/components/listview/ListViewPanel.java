@@ -48,12 +48,13 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 	 *
 	 * @param id
 	 *            the id
-	 * @param list
-	 *            the list
+	 * @param model
+	 *            the model
 	 */
-	public ListViewPanel(String id, List<T> list)
+	public ListViewPanel(final String id, final IModel<List<T>> model)
 	{
-		this(id, new ListModel<>(list));
+		super(id, Args.notNull(model, "model"));
+		add(listView = newListView("listView", model));
 	}
 
 	/**
@@ -61,39 +62,12 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
+	 * @param list
+	 *            the list
 	 */
-	public ListViewPanel(String id, IModel<List<T>> model)
+	public ListViewPanel(final String id, final List<T> list)
 	{
-		super(id, Args.notNull(model, "model"));
-		add(listView = newListView("listView", model));
-	}
-
-	/**
-	 * New list view.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the list view
-	 */
-	protected ListView<T> newListView(String id, IModel<List<T>> model)
-	{
-		ListView<T> listView = new ListView<T>(id, model)
-		{
-			/** The Constant serialVersionUID. */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void populateItem(ListItem<T> item)
-			{
-				item.add(newListComponent("item", item));
-			}
-
-		};
-		return listView;
+		this(id, new ListModel<>(list));
 	}
 
 	/**
@@ -105,6 +79,32 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 	 *            the item
 	 * @return the component
 	 */
-	protected abstract Component newListComponent(String id, ListItem<T> item);
+	protected abstract Component newListComponent(final String id, final ListItem<T> item);
+
+	/**
+	 * New list view.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the list view
+	 */
+	protected ListView<T> newListView(final String id, final IModel<List<T>> model)
+	{
+		final ListView<T> listView = new ListView<T>(id, model)
+		{
+			/** The Constant serialVersionUID. */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(final ListItem<T> item)
+			{
+				item.add(newListComponent("item", item));
+			}
+
+		};
+		return listView;
+	}
 
 }

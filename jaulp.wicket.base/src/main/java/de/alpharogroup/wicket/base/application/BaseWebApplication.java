@@ -55,6 +55,21 @@ public abstract class BaseWebApplication extends WebApplication
 	private DateTime startupDate;
 
 	/**
+	 * Gets the elapsed duration since this application was initialized.
+	 *
+	 * @return the uptime
+	 */
+	public Duration getUptime()
+	{
+		final DateTime startup = getStartupDate();
+		if (null != startup)
+		{
+			return Duration.elapsed(Time.valueOf(startup.toDate()));
+		}
+		return Duration.NONE;
+	}
+
+	/**
 	 * Inits the application configuration for global, development and deployment.
 	 *
 	 * @see org.apache.wicket.Application#init()
@@ -69,89 +84,22 @@ public abstract class BaseWebApplication extends WebApplication
 	}
 
 	/**
-	 * Gets the elapsed duration since this application was initialized.
+	 * Mounts a page class to the given path with the given {@link IPageParametersEncoder}.
 	 *
-	 * @return the uptime
-	 */
-	public Duration getUptime()
-	{
-		DateTime startup = getStartupDate();
-		if (null != startup)
-		{
-			return Duration.elapsed(Time.valueOf(startup.toDate()));
-		}
-		return Duration.NONE;
-	}
-
-	/**
-	 * Called just before a the application configurations.
-	 */
-	protected void onBeforeApplicationConfigurations()
-	{
-	}
-
-	/**
-	 * Sets the application configurations.
-	 */
-	protected void onApplicationConfigurations()
-	{
-		// set configuration before the application configuration...
-		onBeforeApplicationConfigurations();
-		// set global configurations for both development and deployment mode...
-		onGlobalSettings();
-		// set configuration for development...
-		if (RuntimeConfigurationType.DEVELOPMENT.equals(this.getConfigurationType()))
-		{
-			onDevelopmentModeSettings();
-		}
-		// set configuration for deployment...
-		if (RuntimeConfigurationType.DEPLOYMENT.equals(this.getConfigurationType()))
-		{
-			onDeploymentModeSettings();
-		}
-	}
-
-	/**
-	 * Factory method that can be overwritten to provide other http port than the default one.
+	 * @param <T>
+	 *            type of page
 	 *
-	 * @return the int
+	 * @param path
+	 *            the path to mount the page class on
+	 * @param pageClass
+	 *            the page class to be mounted
+	 * @param pageParametersEncoder
+	 *            the encoder for the page parameter to be mounted
 	 */
-	protected int newHttpPort()
+	public <T extends Page> void mountPage(final String path, final Class<T> pageClass,
+		final IPageParametersEncoder pageParametersEncoder)
 	{
-		return BaseWebApplication.DEFAULT_HTTP_PORT;
-	}
-
-	/**
-	 * Factory method that can be overwritten to provide other https port than the default one.
-	 *
-	 * @return the int
-	 */
-	protected int newHttpsPort()
-	{
-		return BaseWebApplication.DEFAULT_HTTPS_PORT;
-	}
-
-	/**
-	 * Callback method that can be overwritten to provide application specific deployment mode
-	 * settings.
-	 */
-	protected void onDeploymentModeSettings()
-	{
-	}
-
-	/**
-	 * Callback method that can be overwritten to provide application specific development mode
-	 * settings.
-	 */
-	protected void onDevelopmentModeSettings()
-	{
-	}
-
-	/**
-	 * Callback method that can be overwritten to provide application specific global settings.
-	 */
-	protected void onGlobalSettings()
-	{
+		mount(new MountedMapper(path, pageClass, pageParametersEncoder));
 	}
 
 	/**
@@ -181,29 +129,81 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected IDataStore newApplicationDataStore()
 	{
-		IStoreSettings storeSettings = getStoreSettings();
-		Bytes maxSizePerSession = storeSettings.getMaxSizePerSession();
-		File fileStoreFolder = storeSettings.getFileStoreFolder();
+		final IStoreSettings storeSettings = getStoreSettings();
+		final Bytes maxSizePerSession = storeSettings.getMaxSizePerSession();
+		final File fileStoreFolder = storeSettings.getFileStoreFolder();
 		return new DiskDataStore(this.getName(), fileStoreFolder, maxSizePerSession);
 	}
 
 	/**
-	 * Mounts a page class to the given path with the given {@link IPageParametersEncoder}.
+	 * Factory method that can be overwritten to provide other http port than the default one.
 	 *
-	 * @param <T>
-	 *            type of page
-	 *
-	 * @param path
-	 *            the path to mount the page class on
-	 * @param pageClass
-	 *            the page class to be mounted
-	 * @param pageParametersEncoder
-	 *            the encoder for the page parameter to be mounted
+	 * @return the int
 	 */
-	public <T extends Page> void mountPage(final String path, final Class<T> pageClass,
-		final IPageParametersEncoder pageParametersEncoder)
+	protected int newHttpPort()
 	{
-		mount(new MountedMapper(path, pageClass, pageParametersEncoder));
+		return BaseWebApplication.DEFAULT_HTTP_PORT;
+	}
+
+	/**
+	 * Factory method that can be overwritten to provide other https port than the default one.
+	 *
+	 * @return the int
+	 */
+	protected int newHttpsPort()
+	{
+		return BaseWebApplication.DEFAULT_HTTPS_PORT;
+	}
+
+	/**
+	 * Sets the application configurations.
+	 */
+	protected void onApplicationConfigurations()
+	{
+		// set configuration before the application configuration...
+		onBeforeApplicationConfigurations();
+		// set global configurations for both development and deployment mode...
+		onGlobalSettings();
+		// set configuration for development...
+		if (RuntimeConfigurationType.DEVELOPMENT.equals(this.getConfigurationType()))
+		{
+			onDevelopmentModeSettings();
+		}
+		// set configuration for deployment...
+		if (RuntimeConfigurationType.DEPLOYMENT.equals(this.getConfigurationType()))
+		{
+			onDeploymentModeSettings();
+		}
+	}
+
+	/**
+	 * Called just before a the application configurations.
+	 */
+	protected void onBeforeApplicationConfigurations()
+	{
+	}
+
+	/**
+	 * Callback method that can be overwritten to provide application specific deployment mode
+	 * settings.
+	 */
+	protected void onDeploymentModeSettings()
+	{
+	}
+
+	/**
+	 * Callback method that can be overwritten to provide application specific development mode
+	 * settings.
+	 */
+	protected void onDevelopmentModeSettings()
+	{
+	}
+
+	/**
+	 * Callback method that can be overwritten to provide application specific global settings.
+	 */
+	protected void onGlobalSettings()
+	{
 	}
 
 }

@@ -45,20 +45,10 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 	@Getter
 	private AjaxLink<Void> downloadLink;
 
-	public DownloadPanel(String id, final IModel<DownloadModel> model)
+	public DownloadPanel(final String id, final IModel<DownloadModel> model)
 	{
 		super(id, model);
 		Args.notNull(model, "model");
-	}
-
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
-		fileNameLabel = newFileNameLabel("fileName", model(from(getModelObject()).getFilename()));
-		downloadLink = newDownloadLink("downloadLink", getModel());
-		downloadLink.addOrReplace(fileNameLabel);
-		addOrReplace(downloadLink);
 	}
 
 	protected abstract WebApplication getWebApplication();
@@ -70,6 +60,12 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 			private static final long serialVersionUID = 1L;
 
 			@Override
+			protected String getFileName()
+			{
+				return model.getObject().getFilename();
+			}
+
+			@Override
 			protected IResourceStream getResourceStream()
 			{
 				try
@@ -77,25 +73,19 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 					return ApplicationExtensions.getResourceStream(getWebApplication(), model
 						.getObject().getPath(), model.getObject().getContentType());
 				}
-				catch (IOException e)
+				catch (final IOException e)
 				{
 					getSession().info("Error: " + e.getLocalizedMessage());
 				}
 				return null;
 			}
-
-			@Override
-			protected String getFileName()
-			{
-				return model.getObject().getFilename();
-			}
 		};
-		AjaxLink<Void> downloadLink = new AjaxLink<Void>("downloadLink")
+		final AjaxLink<Void> downloadLink = new AjaxLink<Void>("downloadLink")
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				download.initiate(target);
 			}
@@ -104,9 +94,19 @@ public abstract class DownloadPanel extends BasePanel<DownloadModel>
 		return downloadLink;
 	}
 
-	protected Component newFileNameLabel(final String id, IModel<String> model)
+	protected Component newFileNameLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		fileNameLabel = newFileNameLabel("fileName", model(from(getModelObject()).getFilename()));
+		downloadLink = newDownloadLink("downloadLink", getModel());
+		downloadLink.addOrReplace(fileNameLabel);
+		addOrReplace(downloadLink);
 	}
 
 }

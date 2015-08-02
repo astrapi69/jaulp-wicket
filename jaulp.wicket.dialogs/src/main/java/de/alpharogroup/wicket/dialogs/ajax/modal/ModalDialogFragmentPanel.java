@@ -60,71 +60,15 @@ public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * {@inheritDoc}
-	 */
-	protected void onInitialize()
-	{
-		super.onInitialize();
-		add(modalWindow = newModalWindow("modal", getModel()));
-		modalWindow.setContent(modalFragment = newModalFragment(modalWindow.getContentId(),
-			"modalContent", this, getModel()));
-		modalFragment.add(newFragmentContent("fragmentContent", getModel()));
-		add(openModalLink = newOpenModalLink("openModal", getModel()));
-	}
-
-	/**
-	 * Factory method for creating a new Component to open the modal dialog. This method is invoked
-	 * in the constructor from the derived classes and can be overridden so users can provide their
-	 * own version of a new Component to open the modal dialog.
+	 * Abstract factory method for a new Component that will be added to the fragment.
 	 *
 	 * @param id
-	 *            the wicket id
+	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the Component to open the modal dialog.
+	 * @return the new Component that will be added to the fragment.
 	 */
-	protected MarkupContainer newOpenModalLink(final String id, final IModel<T> model)
-	{
-		return new AjaxLink<Void>(id)
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick(AjaxRequestTarget target)
-			{
-				ModalDialogFragmentPanel.this.onShow(target);
-			}
-		};
-	}
-
-	/**
-	 * Callback method to hang on when the dialog is open.
-	 * 
-	 * @param target
-	 *            the ajax request target.
-	 */
-	protected void onShow(final AjaxRequestTarget target)
-	{
-		/**
-		 * This is how to prevent IE and Firefox dialog popup when trying to setResponsePage() or
-		 * set an info message from a wicket modalWindow per below. Dialog popup demands an answer
-		 * to:
-		 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
-		 **/
-		target.prependJavaScript(WICKET_WINDOW_UNLOAD_CONFIRMATION_FALSE_JS);
-		getModalWindow().show(target);
-	}
-
-	/**
-	 * Callback method to hang on when the dialog is close.
-	 * 
-	 * @param target
-	 *            the ajax request target.
-	 */
-	protected void onClose(final AjaxRequestTarget target)
-	{
-		getModalWindow().close(target);
-	}
+	protected abstract Component newFragmentContent(final String id, final IModel<T> model);
 
 	/**
 	 * Factory method for creating a new Fragment for the content of the modal dialog. This method
@@ -149,17 +93,6 @@ public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Abstract factory method for a new Component that will be added to the fragment.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the new Component that will be added to the fragment.
-	 */
-	protected abstract Component newFragmentContent(final String id, final IModel<T> model);
-
-	/**
 	 * Factory method for creating a new modal dialog. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * new modal dialog.
@@ -174,5 +107,73 @@ public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
 	{
 		final ModalWindow modal = new ModalWindow(id, model);
 		return modal;
+	}
+
+	/**
+	 * Factory method for creating a new Component to open the modal dialog. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of a new Component to open the modal dialog.
+	 *
+	 * @param id
+	 *            the wicket id
+	 * @param model
+	 *            the model
+	 * @return the Component to open the modal dialog.
+	 */
+	protected MarkupContainer newOpenModalLink(final String id, final IModel<T> model)
+	{
+		return new AjaxLink<Void>(id)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick(final AjaxRequestTarget target)
+			{
+				ModalDialogFragmentPanel.this.onShow(target);
+			}
+		};
+	}
+
+	/**
+	 * Callback method to hang on when the dialog is close.
+	 * 
+	 * @param target
+	 *            the ajax request target.
+	 */
+	protected void onClose(final AjaxRequestTarget target)
+	{
+		getModalWindow().close(target);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		add(modalWindow = newModalWindow("modal", getModel()));
+		modalWindow.setContent(modalFragment = newModalFragment(modalWindow.getContentId(),
+			"modalContent", this, getModel()));
+		modalFragment.add(newFragmentContent("fragmentContent", getModel()));
+		add(openModalLink = newOpenModalLink("openModal", getModel()));
+	}
+
+	/**
+	 * Callback method to hang on when the dialog is open.
+	 * 
+	 * @param target
+	 *            the ajax request target.
+	 */
+	protected void onShow(final AjaxRequestTarget target)
+	{
+		/**
+		 * This is how to prevent IE and Firefox dialog popup when trying to setResponsePage() or
+		 * set an info message from a wicket modalWindow per below. Dialog popup demands an answer
+		 * to:
+		 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
+		 **/
+		target.prependJavaScript(WICKET_WINDOW_UNLOAD_CONFIRMATION_FALSE_JS);
+		getModalWindow().show(target);
 	}
 }

@@ -84,9 +84,9 @@ public class JavascriptResourceReferenceAppenderBehavior extends Behavior
 	 */
 	private ResourceReference getResourceReference()
 	{
-		Map<String, Object> map = new HashMap<>();
+		final Map<String, Object> map = new HashMap<>();
 		map.put("url", WicketUrlExtensions.getUrlAsString(pageClass));
-		ResourceReference resourceReference = new TextTemplateResourceReference(pageClass,
+		final ResourceReference resourceReference = new TextTemplateResourceReference(pageClass,
 			this.filename, "text/javascript", Model.ofMap(map));
 		return resourceReference;
 	}
@@ -95,7 +95,7 @@ public class JavascriptResourceReferenceAppenderBehavior extends Behavior
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(Component component, IHeaderResponse response)
+	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
 		response.render(JavaScriptHeaderItem.forReference(getResourceReference(), this.id));

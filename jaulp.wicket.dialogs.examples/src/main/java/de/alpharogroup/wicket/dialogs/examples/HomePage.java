@@ -80,7 +80,7 @@ public class HomePage extends WebPage
 			@Override
 			public void onSelect(final AjaxRequestTarget target, final MessageBean object)
 			{
-				MessageBean clone = (MessageBean)WicketObjects.cloneObject(object);
+				final MessageBean clone = (MessageBean)WicketObjects.cloneObject(object);
 				noteList.add(clone);
 				// Clear the content from textarea in the dialog.
 				object.setMessageContent("");
@@ -135,7 +135,7 @@ public class HomePage extends WebPage
 		wmc.add(repliesAndNotesListView);
 
 		@SuppressWarnings("rawtypes")
-		Link showUploadPage = new Link("showUploadPage")
+		final Link showUploadPage = new Link("showUploadPage")
 		{
 
 			/**

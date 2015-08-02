@@ -46,7 +46,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param id
 	 *            the id
 	 */
-	public LabeledEmailTextFieldPanel(String id)
+	public LabeledEmailTextFieldPanel(final String id)
 	{
 		this(id, null, null);
 	}
@@ -61,7 +61,8 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledEmailTextFieldPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledEmailTextFieldPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 
@@ -69,7 +70,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 
 		add(feedback = newComponentFeedbackPanel("feedback", emailTextField));
 
-		String markupId = emailTextField.getMarkupId();
+		final String markupId = emailTextField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 	}
 
@@ -102,7 +103,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the text field
 	 */
-	protected EmailTextField newEmailTextField(String id, IModel<T> model)
+	protected EmailTextField newEmailTextField(final String id, final IModel<T> model)
 	{
 		return ComponentFactory.newEmailTextField(id, new PropertyModel<String>(model.getObject(),
 			getId()));

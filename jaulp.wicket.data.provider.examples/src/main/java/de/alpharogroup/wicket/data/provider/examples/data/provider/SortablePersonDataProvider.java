@@ -39,7 +39,7 @@ public class SortablePersonDataProvider extends AbstractSortableDataProvider<Per
 	 * @param data
 	 *            the data
 	 */
-	public SortablePersonDataProvider(List<Person> data)
+	public SortablePersonDataProvider(final List<Person> data)
 	{
 		super(data);
 	}
@@ -48,7 +48,7 @@ public class SortablePersonDataProvider extends AbstractSortableDataProvider<Per
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IModel<Person> model(Person person)
+	public IModel<Person> model(final Person person)
 	{
 		return new CompoundPropertyModel<Person>(person);
 	}

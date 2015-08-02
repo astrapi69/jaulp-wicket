@@ -70,7 +70,7 @@ public class StartComponentExamples
 			{
 				DeleteFileUtils.delete(logfile);
 			}
-			catch (IOException e)
+			catch (final IOException e)
 			{
 				Logger.getRootLogger().error("logfile could not deleted.", e);
 			}

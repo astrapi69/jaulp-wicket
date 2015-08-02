@@ -35,19 +35,6 @@ public class UploadFilePanel extends Panel
 {
 
 	/**
-	 * The serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public UploadFilePanel(String id)
-	{
-		super(id);
-		// Add upload form with ajax progress bar
-		final FileUploadForm simpleUploadForm = new FileUploadForm("ajaxUpload");
-		add(simpleUploadForm);
-	}
-
-	/**
 	 * Form for uploads.
 	 */
 	private class FileUploadForm extends Form<Void>
@@ -59,27 +46,22 @@ public class UploadFilePanel extends Panel
 
 		private FileUploadField fileUploadField;
 
-		public FileUploadField getFileUploadField()
-		{
-			return fileUploadField;
-		}
-
 		/**
 		 * Construct.
 		 *
 		 * @param name
 		 *            Component name
 		 */
-		public FileUploadForm(String name)
+		public FileUploadForm(final String name)
 		{
 			super(name);
 			// set this form to multipart mode (allways needed for uploads!)
 			setMultiPart(true);
 
-			Label lblAddLogo = new Label("lblAddLogo", "Upload File");
+			final Label lblAddLogo = new Label("lblAddLogo", "Upload File");
 			add(lblAddLogo);
 
-			Label lblFile = new Label("lblFile", "File:");
+			final Label lblFile = new Label("lblFile", "File:");
 			add(lblFile);
 
 			// Add one file input field
@@ -88,6 +70,11 @@ public class UploadFilePanel extends Panel
 
 			// Set maximum size to 500K for demo purposes
 			setMaxSize(Bytes.kilobytes(500));
+		}
+
+		public FileUploadField getFileUploadField()
+		{
+			return fileUploadField;
 		}
 
 		/**
@@ -100,7 +87,7 @@ public class UploadFilePanel extends Panel
 			if (upload != null)
 			{
 				// Create a new file
-				File newFile = new File(getUploadFolder(), upload.getClientFileName());
+				final File newFile = new File(getUploadFolder(), upload.getClientFileName());
 
 				// Check new file, delete if it allready existed
 				checkFileExists(newFile);
@@ -112,7 +99,7 @@ public class UploadFilePanel extends Panel
 					upload.writeTo(newFile);
 
 				}
-				catch (Exception e)
+				catch (final Exception e)
 				{
 					throw new IllegalStateException("Unable to write file");
 				}
@@ -122,8 +109,17 @@ public class UploadFilePanel extends Panel
 		}
 	}
 
-	public void onUploadFile()
+	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UploadFilePanel(final String id)
 	{
+		super(id);
+		// Add upload form with ajax progress bar
+		final FileUploadForm simpleUploadForm = new FileUploadForm("ajaxUpload");
+		add(simpleUploadForm);
 	}
 
 	/**
@@ -132,7 +128,7 @@ public class UploadFilePanel extends Panel
 	 * @param newFile
 	 *            the file to check
 	 */
-	private void checkFileExists(File newFile)
+	private void checkFileExists(final File newFile)
 	{
 		if (newFile.exists())
 		{
@@ -147,6 +143,10 @@ public class UploadFilePanel extends Panel
 	private Folder getUploadFolder()
 	{
 		return WicketApplication.get().getUploadFolder();
+	}
+
+	public void onUploadFile()
+	{
 	}
 
 }

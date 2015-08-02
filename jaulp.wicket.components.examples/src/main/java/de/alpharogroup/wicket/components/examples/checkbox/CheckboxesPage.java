@@ -26,14 +26,14 @@ public class CheckboxesPage extends PubliclyBasePage<Object>
 {
 	private static final long serialVersionUID = 1L;
 
+	public CheckboxesPage(final PageParameters parameters)
+	{
+		super(parameters);
+	}
+
 	@Override
 	public Component getContainerPanel()
 	{
 		return new CheckboxesPanel(CONTAINER_PANEL_ID, null);
-	}
-
-	public CheckboxesPage(final PageParameters parameters)
-	{
-		super(parameters);
 	}
 }

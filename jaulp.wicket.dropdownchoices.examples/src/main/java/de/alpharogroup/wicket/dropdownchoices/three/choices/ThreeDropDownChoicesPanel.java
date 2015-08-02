@@ -129,8 +129,9 @@ public class ThreeDropDownChoicesPanel extends Panel
 			@Override
 			public void onSubmit()
 			{
-				String selectedRootOption = stringThreeDropDownChoicesModel.getSelectedRootOption();
-				String selectedChildOption = stringThreeDropDownChoicesModel
+				final String selectedRootOption = stringThreeDropDownChoicesModel
+					.getSelectedRootOption();
+				final String selectedChildOption = stringThreeDropDownChoicesModel
 					.getSelectedChildOption();
 				System.out.println("RootOption:" + selectedRootOption);
 				System.out.println("ChildOption:" + selectedChildOption);

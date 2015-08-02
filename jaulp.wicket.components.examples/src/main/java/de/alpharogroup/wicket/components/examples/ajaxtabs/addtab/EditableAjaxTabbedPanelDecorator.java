@@ -49,7 +49,7 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 	{
 		super(id, model);
 		setDefaultModel(new CompoundPropertyModel<TabbedPanelModels<String>>(model));
-		List<TabModel<String>> tabModels = model.getObject().getTabModels();
+		final List<TabModel<String>> tabModels = model.getObject().getTabModels();
 		for (int i = 0; i < tabModels.size(); i++)
 		{
 			tabs.add(new AbstractContentTab<TabModel<String>>(tabModels.get(i).getTitle(), Model
@@ -58,9 +58,9 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 				private static final long serialVersionUID = 1L;
 
 				@Override
-				public Panel getPanel(String panelId)
+				public Panel getPanel(final String panelId)
 				{
-					Panel p = new TabPanel(panelId, getContent().getObject().getContent());
+					final Panel p = new TabPanel(panelId, getContent().getObject().getContent());
 					return p;
 				}
 			});
@@ -73,22 +73,22 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 			@Override
 			protected WebMarkupContainer newCloseLink(final String linkId, final int index)
 			{
-				WebMarkupContainer wmc = super.newCloseLink(linkId, index);
+				final WebMarkupContainer wmc = super.newCloseLink(linkId, index);
 				wmc.add(new AttributeAppender("class", "close label label-warning"));
 				return wmc;
 
 			}
 
 			@Override
-			protected WebMarkupContainer newLink(String linkId, int index)
+			protected WebMarkupContainer newLink(final String linkId, final int index)
 			{
-				WebMarkupContainer wmc = super.newLink(linkId, index);
+				final WebMarkupContainer wmc = super.newLink(linkId, index);
 				wmc.add(new AttributeAppender("class", "label label-success"));
 				return wmc;
 			}
 		});
 		ajaxTabbedPanel.getTabsUlContainer().add(new AttributeAppender("class", " nav nav-tabs"));
-		AjaxLink<Void> addTabLink = new AjaxLink<Void>("addTabLink")
+		final AjaxLink<Void> addTabLink = new AjaxLink<Void>("addTabLink")
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -101,36 +101,36 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 					target = ComponentFinder.findAjaxRequestTarget();
 				}
 				target.add(ajaxTabbedPanel);
-				int tabNumber = tabs.size() + 1;
+				final int tabNumber = tabs.size() + 1;
 				final TabModel<String> thirdTabModel = new TabModel<>(Model.of("tab " + tabNumber),
 					Model.of("TAB_" + tabNumber), Model.of("x"));
 
-				AbstractContentTab<TabModel<String>> tab = new AbstractContentTab<TabModel<String>>(
+				final AbstractContentTab<TabModel<String>> tab = new AbstractContentTab<TabModel<String>>(
 					thirdTabModel.getTitle(), Model.of(thirdTabModel), Model.of("x"))
 				{
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					public Panel getPanel(String panelId)
+					public Panel getPanel(final String panelId)
 					{
-						Panel p = new TabPanel(panelId, getContent().getObject().getContent());
+						final Panel p = new TabPanel(panelId, getContent().getObject().getContent());
 						return p;
 					}
 				};
-				Object object = EditableAjaxTabbedPanelDecorator.this.getDefaultModelObject();
-				TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
-				List<TabModel<String>> tabModels = tabbedModel.getTabModels();
+				final Object object = EditableAjaxTabbedPanelDecorator.this.getDefaultModelObject();
+				final TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
+				final List<TabModel<String>> tabModels = tabbedModel.getTabModels();
 				tabModels.add(thirdTabModel);
 				ajaxTabbedPanel.onNewTab(target, tab);
 			}
 		};
 		add(addTabLink);
-		AjaxFallbackLink<Object> removeTabLink = new AjaxFallbackLink<Object>("removeTabLink")
+		final AjaxFallbackLink<Object> removeTabLink = new AjaxFallbackLink<Object>("removeTabLink")
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				target.add(ajaxTabbedPanel);
 				onRemoveTab(target, 0);
@@ -154,9 +154,9 @@ public class EditableAjaxTabbedPanelDecorator extends Panel
 	@SuppressWarnings("unchecked")
 	protected void onRemoveTab(final AjaxRequestTarget target, final int index)
 	{
-		Object object = EditableAjaxTabbedPanelDecorator.this.getDefaultModelObject();
-		TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
-		List<TabModel<String>> tabModels = tabbedModel.getTabModels();
+		final Object object = EditableAjaxTabbedPanelDecorator.this.getDefaultModelObject();
+		final TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
+		final List<TabModel<String>> tabModels = tabbedModel.getTabModels();
 		tabModels.remove(index);
 		ajaxTabbedPanel.onRemoveTab(target, index);
 	}

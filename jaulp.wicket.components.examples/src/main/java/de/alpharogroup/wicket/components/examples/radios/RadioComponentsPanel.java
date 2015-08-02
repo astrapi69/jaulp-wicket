@@ -29,11 +29,11 @@ public class RadioComponentsPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public RadioComponentsPanel(String id)
+	public RadioComponentsPanel(final String id)
 	{
 		super(id);
 
-		AjaxRadioExamplePanel radioButtonPanel = new AjaxRadioExamplePanel(
+		final AjaxRadioExamplePanel radioButtonPanel = new AjaxRadioExamplePanel(
 			"ajaxRadioExampleButtonPanel", null)
 		{
 
@@ -46,7 +46,7 @@ public class RadioComponentsPanel extends Panel
 			 * {@inheritDoc}
 			 */
 			@Override
-			public void renderHead(IHeaderResponse response)
+			public void renderHead(final IHeaderResponse response)
 			{
 				super.renderHead(response);
 				response.render(CssHeaderItem.forReference(new CssResourceReference(

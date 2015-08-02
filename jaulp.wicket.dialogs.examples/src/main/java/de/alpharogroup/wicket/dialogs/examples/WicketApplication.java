@@ -28,6 +28,16 @@ public class WicketApplication extends WebApplication
 	public static final int DEFAULT_HTTP_PORT = 9090;
 	public static final int DEFAULT_HTTPS_PORT = 9443;
 
+	/**
+	 * Gets the.
+	 *
+	 * @return the wicket application
+	 */
+	public static WicketApplication get()
+	{
+		return (WicketApplication)Application.get();
+	}
+
 	/** The upload folder. */
 	private Folder uploadFolder = null;
 
@@ -38,15 +48,6 @@ public class WicketApplication extends WebApplication
 	{
 
 
-	}
-
-	@Override
-	public void init()
-	{
-		// Create the upload folder...
-		uploadFolder = new Folder(System.getProperty("java.io.tmpdir"), "wicket-uploads");
-		// Ensure folder exists
-		uploadFolder.mkdirs();
 	}
 
 	/**
@@ -69,14 +70,13 @@ public class WicketApplication extends WebApplication
 		return this.uploadFolder;
 	}
 
-	/**
-	 * Gets the.
-	 *
-	 * @return the wicket application
-	 */
-	public static WicketApplication get()
+	@Override
+	public void init()
 	{
-		return (WicketApplication)Application.get();
+		// Create the upload folder...
+		uploadFolder = new Folder(System.getProperty("java.io.tmpdir"), "wicket-uploads");
+		// Ensure folder exists
+		uploadFolder.mkdirs();
 	}
 
 }

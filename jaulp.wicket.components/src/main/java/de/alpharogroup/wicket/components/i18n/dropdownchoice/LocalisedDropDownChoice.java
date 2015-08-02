@@ -33,11 +33,11 @@ import org.apache.wicket.model.IModel;
 public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 {
 
-	/** The default choice. */
-	public boolean defaultChoice;
-
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** The default choice. */
+	public boolean defaultChoice;
 	// instance block for set the markup id, with other words make this component ajaxifiable...
 	{
 		setOutputMarkupId(true);

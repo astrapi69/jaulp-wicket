@@ -48,17 +48,17 @@ public class ModelPage extends GenericBasePage<Person>
 		// Set PropertyModel to an Object that is null...
 		nicknameModel = model(from(getModel()).getNickname());
 		add(new MenubarPanel("menubarPanel"));
-		String nickname = nicknameModel.getObject();
+		final String nickname = nicknameModel.getObject();
 		System.out.println("nickname is:" + nickname);
 		add(new Label("text", nicknameModel).setOutputMarkupId(true));
 		// TODO add an AjaxLink to change the nickname...
 
-		AjaxLink<Void> updateLabelLink = new AjaxLink<Void>("updateLabelLink")
+		final AjaxLink<Void> updateLabelLink = new AjaxLink<Void>("updateLabelLink")
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				// set nickname to foo...
 				ModelPage.this.getModelObject().setNickname("foo");

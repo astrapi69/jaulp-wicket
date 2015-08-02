@@ -57,7 +57,7 @@ public abstract class LinkPanel extends GenericPanel<String>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LinkPanel(String id, IModel<String> labelModel)
+	public LinkPanel(final String id, final IModel<String> labelModel)
 	{
 		this(id, labelModel, null);
 	}
@@ -72,7 +72,7 @@ public abstract class LinkPanel extends GenericPanel<String>
 	 * @param form
 	 *            the form
 	 */
-	public LinkPanel(String id, IModel<String> labelModel, final Form<?> form)
+	public LinkPanel(final String id, final IModel<String> labelModel, final Form<?> form)
 	{
 		super(id, labelModel);
 		this.form = form;
@@ -80,35 +80,6 @@ public abstract class LinkPanel extends GenericPanel<String>
 		add(link = newLink("link"));
 		link.add(label = newLabel("label", labelModel));
 	}
-
-	/**
-	 * Factory method for creating a new Link. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a new Link.
-	 *
-	 * @param id
-	 *            the wicket id
-	 * @return the Button
-	 */
-	protected AbstractLink newLink(String id)
-	{
-		return new AjaxLink<Void>(id)
-		{
-
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick(AjaxRequestTarget target)
-			{
-				LinkPanel.this.onClick(target);
-
-			}
-		};
-	}
-
-	public abstract void onClick(AjaxRequestTarget target);
 
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
@@ -120,9 +91,38 @@ public abstract class LinkPanel extends GenericPanel<String>
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, IModel<String> model)
+	protected Label newLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
+
+	/**
+	 * Factory method for creating a new Link. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a new Link.
+	 *
+	 * @param id
+	 *            the wicket id
+	 * @return the Button
+	 */
+	protected AbstractLink newLink(final String id)
+	{
+		return new AjaxLink<Void>(id)
+		{
+
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick(final AjaxRequestTarget target)
+			{
+				LinkPanel.this.onClick(target);
+
+			}
+		};
+	}
+
+	public abstract void onClick(final AjaxRequestTarget target);
 
 }

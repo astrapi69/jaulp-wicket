@@ -25,10 +25,10 @@ public class ReCaptchaFormPanel extends BasePanel<Object>
 {
 	private static final long serialVersionUID = 1L;
 
-	public ReCaptchaFormPanel(String id)
+	public ReCaptchaFormPanel(final String id)
 	{
 		super(id);
-		Form<?> form = new Form<Void>("form")
+		final Form<?> form = new Form<Void>("form")
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -46,15 +46,15 @@ public class ReCaptchaFormPanel extends BasePanel<Object>
 			private final static String PRIVATE_KEY = "6LehBPwSAAAAAN78oe6tLj2NqKhupf6vxhy8kkFJ";
 
 			@Override
-			public String getPublicKey()
-			{
-				return PUBLIC_KEY;
-			}
-
-			@Override
 			public String getPrivateKey()
 			{
 				return PRIVATE_KEY;
+			}
+
+			@Override
+			public String getPublicKey()
+			{
+				return PUBLIC_KEY;
 			}
 
 		});

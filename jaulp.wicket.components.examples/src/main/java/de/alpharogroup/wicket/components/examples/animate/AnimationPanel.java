@@ -53,40 +53,43 @@ public class AnimationPanel extends Panel
 	@Getter
 	private final AjaxButton animateButton;
 
-	public AnimationPanel(String id, IModel<?> model)
+	public AnimationPanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
 
-		Form<?> form = ComponentFactory.newForm("form");
+		final Form<?> form = ComponentFactory.newForm("form");
 		add(form);
 		form.add(animateButton = newAnimateButton("animateButton", form));
 
-		WebMarkupContainer containerAnimate = new WebMarkupContainer("containerAnimate");
+		final WebMarkupContainer containerAnimate = new WebMarkupContainer("containerAnimate");
 		form.add(containerAnimate);
 
-		JqueryStatementsBehavior jqueryStatementsBehavior = new JqueryStatementsBehavior().add(
-			new BuildableChainableStatement.Builder().label("animate").args("{height: '300'}")
-				.build()).add(
-			new BuildableChainableStatement.Builder().label("animate").args("{left: '300px'}")
-				.build());
-		String render = (String)jqueryStatementsBehavior.createRenderedStatement(containerAnimate);
+		final JqueryStatementsBehavior jqueryStatementsBehavior = new JqueryStatementsBehavior()
+			.add(
+				new BuildableChainableStatement.Builder().label("animate").args("{height: '300'}")
+					.build()).add(
+				new BuildableChainableStatement.Builder().label("animate").args("{left: '300px'}")
+					.build());
+		final String render = (String)jqueryStatementsBehavior
+			.createRenderedStatement(containerAnimate);
 		System.out.println(render);
 		containerAnimate.add(jqueryStatementsBehavior);
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 0.4f)));
 		containerAnimate.add(new EffectBehavior(new FadeTo(EffectSpeed.SLOW, 1.0f)));
 
 		// add a spinner...
-		SpinSettings spinSettings = SpinSettings.builder().build();
+		final SpinSettings spinSettings = SpinSettings.builder().build();
 		spinSettings.getColor().setValue("#00ff00");
 		spinSettings.getDirection().setValue(-1);
 		spinSettings.getSpeed().setValue(1.2f);
 		spinSettings.getPosition().setValue("relative");
-		String js = new SpinJsGenerator(spinSettings, animateButton.getMarkupId()).generateJs();
+		final String js = new SpinJsGenerator(spinSettings, animateButton.getMarkupId())
+			.generateJs();
 		add(JavascriptAppenderBehavior.builder().javascript(js).build());
 	}
 
 
-	protected AjaxButton newAnimateButton(final String id, Form<?> form)
+	protected AjaxButton newAnimateButton(final String id, final Form<?> form)
 	{
 		final AjaxButton ajaxButton = new AjaxButton(id, form)
 		{
@@ -124,12 +127,12 @@ public class AnimationPanel extends Panel
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, IModel<String> model)
+	protected Label newLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
-	protected void onAnimate(final AjaxRequestTarget target, Form<?> form, boolean error)
+	protected void onAnimate(final AjaxRequestTarget target, final Form<?> form, final boolean error)
 	{
 
 	}

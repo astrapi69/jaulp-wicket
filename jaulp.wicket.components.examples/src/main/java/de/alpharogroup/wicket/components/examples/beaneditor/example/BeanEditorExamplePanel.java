@@ -40,7 +40,7 @@ public class BeanEditorExamplePanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public BeanEditorExamplePanel(String id, IModel<Customer> model)
+	public BeanEditorExamplePanel(final String id, final IModel<Customer> model)
 	{
 		super(id, model);
 
@@ -53,14 +53,15 @@ public class BeanEditorExamplePanel extends Panel
 
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			@Override
-			protected Component newEditorForBeanField(String id, Field field, IModel model)
+			protected Component newEditorForBeanField(final String id, final Field field,
+				final IModel model)
 			{
 
 				final Class<?> type = field.getType();
 
 				// Check the field if it is @Mandatory.
-				boolean required = field.getAnnotation(Mandatory.class) != null;
-				IModel<String> labelModel = Model.of(field.getName());
+				final boolean required = field.getAnnotation(Mandatory.class) != null;
+				final IModel<String> labelModel = Model.of(field.getName());
 				// new StringResourceModel(field.getName(), this, null);
 				if (String.class.isAssignableFrom(type))
 				{
@@ -74,7 +75,7 @@ public class BeanEditorExamplePanel extends Panel
 				else if (Enum.class.isAssignableFrom(type))
 				{
 					final List<?> list = Arrays.asList(type.getEnumConstants());
-					IModel<?> enumChoices = new AbstractReadOnlyModel<Object>()
+					final IModel<?> enumChoices = new AbstractReadOnlyModel<Object>()
 					{
 						/**
 						 * The serialVersionUID
@@ -96,7 +97,7 @@ public class BeanEditorExamplePanel extends Panel
 			}
 
 			@Override
-			protected void onSubmit(AjaxRequestTarget target, Form<?> form)
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				System.out.println(getModel());
 			}

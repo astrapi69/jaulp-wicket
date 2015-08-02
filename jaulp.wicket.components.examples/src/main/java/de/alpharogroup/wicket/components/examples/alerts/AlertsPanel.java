@@ -26,12 +26,12 @@ public class AlertsPanel extends BasePanel<Object>
 {
 	private static final long serialVersionUID = 1L;
 
-	public AlertsPanel(String id)
+	public AlertsPanel(final String id)
 	{
 		super(id);
-		MarkupContainer mc = new WebMarkupContainer("alert-area");
+		final MarkupContainer mc = new WebMarkupContainer("alert-area");
 		add(mc);
-		Button button = new Button("button");
+		final Button button = new Button("button");
 		button.add(new AttributeModifier("onclick", "newAlert('success', 'Oh yeah!', 2000);"));
 		add(button);
 

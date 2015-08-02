@@ -37,7 +37,7 @@ public class SimpleDropDownChoicePanel extends Panel
 	public SimpleDropDownChoicePanel(final String id)
 	{
 		super(id);
-		IModel<List<String>> countries = new LoadableDetachableModel<List<String>>()
+		final IModel<List<String>> countries = new LoadableDetachableModel<List<String>>()
 		{
 			/**
 			 * 
@@ -47,7 +47,7 @@ public class SimpleDropDownChoicePanel extends Panel
 			@Override
 			public List<String> load()
 			{
-				List<String> l = new ArrayList<String>();
+				final List<String> l = new ArrayList<String>();
 				l.add("Argentina");
 				l.add("Brazil");
 				l.add("Chile");
@@ -55,7 +55,7 @@ public class SimpleDropDownChoicePanel extends Panel
 			}
 		};
 
-		DropDownChoice<String> country = new DropDownChoice<String>("country", countries);
+		final DropDownChoice<String> country = new DropDownChoice<String>("country", countries);
 		add(country);
 	}
 

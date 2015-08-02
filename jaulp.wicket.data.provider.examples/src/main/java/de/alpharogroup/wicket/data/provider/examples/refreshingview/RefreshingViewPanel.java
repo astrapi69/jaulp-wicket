@@ -38,79 +38,6 @@ import de.alpharogroup.wicket.data.provider.examples.data.provider.PersonDatabas
 public class RefreshingViewPanel extends Panel
 {
 	/**
-	 * The serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
-	final Form<?> form;
-	@Getter
-	private Person selected;
-
-	public RefreshingViewPanel(String id, IModel<?> model)
-	{
-		super(id, model);
-
-		form = new Form<Person>("form");
-		add(form);
-
-		// create a repeater that will display the list of contacts.
-		RefreshingView<Person> refreshingView = new RefreshingView<Person>("simple")
-		{
-			/**
-			 * The serialVersionUID.
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected Iterator<IModel<Person>> getItemModels()
-			{
-				// for simplicity we only show the first 10 contacts
-				// SortParam<String> sort = new SortParam<String>("firstname",
-				// true);
-				Iterator<Person> contacts = PersonDatabaseManager.getInstance().getPersons()
-					.iterator();
-
-				// the iterator returns contact objects, but we need it to
-				// return models, we use this handy adapter class to perform
-				// on-the-fly conversion.
-				return new ModelIteratorAdapter<Person>(contacts)
-				{
-					@Override
-					protected IModel<Person> model(Person object)
-					{
-						return new CompoundPropertyModel<Person>(object);
-					}
-				};
-			}
-
-			@Override
-			protected void populateItem(final Item<Person> item)
-			{
-				// populate the row of the repeater
-				IModel<Person> contact = item.getModel();
-				item.add(new ActionPanel("actions", contact));
-				item.add(new TextField<String>("firstname"));
-				item.add(new TextField<String>("lastname"));
-			}
-
-			@Override
-			protected Item<Person> newItem(String id, int index, IModel<Person> model)
-			{
-				// this item sets markup class attribute to either 'odd' or
-				// 'even' for decoration
-				return new OddEvenItem<Person>(id, index, model);
-			}
-		};
-
-		// because we are in a form we need to preserve state of the component
-		// hierarchy (because it might contain things like form errors that
-		// would be lost if the hierarchy for each item was recreated every
-		// request by default), so we use an item reuse strategy.
-		refreshingView.setItemReuseStrategy(ReuseIfModelsEqualStrategy.getInstance());
-
-		form.add(refreshingView);
-	}
-
-	/**
 	 * Panel that houses row-actions
 	 */
 	private class ActionPanel extends Panel
@@ -126,7 +53,7 @@ public class RefreshingViewPanel extends Panel
 		 * @param model
 		 *            model for contact
 		 */
-		public ActionPanel(String id, IModel<Person> model)
+		public ActionPanel(final String id, final IModel<Person> model)
 		{
 			super(id, model);
 			add(new ModalDialogWithStylePanel("modalDialog"));
@@ -144,7 +71,7 @@ public class RefreshingViewPanel extends Panel
 				}
 			});
 
-			SubmitLink removeLink = new SubmitLink("remove", form)
+			final SubmitLink removeLink = new SubmitLink("remove", form)
 			{
 				/**
 				 * The serialVersionUID.
@@ -154,7 +81,7 @@ public class RefreshingViewPanel extends Panel
 				@Override
 				public void onSubmit()
 				{
-					Person contact = (Person)ActionPanel.this.getDefaultModelObject();
+					final Person contact = (Person)ActionPanel.this.getDefaultModelObject();
 					info("Removed Person " + contact);
 					// DatabaseLocator.getDatabase().delete(contact);
 				}
@@ -165,11 +92,86 @@ public class RefreshingViewPanel extends Panel
 	}
 
 	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
+	final Form<?> form;
+
+	@Getter
+	private Person selected;
+
+	public RefreshingViewPanel(final String id, final IModel<?> model)
+	{
+		super(id, model);
+
+		form = new Form<Person>("form");
+		add(form);
+
+		// create a repeater that will display the list of contacts.
+		final RefreshingView<Person> refreshingView = new RefreshingView<Person>("simple")
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected Iterator<IModel<Person>> getItemModels()
+			{
+				// for simplicity we only show the first 10 contacts
+				// SortParam<String> sort = new SortParam<String>("firstname",
+				// true);
+				final Iterator<Person> contacts = PersonDatabaseManager.getInstance().getPersons()
+					.iterator();
+
+				// the iterator returns contact objects, but we need it to
+				// return models, we use this handy adapter class to perform
+				// on-the-fly conversion.
+				return new ModelIteratorAdapter<Person>(contacts)
+				{
+					@Override
+					protected IModel<Person> model(final Person object)
+					{
+						return new CompoundPropertyModel<Person>(object);
+					}
+				};
+			}
+
+			@Override
+			protected Item<Person> newItem(final String id, final int index,
+				final IModel<Person> model)
+			{
+				// this item sets markup class attribute to either 'odd' or
+				// 'even' for decoration
+				return new OddEvenItem<Person>(id, index, model);
+			}
+
+			@Override
+			protected void populateItem(final Item<Person> item)
+			{
+				// populate the row of the repeater
+				final IModel<Person> contact = item.getModel();
+				item.add(new ActionPanel("actions", contact));
+				item.add(new TextField<String>("firstname"));
+				item.add(new TextField<String>("lastname"));
+			}
+		};
+
+		// because we are in a form we need to preserve state of the component
+		// hierarchy (because it might contain things like form errors that
+		// would be lost if the hierarchy for each item was recreated every
+		// request by default), so we use an item reuse strategy.
+		refreshingView.setItemReuseStrategy(ReuseIfModelsEqualStrategy.getInstance());
+
+		form.add(refreshingView);
+	}
+
+	/**
 	 * sets selected Person
 	 *
 	 * @param selected
 	 */
-	public void setSelected(Person selected)
+	public void setSelected(final Person selected)
 	{
 		addStateChange();
 		this.selected = selected;

@@ -32,26 +32,26 @@ public class ModalDialogWithStylePanel extends Panel
 	// private static ResourceReference CSS = new PackageResourceReference(
 	// CustomModalWindow.class, "cart_global.css");
 
-	public ModalDialogWithStylePanel(String id)
+	public ModalDialogWithStylePanel(final String id)
 	{
 		super(id);
 		final ModalWindow modal = new ModalWindow("modal");
 		modal.setCssClassName("w_vegas");
 		modal.setTitle("Trivial Modal");
 
-		AjaxLink<Void> modalLink = new AjaxLink<Void>("modalLink")
+		final AjaxLink<Void> modalLink = new AjaxLink<Void>("modalLink")
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 
 				target.appendJavaScript("var originalStyle = $('.wicket-modal').attr('style');"
 					+ "$('.wicket-modal').attr('style', originalStyle + 'opacity: 0.5;');");
 			}
 		};
-		Fragment modalFragment = new Fragment(modal.getContentId(), "modalContent", this);
+		final Fragment modalFragment = new Fragment(modal.getContentId(), "modalContent", this);
 		modalFragment.add(modalLink);
 		modal.setContent(modalFragment);
 
@@ -61,7 +61,7 @@ public class ModalDialogWithStylePanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				modal.show(target);
 			}

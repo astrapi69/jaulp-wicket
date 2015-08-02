@@ -56,10 +56,10 @@ public class CustomModalWindow extends ModalWindow
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(CSS);
+		final CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(CSS);
 		response.render(headerItem);
 	}
 

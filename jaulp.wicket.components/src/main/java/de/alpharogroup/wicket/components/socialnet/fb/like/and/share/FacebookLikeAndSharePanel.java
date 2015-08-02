@@ -32,30 +32,30 @@ public class FacebookLikeAndSharePanel extends BasePanel<FacebookLikeAndShareMod
 
 	private static final long serialVersionUID = 1L;
 
-	public FacebookLikeAndSharePanel(String id)
+	public FacebookLikeAndSharePanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public FacebookLikeAndSharePanel(String id, IModel<FacebookLikeAndShareModel> model)
+	public FacebookLikeAndSharePanel(final String id, final IModel<FacebookLikeAndShareModel> model)
 	{
 		super(id, model);
-		HashMap<String, String> values = new HashMap<String, String>();
+		final HashMap<String, String> values = new HashMap<String, String>();
 		values.put("data-share", model.getObject().getDataShare().toString());
 		values.put("data-width", model.getObject().getDataWith().toString());
 		values.put("data-show-faces", model.getObject().getDataShowFaces().toString());
-		Model<HashMap<String, String>> context = Model.of(values);
+		final Model<HashMap<String, String>> context = Model.of(values);
 
-		UrlResourceStream template = new UrlResourceStream(
+		final UrlResourceStream template = new UrlResourceStream(
 			FacebookLikeAndSharePanel.class.getResource("fbLikeShare.vm"));
 		add(VelocityPanel.forTemplateResource("velocityPanel", context, template));
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		PackageResourceReference resourceReference = new PackageResourceReference(getClass(),
+		final PackageResourceReference resourceReference = new PackageResourceReference(getClass(),
 			"fbLikeShare.js");
 		response.render(JavaScriptHeaderItem.forReference(resourceReference, "fbLikeShare"));
 	}

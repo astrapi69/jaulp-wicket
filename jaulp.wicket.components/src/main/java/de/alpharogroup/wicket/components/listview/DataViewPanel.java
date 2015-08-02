@@ -59,12 +59,13 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
 	 *
 	 * @param id
 	 *            the id
-	 * @param list
-	 *            the list
+	 * @param model
+	 *            the model
 	 */
-	public DataViewPanel(String id, List<T> list)
+	public DataViewPanel(final String id, final IModel<List<T>> model)
 	{
-		this(id, new ListModel<>(list));
+		super(id, Args.notNull(model, "model"));
+		add(dataView = newDataView("dataView", newDataProvider(model)));
 	}
 
 	/**
@@ -72,14 +73,24 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
 	 *
 	 * @param id
 	 *            the id
+	 * @param list
+	 *            the list
+	 */
+	public DataViewPanel(final String id, final List<T> list)
+	{
+		this(id, new ListModel<>(list));
+	}
+
+	/**
+	 * Abstract factory method that creates a new {@link IDataProvider}. This method is invoked in
+	 * the constructor from the derived classes and must be implemented so users can provide their
+	 * own version of a {@link IDataProvider}.
+	 *
 	 * @param model
 	 *            the model
+	 * @return the new {@link IDataProvider}.
 	 */
-	public DataViewPanel(String id, final IModel<List<T>> model)
-	{
-		super(id, Args.notNull(model, "model"));
-		add(dataView = newDataView("dataView", newDataProvider(model)));
-	}
+	protected abstract IDataProvider<T> newDataProvider(final IModel<List<T>> model);
 
 	/**
 	 * New DataView.
@@ -92,7 +103,7 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
 	 */
 	protected DataView<T> newDataView(final String id, final IDataProvider<T> dataProvider)
 	{
-		DataView<T> dataView = new DataView<T>(id, dataProvider)
+		final DataView<T> dataView = new DataView<T>(id, dataProvider)
 		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
@@ -101,7 +112,7 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected void populateItem(Item<T> item)
+			protected void populateItem(final Item<T> item)
 			{
 				item.add(newListComponent("item", item));
 			}
@@ -130,17 +141,6 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
 	 *            the item
 	 * @return the new list component.
 	 */
-	protected abstract Component newListComponent(String id, Item<T> item);
-
-	/**
-	 * Abstract factory method that creates a new {@link IDataProvider}. This method is invoked in
-	 * the constructor from the derived classes and must be implemented so users can provide their
-	 * own version of a {@link IDataProvider}.
-	 *
-	 * @param model
-	 *            the model
-	 * @return the new {@link IDataProvider}.
-	 */
-	protected abstract IDataProvider<T> newDataProvider(final IModel<List<T>> model);
+	protected abstract Component newListComponent(final String id, final Item<T> item);
 
 }

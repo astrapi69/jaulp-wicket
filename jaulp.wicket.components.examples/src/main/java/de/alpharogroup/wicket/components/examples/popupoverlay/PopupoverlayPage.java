@@ -43,7 +43,7 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonBean>
 	@Override
 	public Component getContainerPanel()
 	{
-		PopupoverlayPanel<PersonBean> popupoverlayPanel = new PopupoverlayPanel<PersonBean>(
+		final PopupoverlayPanel<PersonBean> popupoverlayPanel = new PopupoverlayPanel<PersonBean>(
 			CONTAINER_PANEL_ID, Model.of(new PersonBean()))
 		{
 			/**
@@ -52,20 +52,21 @@ public class PopupoverlayPage extends PubliclyBasePage<PersonBean>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected MarkupContainer newOverlayReference(String id, IModel<PersonBean> model)
+			protected Button newOpenButton(final String id)
 			{
-				PersonPanel panel = new PersonPanel(id, model);
-				panel.add(new AttributeAppender("class", " container well"));
-				panel.setOutputMarkupId(true);
-				return panel;
+				final Button button = new Button(id);
+				button.add(new AttributeAppender("class", " btn btn-primary"));
+				return button;
 			}
 
 			@Override
-			protected Button newOpenButton(final String id)
+			protected MarkupContainer newOverlayReference(final String id,
+				final IModel<PersonBean> model)
 			{
-				Button button = new Button(id);
-				button.add(new AttributeAppender("class", " btn btn-primary"));
-				return button;
+				final PersonPanel panel = new PersonPanel(id, model);
+				panel.add(new AttributeAppender("class", " container well"));
+				panel.setOutputMarkupId(true);
+				return panel;
 			}
 		};
 

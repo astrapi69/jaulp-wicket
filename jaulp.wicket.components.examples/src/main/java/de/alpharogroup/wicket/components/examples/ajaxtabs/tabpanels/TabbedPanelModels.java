@@ -42,7 +42,7 @@ public class TabbedPanelModels<T> implements Serializable
 	private static final long serialVersionUID = 1L;
 	List<TabModel<T>> tabModels;
 
-	public TabbedPanelModels<T> add(TabModel<T> tabModel)
+	public TabbedPanelModels<T> add(final TabModel<T> tabModel)
 	{
 		if (getTabModels() == null)
 		{
@@ -54,7 +54,7 @@ public class TabbedPanelModels<T> implements Serializable
 		return this;
 	}
 
-	public TabbedPanelModels<T> remove(TabModel<T> tabModel)
+	public TabbedPanelModels<T> remove(final TabModel<T> tabModel)
 	{
 		if (getTabModels() == null)
 		{

@@ -26,15 +26,15 @@ public class ReCaptchaPage extends PubliclyBasePage<Object>
 {
 	private static final long serialVersionUID = 1L;
 
+	public ReCaptchaPage(final PageParameters parameters)
+	{
+		super(parameters);
+	}
+
 	@Override
 	public Component getContainerPanel()
 	{
 		return new ReCaptchaFormPanel(CONTAINER_PANEL_ID);
-	}
-
-	public ReCaptchaPage(final PageParameters parameters)
-	{
-		super(parameters);
 	}
 
 }

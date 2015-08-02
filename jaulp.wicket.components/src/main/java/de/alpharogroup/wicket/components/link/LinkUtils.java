@@ -48,12 +48,15 @@ public class LinkUtils
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> newBookmarkablePageLink(String linkId,
-		Class<? extends Page> pageClass, String labelId, String resourceModelKey,
-		Component component)
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(final String linkId,
+		final Class<? extends Page> pageClass, final String labelId,
+		final ResourceBundleKey resourceModelKey, final Component component)
 	{
-		return newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey, null,
-			component);
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
+			linkId, pageClass);
+		bookmarkablePageLink.add(new Label(labelId, ResourceModelFactory.newResourceModel(
+			resourceModelKey, component)));
+		return bookmarkablePageLink;
 	}
 
 	/**
@@ -67,18 +70,16 @@ public class LinkUtils
 	 *            the label id
 	 * @param resourceModelKey
 	 *            the resource model key
-	 * @param defaultValue
-	 *            the default value
 	 * @param component
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> newBookmarkablePageLink(String linkId,
-		Class<? extends Page> pageClass, String labelId, String resourceModelKey,
-		String defaultValue, Component component)
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(final String linkId,
+		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,
+		final Component component)
 	{
 		return newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey, null,
-			defaultValue, component);
+			component);
 	}
 
 	/**
@@ -100,9 +101,9 @@ public class LinkUtils
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> newBookmarkablePageLink(String linkId,
-		Class<? extends Page> pageClass, String labelId, String resourceModelKey,
-		Object[] parameters, String defaultValue, Component component)
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(final String linkId,
+		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,
+		final Object[] parameters, final String defaultValue, final Component component)
 	{
 		return newBookmarkablePageLink(
 			linkId,
@@ -123,19 +124,42 @@ public class LinkUtils
 	 *            the label id
 	 * @param resourceModelKey
 	 *            the resource model key
+	 * @param defaultValue
+	 *            the default value
 	 * @param component
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> newBookmarkablePageLink(String linkId,
-		Class<? extends Page> pageClass, String labelId, ResourceBundleKey resourceModelKey,
-		Component component)
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(final String linkId,
+		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,
+		final String defaultValue, final Component component)
 	{
-		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
-			linkId, pageClass);
-		bookmarkablePageLink.add(new Label(labelId, ResourceModelFactory.newResourceModel(
-			resourceModelKey, component)));
-		return bookmarkablePageLink;
+		return newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey, null,
+			defaultValue, component);
+	}
+
+	/**
+	 * Creates an external link from the given parameters.
+	 *
+	 * @param linkId
+	 *            the link id
+	 * @param url
+	 *            the external url
+	 * @param labelId
+	 *            the label id
+	 * @param resourceBundleKey
+	 *            the resource model key
+	 * @param component
+	 *            the component
+	 * @return the external link
+	 */
+	public static ExternalLink newExternalLink(final String linkId, final String url,
+		final String labelId, final ResourceBundleKey resourceBundleKey, final Component component)
+	{
+		final ExternalLink externalLink = new ExternalLink(linkId, Model.of(url));
+		externalLink.add(new Label(labelId, ResourceModelFactory.newResourceModel(
+			resourceBundleKey, component)));
+		return externalLink;
 	}
 
 	/**
@@ -153,33 +177,10 @@ public class LinkUtils
 	 *            the component
 	 * @return the external link
 	 */
-	public static ExternalLink newExternalLink(String linkId, String url, String labelId,
-		String resourceModelKey, Component component)
+	public static ExternalLink newExternalLink(final String linkId, final String url,
+		final String labelId, final String resourceModelKey, final Component component)
 	{
 		return newExternalLink(linkId, url, labelId, resourceModelKey, null, component);
-	}
-
-	/**
-	 * Creates an external link from the given parameters.
-	 *
-	 * @param linkId
-	 *            the link id
-	 * @param url
-	 *            the external url
-	 * @param labelId
-	 *            the label id
-	 * @param resourceModelKey
-	 *            the resource model key
-	 * @param defaultValue
-	 *            a default value
-	 * @param component
-	 *            the component
-	 * @return the external link
-	 */
-	public static ExternalLink newExternalLink(String linkId, String url, String labelId,
-		String resourceModelKey, String defaultValue, Component component)
-	{
-		return newExternalLink(linkId, url, labelId, resourceModelKey, null, null, component);
 	}
 
 	/**
@@ -201,8 +202,9 @@ public class LinkUtils
 	 *            the component
 	 * @return the external link
 	 */
-	public static ExternalLink newExternalLink(String linkId, String url, String labelId,
-		String resourceModelKey, Object[] parameters, String defaultValue, Component component)
+	public static ExternalLink newExternalLink(final String linkId, final String url,
+		final String labelId, final String resourceModelKey, final Object[] parameters,
+		final String defaultValue, final Component component)
 	{
 		return newExternalLink(
 			linkId,
@@ -221,19 +223,19 @@ public class LinkUtils
 	 *            the external url
 	 * @param labelId
 	 *            the label id
-	 * @param resourceBundleKey
+	 * @param resourceModelKey
 	 *            the resource model key
+	 * @param defaultValue
+	 *            a default value
 	 * @param component
 	 *            the component
 	 * @return the external link
 	 */
-	public static ExternalLink newExternalLink(String linkId, String url, String labelId,
-		ResourceBundleKey resourceBundleKey, Component component)
+	public static ExternalLink newExternalLink(final String linkId, final String url,
+		final String labelId, final String resourceModelKey, final String defaultValue,
+		final Component component)
 	{
-		ExternalLink externalLink = new ExternalLink(linkId, Model.of(url));
-		externalLink.add(new Label(labelId, ResourceModelFactory.newResourceModel(
-			resourceBundleKey, component)));
-		return externalLink;
+		return newExternalLink(linkId, url, labelId, resourceModelKey, null, null, component);
 	}
 
 }

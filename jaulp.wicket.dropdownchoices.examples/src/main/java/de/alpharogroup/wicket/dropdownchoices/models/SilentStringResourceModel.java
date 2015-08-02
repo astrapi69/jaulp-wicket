@@ -296,6 +296,37 @@ public class SilentStringResourceModel extends StringResourceModel
 	}
 
 	/**
+	 * Gets the from resource bundle.
+	 *
+	 * @return the from resource bundle
+	 */
+	protected String getFromResourceBundle()
+	{
+		String result = null;
+		ResourceBundle resourceBundle = null;
+		try
+		{
+			if (component != null)
+			{
+				resourceBundle = ResourceBundle.getBundle(component.getClass().getName(), locale);
+			}
+			else if (componentClass != null)
+			{
+				resourceBundle = ResourceBundle.getBundle(componentClass.getName(), locale);
+			}
+			if (resourceBundle != null)
+			{
+				result = resourceBundle.getString(getResourceKey());
+			}
+		}
+		catch (final Exception e)
+		{
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	/**
 	 * Gets the resource.
 	 *
 	 * @param componentClass
@@ -373,7 +404,7 @@ public class SilentStringResourceModel extends StringResourceModel
 		}
 		catch (final Exception e)
 		{
-			String value = getFromResourceBundle();
+			final String value = getFromResourceBundle();
 			if (null != value)
 			{
 				result = value;
@@ -383,37 +414,6 @@ public class SilentStringResourceModel extends StringResourceModel
 				result = "!?!" + resourceKey + "!?!";
 				e.printStackTrace();
 			}
-		}
-		return result;
-	}
-
-	/**
-	 * Gets the from resource bundle.
-	 *
-	 * @return the from resource bundle
-	 */
-	protected String getFromResourceBundle()
-	{
-		String result = null;
-		ResourceBundle resourceBundle = null;
-		try
-		{
-			if (component != null)
-			{
-				resourceBundle = ResourceBundle.getBundle(component.getClass().getName(), locale);
-			}
-			else if (componentClass != null)
-			{
-				resourceBundle = ResourceBundle.getBundle(componentClass.getName(), locale);
-			}
-			if (resourceBundle != null)
-			{
-				result = resourceBundle.getString(getResourceKey());
-			}
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
 		}
 		return result;
 	}

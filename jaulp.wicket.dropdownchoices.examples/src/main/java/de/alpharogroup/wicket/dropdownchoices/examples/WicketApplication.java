@@ -34,17 +34,17 @@ public class WicketApplication extends WebApplication
 	public static final int DEFAULT_HTTP_PORT = 9090;
 	public static final int DEFAULT_HTTPS_PORT = 9443;
 
-	@Override
-	public Session newSession(Request request, Response response)
-	{
-		return new WicketSession(request);
-	}
-
 	/**
 	 * Constructor
 	 */
 	public WicketApplication()
 	{
+	}
+
+	@Override
+	public Class<? extends WebPage> getHomePage()
+	{
+		return HomePage.class;
 	}
 
 	/**
@@ -60,11 +60,11 @@ public class WicketApplication extends WebApplication
 		{
 			initResources();
 		}
-		catch (ClassNotFoundException e)
+		catch (final ClassNotFoundException e)
 		{
 			e.printStackTrace();
 		}
-		catch (IOException e)
+		catch (final IOException e)
 		{
 			e.printStackTrace();
 		}
@@ -80,14 +80,14 @@ public class WicketApplication extends WebApplication
 	 */
 	private void initResources() throws ClassNotFoundException, IOException
 	{
-		PackageResourceReferences prr = PackageResourceReferences.getInstance();
+		final PackageResourceReferences prr = PackageResourceReferences.getInstance();
 		prr.initializeResources("org");
 	}
 
 	@Override
-	public Class<? extends WebPage> getHomePage()
+	public Session newSession(final Request request, final Response response)
 	{
-		return HomePage.class;
+		return new WicketSession(request);
 	}
 
 }

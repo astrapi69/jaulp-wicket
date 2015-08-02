@@ -31,12 +31,12 @@ public class EditPersonPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditPersonPanel(String id, IModel<PersonBean> model)
+	public EditPersonPanel(final String id, final IModel<PersonBean> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
 		setDefaultModel(model);
-		Form<PersonBean> form = new Form<PersonBean>("editPersonForm");
+		final Form<PersonBean> form = new Form<PersonBean>("editPersonForm");
 		form.setOutputMarkupId(true);
 		add(form);
 		form.add(new TextField<String>("firstName").setOutputMarkupId(true));
@@ -46,7 +46,7 @@ public class EditPersonPanel extends Panel
 		form.add(newSubmitButton("submit", form));
 	}
 
-	protected Component newSubmitButton(String id, Form<?> form)
+	protected Component newSubmitButton(final String id, final Form<?> form)
 	{
 		return new AjaxButton(id, form)
 		{

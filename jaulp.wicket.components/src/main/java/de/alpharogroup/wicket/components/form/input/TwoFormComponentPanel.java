@@ -63,7 +63,7 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	 * @param id
 	 *            the id
 	 */
-	public TwoFormComponentPanel(String id)
+	public TwoFormComponentPanel(final String id)
 	{
 		this(id, null);
 	}
@@ -76,7 +76,7 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	 * @param model
 	 *            the model
 	 */
-	public TwoFormComponentPanel(String id, IModel<TwoFormComponentBean<L, R>> model)
+	public TwoFormComponentPanel(final String id, final IModel<TwoFormComponentBean<L, R>> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -86,6 +86,15 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 				"leftContent"))).add(
 			rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(
 				model, "rightContent")));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void convertInput()
+	{
+		setConvertedInput(getModelObject());
 	}
 
 	/**
@@ -123,10 +132,11 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	 *            the model
 	 * @return the form component
 	 */
-	protected FormComponent<L> newLeftFormComponent(String id, IModel<L> model)
+	protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
+
 
 	/**
 	 * New right text field.
@@ -137,19 +147,9 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	 *            the model
 	 * @return the form component
 	 */
-	protected FormComponent<R> newRightFormComponent(String id, IModel<R> model)
+	protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
 	{
 		return ComponentFactory.newTextField(id, model);
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void convertInput()
-	{
-		setConvertedInput(getModelObject());
 	}
 
 }

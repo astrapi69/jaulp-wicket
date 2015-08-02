@@ -39,15 +39,17 @@ import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
 public class ResetPasswordBean implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-	private String username;
-	private String confirmationCode;
 
 	public static ResetPasswordBean getResetPasswordBean(final PageParameters parameters)
 	{
-		ResetPasswordBean bean = ResetPasswordBean.builder()
+		final ResetPasswordBean bean = ResetPasswordBean.builder()
 			.username(parameters.get(ParameterKeys.USERNAME).toString())
 			.confirmationCode(parameters.get(ParameterKeys.CONFIRMATION_CODE).toString().trim())
 			.build();
 		return bean;
 	}
+
+	private String username;
+
+	private String confirmationCode;
 }

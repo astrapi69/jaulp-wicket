@@ -51,134 +51,61 @@ public class WicketApplication extends WicketBootstrap3Application
 	private static final Logger LOGGER = Logger.getLogger(WicketApplication.class.getName());
 
 	/**
+	 * Gets the WicketApplication.
+	 *
+	 * @return the WicketApplication object.
+	 */
+	public static WicketApplication get()
+	{
+		return (WicketApplication)Application.get();
+	}
+
+	@Override
+	public RuntimeConfigurationType getConfigurationType()
+	{
+		final RuntimeConfigurationType configType = super.getConfigurationType();
+		return configType;
+	}
+
+	public String getDomainName()
+	{
+		return "jaulp-wicket-components.com";
+	}
+
+	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
+	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
 		return HomePage.class;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Session newSession(final Request request, final Response response)
+
+	public List<String> getPackagesToScan()
 	{
-		final WicketSession session = new WicketSession(request);
-		session.bind();
-		LOGGER.info("new session:" + session.getId());
-		return session;
+		return Arrays.asList(getPackagesToScanAsArray());
+	}
+
+	public String[] getPackagesToScanAsArray()
+	{
+		final String[] packagesToScan = { "de.alpharogroup.wicket.components.examples" };
+		return packagesToScan;
+	}
+
+	@Override
+	public String getPackageToScan()
+	{
+		return ListExtensions.getFirst(getPackagesToScan());
 	}
 
 	/**
 	 * @see org.apache.wicket.Application#init()
 	 */
+	@Override
 	public void init()
 	{
 		super.init();
-	}
-
-	/**
-	 * Called just before a the application configurations.
-	 */
-	protected void onBeforeApplicationConfigurations()
-	{
-		// initialize all header contributors
-		initializeAllHeaderContributors();
-		getResourceSettings().getStringResourceLoaders().add(
-			new BundleStringResourceLoader(MessageSource.class.getName()));
-	}
-
-
-	protected void onDeploymentModeSettings()
-	{
-		super.onDeploymentModeSettings();
-		ApplicationExtensions.setDefaultDeploymentModeConfiguration(this,
-			new ApplicationRequestCycleListener());
-	}
-
-	protected void onDevelopmentModeSettings()
-	{
-		super.onDevelopmentModeSettings();
-		// Adds the references from source code to the browser to reference in eclipse....
-		WicketSource.configure(this);
-		ApplicationExtensions.setDefaultDebugSettingsForDevelopment(this);
-
-		// add an applicationListener...
-		this.getApplicationListeners().add(new IApplicationListener()
-		{
-			public void onBeforeDestroyed(Application application)
-			{
-				LOGGER.info("Wicket application is destroyed");
-				// here can comes code that is needed before the application
-				// been destroyed...
-			}
-
-			public void onAfterInitialized(Application application)
-			{
-				LOGGER.info("Wicket application is initialized");
-				// here can comes code that is needed after the application
-				// initialization...
-			}
-		});
-	}
-
-	protected void onGlobalSettings()
-	{
-		super.onGlobalSettings();
-		ApplicationExtensions.setGlobalSettings(this, newHttpPort(), newHttpsPort(),
-			FOOTER_FILTER_NAME, "UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
-	}
-
-	public RuntimeConfigurationType getConfigurationType()
-	{
-		RuntimeConfigurationType configType = super.getConfigurationType();
-		return configType;
-	}
-
-	/**
-	 * Checks if is on development mode.
-	 *
-	 * @return true, if is on development mode
-	 */
-	public boolean isOnDevelopmentMode()
-	{
-		return getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT);
-	}
-
-	protected int newHttpPort()
-	{
-		if (getProperties().containsKey("application.http.port"))
-		{
-			String httpPortString = getProperties().getProperty("application.http.port");
-			try
-			{
-				int httpPort = Integer.valueOf(httpPortString);
-				return httpPort;
-			}
-			catch (NumberFormatException e)
-			{
-				return WicketApplication.DEFAULT_HTTP_PORT;
-			}
-		}
-		return WicketApplication.DEFAULT_HTTP_PORT;
-	}
-
-	protected int newHttpsPort()
-	{
-		if (getProperties().containsKey("application.https.port"))
-		{
-			String httpsPortString = getProperties().getProperty("application.https.port");
-			try
-			{
-				int httpsPort = Integer.valueOf(httpsPortString);
-				return httpsPort;
-			}
-			catch (NumberFormatException e)
-			{
-				return WicketApplication.DEFAULT_HTTPS_PORT;
-			}
-		}
-		return WicketApplication.DEFAULT_HTTPS_PORT;
 	}
 
 	/**
@@ -204,11 +131,6 @@ public class WicketApplication extends WicketBootstrap3Application
 		}
 	}
 
-	public String getDomainName()
-	{
-		return "jaulp-wicket-components.com";
-	}
-
 	/**
 	 * Initialize resources.
 	 *
@@ -219,34 +141,125 @@ public class WicketApplication extends WicketBootstrap3Application
 	 */
 	public void initializeResources() throws ClassNotFoundException, IOException
 	{
-		PackageResourceReferences prr = PackageResourceReferences.getInstance();
+		final PackageResourceReferences prr = PackageResourceReferences.getInstance();
 		prr.initializeResources(getPackageToScan());
 	}
 
 	/**
-	 * Gets the WicketApplication.
+	 * Checks if is on development mode.
 	 *
-	 * @return the WicketApplication object.
+	 * @return true, if is on development mode
 	 */
-	public static WicketApplication get()
+	public boolean isOnDevelopmentMode()
 	{
-		return (WicketApplication)Application.get();
+		return getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT);
 	}
 
-	public String getPackageToScan()
+	@Override
+	protected int newHttpPort()
 	{
-		return ListExtensions.getFirst(getPackagesToScan());
+		if (getProperties().containsKey("application.http.port"))
+		{
+			final String httpPortString = getProperties().getProperty("application.http.port");
+			try
+			{
+				final int httpPort = Integer.valueOf(httpPortString);
+				return httpPort;
+			}
+			catch (final NumberFormatException e)
+			{
+				return WicketApplication.DEFAULT_HTTP_PORT;
+			}
+		}
+		return WicketApplication.DEFAULT_HTTP_PORT;
 	}
 
-	public String[] getPackagesToScanAsArray()
+	@Override
+	protected int newHttpsPort()
 	{
-		String[] packagesToScan = { "de.alpharogroup.wicket.components.examples" };
-		return packagesToScan;
+		if (getProperties().containsKey("application.https.port"))
+		{
+			final String httpsPortString = getProperties().getProperty("application.https.port");
+			try
+			{
+				final int httpsPort = Integer.valueOf(httpsPortString);
+				return httpsPort;
+			}
+			catch (final NumberFormatException e)
+			{
+				return WicketApplication.DEFAULT_HTTPS_PORT;
+			}
+		}
+		return WicketApplication.DEFAULT_HTTPS_PORT;
 	}
 
-	public List<String> getPackagesToScan()
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Session newSession(final Request request, final Response response)
 	{
-		return Arrays.asList(getPackagesToScanAsArray());
+		final WicketSession session = new WicketSession(request);
+		session.bind();
+		LOGGER.info("new session:" + session.getId());
+		return session;
+	}
+
+	/**
+	 * Called just before a the application configurations.
+	 */
+	@Override
+	protected void onBeforeApplicationConfigurations()
+	{
+		// initialize all header contributors
+		initializeAllHeaderContributors();
+		getResourceSettings().getStringResourceLoaders().add(
+			new BundleStringResourceLoader(MessageSource.class.getName()));
+	}
+
+	@Override
+	protected void onDeploymentModeSettings()
+	{
+		super.onDeploymentModeSettings();
+		ApplicationExtensions.setDefaultDeploymentModeConfiguration(this,
+			new ApplicationRequestCycleListener());
+	}
+
+	@Override
+	protected void onDevelopmentModeSettings()
+	{
+		super.onDevelopmentModeSettings();
+		// Adds the references from source code to the browser to reference in eclipse....
+		WicketSource.configure(this);
+		ApplicationExtensions.setDefaultDebugSettingsForDevelopment(this);
+
+		// add an applicationListener...
+		this.getApplicationListeners().add(new IApplicationListener()
+		{
+			@Override
+			public void onAfterInitialized(final Application application)
+			{
+				LOGGER.info("Wicket application is initialized");
+				// here can comes code that is needed after the application
+				// initialization...
+			}
+
+			@Override
+			public void onBeforeDestroyed(final Application application)
+			{
+				LOGGER.info("Wicket application is destroyed");
+				// here can comes code that is needed before the application
+				// been destroyed...
+			}
+		});
+	}
+
+	@Override
+	protected void onGlobalSettings()
+	{
+		super.onGlobalSettings();
+		ApplicationExtensions.setGlobalSettings(this, newHttpPort(), newHttpsPort(),
+			FOOTER_FILTER_NAME, "UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
 	}
 
 }

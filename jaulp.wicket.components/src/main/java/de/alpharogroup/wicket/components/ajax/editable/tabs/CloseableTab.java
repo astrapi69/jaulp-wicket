@@ -51,14 +51,14 @@ public abstract class CloseableTab implements ICloseableTab
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isVisible()
-	{
-		return true;
-	}
+	public abstract WebMarkupContainer getPanel(final String panelId);
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public abstract WebMarkupContainer getPanel(final String panelId);
+	public boolean isVisible()
+	{
+		return true;
+	}
 }

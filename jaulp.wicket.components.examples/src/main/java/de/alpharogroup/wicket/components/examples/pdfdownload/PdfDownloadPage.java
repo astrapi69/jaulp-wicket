@@ -35,12 +35,18 @@ public class PdfDownloadPage extends PubliclyBasePage<Object>
 {
 	private static final long serialVersionUID = 1L;
 
+	public PdfDownloadPage(final PageParameters parameters)
+	{
+		super(parameters);
+	}
+
 	@Override
 	public Component getContainerPanel()
 	{
-		DownloadModel downloadModel = DownloadModel.builder().filename("download.pdf")
+		final DownloadModel downloadModel = DownloadModel.builder().filename("download.pdf")
 			.path("pdf/download.pdf").contentType("application/pdf").build();
-		DownloadPanel downloadPanel = new DownloadPanel(CONTAINER_PANEL_ID, Model.of(downloadModel))
+		final DownloadPanel downloadPanel = new DownloadPanel(CONTAINER_PANEL_ID,
+			Model.of(downloadModel))
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -51,20 +57,16 @@ public class PdfDownloadPage extends PubliclyBasePage<Object>
 			}
 
 			@Override
-			protected AjaxLink<Void> newDownloadLink(String id, IModel<DownloadModel> model)
+			protected AjaxLink<Void> newDownloadLink(final String id,
+				final IModel<DownloadModel> model)
 			{
-				AjaxLink<Void> downloadLink = super.newDownloadLink(id, model);
+				final AjaxLink<Void> downloadLink = super.newDownloadLink(id, model);
 				downloadLink.add(new AttributeAppender("class", " btn btn-primary"));
 				return downloadLink;
 			}
 
 		};
 		return downloadPanel;
-	}
-
-	public PdfDownloadPage(final PageParameters parameters)
-	{
-		super(parameters);
 	}
 
 }

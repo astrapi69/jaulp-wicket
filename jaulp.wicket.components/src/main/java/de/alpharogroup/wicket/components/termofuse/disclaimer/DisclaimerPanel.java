@@ -32,12 +32,12 @@ public class DisclaimerPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DisclaimerPanel(String id)
+	public DisclaimerPanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public DisclaimerPanel(String id, IModel<HeaderContentListModel> model)
+	public DisclaimerPanel(final String id, final IModel<HeaderContentListModel> model)
 	{
 		super(id, model);
 
@@ -46,17 +46,29 @@ public class DisclaimerPanel extends Panel
 			newDisclaimerLinkLabel("disclaimerLinkLabel", newDisclaimerLinkLabelModel()));
 	}
 
-	protected Label newDisclaimerLinkLabel(final String id, final IModel<String> model)
-	{
-		return ComponentFactory.newLabel(id, model);
-	}
-
 	protected Label newDisclaimerContentLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
+	/**
+	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * disclaimer content.
+	 *
+	 * @return the i model
+	 */
+	protected IModel<String> newDisclaimerContentModel()
+	{
+		return newIModel("imprint.disclaimer.content");
+	}
+
 	protected Label newDisclaimerLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
+	}
+
+	protected Label newDisclaimerLinkLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
@@ -74,31 +86,6 @@ public class DisclaimerPanel extends Panel
 	}
 
 	/**
-	 * Creates a new StringResourceModel from the given key.
-	 *
-	 * @param key
-	 *            the key
-	 * @return the i model
-	 */
-	protected IModel<String> newIModel(String key)
-	{
-		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
-			.defaultValue("").build(), this);
-	}
-
-	/**
-	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * disclaimer content.
-	 *
-	 * @return the i model
-	 */
-	protected IModel<String> newDisclaimerContentModel()
-	{
-		return newIModel("imprint.disclaimer.content");
-	}
-
-	/**
 	 * Factory method to create a IModel for the disclaimer header. This method is invoked in the
 	 * constructor from this class and can be overridden so users can provide their own version of a
 	 * disclaimer header.
@@ -108,6 +95,19 @@ public class DisclaimerPanel extends Panel
 	protected IModel<String> newDisclaimerModel()
 	{
 		return newIModel("imprint.disclaimer.label");
+	}
+
+	/**
+	 * Creates a new StringResourceModel from the given key.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the i model
+	 */
+	protected IModel<String> newIModel(final String key)
+	{
+		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
+			.defaultValue("").build(), this);
 	}
 
 }

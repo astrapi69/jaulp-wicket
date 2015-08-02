@@ -42,12 +42,10 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	 *            the id
 	 * @param tabs
 	 *            the tabs
-	 * @param model
-	 *            the model
 	 */
-	public EditableAjaxTabbedPanel(String id, List<T> tabs, IModel<Integer> model)
+	public EditableAjaxTabbedPanel(final String id, final List<T> tabs)
 	{
-		super(id, tabs, model);
+		super(id, tabs);
 	}
 
 	/**
@@ -57,10 +55,12 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	 *            the id
 	 * @param tabs
 	 *            the tabs
+	 * @param model
+	 *            the model
 	 */
-	public EditableAjaxTabbedPanel(String id, List<T> tabs)
+	public EditableAjaxTabbedPanel(final String id, final List<T> tabs, final IModel<Integer> model)
 	{
-		super(id, tabs);
+		super(id, tabs, model);
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	 */
 	public void onRemoveTab(final AjaxRequestTarget target, final int index)
 	{
-		int tabSize = getTabs().size();
+		final int tabSize = getTabs().size();
 		// there have to be at least one tab on the ajaxTabbedPanel...
 		if (2 <= tabSize && index < tabSize)
 		{

@@ -36,15 +36,6 @@ public final class ApplicationTermOfUseBean implements Serializable
 	private static ApplicationTermOfUseBean instance;
 
 
-	public static synchronized ApplicationTermOfUseBean getInstance()
-	{
-		if (instance == null)
-		{
-			instance = new ApplicationTermOfUseBean();
-		}
-		return instance;
-	}
-
 	public static final ResourceBundleKey CANCELLATION_HEADER_RESOURCE_KEY = ResourceBundleKey
 		.builder().key("term.of.use.cancellation.head.label").build();
 
@@ -92,9 +83,9 @@ public final class ApplicationTermOfUseBean implements Serializable
 	public static final ResourceBundleKey GENERAL_TERMS_HEADER_RESOURCE_KEY = ResourceBundleKey
 		.builder().key("term.of.use.main.head.label").build();
 
-
 	public static final ResourceBundleKey LEGAL_REFS_HEADER_RESOURCE_KEY = ResourceBundleKey
 		.builder().key("term.of.use.legal.references.head.label").build();
+
 
 	public static final ImmutableList<ResourceBundleKey> LEGAL_REFS_CONTENT_RESOURCE_KEYS = new ImmutableList.Builder<ResourceBundleKey>()
 		.add(
@@ -137,9 +128,9 @@ public final class ApplicationTermOfUseBean implements Serializable
 				.key("term.of.use.modifications.clause.content.paragraph.third.label").build())
 		.build();
 
-
 	public static final ResourceBundleKey RIGHTS_AND_DUTIES_HEADER_RESOURCE_KEY = ResourceBundleKey
 		.builder().key("term.of.use.rights.and.duties.of.the.user.head.label").build();
+
 
 	public static final ImmutableList<ResourceBundleKey> RIGHTS_AND_DUTIES_CONTENT_RESOURCE_KEYS = new ImmutableList.Builder<ResourceBundleKey>()
 		.add(
@@ -220,6 +211,15 @@ public final class ApplicationTermOfUseBean implements Serializable
 				.key("term.of.use.salvatorius.clause.content.paragraph.first.label").build())
 		.build();
 
+	public static synchronized ApplicationTermOfUseBean getInstance()
+	{
+		if (instance == null)
+		{
+			instance = new ApplicationTermOfUseBean();
+		}
+		return instance;
+	}
+
 	private TermOfUseModel model;
 
 	private ApplicationTermOfUseBean()
@@ -227,14 +227,19 @@ public final class ApplicationTermOfUseBean implements Serializable
 		init();
 	}
 
+	public TermOfUseModel getModel()
+	{
+		return model;
+	}
+
 	private void init()
 	{
-		ResourceBundleKey parameter = ResourceBundleKey
+		final ResourceBundleKey parameter = ResourceBundleKey
 			.builder()
 			.key(
 				"term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.current.place.label")
 			.build();
-		ImmutableList<ResourceBundleKey> fulfilmentPlaceContentResourceKeys = new ImmutableList.Builder<ResourceBundleKey>()
+		final ImmutableList<ResourceBundleKey> fulfilmentPlaceContentResourceKeys = new ImmutableList.Builder<ResourceBundleKey>()
 			.add(
 				ResourceBundleKey
 					.builder()
@@ -242,7 +247,7 @@ public final class ApplicationTermOfUseBean implements Serializable
 						"term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel")
 					.parameters(ListExtensions.toObjectArray(parameter)).build()).build();
 
-		ImmutableList<ResourceBundleKey> generalTermsAndConditionsContentResourceKeys = new ImmutableList.Builder<ResourceBundleKey>()
+		final ImmutableList<ResourceBundleKey> generalTermsAndConditionsContentResourceKeys = new ImmutableList.Builder<ResourceBundleKey>()
 			.add(
 				ResourceBundleKey
 					.builder()
@@ -305,11 +310,6 @@ public final class ApplicationTermOfUseBean implements Serializable
 				HeaderContentListModel.builder()
 					.headerResourceKey(SALVA_CLAUSE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(SALVA_CLAUSE_CONTENT_RESOURCE_KEYS).build()).build();
-	}
-
-	public TermOfUseModel getModel()
-	{
-		return model;
 	}
 
 }

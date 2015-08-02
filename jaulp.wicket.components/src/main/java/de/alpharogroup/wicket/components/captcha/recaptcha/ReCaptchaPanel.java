@@ -45,11 +45,15 @@ public abstract class ReCaptchaPanel extends Panel
 	@Getter
 	private final FormComponent<Serializable> captcha;
 
-	public ReCaptchaPanel(String id)
+	public ReCaptchaPanel(final String id)
 	{
 		super(id);
 		add(captcha = newCaptchaFormComponent("captcha", new Model<Serializable>()));
 	}
+
+	public abstract String getPrivateKey();
+
+	public abstract String getPublicKey();
 
 	protected FormComponent<Serializable> newCaptchaFormComponent(final String id,
 		final IModel<Serializable> model)
@@ -82,7 +86,7 @@ public abstract class ReCaptchaPanel extends Panel
 				{
 					uresponse = "";
 				}
-				String remoteAddress = WicketComponentExtensions.getHttpServletRequest()
+				final String remoteAddress = WicketComponentExtensions.getHttpServletRequest()
 					.getRemoteAddr();
 				final ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddress,
 					challenge, uresponse);
@@ -98,20 +102,17 @@ public abstract class ReCaptchaPanel extends Panel
 		};
 	}
 
-	private ReCaptcha newReCaptcha(String publicKey, String privateKey, boolean includeNoscript)
+	private ReCaptcha newReCaptcha(final String publicKey, final String privateKey,
+		final boolean includeNoscript)
 	{
 		if (WicketComponentExtensions.isSecure(ComponentFinder.getCurrentPage()))
 		{
-			ReCaptcha reCaptcha = ReCaptchaFactory.newSecureReCaptcha(getPublicKey(),
+			final ReCaptcha reCaptcha = ReCaptchaFactory.newSecureReCaptcha(getPublicKey(),
 				getPrivateKey(), includeNoscript);
 			((ReCaptchaImpl)reCaptcha).setRecaptchaServer(RECAPTCHA_SERVER_URL);
 			return reCaptcha;
 		}
 		return ReCaptchaFactory.newReCaptcha(getPublicKey(), getPrivateKey(), includeNoscript);
 	}
-
-	public abstract String getPublicKey();
-
-	public abstract String getPrivateKey();
 
 }

@@ -28,12 +28,6 @@ public class TestHomePage
 {
 	private WicketTester tester;
 
-	@BeforeMethod
-	public void setUp()
-	{
-		tester = new WicketTester(new WicketApplication());
-	}
-
 	@Test(enabled = false)
 	public void homepageRendersSuccessfully()
 	{
@@ -42,5 +36,11 @@ public class TestHomePage
 
 		// assert rendered page class
 		tester.assertRenderedPage(HomePage.class);
+	}
+
+	@BeforeMethod
+	public void setUp()
+	{
+		tester = new WicketTester(new WicketApplication());
 	}
 }

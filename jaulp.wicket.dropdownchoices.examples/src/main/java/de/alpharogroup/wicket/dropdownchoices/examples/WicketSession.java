@@ -34,7 +34,7 @@ public class WicketSession extends WebSession
 	private Map<String, Object> userAttributes = new LinkedHashMap<String, Object>();
 
 
-	public WicketSession(Request request)
+	public WicketSession(final Request request)
 	{
 		super(request);
 	}

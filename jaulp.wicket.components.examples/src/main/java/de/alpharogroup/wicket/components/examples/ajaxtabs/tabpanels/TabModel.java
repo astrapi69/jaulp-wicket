@@ -27,35 +27,21 @@ public class TabModel<T> implements Serializable
 	private IModel<T> content;
 	private IModel<String> closeTitle;
 
-	public IModel<String> getCloseTitle()
-	{
-		return closeTitle;
-	}
-
-	public void setCloseTitle(IModel<String> closeTitle)
-	{
-		this.closeTitle = closeTitle;
-	}
-
 	public TabModel()
 	{
 	}
 
-	public TabModel(IModel<String> title, IModel<T> content, final IModel<String> closeTitle)
+	public TabModel(final IModel<String> title, final IModel<T> content,
+		final IModel<String> closeTitle)
 	{
 		this.title = title;
 		this.content = content;
 		this.closeTitle = closeTitle;
 	}
 
-	public IModel<String> getTitle()
+	public IModel<String> getCloseTitle()
 	{
-		return title;
-	}
-
-	public void setTitle(IModel<String> title)
-	{
-		this.title = title;
+		return closeTitle;
 	}
 
 	public IModel<T> getContent()
@@ -63,8 +49,23 @@ public class TabModel<T> implements Serializable
 		return content;
 	}
 
-	public void setContent(IModel<T> content)
+	public IModel<String> getTitle()
+	{
+		return title;
+	}
+
+	public void setCloseTitle(final IModel<String> closeTitle)
+	{
+		this.closeTitle = closeTitle;
+	}
+
+	public void setContent(final IModel<T> content)
 	{
 		this.content = content;
+	}
+
+	public void setTitle(final IModel<String> title)
+	{
+		this.title = title;
 	}
 }

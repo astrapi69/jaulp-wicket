@@ -30,9 +30,9 @@ public class ExceptionPage extends PubliclyBasePage<Exception>
 	private static final long serialVersionUID = 1L;
 	private final Exception exception;
 
-	public Exception getException()
+	public ExceptionPage()
 	{
-		return exception;
+		this(new IllegalArgumentException("exception example..."));
 	}
 
 	public ExceptionPage(final Exception exception)
@@ -42,11 +42,6 @@ public class ExceptionPage extends PubliclyBasePage<Exception>
 		this.exception = exception;
 	}
 
-	public ExceptionPage()
-	{
-		this(new IllegalArgumentException("exception example..."));
-	}
-
 	@Override
 	public Panel getContainerPanel()
 	{
@@ -54,6 +49,24 @@ public class ExceptionPage extends PubliclyBasePage<Exception>
 		return new ReportThrowablePanel(CONTAINER_PANEL_ID, getModelObject())
 		{
 			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected String newAffectedUsername()
+			{
+				return "Guest";
+			}
+
+			@Override
+			protected Class<? extends IRequestablePage> newResponsePageClass()
+			{
+				return HomePage.class;
+			}
+
+			@Override
+			protected String newRootUsername()
+			{
+				return "rootUser";
+			}
 
 			@Override
 			protected void onSubmitError()
@@ -66,24 +79,11 @@ public class ExceptionPage extends PubliclyBasePage<Exception>
 				setResponsePage(HomePage.class);
 			}
 
-			@Override
-			protected String newRootUsername()
-			{
-				return "rootUser";
-			}
-
-			@Override
-			protected Class<? extends IRequestablePage> newResponsePageClass()
-			{
-				return HomePage.class;
-			}
-
-			@Override
-			protected String newAffectedUsername()
-			{
-				return "Guest";
-			}
-
 		};
+	}
+
+	public Exception getException()
+	{
+		return exception;
 	}
 }

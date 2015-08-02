@@ -62,7 +62,7 @@ public class WicketUrlPage extends WebPage
 		add(new Label("domainUrl3", Model.of(WicketUrlExtensions.getDomainUrl(false, false))));
 
 
-		PageParameters params = new PageParameters();
+		final PageParameters params = new PageParameters();
 		params.add("USERNAME", "bla");
 		params.add("CONFIRMATION_CODE", "1HE23WE");
 		add(new Label("absoluteUrlFor", Model.of(WicketUrlExtensions.absoluteUrlFor(

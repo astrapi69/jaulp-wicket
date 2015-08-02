@@ -26,14 +26,14 @@ public class ButtonsPage extends PubliclyBasePage<Object>
 {
 	private static final long serialVersionUID = 1L;
 
+	public ButtonsPage(final PageParameters parameters)
+	{
+		super(parameters);
+	}
+
 	@Override
 	public Component getContainerPanel()
 	{
 		return new LocaleMenuPanel(CONTAINER_PANEL_ID);
-	}
-
-	public ButtonsPage(final PageParameters parameters)
-	{
-		super(parameters);
 	}
 }

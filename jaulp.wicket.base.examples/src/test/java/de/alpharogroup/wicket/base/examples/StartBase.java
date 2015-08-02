@@ -34,16 +34,16 @@ import de.alpharogroup.wicket.base.examples.application.WicketApplication;
 
 public class StartBase
 {
-	public static void main(String[] args) throws Exception
+	public static void main(final String[] args) throws Exception
 	{
 		System.setProperty("wicket.configuration", "development");
-		String projectname = "jaulp.wicket.base.examples";
-		File projectDirectory = PathFinder.getProjectDirectory();
-		File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
-			"webapp");
-		String filterPath = "/*";
+		final String projectname = "jaulp.wicket.base.examples";
+		final File projectDirectory = PathFinder.getProjectDirectory();
+		final File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src",
+			"main", "webapp");
+		final String filterPath = "/*";
 
-		ServletContextHandler servletContextHandler = ServletContextHandlerFactory
+		final ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
 				.filterHolderConfiguration(
@@ -61,7 +61,7 @@ public class StartBase
 
 		final Jetty9RunConfiguration config = newJetty9RunConfiguration(servletContextHandler);
 
-		Server server = new Server();
+		final Server server = new Server();
 		Jetty9Runner.runServletContextHandler(server, config);
 	}
 

@@ -32,14 +32,14 @@ public class WicketUrlPanel extends BasePanel<Object>
 {
 	private static final long serialVersionUID = 1L;
 
-	public WicketUrlPanel(String id)
+	public WicketUrlPanel(final String id)
 	{
 		super(id);
-		Map<String, String> parameters = new HashMap<>();
+		final Map<String, String> parameters = new HashMap<>();
 		parameters.put("foo", "123");
 		parameters.put("bar", "abc");
-		PageParameters pageParameters = PageParametersExtensions.toPageParameters(parameters);
-		AddressPage addressPage = new AddressPage(pageParameters);
+		final PageParameters pageParameters = PageParametersExtensions.toPageParameters(parameters);
+		final AddressPage addressPage = new AddressPage(pageParameters);
 
 		add(new Label("absoluteUrlFor", Model.of(WicketUrlExtensions
 			.absoluteUrlFor(AddressPage.class))));

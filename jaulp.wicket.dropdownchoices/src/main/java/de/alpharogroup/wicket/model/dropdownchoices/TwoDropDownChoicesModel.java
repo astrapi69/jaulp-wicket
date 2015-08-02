@@ -83,8 +83,8 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 			@Override
 			public List<T> getObject()
 			{
-				Set<T> keys = modelsMap.keySet();
-				List<T> keysList = new ArrayList<>(keys);
+				final Set<T> keys = modelsMap.keySet();
+				final List<T> keysList = new ArrayList<>(keys);
 				return keysList;
 			}
 

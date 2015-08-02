@@ -54,7 +54,7 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	 * @param model
 	 *            the model
 	 */
-	public LinkListPanel(String id, IModel<List<LinkItem>> model)
+	public LinkListPanel(final String id, final IModel<List<LinkItem>> model)
 	{
 		super(id, model);
 	}
@@ -67,22 +67,19 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	 * @param list
 	 *            the list
 	 */
-	public LinkListPanel(String id, List<LinkItem> list)
+	public LinkListPanel(final String id, final List<LinkItem> list)
 	{
 		super(id, list);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * This css class will be added to the current page.
+	 *
+	 * @return the current page css class
 	 */
-	@Override
-	protected Component newListComponent(String id, ListItem<LinkItem> item)
+	protected String getCurrentPageCssClass()
 	{
-		LinkItem model = item.getModelObject();
-		Label itemLinkLabel = newItemLinkLabel("itemLinkLabel", model);
-		AbstractLink link = newAbstractLink(id, model);
-		link.add(itemLinkLabel);
-		return link;
+		return "current-page";
 	}
 
 	/**
@@ -94,7 +91,7 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	 *            the model
 	 * @return the abstract link
 	 */
-	protected AbstractLink newAbstractLink(String id, LinkItem model)
+	protected AbstractLink newAbstractLink(final String id, final LinkItem model)
 	{
 		AttributeModifier target = null;
 		AbstractLink link = null;
@@ -120,16 +117,6 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	}
 
 	/**
-	 * This css class will be added to the current page.
-	 *
-	 * @return the current page css class
-	 */
-	protected String getCurrentPageCssClass()
-	{
-		return "current-page";
-	}
-
-	/**
 	 * Factory method for create a new item link Label. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * new item link Label.
@@ -142,7 +129,7 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	 */
 	protected Label newItemLinkLabel(final String id, final LinkItem model)
 	{
-		Label itemLinkLabel = ComponentFactory.newLabel(id,
+		final Label itemLinkLabel = ComponentFactory.newLabel(id,
 			ResourceModelFactory.newResourceModel(model.getResourceModelKey(), this));
 		// add css class to current page.
 		if (model.getPageClass() != null && model.getPageClass().equals(getPage().getClass()))
@@ -150,6 +137,19 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 			itemLinkLabel.add(new AttributeAppender("class", " " + getCurrentPageCssClass()));
 		}
 		return itemLinkLabel;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected Component newListComponent(final String id, final ListItem<LinkItem> item)
+	{
+		final LinkItem model = item.getModelObject();
+		final Label itemLinkLabel = newItemLinkLabel("itemLinkLabel", model);
+		final AbstractLink link = newAbstractLink(id, model);
+		link.add(itemLinkLabel);
+		return link;
 	}
 
 }

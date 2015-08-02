@@ -40,7 +40,8 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel
 	 * @param form
 	 *            the form
 	 */
-	public AjaxIndicatingButtonPanel(String id, IModel<String> labelModel, final Form<?> form)
+	public AjaxIndicatingButtonPanel(final String id, final IModel<String> labelModel,
+		final Form<?> form)
 	{
 		super(id, labelModel, form);
 	}
@@ -54,7 +55,7 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel
 	 * @return the Button
 	 */
 	@Override
-	protected Button newButton(String id)
+	protected Button newButton(final String id)
 	{
 		return new IndicatingAjaxButton(id, getForm())
 		{
@@ -64,15 +65,15 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel
 			private static final long serialVersionUID = 1L;
 
 			@Override
+			protected void onError(final AjaxRequestTarget target, final Form<?> form)
+			{
+			}
+
+			@Override
 			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				target.add(form);
 				AjaxIndicatingButtonPanel.this.onSubmit(target, form);
-			}
-
-			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form)
-			{
 			}
 		};
 	}

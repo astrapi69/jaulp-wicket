@@ -49,9 +49,21 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	 * @param data
 	 *            the data
 	 */
-	public AbstractSortFilterDataProvider(List<T> data)
+	public AbstractSortFilterDataProvider(final List<T> data)
 	{
 		super(data);
+	}
+
+	/**
+	 * Filter the given list. Override this method to implement a filter.
+	 *
+	 * @param found
+	 *            the found
+	 * @return the list
+	 */
+	protected List<T> filter(final List<T> found)
+	{
+		return found;
 	}
 
 	/**
@@ -61,16 +73,6 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	public F getFilterState()
 	{
 		return this.filterState;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setFilterState(final F filterState)
-	{
-		this.filterState = filterState;
-
 	}
 
 	/**
@@ -95,21 +97,19 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	 * {@inheritDoc}
 	 */
 	@Override
-	public long size()
+	public void setFilterState(final F filterState)
 	{
-		return filter(getData()).size();
+		this.filterState = filterState;
+
 	}
 
 	/**
-	 * Filter the given list. Override this method to implement a filter.
-	 *
-	 * @param found
-	 *            the found
-	 * @return the list
+	 * {@inheritDoc}
 	 */
-	protected List<T> filter(List<T> found)
+	@Override
+	public long size()
 	{
-		return found;
+		return filter(getData()).size();
 	}
 
 }

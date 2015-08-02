@@ -26,7 +26,7 @@ public class ApplicationTermOfUsePanel extends TermOfUsePanel
 
 	private static final long serialVersionUID = 1L;
 
-	public ApplicationTermOfUsePanel(String id, IModel<TermOfUseModel> model)
+	public ApplicationTermOfUsePanel(final String id, final IModel<TermOfUseModel> model)
 	{
 		super(id, model);
 	}

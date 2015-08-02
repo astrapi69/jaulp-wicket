@@ -55,18 +55,18 @@ public abstract class DisableJSessionIDinUrlApplication extends BaseWebApplicati
 		{
 
 			@Override
-			public String encodeURL(CharSequence url)
-			{
-				return isRobot(webRequest) ? url.toString() : super.encodeURL(url);
-			}
-
-			@Override
-			public String encodeRedirectURL(CharSequence url)
+			public String encodeRedirectURL(final CharSequence url)
 			{
 				return isRobot(webRequest) ? url.toString() : super.encodeRedirectURL(url);
 			}
 
-			private boolean isRobot(WebRequest request)
+			@Override
+			public String encodeURL(final CharSequence url)
+			{
+				return isRobot(webRequest) ? url.toString() : super.encodeURL(url);
+			}
+
+			private boolean isRobot(final WebRequest request)
 			{
 				final String agent = webRequest.getHeader("User-Agent");
 				return BotAgentInspector.isAgent(agent);

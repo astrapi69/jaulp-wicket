@@ -40,12 +40,27 @@ public class WicketApplication extends WebApplication
 	private static final Logger logger = Logger.getLogger(WicketApplication.class.getName());
 
 	/**
+	 * Gets the WicketApplication.
+	 *
+	 * @return the WicketApplication object.
+	 */
+	public static WicketApplication get()
+	{
+		return (WicketApplication)Application.get();
+	}
+
+	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
 	@Override
 	public Class<HomePage> getHomePage()
 	{
 		return HomePage.class;
+	}
+
+	public String getPackageToScan()
+	{
+		return "de.alpharogroup.wicket.base";
 	}
 
 	/**
@@ -63,11 +78,6 @@ public class WicketApplication extends WebApplication
 		initializeAllHeaderContributors();
 		new AnnotatedMountScanner().scanPackage(getPackageToScan()).mount(this);
 		// add your configuration here
-	}
-
-	public String getPackageToScan()
-	{
-		return "de.alpharogroup.wicket.base";
 	}
 
 	/**
@@ -103,17 +113,7 @@ public class WicketApplication extends WebApplication
 	 */
 	public void initializeResources() throws ClassNotFoundException, IOException
 	{
-		PackageResourceReferences prr = PackageResourceReferences.getInstance();
+		final PackageResourceReferences prr = PackageResourceReferences.getInstance();
 		prr.initializeResources(getPackageToScan());
-	}
-
-	/**
-	 * Gets the WicketApplication.
-	 *
-	 * @return the WicketApplication object.
-	 */
-	public static WicketApplication get()
-	{
-		return (WicketApplication)Application.get();
 	}
 }

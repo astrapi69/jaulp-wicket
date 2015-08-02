@@ -49,6 +49,31 @@ public class LinkBehavior extends Behavior
 
 	/**
 	 * Instantiates a new tablerow link behavior.
+	 *
+	 * @param onmouseoverColor
+	 *            the onmouseover color
+	 * @param onmouseoutColor
+	 *            the onmouseout color
+	 * @param targetPage
+	 *            the target page
+	 * @param pageParameters
+	 *            the page parameters
+	 */
+	public LinkBehavior(final String onmouseoverColor, final String onmouseoutColor,
+		final Class<? extends WebPage> targetPage, final PageParameters pageParameters)
+	{
+		super();
+		Args.notNull(onmouseoverColor, "onmouseoverColor");
+		Args.notNull(onmouseoutColor, "onmouseoutColor");
+		Args.notNull(targetPage, "targetPage");
+		this.onmouseoverColor = onmouseoverColor;
+		this.onmouseoutColor = onmouseoutColor;
+		final String url = RequestCycle.get().urlFor(targetPage, pageParameters).toString();
+		this.absolutePath = WicketComponentExtensions.toAbsolutePath(url);
+	}
+
+	/**
+	 * Instantiates a new tablerow link behavior.
 	 * 
 	 * @param onmouseoverColor
 	 *            the onmouseover color
@@ -82,31 +107,6 @@ public class LinkBehavior extends Behavior
 	 *            the page parameters
 	 */
 	public LinkBehavior(final String onmouseoverColor, final String onmouseoutColor,
-		final Class<? extends WebPage> targetPage, final PageParameters pageParameters)
-	{
-		super();
-		Args.notNull(onmouseoverColor, "onmouseoverColor");
-		Args.notNull(onmouseoutColor, "onmouseoutColor");
-		Args.notNull(targetPage, "targetPage");
-		this.onmouseoverColor = onmouseoverColor;
-		this.onmouseoutColor = onmouseoutColor;
-		String url = RequestCycle.get().urlFor(targetPage, pageParameters).toString();
-		this.absolutePath = WicketComponentExtensions.toAbsolutePath(url);
-	}
-
-	/**
-	 * Instantiates a new tablerow link behavior.
-	 *
-	 * @param onmouseoverColor
-	 *            the onmouseover color
-	 * @param onmouseoutColor
-	 *            the onmouseout color
-	 * @param targetPage
-	 *            the target page
-	 * @param pageParameters
-	 *            the page parameters
-	 */
-	public LinkBehavior(final String onmouseoverColor, final String onmouseoutColor,
 		final WebPage targetPage, final PageParameters pageParameters)
 	{
 		super();
@@ -115,7 +115,8 @@ public class LinkBehavior extends Behavior
 		Args.notNull(targetPage, "targetPage");
 		this.onmouseoverColor = onmouseoverColor;
 		this.onmouseoutColor = onmouseoutColor;
-		String url = RequestCycle.get().urlFor(targetPage.getClass(), pageParameters).toString();
+		final String url = RequestCycle.get().urlFor(targetPage.getClass(), pageParameters)
+			.toString();
 		this.absolutePath = WicketComponentExtensions.toAbsolutePath(url);
 	}
 

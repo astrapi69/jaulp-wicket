@@ -29,7 +29,7 @@ public class ViewPersonPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ViewPersonPanel(String id, IModel<PersonBean> model)
+	public ViewPersonPanel(final String id, final IModel<PersonBean> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -41,14 +41,14 @@ public class ViewPersonPanel extends Panel
 		add(new Label("age").setOutputMarkupId(true));
 	}
 
-	protected AjaxFallbackLink<Object> newEditLink(String id)
+	protected AjaxFallbackLink<Object> newEditLink(final String id)
 	{
 		return new AjaxFallbackLink<Object>(id)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				ViewPersonPanel.this.onSubmit(target);
 			}

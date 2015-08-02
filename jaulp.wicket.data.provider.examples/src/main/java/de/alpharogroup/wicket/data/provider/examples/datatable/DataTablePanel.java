@@ -44,7 +44,7 @@ public class DataTablePanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DataTablePanel(String id)
+	public DataTablePanel(final String id)
 	{
 		super(id);
 
@@ -56,14 +56,14 @@ public class DataTablePanel extends Panel
 			@Override
 			public List<Person> getData()
 			{
-				List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
+				final List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
 				setData(persons);
 				return persons;
 			}
 		};
 		dataProvider.setSort("firstname", SortOrder.ASCENDING);
 
-		List<IColumn<Person, String>> columns = new ArrayList<>();
+		final List<IColumn<Person, String>> columns = new ArrayList<>();
 
 		columns.add(new PropertyColumn<Person, String>(Model.of("First name"), "firstname",
 			"firstname"));
@@ -81,11 +81,11 @@ public class DataTablePanel extends Panel
 		columns.add(new PropertyColumn<Person, String>(Model.of("Date of birth"), "dateOfBirth",
 			"dateOfBirth"));
 
-		DataTable<Person, String> tableWithFilterForm = new DataTable<Person, String>(
+		final DataTable<Person, String> tableWithFilterForm = new DataTable<Person, String>(
 			"tableWithFilterForm", columns, dataProvider, 10);
 		tableWithFilterForm.setOutputMarkupId(true);
 
-		FilterForm<PersonFilter> filterForm = new FilterForm<>("filterForm", dataProvider);
+		final FilterForm<PersonFilter> filterForm = new FilterForm<>("filterForm", dataProvider);
 		filterForm.add(new TextField<>("dateFrom", PropertyModel.of(dataProvider,
 			"filterState.dateFrom")));
 		filterForm.add(new TextField<>("dateTo", PropertyModel.of(dataProvider,
@@ -93,7 +93,7 @@ public class DataTablePanel extends Panel
 		add(filterForm);
 
 
-		FilterToolbar filterToolbar = new FilterToolbar(tableWithFilterForm, filterForm,
+		final FilterToolbar filterToolbar = new FilterToolbar(tableWithFilterForm, filterForm,
 			dataProvider);
 		tableWithFilterForm.addTopToolbar(filterToolbar);
 		tableWithFilterForm.addTopToolbar(new NavigationToolbar(tableWithFilterForm));

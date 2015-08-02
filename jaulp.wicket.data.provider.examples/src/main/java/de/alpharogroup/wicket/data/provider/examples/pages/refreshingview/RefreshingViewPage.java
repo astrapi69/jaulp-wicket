@@ -51,7 +51,7 @@ public class RefreshingViewPage extends WebPage
 	{
 
 		// Add sortable RefreshingView...
-		RefreshingViewPanel sortableDataViewPanel = new RefreshingViewPanel(
+		final RefreshingViewPanel sortableDataViewPanel = new RefreshingViewPanel(
 			"sortableDataViewPanel", null);
 		add(sortableDataViewPanel);
 	}

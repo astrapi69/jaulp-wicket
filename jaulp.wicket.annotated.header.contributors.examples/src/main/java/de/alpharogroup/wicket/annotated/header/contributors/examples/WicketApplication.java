@@ -57,11 +57,11 @@ public class WicketApplication extends WebApplication
 		{
 			initResources();
 		}
-		catch (ClassNotFoundException e)
+		catch (final ClassNotFoundException e)
 		{
 			e.printStackTrace();
 		}
-		catch (IOException e)
+		catch (final IOException e)
 		{
 			e.printStackTrace();
 		}
@@ -78,7 +78,7 @@ public class WicketApplication extends WebApplication
 	 */
 	private void initResources() throws ClassNotFoundException, IOException
 	{
-		PackageResourceReferences prr = PackageResourceReferences.getInstance();
+		final PackageResourceReferences prr = PackageResourceReferences.getInstance();
 		prr.initializeResources("de.alpharogroup");
 	}
 

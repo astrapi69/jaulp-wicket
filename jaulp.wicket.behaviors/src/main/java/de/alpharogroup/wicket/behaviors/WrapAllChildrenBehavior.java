@@ -27,7 +27,15 @@ import org.odlabs.wiquery.core.javascript.JsUtils;
 public class WrapAllChildrenBehavior extends Behavior
 {
 
-	public WrapAllChildrenBehavior(CharSequence statementLabel, CharSequence statementArgs)
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
+	CharSequence statementLabel;
+
+	CharSequence statementArgs;
+
+	public WrapAllChildrenBehavior(final CharSequence statementLabel,
+		final CharSequence statementArgs)
 	{
 		super();
 		Args.notNull(statementLabel, "statementLabel");
@@ -36,17 +44,11 @@ public class WrapAllChildrenBehavior extends Behavior
 		this.statementArgs = statementArgs;
 	}
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
-
-	CharSequence statementLabel;
-	CharSequence statementArgs;
-
 	@Override
-	public void renderHead(Component component, IHeaderResponse response)
+	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
-		JsStatement statement = new JsQuery(component).$().chain("children")
+		final JsStatement statement = new JsQuery(component).$().chain("children")
 			.chain(statementLabel, JsUtils.quotes(statementArgs));
 		// $('#component').children().wrapAll('<fieldset></fieldset>');
 		// where statementLabel is 'wrapAll'

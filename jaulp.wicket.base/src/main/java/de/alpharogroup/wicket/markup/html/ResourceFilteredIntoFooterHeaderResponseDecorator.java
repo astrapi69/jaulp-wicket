@@ -11,14 +11,14 @@ public class ResourceFilteredIntoFooterHeaderResponseDecorator implements IHeade
 {
 
 	/**
-	 * The filter name.
-	 */
-	private String filterName;
-
-	/**
 	 * The constant for the default filter name.
 	 */
 	private static final String DEFAULT_FILTER_NAME = "footer-container";
+
+	/**
+	 * The filter name.
+	 */
+	private String filterName;
 
 	/**
 	 * The default constructor with the default filter name.

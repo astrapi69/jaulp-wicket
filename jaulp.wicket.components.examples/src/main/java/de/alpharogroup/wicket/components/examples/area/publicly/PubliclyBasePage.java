@@ -96,6 +96,12 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 		this(new PageParameters());
 	}
 
+	public PubliclyBasePage(final IModel<T> model)
+	{
+		super(model);
+		initializeComponents();
+	}
+
 	/**
 	 * Instantiates a new base page.
 	 *
@@ -108,20 +114,6 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 		initializeComponents();
 	}
 
-	public PubliclyBasePage(IModel<T> model)
-	{
-		super(model);
-		initializeComponents();
-	}
-
-	private void initializeComponents()
-	{
-		add(getNavbarPanel());
-		add(feedback = newFeedbackPanel("feedback"));
-		add(getContainerPanel());
-		add(newFooterPanel("footer"));
-	}
-
 	/**
 	 * Gets the Navbar panel.
 	 *
@@ -132,30 +124,12 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 		return newNavbar(NAVBAR_PANEL_ID);
 	}
 
-	/**
-	 * creates a new {@link Navbar} instance
-	 *
-	 * @param markupId
-	 *            The components markup id.
-	 * @return a new {@link Navbar} instance
-	 */
-	protected Navbar newNavbar(String markupId)
+	private void initializeComponents()
 	{
-		Navbar navbar = new Navbar(markupId);
-
-		navbar.setPosition(Navbar.Position.TOP);
-		IModel<String> brandNameModel = ResourceModelFactory.newResourceModel(
-			"global.slogan.mainhead.label", this);
-		IModel<String> overviewModel = ResourceModelFactory.newResourceModel(
-			"global.menu.overview.label", this);
-		// show brand name
-		navbar.setBrandName(brandNameModel);
-		navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
-			new NavbarButton<HomePage>(HomePage.class, overviewModel)
-				.setIconType(GlyphIconType.home), newFeaturesDropDownButton(),
-			newLegalDropDownButton(), newNavbarDropDownButton()));
-
-		return navbar;
+		add(getNavbarPanel());
+		add(feedback = newFeedbackPanel("feedback"));
+		add(getContainerPanel());
+		add(newFooterPanel("footer"));
 	}
 
 	protected Component newFeaturesDropDownButton()
@@ -217,7 +191,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId)
+			protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId)
 			{
 				final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
 				subMenu.add(new MenuBookmarkablePageLink<AddressPage>(AddressPage.class, swapModel)
@@ -299,7 +273,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected List<AbstractLink> newSubMenuButtons(String buttonMarkupId)
+			protected List<AbstractLink> newSubMenuButtons(final String buttonMarkupId)
 			{
 				final List<AbstractLink> subMenu = new ArrayList<AbstractLink>();
 				subMenu.add(new MenuBookmarkablePageLink<ImprintPage>(ImprintPage.class,
@@ -317,18 +291,44 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 	}
 
 	/**
+	 * creates a new {@link Navbar} instance
+	 *
+	 * @param markupId
+	 *            The components markup id.
+	 * @return a new {@link Navbar} instance
+	 */
+	protected Navbar newNavbar(final String markupId)
+	{
+		final Navbar navbar = new Navbar(markupId);
+
+		navbar.setPosition(Navbar.Position.TOP);
+		final IModel<String> brandNameModel = ResourceModelFactory.newResourceModel(
+			"global.slogan.mainhead.label", this);
+		final IModel<String> overviewModel = ResourceModelFactory.newResourceModel(
+			"global.menu.overview.label", this);
+		// show brand name
+		navbar.setBrandName(brandNameModel);
+		navbar.addComponents(NavbarComponents.transform(Navbar.ComponentPosition.LEFT,
+			new NavbarButton<HomePage>(HomePage.class, overviewModel)
+				.setIconType(GlyphIconType.home), newFeaturesDropDownButton(),
+			newLegalDropDownButton(), newNavbarDropDownButton()));
+
+		return navbar;
+	}
+
+	/**
 	 * creates a new {@link NavbarDropDownButton} instance
 	 *
 	 * @return a new {@link NavbarDropDownButton} instance
 	 */
 	protected DropDownButton newNavbarDropDownButton()
 	{
-		DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes"))
+		final DropDownButton dropdown = new NavbarDropDownButton(Model.of("Themes"))
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public boolean isActive(Component item)
+			public boolean isActive(final Component item)
 			{
 				return false;
 			}
@@ -345,7 +345,7 @@ public abstract class PubliclyBasePage<T> extends ApplicationBasePage<T>
 
 				for (final ITheme theme : themes)
 				{
-					PageParameters params = new PageParameters();
+					final PageParameters params = new PageParameters();
 					params.set("theme", theme.name());
 
 					subMenu.add(new MenuBookmarkablePageLink<Page>(getPageClass(), params, Model

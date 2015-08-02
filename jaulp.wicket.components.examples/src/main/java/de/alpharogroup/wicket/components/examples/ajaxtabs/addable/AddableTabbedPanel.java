@@ -59,7 +59,7 @@ public class AddableTabbedPanel extends Panel
 		super(id, model);
 
 		setDefaultModel(new CompoundPropertyModel<TabbedPanelModels<String>>(model));
-		List<TabModel<String>> tabModels = model.getObject().getTabModels();
+		final List<TabModel<String>> tabModels = model.getObject().getTabModels();
 		for (int i = 0; i < tabModels.size(); i++)
 		{
 			tabs.add(new AbstractContentTab<TabModel<String>>(tabModels.get(i).getTitle(), Model
@@ -68,9 +68,9 @@ public class AddableTabbedPanel extends Panel
 				private static final long serialVersionUID = 1L;
 
 				@Override
-				public Panel getPanel(String panelId)
+				public Panel getPanel(final String panelId)
 				{
-					Panel p = new TabPanel(panelId, getContent().getObject().getContent());
+					final Panel p = new TabPanel(panelId, getContent().getObject().getContent());
 					return p;
 				}
 			});
@@ -81,43 +81,20 @@ public class AddableTabbedPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected WebMarkupContainer newCloseLink(final String linkId, final int index)
+			protected Component newAddTab(final String id, final IModel<String> model)
 			{
-				WebMarkupContainer wmc = super.newCloseLink(linkId, index);
-				wmc.add(new AttributeAppender("class", "close label label-warning"));
-				return wmc;
-
-			}
-
-			@Override
-			protected WebMarkupContainer newLink(String linkId, int index)
-			{
-				WebMarkupContainer wmc = super.newLink(linkId, index);
-				wmc.add(new AttributeAppender("class", "label label-success"));
-				return wmc;
-			}
-
-			@Override
-			protected IModel<String> newAddTabLabelModel()
-			{
-				return Model.of("+");
-			}
-
-			@Override
-			protected Component newAddTab(String id, IModel<String> model)
-			{
-				WebMarkupContainer addTabContainer = new WebMarkupContainer(id);
+				final WebMarkupContainer addTabContainer = new WebMarkupContainer(id);
 				addTabContainer.setOutputMarkupId(true);
 				addTabContainer.add(new AttributeAppender("class", " label"));
 				final ModalWindow modalWindow = newAddTabModalWindow("modalWindow",
 					Model.of("Add new tab"));
 				addTabContainer.add(modalWindow);
-				AjaxLink<Void> openModal = new AjaxLink<Void>("openModal")
+				final AjaxLink<Void> openModal = new AjaxLink<Void>("openModal")
 				{
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					public void onClick(AjaxRequestTarget target)
+					public void onClick(final AjaxRequestTarget target)
 					{
 						target.prependJavaScript("Wicket.Window.unloadConfirmation = false;");
 						modalWindow.show(target);
@@ -131,7 +108,19 @@ public class AddableTabbedPanel extends Panel
 			}
 
 			@Override
-			protected ModalWindow newAddTabModalWindow(String id, IModel<String> model)
+			protected Label newaddTabLabel(final String id, final IModel<String> model)
+			{
+				return ComponentFactory.newLabel(id, model);
+			}
+
+			@Override
+			protected IModel<String> newAddTabLabelModel()
+			{
+				return Model.of("+");
+			}
+
+			@Override
+			protected ModalWindow newAddTabModalWindow(final String id, final IModel<String> model)
 			{
 				final ModalWindow modalWindow = new ModalWindow(id);
 				modalWindow.setOutputMarkupId(true);
@@ -148,7 +137,7 @@ public class AddableTabbedPanel extends Panel
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					protected void onCancel(AjaxRequestTarget target, Form<?> form)
+					protected void onCancel(final AjaxRequestTarget target, final Form<?> form)
 					{
 						super.onCancel(target, form);
 						modalWindow.close(target);
@@ -156,18 +145,18 @@ public class AddableTabbedPanel extends Panel
 
 					@SuppressWarnings("unchecked")
 					@Override
-					protected void onSave(AjaxRequestTarget target, Form<?> form)
+					protected void onSave(AjaxRequestTarget target, final Form<?> form)
 					{
 						super.onSave(target, form);
 						if (target == null)
 						{
 							target = ComponentFinder.findAjaxRequestTarget();
 						}
-						Object value = getModel();
+						final Object value = getModel();
 						String v = null;
 						if (value instanceof IModel)
 						{
-							Object obj = ((IModel<?>)value).getObject();
+							final Object obj = ((IModel<?>)value).getObject();
 							if (obj instanceof String)
 							{
 								v = (String)obj;
@@ -178,22 +167,22 @@ public class AddableTabbedPanel extends Panel
 						final TabModel<String> newTabModel = new TabModel<>(Model.of(v), Model
 							.of(v), Model.of("x"));
 
-						AbstractContentTab<TabModel<String>> tab = new AbstractContentTab<TabModel<String>>(
+						final AbstractContentTab<TabModel<String>> tab = new AbstractContentTab<TabModel<String>>(
 							newTabModel.getTitle(), Model.of(newTabModel), Model.of("x"))
 						{
 							private static final long serialVersionUID = 1L;
 
 							@Override
-							public Panel getPanel(String panelId)
+							public Panel getPanel(final String panelId)
 							{
-								Panel p = new TabPanel(panelId, getContent().getObject()
+								final Panel p = new TabPanel(panelId, getContent().getObject()
 									.getContent());
 								return p;
 							}
 						};
-						Object object = AddableTabbedPanel.this.getDefaultModelObject();
-						TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
-						List<TabModel<String>> tabModels = tabbedModel.getTabModels();
+						final Object object = AddableTabbedPanel.this.getDefaultModelObject();
+						final TabbedPanelModels<String> tabbedModel = (TabbedPanelModels<String>)object;
+						final List<TabModel<String>> tabModels = tabbedModel.getTabModels();
 						tabModels.add(newTabModel);
 						ajaxTabbedPanel.onNewTab(target, tab);
 						modalWindow.close(target);
@@ -203,9 +192,20 @@ public class AddableTabbedPanel extends Panel
 			}
 
 			@Override
-			protected Label newaddTabLabel(String id, IModel<String> model)
+			protected WebMarkupContainer newCloseLink(final String linkId, final int index)
 			{
-				return ComponentFactory.newLabel(id, model);
+				final WebMarkupContainer wmc = super.newCloseLink(linkId, index);
+				wmc.add(new AttributeAppender("class", "close label label-warning"));
+				return wmc;
+
+			}
+
+			@Override
+			protected WebMarkupContainer newLink(final String linkId, final int index)
+			{
+				final WebMarkupContainer wmc = super.newLink(linkId, index);
+				wmc.add(new AttributeAppender("class", "label label-success"));
+				return wmc;
 			}
 		});
 	}

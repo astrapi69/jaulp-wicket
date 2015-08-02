@@ -38,7 +38,7 @@ public class SortableFilterPersonDataProvider
 		this(new ArrayList<Person>());
 	}
 
-	public SortableFilterPersonDataProvider(List<Person> data)
+	public SortableFilterPersonDataProvider(final List<Person> data)
 	{
 		super(data);
 		setFilterState(new PersonFilter());
@@ -46,19 +46,19 @@ public class SortableFilterPersonDataProvider
 	}
 
 	@Override
-	protected List<Person> filter(List<Person> personsFound)
+	protected List<Person> filter(final List<Person> personsFound)
 	{
 		return filterByFirstname(personsFound);
 	}
 
-	protected List<Person> filterByDateOfBirth(List<Person> personsFound)
+	protected List<Person> filterByDateOfBirth(final List<Person> personsFound)
 	{
-		ArrayList<Person> result = new ArrayList<>();
-		Date dateFrom = getFilterState().getDateFrom();
-		Date dateTo = getFilterState().getDateTo();
-		for (Person person : personsFound)
+		final ArrayList<Person> result = new ArrayList<>();
+		final Date dateFrom = getFilterState().getDateFrom();
+		final Date dateTo = getFilterState().getDateTo();
+		for (final Person person : personsFound)
 		{
-			Date bornDate = person.getDateOfBirth();
+			final Date bornDate = person.getDateOfBirth();
 			if (dateFrom != null && bornDate.before(dateFrom))
 			{
 				continue;
@@ -72,13 +72,13 @@ public class SortableFilterPersonDataProvider
 		return result;
 	}
 
-	protected List<Person> filterByFirstname(List<Person> personsFound)
+	protected List<Person> filterByFirstname(final List<Person> personsFound)
 	{
-		ArrayList<Person> result = new ArrayList<>();
-		String filter = getFilterState().getFirstname();
+		final ArrayList<Person> result = new ArrayList<>();
+		final String filter = getFilterState().getFirstname();
 		if (filter != null)
 		{
-			for (Person person : personsFound)
+			for (final Person person : personsFound)
 			{
 				if (person != null && person.getFirstname() != null
 					&& person.getFirstname().matches(filter + "(.*)"))

@@ -44,9 +44,22 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior
 	 * @param mailtoModel
 	 *            The mailto model.
 	 */
-	public MailtoBehavior(T mailtoModel)
+	public MailtoBehavior(final T mailtoModel)
 	{
 		this.mailtoModel = mailtoModel;
+	}
+
+	/**
+	 * On rendered.
+	 *
+	 * @param component
+	 *            the component
+	 */
+	@Override
+	public void afterRender(final Component component)
+	{
+		super.afterRender(component);
+		component.getResponse().write("</a>");
 	}
 
 	/**
@@ -71,19 +84,6 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior
 	public T getMailtoModel()
 	{
 		return mailtoModel;
-	}
-
-	/**
-	 * On rendered.
-	 *
-	 * @param component
-	 *            the component
-	 */
-	@Override
-	public void afterRender(final Component component)
-	{
-		super.afterRender(component);
-		component.getResponse().write("</a>");
 	}
 
 }

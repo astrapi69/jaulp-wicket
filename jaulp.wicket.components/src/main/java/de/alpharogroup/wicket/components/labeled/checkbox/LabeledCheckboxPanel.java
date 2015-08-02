@@ -50,32 +50,26 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the model of the label
 	 */
-	public LabeledCheckboxPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledCheckboxPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 		add(checkBox = newCheckBox("checkBox", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
 
-		String markupId = checkBox.getMarkupId();
+		final String markupId = checkBox.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 
 	}
 
 	/**
-	 * Factory method for creating the CheckBox. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a CheckBox.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the created CheckBox
+	 * {@inheritDoc}
 	 */
-	protected CheckBox newCheckBox(String id, IModel<T> model)
+	@Override
+	public void convertInput()
 	{
-		IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), this.getId());
-		return ComponentFactory.newCheckBox(id, propertyModel);
+		setConvertedInput(getModel().getObject());
 	}
 
 	/**
@@ -88,12 +82,19 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Factory method for creating the CheckBox. This method is invoked in the constructor from this
+	 * class and can be overridden so users can provide their own version of a CheckBox.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the created CheckBox
 	 */
-	@Override
-	public void convertInput()
+	protected CheckBox newCheckBox(final String id, final IModel<T> model)
 	{
-		setConvertedInput(getModel().getObject());
+		final IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), this.getId());
+		return ComponentFactory.newCheckBox(id, propertyModel);
 	}
 
 	/**

@@ -66,7 +66,7 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 
 	final IModel<HomeAddress> addressModel;
 
-	public LabeledComponentsPanel(String id)
+	public LabeledComponentsPanel(final String id)
 	{
 		super(id);
 		setOutputMarkupId(true);
@@ -84,32 +84,33 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 
 		add(form);
 
-		LabeledEnumLabelPanel<Member> genderLabel = newLabeledEnumLabelPanel("gender", cpm,
+		final LabeledEnumLabelPanel<Member> genderLabel = newLabeledEnumLabelPanel("gender", cpm,
 			Model.of("Gender:"));
 		form.add(genderLabel);
 
-		LabeledLabelPanel<Member> nameLabel = newLabeledLabelPanel("name", cpm, Model.of("Name:"));
+		final LabeledLabelPanel<Member> nameLabel = newLabeledLabelPanel("name", cpm,
+			Model.of("Name:"));
 		form.add(nameLabel);
 
-		LabeledTextFieldPanel<Member> nameTextField = newLabeledTextFieldPanel("nickname", cpm,
-			Model.of("Input your nickname:"));
+		final LabeledTextFieldPanel<Member> nameTextField = newLabeledTextFieldPanel("nickname",
+			cpm, Model.of("Input your nickname:"));
 		form.add(nameTextField);
 
-		LabeledTextAreaPanel<Member> about = newLabeledTextAreaPanel("about", cpm,
+		final LabeledTextAreaPanel<Member> about = newLabeledTextAreaPanel("about", cpm,
 			Model.of("About:"));
 		form.add(about);
 
-		LabeledCheckboxPanel<Member> married = newLabeledCheckboxPanel("married", cpm,
+		final LabeledCheckboxPanel<Member> married = newLabeledCheckboxPanel("married", cpm,
 			Model.of("Married:"));
 
 		form.add(married);
 
-		LabeledDateTextFieldPanel<Member> dateofbirth = newLabeledDateTextFieldPanel("dateofbirth",
-			cpm, Model.of("Date of birth:"));
+		final LabeledDateTextFieldPanel<Member> dateofbirth = newLabeledDateTextFieldPanel(
+			"dateofbirth", cpm, Model.of("Date of birth:"));
 		form.add(dateofbirth);
 
 
-		LabeledDateTimeFieldPanel<Member> dateofMarriage = newLabeledDateTimeFieldPanel(
+		final LabeledDateTimeFieldPanel<Member> dateofMarriage = newLabeledDateTimeFieldPanel(
 			"dateofMarriage", cpm, Model.of("Date of marriage:"));
 		form.add(dateofMarriage);
 
@@ -126,7 +127,7 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit(AjaxRequestTarget target, Form<?> form)
+			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				info("Member:" + person.toString());
 				info(":::Address::" + addressModel.toString());
@@ -144,13 +145,13 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 
 	protected Component getFeedback()
 	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 
-	protected AddressPanel newAddressPanel(String id, final IModel<HomeAddress> model)
+	protected AddressPanel newAddressPanel(final String id, final IModel<HomeAddress> model)
 	{
-		AddressPanel addressPanel = new AddressPanel(id, model);
+		final AddressPanel addressPanel = new AddressPanel(id, model);
 		addressPanel.add(new AttributeAppender("class", ""));
 
 		addressPanel.getStreetNumberPanel().getTwoFormComponent()
@@ -197,74 +198,10 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 		return addressPanel;
 	}
 
-	protected LabeledEnumLabelPanel<Member> newLabeledEnumLabelPanel(String id,
-		IModel<Member> model, IModel<String> labelModel)
+	protected LabeledCheckboxPanel<Member> newLabeledCheckboxPanel(final String id,
+		final IModel<Member> model, final IModel<String> labelModel)
 	{
-		LabeledEnumLabelPanel<Member> enumPanel = new LabeledEnumLabelPanel<Member>(id, model,
-			labelModel);
-		enumPanel.add(new AttributeAppender("class", " form-group"));
-		enumPanel
-			.getEnumLabel()
-			.add(
-				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
-					.build())).add(new AttributeAppender("class", " form-control no-border"));
-		enumPanel.getLabel().add(new AttributeAppender("class", " control-label " + COL_SM_2));
-		return enumPanel;
-	}
-
-	protected LabeledLabelPanel<Member> newLabeledLabelPanel(String id, IModel<Member> model,
-		IModel<String> labelModel)
-	{
-
-		LabeledLabelPanel<Member> nameLabel = new LabeledLabelPanel<Member>(id, model, labelModel);
-		nameLabel.add(new AttributeAppender("class", " form-group"));
-		nameLabel
-			.getViewableLabel()
-			.add(
-				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
-					.build())).add(new AttributeAppender("class", " form-control no-border"));
-		nameLabel.getLabel().add(new AttributeAppender("class", " control-label " + COL_SM_2));
-		return nameLabel;
-	}
-
-	protected LabeledTextFieldPanel<Member> newLabeledTextFieldPanel(String id,
-		IModel<Member> model, IModel<String> labelModel)
-	{
-		LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>(id, model,
-			labelModel);
-		nameTextField.add(new AttributeAppender("class", " form-group"));
-		nameTextField
-			.getTextField()
-			.add(
-				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
-					.build())).add(new AttributeAppender("class", " form-control"));
-		nameTextField.getLabelComponent().add(
-			new AttributeAppender("class", " control-label " + COL_SM_2));
-		return nameTextField;
-	}
-
-	protected LabeledTextAreaPanel<Member> newLabeledTextAreaPanel(String id, IModel<Member> model,
-		IModel<String> labelModel)
-	{
-		LabeledTextAreaPanel<Member> about = new LabeledTextAreaPanel<Member>(id, model, labelModel);
-		about.add(new AttributeAppender("class", " form-group"));
-		about
-			.getTextArea()
-			.add(
-				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
-					.build())).add(new AttributeAppender("class", " form-control"));
-		about.getLabelComponent().add(new AttributeAppender("class", " control-label " + COL_SM_2));
-		return about;
-	}
-
-	protected LabeledCheckboxPanel<Member> newLabeledCheckboxPanel(String id, IModel<Member> model,
-		IModel<String> labelModel)
-	{
-		LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<Member>(id, model,
+		final LabeledCheckboxPanel<Member> married = new LabeledCheckboxPanel<Member>(id, model,
 			labelModel);
 		married.add(new AttributeAppender("class", " form-group"));
 		married
@@ -285,11 +222,11 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 		return married;
 	}
 
-	protected LabeledDateTextFieldPanel<Member> newLabeledDateTextFieldPanel(String id,
-		IModel<Member> model, IModel<String> labelModel)
+	protected LabeledDateTextFieldPanel<Member> newLabeledDateTextFieldPanel(final String id,
+		final IModel<Member> model, final IModel<String> labelModel)
 	{
-		LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>(id,
-			model, labelModel);
+		final LabeledDateTextFieldPanel<Member> dateofbirth = new LabeledDateTextFieldPanel<Member>(
+			id, model, labelModel);
 		dateofbirth.add(new AttributeAppender("class", " form-group"));
 		dateofbirth
 			.getDateTextField()
@@ -302,21 +239,21 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 		return dateofbirth;
 	}
 
-	protected LabeledDateTimeFieldPanel<Member> newLabeledDateTimeFieldPanel(String id,
-		IModel<Member> model, IModel<String> labelModel)
+	protected LabeledDateTimeFieldPanel<Member> newLabeledDateTimeFieldPanel(final String id,
+		final IModel<Member> model, final IModel<String> labelModel)
 	{
 
-		LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>(
+		final LabeledDateTimeFieldPanel<Member> dateofMarriage = new LabeledDateTimeFieldPanel<Member>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected DateTimeField newDateTimeField(String id, IModel<Member> model)
+			protected DateTimeField newDateTimeField(final String id, final IModel<Member> model)
 			{
-				PropertyModel<Date> textFieldModel = new PropertyModel<Date>(model.getObject(),
-					getId());
-				DateTimeField dateTextField = new DateTimeField(id, textFieldModel);
+				final PropertyModel<Date> textFieldModel = new PropertyModel<Date>(
+					model.getObject(), getId());
+				final DateTimeField dateTextField = new DateTimeField(id, textFieldModel);
 				return dateTextField;
 			}
 
@@ -331,5 +268,71 @@ public class LabeledComponentsPanel extends BasePanel<Object>
 		dateofMarriage.getLabelComponent().add(
 			new AttributeAppender("class", " control-label " + COL_SM_2));
 		return dateofMarriage;
+	}
+
+	protected LabeledEnumLabelPanel<Member> newLabeledEnumLabelPanel(final String id,
+		final IModel<Member> model, final IModel<String> labelModel)
+	{
+		final LabeledEnumLabelPanel<Member> enumPanel = new LabeledEnumLabelPanel<Member>(id,
+			model, labelModel);
+		enumPanel.add(new AttributeAppender("class", " form-group"));
+		enumPanel
+			.getEnumLabel()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control no-border"));
+		enumPanel.getLabel().add(new AttributeAppender("class", " control-label " + COL_SM_2));
+		return enumPanel;
+	}
+
+	protected LabeledLabelPanel<Member> newLabeledLabelPanel(final String id,
+		final IModel<Member> model, final IModel<String> labelModel)
+	{
+
+		final LabeledLabelPanel<Member> nameLabel = new LabeledLabelPanel<Member>(id, model,
+			labelModel);
+		nameLabel.add(new AttributeAppender("class", " form-group"));
+		nameLabel
+			.getViewableLabel()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control no-border"));
+		nameLabel.getLabel().add(new AttributeAppender("class", " control-label " + COL_SM_2));
+		return nameLabel;
+	}
+
+	protected LabeledTextAreaPanel<Member> newLabeledTextAreaPanel(final String id,
+		final IModel<Member> model, final IModel<String> labelModel)
+	{
+		final LabeledTextAreaPanel<Member> about = new LabeledTextAreaPanel<Member>(id, model,
+			labelModel);
+		about.add(new AttributeAppender("class", " form-group"));
+		about
+			.getTextArea()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control"));
+		about.getLabelComponent().add(new AttributeAppender("class", " control-label " + COL_SM_2));
+		return about;
+	}
+
+	protected LabeledTextFieldPanel<Member> newLabeledTextFieldPanel(final String id,
+		final IModel<Member> model, final IModel<String> labelModel)
+	{
+		final LabeledTextFieldPanel<Member> nameTextField = new LabeledTextFieldPanel<Member>(id,
+			model, labelModel);
+		nameTextField.add(new AttributeAppender("class", " form-group"));
+		nameTextField
+			.getTextField()
+			.add(
+				new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+					.label("wrap").args(JsUtils.quotes("<div class=\"" + COL_SM_4 + "\"></div>"))
+					.build())).add(new AttributeAppender("class", " form-control"));
+		nameTextField.getLabelComponent().add(
+			new AttributeAppender("class", " control-label " + COL_SM_2));
+		return nameTextField;
 	}
 }

@@ -54,7 +54,7 @@ public class SignupExamplesPanel extends Panel
 
 		final IModel<BaseUsernameSignUpModel> cpm = new CompoundPropertyModel<BaseUsernameSignUpModel>(
 			model);
-		SignupFormPanel signFormPanel = new SignupFormPanel("horizantalFormPanel", cpm)
+		final SignupFormPanel signFormPanel = new SignupFormPanel("horizantalFormPanel", cpm)
 		{
 
 			/**
@@ -63,9 +63,27 @@ public class SignupExamplesPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Form<?> newForm(String id, IModel<? extends BaseUsernameSignUpModel> model)
+			protected Button newButton(final String id)
 			{
-				Form<?> form = super.newForm(id, model);
+				final Button button = super.newButton(id);
+				button.add(
+					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+						.label("wrap").args(JsUtils.quotes("<div class=\"form-group\"></div>"))
+						.build())).add(
+					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
+						.label("wrap")
+						.args(
+							JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-"
+								+ inputSize + "\"></div>")).build()));
+				button.add(new AttributeAppender("class", " btn btn-default"));
+				return button;
+			}
+
+			@Override
+			protected Form<?> newForm(final String id,
+				final IModel<? extends BaseUsernameSignUpModel> model)
+			{
+				final Form<?> form = super.newForm(id, model);
 				form.add(new AttributeAppender("class", " form-horizontal col-sm"
 					+ (labelSize - inputSize)));
 				return form;
@@ -84,14 +102,14 @@ public class SignupExamplesPanel extends Panel
 
 					@SuppressWarnings("unchecked")
 					@Override
-					protected Component newUsernameTextField(final String id,
+					protected Component newRepeatPasswordTextField(final String id,
 						final IModel<BaseUsernameSignUpModel> model)
 					{
-						LabeledTextFieldPanel<BaseUsernameSignUpModel> nameTextField = (LabeledTextFieldPanel<BaseUsernameSignUpModel>)super
-							.newUsernameTextField(id, model);
-						nameTextField.add(new AttributeAppender("class", " form-group"));
-						nameTextField
-							.getTextField()
+						final LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> pwTextField = (LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel>)super
+							.newRepeatPasswordTextField(id, model);
+						pwTextField.add(new AttributeAppender("class", " form-group"));
+						pwTextField
+							.getPasswordTextField()
 							.add(
 								new JqueryStatementsBehavior()
 									.add(new BuildableChainableStatement.Builder()
@@ -100,18 +118,16 @@ public class SignupExamplesPanel extends Panel
 											JsUtils.quotes("<div class=\"col-sm-" + inputSize
 												+ "\"></div>")).build()))
 							.add(new AttributeAppender("class", " form-control"));
-						nameTextField.getLabelComponent().add(
+						pwTextField.getLabelComponent().add(
 							new AttributeAppender("class", " control-label col-sm-" + labelSize));
-						nameTextField.getLabelComponent().add(
-							new AttributeAppender("class", " control-label col-sm-" + labelSize));
-						return nameTextField;
+						return pwTextField;
 					}
 
 					@Override
-					protected Component newSigninPanel(String id,
-						IModel<? extends BaseUsernameSignUpModel> model)
+					protected Component newSigninPanel(final String id,
+						final IModel<? extends BaseUsernameSignUpModel> model)
 					{
-						SigninPanel signinPanel = new SigninPanel(id, model)
+						final SigninPanel signinPanel = new SigninPanel(id, model)
 						{
 							/**
 							 * The serialVersionUID
@@ -120,8 +136,8 @@ public class SignupExamplesPanel extends Panel
 
 							@SuppressWarnings("unchecked")
 							@Override
-							protected Component newEmailTextField(String id,
-								IModel<SignInModel> model)
+							protected Component newEmailTextField(final String id,
+								final IModel<SignInModel> model)
 							{
 								final LabeledEmailTextFieldPanel<SignInModel> emailTextField = (LabeledEmailTextFieldPanel<SignInModel>)super
 									.newEmailTextField(id, model);
@@ -144,8 +160,8 @@ public class SignupExamplesPanel extends Panel
 
 							@SuppressWarnings("unchecked")
 							@Override
-							protected Component newPasswordTextField(String id,
-								IModel<SignInModel> model)
+							protected Component newPasswordTextField(final String id,
+								final IModel<SignInModel> model)
 							{
 								final LabeledPasswordTextFieldPanel<SignInModel> pwTextField = (LabeledPasswordTextFieldPanel<SignInModel>)super
 									.newPasswordTextField(id, model);
@@ -171,14 +187,14 @@ public class SignupExamplesPanel extends Panel
 
 					@SuppressWarnings("unchecked")
 					@Override
-					protected Component newRepeatPasswordTextField(String id,
-						IModel<BaseUsernameSignUpModel> model)
+					protected Component newUsernameTextField(final String id,
+						final IModel<BaseUsernameSignUpModel> model)
 					{
-						LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> pwTextField = (LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel>)super
-							.newRepeatPasswordTextField(id, model);
-						pwTextField.add(new AttributeAppender("class", " form-group"));
-						pwTextField
-							.getPasswordTextField()
+						final LabeledTextFieldPanel<BaseUsernameSignUpModel> nameTextField = (LabeledTextFieldPanel<BaseUsernameSignUpModel>)super
+							.newUsernameTextField(id, model);
+						nameTextField.add(new AttributeAppender("class", " form-group"));
+						nameTextField
+							.getTextField()
 							.add(
 								new JqueryStatementsBehavior()
 									.add(new BuildableChainableStatement.Builder()
@@ -187,28 +203,13 @@ public class SignupExamplesPanel extends Panel
 											JsUtils.quotes("<div class=\"col-sm-" + inputSize
 												+ "\"></div>")).build()))
 							.add(new AttributeAppender("class", " form-control"));
-						pwTextField.getLabelComponent().add(
+						nameTextField.getLabelComponent().add(
 							new AttributeAppender("class", " control-label col-sm-" + labelSize));
-						return pwTextField;
+						nameTextField.getLabelComponent().add(
+							new AttributeAppender("class", " control-label col-sm-" + labelSize));
+						return nameTextField;
 					}
 				};
-			}
-
-			@Override
-			protected Button newButton(String id)
-			{
-				Button button = super.newButton(id);
-				button.add(
-					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-						.label("wrap").args(JsUtils.quotes("<div class=\"form-group\"></div>"))
-						.build())).add(
-					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-						.label("wrap")
-						.args(
-							JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-"
-								+ inputSize + "\"></div>")).build()));
-				button.add(new AttributeAppender("class", " btn btn-default"));
-				return button;
 			}
 
 			@Override
@@ -227,7 +228,7 @@ public class SignupExamplesPanel extends Panel
 
 	protected Component getFeedback()
 	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 

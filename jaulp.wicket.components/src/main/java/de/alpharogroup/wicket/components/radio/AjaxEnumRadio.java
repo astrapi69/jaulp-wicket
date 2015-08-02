@@ -38,36 +38,8 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T>
 	 * 
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
-	 * @param group
-	 *            the group
 	 */
-	public AjaxEnumRadio(String id, IModel<T> model, RadioGroup<T> group)
-	{
-		super(id, model, group);
-	}
-
-	/**
-	 * Instantiates a new enum radio.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param group
-	 *            the group
-	 */
-	public AjaxEnumRadio(String id, RadioGroup<T> group)
-	{
-		super(id, group);
-	}
-
-	/**
-	 * Instantiates a new enum radio.
-	 * 
-	 * @param id
-	 *            the id
-	 */
-	public AjaxEnumRadio(String id)
+	public AjaxEnumRadio(final String id)
 	{
 		super(id);
 	}
@@ -80,9 +52,37 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T>
 	 * @param model
 	 *            the model
 	 */
-	public AjaxEnumRadio(String id, IModel<T> model)
+	public AjaxEnumRadio(final String id, final IModel<T> model)
 	{
 		super(id, model);
+	}
+
+	/**
+	 * Instantiates a new enum radio.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param group
+	 *            the group
+	 */
+	public AjaxEnumRadio(final String id, final IModel<T> model, final RadioGroup<T> group)
+	{
+		super(id, model, group);
+	}
+
+	/**
+	 * Instantiates a new enum radio.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param group
+	 *            the group
+	 */
+	public AjaxEnumRadio(final String id, final RadioGroup<T> group)
+	{
+		super(id, group);
 	}
 
 	/**

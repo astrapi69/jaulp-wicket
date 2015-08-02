@@ -48,29 +48,30 @@ public class RadioChoicePanel extends Panel
 	@Getter
 	private Brands selected;
 
-	public RadioChoicePanel(String id, IModel<?> model)
+	public RadioChoicePanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
-		IChoiceRenderer<Brands> renderer = new IChoiceRenderer<Brands>()
+		final IChoiceRenderer<Brands> renderer = new IChoiceRenderer<Brands>()
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public Object getDisplayValue(Brands object)
+			public Object getDisplayValue(final Brands object)
 			{
 				return object.getValue();
 			}
 
 			@Override
-			public String getIdValue(Brands object, int index)
+			public String getIdValue(final Brands object, final int index)
 			{
 				return object.getValue();
 			}
 
 			@SuppressWarnings("unused")
-			public Brands getObject(String id, IModel<? extends List<? extends Brands>> choices)
+			public Brands getObject(final String id,
+				final IModel<? extends List<? extends Brands>> choices)
 			{
-				for (Brands brand : choices.getObject())
+				for (final Brands brand : choices.getObject())
 				{
 					if (brand.getValue().equals(id))
 					{
@@ -81,7 +82,7 @@ public class RadioChoicePanel extends Panel
 			}
 
 		};
-		RadioChoice<Brands> brandingType = ComponentFactory.newRadioChoice("branding",
+		final RadioChoice<Brands> brandingType = ComponentFactory.newRadioChoice("branding",
 			model(from(this).getSelected()), TYPES, renderer);
 		// dont add a <br> after every radio...
 		brandingType.setSuffix("");
@@ -91,13 +92,13 @@ public class RadioChoicePanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
 				target.add(getFeedback());
 				info("Selected Type : " + selected.getValue());
 			}
 		});
-		Form<?> form = new Form<Void>("form");
+		final Form<?> form = new Form<Void>("form");
 
 		add(form);
 		form.add(brandingType);
@@ -105,7 +106,7 @@ public class RadioChoicePanel extends Panel
 
 	protected Component getFeedback()
 	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 }

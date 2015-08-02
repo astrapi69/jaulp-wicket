@@ -30,28 +30,28 @@ public class DataProtectionPanel extends HeaderContentListPanel
 
 	private static final long serialVersionUID = 1L;
 
-	public DataProtectionPanel(String id)
+	public DataProtectionPanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public DataProtectionPanel(String id, IModel<HeaderContentListModel> model)
+	public DataProtectionPanel(final String id, final IModel<HeaderContentListModel> model)
 	{
 		super(id, model);
 	}
 
 	@Override
-	protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
-	{
-		return new Label(id, newContentResourceModel(item.getModel()))
-			.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
-	}
-
-	@Override
-	protected Component newHeaderLabel(String id, IModel<String> model)
+	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
 		return super.newHeaderLabel(id, model).add(
 			new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
+	}
+
+	@Override
+	protected Component newListComponent(final String id, final ListItem<ResourceBundleKey> item)
+	{
+		return new Label(id, newContentResourceModel(item.getModel()))
+			.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
 	}
 
 }

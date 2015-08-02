@@ -47,12 +47,34 @@ public class MenuUtils
 	 *            the component
 	 * @return the bookmarkable page link
 	 */
-	public static BookmarkablePageLink<String> newBookmarkablePageLink(String linkId,
-		Class<? extends Page> pageClass, String labelId, String resourceModelKey,
-		Component component)
+	public static BookmarkablePageLink<String> newBookmarkablePageLink(final String linkId,
+		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,
+		final Component component)
 	{
 		return LinkUtils.newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey,
 			component);
+	}
+
+	/**
+	 * Creates the menu item.
+	 *
+	 * @param pageClass
+	 *            the page class
+	 * @param resourceModelKey
+	 *            the resource model key
+	 * @param component
+	 *            the component
+	 * @return the suckerfish menu panel. menu item
+	 */
+	public static MenuItem newMenuItem(final Class<? extends Page> pageClass,
+		final String resourceModelKey, final Component component)
+	{
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
+			MenuPanel.LINK_ID, pageClass);
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceModelKey,
+			component);
+		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, labelModel);
+		return menuItem;
 	}
 
 	/**
@@ -68,16 +90,17 @@ public class MenuUtils
 	 *            the {@link PageParameters}
 	 * @return the suckerfish menu panel. menu item
 	 */
-	public static MenuItem newMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
-		Component component, final PageParameters parameters)
+	public static MenuItem newMenuItem(final Class<? extends Page> pageClass,
+		final String resourceModelKey, final Component component, final PageParameters parameters)
 	{
 		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
 			MenuPanel.LINK_ID, pageClass, parameters);
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceModelKey,
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceModelKey,
 			component);
 		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, labelModel);
 		return menuItem;
 	}
+
 
 	/**
 	 * Creates the menu item.
@@ -89,29 +112,6 @@ public class MenuUtils
 	public static MenuItem newMenuItem(final IModel<String> labelModel)
 	{
 		final MenuItem menuItem = new MenuItem(labelModel);
-		return menuItem;
-	}
-
-
-	/**
-	 * Creates the menu item.
-	 *
-	 * @param pageClass
-	 *            the page class
-	 * @param resourceModelKey
-	 *            the resource model key
-	 * @param component
-	 *            the component
-	 * @return the suckerfish menu panel. menu item
-	 */
-	public static MenuItem newMenuItem(Class<? extends Page> pageClass, String resourceModelKey,
-		Component component)
-	{
-		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
-			MenuPanel.LINK_ID, pageClass);
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceModelKey,
-			component);
-		final MenuItem menuItem = new MenuItem(bookmarkablePageLink, labelModel);
 		return menuItem;
 	}
 

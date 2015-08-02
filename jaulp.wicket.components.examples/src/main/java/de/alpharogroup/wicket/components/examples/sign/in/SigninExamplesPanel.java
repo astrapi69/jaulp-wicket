@@ -54,6 +54,12 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 		add(newSigninFormPanel("horizantalFormPanel", model));
 	}
 
+	protected Component getFeedback()
+	{
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		return basePage.getFeedback();
+	}
+
 	protected Component newSigninFormPanel(final String id,
 		final IModel<SignInWithRedirectionBean> model)
 	{
@@ -63,17 +69,9 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Form<?> newForm(String id, IModel<?> model)
+			protected Button newButton(final String id)
 			{
-				Form<?> form = super.newForm(id, model);
-				form.add(new AttributeAppender("class", " form-horizontal"));
-				return form;
-			}
-
-			@Override
-			protected Button newButton(String id)
-			{
-				Button button = super.newButton(id);
+				final Button button = super.newButton(id);
 				button.add(Wrappers.FORM_GROUP_ELEMENT).add(
 					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
 						.label("wrap")
@@ -85,18 +83,28 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 			}
 
 			@Override
-			protected MarkupContainer newPasswordForgottenLink(String id,
-				IModel<SignInWithRedirectionBean> model)
+			protected Form<?> newForm(final String id, final IModel<?> model)
 			{
-				MarkupContainer passwordForgottenLink = super.newPasswordForgottenLink(id, model);
+				final Form<?> form = super.newForm(id, model);
+				form.add(new AttributeAppender("class", " form-horizontal"));
+				return form;
+			}
+
+			@Override
+			protected MarkupContainer newPasswordForgottenLink(final String id,
+				final IModel<SignInWithRedirectionBean> model)
+			{
+				final MarkupContainer passwordForgottenLink = super.newPasswordForgottenLink(id,
+					model);
 				passwordForgottenLink.add(new AttributeAppender("class", " btn btn-link"));
 				return passwordForgottenLink;
 			}
 
 			@Override
-			protected Component newSigninPanel(String id, IModel<? extends SignInModel> model)
+			protected Component newSigninPanel(final String id,
+				final IModel<? extends SignInModel> model)
 			{
-				SigninPanel signinPanel = new SigninPanel(id, model)
+				final SigninPanel signinPanel = new SigninPanel(id, model)
 				{
 					/**
 					 * The serialVersionUID
@@ -105,7 +113,8 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 
 					@SuppressWarnings("unchecked")
 					@Override
-					protected Component newEmailTextField(String id, IModel<SignInModel> model)
+					protected Component newEmailTextField(final String id,
+						final IModel<SignInModel> model)
 					{
 						final LabeledEmailTextFieldPanel<SignInModel> emailTextField = (LabeledEmailTextFieldPanel<SignInModel>)super
 							.newEmailTextField(id, model);
@@ -127,7 +136,8 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 
 					@SuppressWarnings("unchecked")
 					@Override
-					protected Component newPasswordTextField(String id, IModel<SignInModel> model)
+					protected Component newPasswordTextField(final String id,
+						final IModel<SignInModel> model)
 					{
 						final LabeledPasswordTextFieldPanel<SignInModel> pwTextField = (LabeledPasswordTextFieldPanel<SignInModel>)super
 							.newPasswordTextField(id, model);
@@ -151,7 +161,7 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 			}
 
 			@Override
-			protected void onSignin(AjaxRequestTarget target, Form<?> form)
+			protected void onPasswordForgotten(final AjaxRequestTarget target, final Form<?> form)
 			{
 				target.add(getFeedback());
 				info("Email: " + getModelObject().getEmail() + "\nPassword:"
@@ -159,7 +169,7 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 			}
 
 			@Override
-			protected void onPasswordForgotten(AjaxRequestTarget target, Form<?> form)
+			protected void onSignin(final AjaxRequestTarget target, final Form<?> form)
 			{
 				target.add(getFeedback());
 				info("Email: " + getModelObject().getEmail() + "\nPassword:"
@@ -168,12 +178,6 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 
 		};
 		return signFormPanel;
-	}
-
-	protected Component getFeedback()
-	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
-		return basePage.getFeedback();
 	}
 
 }

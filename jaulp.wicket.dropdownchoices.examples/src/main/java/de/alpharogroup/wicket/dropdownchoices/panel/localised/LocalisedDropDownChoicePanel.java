@@ -51,7 +51,7 @@ public class LocalisedDropDownChoicePanel extends Panel
 	{
 		super(id);
 
-		OptionModel optionModel = new OptionModel();
+		final OptionModel optionModel = new OptionModel();
 
 		optionModel.setValue("option.value.1");
 
@@ -63,9 +63,9 @@ public class LocalisedDropDownChoicePanel extends Panel
 
 		add(selectOptionForm);
 		// This should supplied from the database...
-		List<String> values = Arrays.asList("1", "2");
+		final List<String> values = Arrays.asList("1", "2");
 
-		LocalisedDropDownChoice<String> ddc1 = new LocalisedDropDownChoice<String>("options",
+		final LocalisedDropDownChoice<String> ddc1 = new LocalisedDropDownChoice<String>("options",
 			model(from(optionModel).getValue()), values, new LocalisedChoiceRenderer(
 				"option.value", this, this.getClass()));
 
@@ -82,7 +82,7 @@ public class LocalisedDropDownChoicePanel extends Panel
 			@Override
 			public void onSubmit()
 			{
-				boolean english = Session.get().getLocale().equals(Locale.ENGLISH);
+				final boolean english = Session.get().getLocale().equals(Locale.ENGLISH);
 				if (english)
 				{
 					Session.get().setLocale(Locale.GERMAN);

@@ -60,16 +60,6 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	private RadioGroup<T> radioGroup;
 
 	/**
-	 * Implement this method to provide special behavior when an radio button is selected.
-	 *
-	 * @param target
-	 *            the target
-	 * @param newSelection
-	 *            the new selection
-	 */
-	protected abstract void onRadioSelect(final AjaxRequestTarget target, final T newSelection);
-
-	/**
 	 * Instantiates a new ajax radio panel.
 	 *
 	 * @param id
@@ -84,34 +74,6 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 		form.add(radioGroup = newRadioGroup("radioGroup", new PropertyModel<T>(model.getObject(),
 			"selected")));
 		radioGroup.add(newRadios(radioGroup, model));
-	}
-
-	/**
-	 * New radios.
-	 *
-	 * @param group
-	 *            the group
-	 * @param model
-	 *            the model
-	 * @return the component
-	 */
-	protected Component newRadios(final RadioGroup<T> group, final IModel<RadioGroupModel<T>> model)
-	{
-		return new ListView<T>("radioButtons", model.getObject().getRadios())
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void populateItem(final ListItem<T> item)
-			{
-				AjaxRadio<T> radio = newAjaxRadio("radio", group, item);
-				Label label = ComponentFactory.newLabel("label", radio.getMarkupId(),
-					new PropertyModel<String>(item.getModel(), model.getObject()
-						.getLabelPropertyExpression()));
-				item.add(radio);
-				item.add(label);
-			}
-		};
 	}
 
 	/**
@@ -133,7 +95,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				onRadioSelect(target, group.getModelObject());
 			}
@@ -165,6 +127,44 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	{
 		return ComponentFactory.newRadioGroup(id, model);
 	}
+
+	/**
+	 * New radios.
+	 *
+	 * @param group
+	 *            the group
+	 * @param model
+	 *            the model
+	 * @return the component
+	 */
+	protected Component newRadios(final RadioGroup<T> group, final IModel<RadioGroupModel<T>> model)
+	{
+		return new ListView<T>("radioButtons", model.getObject().getRadios())
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(final ListItem<T> item)
+			{
+				final AjaxRadio<T> radio = newAjaxRadio("radio", group, item);
+				final Label label = ComponentFactory.newLabel("label", radio.getMarkupId(),
+					new PropertyModel<String>(item.getModel(), model.getObject()
+						.getLabelPropertyExpression()));
+				item.add(radio);
+				item.add(label);
+			}
+		};
+	}
+
+	/**
+	 * Implement this method to provide special behavior when an radio button is selected.
+	 *
+	 * @param target
+	 *            the target
+	 * @param newSelection
+	 *            the new selection
+	 */
+	protected abstract void onRadioSelect(final AjaxRequestTarget target, final T newSelection);
 
 	/**
 	 * {@inheritDoc}

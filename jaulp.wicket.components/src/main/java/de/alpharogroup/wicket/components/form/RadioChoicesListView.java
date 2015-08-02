@@ -71,13 +71,19 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public RadioChoicesListView(String id, IModel<List<T>> choices, IChoiceRenderer<T> renderer)
+	public RadioChoicesListView(final String id, final IModel<List<T>> choices,
+		final IChoiceRenderer<T> renderer)
 	{
 		super(id, choices, renderer);
 	}
 
+	protected Label newLabel(final String id, final String label)
+	{
+		return ComponentFactory.newLabel(id, Model.of(label));
+	}
+
 	@Override
-	protected void populateItem(ListItem<T> it)
+	protected void populateItem(final ListItem<T> it)
 	{
 		final int index = it.getIndex();
 		it.add(newLabel("label", getChoiceLabel(it.getModelObject())));
@@ -90,12 +96,6 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public String getValue()
-			{
-				return getChoiceValue(getModelObject(), index);
-			}
-
-			@Override
 			public IModel<String> getLabel()
 			{
 				return Model.of(getChoiceLabel(getModelObject()));
@@ -106,11 +106,12 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 			{
 				return true;
 			}
-		});
-	}
 
-	protected Label newLabel(String id, String label)
-	{
-		return ComponentFactory.newLabel(id, Model.of(label));
+			@Override
+			public String getValue()
+			{
+				return getChoiceValue(getModelObject(), index);
+			}
+		});
 	}
 }

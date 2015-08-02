@@ -46,8 +46,37 @@ import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 {
 
+	private static class DisplayNoneBehavior extends AttributeModifier
+	{
+		private static final long serialVersionUID = 1L;
+
+		private DisplayNoneBehavior()
+		{
+			super("style", Model.of("display: none"));
+		}
+
+		@Override
+		public boolean isTemporary(final Component component)
+		{
+			return true;
+		}
+	}
+	private static class Effects
+	{
+
+		private static void replace(final AjaxRequestTarget target, final Component component)
+		{
+			component.add(new DisplayNoneBehavior());
+
+			// target.prependJavaScript("notify|jQuery('#"+component.getMarkupId()+"').slideUp(1000, notify);");
+			target.add(component);
+			target.appendJavaScript("jQuery('#" + component.getMarkupId() + "').slideDown(100);");
+		}
+	}
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
 	/** The Constant logger. */
 	private static final Logger LOGGER = Logger.getLogger(ReportThrowablePanel.class.getName());
 
@@ -63,6 +92,7 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	@Getter
 	private final LabeledTextAreaPanel<ReportThrowableModel> description;
 
+
 	/** The submit button. */
 	@Getter
 	private final Button submitButton;
@@ -70,7 +100,6 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	/** The stack trace. */
 	@Getter
 	private final Component stackTrace;
-
 
 	/** The report model. */
 	private final ReportThrowableModel reportThrowableModel;
@@ -83,13 +112,13 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	 * @param throwable
 	 *            the throwable
 	 */
-	public ReportThrowablePanel(String id, Throwable throwable)
+	public ReportThrowablePanel(final String id, final Throwable throwable)
 	{
 		super(id, Model.of(Args.notNull(throwable, "throwable")));
 
 		reportThrowableModel = newReportThrowableModel(getModelObject());
 
-		IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<>(reportThrowableModel);
+		final IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<>(reportThrowableModel);
 		setDefaultModel(cpm);
 		add(header = newHeaderLabel("header",
 			ResourceModelFactory.newResourceModel("header.label", this, "Upps! An error occured.")));
@@ -101,12 +130,12 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 		final MultiLineLabel toReplace = new MultiLineLabel("toReplace", Model.of(""));
 		toReplace.setOutputMarkupId(true);
 		form.add(toReplace);
-		AjaxLink<Void> link = new AjaxLink<Void>("link")
+		final AjaxLink<Void> link = new AjaxLink<Void>("link")
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				toReplace.setDefaultModelObject(reportThrowableModel.getStackTrace());
 				Effects.replace(target, toReplace);
@@ -121,58 +150,47 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 		LOGGER.error(reportThrowableModel.getStackTrace());
 	}
 
-	private static class Effects
-	{
-
-		private static void replace(AjaxRequestTarget target, Component component)
-		{
-			component.add(new DisplayNoneBehavior());
-
-			// target.prependJavaScript("notify|jQuery('#"+component.getMarkupId()+"').slideUp(1000, notify);");
-			target.add(component);
-			target.appendJavaScript("jQuery('#" + component.getMarkupId() + "').slideDown(100);");
-		}
-	}
-	private static class DisplayNoneBehavior extends AttributeModifier
-	{
-		private static final long serialVersionUID = 1L;
-
-		private DisplayNoneBehavior()
-		{
-			super("style", Model.of("display: none"));
-		}
-
-		@Override
-		public boolean isTemporary(Component component)
-		{
-			return true;
-		}
-	}
-
 	/**
-	 * New hidden field.
+	 * New affected username.
 	 *
-	 * @param id
-	 *            the id
-	 * @return the component
+	 * @return the string
 	 */
-	protected Component newHiddenField(String id)
-	{
-		return ComponentFactory.newHiddenField(id);
-	}
+	protected abstract String newAffectedUsername();
 
 	/**
-	 * New header label.
+	 * New description.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the labeled text area panel
 	 */
-	protected Label newHeaderLabel(String id, IModel<String> model)
+	protected LabeledTextAreaPanel<ReportThrowableModel> newDescription(final String id,
+		final IModel<ReportThrowableModel> model)
 	{
-		return ComponentFactory.newLabel(id, model);
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"description.label", this, "Please provide here any useful information");
+		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
+			"global.enter.your.description.label", this, "Enter here any useful information");
+		final LabeledTextAreaPanel<ReportThrowableModel> description = new LabeledTextAreaPanel<ReportThrowableModel>(
+			id, model, labelModel)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected TextArea<ReportThrowableModel> newTextArea(final String id,
+				final IModel<ReportThrowableModel> model)
+			{
+				final TextArea<ReportThrowableModel> textArea = super.newTextArea(id, model);
+				if (placeholderModel != null)
+				{
+					textArea.add(new AttributeAppender("placeholder", placeholderModel));
+				}
+				return super.newTextArea(id, model);
+			}
+		};
+		return description;
 	}
 
 	/**
@@ -185,10 +203,64 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	 *            the model
 	 * @return the form
 	 */
-	protected Form<?> newForm(String id, IModel<?> model)
+	protected Form<?> newForm(final String id, final IModel<?> model)
 	{
 		return ComponentFactory.newForm(id, model);
 	}
+
+	/**
+	 * New header label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
+	protected Label newHeaderLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
+	}
+
+	/**
+	 * New hidden field.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the component
+	 */
+	protected Component newHiddenField(final String id)
+	{
+		return ComponentFactory.newHiddenField(id);
+	}
+
+	/**
+	 * New report throwable model.
+	 *
+	 * @param throwable
+	 *            the throwable
+	 * @return the report throwable model
+	 */
+	protected ReportThrowableModel newReportThrowableModel(final Throwable throwable)
+	{
+		return ReportThrowableModel.builder().affectedUsername(newAffectedUsername())
+			.responsePage(newResponsePageClass()).rootUsername(newRootUsername())
+			.stackTrace(ExceptionUtils.getStackTraceElements(throwable)).build();
+	}
+
+	/**
+	 * New response page class.
+	 *
+	 * @return the class of the response page
+	 */
+	protected abstract Class<? extends IRequestablePage> newResponsePageClass();
+
+	/**
+	 * New root username.
+	 *
+	 * @return the string
+	 */
+	protected abstract String newRootUsername();
 
 	/**
 	 * New submit button.
@@ -197,7 +269,7 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	 *            the id
 	 * @return the button
 	 */
-	protected Button newSubmitButton(String id)
+	protected Button newSubmitButton(final String id)
 	{
 		return new Button(id)
 		{
@@ -219,76 +291,5 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	 * everything what to do when the user submits the form.
 	 */
 	protected abstract void onSubmitError();
-
-	/**
-	 * New description.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the labeled text area panel
-	 */
-	protected LabeledTextAreaPanel<ReportThrowableModel> newDescription(String id,
-		IModel<ReportThrowableModel> model)
-	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"description.label", this, "Please provide here any useful information");
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.your.description.label", this, "Enter here any useful information");
-		LabeledTextAreaPanel<ReportThrowableModel> description = new LabeledTextAreaPanel<ReportThrowableModel>(
-			id, model, labelModel)
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected TextArea<ReportThrowableModel> newTextArea(String id,
-				IModel<ReportThrowableModel> model)
-			{
-				TextArea<ReportThrowableModel> textArea = super.newTextArea(id, model);
-				if (placeholderModel != null)
-				{
-					textArea.add(new AttributeAppender("placeholder", placeholderModel));
-				}
-				return super.newTextArea(id, model);
-			}
-		};
-		return description;
-	}
-
-	/**
-	 * New report throwable model.
-	 *
-	 * @param throwable
-	 *            the throwable
-	 * @return the report throwable model
-	 */
-	protected ReportThrowableModel newReportThrowableModel(Throwable throwable)
-	{
-		return ReportThrowableModel.builder().affectedUsername(newAffectedUsername())
-			.responsePage(newResponsePageClass()).rootUsername(newRootUsername())
-			.stackTrace(ExceptionUtils.getStackTraceElements(throwable)).build();
-	}
-
-	/**
-	 * New root username.
-	 *
-	 * @return the string
-	 */
-	protected abstract String newRootUsername();
-
-	/**
-	 * New response page class.
-	 *
-	 * @return the class of the response page
-	 */
-	protected abstract Class<? extends IRequestablePage> newResponsePageClass();
-
-	/**
-	 * New affected username.
-	 *
-	 * @return the string
-	 */
-	protected abstract String newAffectedUsername();
 
 }

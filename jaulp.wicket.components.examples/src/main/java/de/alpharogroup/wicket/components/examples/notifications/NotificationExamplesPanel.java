@@ -46,14 +46,14 @@ public class NotificationExamplesPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public NotificationExamplesPanel(String id, IModel<?> model)
+	public NotificationExamplesPanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
-		IModel<String> labelModel = ResourceModelFactory
+		final IModel<String> labelModel = ResourceModelFactory
 			.newResourceModel(
 				ResourceBundleKey.builder().key("button.toastr.label")
 					.defaultValue("Show toastr notice.").build(), this);
-		Form<Object> form = new Form<Object>("form");
+		final Form<Object> form = new Form<Object>("form");
 		add(form);
 		form.add(new ButtonPanel("toastrButtonPanel", labelModel, form)
 		{
@@ -64,9 +64,10 @@ public class NotificationExamplesPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Button newButton(String id)
+			protected Button newButton(final String id)
 			{
-				IndicatingAjaxButton indicatingAjaxButton = new IndicatingAjaxButton(id, getForm())
+				final IndicatingAjaxButton indicatingAjaxButton = new IndicatingAjaxButton(id,
+					getForm())
 				{
 					/**
 					 * The serialVersionUID.
@@ -74,21 +75,21 @@ public class NotificationExamplesPanel extends Panel
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+					protected void onError(final AjaxRequestTarget target, final Form<?> form)
 					{
-						target.add(form);
-						ToastJsGenerator jsGenerator = new ToastJsGenerator();
-
-						ToastrSettings settings = jsGenerator.getSettings();
-						settings.getPositionClass().setValue(Position.TOP_RIGHT);
-						settings.getNotificationContent().setValue("This is a notification");
-						String js = jsGenerator.generateJs();
-						target.prependJavaScript(js);
 					}
 
 					@Override
-					protected void onError(AjaxRequestTarget target, Form<?> form)
+					protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 					{
+						target.add(form);
+						final ToastJsGenerator jsGenerator = new ToastJsGenerator();
+
+						final ToastrSettings settings = jsGenerator.getSettings();
+						settings.getPositionClass().setValue(Position.TOP_RIGHT);
+						settings.getNotificationContent().setValue("This is a notification");
+						final String js = jsGenerator.generateJs();
+						target.prependJavaScript(js);
 					}
 				};
 				indicatingAjaxButton.add(new AttributeAppender("class", Model
@@ -96,8 +97,9 @@ public class NotificationExamplesPanel extends Panel
 				return indicatingAjaxButton;
 			}
 		});
-		IModel<String> pnotifyLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-			.builder().key("button.label").defaultValue("Show pnotify notice.").build(), this);
+		final IModel<String> pnotifyLabelModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("button.label").defaultValue("Show pnotify notice.")
+				.build(), this);
 		form.add(new ButtonPanel("pnotifyButtonPanel", pnotifyLabelModel, form)
 		{
 
@@ -107,9 +109,10 @@ public class NotificationExamplesPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Button newButton(String id)
+			protected Button newButton(final String id)
 			{
-				IndicatingAjaxButton indicatingAjaxButton = new IndicatingAjaxButton(id, getForm())
+				final IndicatingAjaxButton indicatingAjaxButton = new IndicatingAjaxButton(id,
+					getForm())
 				{
 					/**
 					 * The serialVersionUID.
@@ -117,21 +120,21 @@ public class NotificationExamplesPanel extends Panel
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+					protected void onError(final AjaxRequestTarget target, final Form<?> form)
 					{
-						target.add(form);
-						PnotifySettings pnotifySettings = PnotifySettings.builder().build();
-						pnotifySettings.getTitle().setValue("Test title");
-						pnotifySettings.getText().setValue("a text");
-						PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(
-							pnotifySettings);
-						String js = pnotifyJsGenerator.generateJs();
-						target.prependJavaScript(js);
 					}
 
 					@Override
-					protected void onError(AjaxRequestTarget target, Form<?> form)
+					protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 					{
+						target.add(form);
+						final PnotifySettings pnotifySettings = PnotifySettings.builder().build();
+						pnotifySettings.getTitle().setValue("Test title");
+						pnotifySettings.getText().setValue("a text");
+						final PnotifyJsGenerator pnotifyJsGenerator = new PnotifyJsGenerator(
+							pnotifySettings);
+						final String js = pnotifyJsGenerator.generateJs();
+						target.prependJavaScript(js);
 					}
 				};
 				indicatingAjaxButton.add(new AttributeAppender("class", Model
@@ -142,7 +145,7 @@ public class NotificationExamplesPanel extends Panel
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()

@@ -27,15 +27,16 @@ public final class PersonDatabaseManager
 
 
 	public static final PersonDatabaseManager instance = new PersonDatabaseManager();
-	private List<Person> persons;
-
-	private PersonDatabaseManager()
-	{
-	}
 
 	public static PersonDatabaseManager getInstance()
 	{
 		return instance;
+	}
+
+	private List<Person> persons;
+
+	private PersonDatabaseManager()
+	{
 	}
 
 	/**
@@ -87,7 +88,7 @@ public final class PersonDatabaseManager
 				persons.add(new Person("Brad", "Pacino", ParseDateUtils.parseToDate("21.12.1960",
 					DatePatterns.DOT_DD_MM_YYYY)));
 			}
-			catch (ParseException e)
+			catch (final ParseException e)
 			{
 				e.printStackTrace();
 			}

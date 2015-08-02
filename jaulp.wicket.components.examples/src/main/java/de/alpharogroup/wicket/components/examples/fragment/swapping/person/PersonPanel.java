@@ -28,38 +28,38 @@ public class PersonPanel extends SwapComponentsFragmentPanel<PersonBean>
 
 	private static final long serialVersionUID = 1L;
 
-	public PersonPanel(String id, IModel<PersonBean> model)
+	public PersonPanel(final String id, final IModel<PersonBean> model)
 	{
 		super(id, model);
 		setDefaultModel(new CompoundPropertyModel<>(model));
 	}
 
 	@Override
-	protected Component newViewComponent(String id, IModel<PersonBean> model)
-	{
-		return new ViewPersonPanel(id, model)
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onSubmit(AjaxRequestTarget target)
-			{
-				swapFragments(target, null);
-			}
-		};
-	}
-
-	@Override
-	protected Component newEditComponent(String id, IModel<PersonBean> model)
+	protected Component newEditComponent(final String id, final IModel<PersonBean> model)
 	{
 		return new EditPersonPanel(id, model)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onSubmit(AjaxRequestTarget target, final Form<?> form)
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				swapFragments(target, form);
+			}
+		};
+	}
+
+	@Override
+	protected Component newViewComponent(final String id, final IModel<PersonBean> model)
+	{
+		return new ViewPersonPanel(id, model)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onSubmit(final AjaxRequestTarget target)
+			{
+				swapFragments(target, null);
 			}
 		};
 	}

@@ -36,17 +36,18 @@ public abstract class FooterMenuPanel extends Panel
 	@Getter
 	private Component linkListPanel;
 
-	public FooterMenuPanel(final String id, List<LinkItem> list)
-	{
-		this(id, new ListModel<>(list));
-	}
-
-	public FooterMenuPanel(final String id, IModel<List<LinkItem>> model)
+	public FooterMenuPanel(final String id, final IModel<List<LinkItem>> model)
 	{
 		super(id);
 		add(linkListPanel = newLinkListPanel("linkListPanel", model));
 	}
 
-	protected abstract Component newLinkListPanel(final String id, IModel<List<LinkItem>> model);
+	public FooterMenuPanel(final String id, final List<LinkItem> list)
+	{
+		this(id, new ListModel<>(list));
+	}
+
+	protected abstract Component newLinkListPanel(final String id,
+		final IModel<List<LinkItem>> model);
 
 }

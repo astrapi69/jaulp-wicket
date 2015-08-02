@@ -35,27 +35,27 @@ public abstract class AbstractAjaxLazyLoadTab<T> implements ITab
 	@Getter
 	private final IModel<T> content;
 
-	public AbstractAjaxLazyLoadTab(IModel<String> title, IModel<T> content)
+	public AbstractAjaxLazyLoadTab(final IModel<String> title, final IModel<T> content)
 	{
 		this.title = title;
 		this.content = content;
 	}
 
+	public abstract Component getLazyLoadPanel(final String markupId);
+
 	@Override
-	public WebMarkupContainer getPanel(String panelId)
+	public WebMarkupContainer getPanel(final String panelId)
 	{
 		return new AjaxLazyLoadPanel(panelId)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public Component getLazyLoadComponent(String markupId)
+			public Component getLazyLoadComponent(final String markupId)
 			{
 				return getLazyLoadPanel(markupId);
 			}
 		};
 	}
-
-	public abstract Component getLazyLoadPanel(final String markupId);
 
 }

@@ -45,9 +45,9 @@ public class TrademarksModelsPanel extends TwoDropDownChoicesPanel<String>
 	 * @param childRenderer
 	 *            the child renderer
 	 */
-	public TrademarksModelsPanel(String id,
-		StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel,
-		IChoiceRenderer<String> rootRenderer, IChoiceRenderer<String> childRenderer)
+	public TrademarksModelsPanel(final String id,
+		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel,
+		final IChoiceRenderer<String> rootRenderer, final IChoiceRenderer<String> childRenderer)
 	{
 		super(id, stringTwoDropDownChoicesModel, rootRenderer, childRenderer);
 	}

@@ -22,14 +22,6 @@ public class Person implements Serializable
 {
 
 
-	public Person(String firstname, String lastname, Date dateOfBirth)
-	{
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	/**
 	 * The serialVersionUID.
 	 */
@@ -44,6 +36,14 @@ public class Person implements Serializable
 	public Person()
 	{
 		super();
+	}
+
+	public Person(final String firstname, final String lastname, final Date dateOfBirth)
+	{
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Date getDateOfBirth()
@@ -61,17 +61,17 @@ public class Person implements Serializable
 		return lastname;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth)
+	public void setDateOfBirth(final Date dateOfBirth)
 	{
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public void setFirstname(String firstname)
+	public void setFirstname(final String firstname)
 	{
 		this.firstname = firstname;
 	}
 
-	public void setLastname(String lastname)
+	public void setLastname(final String lastname)
 	{
 		this.lastname = lastname;
 	}

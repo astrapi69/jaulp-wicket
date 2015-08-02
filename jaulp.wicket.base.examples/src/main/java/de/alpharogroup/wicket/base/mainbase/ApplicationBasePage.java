@@ -73,10 +73,10 @@ public abstract class ApplicationBasePage extends BasePage
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
+		final Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
 			.getInstance().getPackageResourceReference(ApplicationBasePage.class);
 		if (null != headerContributors && !headerContributors.isEmpty())
 		{
@@ -84,24 +84,25 @@ public abstract class ApplicationBasePage extends BasePage
 			{
 				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
 				{
-					JavaScriptResourceReference reference = new JavaScriptResourceReference(
+					final JavaScriptResourceReference reference = new JavaScriptResourceReference(
 						ApplicationBasePage.class, packageResourceReference
 							.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference))
 					{
-						JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
+						final JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
 							.forReference(reference);
 						response.render(headerItem);
 					}
 				}
 				if (packageResourceReference.getType().equals(ResourceReferenceType.CSS))
 				{
-					CssResourceReference reference = new CssResourceReference(
+					final CssResourceReference reference = new CssResourceReference(
 						ApplicationBasePage.class, packageResourceReference
 							.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference))
 					{
-						CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(reference);
+						final CssReferenceHeaderItem headerItem = CssHeaderItem
+							.forReference(reference);
 						response.render(headerItem);
 					}
 				}

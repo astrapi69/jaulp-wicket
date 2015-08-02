@@ -31,7 +31,7 @@ public class AnimationPage extends PubliclyBasePage<Object>
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AnimationPage(PageParameters parameters)
+	public AnimationPage(final PageParameters parameters)
 	{
 		super(parameters);
 	}

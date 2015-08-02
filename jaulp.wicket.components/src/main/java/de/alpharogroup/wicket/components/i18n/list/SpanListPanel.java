@@ -36,19 +36,6 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new div list panel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param list
-	 *            the list
-	 */
-	public SpanListPanel(String id, List<T> list)
-	{
-		super(id, list);
-	}
-
-	/**
 	 * Instantiates a new header content list panel.
 	 *
 	 * @param id
@@ -56,9 +43,22 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 	 * @param content
 	 *            the model
 	 */
-	public SpanListPanel(String id, IModel<List<T>> content)
+	public SpanListPanel(final String id, final IModel<List<T>> content)
 	{
 		super(id, content);
+	}
+
+	/**
+	 * Instantiates a new div list panel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
+	 */
+	public SpanListPanel(final String id, final List<T> list)
+	{
+		super(id, list);
 	}
 
 
@@ -71,25 +71,26 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 	 *            the model
 	 * @return the list view
 	 */
-	protected ListView<T> newListView(String id, IModel<List<T>> model)
+	@Override
+	protected ListView<T> newListView(final String id, final IModel<List<T>> model)
 	{
-		ListView<T> listView = new ListView<T>(id, model)
+		final ListView<T> listView = new ListView<T>(id, model)
 		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(ListItem<T> item)
-			{
-				item.add(newListComponent("item", item));
-			}
-
-			@Override
-			protected void onComponentTag(ComponentTag tag)
+			protected void onComponentTag(final ComponentTag tag)
 			{
 				super.onComponentTag(tag);
 				// Turn the div tag to a span
 				tag.setName("span");
+			}
+
+			@Override
+			protected void populateItem(final ListItem<T> item)
+			{
+				item.add(newListComponent("item", item));
 			}
 
 		};

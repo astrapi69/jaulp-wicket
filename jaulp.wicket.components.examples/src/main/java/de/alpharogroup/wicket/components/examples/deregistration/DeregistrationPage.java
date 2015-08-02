@@ -45,17 +45,17 @@ public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onDeregistration()
-			{
-				IModel<DeregistrationModel> m = getModel();
-				Object mo = getModelObject();
-				System.out.println(mo + m.toString());
-			}
-
-			@Override
 			public String getDomainName()
 			{
 				return "jaulp.wicket.components.org";
+			}
+
+			@Override
+			public void onDeregistration()
+			{
+				final IModel<DeregistrationModel> m = getModel();
+				final Object mo = getModelObject();
+				System.out.println(mo + m.toString());
 			}
 
 		};

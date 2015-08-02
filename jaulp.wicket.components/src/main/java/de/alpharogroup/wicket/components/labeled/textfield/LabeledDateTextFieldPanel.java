@@ -54,14 +54,15 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledDateTextFieldPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledDateTextFieldPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 		add(dateTextField = newDateTextField("dateTextField", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dateTextField));
 
-		String markupId = dateTextField.getMarkupId();
+		final String markupId = dateTextField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 	}
 
@@ -94,12 +95,12 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the text field
 	 */
-	protected DateTextField newDateTextField(String id, IModel<T> model)
+	protected DateTextField newDateTextField(final String id, final IModel<T> model)
 	{
-		IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
+		final IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
 
-		DateTextField dateTextField = new DateTextField(id, textFieldModel, new StyleDateConverter(
-			"S-", true))
+		final DateTextField dateTextField = new DateTextField(id, textFieldModel,
+			new StyleDateConverter("S-", true))
 		{
 			/**
 			 * The serialVersionUID.
@@ -112,7 +113,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 				return getSession().getLocale();
 			}
 		};
-		DatePicker datePicker = new DatePicker()
+		final DatePicker datePicker = new DatePicker()
 		{
 			/**
 			 * The serialVersionUID.

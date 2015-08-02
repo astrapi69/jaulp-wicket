@@ -55,7 +55,7 @@ public abstract class ButtonPanel extends Panel
 	 * @param labelModel
 	 *            the label model
 	 */
-	public ButtonPanel(String id, IModel<String> labelModel)
+	public ButtonPanel(final String id, final IModel<String> labelModel)
 	{
 		this(id, labelModel, null);
 	}
@@ -70,7 +70,7 @@ public abstract class ButtonPanel extends Panel
 	 * @param form
 	 *            the form
 	 */
-	public ButtonPanel(String id, IModel<String> labelModel, final Form<?> form)
+	public ButtonPanel(final String id, final IModel<String> labelModel, final Form<?> form)
 	{
 		super(id);
 		this.form = form;
@@ -87,7 +87,7 @@ public abstract class ButtonPanel extends Panel
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected abstract Button newButton(String id);
+	protected abstract Button newButton(final String id);
 
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
@@ -99,7 +99,7 @@ public abstract class ButtonPanel extends Panel
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, IModel<String> model)
+	protected Label newLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}

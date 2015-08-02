@@ -38,19 +38,6 @@ public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new unordered list panel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param list
-	 *            the list
-	 */
-	public UnorderedListPanel(String id, List<ResourceBundleKey> list)
-	{
-		super(id, list);
-	}
-
-	/**
 	 * Instantiates a new header content list panel.
 	 *
 	 * @param id
@@ -58,9 +45,22 @@ public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey
 	 * @param model
 	 *            the model
 	 */
-	public UnorderedListPanel(String id, IModel<List<ResourceBundleKey>> model)
+	public UnorderedListPanel(final String id, final IModel<List<ResourceBundleKey>> model)
 	{
 		super(id, model);
+	}
+
+	/**
+	 * Instantiates a new unordered list panel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
+	 */
+	public UnorderedListPanel(final String id, final List<ResourceBundleKey> list)
+	{
+		super(id, list);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey
 	 * @return the component
 	 */
 	@Override
-	protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+	protected Component newListComponent(final String id, final ListItem<ResourceBundleKey> item)
 	{
 		return new Label(id, ResourceModelFactory.newResourceModel(item.getModel().getObject(),
 			this));

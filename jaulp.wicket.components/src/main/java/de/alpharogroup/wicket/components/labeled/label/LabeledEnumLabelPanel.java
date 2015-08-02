@@ -56,13 +56,14 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledEnumLabelPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledEnumLabelPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
 		add(enumLabel = newEnumLabel("viewableLabel", model));
 
-		String markupId = enumLabel.getMarkupId();
+		final String markupId = enumLabel.getMarkupId();
 		add(label = newLabel("label", markupId, labelModel));
 	}
 
@@ -76,9 +77,9 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	 * @return the enum label
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected EnumLabel newEnumLabel(final String id, IModel<T> model)
+	protected EnumLabel newEnumLabel(final String id, final IModel<T> model)
 	{
-		IModel viewableLabelModel = new PropertyModel(model.getObject(), this.getId());
+		final IModel viewableLabelModel = new PropertyModel(model.getObject(), this.getId());
 		return ComponentFactory.newEnumLabel(id, viewableLabelModel);
 	}
 
@@ -94,7 +95,7 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<String> model)
+	protected Label newLabel(final String id, final String forId, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}

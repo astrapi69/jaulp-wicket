@@ -92,14 +92,14 @@ public class CurrentDatetimeBehavior extends Behavior
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(Component component, final IHeaderResponse response)
+	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()
 			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(JavaScriptHeaderItem
 			.forReference(CurrentDatetimeBehavior.DATETIME_PLUGIN_REFERENCE));
-		String js = generateJS(datetimeTemplate);
+		final String js = generateJS(datetimeTemplate);
 		System.out.println(js);
 		response.render(OnLoadHeaderItem.forScript(generateJS(datetimeTemplate)));
 	}

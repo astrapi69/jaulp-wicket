@@ -47,17 +47,17 @@ public class WicketWikiExample extends WebPage
 		feedback = new FeedbackPanel("feedback");
 		add(feedback);
 
-		SimpleDropDownChoicePanel simpleDropDownChoicePanel = new SimpleDropDownChoicePanel(
+		final SimpleDropDownChoicePanel simpleDropDownChoicePanel = new SimpleDropDownChoicePanel(
 			"simpleDropDownChoicePanel");
 
 		add(simpleDropDownChoicePanel);
 
-		BaseDropDownChoicePanel baseDropDownChoicePanel = new BaseDropDownChoicePanel(
+		final BaseDropDownChoicePanel baseDropDownChoicePanel = new BaseDropDownChoicePanel(
 			"baseDropDownChoicePanel");
 
 		add(baseDropDownChoicePanel);
 
-		WicketWikiExamplePanel wicketWikiExamplePanel = new WicketWikiExamplePanel(
+		final WicketWikiExamplePanel wicketWikiExamplePanel = new WicketWikiExamplePanel(
 			"wicketWikiExamplePanel");
 
 		add(wicketWikiExamplePanel);
@@ -65,16 +65,16 @@ public class WicketWikiExample extends WebPage
 		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel = new StringTwoDropDownChoicesModel(
 			"trademark.audi", DatabaseManager.initializeModelMap());
 
-		TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
+		final TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
 			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(
 				this, this.getClass()), new PropertiesChoiceRenderer(this, this.getClass()));
 		add(twoDropDownChoicesPanel);
 
-		LocalisedDropDownChoicePanel localisedDropDownChoicePanel = new LocalisedDropDownChoicePanel(
+		final LocalisedDropDownChoicePanel localisedDropDownChoicePanel = new LocalisedDropDownChoicePanel(
 			"localisedDropDownChoicePanel");
 		add(localisedDropDownChoicePanel);
 
-		ThreeDropDownChoicesPanel threeDropDownChoicesPanel = new ThreeDropDownChoicesPanel(
+		final ThreeDropDownChoicesPanel threeDropDownChoicesPanel = new ThreeDropDownChoicesPanel(
 			"threeDropDownChoicesPanel");
 		add(threeDropDownChoicesPanel);
 	}

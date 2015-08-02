@@ -48,19 +48,6 @@ public class TwoDropDownChoicesPage extends WebPage
 
 	private StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel;
 
-	public StringTwoDropDownChoicesModel getStringTwoDropDownChoicesModel()
-	{
-		return stringTwoDropDownChoicesModel;
-	}
-
-
-	public void setStringTwoDropDownChoicesModel(
-		StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel)
-	{
-		this.stringTwoDropDownChoicesModel = stringTwoDropDownChoicesModel;
-	}
-
-
 	public TwoDropDownChoicesPage(final PageParameters pageParameters)
 	{
 		super(pageParameters);
@@ -74,13 +61,14 @@ public class TwoDropDownChoicesPage extends WebPage
 
 		add(selectOptionForm);
 
-		TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
+		final TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
 			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(
 				this, this.getClass()), new PropertiesChoiceRenderer(this, this.getClass()));
-		AttributeModifier sam = new AttributeModifier("style", "width: 200px; margin-bottom: 20px;");
-		AttributeModifier samClass = new AttributeModifier("class", "nowrap");
+		final AttributeModifier sam = new AttributeModifier("style",
+			"width: 200px; margin-bottom: 20px;");
+		final AttributeModifier samClass = new AttributeModifier("class", "nowrap");
 
-		AttributeModifier samSize = new AttributeModifier("size", "3");
+		final AttributeModifier samSize = new AttributeModifier("size", "3");
 
 		twoDropDownChoicesPanel.getRootChoice().add(sam);
 		twoDropDownChoicesPanel.getRootChoice().add(samSize);
@@ -116,13 +104,26 @@ public class TwoDropDownChoicesPage extends WebPage
 	}
 
 
+	public StringTwoDropDownChoicesModel getStringTwoDropDownChoicesModel()
+	{
+		return stringTwoDropDownChoicesModel;
+	}
+
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		WicketComponentExtensions.renderHeaderResponse(response, this.getClass());
+	}
+
+
+	public void setStringTwoDropDownChoicesModel(
+		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel)
+	{
+		this.stringTwoDropDownChoicesModel = stringTwoDropDownChoicesModel;
 	}
 
 }

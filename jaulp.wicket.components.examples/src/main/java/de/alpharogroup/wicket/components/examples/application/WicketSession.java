@@ -14,11 +14,6 @@ public class WicketSession extends WebSession
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public WicketSession(Request request)
-	{
-		super(request);
-	}
-
 	/**
 	 * Gets the WicketSession for this application.
 	 * 
@@ -27,6 +22,11 @@ public class WicketSession extends WebSession
 	public static WicketSession get()
 	{
 		return ((WicketSession)Session.get());
+	}
+
+	public WicketSession(final Request request)
+	{
+		super(request);
 	}
 
 	/**

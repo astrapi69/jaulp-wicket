@@ -40,7 +40,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	 * @param model
 	 *            the model
 	 */
-	public SwapComponentsFragmentPanel(String id, IModel<T> model)
+	public SwapComponentsFragmentPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
 	}
@@ -55,7 +55,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	@Override
 	protected Fragment newViewFragment(final String id)
 	{
-		Fragment viewFragment = new Fragment(id, "view", this, getModel());
+		final Fragment viewFragment = new Fragment(id, "view", this, getModel());
 		viewFragment.setOutputMarkupPlaceholderTag(true);
 		viewFragment.add(newViewComponent("viewComponent", getModel()));
 		return viewFragment;
@@ -70,7 +70,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	 *            the model
 	 * @return the component
 	 */
-	protected abstract Component newViewComponent(String id, IModel<T> model);
+	protected abstract Component newViewComponent(final String id, final IModel<T> model);
 
 	/**
 	 * Creates the fragment to edit person.
@@ -82,7 +82,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	@Override
 	protected Fragment newEditFragment(final String id)
 	{
-		Fragment editFragment = new Fragment(id, "edit", this, getDefaultModel());
+		final Fragment editFragment = new Fragment(id, "edit", this, getDefaultModel());
 		editFragment.setOutputMarkupPlaceholderTag(true);
 		editFragment.add(newEditComponent("editComponent", getModel()));
 		return editFragment;
@@ -97,6 +97,6 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	 *            the model
 	 * @return the component
 	 */
-	protected abstract Component newEditComponent(String id, IModel<T> model);
+	protected abstract Component newEditComponent(final String id, final IModel<T> model);
 
 }

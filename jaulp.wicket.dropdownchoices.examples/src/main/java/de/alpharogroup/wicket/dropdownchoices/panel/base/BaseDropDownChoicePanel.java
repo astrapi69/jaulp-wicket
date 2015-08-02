@@ -37,41 +37,42 @@ public class BaseDropDownChoicePanel extends Panel
 	public BaseDropDownChoicePanel(final String id)
 	{
 		super(id);
-		IModel<List<Country>> countries = new LoadableDetachableModel<List<Country>>()
+		final IModel<List<Country>> countries = new LoadableDetachableModel<List<Country>>()
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public List<Country> load()
 			{
-				List<Country> l = new ArrayList<>();
+				final List<Country> l = new ArrayList<>();
 				l.add(new Country("ar", "Argentina"));
 				l.add(new Country("br", "Brazil"));
 				l.add(new Country("cl", "Chile"));
 				return l;
 			}
 		};
-		IChoiceRenderer<Country> renderer = new IChoiceRenderer<Country>()
+		final IChoiceRenderer<Country> renderer = new IChoiceRenderer<Country>()
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public Object getDisplayValue(Country object)
+			public Object getDisplayValue(final Country object)
 			{
 				return object.getName();
 			}
 
 			@Override
-			public String getIdValue(Country object, int index)
+			public String getIdValue(final Country object, final int index)
 			{
 				return object.getDigraph();
 			}
 
 			@SuppressWarnings("unused")
-			public Country getObject(String id, IModel<? extends List<? extends Country>> choices)
+			public Country getObject(final String id,
+				final IModel<? extends List<? extends Country>> choices)
 			{
-				List<? extends Country> c = choices.getObject();
-				for (Country country : c)
+				final List<? extends Country> c = choices.getObject();
+				for (final Country country : c)
 				{
 					if (country.equals(id))
 					{
@@ -82,7 +83,7 @@ public class BaseDropDownChoicePanel extends Panel
 			}
 		};
 
-		DropDownChoice<Country> country = new DropDownChoice<>("country", countries);
+		final DropDownChoice<Country> country = new DropDownChoice<>("country", countries);
 		add(country);
 		country.setChoiceRenderer(renderer);
 

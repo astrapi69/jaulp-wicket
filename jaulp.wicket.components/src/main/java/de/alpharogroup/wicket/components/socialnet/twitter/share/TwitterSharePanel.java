@@ -29,15 +29,15 @@ public class TwitterSharePanel extends BasePanel<TwitterShareModel>
 
 	private static final long serialVersionUID = 1L;
 
-	public TwitterSharePanel(String id)
+	public TwitterSharePanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public TwitterSharePanel(String id, IModel<TwitterShareModel> model)
+	public TwitterSharePanel(final String id, final IModel<TwitterShareModel> model)
 	{
 		super(id, model);
-		ExternalLink twitterShareLink = new ExternalLink("shareUrl", model.getObject()
+		final ExternalLink twitterShareLink = new ExternalLink("shareUrl", model.getObject()
 			.getShareUrl());
 		if (model.getObject().getDataUrl() != null)
 		{
@@ -66,10 +66,10 @@ public class TwitterSharePanel extends BasePanel<TwitterShareModel>
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		PackageResourceReference resourceReference = new PackageResourceReference(getClass(),
+		final PackageResourceReference resourceReference = new PackageResourceReference(getClass(),
 			"widgets.js");
 		response.render(JavaScriptHeaderItem.forReference(resourceReference, "twitterShare"));
 	}

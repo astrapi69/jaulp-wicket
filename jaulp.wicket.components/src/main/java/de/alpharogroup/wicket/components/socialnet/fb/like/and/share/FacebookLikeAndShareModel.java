@@ -23,6 +23,36 @@ import org.apache.wicket.model.Model;
 public class FacebookLikeAndShareModel implements Serializable
 {
 
+	public static class Builder
+	{
+		private Boolean dataShare = Boolean.TRUE;
+		private Integer dataWith = 450;
+		private Boolean dataShowFaces = Boolean.TRUE;
+
+		public FacebookLikeAndShareModel build()
+		{
+			return new FacebookLikeAndShareModel(this);
+		}
+
+		public Builder dataShare(final Boolean dataShare)
+		{
+			this.dataShare = dataShare;
+			return this;
+		}
+
+		public Builder dataShowFaces(final Boolean dataShowFaces)
+		{
+			this.dataShowFaces = dataShowFaces;
+			return this;
+		}
+
+		public Builder dataWith(final Integer dataWith)
+		{
+			this.dataWith = dataWith;
+			return this;
+		}
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	private final Boolean dataShare;
@@ -31,14 +61,16 @@ public class FacebookLikeAndShareModel implements Serializable
 
 	private final Boolean dataShowFaces;
 
+	public FacebookLikeAndShareModel(final Builder builder)
+	{
+		this.dataShare = builder.dataShare;
+		this.dataWith = builder.dataWith;
+		this.dataShowFaces = builder.dataShowFaces;
+	}
+
 	public Boolean getDataShare()
 	{
 		return dataShare;
-	}
-
-	public Integer getDataWith()
-	{
-		return dataWith;
 	}
 
 	public Boolean getDataShowFaces()
@@ -46,45 +78,13 @@ public class FacebookLikeAndShareModel implements Serializable
 		return dataShowFaces;
 	}
 
+	public Integer getDataWith()
+	{
+		return dataWith;
+	}
+
 	public IModel<FacebookLikeAndShareModel> toModel()
 	{
 		return Model.of(this);
-	}
-
-	public static class Builder
-	{
-		private Boolean dataShare = Boolean.TRUE;
-		private Integer dataWith = 450;
-		private Boolean dataShowFaces = Boolean.TRUE;
-
-		public Builder dataShare(Boolean dataShare)
-		{
-			this.dataShare = dataShare;
-			return this;
-		}
-
-		public Builder dataWith(Integer dataWith)
-		{
-			this.dataWith = dataWith;
-			return this;
-		}
-
-		public Builder dataShowFaces(Boolean dataShowFaces)
-		{
-			this.dataShowFaces = dataShowFaces;
-			return this;
-		}
-
-		public FacebookLikeAndShareModel build()
-		{
-			return new FacebookLikeAndShareModel(this);
-		}
-	}
-
-	public FacebookLikeAndShareModel(Builder builder)
-	{
-		this.dataShare = builder.dataShare;
-		this.dataWith = builder.dataWith;
-		this.dataShowFaces = builder.dataShowFaces;
 	}
 }

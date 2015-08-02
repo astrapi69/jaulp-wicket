@@ -75,52 +75,6 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	}
 
 	/**
-	 * Gets the sort state.
-	 *
-	 * @return the sort state
-	 * @see ISortableDataProvider#getSortState()
-	 */
-	@Override
-	public final ISortState<S> getSortState()
-	{
-		return sortState;
-	}
-
-	/**
-	 * Returns current sort state.
-	 *
-	 * @return current sort state
-	 */
-	public SortParam<S> getSort()
-	{
-		return sortState.getSort();
-	}
-
-	/**
-	 * Sets the current sort state.
-	 *
-	 * @param param
-	 *            parameter containing new sorting information
-	 */
-	public void setSort(final SortParam<S> param)
-	{
-		sortState.setSort(param);
-	}
-
-	/**
-	 * Sets the current sort state.
-	 *
-	 * @param property
-	 *            sort property
-	 * @param order
-	 *            sort order
-	 */
-	public void setSort(final S property, final SortOrder order)
-	{
-		sortState.setPropertySortOrder(property, order);
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -140,6 +94,28 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	}
 
 	/**
+	 * Returns current sort state.
+	 *
+	 * @return current sort state
+	 */
+	public SortParam<S> getSort()
+	{
+		return sortState.getSort();
+	}
+
+	/**
+	 * Gets the sort state.
+	 *
+	 * @return the sort state
+	 * @see ISortableDataProvider#getSortState()
+	 */
+	@Override
+	public final ISortState<S> getSortState()
+	{
+		return sortState;
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -155,37 +131,6 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 			result = result.subList((int)first, result.size());
 		}
 		return result.iterator();
-	}
-
-	/**
-	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
-	 * list will be sort.
-	 *
-	 * @param unsortedList
-	 *            the unsorted list
-	 * @return the same list but sorted.
-	 */
-	protected List<T> sort(List<T> unsortedList)
-	{
-		SortParam<S> sortParam = getSort();
-		if (sortParam != null)
-		{
-			String property = (String)sortParam.getProperty();
-			boolean ascending = sortParam.isAscending();
-			ListExtensions.sortByProperty(unsortedList, property, ascending);
-		}
-		return unsortedList;
-	}
-
-	/**
-	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
-	 * list will be sort.
-	 * 
-	 * @return the same list but sorted.
-	 */
-	protected List<T> sort()
-	{
-		return sort(getData());
 	}
 
 	/**
@@ -209,12 +154,67 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	}
 
 	/**
+	 * Sets the current sort state.
+	 *
+	 * @param property
+	 *            sort property
+	 * @param order
+	 *            sort order
+	 */
+	public void setSort(final S property, final SortOrder order)
+	{
+		sortState.setPropertySortOrder(property, order);
+	}
+
+	/**
+	 * Sets the current sort state.
+	 *
+	 * @param param
+	 *            parameter containing new sorting information
+	 */
+	public void setSort(final SortParam<S> param)
+	{
+		sortState.setSort(param);
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public long size()
 	{
 		return getData().size();
+	}
+
+	/**
+	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
+	 * list will be sort.
+	 * 
+	 * @return the same list but sorted.
+	 */
+	protected List<T> sort()
+	{
+		return sort(getData());
+	}
+
+	/**
+	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
+	 * list will be sort.
+	 *
+	 * @param unsortedList
+	 *            the unsorted list
+	 * @return the same list but sorted.
+	 */
+	protected List<T> sort(final List<T> unsortedList)
+	{
+		final SortParam<S> sortParam = getSort();
+		if (sortParam != null)
+		{
+			final String property = (String)sortParam.getProperty();
+			final boolean ascending = sortParam.isAscending();
+			ListExtensions.sortByProperty(unsortedList, property, ascending);
+		}
+		return unsortedList;
 	}
 
 }

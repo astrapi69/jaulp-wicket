@@ -45,7 +45,7 @@ public class TimelineGoogleChartsResourceReference extends JavaScriptResourceRef
 	@Override
 	public List<HeaderItem> getDependencies()
 	{
-		List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
+		final List<HeaderItem> dependencies = new ArrayList<HeaderItem>();
 		dependencies.add(JavaScriptHeaderItem.forReference(new UrlResourceReference(Url
 			.parse("https://www.google.com/jsapi"))));
 		return dependencies;

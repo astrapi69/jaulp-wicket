@@ -50,20 +50,11 @@ public abstract class ChoicesListView<T> extends ListView<T>
 	 * @param renderer
 	 *            the choice renderer
 	 */
-	public ChoicesListView(String id, IModel<List<T>> choices, IChoiceRenderer<T> renderer)
+	public ChoicesListView(final String id, final IModel<List<T>> choices,
+		final IChoiceRenderer<T> renderer)
 	{
 		super(id, choices);
 		this.choiceRenderer = renderer;
-	}
-
-	/**
-	 * Returns the IChoiceRenderer that was passed to the constructor.
-	 * 
-	 * @return the choice renderer
-	 */
-	public IChoiceRenderer<T> getChoiceRenderer()
-	{
-		return this.choiceRenderer;
 	}
 
 	/**
@@ -77,16 +68,16 @@ public abstract class ChoicesListView<T> extends ListView<T>
 	 * @return the choice label
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected String getChoiceLabel(T choice)
+	protected String getChoiceLabel(final T choice)
 	{
 		// This code was copied from Wicket's CheckBoxMultipleChoice.java
-		Object displayValue = getChoiceRenderer().getDisplayValue(choice);
-		Class<?> objectClass = displayValue == null ? null : displayValue.getClass();
+		final Object displayValue = getChoiceRenderer().getDisplayValue(choice);
+		final Class<?> objectClass = displayValue == null ? null : displayValue.getClass();
 		// Get label for choice
 		String label = "";
 		if (objectClass != null && objectClass != String.class)
 		{
-			IConverter converter = getConverter(objectClass);
+			final IConverter converter = getConverter(objectClass);
 			label = converter.convertToString(displayValue, getLocale());
 		}
 		else if (displayValue != null)
@@ -94,6 +85,16 @@ public abstract class ChoicesListView<T> extends ListView<T>
 			label = displayValue.toString();
 		}
 		return label;
+	}
+
+	/**
+	 * Returns the IChoiceRenderer that was passed to the constructor.
+	 * 
+	 * @return the choice renderer
+	 */
+	public IChoiceRenderer<T> getChoiceRenderer()
+	{
+		return this.choiceRenderer;
 	}
 
 	/**
@@ -107,7 +108,7 @@ public abstract class ChoicesListView<T> extends ListView<T>
 	 *            The zero-indexed position of that value in the list.
 	 * @return the choice value
 	 */
-	protected String getChoiceValue(T choice, int index)
+	protected String getChoiceValue(final T choice, final int index)
 	{
 		return getChoiceRenderer().getIdValue(choice, index);
 	}

@@ -29,7 +29,7 @@ public abstract class DialogPanel<T> extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DialogPanel(String id, final IModel<T> model, final IModel<String> labelModel)
+	public DialogPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
 	{
 		super(id);
 	}
@@ -44,7 +44,7 @@ public abstract class DialogPanel<T> extends Panel
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, IModel<String> model)
+	protected Label newLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}

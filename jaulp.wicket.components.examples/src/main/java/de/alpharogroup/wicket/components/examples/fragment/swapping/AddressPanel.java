@@ -51,7 +51,7 @@ public class AddressPanel extends Panel
 	 * @param address
 	 *            the address
 	 */
-	public AddressPanel(String id, IModel<HomeAddress> address)
+	public AddressPanel(final String id, final IModel<HomeAddress> address)
 	{
 		super(id, address);
 		setDefaultModel(new CompoundPropertyModel<HomeAddress>(address));
@@ -82,7 +82,7 @@ public class AddressPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				swapFragments();
 				if (target != null)
@@ -91,47 +91,6 @@ public class AddressPanel extends Panel
 				}
 			}
 		});
-	}
-
-	/**
-	 * Swap fragments.
-	 */
-	protected void swapFragments()
-	{
-		Fragment temp = currentFragment;
-		currentFragment.replaceWith(alternateFragment);
-		currentFragment = alternateFragment;
-		alternateFragment = temp;
-	}
-
-	/**
-	 * Creates the fragment view address.
-	 *
-	 * @return the fragment
-	 */
-	private Fragment createFragmentViewAddress()
-	{
-		Fragment viewAddress = new Fragment("group", "view", this, getDefaultModel());
-		viewAddress.add(new Label("street"));
-		viewAddress.add(new Label("localNumber"));
-		viewAddress.add(new Label("city"));
-		viewAddress.add(new Label("code"));
-		viewAddress.setOutputMarkupPlaceholderTag(true);
-		return viewAddress;
-	}
-
-	/**
-	 * Creates the fragment edit address.
-	 *
-	 * @return the fragment
-	 */
-	private Fragment createFragmentEditAddress()
-	{
-		Fragment editAddress = new Fragment("group", "edit", this, getDefaultModel());
-
-		editAddress.setOutputMarkupPlaceholderTag(true);
-		editAddress.add(createAddressForm());
-		return editAddress;
 	}
 
 	/**
@@ -141,7 +100,7 @@ public class AddressPanel extends Panel
 	 */
 	private Component createAddressForm()
 	{
-		Form<HomeAddress> form = new Form<HomeAddress>("editAddressForm");
+		final Form<HomeAddress> form = new Form<HomeAddress>("editAddressForm");
 		form.add(new TextField<>("street"));
 		form.add(new TextField<>("localNumber"));
 		form.add(new TextField<>("city"));
@@ -151,7 +110,7 @@ public class AddressPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit(AjaxRequestTarget target, Form<?> form)
+			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				swapFragments();
 				if (target != null)
@@ -161,5 +120,46 @@ public class AddressPanel extends Panel
 			}
 		});
 		return form;
+	}
+
+	/**
+	 * Creates the fragment edit address.
+	 *
+	 * @return the fragment
+	 */
+	private Fragment createFragmentEditAddress()
+	{
+		final Fragment editAddress = new Fragment("group", "edit", this, getDefaultModel());
+
+		editAddress.setOutputMarkupPlaceholderTag(true);
+		editAddress.add(createAddressForm());
+		return editAddress;
+	}
+
+	/**
+	 * Creates the fragment view address.
+	 *
+	 * @return the fragment
+	 */
+	private Fragment createFragmentViewAddress()
+	{
+		final Fragment viewAddress = new Fragment("group", "view", this, getDefaultModel());
+		viewAddress.add(new Label("street"));
+		viewAddress.add(new Label("localNumber"));
+		viewAddress.add(new Label("city"));
+		viewAddress.add(new Label("code"));
+		viewAddress.setOutputMarkupPlaceholderTag(true);
+		return viewAddress;
+	}
+
+	/**
+	 * Swap fragments.
+	 */
+	protected void swapFragments()
+	{
+		final Fragment temp = currentFragment;
+		currentFragment.replaceWith(alternateFragment);
+		currentFragment = alternateFragment;
+		alternateFragment = temp;
 	}
 }

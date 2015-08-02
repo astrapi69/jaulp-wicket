@@ -29,15 +29,15 @@ public class SslReCaptchaPage extends PubliclyBasePage<Object> implements SSLabl
 {
 	private static final long serialVersionUID = 1L;
 
+	public SslReCaptchaPage(final PageParameters parameters)
+	{
+		super(parameters);
+	}
+
 	@Override
 	public Component getContainerPanel()
 	{
 		return new ReCaptchaFormPanel(CONTAINER_PANEL_ID);
-	}
-
-	public SslReCaptchaPage(final PageParameters parameters)
-	{
-		super(parameters);
 	}
 
 }

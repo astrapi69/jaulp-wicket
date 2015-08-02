@@ -53,12 +53,13 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 	 *
 	 * @param id
 	 *            the id
-	 * @param list
-	 *            the list
+	 * @param model
+	 *            the model
 	 */
-	public RefreshingViewPanel(String id, List<T> list)
+	public RefreshingViewPanel(final String id, final IModel<List<T>> model)
 	{
-		this(id, new ListModel<>(list));
+		super(id, Args.notNull(model, "model"));
+		add(refreshingView = newRefreshingView("refreshingView", model));
 	}
 
 	/**
@@ -66,14 +67,29 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
+	 * @param list
+	 *            the list
 	 */
-	public RefreshingViewPanel(String id, IModel<List<T>> model)
+	public RefreshingViewPanel(final String id, final List<T> list)
 	{
-		super(id, Args.notNull(model, "model"));
-		add(refreshingView = newRefreshingView("refreshingView", model));
+		this(id, new ListModel<>(list));
 	}
+
+	protected Item<T> newItem(final String id, final int index, final IModel<T> model)
+	{
+		return new Item<T>(id, index, model);
+	}
+
+	/**
+	 * New list component.
+	 *
+	 * @param id
+	 *            the id
+	 * @param item
+	 *            the item
+	 * @return the component
+	 */
+	protected abstract Component newListComponent(final String id, final Item<T> item);
 
 	/**
 	 * New list view.
@@ -86,7 +102,7 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 	 */
 	protected RefreshingView<T> newRefreshingView(final String id, final IModel<List<T>> model)
 	{
-		RefreshingView<T> listView = new RefreshingView<T>(id, model)
+		final RefreshingView<T> listView = new RefreshingView<T>(id, model)
 		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
@@ -97,7 +113,7 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 				return new ModelIteratorAdapter<T>(getModelObject().iterator())
 				{
 					@Override
-					protected IModel<T> model(T object)
+					protected IModel<T> model(final T object)
 					{
 						return Model.of(object);
 					}
@@ -105,34 +121,18 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 			}
 
 			@Override
-			protected void populateItem(Item<T> item)
-			{
-				item.add(newListComponent("item", item));
-			}
-
-			@Override
-			protected Item<T> newItem(String id, int index, IModel<T> model)
+			protected Item<T> newItem(final String id, final int index, final IModel<T> model)
 			{
 				return RefreshingViewPanel.this.newItem(id, index, model);
 			}
 
+			@Override
+			protected void populateItem(final Item<T> item)
+			{
+				item.add(newListComponent("item", item));
+			}
+
 		};
 		return listView;
-	}
-
-	/**
-	 * New list component.
-	 *
-	 * @param id
-	 *            the id
-	 * @param item
-	 *            the item
-	 * @return the component
-	 */
-	protected abstract Component newListComponent(String id, Item<T> item);
-
-	protected Item<T> newItem(String id, int index, IModel<T> model)
-	{
-		return new Item<T>(id, index, model);
 	}
 }

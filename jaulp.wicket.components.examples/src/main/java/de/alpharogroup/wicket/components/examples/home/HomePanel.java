@@ -29,10 +29,10 @@ public class HomePanel extends BasePanel<Object>
 {
 	private static final long serialVersionUID = 1L;
 
-	public HomePanel(String id)
+	public HomePanel(final String id)
 	{
 		super(id);
-		ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel
+		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel
 			.builder()
 			.headerResourceKey(ResourceBundleKey.builder().key("home.header.label").build())
 			.contentResourceKey(ResourceBundleKey.builder().key("home.content.label").build())

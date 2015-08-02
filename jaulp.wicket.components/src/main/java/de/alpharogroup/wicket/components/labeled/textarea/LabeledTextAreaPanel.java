@@ -46,7 +46,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param id
 	 *            the id
 	 */
-	public LabeledTextAreaPanel(String id)
+	public LabeledTextAreaPanel(final String id)
 	{
 		this(id, null, null);
 	}
@@ -61,7 +61,8 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledTextAreaPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledTextAreaPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 		setOutputMarkupId(true);
@@ -69,24 +70,8 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 
 		add(feedback = newComponentFeedbackPanel("feedback", textArea));
 
-		String markupId = textArea.getMarkupId();
+		final String markupId = textArea.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-	}
-
-	/**
-	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a TextArea.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the text area
-	 */
-	protected TextArea<T> newTextArea(String id, IModel<T> model)
-	{
-		IModel<T> textAreaModel = new PropertyModel<>(model.getObject(), getId());
-		return ComponentFactory.newTextArea(id, textAreaModel);
 	}
 
 	/**
@@ -105,6 +90,22 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	public String getInput()
 	{
 		return textArea.getInput();
+	}
+
+	/**
+	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
+	 * class and can be overridden so users can provide their own version of a TextArea.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the text area
+	 */
+	protected TextArea<T> newTextArea(final String id, final IModel<T> model)
+	{
+		final IModel<T> textAreaModel = new PropertyModel<>(model.getObject(), getId());
+		return ComponentFactory.newTextArea(id, textAreaModel);
 	}
 
 	/**

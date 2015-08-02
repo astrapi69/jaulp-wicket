@@ -40,17 +40,22 @@ public class SortableDataViewPanel extends Panel
 {
 
 	/**
+	 * The serialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new sortable data view panel.
 	 *
 	 * @param id
 	 *            the id
 	 */
-	public SortableDataViewPanel(String id)
+	public SortableDataViewPanel(final String id)
 	{
 		super(id);
-		List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
+		final List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
 
-		SortableFilterPersonDataProvider dataProvider = new SortableFilterPersonDataProvider(
+		final SortableFilterPersonDataProvider dataProvider = new SortableFilterPersonDataProvider(
 			persons)
 		{
 
@@ -73,7 +78,7 @@ public class SortableDataViewPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(Item<Person> item)
+			protected void populateItem(final Item<Person> item)
 			{
 				item.setDefaultModel(new CompoundPropertyModel<Person>(item.getModel()));
 				item.add(new Label("firstname"));
@@ -92,9 +97,4 @@ public class SortableDataViewPanel extends Panel
 		add(new PagingNavigator("topNavigator", dataView));
 		add(new PagingNavigator("footernavigator", dataView));
 	}
-
-	/**
-	 * The serialVersionUID.
-	 */
-	private static final long serialVersionUID = 1L;
 }

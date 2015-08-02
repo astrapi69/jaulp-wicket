@@ -43,10 +43,10 @@ public class CheckChoicesListViewPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CheckChoicesListViewPanel(String id, IModel<?> model)
+	public CheckChoicesListViewPanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
-		Form<?> form = new Form<>("form");
+		final Form<?> form = new Form<>("form");
 		add(form);
 		final CheckboxModel<Company> checkboxModel = new CheckboxModel<>();
 		checkboxModel.setChoices(Arrays.asList(Company.builder().name("Ferrari").build(), Company
@@ -54,16 +54,16 @@ public class CheckChoicesListViewPanel extends Panel
 			Company.builder().name("Porsche").build()));
 
 		// Tell CheckChoicesListView what properties to use for label
-		ChoiceRenderer<Company> renderer = new ChoiceRenderer<Company>("name");
+		final ChoiceRenderer<Company> renderer = new ChoiceRenderer<Company>("name");
 
-		CheckGroup<Company> checkGroup = new CheckGroup<Company>("group", model(from(checkboxModel)
-			.getSelectedItems()));
+		final CheckGroup<Company> checkGroup = new CheckGroup<Company>("group", model(from(
+			checkboxModel).getSelectedItems()));
 		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
 				target.add(getFeedback());
 				info("Selected Types : " + checkboxModel.getSelectedItems());
@@ -75,7 +75,7 @@ public class CheckChoicesListViewPanel extends Panel
 
 	protected Component getFeedback()
 	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 

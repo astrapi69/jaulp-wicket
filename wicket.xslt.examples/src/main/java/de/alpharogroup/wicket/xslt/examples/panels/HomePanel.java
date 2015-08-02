@@ -32,12 +32,12 @@ public class HomePanel extends Panel
 	public HomePanel(final String id)
 	{
 		super(id);
-		Label report = new Label("message", new Model<>(
+		final Label report = new Label("message", new Model<>(
 
 		"<message>Yep, it worked!</message>"));
 		add(report);
 		report.setEscapeModelStrings(false);
-		XsltTransformerBehavior trans = new XsltTransformerBehavior("def.xsl");
+		final XsltTransformerBehavior trans = new XsltTransformerBehavior("def.xsl");
 		trans.bind(report);
 		report.add(trans);
 	}

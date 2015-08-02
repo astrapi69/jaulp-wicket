@@ -71,7 +71,7 @@ public abstract class BasePage extends AbstractBasePage
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		WicketComponentExtensions.renderHeaderResponse(response, BasePage.class);

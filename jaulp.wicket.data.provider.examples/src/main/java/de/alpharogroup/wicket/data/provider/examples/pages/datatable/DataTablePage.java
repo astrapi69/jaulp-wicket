@@ -49,7 +49,7 @@ public class DataTablePage extends WebPage
 
 	private void initLayout()
 	{
-		DataTablePanel dataTablePanel = new DataTablePanel("dataTablePanel");
+		final DataTablePanel dataTablePanel = new DataTablePanel("dataTablePanel");
 		add(dataTablePanel);
 
 

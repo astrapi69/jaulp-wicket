@@ -64,7 +64,7 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 	@Getter
 	private final ListView<T> choices;
 
-	public CheckGroupSelectorPanel(String id, IModel<CheckboxModel<T>> model)
+	public CheckGroupSelectorPanel(final String id, final IModel<CheckboxModel<T>> model)
 	{
 		super(id, model);
 
@@ -82,31 +82,30 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 		checkGroup.add(choices = newChoices("choices", model));
 	}
 
-	protected ListView<T> newChoices(final String id, final IModel<CheckboxModel<T>> model)
+	/**
+	 * New check group.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the radio group
+	 */
+	protected CheckGroup<T> newCheckGroup(final String id,
+		final IModel<? extends Collection<T>> model)
 	{
-		ListView<T> choices = new ListView<T>("choices", model.getObject().getChoices())
+		final CheckGroup<T> checkGroup = ComponentFactory.newCheckGroup(id, model);
+		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
-			/**
-			 * The serialVersionUID.
-			 */
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(ListItem<T> item)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
-				item.add(new Check<>("checkbox", item.getModel()));
-				item.add(new Label("label", new PropertyModel<String>(item.getDefaultModel(), model
-					.getObject().getLabelPropertyExpression())));
+				CheckGroupSelectorPanel.this.onUpdate(target);
 			}
-		};
-		choices.setReuseItems(true);
-		return choices;
-	}
-
-	protected Label newCheckGroupSelectorLabel(final String id, final String forId,
-		final IModel<String> model)
-	{
-		return ComponentFactory.newLabel(id, forId, model);
+		});
+		return checkGroup;
 	}
 
 	/**
@@ -123,6 +122,33 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 		return ComponentFactory.newCheckGroupSelector(id, group);
 	}
 
+	protected Label newCheckGroupSelectorLabel(final String id, final String forId,
+		final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, forId, model);
+	}
+
+	protected ListView<T> newChoices(final String id, final IModel<CheckboxModel<T>> model)
+	{
+		final ListView<T> choices = new ListView<T>("choices", model.getObject().getChoices())
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(final ListItem<T> item)
+			{
+				item.add(new Check<>("checkbox", item.getModel()));
+				item.add(new Label("label", new PropertyModel<String>(item.getDefaultModel(), model
+					.getObject().getLabelPropertyExpression())));
+			}
+		};
+		choices.setReuseItems(true);
+		return choices;
+	}
+
 	/**
 	 * New form.
 	 *
@@ -135,33 +161,7 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 		return ComponentFactory.newForm(id);
 	}
 
-	/**
-	 * New check group.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the radio group
-	 */
-	protected CheckGroup<T> newCheckGroup(final String id,
-		final IModel<? extends Collection<T>> model)
-	{
-		CheckGroup<T> checkGroup = ComponentFactory.newCheckGroup(id, model);
-		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onUpdate(AjaxRequestTarget target)
-			{
-				CheckGroupSelectorPanel.this.onUpdate(target);
-			}
-		});
-		return checkGroup;
-	}
-
-	protected void onUpdate(AjaxRequestTarget target)
+	protected void onUpdate(final AjaxRequestTarget target)
 	{
 	}
 }

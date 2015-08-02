@@ -34,19 +34,6 @@ public abstract class DivListPanel<T> extends ListViewPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new div list panel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param list
-	 *            the list
-	 */
-	public DivListPanel(String id, List<T> list)
-	{
-		super(id, list);
-	}
-
-	/**
 	 * Instantiates a new header content list panel.
 	 *
 	 * @param id
@@ -54,9 +41,22 @@ public abstract class DivListPanel<T> extends ListViewPanel<T>
 	 * @param content
 	 *            the model
 	 */
-	public DivListPanel(String id, IModel<List<T>> content)
+	public DivListPanel(final String id, final IModel<List<T>> content)
 	{
 		super(id, content);
+	}
+
+	/**
+	 * Instantiates a new div list panel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
+	 */
+	public DivListPanel(final String id, final List<T> list)
+	{
+		super(id, list);
 	}
 
 }

@@ -51,7 +51,7 @@ public abstract class HeaderContentListPanel extends Panel
 	 * @param id
 	 *            the id
 	 */
-	public HeaderContentListPanel(String id)
+	public HeaderContentListPanel(final String id)
 	{
 		this(id, null);
 	}
@@ -64,7 +64,7 @@ public abstract class HeaderContentListPanel extends Panel
 	 * @param model
 	 *            the model
 	 */
-	public HeaderContentListPanel(String id, IModel<HeaderContentListModel> model)
+	public HeaderContentListPanel(final String id, final IModel<HeaderContentListModel> model)
 	{
 		super(id, model);
 		add(header = newHeaderLabel("header", newHeaderModel(model.getObject()
@@ -75,19 +75,31 @@ public abstract class HeaderContentListPanel extends Panel
 				.contentResourceKeys(model.getObject().getContentResourceKeys()).build())));
 	}
 
-	protected Component newListPanel(String id, IModel<ContentListModel> model)
+	/**
+	 * New content resource model.
+	 *
+	 * @param resourceKey
+	 *            the resource key
+	 * @return the i model
+	 */
+	protected IModel<String> newContentResourceModel(final IModel<ResourceBundleKey> resourceKey)
 	{
-		return new ResourceBundleKeysPanel(id, model.getObject().getContentResourceKeys())
-		{
+		return ResourceModelFactory.newResourceModel(resourceKey.getObject(), this);
 
-			private static final long serialVersionUID = 1L;
+	}
 
-			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
-			{
-				return HeaderContentListPanel.this.newListComponent(id, item);
-			}
-		};
+	/**
+	 * New header label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the component
+	 */
+	protected Component newHeaderLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**
@@ -103,33 +115,6 @@ public abstract class HeaderContentListPanel extends Panel
 	}
 
 	/**
-	 * New content resource model.
-	 *
-	 * @param resourceKey
-	 *            the resource key
-	 * @return the i model
-	 */
-	protected IModel<String> newContentResourceModel(IModel<ResourceBundleKey> resourceKey)
-	{
-		return ResourceModelFactory.newResourceModel(resourceKey.getObject(), this);
-
-	}
-
-	/**
-	 * New header label.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the component
-	 */
-	protected Component newHeaderLabel(String id, IModel<String> model)
-	{
-		return ComponentFactory.newLabel(id, model);
-	}
-
-	/**
 	 * New list component.
 	 *
 	 * @param id
@@ -138,6 +123,23 @@ public abstract class HeaderContentListPanel extends Panel
 	 *            the item
 	 * @return the component
 	 */
-	protected abstract Component newListComponent(String id, ListItem<ResourceBundleKey> item);
+	protected abstract Component newListComponent(final String id,
+		final ListItem<ResourceBundleKey> item);
+
+	protected Component newListPanel(final String id, final IModel<ContentListModel> model)
+	{
+		return new ResourceBundleKeysPanel(id, model.getObject().getContentResourceKeys())
+		{
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected Component newListComponent(final String id,
+				final ListItem<ResourceBundleKey> item)
+			{
+				return HeaderContentListPanel.this.newListComponent(id, item);
+			}
+		};
+	}
 
 }

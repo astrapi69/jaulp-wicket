@@ -50,7 +50,8 @@ public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledRequiredTextFieldPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledRequiredTextFieldPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 
@@ -58,7 +59,7 @@ public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<
 
 		add(feedback = newComponentFeedbackPanel("feedback", textField));
 
-		String markupId = textField.getMarkupId();
+		final String markupId = textField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 	}
 
@@ -91,7 +92,7 @@ public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 *            the model
 	 * @return the new RequiredTextField
 	 */
-	protected RequiredTextField<T> newRequiredTextField(String id, IModel<T> model)
+	protected RequiredTextField<T> newRequiredTextField(final String id, final IModel<T> model)
 	{
 		return ComponentFactory.newRequiredTextField(id, new PropertyModel<T>(model.getObject(),
 			getId()));

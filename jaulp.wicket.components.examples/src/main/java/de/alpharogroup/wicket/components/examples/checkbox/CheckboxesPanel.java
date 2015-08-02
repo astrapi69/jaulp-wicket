@@ -29,7 +29,7 @@ public class CheckboxesPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CheckboxesPanel(String id, IModel<?> model)
+	public CheckboxesPanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
 

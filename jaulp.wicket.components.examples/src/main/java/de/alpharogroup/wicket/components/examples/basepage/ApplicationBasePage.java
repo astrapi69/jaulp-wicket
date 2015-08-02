@@ -96,16 +96,6 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	protected FeedbackPanel feedback;
 
 	/**
-	 * Gets the feedback.
-	 *
-	 * @return the feedback
-	 */
-	public FeedbackPanel getFeedback()
-	{
-		return feedback;
-	}
-
-	/**
 	 * Instantiates a new application base page.
 	 */
 	public ApplicationBasePage()
@@ -116,30 +106,76 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	/**
 	 * Instantiates a new application base page.
 	 *
-	 * @param parameters
-	 *            the parameters
+	 * @param model
+	 *            the model
 	 */
-	public ApplicationBasePage(PageParameters parameters)
+	public ApplicationBasePage(final IModel<T> model)
 	{
-		super(parameters);
+		super(model);
 	}
 
 	/**
 	 * Instantiates a new application base page.
 	 *
-	 * @param model
-	 *            the model
+	 * @param parameters
+	 *            the parameters
 	 */
-	public ApplicationBasePage(IModel<T> model)
+	public ApplicationBasePage(final PageParameters parameters)
 	{
-		super(model);
+		super(parameters);
 	}
 
-	@Override
-	protected void onInitialize()
+	/**
+	 * Change theme.
+	 *
+	 * @param themeParameter
+	 *            the theme parameter
+	 */
+	protected void changeTheme(final String themeParameter)
 	{
-		super.onInitialize();
-		initializeComponents();
+		if (themeParameter != null && !themeParameter.isEmpty())
+		{
+			final IBootstrapSettings settings = Bootstrap.getSettings(getWicketApplication());
+			settings.getActiveThemeProvider().setActiveTheme(themeParameter);
+		}
+	}
+
+	/**
+	 * sets the theme for the current user.
+	 *
+	 * @param pageParameters
+	 *            current page parameters
+	 */
+	private void configureTheme(final PageParameters pageParameters)
+	{
+		newTheme(pageParameters.get("theme"));
+	}
+
+	/**
+	 * Gets the Container panel.
+	 *
+	 * @return 's the Container panel.
+	 */
+	public abstract Component getContainerPanel();
+
+	/**
+	 * Gets the feedback.
+	 *
+	 * @return the feedback
+	 */
+	public FeedbackPanel getFeedback()
+	{
+		return feedback;
+	}
+
+	/**
+	 * Gets the wicket application.
+	 *
+	 * @return the wicket application
+	 */
+	public WicketApplication getWicketApplication()
+	{
+		return WicketApplication.get();
 	}
 
 	/**
@@ -149,17 +185,17 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	{
 		add(new FaviconBehavior());
 		add(new BootstrapBaseBehavior());
-		HeaderResponseContainer headerResponseContainer = new HeaderResponseContainer(
+		final HeaderResponseContainer headerResponseContainer = new HeaderResponseContainer(
 			WicketBootstrap3Application.FOOTER_FILTER_NAME,
 			WicketBootstrap3Application.FOOTER_FILTER_NAME);
 		add(headerResponseContainer);
 
-		int sessionTimeout = WicketSession.get().getSessionTimeout();
+		final int sessionTimeout = WicketSession.get().getSessionTimeout();
 		if (0 < sessionTimeout)
 		{
-			int oneThirdOfWarnAfter = (sessionTimeout * 1000) / 3;
-			int twoThirdOfWarnAfter = oneThirdOfWarnAfter * 2;
-			SessionTimeoutSettings settings = SessionTimeoutSettings.builder().build();
+			final int oneThirdOfWarnAfter = (sessionTimeout * 1000) / 3;
+			final int twoThirdOfWarnAfter = oneThirdOfWarnAfter * 2;
+			final SessionTimeoutSettings settings = SessionTimeoutSettings.builder().build();
 			settings.getTitle().setValue("Session timeout warning");
 			settings.getMessage().setValue("Your session will be timeouted...");
 			settings.getWarnAfter().setValue(oneThirdOfWarnAfter);
@@ -167,8 +203,8 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			settings.getRedirUrl().setValue("/public/imprint");
 			settings.getLogoutUrl().setValue("/public/imprint");
 
-			SessionTimeoutJsGenerator generator = new SessionTimeoutJsGenerator(settings);
-			String jsCode = generator.generateJs();
+			final SessionTimeoutJsGenerator generator = new SessionTimeoutJsGenerator(settings);
+			final String jsCode = generator.generateJs();
 			add(JavascriptAppenderBehavior.builder().id("sessionTimeoutNotification")
 				.javascript(jsCode).build());
 		}
@@ -181,90 +217,13 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	 *            the id
 	 * @return the feedback panel
 	 */
-	protected FeedbackPanel newFeedbackPanel(String id)
+	protected FeedbackPanel newFeedbackPanel(final String id)
 	{
-		NotificationPanel notificationPanel = new NotificationPanel(id);
+		final NotificationPanel notificationPanel = new NotificationPanel(id);
 		notificationPanel.setOutputMarkupId(true);
 		notificationPanel.setOutputMarkupPlaceholderTag(true);
 		notificationPanel.hideAfter(Duration.seconds(5));
 		return notificationPanel;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onConfigure()
-	{
-		super.onConfigure();
-		configureTheme(getPageParameters());
-	}
-
-	/**
-	 * sets the theme for the current user.
-	 *
-	 * @param pageParameters
-	 *            current page parameters
-	 */
-	private void configureTheme(PageParameters pageParameters)
-	{
-		newTheme(pageParameters.get("theme"));
-	}
-
-	/**
-	 * New theme.
-	 *
-	 * @param theme
-	 *            the theme
-	 */
-	protected void newTheme(StringValue theme)
-	{
-		changeTheme(PageParametersExtensions.getString(theme));
-	}
-
-	/**
-	 * Change theme.
-	 *
-	 * @param themeParameter
-	 *            the theme parameter
-	 */
-	protected void changeTheme(String themeParameter)
-	{
-		if (themeParameter != null && !themeParameter.isEmpty())
-		{
-			IBootstrapSettings settings = Bootstrap.getSettings(getWicketApplication());
-			settings.getActiveThemeProvider().setActiveTheme(themeParameter);
-		}
-	}
-
-	/**
-	 * Gets the Container panel.
-	 *
-	 * @return 's the Container panel.
-	 */
-	public abstract Component getContainerPanel();
-
-	/**
-	 * Factory method that can be overwritten for new meta tag content for keywords.
-	 *
-	 * @return the new <code>IModel</code>
-	 */
-	@Override
-	protected IModel<String> newKeywords()
-	{
-		return ResourceModelFactory.newResourceModel("page.meta.keywords", this,
-			"wicket, components, examples");
-	}
-
-	/**
-	 * Factory method that can be overwritten for new meta tag content for the title.
-	 *
-	 * @return the new <code>IModel</code>
-	 */
-	@Override
-	protected IModel<String> newTitle()
-	{
-		return ResourceModelFactory.newResourceModel("page.title", this, "jaulp.wicket.components");
 	}
 
 	/**
@@ -274,7 +233,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	 *            the id
 	 * @return 's the Footer panel.
 	 */
-	protected Panel newFooterPanel(String id)
+	protected Panel newFooterPanel(final String id)
 	{
 		final List<LinkItem> linkModel = new ArrayList<LinkItem>();
 		linkModel.add(LinkItem
@@ -304,37 +263,39 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newFooterMenuPanel(String id)
+			protected Component newFooterMenuPanel(final String id)
 			{
 
-				FooterMenuPanel footerMenu = new FooterMenuPanel(id, linkModel)
+				final FooterMenuPanel footerMenu = new FooterMenuPanel(id, linkModel)
 				{
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					protected Component newLinkListPanel(String id, IModel<List<LinkItem>> model)
+					protected Component newLinkListPanel(final String id,
+						final IModel<List<LinkItem>> model)
 					{
 						final LinkListPanel listPanel = new LinkListPanel(id, model)
 						{
 							private static final long serialVersionUID = 1L;
 
 							@Override
-							protected Component newListComponent(String id, ListItem<LinkItem> item)
-							{
-								LinkItem model = item.getModelObject();
-								Label itemLinkLabel = super
-									.newItemLinkLabel("itemLinkLabel", model);
-								itemLinkLabel.add(new AttributeAppender("class", " a"));
-								AbstractLink link = super.newAbstractLink(id, model);
-								link.add(new AttributeAppender("class", " btn btn-default"));
-								link.add(itemLinkLabel);
-								return link;
-							}
-
-							@Override
 							protected String getCurrentPageCssClass()
 							{
 								return "active";
+							}
+
+							@Override
+							protected Component newListComponent(final String id,
+								final ListItem<LinkItem> item)
+							{
+								final LinkItem model = item.getModelObject();
+								final Label itemLinkLabel = super.newItemLinkLabel("itemLinkLabel",
+									model);
+								itemLinkLabel.add(new AttributeAppender("class", " a"));
+								final AbstractLink link = super.newAbstractLink(id, model);
+								link.add(new AttributeAppender("class", " btn btn-default"));
+								link.add(itemLinkLabel);
+								return link;
 							}
 						};
 						listPanel.add(new AttributeAppender("class", " btn"));
@@ -353,13 +314,64 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	}
 
 	/**
+	 * Factory method that can be overwritten for new meta tag content for keywords.
+	 *
+	 * @return the new <code>IModel</code>
+	 */
+	@Override
+	protected IModel<String> newKeywords()
+	{
+		return ResourceModelFactory.newResourceModel("page.meta.keywords", this,
+			"wicket, components, examples");
+	}
+
+	/**
+	 * New theme.
+	 *
+	 * @param theme
+	 *            the theme
+	 */
+	protected void newTheme(final StringValue theme)
+	{
+		changeTheme(PageParametersExtensions.getString(theme));
+	}
+
+	/**
+	 * Factory method that can be overwritten for new meta tag content for the title.
+	 *
+	 * @return the new <code>IModel</code>
+	 */
+	@Override
+	protected IModel<String> newTitle()
+	{
+		return ResourceModelFactory.newResourceModel("page.title", this, "jaulp.wicket.components");
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response)
+	protected void onConfigure()
+	{
+		super.onConfigure();
+		configureTheme(getPageParameters());
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		initializeComponents();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		IJavaScriptLibrarySettings javaScriptSettings = getApplication()
+		final IJavaScriptLibrarySettings javaScriptSettings = getApplication()
 			.getJavaScriptLibrarySettings();
 		response.render(JavaScriptHeaderItem.forReference(javaScriptSettings.getJQueryReference()));
 		Bootstrap.renderHead(response);
@@ -370,16 +382,6 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 		// response.render(JavaScriptHeaderItem.forReference(gaqResourceReference));
 		response.render(JavaScriptHeaderItem.forReference(BootstrapSessionTimeoutResourceReference
 			.get()));
-	}
-
-	/**
-	 * Gets the wicket application.
-	 *
-	 * @return the wicket application
-	 */
-	public WicketApplication getWicketApplication()
-	{
-		return WicketApplication.get();
 	}
 
 }

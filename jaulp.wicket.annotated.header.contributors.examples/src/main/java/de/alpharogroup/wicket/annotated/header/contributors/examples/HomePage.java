@@ -57,7 +57,7 @@ public class HomePage extends BasePage
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		response.render(CssHeaderItem.forReference(MAIN_CSS));

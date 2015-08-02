@@ -95,6 +95,7 @@ public class HighScoreRequestMapper extends CompoundRequestMapper
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public int getCompatibilityScore(final Request request)
 	{
 		int score = Integer.MIN_VALUE;
@@ -126,6 +127,7 @@ public class HighScoreRequestMapper extends CompoundRequestMapper
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Url mapHandler(final IRequestHandler handler)
 	{
 		for (final IRequestMapper requestMapper : this.requestMappers)
@@ -142,6 +144,7 @@ public class HighScoreRequestMapper extends CompoundRequestMapper
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public IRequestHandler mapRequest(final Request request)
 	{
 		for (final RequestMapperBean mapperBean : initializeRequestMappers(request))
@@ -166,6 +169,7 @@ public class HighScoreRequestMapper extends CompoundRequestMapper
 	{
 		return new Comparator<RequestMapperBean>()
 		{
+			@Override
 			public int compare(final RequestMapperBean o1, final RequestMapperBean o2)
 			{
 				return o1.getCompatibilityScore() - o2.getCompatibilityScore();

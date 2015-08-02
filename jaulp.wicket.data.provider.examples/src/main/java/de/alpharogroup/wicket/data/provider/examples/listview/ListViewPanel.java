@@ -34,17 +34,17 @@ public class ListViewPanel extends Panel
 
 	private static final long serialVersionUID = 1L;
 
-	public ListViewPanel(String id)
+	public ListViewPanel(final String id)
 	{
 		super(id);
-		List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
-		ListView<Person> listView = new ListView<Person>("listView", persons)
+		final List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
+		final ListView<Person> listView = new ListView<Person>("listView", persons)
 		{
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(ListItem<Person> item)
+			protected void populateItem(final ListItem<Person> item)
 			{
 				item.setDefaultModel(new CompoundPropertyModel<Person>(item.getModel()));
 				item.add(new Label("firstname"));

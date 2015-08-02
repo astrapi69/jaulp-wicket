@@ -45,7 +45,7 @@ public class DefaultDataTablePage extends WebPage
 
 	private void initLayout()
 	{
-		DefaultDataTablePanel defaultDataTablePanel = new DefaultDataTablePanel(
+		final DefaultDataTablePanel defaultDataTablePanel = new DefaultDataTablePanel(
 			"defaultDataTablePanel");
 		add(defaultDataTablePanel);
 	}

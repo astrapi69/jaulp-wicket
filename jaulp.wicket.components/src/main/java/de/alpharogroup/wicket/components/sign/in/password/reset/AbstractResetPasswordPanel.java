@@ -45,5 +45,5 @@ public abstract class AbstractResetPasswordPanel extends GenericPanel<ResetPassw
 		onReset(model.getObject().getUsername(), model.getObject().getConfirmationCode());
 	}
 
-	protected abstract void onReset(String username, String confirmationCode);
+	protected abstract void onReset(final String username, final String confirmationCode);
 }

@@ -36,11 +36,12 @@ public class AjaxIndicatorLoadingPanel extends Panel
 	 * @param id
 	 *            the id
 	 */
-	public AjaxIndicatorLoadingPanel(String id)
+	public AjaxIndicatorLoadingPanel(final String id)
 	{
 		super(id);
 		setOutputMarkupId(true);
-		Image ajaxindicator = new Image("ajaxindicator", AbstractDefaultAjaxBehavior.INDICATOR);
+		final Image ajaxindicator = new Image("ajaxindicator",
+			AbstractDefaultAjaxBehavior.INDICATOR);
 		add(ajaxindicator);
 	}
 }

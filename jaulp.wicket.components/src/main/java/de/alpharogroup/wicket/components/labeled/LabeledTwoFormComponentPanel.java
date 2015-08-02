@@ -59,7 +59,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 * @param labelModel
 	 *            the model for the label
 	 */
-	public LabeledTwoFormComponentPanel(String id, IModel<String> labelModel)
+	public LabeledTwoFormComponentPanel(final String id, final IModel<String> labelModel)
 	{
 		this(id, Model.of(new TwoFormComponentBean<L, R>()), labelModel);
 	}
@@ -74,84 +74,25 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 * @param labelModel
 	 *            the model of the label
 	 */
-	public LabeledTwoFormComponentPanel(String id, IModel<TwoFormComponentBean<L, R>> model,
-		IModel<String> labelModel)
+	public LabeledTwoFormComponentPanel(final String id,
+		final IModel<TwoFormComponentBean<L, R>> model, final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 		add(twoFormComponent = newTwoFormComponentPanel("twoFormComponent", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", twoFormComponent));
 
-		String markupId = twoFormComponent.getMarkupId();
+		final String markupId = twoFormComponent.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 	}
 
 	/**
-	 * New left text field.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the form component
+	 * {@inheritDoc}
 	 */
-	protected TwoFormComponentPanel<L, R> newTwoFormComponentPanel(String id,
-		IModel<TwoFormComponentBean<L, R>> model)
+	@Override
+	protected void convertInput()
 	{
-		TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(id,
-			model)
-		{
-
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			protected FormComponent<L> newLeftFormComponent(String id, IModel<L> model)
-			{
-				return LabeledTwoFormComponentPanel.this.newLeftFormComponent(id, model);
-			}
-
-			protected FormComponent<R> newRightFormComponent(String id, IModel<R> model)
-			{
-				return LabeledTwoFormComponentPanel.this.newRightFormComponent(id, model);
-			}
-
-			protected IModel<String> newBetweenLabelModel(final String betweenLabel)
-			{
-				return LabeledTwoFormComponentPanel.this.newBetweenLabelModel(betweenLabel);
-			}
-
-		};
-		return twoFormComponentPanel;
-	}
-
-	/**
-	 * New left text field.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the form component
-	 */
-	protected FormComponent<L> newLeftFormComponent(String id, IModel<L> model)
-	{
-		return ComponentFactory.newTextField(id, model);
-	}
-
-	/**
-	 * New right text field.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the form component
-	 */
-	protected FormComponent<R> newRightFormComponent(String id, IModel<R> model)
-	{
-		return ComponentFactory.newTextField(id, model);
+		setConvertedInput(getModelObject());
 	}
 
 	/**
@@ -167,12 +108,74 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * New left text field.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the form component
 	 */
-	@Override
-	protected void convertInput()
+	protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
 	{
-		setConvertedInput(getModelObject());
+		return ComponentFactory.newTextField(id, model);
+	}
+
+	/**
+	 * New right text field.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the form component
+	 */
+	protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
+	{
+		return ComponentFactory.newTextField(id, model);
+	}
+
+	/**
+	 * New left text field.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the form component
+	 */
+	protected TwoFormComponentPanel<L, R> newTwoFormComponentPanel(final String id,
+		final IModel<TwoFormComponentBean<L, R>> model)
+	{
+		final TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(
+			id, model)
+		{
+
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected IModel<String> newBetweenLabelModel(final String betweenLabel)
+			{
+				return LabeledTwoFormComponentPanel.this.newBetweenLabelModel(betweenLabel);
+			}
+
+			@Override
+			protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
+			{
+				return LabeledTwoFormComponentPanel.this.newLeftFormComponent(id, model);
+			}
+
+			@Override
+			protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
+			{
+				return LabeledTwoFormComponentPanel.this.newRightFormComponent(id, model);
+			}
+
+		};
+		return twoFormComponentPanel;
 	}
 
 }

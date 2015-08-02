@@ -55,16 +55,16 @@ public class HomePage extends WebPage
 			@Override
 			public void onClick()
 			{
-				PageParameters pageParameters = new PageParameters();
+				final PageParameters pageParameters = new PageParameters();
 				((WicketSession)Session.get()).setUserAttribute("stringTwoDropDownChoicesModel",
 					stringTwoDropDownChoicesModel);
-				TwoDropDownChoicesPage twoDropDownChoicesPage = new TwoDropDownChoicesPage(
+				final TwoDropDownChoicesPage twoDropDownChoicesPage = new TwoDropDownChoicesPage(
 					pageParameters);
 				setResponsePage(twoDropDownChoicesPage);
 			}
 		};
 		add(link);
-		Label twoDropDownChoicesLbl = new Label("twoDropDownChoicesLbl",
+		final Label twoDropDownChoicesLbl = new Label("twoDropDownChoicesLbl",
 			"Show two DropDownChoices page");
 		link.add(twoDropDownChoicesLbl);
 
@@ -79,14 +79,14 @@ public class HomePage extends WebPage
 			@Override
 			public void onClick()
 			{
-				PageParameters pageParameters = new PageParameters();
-				WicketWikiExample wicketWikiExample = new WicketWikiExample(pageParameters);
+				final PageParameters pageParameters = new PageParameters();
+				final WicketWikiExample wicketWikiExample = new WicketWikiExample(pageParameters);
 				setResponsePage(wicketWikiExample);
 			}
 		};
 
 		add(moreExamplesLink);
-		Label moreExamplesLbl = new Label("moreExamplesLbl",
+		final Label moreExamplesLbl = new Label("moreExamplesLbl",
 			"Show more examples with dropdown choices...");
 		moreExamplesLink.add(moreExamplesLbl);
 

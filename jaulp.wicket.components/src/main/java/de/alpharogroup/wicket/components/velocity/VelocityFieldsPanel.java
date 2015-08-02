@@ -46,22 +46,40 @@ public class VelocityFieldsPanel extends Panel
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param templateResource
+	 *            the template resource
 	 */
-	public VelocityFieldsPanel(String id, final IModel<List<WicketField<?>>> model)
+	@SuppressWarnings("rawtypes")
+	public VelocityFieldsPanel(final String id, final IModel<? extends Map> model,
+		final IResourceStream templateResource)
+	{
+		super(id, model);
+		add(VelocityPanel.forTemplateResource("velocityPanel", model, templateResource));
+	}
+
+	/**
+	 * Instantiates a new velocity fields panel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public VelocityFieldsPanel(final String id, final IModel<List<WicketField<?>>> model)
 	{
 		super(id, model);
 		final Map<String, List<WicketField<?>>> map = new HashMap<>();
 		map.put("fields", model.getObject());
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 
-		for (SimpleTag tag : model.getObject())
+		for (final SimpleTag tag : model.getObject())
 		{
 			sb.append(tag.toString());
 		}
-		String tmp = sb.toString();
+		final String tmp = sb.toString();
 
 		final IResourceStream template = new StringResourceStream(tmp);
-		VelocityPanel velocityPanel = new VelocityPanel("velocityPanel", new MapModel<>(map))
+		final VelocityPanel velocityPanel = new VelocityPanel("velocityPanel", new MapModel<>(map))
 		{
 
 			private static final long serialVersionUID = 1L;
@@ -79,7 +97,7 @@ public class VelocityFieldsPanel extends Panel
 			}
 		};
 		add(velocityPanel);
-		for (WicketField<?> field : model.getObject())
+		for (final WicketField<?> field : model.getObject())
 		{
 			addChildComponent(field);
 			velocityPanel.add(field.getComponent());
@@ -92,40 +110,22 @@ public class VelocityFieldsPanel extends Panel
 	 * @param parent
 	 *            the parent
 	 */
-	public void addChildComponent(WicketField<?> parent)
+	public void addChildComponent(final WicketField<?> parent)
 	{
 		if (parent.getChildren() != null && !parent.getChildren().isEmpty())
 		{
-			for (SimpleTag iterable_element : parent.getChildren())
+			for (final SimpleTag iterable_element : parent.getChildren())
 			{
-				WicketField<?> field = (WicketField<?>)iterable_element;
-				Component c = parent.getComponent();
+				final WicketField<?> field = (WicketField<?>)iterable_element;
+				final Component c = parent.getComponent();
 				if (c instanceof MarkupContainer)
 				{
-					MarkupContainer mc = (MarkupContainer)c;
+					final MarkupContainer mc = (MarkupContainer)c;
 					mc.add(field.getComponent());
 				}
 				addChildComponent(field);
 			}
 		}
-	}
-
-	/**
-	 * Instantiates a new velocity fields panel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @param templateResource
-	 *            the template resource
-	 */
-	@SuppressWarnings("rawtypes")
-	public VelocityFieldsPanel(String id, final IModel<? extends Map> model,
-		final IResourceStream templateResource)
-	{
-		super(id, model);
-		add(VelocityPanel.forTemplateResource("velocityPanel", model, templateResource));
 	}
 
 }

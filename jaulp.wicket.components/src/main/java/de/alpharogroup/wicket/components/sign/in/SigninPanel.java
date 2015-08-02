@@ -46,7 +46,7 @@ public class SigninPanel extends Panel
 	private final Component password;
 
 	@SuppressWarnings("unchecked")
-	public SigninPanel(String id, final IModel<? extends SignInModel> model)
+	public SigninPanel(final String id, final IModel<? extends SignInModel> model)
 	{
 		super(id, model);
 		add(email = newEmailTextField("email", (IModel<SignInModel>)model));
@@ -64,7 +64,7 @@ public class SigninPanel extends Panel
 	 *            the model
 	 * @return the text field
 	 */
-	protected Component newEmailTextField(String id, final IModel<SignInModel> model)
+	protected Component newEmailTextField(final String id, final IModel<SignInModel> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.email.label", this);
@@ -105,21 +105,22 @@ public class SigninPanel extends Panel
 	 *            the model
 	 * @return the text field
 	 */
-	protected Component newPasswordTextField(String id, final IModel<SignInModel> model)
+	protected Component newPasswordTextField(final String id, final IModel<SignInModel> model)
 	{
-		IModel<String> labelModel = ResourceModelFactory.newResourceModel("global.password.label",
-			this);
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
+			"global.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.password.label", this);
-		LabeledPasswordTextFieldPanel<SignInModel> pwTextField = new LabeledPasswordTextFieldPanel<SignInModel>(
+		final LabeledPasswordTextFieldPanel<SignInModel> pwTextField = new LabeledPasswordTextFieldPanel<SignInModel>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected PasswordTextField newPasswordTextField(String id, IModel<SignInModel> model)
+			protected PasswordTextField newPasswordTextField(final String id,
+				final IModel<SignInModel> model)
 			{
-				PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
+				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
 					.getPassword()));
 				pwTextField.setOutputMarkupId(true);
 				if (placeholderModel != null)

@@ -32,9 +32,9 @@ public class WicketWikiExamplePanel extends Panel
 	public WicketWikiExamplePanel(final String id)
 	{
 		super(id);
-		SelectOptionModel[] options = new SelectOptionModel[] {
+		final SelectOptionModel[] options = new SelectOptionModel[] {
 				new SelectOptionModel("and", "AND"), new SelectOptionModel("|", "OR") };
-		ChoiceRenderer<SelectOptionModel> choiceRenderer = new ChoiceRenderer<SelectOptionModel>(
+		final ChoiceRenderer<SelectOptionModel> choiceRenderer = new ChoiceRenderer<SelectOptionModel>(
 			"value", "key");
 		add(new LocalisedDropDownChoice<SelectOptionModel>("connective", Arrays.asList(options),
 			choiceRenderer));

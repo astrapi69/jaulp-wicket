@@ -41,7 +41,7 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 
 	Form<?> form;
 
-	public RadioGroupPanel(String id, final IModel<RadioGroupModel<T>> model)
+	public RadioGroupPanel(final String id, final IModel<RadioGroupModel<T>> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -50,29 +50,6 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 		form.add(group = newRadioGroup(newRadioName(), model(from(model.getObject()).getSelected())));
 
 		group.add(newRadioListView("choice", model));
-	}
-
-	protected ListView<T> newRadioListView(final String id, final IModel<RadioGroupModel<T>> model)
-	{
-		ListView<T> radioListView = new ListView<T>("choice", model.getObject().getRadios())
-		{
-			/**
-			 * The serialVersionUID.
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void populateItem(final ListItem<T> item)
-			{
-				Radio<T> radio = new Radio<>("radio", item.getModel(), RadioGroupPanel.this.group);
-				radio.setOutputMarkupId(true);
-				item.add(radio);
-				item.add(RadioGroupPanel.this.newLabel("label", radio.getMarkupId(),
-					item.getModel()));
-			}
-		};
-		radioListView.setOutputMarkupId(true);
-		return radioListView;
 	}
 
 	/**
@@ -87,8 +64,24 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	protected Form<RadioGroupModel<T>> newForm(final String id,
 		final IModel<RadioGroupModel<T>> model)
 	{
-		Form<RadioGroupModel<T>> form = ComponentFactory.newForm(id, model);
+		final Form<RadioGroupModel<T>> form = ComponentFactory.newForm(id, model);
 		return form;
+	}
+
+	/**
+	 * Factory method for creating a new Label with the for attribute.
+	 *
+	 * @param id
+	 *            the id
+	 * @param forId
+	 *            the for id
+	 * @param model
+	 *            the list item model
+	 * @return the label
+	 */
+	protected Label newLabel(final String id, final String forId, final IModel<T> model)
+	{
+		return ComponentFactory.newLabel(id, forId, model);
 	}
 
 	/**
@@ -108,7 +101,7 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
 				RadioGroupPanel.this.onUpdate(target);
 			}
@@ -116,29 +109,37 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 		return group;
 	}
 
-	/**
-	 * Factory method for creating a new Label with the for attribute.
-	 *
-	 * @param id
-	 *            the id
-	 * @param forId
-	 *            the for id
-	 * @param model
-	 *            the list item model
-	 * @return the label
-	 */
-	protected Label newLabel(String id, String forId, IModel<T> model)
+	protected ListView<T> newRadioListView(final String id, final IModel<RadioGroupModel<T>> model)
 	{
-		return ComponentFactory.newLabel(id, forId, model);
-	};
+		final ListView<T> radioListView = new ListView<T>("choice", model.getObject().getRadios())
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
 
-	protected void onUpdate(AjaxRequestTarget target)
-	{
-	}
+			@Override
+			protected void populateItem(final ListItem<T> item)
+			{
+				final Radio<T> radio = new Radio<>("radio", item.getModel(),
+					RadioGroupPanel.this.group);
+				radio.setOutputMarkupId(true);
+				item.add(radio);
+				item.add(RadioGroupPanel.this.newLabel("label", radio.getMarkupId(),
+					item.getModel()));
+			}
+		};
+		radioListView.setOutputMarkupId(true);
+		return radioListView;
+	};
 
 	protected String newRadioName()
 	{
 		return "group";
+	}
+
+	protected void onUpdate(final AjaxRequestTarget target)
+	{
 	}
 
 }

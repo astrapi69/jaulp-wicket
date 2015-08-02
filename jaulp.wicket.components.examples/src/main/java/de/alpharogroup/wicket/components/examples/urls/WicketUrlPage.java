@@ -27,14 +27,14 @@ public class WicketUrlPage extends PubliclyBasePage<Object>
 {
 	private static final long serialVersionUID = 1L;
 
+	public WicketUrlPage(final PageParameters parameters)
+	{
+		super(parameters);
+	}
+
 	@Override
 	public Component getContainerPanel()
 	{
 		return new WicketUrlPanel(CONTAINER_PANEL_ID);
-	}
-
-	public WicketUrlPage(final PageParameters parameters)
-	{
-		super(parameters);
 	}
 }

@@ -42,9 +42,45 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 {
 	private static final long serialVersionUID = 1L;
 
-	public SocialNetworksExamplePanel(String id)
+	public SocialNetworksExamplePanel(final String id)
 	{
 		super(id);
+	}
+
+	protected Component newFacebookLikeAndSharePanel(final String id)
+	{
+		final FacebookLikeAndShareModel model = new FacebookLikeAndShareModel.Builder().build();
+		final FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(
+			id, Model.of(model));
+		return facebookLikeAndSharePanel;
+	}
+
+	protected Component newGooglePlusSharePanel(final String id)
+	{
+		final IModel<GooglePlusShareModel> model = new GooglePlusShareModel.Builder()
+			.scriptSrc("https://apis.google.com/js/platform.js")
+			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
+			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
+			.dataHref(WicketUrlExtensions.absoluteUrlFor(this.getPage().getClass(), false)).build()
+			.toModel();
+		return new GooglePlusSharePanel(id, model);
+	}
+
+	protected Component newTwitterFollowPanel(final String id)
+	{
+		final String username = "jaulp.wicket";
+		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
+			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
+			.toModel());
+	}
+
+	protected Component newTwitterSharePanel(final String id)
+	{
+		final String dataUrl = "http://www.jaulp-wicket-components.com";
+		final IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
+			.shareUrl("https://twitter.com/share").dataUrl(dataUrl).via(dataUrl).counturl(dataUrl)
+			.build().toModel();
+		return new TwitterSharePanel(id, model);
 	}
 
 	@Override
@@ -58,41 +94,5 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 
 		add(new Label("messageSourceLabel", ResourceModelFactory.newResourceModel(ResourceBundleKey
 			.builder().key("foo.bar.bla").build())));
-	}
-
-	protected Component newFacebookLikeAndSharePanel(String id)
-	{
-		FacebookLikeAndShareModel model = new FacebookLikeAndShareModel.Builder().build();
-		FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(id,
-			Model.of(model));
-		return facebookLikeAndSharePanel;
-	}
-
-	protected Component newGooglePlusSharePanel(String id)
-	{
-		IModel<GooglePlusShareModel> model = new GooglePlusShareModel.Builder()
-			.scriptSrc("https://apis.google.com/js/platform.js")
-			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
-			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
-			.dataHref(WicketUrlExtensions.absoluteUrlFor(this.getPage().getClass(), false)).build()
-			.toModel();
-		return new GooglePlusSharePanel(id, model);
-	}
-
-	protected Component newTwitterSharePanel(String id)
-	{
-		String dataUrl = "http://www.jaulp-wicket-components.com";
-		IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
-			.shareUrl("https://twitter.com/share").dataUrl(dataUrl).via(dataUrl).counturl(dataUrl)
-			.build().toModel();
-		return new TwitterSharePanel(id, model);
-	}
-
-	protected Component newTwitterFollowPanel(String id)
-	{
-		String username = "jaulp.wicket";
-		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
-			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
-			.toModel());
 	}
 }

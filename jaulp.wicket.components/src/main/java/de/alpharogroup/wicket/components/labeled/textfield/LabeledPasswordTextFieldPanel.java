@@ -51,7 +51,8 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledPasswordTextFieldPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledPasswordTextFieldPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 
@@ -59,34 +60,8 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 
 		add(feedback = newComponentFeedbackPanel("feedback", passwordTextField));
 
-		String markupId = passwordTextField.getMarkupId();
+		final String markupId = passwordTextField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-	}
-
-	/**
-	 * Factory method for creating the PasswordTextField. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * PasswordTextField.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the text field
-	 */
-	protected PasswordTextField newPasswordTextField(String id, IModel<T> model)
-	{
-		return ComponentFactory.newPasswordTextField(id,
-			new PropertyModel<String>(model.getObject(), getId()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getInput()
-	{
-		return passwordTextField.getInput();
 	}
 
 	/**
@@ -105,6 +80,32 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 		// LOGGER.error("Set password bean failed.", e);
 		// }
 		// setConvertedInput(t);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getInput()
+	{
+		return passwordTextField.getInput();
+	}
+
+	/**
+	 * Factory method for creating the PasswordTextField. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * PasswordTextField.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the text field
+	 */
+	protected PasswordTextField newPasswordTextField(final String id, final IModel<T> model)
+	{
+		return ComponentFactory.newPasswordTextField(id,
+			new PropertyModel<String>(model.getObject(), getId()));
 	}
 
 	/**

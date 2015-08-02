@@ -33,36 +33,21 @@ public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModel>
 
 	private WebMarkupContainer googlePlusButton;
 
-	public GooglePlusSharePanel(String id)
+	public GooglePlusSharePanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public GooglePlusSharePanel(String id, IModel<GooglePlusShareModel> model)
+	public GooglePlusSharePanel(final String id, final IModel<GooglePlusShareModel> model)
 	{
 		super(id, model);
 		add(googleScriptLabel = newLabel("googleScriptLabel", model));
 		add(googlePlusButton = newWebMarkupContainer("googlePlusButton", model));
 	}
 
-	protected WebMarkupContainer newWebMarkupContainer(String id, IModel<GooglePlusShareModel> model)
+	public WebMarkupContainer getGooglePlusButton()
 	{
-		WebMarkupContainer googlePlusButton = ComponentFactory.newWebMarkupContainer(id, model);
-		googlePlusButton.add(new AttributeModifier("class", model.getObject().getCssClass()));
-		googlePlusButton.add(new AttributeModifier("data-annotation", model.getObject()
-			.getDataAnnotation()));
-		googlePlusButton.add(new AttributeModifier("data-width", model.getObject().getDataWith()));
-		googlePlusButton.add(new AttributeModifier("data-href", model.getObject().getDataHref()));
 		return googlePlusButton;
-	}
-
-	protected Label newLabel(String id, IModel<GooglePlusShareModel> model)
-	{
-		Label googleScriptLabel = new Label(id, Model.of("{lang: '" + model.getObject().getLocale()
-			+ "'}"));
-		googleScriptLabel.setEscapeModelStrings(false);
-		googleScriptLabel.add(new AttributeModifier("src", model.getObject().getScriptSrc()));
-		return googleScriptLabel;
 	}
 
 	public Label getGoogleScriptLabel()
@@ -70,8 +55,25 @@ public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModel>
 		return googleScriptLabel;
 	}
 
-	public WebMarkupContainer getGooglePlusButton()
+	protected Label newLabel(final String id, final IModel<GooglePlusShareModel> model)
 	{
+		final Label googleScriptLabel = new Label(id, Model.of("{lang: '"
+			+ model.getObject().getLocale() + "'}"));
+		googleScriptLabel.setEscapeModelStrings(false);
+		googleScriptLabel.add(new AttributeModifier("src", model.getObject().getScriptSrc()));
+		return googleScriptLabel;
+	}
+
+	protected WebMarkupContainer newWebMarkupContainer(final String id,
+		final IModel<GooglePlusShareModel> model)
+	{
+		final WebMarkupContainer googlePlusButton = ComponentFactory.newWebMarkupContainer(id,
+			model);
+		googlePlusButton.add(new AttributeModifier("class", model.getObject().getCssClass()));
+		googlePlusButton.add(new AttributeModifier("data-annotation", model.getObject()
+			.getDataAnnotation()));
+		googlePlusButton.add(new AttributeModifier("data-width", model.getObject().getDataWith()));
+		googlePlusButton.add(new AttributeModifier("data-href", model.getObject().getDataHref()));
 		return googlePlusButton;
 	}
 

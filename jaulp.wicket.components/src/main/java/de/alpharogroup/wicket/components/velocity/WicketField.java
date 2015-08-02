@@ -65,7 +65,7 @@ public class WicketField<C extends Component> extends SimpleTag
 	 * @param component
 	 *            the new component
 	 */
-	public void setComponent(C component)
+	public void setComponent(final C component)
 	{
 		this.component = component;
 	}

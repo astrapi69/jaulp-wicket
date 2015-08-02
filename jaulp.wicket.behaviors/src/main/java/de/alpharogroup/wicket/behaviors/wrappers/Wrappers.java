@@ -28,24 +28,24 @@ import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 public final class Wrappers
 {
 
+	/** The Constant PANEL_FOOTER_ELEMENT. */
+	public static final JqueryStatementsBehavior PANEL_FOOTER_ELEMENT = new JqueryStatementsBehavior()
+		.add(new BuildableChainableStatement.Builder().label("wrap")
+			.args(JsUtils.quotes("<div class=\"panel-footer\"></div>")).build());
+
+	public static final JqueryStatementsBehavior FORM_GROUP_ELEMENT = new JqueryStatementsBehavior()
+		.add(new BuildableChainableStatement.Builder().label("wrap")
+			.args(JsUtils.quotes("<div class=\"form-group\"></div>")).build());
+	public static final JQueryJsAppenderBehavior CONTROL_GROUP_ELEMENT = new JQueryJsAppenderBehavior(
+		"wrap", "<div class=\"control-group\"></div>");
+
+	public static final JQueryJsAppenderBehavior ROW_ELEMENT = new JQueryJsAppenderBehavior("wrap",
+		"<div class=\"row\"></div>");
+
 	/**
 	 * Private constructor.
 	 */
 	private Wrappers()
 	{
 	}
-
-	/** The Constant PANEL_FOOTER_ELEMENT. */
-	public static final JqueryStatementsBehavior PANEL_FOOTER_ELEMENT = new JqueryStatementsBehavior()
-		.add(new BuildableChainableStatement.Builder().label("wrap")
-			.args(JsUtils.quotes("<div class=\"panel-footer\"></div>")).build());
-	public static final JqueryStatementsBehavior FORM_GROUP_ELEMENT = new JqueryStatementsBehavior()
-		.add(new BuildableChainableStatement.Builder().label("wrap")
-			.args(JsUtils.quotes("<div class=\"form-group\"></div>")).build());
-
-	public static final JQueryJsAppenderBehavior CONTROL_GROUP_ELEMENT = new JQueryJsAppenderBehavior(
-		"wrap", "<div class=\"control-group\"></div>");
-
-	public static final JQueryJsAppenderBehavior ROW_ELEMENT = new JQueryJsAppenderBehavior("wrap",
-		"<div class=\"row\"></div>");
 }

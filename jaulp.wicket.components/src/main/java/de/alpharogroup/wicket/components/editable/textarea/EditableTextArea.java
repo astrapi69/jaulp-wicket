@@ -69,7 +69,8 @@ public class EditableTextArea extends GenericPanel<String>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public EditableTextArea(final String id, final IModel<String> model, IModel<String> labelModel)
+	public EditableTextArea(final String id, final IModel<String> model,
+		final IModel<String> labelModel)
 	{
 		this(id, model, labelModel, ModeContext.EDIT_MODE);
 	}
@@ -86,13 +87,77 @@ public class EditableTextArea extends GenericPanel<String>
 	 * @param modeContext
 	 *            the editable flag
 	 */
-	public EditableTextArea(final String id, final IModel<String> model, IModel<String> labelModel,
-		ModeContext modeContext)
+	public EditableTextArea(final String id, final IModel<String> model,
+		final IModel<String> labelModel, final ModeContext modeContext)
 	{
 		super(id, model);
 		this.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		this.labelModel = labelModel;
 		this.modeContext = modeContext;
+	}
+
+	/**
+	 * Checks if is editable.
+	 *
+	 * @return true, if it is editable
+	 */
+	public boolean isEditable()
+	{
+		return modeContext.equals(ModeContext.EDIT_MODE);
+	}
+
+
+	/**
+	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * MultiLineLabel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the MultiLineLabel
+	 */
+	protected MultiLineLabel newMultiLineLabel(final String id, final IModel<String> model)
+	{
+		final MultiLineLabel multiLineLabel = new MultiLineLabel(id, model)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onConfigure()
+			{
+				setVisibilityAllowed(!isEditable());
+			}
+		};
+		multiLineLabel.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
+		return multiLineLabel;
+	}
+
+	/**
+	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
+	 * class and can be overridden so users can provide their own version of a TextArea.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the text area
+	 */
+	protected TextArea<String> newTextArea(final String id, final IModel<String> model)
+	{
+		final TextArea<String> textArea = new TextArea<String>(id, model)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onConfigure()
+			{
+				setVisibilityAllowed(isEditable());
+			}
+		};
+		textArea.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
+		return textArea;
 	}
 
 	@Override
@@ -107,35 +172,7 @@ public class EditableTextArea extends GenericPanel<String>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newViewComponent(String id, IModel<String> model)
-			{
-				return new LabeledMultiLineLabelPanel<String>(id, model, getLabelModel())
-				{
-					/**
-					 * The serialVersionUID
-					 */
-					private static final long serialVersionUID = 1L;
-
-					/**
-					 * Factory method for creating the MultiLineLabel. This method is invoked in the
-					 * constructor from the derived classes and can be overridden so users can
-					 * provide their own version of a MultiLineLabel.
-					 *
-					 * @param id
-					 *            the id
-					 * @param model
-					 *            the model
-					 * @return the label
-					 */
-					protected MultiLineLabel newMultiLineLabelLabel(String id, IModel<String> model)
-					{
-						return ComponentFactory.newMultiLineLabel(id, model);
-					}
-				};
-			}
-
-			@Override
-			protected Component newEditComponent(String id, IModel<String> model)
+			protected Component newEditComponent(final String id, final IModel<String> model)
 			{
 				return new LabeledTextAreaPanel<String>(id, model, getLabelModel())
 				{
@@ -156,9 +193,41 @@ public class EditableTextArea extends GenericPanel<String>
 					 *            the model
 					 * @return the text area
 					 */
-					protected TextArea<String> newTextArea(String id, IModel<String> model)
+					@Override
+					protected TextArea<String> newTextArea(final String id,
+						final IModel<String> model)
 					{
 						return ComponentFactory.newTextArea(id, model);
+					}
+				};
+			}
+
+			@Override
+			protected Component newViewComponent(final String id, final IModel<String> model)
+			{
+				return new LabeledMultiLineLabelPanel<String>(id, model, getLabelModel())
+				{
+					/**
+					 * The serialVersionUID
+					 */
+					private static final long serialVersionUID = 1L;
+
+					/**
+					 * Factory method for creating the MultiLineLabel. This method is invoked in the
+					 * constructor from the derived classes and can be overridden so users can
+					 * provide their own version of a MultiLineLabel.
+					 *
+					 * @param id
+					 *            the id
+					 * @param model
+					 *            the model
+					 * @return the label
+					 */
+					@Override
+					protected MultiLineLabel newMultiLineLabelLabel(final String id,
+						final IModel<String> model)
+					{
+						return ComponentFactory.newMultiLineLabel(id, model);
 					}
 				};
 			}
@@ -167,70 +236,6 @@ public class EditableTextArea extends GenericPanel<String>
 		{
 			this.swapPanel.onSwapToEdit(ComponentFinder.findOrCreateNewAjaxRequestTarget(), null);
 		}
-	}
-
-
-	/**
-	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a TextArea.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the text area
-	 */
-	protected TextArea<String> newTextArea(String id, IModel<String> model)
-	{
-		TextArea<String> textArea = new TextArea<String>(id, model)
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				setVisibilityAllowed(isEditable());
-			}
-		};
-		textArea.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		return textArea;
-	}
-
-	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * MultiLineLabel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the MultiLineLabel
-	 */
-	protected MultiLineLabel newMultiLineLabel(String id, IModel<String> model)
-	{
-		MultiLineLabel multiLineLabel = new MultiLineLabel(id, model)
-		{
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onConfigure()
-			{
-				setVisibilityAllowed(!isEditable());
-			}
-		};
-		multiLineLabel.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		return multiLineLabel;
-	}
-
-	/**
-	 * Checks if is editable.
-	 *
-	 * @return true, if it is editable
-	 */
-	public boolean isEditable()
-	{
-		return modeContext.equals(ModeContext.EDIT_MODE);
 	}
 
 	/**

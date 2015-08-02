@@ -77,7 +77,7 @@ public abstract class TermOfUsePanel extends Panel
 		this(id, null);
 	}
 
-	public TermOfUsePanel(final String id, IModel<TermOfUseModel> model)
+	public TermOfUsePanel(final String id, final IModel<TermOfUseModel> model)
 	{
 		super(id, model);
 
@@ -121,66 +121,34 @@ public abstract class TermOfUsePanel extends Panel
 
 	}
 
-	protected Component newGeneralTermsAndConditionsPanel(String id,
-		IModel<HeaderContentListModel> model)
+	public Component getCancellationPanel()
 	{
-		return new GeneralTermsAndConditionsPanel(id, Model.of(model.getObject()));
+		return cancellationPanel;
 	}
 
-	protected Component newLegalReferencesPanel(String id, IModel<HeaderContentListModel> model)
+	public Component getContractPanel()
 	{
-		return new LegalReferencesPanel(id, Model.of(model.getObject()));
+		return contractPanel;
 	}
 
-	protected Component newContractPanel(String id, IModel<HeaderContentListModel> model)
+	public Component getCopyrightPanel()
 	{
-		return new ContractPanel(id, Model.of(model.getObject()));
+		return copyrightPanel;
 	}
 
-	protected Component newDataProtectionPanel(String id, IModel<HeaderContentListModel> model)
+	public Component getDataProtectionPanel()
 	{
-		return new DataProtectionPanel(id, Model.of(model.getObject()));
+		return dataProtectionPanel;
 	}
 
-	protected Component newCopyrightPanel(String id, IModel<HeaderContentListModel> model)
+	public Component getDisclaimerPanel()
 	{
-		return new CopyrightPanel(id, Model.of(model.getObject()));
+		return disclaimerPanel;
 	}
 
-	protected Component newCancellationPanel(String id, IModel<HeaderContentListModel> model)
+	public Component getFulfilmentAndJurisdictionPlacePanel()
 	{
-		return new CancellationPanel(id, Model.of(model.getObject()));
-	}
-
-	protected Component newLiabilityPanel(String id, IModel<HeaderContentListModel> model)
-	{
-		return new LiabilityPanel(id, Model.of(model.getObject()));
-	}
-
-	protected Component newRightsAndDutiesPanel(String id, IModel<RightsAndDutiesModel> model)
-	{
-		return new RightsAndDutiesPanel(id, model);
-	}
-
-	protected Component newModificationsClausePanel(String id, IModel<HeaderContentListModel> model)
-	{
-		return new ModificationsClausePanel(id, Model.of(model.getObject()));
-	}
-
-	protected Component newSalvatoriusClausePanel(String id, IModel<HeaderContentListModel> model)
-	{
-		return new SalvatoriusClausePanel(id, Model.of(model.getObject()));
-	}
-
-	protected Component newFulfilmentAndJurisdictionPlacePanel(String id,
-		IModel<HeaderContentListModel> model)
-	{
-		return new FulfilmentAndJurisdictionPlacePanel(id, Model.of(model.getObject()));
-	}
-
-	protected Component newDisclaimerPanel(String id, IModel<HeaderContentListModel> model)
-	{
-		return new DisclaimerPanel(id, Model.of(model.getObject()));
+		return fulfilmentAndJurisdictionPlacePanel;
 	}
 
 	public Component getGeneralTermsAndConditionsPanel()
@@ -193,34 +161,9 @@ public abstract class TermOfUsePanel extends Panel
 		return legalReferencesPanel;
 	}
 
-	public Component getContractPanel()
-	{
-		return contractPanel;
-	}
-
-	public Component getDataProtectionPanel()
-	{
-		return dataProtectionPanel;
-	}
-
-	public Component getCopyrightPanel()
-	{
-		return copyrightPanel;
-	}
-
-	public Component getCancellationPanel()
-	{
-		return cancellationPanel;
-	}
-
 	public Component getLiabilityPanel()
 	{
 		return liabilityPanel;
-	}
-
-	public Component getRightsAndDutiesPanel()
-	{
-		return rightsAndDutiesPanel;
 	}
 
 	public Component getModificationsClausePanel()
@@ -228,19 +171,85 @@ public abstract class TermOfUsePanel extends Panel
 		return modificationsClausePanel;
 	}
 
+	public Component getRightsAndDutiesPanel()
+	{
+		return rightsAndDutiesPanel;
+	}
+
 	public Component getSalvatoriusClausePanel()
 	{
 		return salvatoriusClausePanel;
 	}
 
-	public Component getFulfilmentAndJurisdictionPlacePanel()
+	protected Component newCancellationPanel(final String id,
+		final IModel<HeaderContentListModel> model)
 	{
-		return fulfilmentAndJurisdictionPlacePanel;
+		return new CancellationPanel(id, Model.of(model.getObject()));
 	}
 
-	public Component getDisclaimerPanel()
+	protected Component newContractPanel(final String id, final IModel<HeaderContentListModel> model)
 	{
-		return disclaimerPanel;
+		return new ContractPanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newCopyrightPanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new CopyrightPanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newDataProtectionPanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new DataProtectionPanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newDisclaimerPanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new DisclaimerPanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newFulfilmentAndJurisdictionPlacePanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new FulfilmentAndJurisdictionPlacePanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newGeneralTermsAndConditionsPanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new GeneralTermsAndConditionsPanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newLegalReferencesPanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new LegalReferencesPanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newLiabilityPanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new LiabilityPanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newModificationsClausePanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new ModificationsClausePanel(id, Model.of(model.getObject()));
+	}
+
+	protected Component newRightsAndDutiesPanel(final String id,
+		final IModel<RightsAndDutiesModel> model)
+	{
+		return new RightsAndDutiesPanel(id, model);
+	}
+
+	protected Component newSalvatoriusClausePanel(final String id,
+		final IModel<HeaderContentListModel> model)
+	{
+		return new SalvatoriusClausePanel(id, Model.of(model.getObject()));
 	}
 
 }

@@ -44,13 +44,13 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>>
 	@Getter
 	AjaxRadioPanel<Company> ajaxRadioPanel;
 
-	public AjaxRadioExamplePanel(String id, IModel<List<Company>> model)
+	public AjaxRadioExamplePanel(final String id, final IModel<List<Company>> model)
 	{
 		super(id, model);
 		// create list...
-		List<Company> items = Arrays.asList(Company.builder().name("Ferrari").build(), Company
-			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
-			Company.builder().name("Porsche").build());
+		final List<Company> items = Arrays.asList(Company.builder().name("Ferrari").build(),
+			Company.builder().name("Lamborgini").build(), Company.builder().name("Mazerati")
+				.build(), Company.builder().name("Porsche").build());
 		final RadioGroupModel<Company> radioGroupModel = new RadioGroupModel<>();
 		setModel(model);
 		radioGroupModel.setLabelPropertyExpression("name");
@@ -62,7 +62,7 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onRadioSelect(AjaxRequestTarget target, Company newSelection)
+			protected void onRadioSelect(final AjaxRequestTarget target, final Company newSelection)
 			{
 				info("You have selected " + newSelection.getName());
 				target.add(getFeedback());
@@ -73,7 +73,7 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>>
 
 	protected Component getFeedback()
 	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 
@@ -81,7 +81,7 @@ public class AjaxRadioExamplePanel extends BasePanel<List<Company>>
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		response.render(CssHeaderItem.forReference(new CssResourceReference(

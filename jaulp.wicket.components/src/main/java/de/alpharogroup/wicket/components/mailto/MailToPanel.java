@@ -57,6 +57,22 @@ public abstract class MailToPanel extends Panel
 	protected abstract String getDomainName();
 
 	/**
+	 * Factory method to create a IModel for the MailtoAddressModel. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * MailtoAddressModel.
+	 * 
+	 * @param params
+	 *            the params
+	 * @return the mail to address model
+	 */
+	protected IModel<String> newMailToAddressModel(final Object[] params)
+	{
+		return ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("global.mailto.address").parameters(params).build(),
+			this);
+	}
+
+	/**
 	 * Factory method to create a MailtoModel. This method is invoked in the constructor from this
 	 * class and can be overridden so users can provide their own version of a MailtoModel.
 	 * 
@@ -85,22 +101,6 @@ public abstract class MailToPanel extends Panel
 		return ResourceModelFactory.newResourceModel(
 			ResourceBundleKey.builder().key("global.compamy.mailto.view").parameters(params)
 				.build(), this);
-	}
-
-	/**
-	 * Factory method to create a IModel for the MailtoAddressModel. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * MailtoAddressModel.
-	 * 
-	 * @param params
-	 *            the params
-	 * @return the mail to address model
-	 */
-	protected IModel<String> newMailToAddressModel(final Object[] params)
-	{
-		return ResourceModelFactory.newResourceModel(
-			ResourceBundleKey.builder().key("global.mailto.address").parameters(params).build(),
-			this);
 	}
 
 }

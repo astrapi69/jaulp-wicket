@@ -58,34 +58,6 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	}
 
 	/**
-	 * Factory method for creating the TextField. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a TextField.
-	 * 
-	 * @param id
-	 *            the id
-	 * @return the TextField
-	 */
-	protected Component newTextField(String id)
-	{
-		return ComponentFactory.newTextField(id);
-	}
-
-	/**
-	 * Factory method for creating the Form. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the form
-	 */
-	protected Form<?> newForm(String id, IModel<? extends SimpleSearchModel> model)
-	{
-		return ComponentFactory.newForm(id, model);
-	}
-
-	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 * 
@@ -93,7 +65,7 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	 *            the id
 	 * @return the component
 	 */
-	protected Button newButton(String id)
+	protected Button newButton(final String id)
 	{
 		return new Button(id)
 		{
@@ -121,9 +93,38 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	protected Label newButtonLabel(final String id, final String resourceKey,
+		final String defaultValue)
 	{
 		return ComponentFactory.newLabel(id, resourceKey, defaultValue, this);
+	}
+
+	/**
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the form
+	 */
+	protected Form<?> newForm(final String id, final IModel<? extends SimpleSearchModel> model)
+	{
+		return ComponentFactory.newForm(id, model);
+	}
+
+	/**
+	 * Factory method for creating the TextField. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a TextField.
+	 * 
+	 * @param id
+	 *            the id
+	 * @return the TextField
+	 */
+	protected Component newTextField(final String id)
+	{
+		return ComponentFactory.newTextField(id);
 	}
 
 	protected abstract void onSearch();

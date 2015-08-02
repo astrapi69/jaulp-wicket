@@ -55,17 +55,23 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
 		this.componentClass = componentClass;
 	}
 
+	public Class<?> getComponentClass()
+	{
+		return componentClass;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Object getDisplayValue(final String object)
 	{
-		IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-			.builder().key(object).defaultValue("").build(), component);
-		String value = resourceModel.getObject();
+		final IModel<String> resourceModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key(object).defaultValue("").build(), component);
+		final String value = resourceModel.getObject();
 		return value;
 	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -76,15 +82,9 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
 		return object;
 	}
 
-
-	public String getObject(String id, IModel<? extends List<? extends String>> choices)
+	public String getObject(final String id, final IModel<? extends List<? extends String>> choices)
 	{
 		// override this method...
 		return null;
-	}
-
-	public Class<?> getComponentClass()
-	{
-		return componentClass;
 	}
 }

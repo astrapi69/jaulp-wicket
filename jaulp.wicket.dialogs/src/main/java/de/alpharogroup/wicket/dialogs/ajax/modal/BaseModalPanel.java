@@ -65,41 +65,6 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating a new ok Button. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a new ok
-	 * Button.
-	 *
-	 * @param id
-	 *            the wicket id
-	 * @return the Button
-	 */
-	protected AjaxButton newOkButton(final String id)
-	{
-		final AjaxButton ok = new AjaxButton(id)
-		{
-			/**
-			 * The serialVersionUID.
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-			{
-				final T obj = BaseModalPanel.this.getModelObject();
-				onSelect(target, obj);
-			}
-
-			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form)
-			{
-				final T obj = BaseModalPanel.this.getModelObject();
-				onSelect(target, obj);
-			}
-		};
-		return ok;
-	}
-
-	/**
 	 * Factory method for creating a new cancel Button. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * new cancel Button.
@@ -118,35 +83,20 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			protected void onError(final AjaxRequestTarget target, final Form<?> form)
 			{
 				target.add(note);
 				onCancel(target);
 			}
 
 			@Override
-			protected void onError(AjaxRequestTarget target, Form<?> form)
+			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
 				target.add(note);
 				onCancel(target);
 			}
 		};
 		return close;
-	}
-
-	/**
-	 * Factory method for creating a new TextArea. This method is invoked in the constructor from
-	 * this class and can be overridden so users can provide their own version of a new TextArea.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the text area
-	 */
-	protected TextArea<String> newTextArea(final String id, final IModel<T> model)
-	{
-		return ComponentFactory.newTextArea(id, new PropertyModel<String>(model, "messageContent"));
 	}
 
 	/**
@@ -165,12 +115,62 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	}
 
 	/**
+	 * Factory method for creating a new ok Button. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new ok
+	 * Button.
+	 *
+	 * @param id
+	 *            the wicket id
+	 * @return the Button
+	 */
+	protected AjaxButton newOkButton(final String id)
+	{
+		final AjaxButton ok = new AjaxButton(id)
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onError(final AjaxRequestTarget target, final Form<?> form)
+			{
+				final T obj = BaseModalPanel.this.getModelObject();
+				onSelect(target, obj);
+			}
+
+			@Override
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
+				final T obj = BaseModalPanel.this.getModelObject();
+				onSelect(target, obj);
+			}
+		};
+		return ok;
+	}
+
+	/**
+	 * Factory method for creating a new TextArea. This method is invoked in the constructor from
+	 * this class and can be overridden so users can provide their own version of a new TextArea.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the text area
+	 */
+	protected TextArea<String> newTextArea(final String id, final IModel<T> model)
+	{
+		return ComponentFactory.newTextArea(id, new PropertyModel<String>(model, "messageContent"));
+	}
+
+	/**
 	 * On cancel.
 	 *
 	 * @param target
 	 *            the target
 	 */
-	abstract void onCancel(AjaxRequestTarget target);
+	abstract void onCancel(final AjaxRequestTarget target);
 
 	/**
 	 * On select.
@@ -180,6 +180,6 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	 * @param object
 	 *            the object
 	 */
-	abstract void onSelect(AjaxRequestTarget target, T object);
+	abstract void onSelect(final AjaxRequestTarget target, final T object);
 
 }

@@ -35,7 +35,7 @@ public class RepliesandnotesPanel extends Panel
 	 * @param repliesandnotes
 	 *            the repliesandnotes
 	 */
-	public RepliesandnotesPanel(String id, final MessageBean repliesandnotes)
+	public RepliesandnotesPanel(final String id, final MessageBean repliesandnotes)
 	{
 		super(id);
 		add(new Label("label", repliesandnotes.getMessageContent()));

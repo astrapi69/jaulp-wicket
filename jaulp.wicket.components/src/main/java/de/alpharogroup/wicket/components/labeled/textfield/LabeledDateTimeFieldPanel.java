@@ -52,14 +52,15 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledDateTimeFieldPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledDateTimeFieldPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 		add(dateTimeField = newDateTimeField("dateTimeField", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dateTimeField));
 
-		String markupId = dateTimeField.getMarkupId();
+		final String markupId = dateTimeField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 	}
 
@@ -92,9 +93,9 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the text field
 	 */
-	protected DateTimeField newDateTimeField(String id, IModel<T> model)
+	protected DateTimeField newDateTimeField(final String id, final IModel<T> model)
 	{
-		IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
+		final IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
 		return ComponentFactory.newDateTimeField(id, textFieldModel);
 	}
 

@@ -23,6 +23,57 @@ import org.apache.wicket.model.Model;
 public class GooglePlusShareModel implements Serializable
 {
 
+	public static class Builder
+	{
+		private String cssClass;
+		private String dataAnnotation;
+		private String dataWith;
+		private String dataHref;
+		private String scriptSrc;
+		private String locale;
+
+		public GooglePlusShareModel build()
+		{
+			return new GooglePlusShareModel(this);
+		}
+
+		public Builder cssClass(final String cssClass)
+		{
+			this.cssClass = cssClass;
+			return this;
+		}
+
+		public Builder dataAnnotation(final String dataAnnotation)
+		{
+			this.dataAnnotation = dataAnnotation;
+			return this;
+		}
+
+		public Builder dataHref(final String dataHref)
+		{
+			this.dataHref = dataHref;
+			return this;
+		}
+
+		public Builder dataWith(final String dataWith)
+		{
+			this.dataWith = dataWith;
+			return this;
+		}
+
+		public Builder locale(final String locale)
+		{
+			this.locale = locale;
+			return this;
+		}
+
+		public Builder scriptSrc(final String scriptSrc)
+		{
+			this.scriptSrc = scriptSrc;
+			return this;
+		}
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	private final String cssClass;
@@ -37,6 +88,16 @@ public class GooglePlusShareModel implements Serializable
 
 	private final String locale;
 
+	private GooglePlusShareModel(final Builder builder)
+	{
+		this.cssClass = builder.cssClass;
+		this.dataAnnotation = builder.dataAnnotation;
+		this.dataWith = builder.dataWith;
+		this.dataHref = builder.dataHref;
+		this.scriptSrc = builder.scriptSrc;
+		this.locale = builder.locale;
+	}
+
 	public String getCssClass()
 	{
 		return cssClass;
@@ -47,19 +108,14 @@ public class GooglePlusShareModel implements Serializable
 		return dataAnnotation;
 	}
 
-	public String getDataWith()
-	{
-		return dataWith;
-	}
-
 	public String getDataHref()
 	{
 		return dataHref;
 	}
 
-	public String getScriptSrc()
+	public String getDataWith()
 	{
-		return scriptSrc;
+		return dataWith;
 	}
 
 	public String getLocale()
@@ -67,69 +123,13 @@ public class GooglePlusShareModel implements Serializable
 		return locale;
 	}
 
+	public String getScriptSrc()
+	{
+		return scriptSrc;
+	}
+
 	public IModel<GooglePlusShareModel> toModel()
 	{
 		return Model.of(this);
-	}
-
-	public static class Builder
-	{
-		private String cssClass;
-		private String dataAnnotation;
-		private String dataWith;
-		private String dataHref;
-		private String scriptSrc;
-		private String locale;
-
-		public Builder cssClass(String cssClass)
-		{
-			this.cssClass = cssClass;
-			return this;
-		}
-
-		public Builder dataAnnotation(String dataAnnotation)
-		{
-			this.dataAnnotation = dataAnnotation;
-			return this;
-		}
-
-		public Builder dataWith(String dataWith)
-		{
-			this.dataWith = dataWith;
-			return this;
-		}
-
-		public Builder dataHref(String dataHref)
-		{
-			this.dataHref = dataHref;
-			return this;
-		}
-
-		public Builder scriptSrc(String scriptSrc)
-		{
-			this.scriptSrc = scriptSrc;
-			return this;
-		}
-
-		public Builder locale(String locale)
-		{
-			this.locale = locale;
-			return this;
-		}
-
-		public GooglePlusShareModel build()
-		{
-			return new GooglePlusShareModel(this);
-		}
-	}
-
-	private GooglePlusShareModel(Builder builder)
-	{
-		this.cssClass = builder.cssClass;
-		this.dataAnnotation = builder.dataAnnotation;
-		this.dataWith = builder.dataWith;
-		this.dataHref = builder.dataHref;
-		this.scriptSrc = builder.scriptSrc;
-		this.locale = builder.locale;
 	}
 }

@@ -42,7 +42,7 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 		this(true);
 	}
 
-	public AjaxDownloadBehavior(boolean antiCache)
+	public AjaxDownloadBehavior(final boolean antiCache)
 	{
 		super();
 		this.antiCache = antiCache;
@@ -54,7 +54,7 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 	 * @param target
 	 *            the {@link AjaxRequestTarget}
 	 */
-	public void initiate(AjaxRequestTarget target)
+	public void initiate(final AjaxRequestTarget target)
 	{
 		String url = getCallbackUrl().toString();
 
@@ -70,7 +70,7 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 	@Override
 	public void onRequest()
 	{
-		ResourceStreamRequestHandler handler = new ResourceStreamRequestHandler(
+		final ResourceStreamRequestHandler handler = new ResourceStreamRequestHandler(
 			getResourceStream(), getFileName());
 		handler.setContentDisposition(ContentDisposition.ATTACHMENT);
 		getComponent().getRequestCycle().scheduleRequestHandlerAfterCurrent(handler);

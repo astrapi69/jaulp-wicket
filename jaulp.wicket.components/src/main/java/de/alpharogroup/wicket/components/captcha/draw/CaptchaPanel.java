@@ -45,7 +45,7 @@ public class CaptchaPanel extends Panel
 	@Getter
 	RequiredTextField<String> captchaInput;
 
-	public CaptchaPanel(String id, IModel<CaptchaModel> captchaModel)
+	public CaptchaPanel(final String id, final IModel<CaptchaModel> captchaModel)
 	{
 		super(id, captchaModel);
 		// Add the image to the panel...
@@ -61,11 +61,11 @@ public class CaptchaPanel extends Panel
 	}
 
 	protected RequiredTextField<String> newRequiredTextField(final String id,
-		IModel<CaptchaModel> captchaModel)
+		final IModel<CaptchaModel> captchaModel)
 	{
 		// Create an TextField for the input...
-		RequiredTextField<String> captchaInput = new RequiredTextField<String>("captchaInput",
-			model(from(captchaModel.getObject()).getCaptchaInput()))
+		final RequiredTextField<String> captchaInput = new RequiredTextField<String>(
+			"captchaInput", model(from(captchaModel.getObject()).getCaptchaInput()))
 		{
 
 			/**

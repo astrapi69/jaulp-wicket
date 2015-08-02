@@ -33,13 +33,13 @@ public class SocialNetworksExamplePage extends PubliclyBasePage<SocialNetworkBea
 
 	private static final long serialVersionUID = 1L;
 
+	public SocialNetworksExamplePage()
+	{
+	}
+
 	public SocialNetworksExamplePage(final PageParameters parameters)
 	{
 		super(parameters);
-	}
-
-	public SocialNetworksExamplePage()
-	{
 	}
 
 	@Override

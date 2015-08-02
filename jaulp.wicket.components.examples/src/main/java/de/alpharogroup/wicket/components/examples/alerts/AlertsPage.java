@@ -26,14 +26,14 @@ public class AlertsPage extends PubliclyBasePage<Object>
 {
 	private static final long serialVersionUID = 1L;
 
+	public AlertsPage(final PageParameters parameters)
+	{
+		super(parameters);
+	}
+
 	@Override
 	public Component getContainerPanel()
 	{
 		return new AlertsPanel(CONTAINER_PANEL_ID);
-	}
-
-	public AlertsPage(final PageParameters parameters)
-	{
-		super(parameters);
 	}
 }

@@ -30,12 +30,12 @@ public abstract class FooterPanel extends Panel
 	@Getter
 	private Component footerMenuPanel;
 
-	public FooterPanel(String id)
+	public FooterPanel(final String id)
 	{
 		super(id);
 		add(footerMenuPanel = newFooterMenuPanel("footerMenuPanel"));
 	}
 
-	protected abstract Component newFooterMenuPanel(String id);
+	protected abstract Component newFooterMenuPanel(final String id);
 
 }

@@ -43,19 +43,9 @@ public class PersonFilter implements Serializable
 		return dateFrom;
 	}
 
-	public void setDateFrom(Date dateFrom)
-	{
-		this.dateFrom = dateFrom;
-	}
-
 	public Date getDateTo()
 	{
 		return dateTo;
-	}
-
-	public void setDateTo(Date dateTo)
-	{
-		this.dateTo = dateTo;
 	}
 
 	public String getFirstname()
@@ -68,12 +58,22 @@ public class PersonFilter implements Serializable
 		return lastname;
 	}
 
-	public void setFirstname(String firstname)
+	public void setDateFrom(final Date dateFrom)
+	{
+		this.dateFrom = dateFrom;
+	}
+
+	public void setDateTo(final Date dateTo)
+	{
+		this.dateTo = dateTo;
+	}
+
+	public void setFirstname(final String firstname)
 	{
 		this.firstname = firstname;
 	}
 
-	public void setLastname(String lastname)
+	public void setLastname(final String lastname)
 	{
 		this.lastname = lastname;
 	}

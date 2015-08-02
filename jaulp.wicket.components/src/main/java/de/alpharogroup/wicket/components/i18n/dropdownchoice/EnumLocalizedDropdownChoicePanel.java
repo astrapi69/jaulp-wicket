@@ -38,19 +38,19 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	@Getter
 	private final DropDownChoice<T> dropdownChoice;
 
-	public EnumLocalizedDropdownChoicePanel(String id, IModel<M> model, IModel<String> labelModel,
-		List<T> enumValues)
+	public EnumLocalizedDropdownChoicePanel(final String id, final IModel<M> model,
+		final IModel<String> labelModel, final List<T> enumValues)
 	{
 		super(id, model, labelModel);
 		setDefaultModel(model);
-		ChoiceRenderer<T> choiceRenderer = new ChoiceRenderer<>("name", "name");
+		final ChoiceRenderer<T> choiceRenderer = new ChoiceRenderer<>("name", "name");
 
 		add(dropdownChoice = newLocalisedDropDownChoice("dropdownChoice", model, enumValues,
 			choiceRenderer));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dropdownChoice));
 
-		String markupId = dropdownChoice.getMarkupId();
+		final String markupId = dropdownChoice.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 
 		// Add bootstrap css...
@@ -58,12 +58,13 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 
 	}
 
-	protected DropDownChoice<T> newLocalisedDropDownChoice(final String id, final IModel<M> model,
-		final List<? extends T> data, final IChoiceRenderer<? super T> renderer)
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void convertInput()
 	{
-		PropertyModel<T> pm = new PropertyModel<>(model.getObject(), this.getId());
-		DropDownChoice<T> ddc = new LocalisedDropDownChoice<>(id, pm, data, renderer);
-		return ddc;
+		setConvertedInput(getModel().getObject());
 	}
 
 	/**
@@ -75,13 +76,12 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 		return dropdownChoice.getInput();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
+	protected DropDownChoice<T> newLocalisedDropDownChoice(final String id, final IModel<M> model,
+		final List<? extends T> data, final IChoiceRenderer<? super T> renderer)
 	{
-		setConvertedInput(getModel().getObject());
+		final PropertyModel<T> pm = new PropertyModel<>(model.getObject(), this.getId());
+		final DropDownChoice<T> ddc = new LocalisedDropDownChoice<>(id, pm, data, renderer);
+		return ddc;
 	}
 
 	/**

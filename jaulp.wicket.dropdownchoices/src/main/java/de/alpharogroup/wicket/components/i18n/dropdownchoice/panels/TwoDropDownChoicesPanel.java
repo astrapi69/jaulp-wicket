@@ -68,7 +68,7 @@ public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDow
 	 */
 	public TwoDropDownChoicesPanel(final String id,
 		final TwoDropDownChoicesModel<T> stringTwoDropDownChoicesModel,
-		IChoiceRenderer<T> rootRenderer, IChoiceRenderer<T> childRenderer)
+		final IChoiceRenderer<T> rootRenderer, final IChoiceRenderer<T> childRenderer)
 	{
 		super(id, Model.of(stringTwoDropDownChoicesModel));
 		IModel<T> selectedRootOptionModel = null;
@@ -90,12 +90,26 @@ public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDow
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Factory method for create a new child choice. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * child choice.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param choices
+	 *            the choices
+	 * @param renderer
+	 *            the renderer
+	 * @return the child choice
 	 */
-	@Override
-	protected void onInitialize()
+	protected DropDownChoice<T> newChildChoice(final String id, final IModel<T> model,
+		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
 	{
-		super.onInitialize();
+		final DropDownChoice<T> cc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
+		cc.setOutputMarkupId(true);
+		return cc;
 	}
 
 	/**
@@ -116,7 +130,7 @@ public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDow
 	protected DropDownChoice<T> newRootChoice(final String id, final IModel<T> model,
 		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
 	{
-		DropDownChoice<T> rc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
+		final DropDownChoice<T> rc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
 		rc.add(new AjaxFormComponentUpdatingBehavior("onchange")
 		{
 			/** The Constant serialVersionUID. */
@@ -132,26 +146,12 @@ public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDow
 	}
 
 	/**
-	 * Factory method for create a new child choice. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a new
-	 * child choice.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @param choices
-	 *            the choices
-	 * @param renderer
-	 *            the renderer
-	 * @return the child choice
+	 * {@inheritDoc}
 	 */
-	protected DropDownChoice<T> newChildChoice(final String id, final IModel<T> model,
-		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
+	@Override
+	protected void onInitialize()
 	{
-		DropDownChoice<T> cc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
-		cc.setOutputMarkupId(true);
-		return cc;
+		super.onInitialize();
 	}
 
 }

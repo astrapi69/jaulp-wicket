@@ -35,12 +35,12 @@ public class RightsAndDutiesPanel extends Panel
 
 	private static final long serialVersionUID = 1L;
 
-	public RightsAndDutiesPanel(String id)
+	public RightsAndDutiesPanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public RightsAndDutiesPanel(String id, IModel<RightsAndDutiesModel> model)
+	public RightsAndDutiesPanel(final String id, final IModel<RightsAndDutiesModel> model)
 	{
 		super(id, model);
 
@@ -51,17 +51,18 @@ public class RightsAndDutiesPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
-			{
-				return new Label(id, newContentResourceModel(item.getModel()))
-					.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
-			}
-
-			@Override
-			protected Component newHeaderLabel(String id, IModel<String> model)
+			protected Component newHeaderLabel(final String id, final IModel<String> model)
 			{
 				return super.newHeaderLabel(id, model).add(
 					new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
+			}
+
+			@Override
+			protected Component newListComponent(final String id,
+				final ListItem<ResourceBundleKey> item)
+			{
+				return new Label(id, newContentResourceModel(item.getModel()))
+					.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
 			}
 		});
 
@@ -72,7 +73,8 @@ public class RightsAndDutiesPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+			protected Component newListComponent(final String id,
+				final ListItem<ResourceBundleKey> item)
 			{
 				return new Label(id, ResourceModelFactory.newResourceModel(item.getModel()
 					.getObject(), this));
@@ -86,7 +88,8 @@ public class RightsAndDutiesPanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newListComponent(String id, ListItem<ResourceBundleKey> item)
+			protected Component newListComponent(final String id,
+				final ListItem<ResourceBundleKey> item)
 			{
 				return new Label(id, ResourceModelFactory.newResourceModel(item.getModel()
 					.getObject(), this)).add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));

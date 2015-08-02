@@ -69,34 +69,21 @@ public class CheckChoicesListView<T> extends ChoicesListView<T>
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CheckChoicesListView(String id, IModel<List<T>> choices, IChoiceRenderer<T> renderer)
+	public CheckChoicesListView(final String id, final IModel<List<T>> choices,
+		final IChoiceRenderer<T> renderer)
 	{
 		super(id, choices, renderer);
 	}
 
-	@Override
-	protected void populateItem(ListItem<T> it)
+	protected Check<T> newCheck(final String id, final IModel<T> model, final int index)
 	{
-		final int index = it.getIndex();
-		it.add(newLabel("label", getChoiceLabel(it.getModelObject())));
-		it.add(newCheck("check", it.getModel(), index));
-	}
-
-	protected Check<T> newCheck(String id, IModel<T> model, final int index)
-	{
-		Check<T> check = new Check<T>(id, model)
+		final Check<T> check = new Check<T>(id, model)
 		{
 
 			/**
 			 * The serialVersionUID.
 			 */
 			private static final long serialVersionUID = 1L;
-
-			@Override
-			public String getValue()
-			{
-				return getChoiceValue(getModelObject(), index);
-			}
 
 			@Override
 			public IModel<String> getLabel()
@@ -109,12 +96,26 @@ public class CheckChoicesListView<T> extends ChoicesListView<T>
 			{
 				return true;
 			}
+
+			@Override
+			public String getValue()
+			{
+				return getChoiceValue(getModelObject(), index);
+			}
 		};
 		return check;
 	}
 
-	protected Label newLabel(String id, String label)
+	protected Label newLabel(final String id, final String label)
 	{
 		return ComponentFactory.newLabel(id, Model.of(label));
+	}
+
+	@Override
+	protected void populateItem(final ListItem<T> it)
+	{
+		final int index = it.getIndex();
+		it.add(newLabel("label", getChoiceLabel(it.getModelObject())));
+		it.add(newCheck("check", it.getModel(), index));
 	}
 }

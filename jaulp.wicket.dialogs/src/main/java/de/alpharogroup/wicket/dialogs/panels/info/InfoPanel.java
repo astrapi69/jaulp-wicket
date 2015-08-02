@@ -53,7 +53,7 @@ public abstract class InfoPanel<T> extends GenericPanel<T>
 	 */
 	protected AjaxButton newCloseButton(final String id)
 	{
-		AjaxButton ajaxButton = new AjaxButton(id)
+		final AjaxButton ajaxButton = new AjaxButton(id)
 		{
 			/**
 			 * The serialVersionUID.
@@ -88,7 +88,7 @@ public abstract class InfoPanel<T> extends GenericPanel<T>
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, IModel<String> model)
+	protected Label newLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}

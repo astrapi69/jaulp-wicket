@@ -42,12 +42,12 @@ public class DefaultDataTablePanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DefaultDataTablePanel(String id)
+	public DefaultDataTablePanel(final String id)
 	{
 		super(id);
-		List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
+		final List<Person> persons = PersonDatabaseManager.getInstance().getPersons();
 
-		SortableFilterPersonDataProvider dataProvider = new SortableFilterPersonDataProvider(
+		final SortableFilterPersonDataProvider dataProvider = new SortableFilterPersonDataProvider(
 			persons)
 		{
 
@@ -59,7 +59,7 @@ public class DefaultDataTablePanel extends Panel
 				return PersonDatabaseManager.getInstance().getPersons();
 			}
 		};
-		List<IColumn<Person, String>> columns = new ArrayList<IColumn<Person, String>>();
+		final List<IColumn<Person, String>> columns = new ArrayList<IColumn<Person, String>>();
 		columns.add(new TextFilteredPropertyColumn<Person, PersonFilter, String>(Model
 			.of("First name"), "firstname", "firstname"));
 		columns.add(new TextFilteredPropertyColumn<Person, PersonFilter, String>(Model
@@ -67,12 +67,12 @@ public class DefaultDataTablePanel extends Panel
 		columns.add(new PropertyColumn<Person, String>(Model.of("Date of birth"), "dateOfBirth",
 			"dateOfBirth"));
 
-		FilterForm<PersonFilter> form = new FilterForm<PersonFilter>("form", dataProvider);
+		final FilterForm<PersonFilter> form = new FilterForm<PersonFilter>("form", dataProvider);
 		form.add(new TextField<>("firstname", PropertyModel.of(dataProvider,
 			"filterState.firstname")));
 
-		DefaultDataTable<Person, String> dataTable = new DefaultDataTable<>("dataTable", columns,
-			dataProvider, 10);
+		final DefaultDataTable<Person, String> dataTable = new DefaultDataTable<>("dataTable",
+			columns, dataProvider, 10);
 		dataTable.addTopToolbar(new FilterToolbar(dataTable, form, dataProvider));
 		form.add(dataTable);
 

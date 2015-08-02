@@ -60,14 +60,14 @@ public abstract class AbstractContentTab<T> extends CloseableTab
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isVisible()
-	{
-		return true;
-	}
+	public abstract WebMarkupContainer getPanel(final String panelId);
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public abstract WebMarkupContainer getPanel(final String panelId);
+	public boolean isVisible()
+	{
+		return true;
+	}
 }

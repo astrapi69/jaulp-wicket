@@ -36,7 +36,7 @@ public class CheckGroupSelectorExamplePanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CheckGroupSelectorExamplePanel(String id, IModel<?> model)
+	public CheckGroupSelectorExamplePanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
 		final CheckboxModel<Company> checkboxModel = new CheckboxModel<Company>();
@@ -44,7 +44,7 @@ public class CheckGroupSelectorExamplePanel extends Panel
 			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
 			Company.builder().name("Porsche").build()));
 		checkboxModel.setLabelPropertyExpression("name");
-		IModel<CheckboxModel<Company>> checkGroupModel = Model.of(checkboxModel);
+		final IModel<CheckboxModel<Company>> checkGroupModel = Model.of(checkboxModel);
 		add(new CheckGroupSelectorPanel<Company>("checkGroupSelectorPanel", checkGroupModel)
 		{
 			/**
@@ -53,7 +53,7 @@ public class CheckGroupSelectorExamplePanel extends Panel
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
 				target.add(getFeedback());
 				info("Selected Types : " + checkboxModel.getSelectedItems());
@@ -64,7 +64,7 @@ public class CheckGroupSelectorExamplePanel extends Panel
 
 	protected Component getFeedback()
 	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 

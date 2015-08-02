@@ -22,6 +22,29 @@ import org.odlabs.wiquery.core.javascript.ChainableStatement;
 public class BuildableChainableStatement implements ChainableStatement, Serializable
 {
 
+	public static class Builder
+	{
+		private String label;
+		private CharSequence[] args;
+
+		public Builder args(final CharSequence... args)
+		{
+			this.args = args;
+			return this;
+		}
+
+		public BuildableChainableStatement build()
+		{
+			return new BuildableChainableStatement(this);
+		}
+
+		public Builder label(final String label)
+		{
+			this.label = label;
+			return this;
+		}
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -34,6 +57,15 @@ public class BuildableChainableStatement implements ChainableStatement, Serializ
 	 */
 	private final CharSequence[] args;
 
+	/**
+	 * Creates a new instance of {@link BuildableChainableStatement}.
+	 */
+	private BuildableChainableStatement(final Builder builder)
+	{
+		this.label = builder.label;
+		this.args = builder.args;
+	}
+
 	@Override
 	public String chainLabel()
 	{
@@ -44,37 +76,5 @@ public class BuildableChainableStatement implements ChainableStatement, Serializ
 	public CharSequence[] statementArgs()
 	{
 		return args;
-	}
-
-	public static class Builder
-	{
-		private String label;
-		private CharSequence[] args;
-
-		public Builder label(String label)
-		{
-			this.label = label;
-			return this;
-		}
-
-		public Builder args(CharSequence... args)
-		{
-			this.args = args;
-			return this;
-		}
-
-		public BuildableChainableStatement build()
-		{
-			return new BuildableChainableStatement(this);
-		}
-	}
-
-	/**
-	 * Creates a new instance of {@link BuildableChainableStatement}.
-	 */
-	private BuildableChainableStatement(Builder builder)
-	{
-		this.label = builder.label;
-		this.args = builder.args;
 	}
 }

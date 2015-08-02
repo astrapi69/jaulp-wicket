@@ -32,19 +32,6 @@ public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundl
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new div list panel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param list
-	 *            the list
-	 */
-	public ResourceBundleKeysPanel(String id, List<ResourceBundleKey> list)
-	{
-		super(id, list);
-	}
-
-	/**
 	 * Instantiates a new header content list panel.
 	 *
 	 * @param id
@@ -52,9 +39,22 @@ public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundl
 	 * @param content
 	 *            the model
 	 */
-	public ResourceBundleKeysPanel(String id, IModel<List<ResourceBundleKey>> content)
+	public ResourceBundleKeysPanel(final String id, final IModel<List<ResourceBundleKey>> content)
 	{
 		super(id, content);
+	}
+
+	/**
+	 * Instantiates a new div list panel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
+	 */
+	public ResourceBundleKeysPanel(final String id, final List<ResourceBundleKey> list)
+	{
+		super(id, list);
 	}
 
 }

@@ -83,15 +83,43 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	}
 
 	/**
-	 * Gets the sort state.
-	 *
-	 * @return the sort state
-	 * @see ISortableDataProvider#getSortState()
+	 * {@inheritDoc}
 	 */
 	@Override
-	public final ISortState<S> getSortState()
+	public void detach()
 	{
-		return sortState;
+		setData(null);
+	}
+
+	/**
+	 * Filter the given list. Override this method to implement a filter.
+	 *
+	 * @param found
+	 *            the found
+	 * @return the list
+	 */
+	protected List<T> filter(final List<T> found)
+	{
+		return found;
+	}
+
+	/**
+	 * Gets the data.
+	 *
+	 * @return the data
+	 */
+	public List<T> getData()
+	{
+		return this.data;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public F getFilterState()
+	{
+		return this.filterState;
 	}
 
 	/**
@@ -105,67 +133,15 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	}
 
 	/**
-	 * Sets the current sort state.
+	 * Gets the sort state.
 	 *
-	 * @param param
-	 *            parameter containing new sorting information
-	 */
-	public void setSort(final SortParam<S> param)
-	{
-		sortState.setSort(param);
-	}
-
-	/**
-	 * Sets the current sort state.
-	 *
-	 * @param property
-	 *            sort property
-	 * @param order
-	 *            sort order
-	 */
-	public void setSort(final S property, final SortOrder order)
-	{
-		sortState.setPropertySortOrder(property, order);
-	}
-
-	/**
-	 * Filter the given list. Override this method to implement a filter.
-	 *
-	 * @param found
-	 *            the found
-	 * @return the list
-	 */
-	protected List<T> filter(List<T> found)
-	{
-		return found;
-	}
-
-	/**
-	 * {@inheritDoc}
+	 * @return the sort state
+	 * @see ISortableDataProvider#getSortState()
 	 */
 	@Override
-	public void detach()
+	public final ISortState<S> getSortState()
 	{
-		setData(null);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public F getFilterState()
-	{
-		return this.filterState;
-	}
-
-	/**
-	 * Gets the data.
-	 *
-	 * @return the data
-	 */
-	public List<T> getData()
-	{
-		return this.data;
+		return sortState;
 	}
 
 	/**
@@ -187,53 +163,12 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	}
 
 	/**
-	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
-	 * list will be sort.
-	 *
-	 * @param unsortedList
-	 *            the unsorted list
-	 * @return the same list but sorted.
-	 */
-	protected List<T> sort(List<T> unsortedList)
-	{
-		SortParam<S> sortParam = getSort();
-		if (sortParam != null)
-		{
-			String property = (String)sortParam.getProperty();
-			boolean ascending = sortParam.isAscending();
-			ListExtensions.sortByProperty(unsortedList, property, ascending);
-		}
-		return unsortedList;
-	}
-
-	/**
-	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
-	 * list will be sort.
-	 * 
-	 * @return the same list but sorted.
-	 */
-	protected List<T> sort()
-	{
-		return sort(getData());
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public IModel<T> model(final T object)
 	{
 		return Model.of(object);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setFilterState(final F filterState)
-	{
-		this.filterState = filterState;
-
 	}
 
 	/**
@@ -251,9 +186,74 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	 * {@inheritDoc}
 	 */
 	@Override
+	public void setFilterState(final F filterState)
+	{
+		this.filterState = filterState;
+
+	}
+
+	/**
+	 * Sets the current sort state.
+	 *
+	 * @param property
+	 *            sort property
+	 * @param order
+	 *            sort order
+	 */
+	public void setSort(final S property, final SortOrder order)
+	{
+		sortState.setPropertySortOrder(property, order);
+	}
+
+	/**
+	 * Sets the current sort state.
+	 *
+	 * @param param
+	 *            parameter containing new sorting information
+	 */
+	public void setSort(final SortParam<S> param)
+	{
+		sortState.setSort(param);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public long size()
 	{
 		return filter(getData()).size();
+	}
+
+	/**
+	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
+	 * list will be sort.
+	 * 
+	 * @return the same list but sorted.
+	 */
+	protected List<T> sort()
+	{
+		return sort(getData());
+	}
+
+	/**
+	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
+	 * list will be sort.
+	 *
+	 * @param unsortedList
+	 *            the unsorted list
+	 * @return the same list but sorted.
+	 */
+	protected List<T> sort(final List<T> unsortedList)
+	{
+		final SortParam<S> sortParam = getSort();
+		if (sortParam != null)
+		{
+			final String property = (String)sortParam.getProperty();
+			final boolean ascending = sortParam.isAscending();
+			ListExtensions.sortByProperty(unsortedList, property, ascending);
+		}
+		return unsortedList;
 	}
 
 }

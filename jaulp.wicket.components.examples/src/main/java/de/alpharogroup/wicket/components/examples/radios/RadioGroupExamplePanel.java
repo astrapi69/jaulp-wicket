@@ -42,23 +42,23 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 {
 	private static final long serialVersionUID = 1L;
 
-	public RadioGroupExamplePanel(String id, IModel<Company> model)
+	public RadioGroupExamplePanel(final String id, final IModel<Company> model)
 	{
 		super(id, model);
 		// Radio buttons must be part of a Form component.
-		Form<?> form = new Form<>("form");
+		final Form<?> form = new Form<>("form");
 		add(form);
 		final RadioGroupModel<Company> radioGroupModel = new RadioGroupModel<>();
 		setModel(model);
 		// create list...
-		List<Company> comps = Arrays.asList(Company.builder().name("Ferrari").build(), Company
-			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
-			Company.builder().name("Porsche").build());
+		final List<Company> comps = Arrays.asList(Company.builder().name("Ferrari").build(),
+			Company.builder().name("Lamborgini").build(), Company.builder().name("Mazerati")
+				.build(), Company.builder().name("Porsche").build());
 		// we can set the selected radio from the start or leave it blank...
 		// radioGroupModel.setSelected(comps.get(0));
 		radioGroupModel.setRadios(comps);
 
-		IModel<List<Company>> companies = new ListModel<Company>(comps);
+		final IModel<List<Company>> companies = new ListModel<Company>(comps);
 
 		final RadioGroup<Company> group = new RadioGroup<Company>("group",
 			new PropertyModel<Company>(radioGroupModel, "selected"));
@@ -67,7 +67,7 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
 				target.add(getFeedback());
 				info("Selected Type : " + radioGroupModel.getSelected());
@@ -83,17 +83,17 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(ListItem<Company> it)
+			protected void populateItem(final ListItem<Company> it)
 			{
-				Radio<Company> radio = new Radio<Company>("radio", it.getModel(), group);
+				final Radio<Company> radio = new Radio<Company>("radio", it.getModel(), group);
 				radio.setOutputMarkupId(true);
 				it.add(radio);
 				it.add(ComponentFactory.newLabel("label", radio.getMarkupId(),
 					Model.of(it.getModelObject().getName())));
 			}
 		});
-		RadioGroupPanel<Company> radioGroupPanel = new RadioGroupPanel<Company>("radioGroupPanel",
-			Model.of(radioGroupModel))
+		final RadioGroupPanel<Company> radioGroupPanel = new RadioGroupPanel<Company>(
+			"radioGroupPanel", Model.of(radioGroupModel))
 		{
 			/**
 			 * The serialVersionUID
@@ -101,7 +101,7 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onUpdate(AjaxRequestTarget target)
+			protected void onUpdate(final AjaxRequestTarget target)
 			{
 				super.onUpdate(target);
 				target.add(getFeedback());
@@ -113,7 +113,7 @@ public class RadioGroupExamplePanel extends BasePanel<Company>
 
 	protected Component getFeedback()
 	{
-		PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
+		final PubliclyBasePage<?> basePage = (PubliclyBasePage<?>)getPage();
 		return basePage.getFeedback();
 	}
 

@@ -48,16 +48,17 @@ public class DynamicPage extends WebPage
 		super(parameters);
 		add(new MenubarPanel("menubarPanel"));
 		initialize();
-		IModel<List<WicketField<?>>> model = new CompoundPropertyModel<List<WicketField<?>>>(fields);
-		VelocityFieldsPanel velocityFieldsPanel = new VelocityFieldsPanel("velocityFieldsPanel",
-			model);
+		final IModel<List<WicketField<?>>> model = new CompoundPropertyModel<List<WicketField<?>>>(
+			fields);
+		final VelocityFieldsPanel velocityFieldsPanel = new VelocityFieldsPanel(
+			"velocityFieldsPanel", model);
 		add(velocityFieldsPanel);
 	}
 
 	public void initialize()
 	{
 		fields = new ArrayList<WicketField<?>>();
-		WicketField<Form<Void>> formWicketField = new WicketField<Form<Void>>();
+		final WicketField<Form<Void>> formWicketField = new WicketField<Form<Void>>();
 		fields.add(formWicketField);
 		formWicketField.addAttribute(WICKET_ID, "form");
 		final Form<Void> form = new Form<Void>(formWicketField.getAttributes().get(WICKET_ID));
@@ -66,9 +67,9 @@ public class DynamicPage extends WebPage
 		formWicketField.setContent("");
 		formWicketField.setEndTag(true);
 
-		WicketField<Label> labelWicketField = new WicketField<Label>();
+		final WicketField<Label> labelWicketField = new WicketField<Label>();
 		labelWicketField.addAttribute(WICKET_ID, "textLabel");
-		Label label = new Label(labelWicketField.getAttributes().get(WICKET_ID));
+		final Label label = new Label(labelWicketField.getAttributes().get(WICKET_ID));
 		labelWicketField.setComponent(label);
 		labelWicketField.getComponent().setDefaultModel(Model.of("Name:"));
 		labelWicketField.setName("label");
@@ -85,11 +86,11 @@ public class DynamicPage extends WebPage
 		textWicketField.setEndTag(false);
 		formWicketField.addChild(textWicketField);
 
-		WicketField<AjaxButton> buttonWicketField = new WicketField<AjaxButton>();
+		final WicketField<AjaxButton> buttonWicketField = new WicketField<AjaxButton>();
 		buttonWicketField.addAttribute(WICKET_ID, "button");
 		buttonWicketField.setName("button");
 		buttonWicketField.setEndTag(true);
-		AjaxButton ajaxButton = new AjaxButton(buttonWicketField.getWicketId())
+		final AjaxButton ajaxButton = new AjaxButton(buttonWicketField.getWicketId())
 		{
 
 			/**
@@ -98,7 +99,7 @@ public class DynamicPage extends WebPage
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void onSubmit(AjaxRequestTarget target, Form<?> f)
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> f)
 			{
 				System.out.println(textWicketField.getComponent().getDefaultModelObjectAsString());
 				super.onSubmit(target, form);
@@ -110,9 +111,9 @@ public class DynamicPage extends WebPage
 		formWicketField.addChild(buttonWicketField);
 
 
-		WicketField<Label> buttonLabelWicketField = new WicketField<Label>();
+		final WicketField<Label> buttonLabelWicketField = new WicketField<Label>();
 		buttonLabelWicketField.addAttribute(WICKET_ID, "textLabel");
-		Label buttonLabel = new Label(labelWicketField.getAttributes().get(WICKET_ID));
+		final Label buttonLabel = new Label(labelWicketField.getAttributes().get(WICKET_ID));
 		buttonLabelWicketField.setComponent(buttonLabel);
 		buttonLabelWicketField.getComponent().setDefaultModel(Model.of("Send"));
 		buttonLabelWicketField.setName("span");

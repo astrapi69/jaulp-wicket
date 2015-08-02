@@ -56,19 +56,6 @@ public class MenuItem implements Serializable
 	 *
 	 * @param link
 	 *            the link
-	 * @param label
-	 *            The label text
-	 */
-	public MenuItem(final AbstractLink link, final String label)
-	{
-		this(link, Model.of(label));
-	}
-
-	/**
-	 * Instantiates a new menu item.
-	 *
-	 * @param link
-	 *            the link
 	 * @param labelModel
 	 *            the model of the label text.
 	 */
@@ -85,12 +72,14 @@ public class MenuItem implements Serializable
 	/**
 	 * Instantiates a new menu item.
 	 *
+	 * @param link
+	 *            the link
 	 * @param label
 	 *            The label text
 	 */
-	public MenuItem(final String label)
+	public MenuItem(final AbstractLink link, final String label)
 	{
-		this(Model.of(label));
+		this(link, Model.of(label));
 	}
 
 	/**
@@ -106,18 +95,14 @@ public class MenuItem implements Serializable
 	}
 
 	/**
-	 * Factory method for creating a new Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a new Label.
+	 * Instantiates a new menu item.
 	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the label
+	 * @param label
+	 *            The label text
 	 */
-	protected Label newLabel(String id, IModel<String> model)
+	public MenuItem(final String label)
 	{
-		return ComponentFactory.newLabel(id, model);
+		this(Model.of(label));
 	}
 
 	/**
@@ -131,6 +116,21 @@ public class MenuItem implements Serializable
 	{
 		this.children.add(menu);
 		return this;
+	}
+
+	/**
+	 * Factory method for creating a new Label. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a new Label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
+	protected Label newLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**

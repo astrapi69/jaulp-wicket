@@ -49,27 +49,19 @@ public class JqueryStatementsBehavior extends Behavior
 		this.chainableStatement = new ArrayList<>();
 	}
 
-	public JqueryStatementsBehavior(List<ChainableStatement> chainableStatement)
+	public JqueryStatementsBehavior(final List<ChainableStatement> chainableStatement)
 	{
 		Args.notNull(chainableStatement, "chainableStatement");
 		this.chainableStatement = chainableStatement;
 	}
 
-	@Override
-	public void renderHead(Component component, IHeaderResponse response)
-	{
-		super.renderHead(component, response);
-		CharSequence renderedStatement = createRenderedStatement(component);
-		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
-	}
-
-	public JqueryStatementsBehavior add(ChainableStatement defaultChainableStatement)
+	public JqueryStatementsBehavior add(final ChainableStatement defaultChainableStatement)
 	{
 		this.chainableStatement.add(defaultChainableStatement);
 		return this;
 	}
 
-	public CharSequence createRenderedStatement(Component component)
+	public CharSequence createRenderedStatement(final Component component)
 	{
 		JsStatement statement;
 		if (component != null)
@@ -82,12 +74,20 @@ public class JqueryStatementsBehavior extends Behavior
 			statement = new JsStatement();
 		}
 
-		for (ChainableStatement defaultChainableStatement : chainableStatement)
+		for (final ChainableStatement defaultChainableStatement : chainableStatement)
 		{
 			statement.chain(defaultChainableStatement);
 		}
 		this.renderedStatement = statement.render();
 		this.rendered = true;
 		return this.renderedStatement;
+	}
+
+	@Override
+	public void renderHead(final Component component, final IHeaderResponse response)
+	{
+		super.renderHead(component, response);
+		final CharSequence renderedStatement = createRenderedStatement(component);
+		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
 }

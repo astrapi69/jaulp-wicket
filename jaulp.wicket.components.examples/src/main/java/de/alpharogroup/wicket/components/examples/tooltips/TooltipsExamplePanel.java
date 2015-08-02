@@ -43,15 +43,15 @@ public class TooltipsExamplePanel extends Panel
 	public TooltipsExamplePanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
-		Label label = ComponentFactory.newLabel("tooltipTestLabel",
+		final Label label = ComponentFactory.newLabel("tooltipTestLabel",
 			Model.of("Im example for tooltipster."));
-		TooltipsterSettings tooltipsterSettings = TooltipsterSettings.builder().build();
+		final TooltipsterSettings tooltipsterSettings = TooltipsterSettings.builder().build();
 		tooltipsterSettings.getAnimation().setValue("grow");
 		tooltipsterSettings.getArrow().setValue(false);
 		tooltipsterSettings.getContent().setValue("Loading foo...");
-		TooltipsterJsGenerator tooltipsterJsGenerator = new TooltipsterJsGenerator(
+		final TooltipsterJsGenerator tooltipsterJsGenerator = new TooltipsterJsGenerator(
 			tooltipsterSettings, label.getMarkupId());
-		String js = tooltipsterJsGenerator.generateJs();
+		final String js = tooltipsterJsGenerator.generateJs();
 		label.add(JavascriptAppenderBehavior.builder().id("tooltip_" + label.getMarkupId())
 			.javascript(js).build());
 		add(label);
@@ -62,7 +62,7 @@ public class TooltipsExamplePanel extends Panel
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem.forReference(Application.get()

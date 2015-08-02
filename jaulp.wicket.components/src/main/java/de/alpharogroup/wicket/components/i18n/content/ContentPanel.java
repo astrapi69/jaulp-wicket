@@ -34,12 +34,12 @@ public class ContentPanel extends BasePanel<ContentModel>
 	@Getter
 	private final Component content;
 
-	public ContentPanel(String id)
+	public ContentPanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public ContentPanel(String id, IModel<ContentModel> model)
+	public ContentPanel(final String id, final IModel<ContentModel> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -57,22 +57,7 @@ public class ContentPanel extends BasePanel<ContentModel>
 		}
 	}
 
-	protected Component newHeaderLabel(String id, IModel<String> model)
-	{
-		return ComponentFactory.newLabel(id, model);
-	}
-
-	protected IModel<String> newHeaderModel()
-	{
-		return ResourceModelFactory.newResourceModel(newHeaderResourceKey(), this);
-	}
-
-	protected ResourceBundleKey newHeaderResourceKey()
-	{
-		return ResourceBundleKey.builder().key("header.label").build();
-	}
-
-	protected Component newContentLabel(String id, IModel<String> model)
+	protected Component newContentLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newMultiLineLabel(id, model);
 	}
@@ -85,6 +70,21 @@ public class ContentPanel extends BasePanel<ContentModel>
 	protected ResourceBundleKey newContentResourceKey()
 	{
 		return ResourceBundleKey.builder().key("content.label").build();
+	}
+
+	protected Component newHeaderLabel(final String id, final IModel<String> model)
+	{
+		return ComponentFactory.newLabel(id, model);
+	}
+
+	protected IModel<String> newHeaderModel()
+	{
+		return ResourceModelFactory.newResourceModel(newHeaderResourceKey(), this);
+	}
+
+	protected ResourceBundleKey newHeaderResourceKey()
+	{
+		return ResourceBundleKey.builder().key("header.label").build();
 	}
 
 }

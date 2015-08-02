@@ -53,17 +53,19 @@ public class HomePage extends WebPage
 	 */
 	public HomePage(final PageParameters parameters)
 	{
-		IModel<String> mailtoAddresModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-			.builder().key("mailtoAddresModel.value").defaultValue("").build(), this);
+		final IModel<String> mailtoAddresModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("mailtoAddresModel.value").defaultValue("").build(),
+			this);
 
-		IModel<String> mailtoViewModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-			.builder().key("mailtoViewModel.value").defaultValue("").build(), this);
+		final IModel<String> mailtoViewModel = ResourceModelFactory
+			.newResourceModel(ResourceBundleKey.builder().key("mailtoViewModel.value")
+				.defaultValue("").build(), this);
 
-		MailtoModel mailtoModel = new MailtoModel(mailtoAddresModel, mailtoViewModel);
+		final MailtoModel mailtoModel = new MailtoModel(mailtoAddresModel, mailtoViewModel);
 
 		add(new MailtoLabel("mailtoLabel", mailtoModel));
 
-		Button button = new Button("button")
+		final Button button = new Button("button")
 		{
 
 			/**
@@ -99,24 +101,24 @@ public class HomePage extends WebPage
 		add(button);
 		add(new FaviconBehavior());
 
-		AjaxLink<Void> link01 = new AjaxLink<Void>("link01")
+		final AjaxLink<Void> link01 = new AjaxLink<Void>("link01")
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 
 			}
 		};
 		link01.add(new AttributeAppender("class", "navbarlink"));
 		add(link01);
-		AjaxLink<Void> link02 = new AjaxLink<Void>("link02")
+		final AjaxLink<Void> link02 = new AjaxLink<Void>("link02")
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 
 			}
@@ -126,7 +128,7 @@ public class HomePage extends WebPage
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
 		response.render(JavaScriptHeaderItem.forReference(ApplicationExtensions

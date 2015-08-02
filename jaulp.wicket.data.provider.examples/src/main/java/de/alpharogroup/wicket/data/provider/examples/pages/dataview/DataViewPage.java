@@ -51,7 +51,7 @@ public class DataViewPage extends WebPage
 	{
 
 		// Add sortable DataView...
-		SortableDataViewPanel sortableDataViewPanel = new SortableDataViewPanel(
+		final SortableDataViewPanel sortableDataViewPanel = new SortableDataViewPanel(
 			"sortableDataViewPanel");
 		add(sortableDataViewPanel);
 	}

@@ -29,7 +29,10 @@ import de.alpharogroup.wicket.dialogs.examples.panel.UploadFilePanel;
 public class UploadPage extends WebPage
 {
 
-	public UploadPage(PageParameters parameters)
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+
+	public UploadPage(final PageParameters parameters)
 	{
 		super(parameters);
 		final ModalWindow uploadFileDialog = new ModalWindow("uploadFileDialog");
@@ -47,15 +50,12 @@ public class UploadPage extends WebPage
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(AjaxRequestTarget target)
+			public void onClick(final AjaxRequestTarget target)
 			{
 				uploadFileDialog.show(target);
 			}
 		});
 	}
-
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
 
 
 }

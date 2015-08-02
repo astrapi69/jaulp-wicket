@@ -33,13 +33,13 @@ public class ResourceLoadingExamplesPage extends PubliclyBasePage<ResourceLoadin
 
 	private static final long serialVersionUID = 1L;
 
+	public ResourceLoadingExamplesPage()
+	{
+	}
+
 	public ResourceLoadingExamplesPage(final PageParameters parameters)
 	{
 		super(parameters);
-	}
-
-	public ResourceLoadingExamplesPage()
-	{
 	}
 
 	@Override

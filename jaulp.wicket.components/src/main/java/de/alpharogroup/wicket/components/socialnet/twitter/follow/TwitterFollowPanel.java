@@ -29,27 +29,28 @@ public class TwitterFollowPanel extends BasePanel<TwitterFollowModel>
 {
 	private static final long serialVersionUID = 1L;
 
-	public TwitterFollowPanel(String id)
+	public TwitterFollowPanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public TwitterFollowPanel(String id, IModel<TwitterFollowModel> model)
+	public TwitterFollowPanel(final String id, final IModel<TwitterFollowModel> model)
 	{
 		super(id, model);
-		ExternalLink twitterFollowLink = new ExternalLink("url", model.getObject().getUrl());
+		final ExternalLink twitterFollowLink = new ExternalLink("url", model.getObject().getUrl());
 		twitterFollowLink.add(new AttributeModifier("data-show-count", model.getObject()
 			.getShowCount().toString()));
 		add(twitterFollowLink);
-		Label twitterNameLabel = new Label("twitterNameLabel", model.getObject().getUsername());
+		final Label twitterNameLabel = new Label("twitterNameLabel", model.getObject()
+			.getUsername());
 		twitterFollowLink.add(twitterNameLabel);
 	}
 
 	@Override
-	public void renderHead(IHeaderResponse response)
+	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		PackageResourceReference resourceReference = new PackageResourceReference(getClass(),
+		final PackageResourceReference resourceReference = new PackageResourceReference(getClass(),
 			"follow.js");
 		response.render(JavaScriptHeaderItem.forReference(resourceReference, "twitterFollow"));
 	}

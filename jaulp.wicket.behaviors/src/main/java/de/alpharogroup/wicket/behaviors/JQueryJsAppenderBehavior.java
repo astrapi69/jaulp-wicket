@@ -37,7 +37,8 @@ public class JQueryJsAppenderBehavior extends Behavior
 	CharSequence statementLabel;
 	CharSequence statementArgs;
 
-	public JQueryJsAppenderBehavior(CharSequence statementLabel, CharSequence statementArgs)
+	public JQueryJsAppenderBehavior(final CharSequence statementLabel,
+		final CharSequence statementArgs)
 	{
 		Args.notNull(statementLabel, "statementLabel");
 		Args.notNull(statementArgs, "statementArgs");
@@ -45,19 +46,19 @@ public class JQueryJsAppenderBehavior extends Behavior
 		this.statementArgs = statementArgs;
 	}
 
-	@Override
-	public void renderHead(Component component, IHeaderResponse response)
+	public CharSequence createRenderedStatement(final Component component)
 	{
-		super.renderHead(component, response);
-		CharSequence renderedStatement = createRenderedStatement(component);
-		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
-	}
-
-	public CharSequence createRenderedStatement(Component component)
-	{
-		JsStatement statement = new JsQuery(component).$().chain(statementLabel,
+		final JsStatement statement = new JsQuery(component).$().chain(statementLabel,
 			JsUtils.quotes(statementArgs));
 		// $('#component').statementLabel('statementArgs');
 		return statement.render();
+	}
+
+	@Override
+	public void renderHead(final Component component, final IHeaderResponse response)
+	{
+		super.renderHead(component, response);
+		final CharSequence renderedStatement = createRenderedStatement(component);
+		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
 }

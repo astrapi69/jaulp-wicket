@@ -40,8 +40,8 @@ public class AlertJsReference extends JQueryPluginResourceReference
 	@Override
 	public List<HeaderItem> getDependencies()
 	{
-		List<HeaderItem> deps = new ArrayList<HeaderItem>();
-		for (HeaderItem dep : super.getDependencies())
+		final List<HeaderItem> deps = new ArrayList<HeaderItem>();
+		for (final HeaderItem dep : super.getDependencies())
 		{
 			deps.add(dep);
 		}

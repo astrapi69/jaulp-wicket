@@ -28,7 +28,7 @@ public class ResourceLoadingExamplesPanel extends BasePanel<ResourceLoadingBean>
 {
 	private static final long serialVersionUID = 1L;
 
-	public ResourceLoadingExamplesPanel(String id)
+	public ResourceLoadingExamplesPanel(final String id)
 	{
 		super(id);
 	}

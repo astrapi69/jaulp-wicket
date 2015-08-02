@@ -54,19 +54,20 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledLabelPanel(String id, IModel<T> model, IModel<String> labelModel)
+	public LabeledLabelPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
 		add(viewableLabel = newLabel("viewableLabel", model));
 
-		String markupId = viewableLabel.getMarkupId();
+		final String markupId = viewableLabel.getMarkupId();
 		add(label = newLabel("label", markupId, labelModel));
 	}
 
-	protected Label newLabel(String id, IModel<T> model)
+	protected Label newLabel(final String id, final IModel<T> model)
 	{
-		PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), this.getId());
+		final PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(),
+			this.getId());
 		return ComponentFactory.newLabel(id, viewableLabelModel);
 	}
 
@@ -82,7 +83,7 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	 *            the model
 	 * @return the label
 	 */
-	protected Label newLabel(String id, String forId, IModel<String> model)
+	protected Label newLabel(final String id, final String forId, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}

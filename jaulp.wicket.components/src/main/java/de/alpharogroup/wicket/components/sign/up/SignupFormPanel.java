@@ -42,27 +42,40 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 
 	private Component signupPanel;
 
-	public SignupFormPanel(String id)
+	public SignupFormPanel(final String id)
 	{
 		this(id, Model.of(new BaseUsernameSignUpModel()));
 	}
 
-	public SignupFormPanel(String id, IModel<BaseUsernameSignUpModel> model)
+	public SignupFormPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
 		super(id, model);
 	}
 
-	@Override
-	protected void onInitialize()
+	public Label getButtonLabel()
 	{
-		super.onInitialize();
-		initComponent();
+		return buttonLabel;
+	}
+
+	public Form<?> getForm()
+	{
+		return form;
+	}
+
+	public Component getSignupPanel()
+	{
+		return signupPanel;
+	}
+
+	public Button getSubmitButton()
+	{
+		return submitButton;
 	}
 
 	protected void initComponent()
 	{
 		getModelObject().setEmail("");
-		IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<>(getModel());
+		final IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<>(getModel());
 		setModel(model);
 		addOrReplace(form = newForm("form", model));
 		form.addOrReplace(signupPanel = newSignupPanel("signupPanel", getModel()));
@@ -74,38 +87,6 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	}
 
 	/**
-	 * Factory method for creating the SignupPanel. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a
-	 * SignupPanel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the SignupPanel
-	 */
-	protected Component newSignupPanel(String id, IModel<BaseUsernameSignUpModel> model)
-	{
-		return new SignupPanel(id, model);
-	}
-
-	/**
-	 * Factory method for creating the Form. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the form
-	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected Form<?> newForm(String id, IModel<? extends BaseUsernameSignUpModel> model)
-	{
-		return new Form(id, model);
-	}
-
-	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
 	 *
@@ -113,7 +94,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 *            the wicket id
 	 * @return the Button
 	 */
-	protected Button newButton(String id)
+	protected Button newButton(final String id)
 	{
 		return new Button(id)
 		{
@@ -140,34 +121,54 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 *            the default value
 	 * @return the label
 	 */
-	protected Label newButtonLabel(String id, final String resourceKey, final String defaultValue)
+	protected Label newButtonLabel(final String id, final String resourceKey,
+		final String defaultValue)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(resourceKey, this,
 			defaultValue);
-		Label label = new Label(id, labelModel);
+		final Label label = new Label(id, labelModel);
 		label.setOutputMarkupId(true);
 		return label;
 	}
 
+	/**
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the form
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected Form<?> newForm(final String id, final IModel<? extends BaseUsernameSignUpModel> model)
+	{
+		return new Form(id, model);
+	}
+
+	/**
+	 * Factory method for creating the SignupPanel. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a
+	 * SignupPanel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the SignupPanel
+	 */
+	protected Component newSignupPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
+	{
+		return new SignupPanel(id, model);
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		initComponent();
+	}
+
 	protected abstract void onSignup(final AjaxRequestTarget target, final Form<?> form);
-
-	public Component getSignupPanel()
-	{
-		return signupPanel;
-	}
-
-	public Button getSubmitButton()
-	{
-		return submitButton;
-	}
-
-	public Label getButtonLabel()
-	{
-		return buttonLabel;
-	}
-
-	public Form<?> getForm()
-	{
-		return form;
-	}
 }

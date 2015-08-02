@@ -30,8 +30,8 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	private static final long serialVersionUID = 1L;
 	private final DropDownChoice<T> dropdownChoice;
 
-	public LocalizedDropdownChoicePanel(String id, IModel<T> model, IModel<String> labelModel,
-		List<T> enumValues)
+	public LocalizedDropdownChoicePanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel, final List<T> enumValues)
 	{
 		super(id, model, labelModel);
 
@@ -40,12 +40,21 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 
 		add(feedback = newComponentFeedbackPanel("feedback", dropdownChoice));
 
-		String markupId = dropdownChoice.getMarkupId();
+		final String markupId = dropdownChoice.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 
 		// Add bootstrap css...
 		getLabelComponent().add(new AttributeAppender("class", "control-label"));
 
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void convertInput()
+	{
+		setConvertedInput(dropdownChoice.getConvertedInput());
 	}
 
 	public DropDownChoice<T> getDropdownChoice()
@@ -60,15 +69,6 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	public String getInput()
 	{
 		return dropdownChoice.getInput();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-		setConvertedInput(dropdownChoice.getConvertedInput());
 	}
 
 	/**
