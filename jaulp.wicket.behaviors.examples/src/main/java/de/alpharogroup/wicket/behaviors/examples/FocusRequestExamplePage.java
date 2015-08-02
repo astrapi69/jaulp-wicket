@@ -21,7 +21,6 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.wicket.behaviors.FocusRequestBehavior;
-import de.alpharogroup.wicket.behaviors.JavascriptAppenderBehavior;
 
 /**
  * FocusRequestExamplePage
@@ -44,7 +43,7 @@ public class FocusRequestExamplePage extends WebPage
 		// message field
 		final TextField<String> messageField = new TextField<String>("message");
 		messageField.add(new FocusRequestBehavior());
-		Button button = new Button("button")
+		final Button button = new Button("button")
 		{
 
 			/**
