@@ -5,7 +5,7 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.examples.application.WicketApplication;
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 
 /**
  * The Class ApplicationBasePanel.
@@ -41,7 +41,7 @@ public abstract class ApplicationBasePanel<T> extends BasePanel<T>
 	 */
 	public String getRequestURL()
 	{
-		return WicketComponentUtils.getRequestURL();
+		return WicketComponentExtensions.getRequestURL();
 	}
 
 	/**
@@ -61,7 +61,7 @@ public abstract class ApplicationBasePanel<T> extends BasePanel<T>
 	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		WicketComponentUtils.renderHeaderResponse(response, this.getClass());
+		WicketComponentExtensions.renderHeaderResponse(response, this.getClass());
 	}
 
 

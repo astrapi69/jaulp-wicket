@@ -19,7 +19,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 
 /**
  * The Class BasePage.
@@ -33,14 +33,14 @@ public abstract class AbstractBasePage extends WebPage
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new base page with no parameters.
+	 * Instantiates a new {@link AbstractBasePage} with no parameters.
 	 */
 	public AbstractBasePage()
 	{
 	}
 
 	/**
-	 * Instantiates a new base page with an IModel object.
+	 * Instantiates a new {@link AbstractBasePage} with an IModel object.
 	 *
 	 * @param model
 	 *            the model
@@ -51,7 +51,7 @@ public abstract class AbstractBasePage extends WebPage
 	}
 
 	/**
-	 * Instantiates a new base page with parameters.
+	 * Instantiates a new {@link AbstractBasePage} with parameters.
 	 *
 	 * @param parameters
 	 *            the parameters
@@ -68,7 +68,7 @@ public abstract class AbstractBasePage extends WebPage
 	 */
 	public String getRequestURL()
 	{
-		return WicketComponentUtils.getRequestURL();
+		return WicketComponentExtensions.getRequestURL();
 	}
 
 	/**

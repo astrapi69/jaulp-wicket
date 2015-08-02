@@ -32,8 +32,8 @@ import org.apache.wicket.model.Model;
 
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
-import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
+import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 public abstract class ReCaptchaPanel extends Panel
@@ -74,15 +74,15 @@ public abstract class ReCaptchaPanel extends Panel
 			{
 				final ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
 				reCaptcha.setPrivateKey(getPrivateKey());
-				final String challenge = PageParametersUtils
+				final String challenge = PageParametersExtensions
 					.getParameter(PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD);
-				String uresponse = PageParametersUtils
+				String uresponse = PageParametersExtensions
 					.getParameter(PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD);
 				if (uresponse == null)
 				{
 					uresponse = "";
 				}
-				String remoteAddress = WicketComponentUtils.getHttpServletRequest().getRemoteAddr();
+				String remoteAddress = WicketComponentExtensions.getHttpServletRequest().getRemoteAddr();
 				final ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddress,
 					challenge, uresponse);
 
@@ -99,7 +99,7 @@ public abstract class ReCaptchaPanel extends Panel
 
 	private ReCaptcha newReCaptcha(String publicKey, String privateKey, boolean includeNoscript)
 	{
-		if (WicketComponentUtils.isSecure(ComponentFinder.getCurrentPage()))
+		if (WicketComponentExtensions.isSecure(ComponentFinder.getCurrentPage()))
 		{
 			ReCaptcha reCaptcha = ReCaptchaFactory.newSecureReCaptcha(getPublicKey(),
 				getPrivateKey(), includeNoscript);

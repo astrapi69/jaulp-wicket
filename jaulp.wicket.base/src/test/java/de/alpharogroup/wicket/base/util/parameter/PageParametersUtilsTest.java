@@ -25,14 +25,14 @@ public class PageParametersUtilsTest
 	@Test
 	public void testIsNotNullOrEmpty()
 	{
-		boolean actual = PageParametersUtils.isNotNullOrEmpty(null);
+		boolean actual = PageParametersExtensions.isNotNullOrEmpty(null);
 		AssertJUnit.assertFalse("Should be false.", actual);
 		StringValue sv = StringValue.valueOf("");
-		actual = PageParametersUtils.isNotNullOrEmpty(sv);
+		actual = PageParametersExtensions.isNotNullOrEmpty(sv);
 		AssertJUnit.assertFalse("Should be false.", actual);
 		String s = null;
 		sv = StringValue.valueOf(s);
-		actual = PageParametersUtils.isNotNullOrEmpty(sv);
+		actual = PageParametersExtensions.isNotNullOrEmpty(sv);
 		AssertJUnit.assertFalse("Should be false.", actual);
 	}
 
@@ -40,14 +40,14 @@ public class PageParametersUtilsTest
 	public void testIsNullOrEmpty()
 	{
 		boolean expected = true;
-		boolean actual = PageParametersUtils.isNullOrEmpty(null);
+		boolean actual = PageParametersExtensions.isNullOrEmpty(null);
 		AssertJUnit.assertTrue("Should be true.", expected == actual);
 		StringValue sv = StringValue.valueOf("");
-		actual = PageParametersUtils.isNullOrEmpty(sv);
+		actual = PageParametersExtensions.isNullOrEmpty(sv);
 		AssertJUnit.assertTrue("Should be true.", expected == actual);
 		String s = null;
 		sv = StringValue.valueOf(s);
-		actual = PageParametersUtils.isNullOrEmpty(sv);
+		actual = PageParametersExtensions.isNullOrEmpty(sv);
 		AssertJUnit.assertTrue("Should be true.", expected == actual);
 	}
 

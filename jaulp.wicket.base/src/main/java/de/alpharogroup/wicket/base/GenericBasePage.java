@@ -52,7 +52,7 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	private IModel<String> title;
 
 	/**
-	 * Instantiates a new GenericBasePage.
+	 * Instantiates a new {@link GenericBasePage}.
 	 */
 	public GenericBasePage()
 	{
@@ -60,7 +60,18 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	}
 
 	/**
-	 * Instantiates a new GenericBasePage.
+	 * Instantiates a new {@link GenericBasePage}.
+	 *
+	 * @param model
+	 *            the model
+	 */
+	public GenericBasePage(final IModel<T> model)
+	{
+		super(model);
+	}
+
+	/**
+	 * Instantiates a new {@link GenericBasePage}.
 	 *
 	 * @param parameters
 	 *            the parameters
@@ -68,34 +79,6 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	public GenericBasePage(final PageParameters parameters)
 	{
 		super(parameters);
-	}
-
-	/**
-	 * Instantiates a new GenericBasePage.
-	 *
-	 * @param model
-	 *            the model
-	 */
-	public GenericBasePage(IModel<T> model)
-	{
-		super(model);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
-		// set content of the <title> tag
-		addOrReplace(new Label("title", title = newTitle()));
-		// set content attribute of the <meta name="keywords"> tag
-		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content",
-			keywords = newKeywords(), " ")));
-		// set content attribute of the <meta name="description"> tag
-		addOrReplace(new Label("description", "").add(new AttributeAppender("content",
-			description = newDescription(), " ")));
 	}
 
 	/**
@@ -130,5 +113,22 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	{
 		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key("page.title")
 			.defaultValue("Home page").build(), this);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		// set content of the <title> tag
+		addOrReplace(new Label("title", title = newTitle()));
+		// set content attribute of the <meta name="keywords"> tag
+		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content",
+			keywords = newKeywords(), " ")));
+		// set content attribute of the <meta name="description"> tag
+		addOrReplace(new Label("description", "").add(new AttributeAppender("content",
+			description = newDescription(), " ")));
 	}
 }

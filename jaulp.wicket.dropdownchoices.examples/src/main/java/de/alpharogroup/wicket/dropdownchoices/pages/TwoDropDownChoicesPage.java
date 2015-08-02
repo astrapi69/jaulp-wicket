@@ -26,7 +26,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
 import de.alpharogroup.wicket.dropdownchoices.panel.TrademarksModelsPanel;
@@ -122,7 +122,7 @@ public class TwoDropDownChoicesPage extends WebPage
 	@Override
 	public void renderHead(IHeaderResponse response)
 	{
-		WicketComponentUtils.renderHeaderResponse(response, this.getClass());
+		WicketComponentExtensions.renderHeaderResponse(response, this.getClass());
 	}
 
 }

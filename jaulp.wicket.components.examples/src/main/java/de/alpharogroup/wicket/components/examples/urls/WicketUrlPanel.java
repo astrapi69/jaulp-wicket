@@ -23,7 +23,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
+import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.AddressPage;
 
@@ -38,7 +38,7 @@ public class WicketUrlPanel extends BasePanel<Object>
 		Map<String, String> parameters = new HashMap<>();
 		parameters.put("foo", "123");
 		parameters.put("bar", "abc");
-		PageParameters pageParameters = PageParametersUtils.toPageParameters(parameters);
+		PageParameters pageParameters = PageParametersExtensions.toPageParameters(parameters);
 		AddressPage addressPage = new AddressPage(pageParameters);
 
 		add(new Label("absoluteUrlFor", Model.of(WicketUrlUtils.absoluteUrlFor(AddressPage.class))));

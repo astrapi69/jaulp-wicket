@@ -22,9 +22,9 @@ import org.apache.wicket.markup.html.image.NonCachingImage;
 import de.alpharogroup.wicket.base.util.resource.DatabaseImageResource;
 
 /**
- * The Class WicketImageUtils is helper class for create wicket Image objects.
+ * The Class WicketImageExtensions is helper class for create wicket Image objects.
  */
-public class WicketImageUtils
+public class WicketImageExtensions
 {
 
 	/**
@@ -57,7 +57,7 @@ public class WicketImageUtils
 	 */
 	public static Image getImage(final String wicketId, final String contentType, final Byte[] data)
 	{
-		byte[] byteArrayData = ArrayUtils.toPrimitive(data);
+		final byte[] byteArrayData = ArrayUtils.toPrimitive(data);
 		return getImage(wicketId, contentType, byteArrayData);
 	}
 
@@ -94,7 +94,7 @@ public class WicketImageUtils
 	public static NonCachingImage getNonCachingImage(final String wicketId,
 		final String contentType, final Byte[] data)
 	{
-		byte[] byteArrayData = ArrayUtils.toPrimitive(data);
+		final byte[] byteArrayData = ArrayUtils.toPrimitive(data);
 		return getNonCachingImage(wicketId, contentType, byteArrayData);
 	}
 }

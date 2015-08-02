@@ -19,7 +19,7 @@ import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 
 /**
  * The Class AbstractGenericBasePage.
@@ -36,14 +36,14 @@ public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new base page with no parameters.
+	 * Instantiates a new {@link AbstractGenericBasePage} with no parameters.
 	 */
 	public AbstractGenericBasePage()
 	{
 	}
 
 	/**
-	 * Instantiates a new base page with an IModel object.
+	 * Instantiates a new {@link AbstractGenericBasePage} with an IModel object.
 	 *
 	 * @param model
 	 *            the model
@@ -58,7 +58,7 @@ public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T>
 	}
 
 	/**
-	 * Instantiates a new base page with parameters.
+	 * Instantiates a new {@link AbstractGenericBasePage} with parameters.
 	 *
 	 * @param parameters
 	 *            the parameters
@@ -75,7 +75,7 @@ public abstract class AbstractGenericBasePage<T> extends GenericWebPage<T>
 	 */
 	public String getRequestURL()
 	{
-		return WicketComponentUtils.getRequestURL();
+		return WicketComponentExtensions.getRequestURL();
 	}
 
 	/**

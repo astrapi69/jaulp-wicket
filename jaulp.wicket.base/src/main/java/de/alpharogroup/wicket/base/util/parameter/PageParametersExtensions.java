@@ -36,11 +36,11 @@ import org.apache.wicket.util.string.StringValueConversionException;
 /**
  * The Class PageParametersUtils.
  */
-public final class PageParametersUtils
+public final class PageParametersExtensions
 {
 
 	/** The Constant logger. */
-	private static final Logger LOGGER = Logger.getLogger(PageParametersUtils.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(PageParametersExtensions.class.getName());
 
 	/**
 	 * Adds the given parameters to the given map.
@@ -141,7 +141,7 @@ public final class PageParametersUtils
 	 * @param stringValue
 	 *            the user id as StringValue object
 	 * @return the Integer object or null if the given StringValue is null or empty.
-	 * @deprecated use instead the {@link PageParametersUtils#toInteger(StringValue)}
+	 * @deprecated use instead the {@link PageParametersExtensions#toInteger(StringValue)}
 	 */
 	@Deprecated
 	public static Integer getInteger(final StringValue stringValue)

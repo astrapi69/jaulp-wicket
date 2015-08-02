@@ -29,9 +29,9 @@ import org.apache.wicket.protocol.http.RequestLogger;
 import org.apache.wicket.protocol.http.WebApplication;
 
 /**
- * The Class SessionCountUtils.
+ * The Class SessionExtensions.
  */
-public class SessionCountUtils
+public class SessionExtensions
 {
 
 	/**
@@ -41,7 +41,7 @@ public class SessionCountUtils
 	 */
 	public static HttpSession getHttpSession()
 	{
-		final HttpServletRequest request = WicketComponentUtils.getHttpServletRequest();
+		final HttpServletRequest request = WicketComponentExtensions.getHttpServletRequest();
 		if (request != null)
 		{
 			final HttpSession session = request.getSession(false);

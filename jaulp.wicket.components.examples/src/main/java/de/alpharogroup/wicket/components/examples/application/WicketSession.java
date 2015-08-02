@@ -4,7 +4,7 @@ import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 
-import de.alpharogroup.wicket.base.util.SessionCountUtils;
+import de.alpharogroup.wicket.base.util.SessionExtensions;
 
 public class WicketSession extends WebSession
 {
@@ -35,7 +35,7 @@ public class WicketSession extends WebSession
 	 */
 	public int getSessionTimeout()
 	{
-		return SessionCountUtils.getSessionTimeout();
+		return SessionExtensions.getSessionTimeout();
 	}
 
 }

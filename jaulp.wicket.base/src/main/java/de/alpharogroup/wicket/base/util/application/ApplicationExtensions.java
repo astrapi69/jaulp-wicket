@@ -49,7 +49,7 @@ import org.apache.wicket.util.time.Duration;
 import de.alpharogroup.wicket.base.util.resource.ByteArrayResourceStreamWriter;
 
 /**
- * The Class ApplicationUtils.
+ * The Class ApplicationExtensions.
  */
 public final class ApplicationExtensions
 {

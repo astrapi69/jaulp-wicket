@@ -24,7 +24,7 @@ import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.AbstractBasePage;
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
@@ -74,7 +74,7 @@ public abstract class BasePage extends AbstractBasePage
 	public void renderHead(IHeaderResponse response)
 	{
 		super.renderHead(response);
-		WicketComponentUtils.renderHeaderResponse(response, BasePage.class);
+		WicketComponentExtensions.renderHeaderResponse(response, BasePage.class);
 	}
 
 }

@@ -30,7 +30,7 @@ import org.apache.wicket.model.Model;
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 
 @ImportResources(resources = { @ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
 public class MenuPanel extends BasePanel<Object>
@@ -86,7 +86,7 @@ public class MenuPanel extends BasePanel<Object>
 	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		WicketComponentUtils.renderHeaderResponse(response, this.getClass());
+		WicketComponentExtensions.renderHeaderResponse(response, this.getClass());
 	}
 
 	/**

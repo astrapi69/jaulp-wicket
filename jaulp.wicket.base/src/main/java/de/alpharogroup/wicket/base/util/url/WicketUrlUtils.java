@@ -21,7 +21,7 @@ import org.apache.wicket.request.Url;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 
 /**
  * The Class WicketUrlUtils.
@@ -237,7 +237,7 @@ public class WicketUrlUtils
 		final boolean withSlashAtTheEnd)
 	{
 		return newDomainUrl(ssl ? Scheme.HTTPS.urlName() : Scheme.HTTP.urlName(),
-			WicketUrlUtils.getServerName(), WicketComponentUtils.getHttpServletRequest()
+			WicketUrlUtils.getServerName(), WicketComponentExtensions.getHttpServletRequest()
 				.getServerPort(), withServerPort, withSlashAtTheEnd);
 	}
 
@@ -252,7 +252,7 @@ public class WicketUrlUtils
 	 */
 	public static String getLocalName()
 	{
-		return WicketComponentUtils.getHttpServletRequest().getLocalName();
+		return WicketComponentExtensions.getHttpServletRequest().getLocalName();
 	}
 
 	/**
@@ -316,7 +316,7 @@ public class WicketUrlUtils
 	 */
 	public static String getServerName()
 	{
-		return WicketComponentUtils.getHttpServletRequest().getServerName();
+		return WicketComponentExtensions.getHttpServletRequest().getServerName();
 	}
 
 	/**

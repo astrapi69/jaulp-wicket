@@ -41,9 +41,27 @@ public class SessionLocal<T extends Serializable>
 	 * @param key
 	 *            The {@link org.apache.wicket.MetaDataKey} that is used to store an object.
 	 */
-	public SessionLocal(MetaDataKey<T> key)
+	public SessionLocal(final MetaDataKey<T> key)
 	{
 		this.key = Args.notNull(key, "key");
+	}
+
+	/**
+	 * Sets the object to null in the MetaDataEntry.
+	 */
+	public void clear()
+	{
+		getSession().setMetaData(key, null);
+	}
+
+	/**
+	 * Gets the object from the MetaDataEntry.
+	 * 
+	 * @return the object from the MetaDataEntry.
+	 */
+	public T get()
+	{
+		return getSession().getMetaData(key);
 	}
 
 	/**
@@ -65,23 +83,5 @@ public class SessionLocal<T extends Serializable>
 	public void set(final T value)
 	{
 		getSession().setMetaData(key, value);
-	}
-
-	/**
-	 * Gets the object from the MetaDataEntry.
-	 * 
-	 * @return the object from the MetaDataEntry.
-	 */
-	public T get()
-	{
-		return getSession().getMetaData(key);
-	}
-
-	/**
-	 * Sets the object to null in the MetaDataEntry.
-	 */
-	public void clear()
-	{
-		getSession().setMetaData(key, null);
 	}
 }

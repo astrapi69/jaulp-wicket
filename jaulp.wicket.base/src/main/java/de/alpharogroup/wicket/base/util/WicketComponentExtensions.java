@@ -47,15 +47,15 @@ import de.alpharogroup.wicket.PackageResourceReferenceWrapper;
 import de.alpharogroup.wicket.PackageResourceReferences;
 import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
-import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
+import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 
 /**
- * The Class WicketComponentUtils is a helper class for the migration from wicket-version 1.4.x to
- * 1.5.x or 1.5.x to 6.1.0.
+ * The Class WicketComponentExtensions is a helper class for the migration from wicket-version 1.4.x
+ * to 1.5.x or 1.5.x to 6.1.0.
  * 
  * @author Asterios Raptis
  */
-public final class WicketComponentUtils
+public final class WicketComponentExtensions
 {
 
 	/**
@@ -191,12 +191,12 @@ public final class WicketComponentUtils
 	 * @param parameterName
 	 *            the parameter name
 	 * @return the parameter value
-	 * @deprecated use instead {@link PageParametersUtils#getParameter(Request, String)}
+	 * @deprecated use instead {@link PageParametersExtensions#getParameter(Request, String)}
 	 */
 	@Deprecated
 	public static String getParameter(final Request request, final String parameterName)
 	{
-		return PageParametersUtils.getParameter(request, parameterName);
+		return PageParametersExtensions.getParameter(request, parameterName);
 	}
 
 	/**
@@ -205,12 +205,12 @@ public final class WicketComponentUtils
 	 * @param parameterName
 	 *            the parameter name
 	 * @return the parameter value
-	 * @deprecated use instead {@link PageParametersUtils#getParameter(String)}
+	 * @deprecated use instead {@link PageParametersExtensions#getParameter(String)}
 	 */
 	@Deprecated
 	public static String getParameter(final String parameterName)
 	{
-		return PageParametersUtils.getParameter(parameterName);
+		return PageParametersExtensions.getParameter(parameterName);
 	}
 
 	/**
@@ -218,12 +218,12 @@ public final class WicketComponentUtils
 	 * 1.4.* to 1.5.*.
 	 * 
 	 * @return a map with all parameters.
-	 * @deprecated use instead {@link PageParametersUtils#getParameterMap()}
+	 * @deprecated use instead {@link PageParametersExtensions#getParameterMap()}
 	 */
 	@Deprecated
 	public static Map<String, String[]> getParameterMap()
 	{
-		return PageParametersUtils.getParameterMap();
+		return PageParametersExtensions.getParameterMap();
 	}
 
 	/**
@@ -233,12 +233,12 @@ public final class WicketComponentUtils
 	 * @param request
 	 *            the request
 	 * @return a map with all parameters.
-	 * @deprecated use instead {@link PageParametersUtils#getParameterMap(Request)}
+	 * @deprecated use instead {@link PageParametersExtensions#getParameterMap(Request)}
 	 */
 	@Deprecated
 	public static Map<String, String[]> getParameterMap(final Request request)
 	{
-		return PageParametersUtils.getParameterMap(request);
+		return PageParametersExtensions.getParameterMap(request);
 	}
 
 	/**
@@ -259,7 +259,7 @@ public final class WicketComponentUtils
 	 */
 	public static String getRequestURL()
 	{
-		final StringBuffer url = WicketComponentUtils.getHttpServletRequest().getRequestURL();
+		final StringBuffer url = WicketComponentExtensions.getHttpServletRequest().getRequestURL();
 		return url.toString();
 	}
 
@@ -270,7 +270,8 @@ public final class WicketComponentUtils
 	 */
 	public static boolean isHttps()
 	{
-		return WicketComponentUtils.getHttpServletRequest().getScheme().equalsIgnoreCase("https");
+		return WicketComponentExtensions.getHttpServletRequest().getScheme()
+			.equalsIgnoreCase("https");
 	}
 
 	/**
@@ -355,12 +356,12 @@ public final class WicketComponentUtils
 	 * @param parameters
 	 *            the {@link Map} with the parameters to set.
 	 * @return the {@link PageParameters}
-	 * @deprecated use instead {@link PageParametersUtils#toPageParameters(Map)}
+	 * @deprecated use instead {@link PageParametersExtensions#toPageParameters(Map)}
 	 */
 	@Deprecated
 	public static PageParameters toPageParameters(final Map<String, String> parameters)
 	{
-		return PageParametersUtils.toPageParameters(parameters);
+		return PageParametersExtensions.toPageParameters(parameters);
 	}
 
 }

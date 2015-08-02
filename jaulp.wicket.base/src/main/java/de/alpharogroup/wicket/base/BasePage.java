@@ -51,7 +51,7 @@ public abstract class BasePage extends AbstractBasePage
 	private IModel<String> title;
 
 	/**
-	 * Instantiates a new BasePage.
+	 * Instantiates a new {@link BasePage}.
 	 */
 	public BasePage()
 	{
@@ -59,7 +59,7 @@ public abstract class BasePage extends AbstractBasePage
 	}
 
 	/**
-	 * Instantiates a new BasePage.
+	 * Instantiates a new {@link BasePage}.
 	 *
 	 * @param model
 	 *            the model
@@ -70,7 +70,7 @@ public abstract class BasePage extends AbstractBasePage
 	}
 
 	/**
-	 * Instantiates a new BasePage.
+	 * Instantiates a new {@link BasePage}.
 	 *
 	 * @param parameters
 	 *            the parameters

@@ -23,7 +23,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import de.alpharogroup.wicket.base.examples.MenubarPanel;
 import de.alpharogroup.wicket.base.examples.application.WicketApplication;
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.base.util.url.WicketUrlUtils;
 
@@ -51,9 +51,9 @@ public class WicketUrlPage extends WebPage
 		add(new Label("urlAsStringPage", Model.of(WicketUrlUtils.getUrlAsString(this))));
 		add(new Label("contextPathApplication", Model.of(ApplicationExtensions
 			.getContextPath(WicketApplication.get()))));
-		add(new Label("requestURL", Model.of(WicketComponentUtils.getRequestURL())));
-		add(new Label("remoteHost", Model.of(WicketComponentUtils.getIpAddress())));
-		add(new Label("remoteAddr", Model.of(WicketComponentUtils.getRemoteAddr())));
+		add(new Label("requestURL", Model.of(WicketComponentExtensions.getRequestURL())));
+		add(new Label("remoteHost", Model.of(WicketComponentExtensions.getIpAddress())));
+		add(new Label("remoteAddr", Model.of(WicketComponentExtensions.getRemoteAddr())));
 		add(new Label("localName", Model.of(WicketUrlUtils.getLocalName())));
 		add(new Label("serverName", Model.of(WicketUrlUtils.getServerName())));
 		add(new Label("domainUrl", Model.of(WicketUrlUtils.getDomainUrl())));

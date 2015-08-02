@@ -23,7 +23,7 @@ import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
 
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 
 /**
  * The Class LinkBehavior adds the ability to a component to act as a link, i.e. like a tablerow
@@ -91,7 +91,7 @@ public class LinkBehavior extends Behavior
 		this.onmouseoverColor = onmouseoverColor;
 		this.onmouseoutColor = onmouseoutColor;
 		String url = RequestCycle.get().urlFor(targetPage, pageParameters).toString();
-		this.absolutePath = WicketComponentUtils.toAbsolutePath(url);
+		this.absolutePath = WicketComponentExtensions.toAbsolutePath(url);
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class LinkBehavior extends Behavior
 		this.onmouseoverColor = onmouseoverColor;
 		this.onmouseoutColor = onmouseoutColor;
 		String url = RequestCycle.get().urlFor(targetPage.getClass(), pageParameters).toString();
-		this.absolutePath = WicketComponentUtils.toAbsolutePath(url);
+		this.absolutePath = WicketComponentExtensions.toAbsolutePath(url);
 	}
 
 	/**

@@ -44,8 +44,8 @@ import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.GenericBasePage;
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
-import de.alpharogroup.wicket.base.util.parameter.PageParametersUtils;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
+import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.FaviconBehavior;
@@ -219,7 +219,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	 */
 	protected void newTheme(StringValue theme)
 	{
-		changeTheme(PageParametersUtils.getString(theme));
+		changeTheme(PageParametersExtensions.getString(theme));
 	}
 
 	/**
@@ -363,7 +363,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			.getJavaScriptLibrarySettings();
 		response.render(JavaScriptHeaderItem.forReference(javaScriptSettings.getJQueryReference()));
 		Bootstrap.renderHead(response);
-		WicketComponentUtils.renderHeaderResponse(response, ApplicationBasePage.class);
+		WicketComponentExtensions.renderHeaderResponse(response, ApplicationBasePage.class);
 		// PackageResourceReference gaqResourceReference = new PackageResourceReference(
 		// ApplicationBasePage.class, "gaq.js");
 		//

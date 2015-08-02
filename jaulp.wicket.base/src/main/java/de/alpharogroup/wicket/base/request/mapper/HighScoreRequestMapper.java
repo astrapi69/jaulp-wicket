@@ -32,6 +32,24 @@ import org.apache.wicket.util.lang.Args;
 /**
  * Compound {@link IRequestMapper} with request mappers, orders by the compatibility score they were
  * added.
+ * 
+ * For instance:
+ * 
+ * <pre>
+ * public class WicketApplication extends WebApplication
+ * {
+ * ..
+ * public void init()
+ * 	{
+ * 	...
+ * 		// install crypto mapper to encrypt all application urls
+ * 		getSecuritySettings().setCryptFactory(new KeyInSessionSunJceCryptFactory());
+ * 		setRootRequestMapper(new HighScoreRequestMapper().register(new CryptoMapper(getRootRequestMapper(), this)));
+ * ...
+ * }
+ * ...
+ * }
+ * </pre>
  */
 public class HighScoreRequestMapper extends CompoundRequestMapper
 {
