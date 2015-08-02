@@ -24,11 +24,13 @@ import java.util.List;
 import lombok.Getter;
 
 import org.apache.wicket.behavior.AttributeAppender;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.base.util.WicketComponentUtils;
 
 @ImportResources(resources = { @ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
 public class MenuPanel extends BasePanel<Object>
@@ -78,6 +80,16 @@ public class MenuPanel extends BasePanel<Object>
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void renderHead(final IHeaderResponse response)
+	{
+		super.renderHead(response);
+		WicketComponentUtils.renderHeaderResponse(response, this.getClass());
+	}
+
+	/**
 	 * Add all menus at once.
 	 *
 	 * @param menuItems
@@ -88,5 +100,6 @@ public class MenuPanel extends BasePanel<Object>
 		topMenuItems.clear();
 		topMenuItems.addAll(menuItems);
 	}
+
 
 }

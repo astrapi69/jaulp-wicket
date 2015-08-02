@@ -19,7 +19,7 @@ import org.apache.wicket.markup.html.basic.Label;
 
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
-import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.annotated.header.contributors.abase.ApplicationBasePanel;
 
 /**
  * @author admin
@@ -28,7 +28,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 		@ImportResource(resourceName = "HomePanel.css", resourceType = "css", index = 0),
 		@ImportResource(resourceName = "HomePanel.js", resourceType = "js", index = 1),
 		@ImportResource(resourceName = "HomePanel-new.js", resourceType = "js", index = 2) })
-public class HomePanel extends BasePanel<Object>
+public class HomePanel extends ApplicationBasePanel<Object>
 {
 
 	/**
@@ -36,9 +36,9 @@ public class HomePanel extends BasePanel<Object>
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public HomePanel(String id)
+	public HomePanel(final String id)
 	{
-		super(id);
+		super(id, null);
 
 		// Add the simplest type of label
 		add(new Label("message",

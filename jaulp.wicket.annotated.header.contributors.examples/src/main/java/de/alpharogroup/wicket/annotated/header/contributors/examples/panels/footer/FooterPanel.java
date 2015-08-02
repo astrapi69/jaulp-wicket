@@ -19,13 +19,13 @@ import org.apache.wicket.markup.html.basic.Label;
 
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
-import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.annotated.header.contributors.abase.ApplicationBasePanel;
 
 /**
  * @author admin
  */
 @ImportResources(resources = { @ImportResource(resourceName = "FooterPanel.css", resourceType = "css", index = 0) })
-public class FooterPanel extends BasePanel<Object>
+public class FooterPanel extends ApplicationBasePanel<Object>
 {
 
 	/**
@@ -33,9 +33,9 @@ public class FooterPanel extends BasePanel<Object>
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public FooterPanel(String id)
+	public FooterPanel(final String id)
 	{
-		super(id);
+		super(id, null);
 
 		// Add the simplest type of label
 		add(new Label("message", "jaulp.wicket"));

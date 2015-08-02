@@ -15,11 +15,8 @@
  */
 package de.alpharogroup.wicket.base;
 
-import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
-
-import de.alpharogroup.wicket.base.util.WicketComponentUtils;
 
 /**
  * The Class BasePanel.
@@ -61,16 +58,6 @@ public abstract class BasePanel<T> extends GenericPanel<T>
 		{
 			setModel(model);
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void renderHead(final IHeaderResponse response)
-	{
-		super.renderHead(response);
-		WicketComponentUtils.renderHeaderResponse(response, this.getClass());
 	}
 
 }

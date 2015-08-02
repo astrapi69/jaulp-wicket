@@ -31,7 +31,7 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
-import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePanel;
 import de.alpharogroup.wicket.components.examples.buttons.LocaleMenuPanel;
 import de.alpharogroup.wicket.components.form.checkbox.image.ImageCheckboxModel;
 import de.alpharogroup.wicket.components.form.checkbox.image.ImageChoicesModel;
@@ -39,15 +39,15 @@ import de.alpharogroup.wicket.components.form.checkbox.image.ImageChoicesModel;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.css", resourceType = "css", index = 1),
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.js", resourceType = "js", index = 2) })
-public class CheckboxImageListViewPanel extends BasePanel<List<ImageCheckboxModel>>
+public class CheckboxImageListViewPanel extends ApplicationBasePanel<List<ImageCheckboxModel>>
 {
 	private static final long serialVersionUID = 1L;
 
-	public CheckboxImageListViewPanel(String id)
+	public CheckboxImageListViewPanel(final String id)
 	{
-		super(id);
+		super(id, null);
 		// add some dummy data
-		List<ImageCheckboxModel> choices = new ArrayList<>();
+		final List<ImageCheckboxModel> choices = new ArrayList<>();
 		choices.add(ImageCheckboxModel.builder()
 			.imageResource(new PackageResourceReference(LocaleMenuPanel.class, "germany.gif"))
 			.build());
@@ -57,9 +57,10 @@ public class CheckboxImageListViewPanel extends BasePanel<List<ImageCheckboxMode
 		choices.add(ImageCheckboxModel.builder()
 			.imageResource(new PackageResourceReference(LocaleMenuPanel.class, "hellas.gif"))
 			.build());
-		ImageChoicesModel imageChoicesModel = ImageChoicesModel.builder().choices(choices).build();
+		final ImageChoicesModel imageChoicesModel = ImageChoicesModel.builder().choices(choices)
+			.build();
 
-		ListView<ImageCheckboxModel> listView = new ListView<ImageCheckboxModel>("list",
+		final ListView<ImageCheckboxModel> listView = new ListView<ImageCheckboxModel>("list",
 			imageChoicesModel.getChoices())
 		{
 			/**
@@ -68,10 +69,11 @@ public class CheckboxImageListViewPanel extends BasePanel<List<ImageCheckboxMode
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(ListItem<ImageCheckboxModel> item)
+			protected void populateItem(final ListItem<ImageCheckboxModel> item)
 			{
-				ImageCheckboxModel wrapper = item.getModelObject();
-				CheckBox checkbox = new CheckBox("checkbox", model(from(wrapper).getChecked()));
+				final ImageCheckboxModel wrapper = item.getModelObject();
+				final CheckBox checkbox = new CheckBox("checkbox",
+					model(from(wrapper).getChecked()));
 				checkbox.setOutputMarkupId(true);
 				checkbox.add(new AttributeAppender("name", Model.of("cb")));
 				item.add(checkbox);

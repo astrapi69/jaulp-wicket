@@ -20,10 +20,10 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import de.alpharogroup.wicket.base.mainbase.BaseMainPage;
+import de.alpharogroup.wicket.base.mainbase.ApplicationBasePage;
 
 @MountPath("/home")
-public class HomePage extends BaseMainPage
+public class HomePage extends ApplicationBasePage
 {
 	private static final long serialVersionUID = 1L;
 

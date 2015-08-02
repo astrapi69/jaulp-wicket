@@ -23,8 +23,8 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.locale.Locales;
-import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.buttons.LocaleImageButton;
+import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePanel;
 
 /**
  * The Class LocaleMenuPanel.
@@ -32,7 +32,7 @@ import de.alpharogroup.wicket.components.buttons.LocaleImageButton;
  * @author Asterios Raptis
  */
 @ImportResources(resources = { @ImportResource(resourceName = "LocaleMenuPanel.css", resourceType = "css", index = 1) })
-public class LocaleMenuPanel extends BasePanel<Object>
+public class LocaleMenuPanel extends ApplicationBasePanel<Object>
 {
 
 	/**
@@ -48,20 +48,20 @@ public class LocaleMenuPanel extends BasePanel<Object>
 	 */
 	public LocaleMenuPanel(final String id)
 	{
-		super(id);
+		super(id, null);
 
-		Form<LocaleImageButton> form = new Form<LocaleImageButton>("form");
+		final Form<LocaleImageButton> form = new Form<LocaleImageButton>("form");
 		add(form);
 
-		LocaleImageButton germanyLocaleButton = new LocaleImageButton("germanyLocaleButton",
+		final LocaleImageButton germanyLocaleButton = new LocaleImageButton("germanyLocaleButton",
 			new PackageResourceReference(LocaleMenuPanel.class, "germany.gif"), Locale.GERMANY);
 		form.add(germanyLocaleButton);
 
-		LocaleImageButton englishLocaleButton = new LocaleImageButton("englishLocaleButton",
+		final LocaleImageButton englishLocaleButton = new LocaleImageButton("englishLocaleButton",
 			new PackageResourceReference(LocaleMenuPanel.class, "britain.gif"), Locale.ENGLISH);
 		form.add(englishLocaleButton);
 
-		LocaleImageButton greekLocaleButton = new LocaleImageButton("greekLocaleButton",
+		final LocaleImageButton greekLocaleButton = new LocaleImageButton("greekLocaleButton",
 			new PackageResourceReference(LocaleMenuPanel.class, "hellas.gif"), Locales.HELLENIC);
 		form.add(greekLocaleButton);
 

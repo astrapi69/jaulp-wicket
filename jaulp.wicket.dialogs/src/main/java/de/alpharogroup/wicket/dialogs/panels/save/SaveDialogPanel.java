@@ -91,7 +91,7 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 	 * @param model
 	 *            the model
 	 */
-	public SaveDialogPanel(String id, IModel<T> model)
+	public SaveDialogPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -111,61 +111,6 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 				.build()));
 	}
 
-	protected Component newTextFieldLabel(String id, final ResourceBundleKey resourceKey)
-	{
-		return ComponentFactory.newLabel(id, resourceKey, this);
-	}
-
-	protected Component newTextField(String id, IModel<T> model)
-	{
-		return ComponentFactory.newTextField(id, model);
-	}
-
-	/**
-	 * Factory method for creating a new {@link Form}. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * {@link Form}.
-	 * 
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the Form
-	 */
-	protected Form<?> newForm(String id, IModel<T> model)
-	{
-		return ComponentFactory.newForm(id, model);
-	}
-
-	/**
-	 * Factory method for creating a new save {@link AjaxButton}. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a save {@link AjaxButton}.
-	 *
-	 * @param id
-	 *            the id
-	 * @param form
-	 *            the form
-	 * @return the new {@link AjaxButton}
-	 */
-	protected AjaxButton newSaveButton(String id, Form<?> form)
-	{
-		AjaxButton saveButton = new AjaxButton(id, form)
-		{
-			/**
-			 * The serialVersionUID.
-			 */
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-			{
-				onSave(target, form);
-			}
-		};
-		return saveButton;
-	}
-
 	/**
 	 * Factory method for creating a new cancel {@link AjaxButton}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
@@ -177,9 +122,9 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 	 *            the form
 	 * @return the new {@link AjaxButton}
 	 */
-	protected AjaxButton newCancelButton(String id, Form<?> form)
+	protected AjaxButton newCancelButton(final String id, final Form<?> form)
 	{
-		AjaxButton cancelButton = new AjaxButton(id, form)
+		final AjaxButton cancelButton = new AjaxButton(id, form)
 		{
 			/**
 			 * The serialVersionUID.
@@ -196,6 +141,22 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 	}
 
 	/**
+	 * Factory method for creating a new cancel {@link Label} with a {@link ResourceBundleKey}. This
+	 * method is invoked in the constructor from the derived classes and can be overridden so users
+	 * can provide their own version of a cancel {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param resourceKey
+	 *            the resource key
+	 * @return the new {@link Label}
+	 */
+	protected Label newCancelLabel(final String id, final ResourceBundleKey resourceKey)
+	{
+		return ComponentFactory.newLabel(id, resourceKey, this);
+	}
+
+	/**
 	 * Factory method for creating a new description {@link Label} with a {@link ResourceBundleKey}.
 	 * This method is invoked in the constructor from the derived classes and can be overridden so
 	 * users can provide their own version of a description {@link Label}.
@@ -206,9 +167,54 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 	 *            the resource key
 	 * @return the new {@link Label}
 	 */
-	protected Label newDescriptionLabel(String id, final ResourceBundleKey resourceKey)
+	protected Label newDescriptionLabel(final String id, final ResourceBundleKey resourceKey)
 	{
 		return ComponentFactory.newLabel(id, resourceKey, this);
+	}
+
+	/**
+	 * Factory method for creating a new {@link Form}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * {@link Form}.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the Form
+	 */
+	protected Form<?> newForm(final String id, final IModel<T> model)
+	{
+		return ComponentFactory.newForm(id, model);
+	}
+
+	/**
+	 * Factory method for creating a new save {@link AjaxButton}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a save {@link AjaxButton}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param form
+	 *            the form
+	 * @return the new {@link AjaxButton}
+	 */
+	protected AjaxButton newSaveButton(final String id, final Form<?> form)
+	{
+		final AjaxButton saveButton = new AjaxButton(id, form)
+		{
+			/**
+			 * The serialVersionUID.
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
+				onSave(target, form);
+			}
+		};
+		return saveButton;
 	}
 
 	/**
@@ -222,23 +228,17 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 	 *            the resource key
 	 * @return the new {@link Label}
 	 */
-	protected Label newSaveLabel(String id, final ResourceBundleKey resourceKey)
+	protected Label newSaveLabel(final String id, final ResourceBundleKey resourceKey)
 	{
 		return ComponentFactory.newLabel(id, resourceKey, this);
 	}
 
-	/**
-	 * Factory method for creating a new cancel {@link Label} with a {@link ResourceBundleKey}. This
-	 * method is invoked in the constructor from the derived classes and can be overridden so users
-	 * can provide their own version of a cancel {@link Label}.
-	 *
-	 * @param id
-	 *            the id
-	 * @param resourceKey
-	 *            the resource key
-	 * @return the new {@link Label}
-	 */
-	protected Label newCancelLabel(String id, final ResourceBundleKey resourceKey)
+	protected Component newTextField(final String id, final IModel<T> model)
+	{
+		return ComponentFactory.newTextField(id, model);
+	}
+
+	protected Component newTextFieldLabel(final String id, final ResourceBundleKey resourceKey)
 	{
 		return ComponentFactory.newLabel(id, resourceKey, this);
 	}

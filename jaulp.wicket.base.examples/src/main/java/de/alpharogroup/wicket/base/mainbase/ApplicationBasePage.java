@@ -41,7 +41,7 @@ import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 @ImportResources(resources = {
 		@ImportResource(resourceName = "BaseMainPage.js", resourceType = "js"),
 		@ImportResource(resourceName = "BaseMainPage.css", resourceType = "css") })
-public abstract class BaseMainPage extends BasePage
+public abstract class ApplicationBasePage extends BasePage
 {
 
 	/**
@@ -53,7 +53,7 @@ public abstract class BaseMainPage extends BasePage
 	/**
 	 * Instantiates a new base page.
 	 */
-	public BaseMainPage()
+	public ApplicationBasePage()
 	{
 		super();
 	}
@@ -64,7 +64,7 @@ public abstract class BaseMainPage extends BasePage
 	 * @param parameters
 	 *            the parameters
 	 */
-	public BaseMainPage(final PageParameters parameters)
+	public ApplicationBasePage(final PageParameters parameters)
 	{
 		super(parameters);
 	}
@@ -77,7 +77,7 @@ public abstract class BaseMainPage extends BasePage
 	{
 		super.renderHead(response);
 		Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
-			.getInstance().getPackageResourceReference(BaseMainPage.class);
+			.getInstance().getPackageResourceReference(ApplicationBasePage.class);
 		if (null != headerContributors && !headerContributors.isEmpty())
 		{
 			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors)
@@ -85,7 +85,7 @@ public abstract class BaseMainPage extends BasePage
 				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
 				{
 					JavaScriptResourceReference reference = new JavaScriptResourceReference(
-						BaseMainPage.class, packageResourceReference.getPackageResourceReference()
+						ApplicationBasePage.class, packageResourceReference.getPackageResourceReference()
 							.getName());
 					if (!response.wasRendered(reference))
 					{
@@ -96,7 +96,7 @@ public abstract class BaseMainPage extends BasePage
 				}
 				if (packageResourceReference.getType().equals(ResourceReferenceType.CSS))
 				{
-					CssResourceReference reference = new CssResourceReference(BaseMainPage.class,
+					CssResourceReference reference = new CssResourceReference(ApplicationBasePage.class,
 						packageResourceReference.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference))
 					{
