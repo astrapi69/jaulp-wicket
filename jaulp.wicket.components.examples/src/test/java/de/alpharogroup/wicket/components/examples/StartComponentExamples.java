@@ -47,33 +47,41 @@ public class StartComponentExamples
 {
 	public static void main(final String[] args)
 	{
-		final int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec *
-																	// 30min=1800sec)...
+		final int sessionTimeout = (int)Duration.minutes(1).seconds();// set timeout to 30min(60sec
+																		// *
+																		// 30min=1800sec)...
 		System.setProperty("wicket.configuration", "development");
 		final String projectname = "jaulp.wicket.components.examples";
 		final File projectDirectory = PathFinder.getProjectDirectory();
 		final File webapp;
-		if(projectDirectory.getAbsolutePath().endsWith(projectname)) {
-			webapp = PathFinder.getRelativePath(projectDirectory, "src", "main",
-				"webapp");			
-		} else {
+		if (projectDirectory.getAbsolutePath().endsWith(projectname))
+		{
+			webapp = PathFinder.getRelativePath(projectDirectory, "src", "main", "webapp");
+		}
+		else
+		{
 			webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src", "main",
 				"webapp");
 		}
 		final File logfile = new File(projectDirectory, "application.log");
-		if(logfile.exists()) {
-			try {
+		if (logfile.exists())
+		{
+			try
+			{
 				DeleteFileUtils.delete(logfile);
-			} catch (IOException e) {
+			}
+			catch (IOException e)
+			{
 				Logger.getRootLogger().error("logfile could not deleted.", e);
 			}
 		}
 		final String absolutePathFromLogfile = logfile.getAbsolutePath();
 		final String filterPath = "/*";
 		// Add a file appender to the logger programatically
-		Logger.getRootLogger().addFileAppender(LoggerExtensions.newFileAppender(absolutePathFromLogfile));
+		Logger.getRootLogger().addFileAppender(
+			LoggerExtensions.newFileAppender(absolutePathFromLogfile));
 		final ContextHandlerCollection contexts = new ContextHandlerCollection();
-		
+
 		final ServletContextHandler servletContextHandler = ServletContextHandlerFactory
 			.getNewServletContextHandler(ServletContextHandlerConfiguration
 				.builder()
@@ -90,25 +98,25 @@ public class StartComponentExamples
 					ServletHolderConfiguration.builder().servletClass(DefaultServlet.class)
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
-		
-		final DeploymentManager deployer = DeploymentManagerFactory.newDeploymentManager(contexts, webapp.getAbsolutePath(), null);
-		
-		final Jetty9RunConfiguration config = newJetty9RunConfiguration(servletContextHandler, contexts, deployer);
+
+		final DeploymentManager deployer = DeploymentManagerFactory.newDeploymentManager(contexts,
+			webapp.getAbsolutePath(), null);
+
+		final Jetty9RunConfiguration config = newJetty9RunConfiguration(servletContextHandler,
+			contexts, deployer);
 		final Server server = new Server();
 		Jetty9Runner.runServletContextHandler(server, config);
 	}
-	
 
-	private static Jetty9RunConfiguration newJetty9RunConfiguration(final ServletContextHandler servletContextHandler, 
-		final ContextHandlerCollection contexts, final DeploymentManager deployer)
+
+	private static Jetty9RunConfiguration newJetty9RunConfiguration(
+		final ServletContextHandler servletContextHandler, final ContextHandlerCollection contexts,
+		final DeploymentManager deployer)
 	{
 		final Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
-			.servletContextHandler(servletContextHandler)
-			.contexts(contexts)
-			.deployer(deployer)
+			.servletContextHandler(servletContextHandler).contexts(contexts).deployer(deployer)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
-			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT)
-			.keyStorePassword("wicket")
+			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
 			.keyStorePathResource("/keystore").build();
 		return config;
 	}

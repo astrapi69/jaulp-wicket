@@ -78,10 +78,14 @@ public class LabeledComponentFactory
 	/**
 	 * Factory method for create a new {@link TwoFormComponentPanel}.
 	 *
-	 * @param <L> the generic type
-	 * @param <R> the generic type
-	 * @param id the id
-	 * @param model the model
+	 * @param <L>
+	 *            the generic type
+	 * @param <R>
+	 *            the generic type
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the new {@link TwoFormComponentPanel}
 	 */
 	public static <L extends Serializable, R extends Serializable> TwoFormComponentPanel<L, R> newTwoFormComponentPanel(

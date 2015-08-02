@@ -61,7 +61,8 @@ public class WicketApplication extends WicketBootstrap3Application
 	/**
 	 * {@inheritDoc}
 	 */
-	public Session newSession(final Request request, final Response response) {
+	public Session newSession(final Request request, final Response response)
+	{
 		final WicketSession session = new WicketSession(request);
 		session.bind();
 		LOGGER.info("new session:" + session.getId());
@@ -124,8 +125,8 @@ public class WicketApplication extends WicketBootstrap3Application
 	protected void onGlobalSettings()
 	{
 		super.onGlobalSettings();
-		ApplicationExtensions.setGlobalSettings(this, newHttpPort(), newHttpsPort(), FOOTER_FILTER_NAME,
-			"UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
+		ApplicationExtensions.setGlobalSettings(this, newHttpPort(), newHttpsPort(),
+			FOOTER_FILTER_NAME, "UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map");
 	}
 
 	public RuntimeConfigurationType getConfigurationType()

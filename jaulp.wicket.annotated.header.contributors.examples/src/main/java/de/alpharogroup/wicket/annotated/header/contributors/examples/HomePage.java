@@ -35,8 +35,10 @@ public class HomePage extends BasePage
 {
 
 	private static final long serialVersionUID = 1L;
-	// 15.5 Context-relative resources https://ci.apache.org/projects/wicket/guide/6.x/guide/resources.html#resources_5
-	public static final ResourceReference MAIN_CSS = new ContextRelativeResourceReference("css/main.css", false);
+	// 15.5 Context-relative resources
+	// https://ci.apache.org/projects/wicket/guide/6.x/guide/resources.html#resources_5
+	public static final ResourceReference MAIN_CSS = new ContextRelativeResourceReference(
+		"css/main.css", false);
 
 	/**
 	 * Constructor that is invoked when page is invoked without a session.
@@ -53,11 +55,12 @@ public class HomePage extends BasePage
 		add(new FooterPanel("footerPanel"));
 
 	}
-	
+
 	@Override
-	public void renderHead(IHeaderResponse response) {
-	    super.renderHead(response);
-	    response.render(CssHeaderItem.forReference(MAIN_CSS));
+	public void renderHead(IHeaderResponse response)
+	{
+		super.renderHead(response);
+		response.render(CssHeaderItem.forReference(MAIN_CSS));
 	}
 
 }

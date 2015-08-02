@@ -17,15 +17,16 @@ public class WicketSession extends WebSession
 	public WicketSession(Request request)
 	{
 		super(request);
-	}	
+	}
 
 	/**
 	 * Gets the WicketSession for this application.
 	 * 
 	 * @return the current WicketSession object.
 	 */
-	public static WicketSession get() {
-		return ((WicketSession) Session.get());
+	public static WicketSession get()
+	{
+		return ((WicketSession)Session.get());
 	}
 
 	/**

@@ -129,7 +129,8 @@ public class HomePage extends WebPage
 	public void renderHead(IHeaderResponse response)
 	{
 		super.renderHead(response);
-		response.render(JavaScriptHeaderItem.forReference(ApplicationExtensions.getJQueryReference()));
+		response.render(JavaScriptHeaderItem.forReference(ApplicationExtensions
+			.getJQueryReference()));
 
 	}
 

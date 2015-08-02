@@ -64,13 +64,13 @@ public class StartXsltExamples
 		Jetty9Runner.runServletContextHandler(server, config);
 	}
 
-	private static Jetty9RunConfiguration newJetty9RunConfiguration(final ServletContextHandler servletContextHandler)
+	private static Jetty9RunConfiguration newJetty9RunConfiguration(
+		final ServletContextHandler servletContextHandler)
 	{
 		final Jetty9RunConfiguration config = Jetty9RunConfiguration.builder()
 			.servletContextHandler(servletContextHandler)
 			.httpPort(WicketApplication.DEFAULT_HTTP_PORT)
-			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT)
-			.keyStorePassword("wicket")
+			.httpsPort(WicketApplication.DEFAULT_HTTPS_PORT).keyStorePassword("wicket")
 			.keyStorePathResource("/keystore").build();
 		return config;
 	}

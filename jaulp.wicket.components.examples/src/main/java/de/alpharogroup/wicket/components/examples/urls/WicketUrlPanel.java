@@ -41,7 +41,8 @@ public class WicketUrlPanel extends BasePanel<Object>
 		PageParameters pageParameters = PageParametersExtensions.toPageParameters(parameters);
 		AddressPage addressPage = new AddressPage(pageParameters);
 
-		add(new Label("absoluteUrlFor", Model.of(WicketUrlExtensions.absoluteUrlFor(AddressPage.class))));
+		add(new Label("absoluteUrlFor", Model.of(WicketUrlExtensions
+			.absoluteUrlFor(AddressPage.class))));
 
 		add(new Label("absoluteUrlForWithPort", Model.of(WicketUrlExtensions.absoluteUrlFor(
 			AddressPage.class, true))));
@@ -67,12 +68,13 @@ public class WicketUrlPanel extends BasePanel<Object>
 		add(new Label("getCanonicalPageUrlWithPageClass", Model.of(WicketUrlExtensions
 			.getCanonicalPageUrl(AddressPage.class))));
 
-		add(new Label("getCanonicalPageUrlWithPageClassAndPageParameters", Model.of(WicketUrlExtensions
-			.getCanonicalPageUrl(AddressPage.class, pageParameters))));
+		add(new Label("getCanonicalPageUrlWithPageClassAndPageParameters",
+			Model.of(WicketUrlExtensions.getCanonicalPageUrl(AddressPage.class, pageParameters))));
 
 		add(new Label("getBaseUrl", Model.of(WicketUrlExtensions.getBaseUrl())));
 
-		add(new Label("getBaseUrlWithPageObject", Model.of(WicketUrlExtensions.getBaseUrl(addressPage))));
+		add(new Label("getBaseUrlWithPageObject", Model.of(WicketUrlExtensions
+			.getBaseUrl(addressPage))));
 
 		add(new Label("getBaseUrlWithPageClass", Model.of(WicketUrlExtensions
 			.getBaseUrl(AddressPage.class))));
@@ -102,8 +104,8 @@ public class WicketUrlPanel extends BasePanel<Object>
 		add(new Label("getDomainUrlWithoutPortAndSlash", Model.of(WicketUrlExtensions.getDomainUrl(
 			false, false))));
 
-		add(new Label("getDomainUrlWithSslAndPortAndSlash", Model.of(WicketUrlExtensions.getDomainUrl(
-			true, true, true))));
+		add(new Label("getDomainUrlWithSslAndPortAndSlash", Model.of(WicketUrlExtensions
+			.getDomainUrl(true, true, true))));
 
 		add(new Label("getDomainUrlWithSslWithoutPortAndWithSlash", Model.of(WicketUrlExtensions
 			.getDomainUrl(true, false, true))));

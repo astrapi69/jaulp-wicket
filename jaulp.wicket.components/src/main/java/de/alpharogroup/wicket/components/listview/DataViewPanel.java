@@ -30,108 +30,117 @@ import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * The Class DataViewPanel takes a {@link org.apache.wicket.markup.repeater.data.DataView} of a generic type.
+ * The Class DataViewPanel takes a {@link org.apache.wicket.markup.repeater.data.DataView} of a
+ * generic type.
  *
  * @param <T>
  *            the generic type
  */
-public abstract class DataViewPanel<T extends Serializable> extends GenericPanel<List<T>> {
+public abstract class DataViewPanel<T extends Serializable> extends GenericPanel<List<T>>
+{
 
-    /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
-    /** The data view. */
-    @Getter
-    private final DataView<T> dataView;
-    
-    /**
-     *  instance block for set the markup id, with other words make this component ajaxifiable. 
-     **/
-    {
-        setOutputMarkupId(true);
-        setOutputMarkupPlaceholderTag(true);
-    }
+	/** The data view. */
+	@Getter
+	private final DataView<T> dataView;
 
-    /**
-     * Instantiates a new {@link de.alpharogroup.wicket.components.listview.DataViewPanel}.
-     *
-     * @param id
-     *            the id
-     * @param list
-     *            the list
-     */
-    public DataViewPanel(String id, List<T> list) {
-        this(id, new ListModel<>(list));
-    }
+	/**
+	 * instance block for set the markup id, with other words make this component ajaxifiable.
+	 **/
+	{
+		setOutputMarkupId(true);
+		setOutputMarkupPlaceholderTag(true);
+	}
 
-    /**
-     * Instantiates a new {@link de.alpharogroup.wicket.components.listview.DataViewPanel}.
-     *
-     * @param id
-     *            the id
-     * @param model
-     *            the model
-     */
-    public DataViewPanel(String id, final IModel<List<T>> model) {
-        super(id, Args.notNull(model, "model"));
-        add(dataView = newDataView("dataView", newDataProvider(model)));
-    }
+	/**
+	 * Instantiates a new {@link de.alpharogroup.wicket.components.listview.DataViewPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param list
+	 *            the list
+	 */
+	public DataViewPanel(String id, List<T> list)
+	{
+		this(id, new ListModel<>(list));
+	}
 
-    /**
-     * New DataView.
-     *
-     * @param id
-     *            the id
-     * @param dataProvider
-     *            the data provider
-     * @return the DataView
-     */
-    protected DataView<T> newDataView(final String id, final IDataProvider<T> dataProvider) {
-        DataView<T> dataView = new DataView<T>(id, dataProvider) {
-            /** The Constant serialVersionUID. */
-            private static final long serialVersionUID = 1L;
+	/**
+	 * Instantiates a new {@link de.alpharogroup.wicket.components.listview.DataViewPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public DataViewPanel(String id, final IModel<List<T>> model)
+	{
+		super(id, Args.notNull(model, "model"));
+		add(dataView = newDataView("dataView", newDataProvider(model)));
+	}
 
-        	/**
-        	 * {@inheritDoc}
-        	 */
-            @Override
-            protected void populateItem(Item<T> item) {
-                item.add(newListComponent("item", item));
-            }
+	/**
+	 * New DataView.
+	 *
+	 * @param id
+	 *            the id
+	 * @param dataProvider
+	 *            the data provider
+	 * @return the DataView
+	 */
+	protected DataView<T> newDataView(final String id, final IDataProvider<T> dataProvider)
+	{
+		DataView<T> dataView = new DataView<T>(id, dataProvider)
+		{
+			/** The Constant serialVersionUID. */
+			private static final long serialVersionUID = 1L;
 
-        };
-        dataView.setItemsPerPage(newItemsPerPage());
-        return dataView;
-    }
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected void populateItem(Item<T> item)
+			{
+				item.add(newListComponent("item", item));
+			}
 
-    /**
-     * New items per page.
-     *
-     * @return the long
-     */
-    protected long newItemsPerPage() {
-        return 10;
-    }
+		};
+		dataView.setItemsPerPage(newItemsPerPage());
+		return dataView;
+	}
 
-    /**
-     * Abstract factory method that creates a new list component.
-     *
-     * @param id
-     *            the id
-     * @param item
-     *            the item
-     * @return the new list component.
-     */
-    protected abstract Component newListComponent(String id, Item<T> item);
+	/**
+	 * New items per page.
+	 *
+	 * @return the long
+	 */
+	protected long newItemsPerPage()
+	{
+		return 10;
+	}
 
-    /**
-     * Abstract factory method that creates a new {@link IDataProvider}.  This method is invoked in the
-	 * constructor from the derived classes and must be implemented so users can provide their own
-	 * version of a {@link IDataProvider}.
-     *
-     * @param model the model
-     * @return the new {@link IDataProvider}.
-     */
-    protected abstract IDataProvider<T> newDataProvider(final IModel<List<T>> model);
+	/**
+	 * Abstract factory method that creates a new list component.
+	 *
+	 * @param id
+	 *            the id
+	 * @param item
+	 *            the item
+	 * @return the new list component.
+	 */
+	protected abstract Component newListComponent(String id, Item<T> item);
+
+	/**
+	 * Abstract factory method that creates a new {@link IDataProvider}. This method is invoked in
+	 * the constructor from the derived classes and must be implemented so users can provide their
+	 * own version of a {@link IDataProvider}.
+	 *
+	 * @param model
+	 *            the model
+	 * @return the new {@link IDataProvider}.
+	 */
+	protected abstract IDataProvider<T> newDataProvider(final IModel<List<T>> model);
 
 }

@@ -85,8 +85,8 @@ public abstract class ApplicationBasePage extends BasePage
 				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
 				{
 					JavaScriptResourceReference reference = new JavaScriptResourceReference(
-						ApplicationBasePage.class, packageResourceReference.getPackageResourceReference()
-							.getName());
+						ApplicationBasePage.class, packageResourceReference
+							.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference))
 					{
 						JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
@@ -96,8 +96,9 @@ public abstract class ApplicationBasePage extends BasePage
 				}
 				if (packageResourceReference.getType().equals(ResourceReferenceType.CSS))
 				{
-					CssResourceReference reference = new CssResourceReference(ApplicationBasePage.class,
-						packageResourceReference.getPackageResourceReference().getName());
+					CssResourceReference reference = new CssResourceReference(
+						ApplicationBasePage.class, packageResourceReference
+							.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference))
 					{
 						CssReferenceHeaderItem headerItem = CssHeaderItem.forReference(reference);

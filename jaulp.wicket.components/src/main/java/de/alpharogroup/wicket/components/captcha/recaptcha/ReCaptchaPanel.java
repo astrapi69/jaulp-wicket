@@ -82,7 +82,8 @@ public abstract class ReCaptchaPanel extends Panel
 				{
 					uresponse = "";
 				}
-				String remoteAddress = WicketComponentExtensions.getHttpServletRequest().getRemoteAddr();
+				String remoteAddress = WicketComponentExtensions.getHttpServletRequest()
+					.getRemoteAddr();
 				final ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddress,
 					challenge, uresponse);
 

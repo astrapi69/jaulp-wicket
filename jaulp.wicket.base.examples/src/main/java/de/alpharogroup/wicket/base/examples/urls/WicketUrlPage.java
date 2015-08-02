@@ -65,8 +65,8 @@ public class WicketUrlPage extends WebPage
 		PageParameters params = new PageParameters();
 		params.add("USERNAME", "bla");
 		params.add("CONFIRMATION_CODE", "1HE23WE");
-		add(new Label("absoluteUrlFor", Model.of(WicketUrlExtensions.absoluteUrlFor(WicketUrlPage.class,
-			params, true))));
+		add(new Label("absoluteUrlFor", Model.of(WicketUrlExtensions.absoluteUrlFor(
+			WicketUrlPage.class, params, true))));
 		add(new Label("absoluteUrlFor2", Model.of(WicketUrlExtensions.absoluteUrlFor(
 			WicketUrlPage.class, params, false))));
 		add(new Label("absoluteUrlFor3", Model.of(WicketUrlExtensions.absoluteUrlFor(

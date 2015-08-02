@@ -21,7 +21,8 @@ import org.apache.wicket.util.io.IClusterable;
  * The Interface Action implements the command Pattern.
  *
  * @author Asterios Raptis
- * @param <R> the generic type of the return type of the execute method.
+ * @param <R>
+ *            the generic type of the return type of the execute method.
  */
 public interface Action<R> extends IClusterable
 {
