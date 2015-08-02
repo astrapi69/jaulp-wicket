@@ -31,20 +31,29 @@ import org.apache.wicket.util.resource.IResourceStream;
  **/
 public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 {
-	/**
-	 * 
-	 */
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** The anti cache. */
 	private boolean antiCache;
 
+	/**
+	 * Instantiates a new {@link AjaxDownloadBehavior}.
+	 */
 	public AjaxDownloadBehavior()
 	{
 		this(true);
 	}
 
+	/**
+	 * Instantiates a new {@link AjaxDownloadBehavior}.
+	 *
+	 * @param antiCache
+	 *            the anti cache
+	 */
 	public AjaxDownloadBehavior(final boolean antiCache)
 	{
-		super();
 		this.antiCache = antiCache;
 	}
 
@@ -67,6 +76,9 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 		target.appendJavaScript("setTimeout(\"window.location.href='" + url + "'\", 100);");
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onRequest()
 	{

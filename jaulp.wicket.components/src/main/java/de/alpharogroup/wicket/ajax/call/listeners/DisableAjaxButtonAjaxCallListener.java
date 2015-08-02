@@ -58,12 +58,8 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 		this.value = value;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getAfterHandler(org.apache.wicket.Component
-	 * )
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public CharSequence getAfterHandler(final Component component)
@@ -71,12 +67,8 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getBeforeHandler(org.apache.wicket.Component
-	 * )
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public CharSequence getBeforeHandler(final Component component)
@@ -84,12 +76,8 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getBeforeSendHandler(org.apache.wicket
-	 * .Component)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public CharSequence getBeforeSendHandler(final Component component)
@@ -97,12 +85,8 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 		return getJsScript(component);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getCompleteHandler(org.apache.wicket.
-	 * Component)
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public CharSequence getCompleteHandler(final Component component)
@@ -110,12 +94,8 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getFailureHandler(org.apache.wicket.Component
-	 * )
+	/**
+	 * {@inheritDoc}
 	 */
 	@Override
 	public CharSequence getFailureHandler(final Component component)
@@ -136,7 +116,7 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * {@inheritDoc}
 	 * 
 	 * @see
 	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getPrecondition(org.apache.wicket.Component
@@ -149,7 +129,7 @@ public class DisableAjaxButtonAjaxCallListener implements IAjaxCallListener
 	}
 
 	/*
-	 * (non-Javadoc)
+	 * {@inheritDoc}
 	 * 
 	 * @see
 	 * org.apache.wicket.ajax.attributes.IAjaxCallListener#getSuccessHandler(org.apache.wicket.Component

@@ -18,6 +18,8 @@ package de.alpharogroup.wicket.behaviors.datetime;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.NoArgsConstructor;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -32,6 +34,7 @@ import org.apache.wicket.util.template.TextTemplate;
 /**
  * This behavior adds the current time to a component.
  */
+@NoArgsConstructor
 public class CurrentDatetimeBehavior extends Behavior
 {
 
@@ -53,13 +56,6 @@ public class CurrentDatetimeBehavior extends Behavior
 	/** The popupoverlay template. */
 	private final TextTemplate datetimeTemplate = new PackageTextTemplate(
 		CurrentDatetimeBehavior.class, "datetime-plugin.js.tmpl");
-
-	/**
-	 * Default constructor.
-	 */
-	public CurrentDatetimeBehavior()
-	{
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -86,7 +82,6 @@ public class CurrentDatetimeBehavior extends Behavior
 		textTemplate.interpolate(variables);
 		return textTemplate.asString();
 	}
-
 
 	/**
 	 * {@inheritDoc}

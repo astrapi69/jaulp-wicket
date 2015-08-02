@@ -32,6 +32,9 @@ public class TimelineChartPanel extends Panel
 		super(id);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(final IHeaderResponse response)
 	{

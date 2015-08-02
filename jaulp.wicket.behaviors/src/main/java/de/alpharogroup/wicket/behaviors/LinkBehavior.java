@@ -121,7 +121,7 @@ public class LinkBehavior extends Behavior
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void onComponentTag(final Component component, final ComponentTag tag)

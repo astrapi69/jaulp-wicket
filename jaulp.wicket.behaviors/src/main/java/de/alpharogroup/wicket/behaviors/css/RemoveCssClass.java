@@ -18,20 +18,30 @@ package de.alpharogroup.wicket.behaviors.css;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.model.Model;
 
+/**
+ * The Class RemoveCssClass removes the given css classes.
+ */
 public class RemoveCssClass extends AttributeModifier
 {
 
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link RemoveCssClass}.
+	 *
+	 * @param cssClass
+	 *            the css class
+	 */
 	public RemoveCssClass(final String cssClass)
 	{
 		super("class", new Model<>(cssClass));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected String newValue(final String currentValue, final String cssClass)
 	{
