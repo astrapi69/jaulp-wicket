@@ -22,9 +22,9 @@ import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
 
 /**
- * The Class CookieUtils provides some methods to create, add, get or clear a cookie.
+ * The Class CookieExtensions provides some methods to create, add, get or clear a cookie.
  */
-public final class CookieUtils
+public final class CookieExtensions
 {
 
 	/**
