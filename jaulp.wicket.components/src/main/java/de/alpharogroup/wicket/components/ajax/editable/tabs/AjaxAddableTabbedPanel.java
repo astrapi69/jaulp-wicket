@@ -263,6 +263,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		return tabs;
 	}
 
+
 	/**
 	 * Gets the visiblity cache.
 	 *

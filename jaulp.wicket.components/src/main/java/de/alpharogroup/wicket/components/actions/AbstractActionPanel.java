@@ -51,8 +51,6 @@ public abstract class AbstractActionPanel<T> extends BasePanel<T>
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
 	 * @return the new action {@link AbstractLink}.
 	 */
 	protected abstract AbstractLink newActionLink(final String id);
@@ -78,10 +76,6 @@ public abstract class AbstractActionPanel<T> extends BasePanel<T>
 	 * method is invoked in the constructor and can be overridden so users can provide their own
 	 * version of a new {@link IModel} for the label of the action link.
 	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
 	 * @return the {@link IModel} for the label of the action link.
 	 */
 	protected abstract IModel<String> newActionLinkLabelModel();

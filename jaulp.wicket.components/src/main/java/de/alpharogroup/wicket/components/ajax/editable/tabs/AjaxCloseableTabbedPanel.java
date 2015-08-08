@@ -60,11 +60,19 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		 */
 		private int lastVisible = -1;
 
+		/**
+		 * Instantiates a new {@link VisibilityCache}.
+		 */
 		public VisibilityCache()
 		{
 			visibilities = new Boolean[tabs.size()];
 		}
 
+		/**
+		 * Gets the last visible tab.
+		 *
+		 * @return the last visible tab.
+		 */
 		public int getLastVisible()
 		{
 			if (lastVisible == -1)
@@ -77,13 +85,19 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 					}
 				}
 			}
-
 			return lastVisible;
 		}
 
+		/**
+		 * Checks if is visible.
+		 *
+		 * @param index
+		 *            the index
+		 * @return true, if is visible
+		 */
 		public boolean isVisible(final int index)
 		{
-			if (visibilities.length < index + 1)
+			if (visibilities.length < (index + 1))
 			{
 				final Boolean[] resized = new Boolean[index + 1];
 				System.arraycopy(visibilities, 0, resized, 0, visibilities.length);
@@ -95,7 +109,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 				Boolean visible = visibilities[index];
 				if (visible == null)
 				{
-					if (index == 1 && index == tabs.size())
+					if ((index == 1) && (index == tabs.size()))
 					{
 						visible = tabs.get(0).isVisible();
 						visibilities[0] = visible;
@@ -113,27 +127,32 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		}
 	}
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** id used for child panels */
 	public static final String TAB_PANEL_ID = "panel";
 
+	/** The list with the tabs. */
 	private final List<T> tabs;
 
 	/** the current tab */
 	private int currentTab = -1;
+	/** the cache for the visibility. */
 	private transient VisibilityCache visibilityCache;
+	/** the Container for the unordered list. */
 	@Getter
 	private WebMarkupContainer tabsUlContainer;
+	/** the Container for the tabs. */
 	@Getter
 	private WebMarkupContainer tabsContainer;
-
+	/** the {@link Loop} for the tabs. */
 	@Getter
 	private Loop tabsLoop;
 
 	/**
-	 * Constructor
-	 * 
+	 * Instantiates a new {@link AjaxCloseableTabbedPanel}.
+	 *
 	 * @param id
 	 *            component id
 	 * @param tabs
@@ -145,7 +164,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	}
 
 	/**
-	 * Constructor
+	 * Instantiates a new {@link AjaxCloseableTabbedPanel}.
 	 * 
 	 * @param id
 	 *            component id
@@ -163,8 +182,12 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 		final IModel<Integer> tabCount = new AbstractReadOnlyModel<Integer>()
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Integer getObject()
 			{
@@ -183,7 +206,10 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		add(newPanel());
 	}
 
+
 	/**
+	 * Get the css class of the last tab.
+	 * 
 	 * @return the value of css class attribute that will be added to last tab. The default value is
 	 *         <code>last</code>
 	 */
@@ -193,6 +219,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	}
 
 	/**
+	 * Get the selected tab.
+	 * 
 	 * @return index of the selected tab
 	 */
 	public final int getSelectedTab()
@@ -201,6 +229,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	}
 
 	/**
+	 * Get the css class of the selected tab.
+	 * 
 	 * @return the value of css class attribute that will be added to selected tab. The default
 	 *         value is <code>selected</code>
 	 */
@@ -210,6 +240,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	}
 
 	/**
+	 * Get the css class of the tab container.
+	 * 
 	 * @return the value of css class attribute that will be added to a div containing the tabs. The
 	 *         default value is <code>tab-row</code>
 	 */
@@ -219,6 +251,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	}
 
 	/**
+	 * Gets the list of tabs that can be used by the user to add/remove/reorder tabs in the panel.
+	 * 
 	 * @return list of tabs that can be used by the user to add/remove/reorder tabs in the panel
 	 */
 	public final List<T> getTabs()
@@ -226,6 +260,12 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		return tabs;
 	}
 
+
+	/**
+	 * Gets the visiblity cache.
+	 *
+	 * @return the visiblity cache
+	 */
 	private VisibilityCache getVisiblityCache()
 	{
 		if (visibilityCache == null)
@@ -358,8 +398,12 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		return new AjaxFallbackLink<Void>(linkId)
 		{
 
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onClick(final AjaxRequestTarget target)
 			{
@@ -374,6 +418,11 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		};
 	}
 
+	/**
+	 * Factory method for the new tab panel.
+	 *
+	 * @return the new tab panel.
+	 */
 	private WebMarkupContainer newPanel()
 	{
 		return new WebMarkupContainer(TAB_PANEL_ID);
@@ -391,8 +440,12 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	{
 		return new LoopItem(tabIndex)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onComponentTag(final ComponentTag tag)
 			{
@@ -416,11 +469,13 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 				tag.put("class", cssClass.trim());
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onConfigure()
 			{
 				super.onConfigure();
-
 				setVisible(getVisiblityCache().isVisible(tabIndex));
 			}
 		};
@@ -436,10 +491,14 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 */
 	protected WebMarkupContainer newTabsContainer(final String id)
 	{
-		return new WebMarkupContainer(id)
+		final WebMarkupContainer wmc = new WebMarkupContainer(id)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onComponentTag(final ComponentTag tag)
 			{
@@ -447,20 +506,38 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 				tag.put("class", getTabContainerCssClass());
 			}
 		};
+		wmc.setOutputMarkupId(true);
+		return wmc;
 	}
 
+	/**
+	 * Factory method for creating a new {@link Loop} for the tabs.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Loop} for the tabs.
+	 */
 	protected Loop newTabsLoop(final String id, final IModel<Integer> model)
 	{
-		final Loop tabsLoop = new Loop(id, model)
+		final Loop localTabsLoop = new Loop(id, model)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected LoopItem newItem(final int iteration)
 			{
 				return newTabContainer(iteration);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void populateItem(final LoopItem item)
 			{
@@ -480,7 +557,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 			}
 		};
-		return tabsLoop;
+		localTabsLoop.setOutputMarkupId(true);
+		return localTabsLoop;
 	}
 
 	/**
@@ -516,12 +594,15 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	{
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onBeforeRender()
 	{
 		int index = getSelectedTab();
 
-		if (index == -1 || getVisiblityCache().isVisible(index) == false)
+		if ((index == -1) || (getVisiblityCache().isVisible(index) == false))
 		{
 			// find first visible tab
 			index = -1;
@@ -546,6 +627,9 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		super.onBeforeRender();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onDetach()
 	{
@@ -581,7 +665,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 */
 	public void onNewTab(final AjaxRequestTarget target, final T tab, final int index)
 	{
-		if (index < 0 || index >= getTabs().size())
+		if ((index < 0) || (index >= getTabs().size()))
 		{
 			throw new IndexOutOfBoundsException();
 		}
@@ -602,7 +686,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	{
 		final int tabSize = getTabs().size();
 		// there have to be at least one tab on the ajaxTabbedPanel...
-		if (2 <= tabSize && index < tabSize)
+		if ((2 <= tabSize) && (index < tabSize))
 		{
 			setSelectedTab(index);
 			getTabs().remove(index);
@@ -627,6 +711,12 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		}
 	}
 
+	/**
+	 * Sets the current tab.
+	 *
+	 * @param index
+	 *            the new current tab
+	 */
 	private void setCurrentTab(final int index)
 	{
 		if (this.currentTab == index)
@@ -638,7 +728,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 		final Component component;
 
-		if (currentTab == -1 || tabs.isEmpty() || !getVisiblityCache().isVisible(currentTab))
+		if ((currentTab == -1) || tabs.isEmpty() || !getVisiblityCache().isVisible(currentTab))
 		{
 			// no tabs or the current tab is not visible
 			component = newPanel();
@@ -679,7 +769,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 */
 	public AjaxCloseableTabbedPanel<T> setSelectedTab(final int index)
 	{
-		if (index < 0 || index >= tabs.size())
+		if ((index < 0) || (index >= tabs.size()))
 		{
 			throw new IndexOutOfBoundsException();
 		}

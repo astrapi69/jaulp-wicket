@@ -20,10 +20,14 @@ import lombok.Getter;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
+/**
+ * The Class {@link CloseableTab}. Convenience class that takes care of closable ITab functionality.
+ */
 public abstract class CloseableTab implements ICloseableTab
 {
-	private static final long serialVersionUID = 1L;
 
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
 	/** The title of the tab. */
 	@Getter
@@ -34,7 +38,7 @@ public abstract class CloseableTab implements ICloseableTab
 	IModel<String> closeTitle;
 
 	/**
-	 * Constructor
+	 * Instantiates a new {@link CloseableTab}.
 	 * 
 	 * @param title
 	 *            IModel used to represent the title of the tab. Must contain a string

@@ -36,7 +36,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new editable ajax tabbed panel.
+	 * Instantiates a new {@link EditableAjaxTabbedPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -49,7 +49,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	}
 
 	/**
-	 * Instantiates a new editable ajax tabbed panel.
+	 * Instantiates a new {@link EditableAjaxTabbedPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -90,7 +90,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	 */
 	public void onNewTab(final AjaxRequestTarget target, final T tab, final int index)
 	{
-		if (index < 0 || index >= getTabs().size())
+		if ((index < 0) || (index >= getTabs().size()))
 		{
 			throw new IndexOutOfBoundsException();
 		}
@@ -111,7 +111,7 @@ public class EditableAjaxTabbedPanel<T extends ITab> extends AjaxTabbedPanel<T>
 	{
 		final int tabSize = getTabs().size();
 		// there have to be at least one tab on the ajaxTabbedPanel...
-		if (2 <= tabSize && index < tabSize)
+		if ((2 <= tabSize) && (index < tabSize))
 		{
 			setSelectedTab(index);
 			getTabs().remove(index);

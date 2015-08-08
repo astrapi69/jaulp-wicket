@@ -18,7 +18,16 @@ package de.alpharogroup.wicket.components.ajax.editable.tabs;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.model.IModel;
 
+/**
+ * The Interface {@link ICloseableTab} to provide closable ITab functionality.
+ */
 public interface ICloseableTab extends ITab
 {
+
+	/**
+	 * Gets the close title.
+	 *
+	 * @return the close title
+	 */
 	IModel<String> getCloseTitle();
 }
