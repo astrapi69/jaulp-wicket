@@ -290,17 +290,58 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		return new Model<Integer>(-1);
 	}
 
+	/**
+	 * Abstract factory method for creating the new tab component.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new tab component.
+	 */
 	protected abstract Component newAddTab(final String id, final IModel<String> model);
 
-	protected abstract Label newaddTabLabel(final String id, final IModel<String> model);
-
-	protected Label newAddTabLabel(final String id, final IModel<String> model)
+	/**
+	 * Factory method for creating the new label of the button.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new label of the button.
+	 */
+	protected Label newAddTabButtonLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
+	/**
+	 * Abstract factory method for creating the new label for the tab component.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new label for the tab component.
+	 */
+	protected abstract Label newaddTabLabel(final String id, final IModel<String> model);
+
+	/**
+	 * Abstract factory method for creating the new {@link IModel} for the add tab label.
+	 * 
+	 * @return the new {@link IModel} for the add tab label.
+	 */
 	protected abstract IModel<String> newAddTabLabelModel();
 
+	/**
+	 * Abstract factory method for creating a new modal dialog for create a new tab.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new modal dialog for create a new tab.
+	 */
 	protected abstract Component newAddTabModalWindow(final String id, final IModel<String> model);
 
 	/**
@@ -413,8 +454,12 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		return new AjaxFallbackLink<Void>(linkId)
 		{
 
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onClick(final AjaxRequestTarget target)
 			{
@@ -429,6 +474,11 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		};
 	}
 
+	/**
+	 * Factory method for the new tab panel.
+	 *
+	 * @return the new tab panel.
+	 */
 	private WebMarkupContainer newPanel()
 	{
 		return new WebMarkupContainer(TAB_PANEL_ID);
@@ -446,8 +496,12 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	{
 		return new LoopItem(tabIndex)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onComponentTag(final ComponentTag tag)
 			{
@@ -471,11 +525,13 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 				tag.put("class", cssClass.trim());
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onConfigure()
 			{
 				super.onConfigure();
-
 				setVisible(getVisiblityCache().isVisible(tabIndex));
 			}
 		};
@@ -493,8 +549,12 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	{
 		final WebMarkupContainer wmc = new WebMarkupContainer(id)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onComponentTag(final ComponentTag tag)
 			{
@@ -506,18 +566,34 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		return wmc;
 	}
 
+	/**
+	 * Factory method for creating a new {@link Loop} for the tabs.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Loop} for the tabs.
+	 */
 	protected Loop newTabsLoop(final String id, final IModel<Integer> model)
 	{
 		final Loop localTabsLoop = new Loop(id, model)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected LoopItem newItem(final int iteration)
 			{
 				return newTabContainer(iteration);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void populateItem(final LoopItem item)
 			{
@@ -574,6 +650,9 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	{
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onBeforeRender()
 	{
@@ -604,6 +683,9 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		super.onBeforeRender();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onDetach()
 	{
@@ -685,6 +767,12 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		}
 	}
 
+	/**
+	 * Sets the current tab.
+	 *
+	 * @param index
+	 *            the new current tab
+	 */
 	private void setCurrentTab(final int index)
 	{
 		if (this.currentTab == index)
@@ -724,7 +812,6 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 		addOrReplace(component);
 	}
-
 
 	/**
 	 * sets the selected tab

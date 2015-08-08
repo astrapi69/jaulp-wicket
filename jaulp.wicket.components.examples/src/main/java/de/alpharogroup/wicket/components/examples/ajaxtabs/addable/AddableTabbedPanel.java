@@ -101,7 +101,7 @@ public class AddableTabbedPanel extends Panel
 					}
 				};
 				openModal.setOutputMarkupId(true);
-				openModal.add(newAddTabLabel("addTabLabel", Model.of("+")));
+				openModal.add(newAddTabButtonLabel("addTabLabel", Model.of("+")));
 				openModal.add(new AttributeAppender("class", " label-success"));
 				addTabContainer.add(openModal);
 				return addTabContainer;
