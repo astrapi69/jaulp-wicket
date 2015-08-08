@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.deregistration;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -52,17 +53,21 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	/** The button label. */
 	@Getter
 	private Label buttonLabel;
+	/** The button. */
 	@Getter
 	private Button submitButton;
+	/** The motivation Component. */
 	@Getter
 	private Component motivation;
+	/** The content Component. */
 	@Getter
 	private Component contentPanel;
+	/** The form. */
 	@Getter
 	private Form<?> form;
 
 	/**
-	 * Instantiates a new deregistration panel.
+	 * Instantiates a new {@link DeregistrationPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -74,6 +79,11 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 		super(id, model);
 	}
 
+	/**
+	 * Gets the domain name.
+	 *
+	 * @return the domain name
+	 */
 	public abstract String getDomainName();
 
 	/**
@@ -91,10 +101,13 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onSubmit()
 			{
-				onDeregistration();
+				onDeregistration(null);
 			}
 		};
 	}
@@ -118,6 +131,19 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 			ResourceModelFactory.newResourceModel(resourceKey, this, defaultValue));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} of the content. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of a new {@link Component} of the content.
+	 *
+	 * @param id
+	 *            the id
+	 * @param resourceKey
+	 *            the resource key
+	 * @param defaultValue
+	 *            the default value
+	 * @return the new {@link Component} of the content
+	 */
 	protected Component newContentPanel(final String id)
 	{
 		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel
@@ -189,8 +215,12 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 		final LabeledTextAreaPanel<DeregistrationModel> description = new LabeledTextAreaPanel<DeregistrationModel>(
 			id, model, labelModel)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected TextArea<DeregistrationModel> newTextArea(final String id,
 				final IModel<DeregistrationModel> model)
@@ -200,12 +230,15 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 				{
 					textArea.add(new AttributeAppender("placeholder", placeholderModel));
 				}
-				return super.newTextArea(id, model);
+				return textArea;
 			}
 		};
 		return description;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void onBeforeRender()
 	{
@@ -220,6 +253,13 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 		super.onBeforeRender();
 	}
 
-	public abstract void onDeregistration();
+	/**
+	 * Abstract callback method that must be overwritten to provide specific action for the
+	 * deregistration.
+	 *
+	 * @param target
+	 *            the target
+	 */
+	public abstract void onDeregistration(final AjaxRequestTarget target);
 
 }
