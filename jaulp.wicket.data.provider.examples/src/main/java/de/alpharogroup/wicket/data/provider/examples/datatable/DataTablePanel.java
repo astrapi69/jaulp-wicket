@@ -18,7 +18,10 @@ package de.alpharogroup.wicket.data.provider.examples.datatable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.HeadersToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
@@ -28,9 +31,13 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.Filte
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.FilterToolbar;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import de.alpharogroup.wicket.components.actions.ActionPanel;
 import de.alpharogroup.wicket.data.provider.examples.data.provider.Person;
 import de.alpharogroup.wicket.data.provider.examples.data.provider.PersonDatabaseManager;
 import de.alpharogroup.wicket.data.provider.examples.data.provider.PersonFilter;
@@ -64,6 +71,54 @@ public class DataTablePanel extends Panel
 		dataProvider.setSort("firstname", SortOrder.ASCENDING);
 
 		final List<IColumn<Person, String>> columns = new ArrayList<>();
+
+		columns.add(new AbstractColumn<Person, String>(new Model<String>("Actions"))
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void populateItem(final Item<ICellPopulator<Person>> cellItem,
+				final String componentId, final IModel<Person> model)
+			{
+				final ActionPanel<Person> editActionPanel = new ActionPanel<Person>(componentId,
+					model)
+				{
+
+					/**
+					 * The serialVersionUID
+					 */
+					private static final long serialVersionUID = 1L;
+
+					/**
+					 * {@inheritDoc}
+					 */
+					@Override
+					protected IModel<String> newActionLinkLabelModel()
+					{
+						return ResourceModelFactory
+							.newResourceModel("global.main.button.edit.label");
+					}
+
+					/**
+					 * {@inheritDoc}
+					 */
+					@Override
+					protected void onAction(final AjaxRequestTarget target)
+					{
+						DataTablePanel.this.onEdit(target);
+					}
+
+
+				};
+				cellItem.add(editActionPanel);
+			}
+		});
 
 		columns.add(new PropertyColumn<Person, String>(Model.of("First name"), "firstname",
 			"firstname"));
@@ -99,6 +154,11 @@ public class DataTablePanel extends Panel
 		tableWithFilterForm.addTopToolbar(new NavigationToolbar(tableWithFilterForm));
 		tableWithFilterForm.addTopToolbar(new HeadersToolbar<>(tableWithFilterForm, dataProvider));
 		filterForm.add(tableWithFilterForm);
+	}
+
+	protected void onEdit(final AjaxRequestTarget target)
+	{
+		System.out.println("Edit ...");
 	}
 
 }

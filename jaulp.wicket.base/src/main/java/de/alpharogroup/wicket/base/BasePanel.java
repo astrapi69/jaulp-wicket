@@ -47,7 +47,7 @@ public abstract class BasePanel<T> extends GenericPanel<T>
 	 * Instantiates a new {@link BasePanel}.
 	 *
 	 * @param id
-	 *            the id
+	 *            the component id
 	 * @param model
 	 *            the model
 	 */

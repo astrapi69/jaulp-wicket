@@ -1,45 +1,66 @@
 package de.alpharogroup.wicket.components.actions;
 
-import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 
-import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.components.factory.ComponentFactory;
-
 /**
- * In use with DataTable for a column with a link that provides an action like select, delete etc.
+ * The Class {@link ActionPanel} for an specific action.
+ *
+ * @param <T>
+ *            the generic type of the model
  */
-public abstract class ActionPanel<T> extends BasePanel<T>
+public abstract class ActionPanel<T> extends AbstractActionPanel<T>
 {
 
-	/**
-     * 
-     */
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	private static final String ACTION_LINK_ID = "actionLink";
-	private static final String ACTION_LINK_LABEL_ID = "actionLinkLabel";
 
 	/**
+	 * Instantiates a new {@link ActionPanel}.
+	 *
 	 * @param id
-	 *            component id
+	 *            the component id
 	 * @param model
-	 *            model for contact
+	 *            the model
 	 */
 	public ActionPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
-		add(newActionLink(ACTION_LINK_ID).add(
-			newActionLinkLabel(ACTION_LINK_LABEL_ID, newActionLinkLabelModel())));
 	}
 
-	protected abstract AbstractLink newActionLink(final String id);
-
-	protected Label newActionLinkLabel(final String id, final IModel<String> model)
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected AbstractLink newActionLink(final String id)
 	{
-		final Label label = ComponentFactory.newLabel(id, model);
-		return label;
+		final AjaxLink<String> link = new AjaxLink<String>(id)
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void onClick(final AjaxRequestTarget target)
+			{
+				ActionPanel.this.onAction(target);
+			}
+		};
+		return link;
 	}
 
-	protected abstract IModel<String> newActionLinkLabelModel();
+	/**
+	 * Abstract callback method that must be overwritten to provide specific action.
+	 *
+	 * @param target
+	 *            the target
+	 */
+	protected abstract void onAction(final AjaxRequestTarget target);
+
 }
