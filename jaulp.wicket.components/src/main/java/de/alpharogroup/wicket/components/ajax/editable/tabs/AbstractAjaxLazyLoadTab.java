@@ -23,6 +23,12 @@ import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
+/**
+ * Convenience class that takes care of lazy load ITab functionality.
+ *
+ * @param <T>
+ *            the generic type
+ */
 public abstract class AbstractAjaxLazyLoadTab<T> implements ITab
 {
 
@@ -35,14 +41,32 @@ public abstract class AbstractAjaxLazyLoadTab<T> implements ITab
 	@Getter
 	private final IModel<T> content;
 
+	/**
+	 * Instantiates a new {@link AbstractAjaxLazyLoadTab}.
+	 *
+	 * @param title
+	 *            the title
+	 * @param content
+	 *            the content
+	 */
 	public AbstractAjaxLazyLoadTab(final IModel<String> title, final IModel<T> content)
 	{
 		this.title = title;
 		this.content = content;
 	}
 
+	/**
+	 * Gets the lazy load panel.
+	 *
+	 * @param markupId
+	 *            the markup id
+	 * @return the lazy load panel
+	 */
 	public abstract Component getLazyLoadPanel(final String markupId);
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public WebMarkupContainer getPanel(final String panelId)
 	{

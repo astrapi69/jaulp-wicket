@@ -40,7 +40,7 @@ public abstract class AbstractContentTab<T> extends CloseableTab
 	private final IModel<T> content;
 
 	/**
-	 * Constructor.
+	 * Instantiates a new {@link AbstractContentTab}.
 	 *
 	 * @param title
 	 *            IModel used to represent the title of the tab. Must contain a string
