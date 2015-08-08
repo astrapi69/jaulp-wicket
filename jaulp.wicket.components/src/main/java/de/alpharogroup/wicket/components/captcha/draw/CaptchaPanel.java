@@ -22,39 +22,75 @@ import lombok.Getter;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.image.Image;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.resource.IResource;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
- * The class CaptchaPanel.
+ * The class {@link CaptchaPanel}.
  *
  * @author Asterios Raptis
  */
-public class CaptchaPanel extends Panel
+public class CaptchaPanel extends BasePanel<CaptchaModel>
 {
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+	/** The captcha image. */
 	@Getter
-	Image captchaImage;
+	private Image captchaImage;
+	/** The text field for the captcha input. */
 	@Getter
-	RequiredTextField<String> captchaInput;
+	private RequiredTextField<String> captchaInput;
 
-	public CaptchaPanel(final String id, final IModel<CaptchaModel> captchaModel)
+	/**
+	 * Instantiates a new {@link CaptchaPanel}.
+	 *
+	 * @param id
+	 *            the component id
+	 * @param model
+	 *            the model
+	 */
+	public CaptchaPanel(final String id, final IModel<CaptchaModel> model)
 	{
-		super(id, captchaModel);
+		super(id, model);
 		// Add the image to the panel...
-		add(captchaImage = newImage("captchaImage", captchaModel.getObject()
-			.getCaptchaImageResource()));
+		add(captchaImage = newImage("captchaImage", model));
 		// Add the TextField to the panel...
-		add(captchaInput = newRequiredTextField("captchaInput", captchaModel));
+		add(captchaInput = newRequiredTextField("captchaInput", model));
 	}
 
+	/**
+	 * Factory method for creating a new {@link Image}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * Button.
+	 * 
+	 * @param id
+	 *            the wicket id
+	 * @param model
+	 *            the model.
+	 * @return the new {@link Image}
+	 */
+	protected Image newImage(final String id, final IModel<CaptchaModel> model)
+	{
+		return newImage(id, model.getObject().getCaptchaImageResource());
+	}
+
+	/**
+	 * Factory method for creating a new {@link Image}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * Button.
+	 * 
+	 * @param id
+	 *            the wicket id
+	 * @param imageResource
+	 *            the image resource.
+	 * @return the new {@link Image}
+	 */
 	protected Image newImage(final String id, final IResource imageResource)
 	{
 		return ComponentFactory.newImage(id, imageResource);
@@ -73,6 +109,9 @@ public class CaptchaPanel extends Panel
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected final void onComponentTag(final ComponentTag tag)
 			{

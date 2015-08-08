@@ -31,6 +31,7 @@ public class CaptchaModel implements Serializable
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The captcha input. */
 	@Getter
 	@Setter
 	private String captchaInput;
@@ -39,9 +40,13 @@ public class CaptchaModel implements Serializable
 	@Getter
 	private String randomCaptchaString;
 
+	/** The captcha image resource. */
 	@Getter
 	private final CaptchaImageResource captchaImageResource;
 
+	/**
+	 * Instantiates a new {@link CaptchaModel}.
+	 */
 	public CaptchaModel()
 	{
 		captchaImageResource = new CaptchaImageResource(

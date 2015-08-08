@@ -36,25 +36,67 @@ import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
+/**
+ * The Class {@link ReCaptchaPanel}.
+ */
 public abstract class ReCaptchaPanel extends Panel
 {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** The Constant PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD. */
 	private static final String PARAMETER_KEY_RECAPTCHA_RESPONSE_FIELD = "recaptcha_response_field";
+
+	/** The Constant PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD. */
 	private static final String PARAMETER_KEY_RECAPTCHA_CHALLENGE_FIELD = "recaptcha_challenge_field";
+
+	/** The Constant RECAPTCHA_SERVER_URL. */
 	private static final String RECAPTCHA_SERVER_URL = "https://www.google.com/recaptcha/api";
+
+	/**
+	 * the captcha {@link FormComponent}.
+	 */
 	@Getter
 	private final FormComponent<Serializable> captcha;
 
+	/**
+	 * Instantiates a new {@link ReCaptchaPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public ReCaptchaPanel(final String id)
 	{
 		super(id);
 		add(captcha = newCaptchaFormComponent("captcha", new Model<Serializable>()));
 	}
 
+	/**
+	 * Gets the private key.
+	 *
+	 * @return the private key
+	 */
 	public abstract String getPrivateKey();
 
+	/**
+	 * Gets the public key.
+	 *
+	 * @return the public key
+	 */
 	public abstract String getPublicKey();
 
+	/**
+	 * Factory method for creating a new {@link FormComponent} for the recaptcha. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a {@link FormComponent}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link FormComponent} for the recaptcha.
+	 */
 	protected FormComponent<Serializable> newCaptchaFormComponent(final String id,
 		final IModel<Serializable> model)
 	{
@@ -102,6 +144,19 @@ public abstract class ReCaptchaPanel extends Panel
 		};
 	}
 
+	/**
+	 * Factory method for creating a new {@link ReCaptcha}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a {@link ReCaptcha}.
+	 *
+	 * @param publicKey
+	 *            the public key
+	 * @param privateKey
+	 *            the private key
+	 * @param includeNoscript
+	 *            the include noscript flag
+	 * @return the {@link ReCaptcha}
+	 */
 	private ReCaptcha newReCaptcha(final String publicKey, final String privateKey,
 		final boolean includeNoscript)
 	{

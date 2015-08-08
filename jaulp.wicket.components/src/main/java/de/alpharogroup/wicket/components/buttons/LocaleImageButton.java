@@ -21,7 +21,7 @@ import org.apache.wicket.markup.html.form.ImageButton;
 import org.apache.wicket.request.resource.ResourceReference;
 
 /**
- * The Class LocaleImageButton sets the locale to the given locale.
+ * The Class {@link LocaleImageButton} sets the locale to the given locale.
  * 
  * @author Asterios Raptis
  */
@@ -37,7 +37,7 @@ public class LocaleImageButton extends ImageButton
 	private Locale locale;
 
 	/**
-	 * Instantiates a new locale image button.
+	 * Instantiates a new {@link LocaleImageButton}.
 	 * 
 	 * @param id
 	 *            the id
@@ -58,9 +58,7 @@ public class LocaleImageButton extends ImageButton
 	}
 
 	/**
-	 * {@inheritDoc}.
-	 * 
-	 * @see org.apache.wicket.markup.html.form.Button#onSubmit()
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void onSubmit()

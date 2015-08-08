@@ -48,7 +48,7 @@ public abstract class ButtonPanel extends Panel
 	private final Form<?> form;
 
 	/**
-	 * Instantiates a new button panel.
+	 * Instantiates a new {@link ButtonPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -61,7 +61,7 @@ public abstract class ButtonPanel extends Panel
 	}
 
 	/**
-	 * Instantiates a new button panel.
+	 * Instantiates a new {@link ButtonPanel}.
 	 *
 	 * @param id
 	 *            the id

@@ -31,7 +31,7 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new action button panel.
+	 * Instantiates a new {@link AjaxIndicatingButtonPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -64,11 +64,17 @@ public abstract class AjaxIndicatingButtonPanel extends ButtonPanel
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onError(final AjaxRequestTarget target, final Form<?> form)
 			{
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{

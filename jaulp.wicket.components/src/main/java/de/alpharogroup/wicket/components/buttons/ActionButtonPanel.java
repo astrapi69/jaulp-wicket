@@ -21,7 +21,7 @@ import org.apache.wicket.model.IModel;
 import de.alpharogroup.wicket.components.actions.Action;
 
 /**
- * The Class ActionButtonPanel.
+ * The Class {@link ActionButtonPanel}.
  */
 public abstract class ActionButtonPanel extends ButtonPanel
 {
@@ -30,7 +30,7 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new action button panel.
+	 * Instantiates a new {@link ActionButtonPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -67,6 +67,9 @@ public abstract class ActionButtonPanel extends ButtonPanel
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onSubmit()
 			{

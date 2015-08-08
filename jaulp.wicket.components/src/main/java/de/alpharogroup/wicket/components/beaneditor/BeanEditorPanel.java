@@ -59,7 +59,7 @@ public abstract class BeanEditorPanel<T> extends GenericPanel<T>
 	private final RepeatingView fields;
 
 	/**
-	 * Instantiates a new bean editor panel.
+	 * Instantiates a new {@link BeanEditorPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -163,12 +163,18 @@ public abstract class BeanEditorPanel<T> extends GenericPanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onError(final AjaxRequestTarget target, final Form<?> form)
 			{
 				BeanEditorPanel.this.onSubmit(target, form);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
