@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.alpharogroup.wicket.dropdownchoices.examples;
+package de.alpharogroup.wicket.data.provider.examples;
 
 import java.io.File;
 
@@ -31,12 +31,12 @@ import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 
-public class StartDropDownChoicesApplication
+public class StartDataProviderExamples
 {
 	public static void main(final String[] args) throws Exception
 	{
 		System.setProperty("wicket.configuration", "development");
-		final String projectname = "jaulp.wicket.dropdownchoices.examples";
+		final String projectname = "jaulp.wicket.data.provider.examples";
 		final File projectDirectory = PathFinder.getProjectDirectory();
 		final File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src",
 			"main", "webapp");
@@ -57,6 +57,7 @@ public class StartDropDownChoicesApplication
 					ServletHolderConfiguration.builder().servletClass(DefaultServlet.class)
 						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
 				.maxInactiveInterval(300).filterPath("/*").build());
+
 
 		final Jetty9RunConfiguration config = newJetty9RunConfiguration(servletContextHandler);
 

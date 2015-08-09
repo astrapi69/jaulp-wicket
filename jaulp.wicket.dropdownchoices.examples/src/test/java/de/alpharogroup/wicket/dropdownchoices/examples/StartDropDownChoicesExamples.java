@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.alpharogroup.wicket.base.examples;
+package de.alpharogroup.wicket.dropdownchoices.examples;
 
 import java.io.File;
 
@@ -30,14 +30,13 @@ import de.alpharogroup.jetty9.runner.config.Jetty9RunConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
-import de.alpharogroup.wicket.base.examples.application.WicketApplication;
 
-public class StartBase
+public class StartDropDownChoicesExamples
 {
 	public static void main(final String[] args) throws Exception
 	{
 		System.setProperty("wicket.configuration", "development");
-		final String projectname = "jaulp.wicket.base.examples";
+		final String projectname = "jaulp.wicket.dropdownchoices.examples";
 		final File projectDirectory = PathFinder.getProjectDirectory();
 		final File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src",
 			"main", "webapp");

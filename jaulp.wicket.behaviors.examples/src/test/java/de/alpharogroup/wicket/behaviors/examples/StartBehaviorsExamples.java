@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.alpharogroup.wicket.data.provider.examples;
+package de.alpharogroup.wicket.behaviors.examples;
 
 import java.io.File;
 
@@ -31,12 +31,12 @@ import de.alpharogroup.jetty9.runner.config.ServletContextHandlerConfiguration;
 import de.alpharogroup.jetty9.runner.config.ServletHolderConfiguration;
 import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 
-public class StartDataProviderExample
+public class StartBehaviorsExamples
 {
 	public static void main(final String[] args) throws Exception
 	{
 		System.setProperty("wicket.configuration", "development");
-		final String projectname = "jaulp.wicket.data.provider.examples";
+		final String projectname = "jaulp.wicket.behaviors.examples";
 		final File projectDirectory = PathFinder.getProjectDirectory();
 		final File webapp = PathFinder.getRelativePath(projectDirectory, projectname, "src",
 			"main", "webapp");
