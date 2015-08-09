@@ -26,10 +26,9 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
 
@@ -38,7 +37,7 @@ import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
  *
  * @author Asterios Raptis
  */
-public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDownChoicesModel<T>>
+public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownChoicesModel<T>>
 {
 
 	/** The Constant serialVersionUID. */
@@ -67,10 +66,10 @@ public abstract class TwoDropDownChoicesPanel<T> extends GenericPanel<TwoDropDow
 	 *            the child renderer
 	 */
 	public TwoDropDownChoicesPanel(final String id,
-		final TwoDropDownChoicesModel<T> stringTwoDropDownChoicesModel,
+		final IModel<TwoDropDownChoicesModel<T>> stringTwoDropDownChoicesModel,
 		final IChoiceRenderer<T> rootRenderer, final IChoiceRenderer<T> childRenderer)
 	{
-		super(id, Model.of(stringTwoDropDownChoicesModel));
+		super(id, stringTwoDropDownChoicesModel);
 		IModel<T> selectedRootOptionModel = null;
 		getModelObject().getRootChoices();
 		selectedRootOptionModel = model(from(getModel()).getSelectedRootOption());

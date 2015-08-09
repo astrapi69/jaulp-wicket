@@ -31,6 +31,7 @@ import de.alpharogroup.wicket.components.i18n.dropdownchoice.panels.TwoDropDownC
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.renderers.PropertiesChoiceRenderer;
 import de.alpharogroup.wicket.dropdownchoices.panel.TrademarksModelsPanel;
 import de.alpharogroup.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
+import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
 
 /**
  * The class TwoDropDownChoicesPage.
@@ -52,18 +53,18 @@ public class TwoDropDownChoicesPage extends WebPage
 	{
 		super(pageParameters);
 
-		final IModel<StringTwoDropDownChoicesModel> boundOptionModel = new CompoundPropertyModel<StringTwoDropDownChoicesModel>(
+		final IModel<TwoDropDownChoicesModel<String>> boundOptionModel = new CompoundPropertyModel<TwoDropDownChoicesModel<String>>(
 			new StringTwoDropDownChoicesModel("trademark.audi",
 				DatabaseManager.initializeModelMap()));
 
-		final Form<StringTwoDropDownChoicesModel> selectOptionForm = new Form<StringTwoDropDownChoicesModel>(
+		final Form<TwoDropDownChoicesModel<String>> selectOptionForm = new Form<TwoDropDownChoicesModel<String>>(
 			"selectOptionForm", boundOptionModel);
 
 		add(selectOptionForm);
 
 		final TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
-			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(
-				this, this.getClass()), new PropertiesChoiceRenderer(this, this.getClass()));
+			"twoDropDownChoicesPanel", boundOptionModel, new PropertiesChoiceRenderer(this,
+				this.getClass()), new PropertiesChoiceRenderer(this, this.getClass()));
 		final AttributeModifier sam = new AttributeModifier("style",
 			"width: 200px; margin-bottom: 20px;");
 		final AttributeModifier samClass = new AttributeModifier("class", "nowrap");

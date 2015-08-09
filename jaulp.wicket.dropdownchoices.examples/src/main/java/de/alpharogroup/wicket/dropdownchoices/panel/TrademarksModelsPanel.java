@@ -16,9 +16,10 @@
 package de.alpharogroup.wicket.dropdownchoices.panel;
 
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
+import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
-import de.alpharogroup.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
+import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
 
 /**
  * The Class TrademarksModelsPanel.
@@ -38,7 +39,7 @@ public class TrademarksModelsPanel extends TwoDropDownChoicesPanel<String>
 	 *
 	 * @param id
 	 *            the id
-	 * @param stringTwoDropDownChoicesModel
+	 * @param model
 	 *            the string two drop down choices model
 	 * @param rootRenderer
 	 *            the root renderer
@@ -46,10 +47,10 @@ public class TrademarksModelsPanel extends TwoDropDownChoicesPanel<String>
 	 *            the child renderer
 	 */
 	public TrademarksModelsPanel(final String id,
-		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel,
+		final IModel<TwoDropDownChoicesModel<String>> model,
 		final IChoiceRenderer<String> rootRenderer, final IChoiceRenderer<String> childRenderer)
 	{
-		super(id, stringTwoDropDownChoicesModel, rootRenderer, childRenderer);
+		super(id, model, rootRenderer, childRenderer);
 	}
 
 }

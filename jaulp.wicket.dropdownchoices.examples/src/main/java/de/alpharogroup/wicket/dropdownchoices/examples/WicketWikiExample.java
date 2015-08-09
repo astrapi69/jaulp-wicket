@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.dropdownchoices.examples;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.panels.TwoDropDownChoicesPanel;
@@ -29,6 +31,7 @@ import de.alpharogroup.wicket.dropdownchoices.panel.localised.LocalisedDropDownC
 import de.alpharogroup.wicket.dropdownchoices.panel.simple.SimpleDropDownChoicePanel;
 import de.alpharogroup.wicket.dropdownchoices.three.choices.ThreeDropDownChoicesPanel;
 import de.alpharogroup.wicket.model.dropdownchoices.StringTwoDropDownChoicesModel;
+import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
 
 /**
  * @author Asterios Raptis
@@ -62,8 +65,9 @@ public class WicketWikiExample extends WebPage
 
 		add(wicketWikiExamplePanel);
 
-		final StringTwoDropDownChoicesModel stringTwoDropDownChoicesModel = new StringTwoDropDownChoicesModel(
-			"trademark.audi", DatabaseManager.initializeModelMap());
+		final IModel<TwoDropDownChoicesModel<String>> stringTwoDropDownChoicesModel = Model
+			.of(new StringTwoDropDownChoicesModel("trademark.audi", DatabaseManager
+				.initializeModelMap()));
 
 		final TwoDropDownChoicesPanel<String> twoDropDownChoicesPanel = new TrademarksModelsPanel(
 			"twoDropDownChoicesPanel", stringTwoDropDownChoicesModel, new PropertiesChoiceRenderer(
