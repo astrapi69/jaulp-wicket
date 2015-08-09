@@ -47,7 +47,7 @@ Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search
 
 ## Run Examples 
 
-You can run the every example project by doing following steps. For instance if we want to start the examples for the project jaulp.wicket.components we do this:
+You can run the every example project by doing following steps. For instance if you want to start the examples for the project jaulp.wicket.components you do this:
 
 First change to the directory and build the project:
 ```bash
