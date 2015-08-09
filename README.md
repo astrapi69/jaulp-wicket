@@ -1,12 +1,12 @@
 ## jaulp.wicket
--------------
+
 
 <a href="http://flattr.com/thing/4067687/astrapi69jaulp-wicket-on-GitHub" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 [![Build Status](https://travis-ci.org/astrapi69/jaulp.wicket.svg?branch=master)](https://travis-ci.org/astrapi69/jaulp.wicket)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/jaulp.wicket.svg?style=flat)](https://github.com/astrapi69/jaulp.wicket/issues)
 
 ## Overview 
--------------
+
 
 The library jaulp.wicket is a collection of Apache Wicket components and utilities. 
 
@@ -15,7 +15,7 @@ The components are loosely coupled and can be easily integrated into an existing
 The components are also designed to be customised so the user can provide they own components over factory methods.
 
 ## Maven projects and install
--------------
+
 Add the following maven dependency to your project `pom.xml` if you want to import components:
 
 ```xml
@@ -49,7 +49,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;quick~jaulp.wicket.components) for latest snapshots and releases.
 
 ## Run Examples 
--------------
+
 
 You can run the every example project by doing following steps. For instance if you want to start the examples for the project jaulp.wicket.components you do this:
 
@@ -67,13 +67,14 @@ Call then http://localhost:8080/
 Another way is to start the example application programmaticly with jetty. In every example project there exists a start class with a main method that have the prefix Start**** and the suffix ****Examples. 
 
 ## Documentation
--------------
+
+
   * [BaseWebApplication][BaseWebApplication]
   
    [BaseWebApplication]: https://github.com/astrapi69/jaulp.wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
 
 ## Contacting the Developer
--------------
+
 
 Do not hesitate to contact the jaulp.wicket developers with your questions, concerns, comments, bug reports, or feature requests.
 
