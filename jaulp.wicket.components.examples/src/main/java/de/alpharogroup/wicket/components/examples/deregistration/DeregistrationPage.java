@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.examples.deregistration;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -51,7 +52,7 @@ public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel>
 			}
 
 			@Override
-			public void onDeregistration()
+			public void onDeregistration(final AjaxRequestTarget target)
 			{
 				final IModel<DeregistrationModel> m = getModel();
 				final Object mo = getModelObject();
