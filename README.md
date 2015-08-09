@@ -45,6 +45,23 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 
 Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;quick~jaulp.wicket.components) for latest snapshots and releases.
 
+## Run Examples 
+
+You can run the every example project by doing following steps. For instance if we want to start the examples for the project jaulp.wicket.components we do this:
+
+First change to the directory and build the project:
+```bash
+cd jaulp.wicket.components.examples
+mvn clean install
+```
+Running the example:
+```bash
+mvn jetty:run
+```
+Call then http://localhost:8080/
+
+Another way is to start the example application programmaticly with jetty. In every example project there exists a start class with a main method that have the prefix Start**** and the suffix ****Examples.  
+
 ## Contacting the Developer
 
 Do not hesitate to contact the jaulp.wicket developers with your questions, concerns, comments, bug reports, or feature requests.
