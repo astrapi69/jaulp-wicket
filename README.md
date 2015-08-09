@@ -12,7 +12,7 @@ The components are loosely coupled and can be easily integrated into an existing
 
 The components are also designed to be customised so the user can provide they own components over factory methods.
 
-## Maven projects
+## Maven projects and install
 Add the following maven dependency to your project `pom.xml` if you want to import components:
 
 ```xml
