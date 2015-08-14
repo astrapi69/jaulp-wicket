@@ -27,12 +27,14 @@ import org.apache.wicket.IApplicationListener;
 import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.resource.loader.BundleStringResourceLoader;
 
 import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.wicket.PackageResourceReferences;
+import de.alpharogroup.wicket.base.application.plugins.ApplicationDebugSettingsPlugin;
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
@@ -229,13 +231,33 @@ public class WicketApplication extends WicketBootstrap3Application
 	protected void onDevelopmentModeSettings()
 	{
 		super.onDevelopmentModeSettings();
-		// Adds the references from source code to the browser to reference in eclipse....
-		WicketSource.configure(this);
+
 		ApplicationExtensions.setDefaultDebugSettingsForDevelopment(this);
+		new ApplicationDebugSettingsPlugin()
+		{
+			/**
+			 * The serialVersionUID
+			 */
+			private static final long serialVersionUID = 1L;
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected void onConfigure(final WebApplication application)
+			{
+				super.onConfigure(application);
+				// Adds the references from source code to the browser to reference in eclipse....
+				WicketSource.configure(application);
+			};
+		}.install(this);
 
 		// add an applicationListener...
 		this.getApplicationListeners().add(new IApplicationListener()
 		{
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onAfterInitialized(final Application application)
 			{
@@ -244,6 +266,9 @@ public class WicketApplication extends WicketBootstrap3Application
 				// initialization...
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onBeforeDestroyed(final Application application)
 			{
@@ -254,6 +279,9 @@ public class WicketApplication extends WicketBootstrap3Application
 		});
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onGlobalSettings()
 	{
