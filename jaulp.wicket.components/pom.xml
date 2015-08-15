@@ -23,7 +23,7 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.security</artifactId>
+			<artifactId>auth-security</artifactId>
 		</dependency>
 
 		<dependency>
@@ -81,5 +81,5 @@
 		</testResources>
 
 	</build>
-	
+
 </project>
