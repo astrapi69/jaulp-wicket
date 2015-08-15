@@ -24,7 +24,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import de.alpharogroup.wicket.components.download.DownloadModel;
+import de.alpharogroup.wicket.components.download.DownloadModelBean;
 import de.alpharogroup.wicket.components.download.DownloadPanel;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
@@ -43,10 +43,10 @@ public class PdfDownloadPage extends PubliclyBasePage<Object>
 	@Override
 	public Component getContainerPanel()
 	{
-		final DownloadModel downloadModel = DownloadModel.builder().filename("download.pdf")
+		final DownloadModelBean downloadModelBean = DownloadModelBean.builder().filename("download.pdf")
 			.path("pdf/download.pdf").contentType("application/pdf").build();
 		final DownloadPanel downloadPanel = new DownloadPanel(CONTAINER_PANEL_ID,
-			Model.of(downloadModel))
+			Model.of(downloadModelBean))
 		{
 			private static final long serialVersionUID = 1L;
 
@@ -58,7 +58,7 @@ public class PdfDownloadPage extends PubliclyBasePage<Object>
 
 			@Override
 			protected AjaxLink<Void> newDownloadLink(final String id,
-				final IModel<DownloadModel> model)
+				final IModel<DownloadModelBean> model)
 			{
 				final AjaxLink<Void> downloadLink = super.newDownloadLink(id, model);
 				downloadLink.add(new AttributeAppender("class", " btn btn-primary"));

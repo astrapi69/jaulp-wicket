@@ -22,8 +22,8 @@ import com.google.common.collect.ImmutableList;
 import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
-import de.alpharogroup.wicket.components.i18n.list.ContentListModel;
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
+import de.alpharogroup.wicket.components.i18n.list.ContentListModelBean;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import de.alpharogroup.wicket.components.termofuse.TermOfUseModel;
 import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
 
@@ -261,53 +261,53 @@ public final class ApplicationTermOfUseBean implements Serializable
 		model = TermOfUseModel
 			.builder()
 			.cancellationModel(
-				HeaderContentListModel.builder()
+				HeaderContentListModelBean.builder()
 					.headerResourceKey(CANCELLATION_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(CANCELLATION_CONTENT_RESOURCE_KEYS).build())
 			.contractModel(
-				HeaderContentListModel.builder().headerResourceKey(CONTRACT_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder().headerResourceKey(CONTRACT_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(CONTRACT_CONTENT_RESOURCE_KEYS).build())
 			.copyrightModel(
-				HeaderContentListModel.builder().headerResourceKey(COPYRIGHT_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder().headerResourceKey(COPYRIGHT_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(COPYRIGHT_CONTENT_RESOURCE_KEYS).build())
 			.dataProtectionModel(
-				HeaderContentListModel.builder()
+				HeaderContentListModelBean.builder()
 					.headerResourceKey(DATA_PROTECTION_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(DATA_PROTECTION_CONTENT_RESOURCE_KEYS).build())
 			.fulfilmentAndJurisdictionPlaceModel(
-				HeaderContentListModel.builder()
+				HeaderContentListModelBean.builder()
 					.headerResourceKey(FULFILMENT_PLACE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(fulfilmentPlaceContentResourceKeys).build())
 			.generalTermsAndConditionsModel(
-				HeaderContentListModel.builder()
+				HeaderContentListModelBean.builder()
 					.headerResourceKey(GENERAL_TERMS_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(generalTermsAndConditionsContentResourceKeys).build())
 			.legalReferencesModel(
-				HeaderContentListModel.builder().headerResourceKey(LEGAL_REFS_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder().headerResourceKey(LEGAL_REFS_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(LEGAL_REFS_CONTENT_RESOURCE_KEYS).build())
 			.liabilityModel(
-				HeaderContentListModel.builder().headerResourceKey(LIABILITY_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder().headerResourceKey(LIABILITY_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(LIABILITY_CONTENT_RESOURCE_KEYS).build())
 			.modificationsClauseModel(
-				HeaderContentListModel.builder().headerResourceKey(MOD_CLAUSE_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder().headerResourceKey(MOD_CLAUSE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(MOD_CLAUSE_CONTENT_RESOURCE_KEYS).build())
 			.rightsAndDutiesModel(
 				RightsAndDutiesModel
 					.builder()
 					.introductionModel(
-						HeaderContentListModel.builder()
+						HeaderContentListModelBean.builder()
 							.headerResourceKey(RIGHTS_AND_DUTIES_HEADER_RESOURCE_KEY)
 							.contentResourceKeys(RIGHTS_AND_DUTIES_CONTENT_RESOURCE_KEYS).build())
 					.listModel(
-						ContentListModel.builder()
+						ContentListModelBean.builder()
 							.contentResourceKeys(RIGHTS_AND_DUTIES_CONTENT_LIST_RESOURCE_KEYS)
 							.build())
 					.summaryModel(
-						ContentListModel.builder()
+						ContentListModelBean.builder()
 							.contentResourceKeys(RIGHTS_AND_DUTIES_CONTENT_SUMMARY_RESOURCE_KEYS)
 							.build()).build())
 			.salvatoriusClauseModel(
-				HeaderContentListModel.builder()
+				HeaderContentListModelBean.builder()
 					.headerResourceKey(SALVA_CLAUSE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(SALVA_CLAUSE_CONTENT_RESOURCE_KEYS).build()).build();
 	}

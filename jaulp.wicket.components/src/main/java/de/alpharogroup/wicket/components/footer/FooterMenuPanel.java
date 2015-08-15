@@ -20,33 +20,69 @@ import java.util.List;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.link.LinkItem;
 
-public abstract class FooterMenuPanel extends Panel
+/**
+ * The Class FooterMenuPanel have a listview with the footer menu.
+ */
+public abstract class FooterMenuPanel extends BasePanel<List<LinkItem>>
 {
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Gets the link list panel.
+	 *
+	 * @return the link list panel
+	 */
 	@Getter
 	private Component linkListPanel;
 
+	/**
+	 * Instantiates a new {@link FooterMenuPanel}.
+	 *
+	 * @param id
+	 *            the component id
+	 * @param model
+	 *            the model
+	 */
 	public FooterMenuPanel(final String id, final IModel<List<LinkItem>> model)
 	{
-		super(id);
+		super(id, model);
 		add(linkListPanel = newLinkListPanel("linkListPanel", model));
 	}
 
+	/**
+	 * Instantiates a new {@link FooterMenuPanel}.
+	 *
+	 * @param id
+	 *            the component id
+	 * @param list
+	 *            the list with the menu items
+	 */
 	public FooterMenuPanel(final String id, final List<LinkItem> list)
 	{
 		this(id, new ListModel<>(list));
 	}
 
+	/**
+	 * Factory method for creating a new Component for the menu items. This method is invoked in the
+	 * constructor from the derived classes and have to be overridden so users can provide their own
+	 * version of a new Component for the menu items.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new RequiredTextField
+	 */
 	protected abstract Component newLinkListPanel(final String id,
 		final IModel<List<LinkItem>> model);
 

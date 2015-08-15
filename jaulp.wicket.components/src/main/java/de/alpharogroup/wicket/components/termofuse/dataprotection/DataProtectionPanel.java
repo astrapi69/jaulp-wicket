@@ -22,7 +22,7 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
 
 public class DataProtectionPanel extends HeaderContentListPanel
@@ -35,7 +35,7 @@ public class DataProtectionPanel extends HeaderContentListPanel
 		this(id, null);
 	}
 
-	public DataProtectionPanel(final String id, final IModel<HeaderContentListModel> model)
+	public DataProtectionPanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
 	}

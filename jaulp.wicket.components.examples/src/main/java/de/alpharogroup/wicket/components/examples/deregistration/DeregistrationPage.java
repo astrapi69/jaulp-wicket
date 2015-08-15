@@ -22,12 +22,12 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import de.alpharogroup.wicket.components.deregistration.DeregistrationModel;
+import de.alpharogroup.wicket.components.deregistration.DeregistrationModelBean;
 import de.alpharogroup.wicket.components.deregistration.DeregistrationPanel;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 
 @MountPath("public/deregistration")
-public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel>
+public class DeregistrationPage extends PubliclyBasePage<DeregistrationModelBean>
 {
 	private static final long serialVersionUID = 1L;
 
@@ -39,8 +39,8 @@ public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel>
 	@Override
 	public Component getContainerPanel()
 	{
-		final IModel<DeregistrationModel> model = new CompoundPropertyModel<DeregistrationModel>(
-			new DeregistrationModel());
+		final IModel<DeregistrationModelBean> model = new CompoundPropertyModel<DeregistrationModelBean>(
+			new DeregistrationModelBean());
 		return new DeregistrationPanel(CONTAINER_PANEL_ID, model)
 		{
 			private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class DeregistrationPage extends PubliclyBasePage<DeregistrationModel>
 			@Override
 			public void onDeregistration(final AjaxRequestTarget target)
 			{
-				final IModel<DeregistrationModel> m = getModel();
+				final IModel<DeregistrationModelBean> m = getModel();
 				final Object mo = getModelObject();
 				System.out.println(mo + m.toString());
 			}

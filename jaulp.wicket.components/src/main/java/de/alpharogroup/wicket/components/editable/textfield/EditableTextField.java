@@ -44,8 +44,10 @@ public class EditableTextField extends GenericPanel<String>
 	@Getter
 	@Setter
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
+	/** The swap panel. */
 	@Getter
 	private SwapComponentsFragmentPanel<String> swapPanel;
+	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
 
@@ -96,6 +98,9 @@ public class EditableTextField extends GenericPanel<String>
 		return modeContext.equals(ModeContext.EDIT_MODE);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onInitialize()
 	{
@@ -107,6 +112,9 @@ public class EditableTextField extends GenericPanel<String>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected Component newEditComponent(final String id, final IModel<String> model)
 			{
@@ -138,6 +146,9 @@ public class EditableTextField extends GenericPanel<String>
 				};
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected Component newViewComponent(final String id, final IModel<String> model)
 			{
@@ -149,6 +160,9 @@ public class EditableTextField extends GenericPanel<String>
 					 */
 					private static final long serialVersionUID = 1L;
 
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					protected Label newLabel(final String id, final IModel<String> model)
 					{

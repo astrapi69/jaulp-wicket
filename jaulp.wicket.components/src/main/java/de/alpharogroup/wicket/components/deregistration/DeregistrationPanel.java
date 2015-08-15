@@ -42,7 +42,7 @@ import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
  *
  * @author Asterios Raptis
  */
-public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
+public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelBean>
 {
 
 	/**
@@ -74,7 +74,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	 * @param model
 	 *            the model
 	 */
-	public DeregistrationPanel(final String id, final IModel<DeregistrationModel> model)
+	public DeregistrationPanel(final String id, final IModel<DeregistrationModelBean> model)
 	{
 		super(id, model);
 	}
@@ -203,7 +203,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 	 * @return the form
 	 */
 	protected LabeledTextAreaPanel<?> newMotivation(final String id,
-		final IModel<DeregistrationModel> model)
+		final IModel<DeregistrationModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			ResourceBundleKey.builder().key("sem.main.feedback.deregistration.user.label")
@@ -212,7 +212,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.deregistration.motivation.label", this,
 			"Enter here your deregistration motivation.");
-		final LabeledTextAreaPanel<DeregistrationModel> description = new LabeledTextAreaPanel<DeregistrationModel>(
+		final LabeledTextAreaPanel<DeregistrationModelBean> description = new LabeledTextAreaPanel<DeregistrationModelBean>(
 			id, model, labelModel)
 		{
 			/** The Constant serialVersionUID. */
@@ -222,10 +222,10 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModel>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected TextArea<DeregistrationModel> newTextArea(final String id,
-				final IModel<DeregistrationModel> model)
+			protected TextArea<DeregistrationModelBean> newTextArea(final String id,
+				final IModel<DeregistrationModelBean> model)
 			{
-				final TextArea<DeregistrationModel> textArea = super.newTextArea(id, model);
+				final TextArea<DeregistrationModelBean> textArea = super.newTextArea(id, model);
 				if (placeholderModel != null)
 				{
 					textArea.add(new AttributeAppender("placeholder", placeholderModel));

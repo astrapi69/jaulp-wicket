@@ -21,9 +21,9 @@ import lombok.Setter;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.label.LabeledMultiLineLabelPanel;
@@ -36,7 +36,7 @@ import de.alpharogroup.wicket.components.swap.SwapComponentsFragmentPanel;
  *
  * @author Asterios Raptis
  */
-public class EditableTextArea extends GenericPanel<String>
+public class EditableTextArea extends BasePanel<String>
 {
 
 	/** The Constant serialVersionUID. */
@@ -46,8 +46,10 @@ public class EditableTextArea extends GenericPanel<String>
 	@Getter
 	@Setter
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
+	/** The swap panel. */
 	@Getter
 	private SwapComponentsFragmentPanel<String> swapPanel;
+	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
 
@@ -124,6 +126,9 @@ public class EditableTextArea extends GenericPanel<String>
 		{
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onConfigure()
 			{
@@ -150,6 +155,9 @@ public class EditableTextArea extends GenericPanel<String>
 		{
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onConfigure()
 			{
@@ -160,6 +168,9 @@ public class EditableTextArea extends GenericPanel<String>
 		return textArea;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onInitialize()
 	{
@@ -171,6 +182,9 @@ public class EditableTextArea extends GenericPanel<String>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected Component newEditComponent(final String id, final IModel<String> model)
 			{
@@ -202,6 +216,9 @@ public class EditableTextArea extends GenericPanel<String>
 				};
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected Component newViewComponent(final String id, final IModel<String> model)
 			{

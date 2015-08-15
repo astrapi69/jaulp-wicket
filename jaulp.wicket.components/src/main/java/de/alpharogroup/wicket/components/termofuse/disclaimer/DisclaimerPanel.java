@@ -22,7 +22,7 @@ import org.apache.wicket.model.IModel;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 
 public class DisclaimerPanel extends Panel
 {
@@ -37,7 +37,7 @@ public class DisclaimerPanel extends Panel
 		this(id, null);
 	}
 
-	public DisclaimerPanel(final String id, final IModel<HeaderContentListModel> model)
+	public DisclaimerPanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
 

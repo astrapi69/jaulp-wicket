@@ -64,14 +64,14 @@ public abstract class HeaderContentListPanel extends Panel
 	 * @param model
 	 *            the model
 	 */
-	public HeaderContentListPanel(final String id, final IModel<HeaderContentListModel> model)
+	public HeaderContentListPanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
 		add(header = newHeaderLabel("header", newHeaderModel(model.getObject()
 			.getHeaderResourceKey())));
 		add(listPanel = newListPanel(
 			"listPanel",
-			Model.of(ContentListModel.builder()
+			Model.of(ContentListModelBean.builder()
 				.contentResourceKeys(model.getObject().getContentResourceKeys()).build())));
 	}
 
@@ -126,7 +126,7 @@ public abstract class HeaderContentListPanel extends Panel
 	protected abstract Component newListComponent(final String id,
 		final ListItem<ResourceBundleKey> item);
 
-	protected Component newListPanel(final String id, final IModel<ContentListModel> model)
+	protected Component newListPanel(final String id, final IModel<ContentListModelBean> model)
 	{
 		return new ResourceBundleKeysPanel(id, model.getObject().getContentResourceKeys())
 		{

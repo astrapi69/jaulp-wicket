@@ -24,8 +24,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import de.alpharogroup.wicket.components.i18n.list.ContentListModel;
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
+import de.alpharogroup.wicket.components.i18n.list.ContentListModelBean;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 
 @Getter
 @Setter
@@ -39,10 +39,10 @@ public class RightsAndDutiesModel implements Serializable
 
 	private static final long serialVersionUID = 1L;
 
-	HeaderContentListModel introductionModel;
+	HeaderContentListModelBean introductionModel;
 
-	ContentListModel listModel;
+	ContentListModelBean listModel;
 
-	ContentListModel summaryModel;
+	ContentListModelBean summaryModel;
 
 }

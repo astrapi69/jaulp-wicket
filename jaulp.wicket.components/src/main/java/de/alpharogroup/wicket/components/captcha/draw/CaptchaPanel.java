@@ -33,7 +33,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  *
  * @author Asterios Raptis
  */
-public class CaptchaPanel extends BasePanel<CaptchaModel>
+public class CaptchaPanel extends BasePanel<CaptchaModelBean>
 {
 
 	/**
@@ -55,7 +55,7 @@ public class CaptchaPanel extends BasePanel<CaptchaModel>
 	 * @param model
 	 *            the model
 	 */
-	public CaptchaPanel(final String id, final IModel<CaptchaModel> model)
+	public CaptchaPanel(final String id, final IModel<CaptchaModelBean> model)
 	{
 		super(id, model);
 		// Add the image to the panel...
@@ -75,7 +75,7 @@ public class CaptchaPanel extends BasePanel<CaptchaModel>
 	 *            the model.
 	 * @return the new {@link Image}
 	 */
-	protected Image newImage(final String id, final IModel<CaptchaModel> model)
+	protected Image newImage(final String id, final IModel<CaptchaModelBean> model)
 	{
 		return newImage(id, model.getObject().getCaptchaImageResource());
 	}
@@ -96,12 +96,23 @@ public class CaptchaPanel extends BasePanel<CaptchaModel>
 		return ComponentFactory.newImage(id, imageResource);
 	}
 
+	/**
+	 * Factory method for creating a new RequiredTextField. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a RequiredTextField.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the captchaModelBean
+	 * @return the new RequiredTextField
+	 */
 	protected RequiredTextField<String> newRequiredTextField(final String id,
-		final IModel<CaptchaModel> captchaModel)
+		final IModel<CaptchaModelBean> captchaModelBean)
 	{
 		// Create an TextField for the input...
 		final RequiredTextField<String> captchaInput = new RequiredTextField<String>(
-			"captchaInput", model(from(captchaModel.getObject()).getCaptchaInput()))
+			"captchaInput", model(from(captchaModelBean.getObject()).getCaptchaInput()))
 		{
 
 			/**

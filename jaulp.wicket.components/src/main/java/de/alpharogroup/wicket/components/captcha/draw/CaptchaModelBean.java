@@ -25,7 +25,12 @@ import org.apache.wicket.extensions.markup.html.captcha.CaptchaImageResource;
 import de.alpharogroup.random.Constants;
 import de.alpharogroup.random.RandomUtils;
 
-public class CaptchaModel implements Serializable
+/**
+ * The Class {@link CaptchaModelBean} holds captcha data.
+ *
+ * @author Asterios Raptis
+ */
+public class CaptchaModelBean implements Serializable
 {
 
 	/** The Constant serialVersionUID. */
@@ -45,9 +50,9 @@ public class CaptchaModel implements Serializable
 	private final CaptchaImageResource captchaImageResource;
 
 	/**
-	 * Instantiates a new {@link CaptchaModel}.
+	 * Instantiates a new {@link CaptchaModelBean}.
 	 */
-	public CaptchaModel()
+	public CaptchaModelBean()
 	{
 		captchaImageResource = new CaptchaImageResource(
 			randomCaptchaString = RandomUtils.getRandomString(Constants.UCCHARSWN, 7));

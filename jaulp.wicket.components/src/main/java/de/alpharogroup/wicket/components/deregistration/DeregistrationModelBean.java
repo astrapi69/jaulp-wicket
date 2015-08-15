@@ -21,11 +21,11 @@ import lombok.Setter;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
- * The Class DeregistrationModel.
+ * The Class {@link DeregistrationModelBean} holds data for the deregistration.
  *
  * @author Asterios Raptis
  */
-public class DeregistrationModel implements IClusterable
+public class DeregistrationModelBean implements IClusterable
 {
 
 	/**

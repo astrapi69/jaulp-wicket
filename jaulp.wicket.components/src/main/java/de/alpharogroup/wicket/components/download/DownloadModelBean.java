@@ -26,6 +26,11 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * The Class {@link DownloadModelBean} holds data for a download.
+ *
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -33,13 +38,29 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DownloadModel implements Serializable
+public class DownloadModelBean implements Serializable
 {
+
+	/**
+	 * The serialVersionUID.
+	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The file name.
+	 */
 	@NonNull
 	private String filename;
+	
+	/**
+	 * The path of the file.
+	 */
 	@NonNull
 	private String path;
+	
+	/**
+	 * The content type of the file.
+	 */
 	@NonNull
 	private String contentType;
 }

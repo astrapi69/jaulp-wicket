@@ -20,7 +20,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import de.alpharogroup.wicket.components.termofuse.cancellation.CancellationPanel;
 import de.alpharogroup.wicket.components.termofuse.contract.ContractPanel;
 import de.alpharogroup.wicket.components.termofuse.copyright.CopyrightPanel;
@@ -182,60 +182,60 @@ public abstract class TermOfUsePanel extends Panel
 	}
 
 	protected Component newCancellationPanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new CancellationPanel(id, Model.of(model.getObject()));
 	}
 
-	protected Component newContractPanel(final String id, final IModel<HeaderContentListModel> model)
+	protected Component newContractPanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		return new ContractPanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newCopyrightPanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new CopyrightPanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newDataProtectionPanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new DataProtectionPanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newDisclaimerPanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new DisclaimerPanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newFulfilmentAndJurisdictionPlacePanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new FulfilmentAndJurisdictionPlacePanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newGeneralTermsAndConditionsPanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new GeneralTermsAndConditionsPanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newLegalReferencesPanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new LegalReferencesPanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newLiabilityPanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new LiabilityPanel(id, Model.of(model.getObject()));
 	}
 
 	protected Component newModificationsClausePanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new ModificationsClausePanel(id, Model.of(model.getObject()));
 	}
@@ -247,7 +247,7 @@ public abstract class TermOfUsePanel extends Panel
 	}
 
 	protected Component newSalvatoriusClausePanel(final String id,
-		final IModel<HeaderContentListModel> model)
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new SalvatoriusClausePanel(id, Model.of(model.getObject()));
 	}

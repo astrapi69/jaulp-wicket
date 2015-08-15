@@ -28,6 +28,11 @@ import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.locale.ResourceBundleKey;
 
+/**
+ * Gets the content resource keys.
+ *
+ * @return the content resource keys
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -35,10 +40,12 @@ import de.alpharogroup.locale.ResourceBundleKey;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ContentListModel implements Serializable
+public class HeaderContentListModelBean implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
+	@NonNull
+	private ResourceBundleKey headerResourceKey;
 	@NonNull
 	private List<ResourceBundleKey> contentResourceKeys;
 

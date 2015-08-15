@@ -24,7 +24,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModel;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
 
 @Getter
@@ -39,28 +39,28 @@ public class TermOfUseModel implements Serializable
 
 	private static final long serialVersionUID = 1L;
 
-	private HeaderContentListModel generalTermsAndConditionsModel;
+	private HeaderContentListModelBean generalTermsAndConditionsModel;
 
-	private HeaderContentListModel cancellationModel;
+	private HeaderContentListModelBean cancellationModel;
 
-	private HeaderContentListModel contractModel;
+	private HeaderContentListModelBean contractModel;
 
-	private HeaderContentListModel copyrightModel;
+	private HeaderContentListModelBean copyrightModel;
 
-	private HeaderContentListModel dataProtectionModel;
+	private HeaderContentListModelBean dataProtectionModel;
 
-	private HeaderContentListModel fulfilmentAndJurisdictionPlaceModel;
+	private HeaderContentListModelBean fulfilmentAndJurisdictionPlaceModel;
 
-	private HeaderContentListModel legalReferencesModel;
+	private HeaderContentListModelBean legalReferencesModel;
 
-	private HeaderContentListModel liabilityModel;
+	private HeaderContentListModelBean liabilityModel;
 
-	private HeaderContentListModel modificationsClauseModel;
+	private HeaderContentListModelBean modificationsClauseModel;
 
 	private RightsAndDutiesModel rightsAndDutiesModel;
 
-	private HeaderContentListModel salvatoriusClauseModel;
+	private HeaderContentListModelBean salvatoriusClauseModel;
 
-	private HeaderContentListModel disclaimerModel;
+	private HeaderContentListModelBean disclaimerModel;
 
 }

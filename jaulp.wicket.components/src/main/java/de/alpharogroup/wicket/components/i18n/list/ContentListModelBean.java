@@ -35,12 +35,10 @@ import de.alpharogroup.locale.ResourceBundleKey;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class HeaderContentListModel implements Serializable
+public class ContentListModelBean implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	@NonNull
-	private ResourceBundleKey headerResourceKey;
 	@NonNull
 	private List<ResourceBundleKey> contentResourceKeys;
 
