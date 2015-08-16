@@ -108,11 +108,11 @@ public class CaptchaPanel extends BasePanel<CaptchaModelBean>
 	 * @return the new RequiredTextField
 	 */
 	protected RequiredTextField<String> newRequiredTextField(final String id,
-		final IModel<CaptchaModelBean> captchaModelBean)
+		final IModel<CaptchaModelBean> model)
 	{
 		// Create an TextField for the input...
 		final RequiredTextField<String> captchaInput = new RequiredTextField<String>(
-			"captchaInput", model(from(captchaModelBean.getObject()).getCaptchaInput()))
+			"captchaInput", model(from(model.getObject()).getCaptchaInput()))
 		{
 
 			/**

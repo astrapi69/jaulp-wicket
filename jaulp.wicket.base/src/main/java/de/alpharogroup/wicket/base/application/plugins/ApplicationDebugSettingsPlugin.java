@@ -98,6 +98,7 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 	 *
 	 * @param application
 	 *            the application to install.
+	 * @return this for chaining.
 	 */
 	public ApplicationDebugSettingsPlugin install(final WebApplication application)
 	{

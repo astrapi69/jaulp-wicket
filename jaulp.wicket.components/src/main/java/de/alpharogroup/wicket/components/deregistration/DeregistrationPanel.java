@@ -138,10 +138,6 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 	 *
 	 * @param id
 	 *            the id
-	 * @param resourceKey
-	 *            the resource key
-	 * @param defaultValue
-	 *            the default value
 	 * @return the new {@link Component} of the content
 	 */
 	protected Component newContentPanel(final String id)

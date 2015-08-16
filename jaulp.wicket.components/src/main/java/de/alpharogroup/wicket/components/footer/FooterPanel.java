@@ -34,9 +34,7 @@ public abstract class FooterPanel<T> extends BasePanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Gets the footer menu panel.
-	 *
-	 * @return the footer menu panel
+	 * the footer menu panel
 	 */
 	@Getter
 	private Component footerMenuPanel;

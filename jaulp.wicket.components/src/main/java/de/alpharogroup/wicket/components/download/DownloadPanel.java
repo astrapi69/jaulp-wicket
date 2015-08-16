@@ -22,6 +22,7 @@ import lombok.Getter;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -43,17 +44,13 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Gets the file name label.
-	 *
-	 * @return the file name label
+	 * the file name label
 	 */
 	@Getter
 	private Component fileNameLabel;
 
 	/**
-	 * Gets the download link.
-	 *
-	 * @return the download link
+	 * the download link
 	 */
 	@Getter
 	private AjaxLink<Void> downloadLink;

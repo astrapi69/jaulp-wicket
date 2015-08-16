@@ -28,10 +28,11 @@ import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.locale.ResourceBundleKey;
 
+
 /**
- * Gets the content resource keys.
+ * The Class {@link HeaderContentListModelBean} holds data for the resource key of header and the content.
  *
- * @return the content resource keys
+ * @author Asterios Raptis
  */
 @Getter
 @Setter
