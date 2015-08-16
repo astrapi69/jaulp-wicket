@@ -16,6 +16,8 @@
 package de.alpharogroup.wicket.components.form.checkbox.image;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,8 +27,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import org.apache.wicket.request.resource.ResourceReference;
-
+/**
+ * The Class {@link ImageChoicesModelBean} holds data for a list of checkbox with image and the selected items.
+ *
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -34,12 +39,19 @@ import org.apache.wicket.request.resource.ResourceReference;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ImageCheckboxModel implements Serializable
+public class ImageChoicesModelBean implements Serializable
 {
 	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	private ResourceReference imageResource;
-	private Boolean checked = Boolean.FALSE;
+	
+	/** The choices. */
+	private List<ImageCheckboxModelBean> choices;
+	
+	/** The selected items. */
+	private List<ImageCheckboxModelBean> selectedItems = new ArrayList<>();
+	
+	/** The label property expression. */
+	private String labelPropertyExpression;
 }

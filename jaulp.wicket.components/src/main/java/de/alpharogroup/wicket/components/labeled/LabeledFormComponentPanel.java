@@ -72,15 +72,15 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the ComponentFeedbackPanel. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a ComponentFeedbackPanel.
+	 * Factory method for creating the new {@link ComponentFeedbackPanel}. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link ComponentFeedbackPanel}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param filter
 	 *            the filter
-	 * @return the component feedback panel
+	 * @return the new {@link ComponentFeedbackPanel}
 	 */
 	protected ComponentFeedbackPanel newComponentFeedbackPanel(final String id,
 		final Component filter)
@@ -89,8 +89,9 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
@@ -98,7 +99,7 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	 *            the for id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Component newLabel(final String id, final String forId, final IModel<String> model)
 	{

@@ -18,24 +18,56 @@ package de.alpharogroup.wicket.components.footer;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.IModel;
 
-public abstract class FooterPanel extends Panel
+import de.alpharogroup.wicket.base.BasePanel;
+
+/**
+ * A component that can be used for the footer area.
+ */
+public abstract class FooterPanel<T> extends BasePanel<T>
 {
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Gets the footer menu panel.
+	 *
+	 * @return the footer menu panel
+	 */
 	@Getter
 	private Component footerMenuPanel;
 
-	public FooterPanel(final String id)
+
+	/**
+	 * Instantiates a new {@link FooterPanel}.
+	 *
+	 * @param id
+	 *            the component id
+	 * @param model
+	 *            the model
+	 */
+	public FooterPanel(final String id, final IModel<T> model)
 	{
-		super(id);
-		add(footerMenuPanel = newFooterMenuPanel("footerMenuPanel"));
+		super(id, model);
+		add(footerMenuPanel = newFooterMenuPanel("footerMenuPanel", model));
 	}
 
-	protected abstract Component newFooterMenuPanel(final String id);
+
+	/**
+	 * Factory method for creating a new {@link Component} for the footer area. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a {@link Component} for the footer area..
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the footer area.
+	 */
+	protected abstract Component newFooterMenuPanel(final String id, final IModel<T> model);
 
 }

@@ -22,11 +22,12 @@ public abstract class ApplicationBasePanel<T> extends BasePanel<T>
 	 */
 	private static final long serialVersionUID = 1L;
 
+
 	/**
-	 * Instantiates a new base panel.
-	 * 
+	 * Instantiates a new {@link ApplicationBasePanel}.
+	 *
 	 * @param id
-	 *            the id
+	 *            the component id
 	 * @param model
 	 *            the model
 	 */

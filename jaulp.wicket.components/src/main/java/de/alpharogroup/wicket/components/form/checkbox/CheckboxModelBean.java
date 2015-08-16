@@ -27,6 +27,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * The Class {@link CheckboxModelBean} holds data for the checkbox and the selected items.
+ *
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -34,13 +39,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CheckboxModel<T> implements Serializable
+public class CheckboxModelBean<T> implements Serializable
 {
 	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
+	/** The selected items. */
 	private List<T> selectedItems = new ArrayList<T>();
+	/** The choices. */
 	private List<T> choices;
+	/** The label property expression. */
 	private String labelPropertyExpression;
 }

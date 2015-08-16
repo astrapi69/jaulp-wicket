@@ -30,6 +30,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.settings.IJavaScriptLibrarySettings;
 import org.apache.wicket.util.string.StringValue;
@@ -133,7 +134,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 	 */
 	protected void changeTheme(final String themeParameter)
 	{
-		if (themeParameter != null && !themeParameter.isEmpty())
+		if ((themeParameter != null) && !themeParameter.isEmpty())
 		{
 			final IBootstrapSettings settings = Bootstrap.getSettings(getWicketApplication());
 			settings.getActiveThemeProvider().setActiveTheme(themeParameter);
@@ -258,15 +259,17 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			.resourceModelKey(
 				ResourceBundleKey.builder().key("main.global.menu.term.of.use.label")
 					.defaultValue("AGBs").build()).build());
-		return new FooterPanel(id)
+		final IModel<List<LinkItem>> listModel = new ListModel<>(linkModel);
+		return new FooterPanel<List<LinkItem>>(id, listModel)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected Component newFooterMenuPanel(final String id)
+			protected Component newFooterMenuPanel(final String id,
+				final IModel<List<LinkItem>> model)
 			{
 
-				final FooterMenuPanel footerMenu = new FooterMenuPanel(id, linkModel)
+				final FooterMenuPanel footerMenu = new FooterMenuPanel(id, model)
 				{
 					private static final long serialVersionUID = 1L;
 

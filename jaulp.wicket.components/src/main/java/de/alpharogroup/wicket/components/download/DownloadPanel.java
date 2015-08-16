@@ -80,13 +80,15 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 	protected abstract WebApplication getWebApplication();
 
 	/**
-	 * New download link.
+	 * Factory method for creating the new {@link AjaxLink} for the download. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of a new {@link AjaxLink} for the download.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the ajax link
+	 * @return the new {@link AjaxLink} for the download.
 	 */
 	protected AjaxLink<Void> newDownloadLink(final String id, final IModel<DownloadModelBean> model)
 	{
@@ -141,13 +143,15 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 	}
 
 	/**
-	 * New file name label.
+	 * Factory method for creating the new {@link Label} for the file name. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of a new {@link Label} for the file name.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the component
+	 * @return the new {@link Label} for the file name
 	 */
 	protected Component newFileNameLabel(final String id, final IModel<String> model)
 	{

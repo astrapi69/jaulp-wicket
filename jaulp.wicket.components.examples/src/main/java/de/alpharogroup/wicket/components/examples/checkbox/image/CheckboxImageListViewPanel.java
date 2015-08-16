@@ -33,35 +33,46 @@ import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.components.examples.basepage.ApplicationBasePanel;
 import de.alpharogroup.wicket.components.examples.buttons.LocaleMenuPanel;
-import de.alpharogroup.wicket.components.form.checkbox.image.ImageCheckboxModel;
-import de.alpharogroup.wicket.components.form.checkbox.image.ImageChoicesModel;
+import de.alpharogroup.wicket.components.form.checkbox.image.ImageCheckboxModelBean;
+import de.alpharogroup.wicket.components.form.checkbox.image.ImageChoicesModelBean;
 
+/**
+ * The Class CheckboxImageListViewPanel is an example with image with flags checkboxes.
+ */
 @ImportResources(resources = {
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.css", resourceType = "css", index = 1),
 		@ImportResource(resourceName = "CheckboxImageListViewPanel.js", resourceType = "js", index = 2) })
-public class CheckboxImageListViewPanel extends ApplicationBasePanel<List<ImageCheckboxModel>>
+public class CheckboxImageListViewPanel extends ApplicationBasePanel<List<ImageCheckboxModelBean>>
 {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new checkbox image list view panel.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public CheckboxImageListViewPanel(final String id)
 	{
 		super(id, null);
 		// add some dummy data
-		final List<ImageCheckboxModel> choices = new ArrayList<>();
-		choices.add(ImageCheckboxModel.builder()
+		final List<ImageCheckboxModelBean> choices = new ArrayList<>();
+		choices.add(ImageCheckboxModelBean.builder()
 			.imageResource(new PackageResourceReference(LocaleMenuPanel.class, "germany.gif"))
 			.build());
-		choices.add(ImageCheckboxModel.builder()
+		choices.add(ImageCheckboxModelBean.builder()
 			.imageResource(new PackageResourceReference(LocaleMenuPanel.class, "britain.gif"))
 			.build());
-		choices.add(ImageCheckboxModel.builder()
+		choices.add(ImageCheckboxModelBean.builder()
 			.imageResource(new PackageResourceReference(LocaleMenuPanel.class, "hellas.gif"))
 			.build());
-		final ImageChoicesModel imageChoicesModel = ImageChoicesModel.builder().choices(choices)
-			.build();
+		final ImageChoicesModelBean imageChoicesModelBean = ImageChoicesModelBean.builder()
+			.choices(choices).build();
 
-		final ListView<ImageCheckboxModel> listView = new ListView<ImageCheckboxModel>("list",
-			imageChoicesModel.getChoices())
+		final ListView<ImageCheckboxModelBean> listView = new ListView<ImageCheckboxModelBean>(
+			"list", imageChoicesModelBean.getChoices())
 		{
 			/**
 			 * The serialVersionUID
@@ -69,9 +80,9 @@ public class CheckboxImageListViewPanel extends ApplicationBasePanel<List<ImageC
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(final ListItem<ImageCheckboxModel> item)
+			protected void populateItem(final ListItem<ImageCheckboxModelBean> item)
 			{
-				final ImageCheckboxModel wrapper = item.getModelObject();
+				final ImageCheckboxModelBean wrapper = item.getModelObject();
 				final CheckBox checkbox = new CheckBox("checkbox",
 					model(from(wrapper).getChecked()));
 				checkbox.setOutputMarkupId(true);

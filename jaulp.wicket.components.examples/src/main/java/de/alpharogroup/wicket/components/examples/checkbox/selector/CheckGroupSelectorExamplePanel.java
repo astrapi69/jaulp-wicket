@@ -26,7 +26,7 @@ import org.apache.wicket.model.Model;
 import de.alpharogroup.test.objects.Company;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.form.checkbox.CheckGroupSelectorPanel;
-import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
+import de.alpharogroup.wicket.components.form.checkbox.CheckboxModelBean;
 
 public class CheckGroupSelectorExamplePanel extends Panel
 {
@@ -39,12 +39,12 @@ public class CheckGroupSelectorExamplePanel extends Panel
 	public CheckGroupSelectorExamplePanel(final String id, final IModel<?> model)
 	{
 		super(id, model);
-		final CheckboxModel<Company> checkboxModel = new CheckboxModel<Company>();
+		final CheckboxModelBean<Company> checkboxModel = new CheckboxModelBean<Company>();
 		checkboxModel.setChoices(Arrays.asList(Company.builder().name("Ferrari").build(), Company
 			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
 			Company.builder().name("Porsche").build()));
 		checkboxModel.setLabelPropertyExpression("name");
-		final IModel<CheckboxModel<Company>> checkGroupModel = Model.of(checkboxModel);
+		final IModel<CheckboxModelBean<Company>> checkGroupModel = Model.of(checkboxModel);
 		add(new CheckGroupSelectorPanel<Company>("checkGroupSelectorPanel", checkGroupModel)
 		{
 			/**

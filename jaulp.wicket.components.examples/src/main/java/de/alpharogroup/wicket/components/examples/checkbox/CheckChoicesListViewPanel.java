@@ -33,7 +33,7 @@ import org.apache.wicket.model.util.ListModel;
 import de.alpharogroup.test.objects.Company;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
 import de.alpharogroup.wicket.components.form.CheckChoicesListView;
-import de.alpharogroup.wicket.components.form.checkbox.CheckboxModel;
+import de.alpharogroup.wicket.components.form.checkbox.CheckboxModelBean;
 
 public class CheckChoicesListViewPanel extends Panel
 {
@@ -48,7 +48,7 @@ public class CheckChoicesListViewPanel extends Panel
 		super(id, model);
 		final Form<?> form = new Form<>("form");
 		add(form);
-		final CheckboxModel<Company> checkboxModel = new CheckboxModel<>();
+		final CheckboxModelBean<Company> checkboxModel = new CheckboxModelBean<>();
 		checkboxModel.setChoices(Arrays.asList(Company.builder().name("Ferrari").build(), Company
 			.builder().name("Lamborgini").build(), Company.builder().name("Mazerati").build(),
 			Company.builder().name("Porsche").build()));

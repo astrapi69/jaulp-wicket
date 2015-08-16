@@ -38,7 +38,13 @@ import org.apache.wicket.model.PropertyModel;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
+/**
+ * The Class {@link CheckGroupSelectorPanel}.
+ *
+ * @param <T>
+ *            the generic type
+ */
+public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 {
 
 	/**
@@ -52,19 +58,39 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 	@Getter
 	private final Form<?> form;
 
+	/**
+	 * the check group
+	 */
 	@Getter
 	private final CheckGroup<T> checkGroup;
 
+	/**
+	 * the check group selector
+	 */
 	@Getter
 	private final CheckGroupSelector checkGroupSelector;
 
+	/**
+	 * the check group selector label
+	 */
 	@Getter
 	private final Label checkGroupSelectorLabel;
 
+	/**
+	 * the choices
+	 */
 	@Getter
 	private final ListView<T> choices;
 
-	public CheckGroupSelectorPanel(final String id, final IModel<CheckboxModel<T>> model)
+	/**
+	 * Instantiates a new {@link CheckGroupSelectorPanel}.
+	 *
+	 * @param id
+	 *            the component id
+	 * @param model
+	 *            the model
+	 */
+	public CheckGroupSelectorPanel(final String id, final IModel<CheckboxModelBean<T>> model)
 	{
 		super(id, model);
 
@@ -83,13 +109,15 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 	}
 
 	/**
-	 * New check group.
+	 * Factory method for create a new {@link CheckGroup}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link CheckGroup}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the radio group
+	 * @return the new {@link CheckGroup}
 	 */
 	protected CheckGroup<T> newCheckGroup(final String id,
 		final IModel<? extends Collection<T>> model)
@@ -109,7 +137,9 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 	}
 
 	/**
-	 * Factory method for create a new {@link CheckGroupSelector}.
+	 * Factory method for create a new {@link CheckGroupSelector}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link CheckGroupSelector}.
 	 *
 	 * @param id
 	 *            the id
@@ -122,13 +152,33 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 		return ComponentFactory.newCheckGroupSelector(id, group);
 	}
 
+	/**
+	 * New check group selector label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param forId
+	 *            the for id
+	 * @param model
+	 *            the model
+	 * @return the label
+	 */
 	protected Label newCheckGroupSelectorLabel(final String id, final String forId,
 		final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, forId, model);
 	}
 
-	protected ListView<T> newChoices(final String id, final IModel<CheckboxModel<T>> model)
+	/**
+	 * New choices.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the list view
+	 */
+	protected ListView<T> newChoices(final String id, final IModel<CheckboxModelBean<T>> model)
 	{
 		final ListView<T> choices = new ListView<T>("choices", model.getObject().getChoices())
 		{
@@ -161,6 +211,12 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModel<T>>
 		return ComponentFactory.newForm(id);
 	}
 
+	/**
+	 * On update.
+	 *
+	 * @param target
+	 *            the target
+	 */
 	protected void onUpdate(final AjaxRequestTarget target)
 	{
 	}

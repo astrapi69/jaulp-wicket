@@ -38,9 +38,7 @@ public abstract class FooterMenuPanel extends BasePanel<List<LinkItem>>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Gets the link list panel.
-	 *
-	 * @return the link list panel
+	 * the link list panel
 	 */
 	@Getter
 	private Component linkListPanel;
