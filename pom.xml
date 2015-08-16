@@ -75,7 +75,7 @@
 		<wicket-js-addons.version>6.18.0</wicket-js-addons.version>
 		<!-- JETTY 9 version -->
 		<jetty9.version>9.3.0.v20150612</jetty9.version>
-		<wicket-jetty9-runner.version>1.0.2</wicket-jetty9-runner.version>
+		<wicket-jetty9-runner.version>2.0.0</wicket-jetty9-runner.version>
 		<!-- TOMCAT version -->
 		<tomcat.version>7.0.57</tomcat.version>
 		<!-- LOGGING versions -->
