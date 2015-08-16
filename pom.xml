@@ -697,6 +697,7 @@
 				<plugin>
 					<inherited>true</inherited>
 					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven-assembly-plugin.version}</version>
 					<configuration>
 						<descriptorRefs>
 							<descriptorRef>jar-with-dependencies</descriptorRef>
