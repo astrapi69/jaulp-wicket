@@ -20,18 +20,21 @@ import java.io.Serializable;
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
+import org.apache.wicket.request.cycle.RequestCycle;
+import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
 
-import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
+import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 
 /**
- * If you install the {@link ApplicationDebugSettingsPlugin} you enable the appropriate settings for
- * the development mode.
+ * If you install the {@link SecuritySettingsPlugin} you enable the appropriate settings for the
+ * development mode.
  * 
  * <h2>Installation</h2>
  * 
- * You can install the {@link ApplicationDebugSettingsPlugin} is very simple. You only have to add a
- * one line to the {@code init} method:
+ * You can install the {@link SecuritySettingsPlugin} is very simple. You only have to add a one
+ * line to the {@code init} method:
  * 
  * <pre>
  * public class MyApplication extends WebApplication
@@ -47,7 +50,7 @@ import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
  * 
  * @author Asterios Raptis
  */
-public class ApplicationDebugSettingsPlugin implements Serializable
+public class SecuritySettingsPlugin implements Serializable
 {
 
 	/**
@@ -56,7 +59,7 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	/** The Constant DEBUG_SETTINGS_PLUGIN_KEY. */
-	private static final MetaDataKey<ApplicationDebugSettingsPlugin> DEBUG_SETTINGS_PLUGIN_KEY = new MetaDataKey<ApplicationDebugSettingsPlugin>()
+	private static final MetaDataKey<SecuritySettingsPlugin> SECURITY_SETTINGS_PLUGIN_KEY = new MetaDataKey<SecuritySettingsPlugin>()
 	{
 		/**
 		 * The serialVersionUID.
@@ -65,29 +68,29 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 	};
 
 	/**
-	 * Returns the {@link ApplicationDebugSettingsPlugin} instance that has been installed in the
-	 * current Wicket application. This is a convenience method that only works within a Wicket
-	 * thread, and it assumes that {@link #install install()} has already been called.
+	 * Returns the {@link SecuritySettingsPlugin} instance that has been installed in the current
+	 * Wicket application. This is a convenience method that only works within a Wicket thread, and
+	 * it assumes that {@link #install install()} has already been called.
 	 *
-	 * @return the {@link ApplicationDebugSettingsPlugin} instance that has been installed in the
-	 *         current Wicket application.
+	 * @return the {@link SecuritySettingsPlugin} instance that has been installed in the current
+	 *         Wicket application.
 	 * @throws IllegalStateException
 	 *             is thrown if no Wicket application bound to the current thread, or if a
 	 *             {@code DebugSettingsPlugin} has not been installed.
 	 */
-	public static ApplicationDebugSettingsPlugin get()
+	public static SecuritySettingsPlugin get()
 	{
 		final Application app = Application.get();
 		if (null == app)
 		{
 			throw new IllegalStateException("No wicket application is bound to the current thread.");
 		}
-		final ApplicationDebugSettingsPlugin plugin = app.getMetaData(DEBUG_SETTINGS_PLUGIN_KEY);
+		final SecuritySettingsPlugin plugin = app.getMetaData(SECURITY_SETTINGS_PLUGIN_KEY);
 		if (null == plugin)
 		{
-			final String pluginClassName = ApplicationDebugSettingsPlugin.class.getSimpleName();
+			final String pluginClassName = SecuritySettingsPlugin.class.getSimpleName();
 			throw new IllegalStateException("A " + pluginClassName
-				+ " has not been installed in this Wicket " + "application. You have to call "
+				+ " has not been installed in this Wicket application. You have to call "
 				+ pluginClassName + ".install() in " + "your application init().");
 		}
 		return plugin;
@@ -100,7 +103,7 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 	 *            the application to install.
 	 * @return this for chaining.
 	 */
-	public ApplicationDebugSettingsPlugin install(final WebApplication application)
+	public SecuritySettingsPlugin install(final WebApplication application)
 	{
 		Args.notNull(application, "app");
 		onConfigure(application);
@@ -108,7 +111,7 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 	}
 
 	/**
-	 * Factory method for that can be used to add additional configuration to this plugin.
+	 * Factory method for that can be used to add additional security configuration to this plugin.
 	 * <p>
 	 * Overrides should call {@code super.onConfigure()}.
 	 *
@@ -118,24 +121,29 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 	protected void onConfigure(final WebApplication application)
 	{
 		set(application, this);
-		ApplicationExtensions.setDefaultDebugSettingsForDevelopment(application);
-		// Adds the references from source code to the browser to reference in eclipse....
-		// If you want to add WicketSource capabilities overwrite this method with a super call and
-		// add the following...
-		// WicketSource.configure(application);
+		application.getRequestCycleListeners().add(new AbstractRequestCycleListener()
+		{
+			@Override
+			public void onBeginRequest(final RequestCycle cycle)
+			{
+				super.onBeginRequest(cycle);
+				WicketComponentExtensions.setSecurityHeaders((WebResponse)cycle.getResponse());
+			}
+		});
+
 	}
 
 	/**
-	 * Sets the specified {@link ApplicationDebugSettingsPlugin} in the application metadata.
+	 * Sets the specified {@link SecuritySettingsPlugin} in the application metadata.
 	 *
 	 * @param app
 	 *            the app
 	 * @param plugin
 	 *            the plugin
 	 */
-	public void set(final Application app, final ApplicationDebugSettingsPlugin plugin)
+	public void set(final Application app, final SecuritySettingsPlugin plugin)
 	{
-		app.setMetaData(DEBUG_SETTINGS_PLUGIN_KEY, plugin);
+		app.setMetaData(SECURITY_SETTINGS_PLUGIN_KEY, plugin);
 	}
 
 }

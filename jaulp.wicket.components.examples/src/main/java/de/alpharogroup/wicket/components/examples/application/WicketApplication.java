@@ -35,6 +35,7 @@ import org.apache.wicket.resource.loader.BundleStringResourceLoader;
 import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.wicket.PackageResourceReferences;
 import de.alpharogroup.wicket.base.application.plugins.ApplicationDebugSettingsPlugin;
+import de.alpharogroup.wicket.base.application.plugins.SecuritySettingsPlugin;
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
@@ -213,6 +214,7 @@ public class WicketApplication extends WicketBootstrap3Application
 	@Override
 	protected void onBeforeApplicationConfigurations()
 	{
+		new SecuritySettingsPlugin().install(this);
 		// initialize all header contributors
 		initializeAllHeaderContributors();
 		getResourceSettings().getStringResourceLoaders().add(

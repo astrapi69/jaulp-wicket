@@ -337,6 +337,37 @@ public final class WicketComponentExtensions
 	}
 
 	/**
+	 * Sets the access control header. Note: This header refers to a policy file. Specifying how
+	 * resources should be allowed to be loaded from a different domain. The value 'master only'
+	 * indicates that only the file specified should be considered valid on this domain.
+	 * 
+	 * @param response
+	 *            the response to set the header.
+	 */
+	public static void setAccessControlHeader(final WebResponse response)
+	{
+		response.setHeader("X-Permitted-Cross-Domain-Policies", "master-only");
+	}
+
+	public static void setSecurityHeaders(final WebResponse response)
+	{
+		// Category: Framing
+		// see https://www.owasp.org/index.php/Clickjacking#X-FRAME-OPTIONS
+		response.setHeader("X-Frame-Options", "sameorigin");
+		// Category: Transport
+		response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+		// Category: Content
+		response.setHeader("X-Content-Type-Options", "nosniff");
+		response.setHeader("Content-Type", "text/html;charset=utf-8");
+		// Category: XSS
+		response.setHeader("X-XSS-Protection", "1; mode=block");
+		// Category: Caching
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires", "-1");
+	}
+
+	/**
 	 * Helper method for the migration from wicket-version 1.5.x to 6.x.
 	 * 
 	 * @param relativePagePath
