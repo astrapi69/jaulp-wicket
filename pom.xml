@@ -185,8 +185,8 @@
 		<!-- MAVEN SUREFIRE PLUGIN versions -->
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<!-- COVERAGE MAVEN PLUGIN versions -->
+		<coveralls-maven-plugin.version>3.0.1</coveralls-maven-plugin.version>
 		<cobertura-maven-plugin.version>2.6</cobertura-maven-plugin.version>
-		<coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
 		<!-- MAVEN WAR PLUGIN versions -->
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<!-- TOMCAT7 MAVEN PLUGIN versions -->
@@ -656,6 +656,12 @@
 							</fileset>
 						</filesets>
 					</configuration>
+				</plugin>				
+
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin.version}</version>
 				</plugin>
 				<!-- Configuring Maven Javadoc Plugin: To attach javadoc artifacts to 
 					your build we execute the javadoc:jar goal from the javadoc plugin. -->
@@ -683,52 +689,26 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!-- Signing with gpg -->
+				
 				<plugin>
-					<inherited>true</inherited>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>${maven-gpg-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>sign-artifacts</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>sign</goal>
-							</goals>
-						</execution>
-					</executions>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build-helper-maven-plugin.version}</version>
 				</plugin>
 
 				<plugin>
 					<inherited>true</inherited>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>${maven-release-plugin.version}</version>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${maven-eclipse-plugin.version}</version>
 					<configuration>
-						<mavenExecutorId>forked-path</mavenExecutorId>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${maven-deploy-plugin.version}</version>
-				</plugin>
-				<!-- The Nexus Staging Maven Plugin is the recommended way to deploy 
-					your components to OSSRH and release them to the Central Repository. _______________ 
-					If your version is a release version (does not end in -SNAPSHOT) and with 
-					this setup in place, you can run a deployment to OSSRH and an automated release 
-					to the Central Repository with the usual: mvn clean deploy _________________________ 
-					With the property autoReleaseAfterClose set to false you can manually inspect 
-					the staging repository in Nexus and trigger a release of the staging repository 
-					later with: mvn nexus-staging:release. -->
-				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>${nexus-staging-maven-plugin.version}</version>
-					<extensions>true</extensions>
-					<configuration>
-						<serverId>ossrh</serverId>
-						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-						<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						<additionalBuildcommands>
+							<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
+						</additionalBuildcommands>
+						<additionalProjectnatures>
+							<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
+							<projectnature>org.springsource.ide.eclipse.gradle.core.nature</projectnature>
+						</additionalProjectnatures>
+						<downloadSources>true</downloadSources>
 					</configuration>
 				</plugin>
 
@@ -756,18 +736,112 @@
 				</plugin>
 
 				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven-deploy-plugin.version}</version>
+				</plugin>
+
+				<plugin>
 					<inherited>true</inherited>
-					<artifactId>maven-eclipse-plugin</artifactId>
-					<version>${maven-eclipse-plugin.version}</version>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release-plugin.version}</version>
 					<configuration>
-						<additionalBuildcommands>
-							<buildcommand>org.eclipse.m2e.core.maven2Builder</buildcommand>
-						</additionalBuildcommands>
-						<additionalProjectnatures>
-							<projectnature>org.eclipse.m2e.core.maven2Nature</projectnature>
-							<projectnature>org.springsource.ide.eclipse.gradle.core.nature</projectnature>
-						</additionalProjectnatures>
-						<downloadSources>true</downloadSources>
+						<mavenExecutorId>forked-path</mavenExecutorId>
+					</configuration>
+				</plugin>
+				<!-- Signing with gpg -->
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- The Nexus Staging Maven Plugin is the recommended way to deploy 
+					your components to OSSRH and release them to the Central Repository. _______________ 
+					If your version is a release version (does not end in -SNAPSHOT) and with 
+					this setup in place, you can run a deployment to OSSRH and an automated release 
+					to the Central Repository with the usual: mvn clean deploy _________________________ 
+					With the property autoReleaseAfterClose set to false you can manually inspect 
+					the staging repository in Nexus and trigger a release of the staging repository 
+					later with: mvn nexus-staging:release. -->
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${nexus-staging-maven-plugin.version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>ossrh</serverId>
+						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+						<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${license-maven-plugin.version}</version>
+					<configuration>
+						<header>src/main/resources/LICENSE.txt</header>
+						<properties>
+							<owner>Asterios Raptis</owner>
+							<year>${project.inceptionYear}</year>
+							<email>asterios.raptis@gmx.net</email>
+						</properties>
+						<excludes>
+							<exclude>**/README</exclude>
+							<exclude>**/*.xml</exclude>
+							<exclude>**/*.xsl</exclude>
+							<exclude>**/*.xsd</exclude>
+							<exclude>**/*.dtd</exclude>
+							<exclude>**/*.html</exclude>
+							<exclude>**/*.properties</exclude>
+							<exclude>**/*.bat</exclude>
+							<exclude>**/*.gradle</exclude>
+							<exclude>**/*.MF</exclude>
+							<exclude>**/*.txt</exclude>
+							<exclude>**/*.css</exclude>
+							<exclude>**/*.js</exclude>
+							<exclude>**/*.vm</exclude>
+							<exclude>src/test/resources/**</exclude>
+							<exclude>src/main/resources/**</exclude>
+						</excludes>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>format</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven-war-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>${coveralls-maven-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>${cobertura-maven-plugin.version}</version>
+					<configuration>
+						<format>xml</format>
+						<maxmem>256m</maxmem>
+						<!-- aggregated reports for multi-module projects -->
+						<aggregate>true</aggregate>
 					</configuration>
 				</plugin>
 
@@ -910,75 +984,6 @@
 
 					</dependencies>
 
-				</plugin>
-
-				<plugin>
-					<inherited>true</inherited>
-					<artifactId>maven-install-plugin</artifactId>
-					<version>${maven-install-plugin.version}</version>
-				</plugin>
-
-				<plugin>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>${maven-war-plugin.version}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>com.mycila</groupId>
-					<artifactId>license-maven-plugin</artifactId>
-					<version>${license-maven-plugin.version}</version>
-					<configuration>
-						<header>src/main/resources/LICENSE.txt</header>
-						<properties>
-							<owner>Asterios Raptis</owner>
-							<year>${project.inceptionYear}</year>
-							<email>asterios.raptis@gmx.net</email>
-						</properties>
-						<excludes>
-							<exclude>**/README</exclude>
-							<exclude>**/*.xml</exclude>
-							<exclude>**/*.xsl</exclude>
-							<exclude>**/*.xsd</exclude>
-							<exclude>**/*.dtd</exclude>
-							<exclude>**/*.html</exclude>
-							<exclude>**/*.properties</exclude>
-							<exclude>**/*.bat</exclude>
-							<exclude>**/*.gradle</exclude>
-							<exclude>**/*.MF</exclude>
-							<exclude>**/*.txt</exclude>
-							<exclude>**/*.css</exclude>
-							<exclude>**/*.js</exclude>
-							<exclude>**/*.vm</exclude>
-							<exclude>src/test/resources/**</exclude>
-							<exclude>src/main/resources/**</exclude>
-						</excludes>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>format</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
-
-				<plugin>
-					<groupId>org.eluder.coveralls</groupId>
-					<artifactId>coveralls-maven-plugin</artifactId>
-					<version>${coveralls-maven-plugin.version}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>cobertura-maven-plugin</artifactId>
-					<version>${cobertura-maven-plugin.version}</version>
-					<configuration>
-						<format>xml</format>
-						<maxmem>256m</maxmem>
-						<!-- aggregated reports for multi-module projects -->
-						<aggregate>true</aggregate>
-					</configuration>
 				</plugin>
 
 			</plugins>
