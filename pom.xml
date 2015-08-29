@@ -2,30 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>de.alpharogroup</groupId>
 	<artifactId>jaulp.wicket</artifactId>
 	<version>6.20.0</version>
-	<inceptionYear>2010</inceptionYear>
 	<packaging>pom</packaging>
+	<inceptionYear>2010</inceptionYear>
+	
 	<name>${project.artifactId}</name>
 
-	<description>Parent project for the projects in the jaulp.wicket.</description>
+	<description>
+		Parent project for the projects in the jaulp.wicket.
+	</description>
+
+	<url>https://github.com/astrapi69/jaulp.wicket</url>
 
 	<licenses>
+
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 			<distribution>repo</distribution>
 		</license>
+
 	</licenses>
-
-	<url>https://github.com/astrapi69/jaulp.wicket</url>
-
-	<scm>
-		<connection>scm:git:git:@github.com:astrapi69/jaulp.wicket.git</connection>
-		<developerConnection>scm:git:git@github.com:astrapi69/jaulp.wicket.git</developerConnection>
-		<url>git:@github.com:astrapi69/jaulp.wicket.git</url>
-	</scm>
 
 	<developers>
 
@@ -41,6 +41,40 @@
 		</developer>
 
 	</developers>
+
+	<organization>
+		<name>Alpha Ro Group UG (haftungsbeschrängt)</name>
+		<url>http://www.alpharogroup.de/</url>
+	</organization>
+
+	<scm>
+		<connection>scm:git:git:@github.com:astrapi69/jaulp.wicket.git</connection>
+		<developerConnection>scm:git:git@github.com:astrapi69/jaulp.wicket.git</developerConnection>
+		<url>git:@github.com:astrapi69/jaulp.wicket.git</url>
+	</scm>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	
+	<ciManagement>
+		<system>travis-ci</system>
+		<url>https://travis-ci.org/astrapi69/jaulp.wicket</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/astrapi69/jaulp.wicket/issues</url>
+	</issueManagement>
 
 	<modules>
 		<module>jaulp.wicket.annotated.header.contributors</module>
@@ -120,39 +154,43 @@
 		<maven-compiler-plugin.optimize>true</maven-compiler-plugin.optimize>
 		<maven-compiler-plugin.showWarnings>true</maven-compiler-plugin.showWarnings>
 		<maven-compiler-plugin.debug>true</maven-compiler-plugin.debug>
-		<!-- MAVEN ECLIPSE PLUGIN version -->
-		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
-		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
-		<wtp.version>2.0</wtp.version>
-		<!-- MAVEN JAVADOC PLUGIN version -->
-		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
 		<!-- MAVEN SOURCE PLUGIN version -->
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<!-- MAVEN CLEAN PLUGIN version -->
 		<maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
-		<!-- MAVEN GPG PLUGIN version -->
-		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
-		<!-- MAVEN RELEASE PLUGIN version -->
-		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
-		<!-- MAVEN DEPLOY PLUGIN version -->
-		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-		<!-- NEXUS STAGING MAVEN PLUGIN version -->
-		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
-		<!-- MAVEN ASSEBLY PLUGIN versions -->
-		<maven-assembly-plugin.version>2.5.3</maven-assembly-plugin.version>
-		<!-- MAVEN SUREFIRE PLUGIN versions -->
-		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-		<!-- LICENSE MAVEN PLUGIN versions -->
-		<license-maven-plugin.version>2.8</license-maven-plugin.version>
-		<!-- MAVEN WAR PLUGIN versions -->
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<!-- MAVEN INSTALL PLUGIN versions -->
 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-		<!-- TOMCAT7 MAVEN PLUGIN versions -->
-		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+		<!-- MAVEN JAVADOC PLUGIN version -->
+		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+		<!-- BUILD-HELPER MAVEN PLUGIN versions -->
+		<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
+		<!-- MAVEN ECLIPSE PLUGIN version -->
+		<maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>
+		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
+		<wtp.version>2.0</wtp.version>
+		<!-- MAVEN ASSEBLY PLUGIN versions -->
+		<maven-assembly-plugin.version>2.5.3</maven-assembly-plugin.version>
+		<!-- MAVEN SCM-PUBLISH PLUGIN version -->
+		<maven-scm-publish-plugin.version>1.1</maven-scm-publish-plugin.version>
+		<!-- MAVEN DEPLOY PLUGIN version -->
+		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+		<!-- MAVEN RELEASE PLUGIN version -->
+		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+		<!-- MAVEN GPG PLUGIN version -->
+		<maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
+		<!-- NEXUS STAGING MAVEN PLUGIN version -->
+		<nexus-staging-maven-plugin.version>1.6.5</nexus-staging-maven-plugin.version>
+		<!-- LICENSE MAVEN PLUGIN versions -->
+		<license-maven-plugin.version>2.8</license-maven-plugin.version>
+		<!-- MAVEN SUREFIRE PLUGIN versions -->
+		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<!-- COVERAGE MAVEN PLUGIN versions -->
 		<cobertura-maven-plugin.version>2.6</cobertura-maven-plugin.version>
 		<coveralls-maven-plugin.version>2.2.0</coveralls-maven-plugin.version>
+		<!-- MAVEN WAR PLUGIN versions -->
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<!-- TOMCAT7 MAVEN PLUGIN versions -->
+		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -1009,22 +1047,6 @@
 		</repository>
 
 	</repositories>
-
-	<distributionManagement>
-
-		<snapshotRepository>
-			<id>ossrh</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-
-		<repository>
-			<id>ossrh</id>
-			<name>Nexus Release Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-
-	</distributionManagement>
 
 	<profiles>
 
