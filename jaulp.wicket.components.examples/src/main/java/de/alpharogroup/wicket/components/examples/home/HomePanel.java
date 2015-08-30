@@ -22,7 +22,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.behaviors.datetime.CurrentDatetimeBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
-import de.alpharogroup.wicket.components.i18n.content.ContentModel;
+import de.alpharogroup.wicket.components.i18n.content.ContentModelBean;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
 
 public class HomePanel extends BasePanel<Object>
@@ -32,7 +32,7 @@ public class HomePanel extends BasePanel<Object>
 	public HomePanel(final String id)
 	{
 		super(id);
-		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel
+		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModelBean
 			.builder()
 			.headerResourceKey(ResourceBundleKey.builder().key("home.header.label").build())
 			.contentResourceKey(ResourceBundleKey.builder().key("home.content.label").build())

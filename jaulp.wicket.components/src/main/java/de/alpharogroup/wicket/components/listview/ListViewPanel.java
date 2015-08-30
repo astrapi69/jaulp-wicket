@@ -71,24 +71,28 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 	}
 
 	/**
-	 * New list component.
+	 * Abstract factory method for creating the new {@link Component} in the list. This method is
+	 * invoked in the {@link ListView#populateItem(ListItem)} from the derived classes and can be
+	 * overridden so users can provide their own version of a new {@link Component} in the list.
 	 *
 	 * @param id
 	 *            the id
 	 * @param item
 	 *            the item
-	 * @return the component
+	 * @return the new {@link Component} in the list.
 	 */
 	protected abstract Component newListComponent(final String id, final ListItem<T> item);
 
 	/**
-	 * New list view.
+	 * Factory method for creating the new {@link ListView}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of the new {@link ListView}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the list view
+	 * @return the new {@link ListView}.
 	 */
 	protected ListView<T> newListView(final String id, final IModel<List<T>> model)
 	{
@@ -97,12 +101,14 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void populateItem(final ListItem<T> item)
 			{
 				item.add(newListComponent("item", item));
 			}
-
 		};
 		return listView;
 	}

@@ -45,7 +45,7 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	private final Label viewableLabel;
 
 	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
+	 * Instantiates a new {@link LabeledLabelPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -58,13 +58,24 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	{
 		super(id, model);
 		setOutputMarkupId(true);
-		add(viewableLabel = newLabel("viewableLabel", model));
+		add(viewableLabel = newViewableLabel("viewableLabel", model));
 
 		final String markupId = viewableLabel.getMarkupId();
 		add(label = newLabel("label", markupId, labelModel));
 	}
 
-	protected Label newLabel(final String id, final IModel<T> model)
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
+	protected Label newViewableLabel(final String id, final IModel<T> model)
 	{
 		final PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(),
 			this.getId());
@@ -72,8 +83,9 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
@@ -81,7 +93,7 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	 *            the for id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final String forId, final IModel<String> model)
 	{

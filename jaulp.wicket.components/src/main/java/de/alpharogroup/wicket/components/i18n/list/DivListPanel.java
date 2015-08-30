@@ -22,7 +22,7 @@ import org.apache.wicket.model.IModel;
 import de.alpharogroup.wicket.components.listview.ListViewPanel;
 
 /**
- * The Class DivListPanel that holds the ListView in a div.
+ * The Class {@link DivListPanel} that holds the ListView in a div.
  *
  * @param <T>
  *            the generic type of the list
@@ -34,7 +34,7 @@ public abstract class DivListPanel<T> extends ListViewPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new header content list panel.
+	 * Instantiates a new {@link DivListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -47,7 +47,7 @@ public abstract class DivListPanel<T> extends ListViewPanel<T>
 	}
 
 	/**
-	 * Instantiates a new div list panel.
+	 * Instantiates a new {@link DivListPanel}.
 	 *
 	 * @param id
 	 *            the id

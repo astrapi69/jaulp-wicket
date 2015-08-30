@@ -373,7 +373,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Label with a {@link IModel}.
+	 * Factory method for create a new {@link Label} with a {@link IModel}.
 	 *
 	 * @param <T>
 	 *            the generic type of the model
@@ -381,7 +381,7 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the {@link IModel} for the label.
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	public static <T> Label newLabel(final String id, final IModel<T> model)
 	{
@@ -420,7 +420,7 @@ public class ComponentFactory
 	 *            the for id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	public static <T> Label newLabel(final String id, final String forId, final IModel<T> model)
 	{

@@ -46,7 +46,7 @@ public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
 	private final MultiLineLabel viewableLabel;
 
 	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
+	 * Instantiates a new {@link LabeledMultiLineLabelPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -66,8 +66,9 @@ public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * Factory method for create a new {@link Label}. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * {@link Label}.
 	 *
 	 * @param id
 	 *            the id
@@ -75,7 +76,7 @@ public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
 	 *            the for id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final String forId, final IModel<String> model)
 	{
@@ -83,15 +84,15 @@ public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * MultiLineLabel.
+	 * Factory method for create a new {@link MultiLineLabel}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link MultiLineLabel}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link MultiLineLabel}
 	 */
 	protected MultiLineLabel newMultiLineLabelLabel(final String id, final IModel<T> model)
 	{

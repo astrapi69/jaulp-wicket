@@ -47,7 +47,7 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	}
 
 	/**
-	 * Instantiates a new link list panel.
+	 * Instantiates a new {@link LinkListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -60,7 +60,7 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	}
 
 	/**
-	 * Instantiates a new link list panel.
+	 * Instantiates a new {@link LinkListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -83,19 +83,21 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	}
 
 	/**
-	 * Factory method for create a new item link.
+	 * Factory method for creating the new item {@link AbstractLink} in the list. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new item {@link AbstractLink} in the list.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the abstract link
+	 * @return the new item {@link AbstractLink} in the list.
 	 */
 	protected AbstractLink newAbstractLink(final String id, final LinkItem model)
 	{
 		AttributeModifier target = null;
 		AbstractLink link = null;
-		if (model.getTarget() != null && !model.getTarget().isEmpty())
+		if ((model.getTarget() != null) && !model.getTarget().isEmpty())
 		{
 			target = new AttributeModifier("target", Model.of(model.getTarget()));
 		}
@@ -117,22 +119,22 @@ public class LinkListPanel extends ListViewPanel<LinkItem>
 	}
 
 	/**
-	 * Factory method for create a new item link Label. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * new item link Label.
+	 * Factory method for create a new item link {@link Label}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new item link {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new item link {@link Label}.
 	 */
 	protected Label newItemLinkLabel(final String id, final LinkItem model)
 	{
 		final Label itemLinkLabel = ComponentFactory.newLabel(id,
 			ResourceModelFactory.newResourceModel(model.getResourceModelKey(), this));
 		// add css class to current page.
-		if (model.getPageClass() != null && model.getPageClass().equals(getPage().getClass()))
+		if ((model.getPageClass() != null) && model.getPageClass().equals(getPage().getClass()))
 		{
 			itemLinkLabel.add(new AttributeAppender("class", " " + getCurrentPageCssClass()));
 		}

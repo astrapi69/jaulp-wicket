@@ -17,7 +17,7 @@ package de.alpharogroup.wicket.components.imprint;
 
 import java.io.Serializable;
 
-public class ImprintModel implements Serializable
+public class ImprintModelBean implements Serializable
 {
 
 	/**

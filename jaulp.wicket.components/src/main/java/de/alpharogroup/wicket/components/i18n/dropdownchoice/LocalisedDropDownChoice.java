@@ -27,7 +27,7 @@ import org.apache.wicket.model.IModel;
  * flag 'defaultChoice' to true to overwrite the default behavior and showing 'choose'.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of the model
  * @author Asterios Raptis
  */
 public class LocalisedDropDownChoice<T> extends DropDownChoice<T>

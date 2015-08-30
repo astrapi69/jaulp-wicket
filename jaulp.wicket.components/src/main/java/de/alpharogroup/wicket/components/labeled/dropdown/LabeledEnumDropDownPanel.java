@@ -19,14 +19,27 @@ import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
+/**
+ * The Class {@link LabeledEnumDropDownPanel}.
+ */
 public class LabeledEnumDropDownPanel extends Panel
 {
 
-	/**
-	 * The serialVersionUID
-	 */
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link LabeledEnumDropDownPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @param choices
+	 *            the choices
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public LabeledEnumDropDownPanel(final String id, final IModel<?> model,
 		final IModel<String> labelModel, final IModel<?> choices)

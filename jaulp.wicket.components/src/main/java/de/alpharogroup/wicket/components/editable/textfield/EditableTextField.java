@@ -156,7 +156,7 @@ public class EditableTextField extends GenericPanel<String>
 					 * {@inheritDoc}
 					 */
 					@Override
-					protected Label newLabel(final String id, final IModel<String> model)
+					protected Label newViewableLabel(final String id, final IModel<String> model)
 					{
 						return ComponentFactory.newLabel(id, model);
 					}

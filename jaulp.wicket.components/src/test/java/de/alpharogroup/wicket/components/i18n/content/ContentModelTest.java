@@ -26,7 +26,7 @@ public class ContentModelTest
 	@Test
 	public void testContentModelStringString()
 	{
-		ContentModel.builder()
+		ContentModelBean.builder()
 			.headerResourceKey(ResourceBundleKey.builder().key("header.label").build())
 			.contentResourceKey(ResourceBundleKey.builder().key("content.label").build()).build();
 	}
@@ -34,20 +34,20 @@ public class ContentModelTest
 	@Test(expectedExceptions = NullPointerException.class)
 	public void testContentModelStringString1()
 	{
-		ContentModel.builder().build();
+		ContentModelBean.builder().build();
 	}
 
 	@Test(expectedExceptions = NullPointerException.class)
 	public void testContentModelStringString2()
 	{
-		ContentModel.builder()
+		ContentModelBean.builder()
 			.headerResourceKey(ResourceBundleKey.builder().key("header.label").build()).build();
 	}
 
 	@Test(expectedExceptions = NullPointerException.class)
 	public void testContentModelStringString3()
 	{
-		ContentModel.builder()
+		ContentModelBean.builder()
 			.contentResourceKey(ResourceBundleKey.builder().key("content.label").build()).build();
 	}
 

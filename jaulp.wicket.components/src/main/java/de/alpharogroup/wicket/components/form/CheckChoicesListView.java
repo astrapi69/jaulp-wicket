@@ -69,12 +69,36 @@ public class CheckChoicesListView<T> extends ChoicesListView<T>
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Construct a list view for {@link Check} objects that will expose the specified
+	 * IChoiceRenderer for rendering its list items.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param choices
+	 *            the list of choices
+	 * @param renderer
+	 *            the choice renderer
+	 */
 	public CheckChoicesListView(final String id, final IModel<List<T>> choices,
 		final IChoiceRenderer<T> renderer)
 	{
 		super(id, choices, renderer);
 	}
 
+	/**
+	 * Factory method for create a new {@link Check}. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * {@link Check}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param index
+	 *            the index
+	 * @return the new {@link Check}.
+	 */
 	protected Check<T> newCheck(final String id, final IModel<T> model, final int index)
 	{
 		final Check<T> check = new Check<T>(id, model)
@@ -106,16 +130,29 @@ public class CheckChoicesListView<T> extends ChoicesListView<T>
 		return check;
 	}
 
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
 	protected Label newLabel(final String id, final String label)
 	{
 		return ComponentFactory.newLabel(id, Model.of(label));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	protected void populateItem(final ListItem<T> it)
+	protected void populateItem(final ListItem<T> item)
 	{
-		final int index = it.getIndex();
-		it.add(newLabel("label", getChoiceLabel(it.getModelObject())));
-		it.add(newCheck("check", it.getModel(), index));
+		item.add(newLabel("label", getChoiceLabel(item.getModelObject())));
+		item.add(newCheck("check", item.getModel(), item.getIndex()));
 	}
 }

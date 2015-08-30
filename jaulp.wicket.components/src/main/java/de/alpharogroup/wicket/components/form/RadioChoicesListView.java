@@ -71,23 +71,55 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Construct a list view for {@link Radio} objects that will expose the specified
+	 * IChoiceRenderer for rendering its list items.
+	 * 
+	 * @param id
+	 *            the id
+	 * @param choices
+	 *            the list of choices
+	 * @param renderer
+	 *            the choice renderer
+	 */
 	public RadioChoicesListView(final String id, final IModel<List<T>> choices,
 		final IChoiceRenderer<T> renderer)
 	{
 		super(id, choices, renderer);
 	}
 
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
 	protected Label newLabel(final String id, final String label)
 	{
 		return ComponentFactory.newLabel(id, Model.of(label));
 	}
 
-	@Override
-	protected void populateItem(final ListItem<T> it)
+	/**
+	 * Factory method for create a new {@link Radio}. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * {@link Radio}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param index
+	 *            the index
+	 * @return the new {@link Radio}.
+	 */
+	protected Radio<T> newRadio(final String id, final IModel<T> model, final int index)
 	{
-		final int index = it.getIndex();
-		it.add(newLabel("label", getChoiceLabel(it.getModelObject())));
-		it.add(new Radio<T>("radio", it.getModel())
+		final Radio<T> radio = new Radio<T>("radio", model)
 		{
 
 			/**
@@ -112,6 +144,17 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 			{
 				return getChoiceValue(getModelObject(), index);
 			}
-		});
+		};
+		return radio;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void populateItem(final ListItem<T> item)
+	{
+		item.add(newLabel("label", getChoiceLabel(item.getModelObject())));
+		item.add(newRadio("radio", item.getModel(), item.getIndex()));
 	}
 }

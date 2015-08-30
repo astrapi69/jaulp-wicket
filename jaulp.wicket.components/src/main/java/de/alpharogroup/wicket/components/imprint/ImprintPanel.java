@@ -33,20 +33,28 @@ import de.alpharogroup.wicket.components.termofuse.disclaimer.DisclaimerPanel;
  *
  * @author Asterios Raptis
  */
-public abstract class ImprintPanel extends BasePanel<ImprintModel>
+public abstract class ImprintPanel extends BasePanel<ImprintModelBean>
 {
 
 	/**
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The container for the disclaimer.
+	 */
 	@Getter
 	private final WebMarkupContainer disclaimerContainer;
+
+	/**
+	 * The container for the imprint.
+	 */
 	@Getter
 	private final WebMarkupContainer imprintContainer;
 
 	/**
-	 * Instantiates a new imprint panel.
+	 * Instantiates a new {@link ImprintPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -138,11 +146,12 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 
 
 	/**
-	 * Factory method to create a IModel for the 'authorised representative content'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'authorised representative content'.
+	 * Factory method to create a new {@link IModel} for the 'authorised representative content'.
+	 * This method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a new {@link IModel} for the 'authorised representative
+	 * content'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'authorised representative content'.
 	 */
 	protected IModel<String> newAuthRepresentContentModel()
 	{
@@ -150,11 +159,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'authorised representative label'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'authorised representative label'.
+	 * Factory method to create a new {@link IModel} for the 'authorised representative label'. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a new {@link IModel} for the 'authorised representative label'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'authorised representative label'.
 	 */
 	protected IModel<String> newAuthRepresentLabelModel()
 	{
@@ -162,11 +171,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'company name'. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * 'company name'.
+	 * Factory method to create a new {@link IModel} for the 'company name'. This method is invoked
+	 * in the constructor from this class and can be overridden so users can provide their own
+	 * version of a new {@link IModel} for the 'company name'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'company name'.
 	 */
 	protected IModel<String> newCompanyNameModel()
 	{
@@ -174,11 +183,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'company register entry content'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'company register entry content'.
+	 * Factory method to create a new {@link IModel} for the 'company register entry content'. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a new {@link IModel} for the 'company register entry content'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'company register entry content'.
 	 */
 	protected IModel<String> newCompanyRegisterEntryContentModel()
 	{
@@ -186,11 +195,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'company register entry header'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'company register entry header'.
+	 * Factory method to create a new {@link IModel} for the 'company register entry header'. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a new {@link IModel} for the 'company register entry header'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'company register entry header'.
 	 */
 	protected IModel<String> newCompanyRegisterEntryHeaderModel()
 	{
@@ -198,11 +207,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'company register entry number'. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a 'company register entry number'.
+	 * Factory method to create a new {@link IModel} for the 'company register entry number'. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a new {@link IModel} for the 'company register entry number'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'company register entry number'.
 	 */
 	protected IModel<String> newCompanyRegisterEntryNumberModel()
 	{
@@ -210,11 +219,12 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'company register indedification content'. This
-	 * method is invoked in the constructor from this class and can be overridden so users can
-	 * provide their own version of a 'company register indedification content'.
+	 * Factory method to create a new {@link IModel} for the 'company register identification
+	 * content'. This method is invoked in the constructor from this class and can be overridden so
+	 * users can provide their own version of a new {@link IModel} for the 'company register
+	 * identification content'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'company register identification content'.
 	 */
 	protected IModel<String> newCompanyRegisterIndedificationContentModel()
 	{
@@ -222,11 +232,12 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'company register indedification header'. This
-	 * method is invoked in the constructor from this class and can be overridden so users can
-	 * provide their own version of a 'company register indedification header'.
+	 * Factory method to create a new {@link IModel} for the 'company register identification
+	 * header'. This method is invoked in the constructor from this class and can be overridden so
+	 * users can provide their own version of a new {@link IModel} for the 'company register
+	 * identification header'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'company register identification header'.
 	 */
 	protected IModel<String> newCompanyRegisterIndedificationHeaderModel()
 	{
@@ -234,9 +245,9 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a WebMarkupContainer for the disclaimer content. This method is
-	 * invoked in the constructor from this class and can be overridden so users can provide their
-	 * own version of a disclaimer content.
+	 * Factory method to create a new {@link WebMarkupContainer} for the disclaimer content. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of new {@link WebMarkupContainer} for the disclaimer content.
 	 *
 	 * @param id
 	 *            the id
@@ -248,11 +259,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Creates a new IModel from the given key.
+	 * Creates a new {@link IModel} from the given key.
 	 *
 	 * @param key
 	 *            the key
-	 * @return the i model
+	 * @return the new {@link IModel} from the given key.
 	 */
 	protected IModel<String> newIModel(final String key)
 	{
@@ -275,11 +286,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'imprint header'. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * 'imprint header'.
+	 * Factory method to create a new {@link IModel} for the 'imprint header'. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a new {@link IModel} for the 'imprint header'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'imprint header'.
 	 */
 	protected IModel<String> newImprintHeaderModel()
 	{
@@ -287,11 +298,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'service from'. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * 'service from'.
+	 * Factory method to create a new {@link IModel} for the 'service from'. This method is invoked
+	 * in the constructor from this class and can be overridden so users can provide their own
+	 * version of a new {@link IModel} for the 'service from'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'service from'.
 	 */
 	protected IModel<String> newServiceFromModel()
 	{
@@ -299,12 +310,13 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'slogan'. This method is invoked in the constructor
-	 * from this class and can be overridden so users can provide their own version of a 'slogan'.
+	 * Factory method to create a new {@link IModel} for the 'slogan'. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * new {@link IModel} for the 'slogan'.
 	 *
 	 * @param domainNameParams
 	 *            the domain name params
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'slogan'.
 	 */
 	protected IModel<String> newSloganModel(final Object[] domainNameParams)
 	{
@@ -314,10 +326,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'state'. This method is invoked in the constructor
-	 * from this class and can be overridden so users can provide their own version of a 'state'.
+	 * Factory method to create a new {@link IModel} for the 'state'. This method is invoked in the
+	 * constructor from this class and can be overridden so users can provide their own version of a
+	 * new {@link IModel} for the 'state'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'state'.
 	 */
 	protected IModel<String> newStateModel()
 	{
@@ -325,11 +338,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'street and number'. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * 'street and number'.
+	 * Factory method to create a new {@link IModel} for the 'street and number'. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a new {@link IModel} for the 'street and number'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'street and number'.
 	 */
 	protected IModel<String> newStreetAndNumberModel()
 	{
@@ -337,11 +350,11 @@ public abstract class ImprintPanel extends BasePanel<ImprintModel>
 	}
 
 	/**
-	 * Factory method to create a IModel for the 'zip and city'. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * 'zip and city'.
+	 * Factory method to create a new {@link IModel} for the 'zip and city'. This method is invoked
+	 * in the constructor from this class and can be overridden so users can provide their own
+	 * version of a new {@link IModel} for the 'zip and city'.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel} for the 'zip and city'.
 	 */
 	protected IModel<String> newZipAndCityModel()
 	{

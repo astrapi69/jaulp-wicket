@@ -18,7 +18,9 @@ package de.alpharogroup.wicket.components.i18n.list;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -46,7 +48,7 @@ public abstract class HeaderContentListPanel extends Panel
 	private final Component listPanel;
 
 	/**
-	 * Instantiates a new header content list panel.
+	 * Instantiates a new {@link HeaderContentListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -57,7 +59,7 @@ public abstract class HeaderContentListPanel extends Panel
 	}
 
 	/**
-	 * Instantiates a new header content list panel.
+	 * Instantiates a new {@link HeaderContentListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -76,11 +78,13 @@ public abstract class HeaderContentListPanel extends Panel
 	}
 
 	/**
-	 * New content resource model.
-	 *
+	 * Factory method for create a new {@link IModel} for an item of the content list. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link IModel} for an item of the content list.
+	 * 
 	 * @param resourceKey
 	 *            the resource key
-	 * @return the i model
+	 * @return the {@link IModel}
 	 */
 	protected IModel<String> newContentResourceModel(final IModel<ResourceBundleKey> resourceKey)
 	{
@@ -89,13 +93,15 @@ public abstract class HeaderContentListPanel extends Panel
 	}
 
 	/**
-	 * New header label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the component
+	 * @return the new {@link Label}
 	 */
 	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
@@ -103,11 +109,13 @@ public abstract class HeaderContentListPanel extends Panel
 	}
 
 	/**
-	 * New header model.
-	 *
+	 * Factory method for create a new {@link IModel} for the header. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link IModel} for the header.
+	 * 
 	 * @param resourceKey
 	 *            the resource key
-	 * @return the i model
+	 * @return the {@link IModel}
 	 */
 	protected IModel<String> newHeaderModel(final ResourceBundleKey resourceKey)
 	{
@@ -115,17 +123,30 @@ public abstract class HeaderContentListPanel extends Panel
 	}
 
 	/**
-	 * New list component.
+	 * Abstract factory method for creating the new {@link Component} in the list. This method is
+	 * invoked in the {@link ListView#populateItem(ListItem)} from the derived classes and can be
+	 * overridden so users can provide their own version of a new {@link Component} in the list.
 	 *
 	 * @param id
 	 *            the id
 	 * @param item
 	 *            the item
-	 * @return the component
+	 * @return the new {@link Component} in the list.
 	 */
 	protected abstract Component newListComponent(final String id,
 		final ListItem<ResourceBundleKey> item);
 
+	/**
+	 * Factory method for creating the new {@link Component} for the list panel. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the list panel.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the list panel.
+	 */
 	protected Component newListPanel(final String id, final IModel<ContentListModelBean> model)
 	{
 		return new ResourceBundleKeysPanel(id, model.getObject().getContentResourceKeys())

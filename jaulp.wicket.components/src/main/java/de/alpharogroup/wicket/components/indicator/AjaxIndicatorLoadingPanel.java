@@ -24,14 +24,13 @@ import org.apache.wicket.markup.html.panel.Panel;
  */
 public class AjaxIndicatorLoadingPanel extends Panel
 {
-
 	/**
-	 *
+	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new loading indicator panel.
+	 * Instantiates a new {@link AjaxIndicatorLoadingPanel}.
 	 *
 	 * @param id
 	 *            the id

@@ -18,6 +18,8 @@ package de.alpharogroup.wicket.components.i18n.content;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.locale.ResourceBundleKey;
@@ -28,7 +30,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 /**
  * The Class ContentPanel is a container for a header and content area.
  */
-public class ContentPanel extends BasePanel<ContentModel>
+public class ContentPanel extends BasePanel<ContentModelBean>
 {
 
 	/** The serialVersionUID. */
@@ -65,7 +67,7 @@ public class ContentPanel extends BasePanel<ContentModel>
 	 * @param model
 	 *            the model
 	 */
-	public ContentPanel(final String id, final IModel<ContentModel> model)
+	public ContentPanel(final String id, final IModel<ContentModelBean> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -84,13 +86,17 @@ public class ContentPanel extends BasePanel<ContentModel>
 	}
 
 	/**
-	 * New content label.
+	 * Factory method for create a new {@link MultiLineLabel}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link MultiLineLabel}.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
-	 *            the model
-	 * @return the component
+	 *            the {@link IModel} of the {@link MultiLineLabel}.
+	 * @return the new {@link MultiLineLabel}.
 	 */
 	protected Component newContentLabel(final String id, final IModel<String> model)
 	{
@@ -98,9 +104,12 @@ public class ContentPanel extends BasePanel<ContentModel>
 	}
 
 	/**
-	 * New content model.
+	 * Factory method for create a new {@link IModel} for the content of the {@link MultiLineLabel}.
+	 * This method is invoked in the constructor from the derived classes and can be overridden so
+	 * users can provide their own version of a new {@link IModel} for the content of the
+	 * {@link MultiLineLabel}. Note: this method is only invoked if model is null of this panel.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel}.
 	 */
 	protected IModel<String> newContentModel()
 	{
@@ -108,9 +117,13 @@ public class ContentPanel extends BasePanel<ContentModel>
 	}
 
 	/**
-	 * New content resource key.
+	 * Factory method for create a new {@link ResourceBundleKey} for the content of the
+	 * {@link MultiLineLabel}. This method is invoked in the constructor from the derived classes
+	 * and can be overridden so users can provide their own version of a new
+	 * {@link ResourceBundleKey} for the content of the {@link MultiLineLabel}. Note: this method is
+	 * only invoked if model is null of this panel.
 	 *
-	 * @return the resource bundle key
+	 * @return the new {@link IModel}.
 	 */
 	protected ResourceBundleKey newContentResourceKey()
 	{
@@ -118,13 +131,15 @@ public class ContentPanel extends BasePanel<ContentModel>
 	}
 
 	/**
-	 * New header label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the component
+	 * @return the new {@link Label}
 	 */
 	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
@@ -132,9 +147,12 @@ public class ContentPanel extends BasePanel<ContentModel>
 	}
 
 	/**
-	 * New header model.
+	 * Factory method for create a new {@link IModel} for the header of the {@link Label}. This
+	 * method is invoked in the constructor from the derived classes and can be overridden so users
+	 * can provide their own version of a new {@link IModel} for the content of the {@link Label}.
+	 * Note: this method is only invoked if model is null of this panel.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel}.
 	 */
 	protected IModel<String> newHeaderModel()
 	{
@@ -142,9 +160,12 @@ public class ContentPanel extends BasePanel<ContentModel>
 	}
 
 	/**
-	 * New header resource key.
+	 * Factory method for create a new {@link ResourceBundleKey} for the header of the {@link Label}
+	 * . This method is invoked in the constructor from the derived classes and can be overridden so
+	 * users can provide their own version of a new {@link ResourceBundleKey} for the header of the
+	 * {@link Label}. Note: this method is only invoked if model is null of this panel.
 	 *
-	 * @return the resource bundle key
+	 * @return the new {@link IModel}.
 	 */
 	protected ResourceBundleKey newHeaderResourceKey()
 	{

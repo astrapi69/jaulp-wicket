@@ -36,7 +36,7 @@ public class WicketImage extends WebComponent
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new wicket image.
+	 * Instantiates a new {@link WicketImage}.
 	 * 
 	 * @param id
 	 *            the id
@@ -47,7 +47,7 @@ public class WicketImage extends WebComponent
 	}
 
 	/**
-	 * Instantiates a new wicket image.
+	 * Instantiates a new {@link WicketImage}.
 	 * 
 	 * @param id
 	 *            the id

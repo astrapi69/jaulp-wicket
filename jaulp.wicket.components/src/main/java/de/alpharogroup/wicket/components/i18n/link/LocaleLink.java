@@ -18,9 +18,10 @@ package de.alpharogroup.wicket.components.i18n.link;
 import java.util.Locale;
 
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.util.lang.Args;
 
 /**
- * The Class LocaleLink.
+ * The Class {@link LocaleLink} can set a specific {@link Locale}.
  * 
  * @param <T>
  *            the generic type
@@ -37,7 +38,7 @@ public class LocaleLink<T> extends Link<T>
 	private Locale locale;
 
 	/**
-	 * Instantiates a new locale link.
+	 * Instantiates a new {@link LocaleLink}.
 	 * 
 	 * @param id
 	 *            the id
@@ -47,17 +48,12 @@ public class LocaleLink<T> extends Link<T>
 	public LocaleLink(final String id, final Locale locale)
 	{
 		super(id);
-		if (null == locale)
-		{
-			throw new IllegalArgumentException("Locale argument should not be null.");
-		}
+		Args.notNull(locale, "locale");
 		this.locale = locale;
 	}
 
 	/**
-	 * {@inheritDoc}.
-	 * 
-	 * @see org.apache.wicket.markup.html.link.Link#onClick()
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void onClick()

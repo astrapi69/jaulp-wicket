@@ -38,7 +38,7 @@ public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new header content list panel.
+	 * Instantiates a new {@link UnorderedListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -51,7 +51,7 @@ public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey
 	}
 
 	/**
-	 * Instantiates a new unordered list panel.
+	 * Instantiates a new {@link UnorderedListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -64,13 +64,7 @@ public abstract class UnorderedListPanel extends ListViewPanel<ResourceBundleKey
 	}
 
 	/**
-	 * New list component.
-	 *
-	 * @param id
-	 *            the id
-	 * @param item
-	 *            the item
-	 * @return the component
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected Component newListComponent(final String id, final ListItem<ResourceBundleKey> item)

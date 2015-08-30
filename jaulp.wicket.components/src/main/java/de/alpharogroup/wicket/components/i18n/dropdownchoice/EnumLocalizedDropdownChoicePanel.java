@@ -28,16 +28,40 @@ import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
+/**
+ * The Class EnumLocalizedDropdownChoicePanel.
+ *
+ * @param <T>
+ *            the generic type for the enum
+ * @param <M>
+ *            the generic type for the model
+ */
 public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	extends
 		LabeledFormComponentPanel<M>
 {
 
-	/** The Constant serialVersionUID. */
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * the dropdown choice
+	 */
 	@Getter
 	private final DropDownChoice<T> dropdownChoice;
 
+	/**
+	 * Instantiates a new {@link EnumLocalizedDropdownChoicePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @param enumValues
+	 *            the enum values
+	 */
 	public EnumLocalizedDropdownChoicePanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel, final List<T> enumValues)
 	{
@@ -76,6 +100,21 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 		return dropdownChoice.getInput();
 	}
 
+	/**
+	 * Factory method for creating the new {@link DropDownChoice}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link DropDownChoice}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param data
+	 *            the data
+	 * @param renderer
+	 *            the renderer
+	 * @return the new {@link DropDownChoice}
+	 */
 	protected DropDownChoice<T> newLocalisedDropDownChoice(final String id, final IModel<M> model,
 		final List<? extends T> data, final IChoiceRenderer<? super T> renderer)
 	{

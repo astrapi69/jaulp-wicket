@@ -28,6 +28,12 @@ import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.locale.ResourceBundleKey;
 
+/**
+ * The Class {@link ContentListModelBean} holds a list of the resource bundle keys of the content
+ * area.
+ *
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -38,7 +44,14 @@ import de.alpharogroup.locale.ResourceBundleKey;
 public class ContentListModelBean implements Serializable
 {
 
+	/**
+	 * The serialVersionUID
+	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The list of the resource bundle keys
+	 */
 	@NonNull
 	private List<ResourceBundleKey> contentResourceKeys;
 

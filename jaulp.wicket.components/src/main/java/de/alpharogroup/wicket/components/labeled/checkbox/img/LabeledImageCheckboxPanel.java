@@ -19,16 +19,19 @@ import lombok.Getter;
 
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.image.Image;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public class LabeledImageCheckboxPanel extends Panel
+/**
+ * The Class LabeledImageCheckboxPanel.
+ */
+public class LabeledImageCheckboxPanel extends BasePanel<LabeledImageCheckboxModelBean>
 {
 
-	/** The Constant serialVersionUID. */
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The CheckBox component. */
@@ -38,7 +41,16 @@ public class LabeledImageCheckboxPanel extends Panel
 	@Getter
 	private final Image image;
 
-	public LabeledImageCheckboxPanel(final String id, final IModel<LabeledImageCheckboxModel> model)
+	/**
+	 * Instantiates a new {@link LabeledImageCheckboxPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public LabeledImageCheckboxPanel(final String id,
+		final IModel<LabeledImageCheckboxModelBean> model)
 	{
 		super(id, model);
 		add(checkBox = newCheckBox("checkBox", model));
@@ -46,32 +58,35 @@ public class LabeledImageCheckboxPanel extends Panel
 	}
 
 	/**
-	 * Factory method for creating the CheckBox. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a CheckBox.
+	 * Factory method for create a new {@link CheckBox}. This method is invoked in the constructor
+	 * from this class and can be overridden so users can provide their own version of a new
+	 * {@link CheckBox}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the created CheckBox
+	 * @return the new {@link CheckBox}.
 	 */
-	protected CheckBox newCheckBox(final String id, final IModel<LabeledImageCheckboxModel> model)
+	protected CheckBox newCheckBox(final String id,
+		final IModel<LabeledImageCheckboxModelBean> model)
 	{
 		final IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), "checked");
 		return ComponentFactory.newCheckBox(id, propertyModel);
 	}
 
 	/**
-	 * Factory method for creating the Image. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a Image.
+	 * Factory method for create a new {@link Image}. This method is invoked in the constructor from
+	 * this class and can be overridden so users can provide their own version of a new
+	 * {@link Image}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model that contains the IResource object
-	 * @return the created Image
+	 * @return the new {@link Image}.
 	 */
-	protected Image newImage(final String id, final IModel<LabeledImageCheckboxModel> model)
+	protected Image newImage(final String id, final IModel<LabeledImageCheckboxModelBean> model)
 	{
 		return ComponentFactory.newImage(id, model.getObject().getImageResource());
 	}

@@ -36,7 +36,7 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new header content list panel.
+	 * Instantiates a new {@link SpanListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -49,7 +49,7 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 	}
 
 	/**
-	 * Instantiates a new div list panel.
+	 * Instantiates a new {@link SpanListPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -61,15 +61,8 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 		super(id, list);
 	}
 
-
 	/**
-	 * New list view.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the list view
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected ListView<T> newListView(final String id, final IModel<List<T>> model)
@@ -79,6 +72,9 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onComponentTag(final ComponentTag tag)
 			{
@@ -87,6 +83,9 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 				tag.setName("span");
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void populateItem(final ListItem<T> item)
 			{

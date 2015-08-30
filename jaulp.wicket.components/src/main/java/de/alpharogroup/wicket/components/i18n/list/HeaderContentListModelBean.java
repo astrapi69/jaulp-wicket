@@ -30,7 +30,7 @@ import de.alpharogroup.locale.ResourceBundleKey;
 
 
 /**
- * The Class {@link HeaderContentListModelBean} holds data for the resource key of header and the content.
+ * The Class {@link HeaderContentListModelBean} holds data for the resource key of header and a list of content objects.
  *
  * @author Asterios Raptis
  */
@@ -44,9 +44,19 @@ import de.alpharogroup.locale.ResourceBundleKey;
 public class HeaderContentListModelBean implements Serializable
 {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * The serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;	
+	/**
+	 * The resource bundle key for the header.
+	 */
 	@NonNull
 	private ResourceBundleKey headerResourceKey;
+	
+	/**
+	 * The list of resource bundle keys for the content.
+	 */
 	@NonNull
 	private List<ResourceBundleKey> contentResourceKeys;
 

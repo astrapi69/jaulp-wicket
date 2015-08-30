@@ -32,7 +32,7 @@ public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundl
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new header content list panel.
+	 * Instantiates a new {@link ResourceBundleKeysPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -45,7 +45,7 @@ public abstract class ResourceBundleKeysPanel extends DivListPanel<ResourceBundl
 	}
 
 	/**
-	 * Instantiates a new div list panel.
+	 * Instantiates a new {@link ResourceBundleKeysPanel}.
 	 *
 	 * @param id
 	 *            the id

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.alpharogroup.wicket.components.labeled.checkbox.img;
+package de.alpharogroup.wicket.components.i18n.content;
 
 import java.io.Serializable;
 
@@ -22,11 +22,16 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
+import de.alpharogroup.locale.ResourceBundleKey;
 
-import org.apache.wicket.request.resource.IResource;
-
+/**
+ * The Class {@link ContentModelBean} holds data for the resource bundle keys of the header and content area.
+ *
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -34,12 +39,24 @@ import org.apache.wicket.request.resource.IResource;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LabeledImageCheckboxModel implements Serializable
+public class ContentModelBean implements Serializable
 {
+
 	/**
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	private IResource imageResource;
-	private Boolean checked = Boolean.FALSE;
+	
+	/**
+	 * The resource bundle key for the header.
+	 */
+	@NonNull
+	private ResourceBundleKey headerResourceKey;
+	
+	/**
+	 * The resource bundle key for the content.
+	 */
+	@NonNull
+	private ResourceBundleKey contentResourceKey;
+
 }

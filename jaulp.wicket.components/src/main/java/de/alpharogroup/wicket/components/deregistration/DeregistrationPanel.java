@@ -33,7 +33,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
-import de.alpharogroup.wicket.components.i18n.content.ContentModel;
+import de.alpharogroup.wicket.components.i18n.content.ContentModelBean;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 
@@ -142,7 +142,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 	 */
 	protected Component newContentPanel(final String id)
 	{
-		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModel
+		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModelBean
 			.builder()
 			.headerResourceKey(
 				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")

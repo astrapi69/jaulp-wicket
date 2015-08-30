@@ -41,7 +41,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	private final CheckBox checkBox;
 
 	/**
-	 * Instantiates a new LabeledCheckboxPanel object.
+	 * Instantiates a new {@link LabeledCheckboxPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -82,14 +82,15 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the CheckBox. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a CheckBox.
+	 * Factory method for create a new {@link CheckBox}. This method is invoked in the constructor
+	 * from this class and can be overridden so users can provide their own version of a new
+	 * {@link CheckBox}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the created CheckBox
+	 * @return the new {@link CheckBox}.
 	 */
 	protected CheckBox newCheckBox(final String id, final IModel<T> model)
 	{

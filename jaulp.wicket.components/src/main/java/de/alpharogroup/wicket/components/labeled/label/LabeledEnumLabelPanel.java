@@ -47,7 +47,7 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	private final Label label;
 
 	/**
-	 * Instantiates a new LabeledEnumLabelPanel.
+	 * Instantiates a new {@link LabeledEnumLabelPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -68,13 +68,17 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * New enum label.
+	 * Factory method for create a new {@link EnumLabel}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link EnumLabel}.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
-	 *            the model
-	 * @return the enum label
+	 *            the model of the label
+	 * @return the new {@link EnumLabel}.
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected EnumLabel newEnumLabel(final String id, final IModel<T> model)
@@ -84,8 +88,9 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
@@ -93,7 +98,7 @@ public class LabeledEnumLabelPanel<T> extends GenericPanel<T>
 	 *            the for id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final String forId, final IModel<String> model)
 	{
