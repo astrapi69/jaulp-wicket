@@ -372,6 +372,7 @@ public class ComponentFactory
 		return image;
 	}
 
+
 	/**
 	 * Factory method for create a new {@link Label} with a {@link IModel}.
 	 *
@@ -390,7 +391,6 @@ public class ComponentFactory
 		return label;
 	}
 
-
 	/**
 	 * Factory method for create a new {@link Label} with a {@link ResourceBundleKey}.
 	 *
@@ -407,6 +407,21 @@ public class ComponentFactory
 	{
 		return ComponentFactory.newLabel(id,
 			ResourceModelFactory.newResourceModel(resourceKey, component));
+	}
+
+
+	/**
+	 * Factory method for create a new {@link Label} with a {@link String}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param label
+	 *            the string for the label
+	 * @return the new {@link Label}
+	 */
+	public static Label newLabel(final String id, final String label)
+	{
+		return ComponentFactory.newLabel(id, Model.of(label));
 	}
 
 	/**

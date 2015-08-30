@@ -95,13 +95,13 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
+	 * @param label
+	 *            the string for the label
 	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final String label)
 	{
-		return ComponentFactory.newLabel(id, Model.of(label));
+		return ComponentFactory.newLabel(id, label);
 	}
 
 	/**

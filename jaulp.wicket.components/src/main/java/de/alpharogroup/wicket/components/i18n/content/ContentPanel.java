@@ -90,8 +90,6 @@ public class ContentPanel extends BasePanel<ContentModelBean>
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link MultiLineLabel}.
 	 *
-	 * @param <T>
-	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
