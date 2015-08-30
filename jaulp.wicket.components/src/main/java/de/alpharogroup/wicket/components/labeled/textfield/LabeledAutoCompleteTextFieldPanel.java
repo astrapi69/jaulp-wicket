@@ -23,7 +23,7 @@ import org.apache.wicket.model.IModel;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
- * Convenience class for labeled TextField.
+ * Convenience class for labeled {@link AutoCompleteTextField}.
  *
  * @param <T>
  *            the generic type
@@ -39,7 +39,7 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	private final AutoCompleteTextField<T> autoCompleteTextField;
 
 	/**
-	 * Instantiates a new LabeledTextfieldPanel.
+	 * Instantiates a new {@link LabeledAutoCompleteTextFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -80,15 +80,15 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	}
 
 	/**
-	 * Abstract Factory method for creating the AutoCompleteTextField. This method is invoked in the
-	 * constructor from the derived classes and must be implemented so users can provide their own
-	 * version of a AutoCompleteTextField.
+	 * Abstract Factory method for create the new {@link AutoCompleteTextField}. This method is
+	 * invoked in the constructor from the derived classes and must be implemented so users can
+	 * provide their own version of a new {@link AutoCompleteTextField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the AutoCompleteTextField
+	 * @return the new {@link AutoCompleteTextField}.
 	 */
 	protected abstract AutoCompleteTextField<T> newAutoCompleteTextField(final String id,
 		final IModel<T> model);

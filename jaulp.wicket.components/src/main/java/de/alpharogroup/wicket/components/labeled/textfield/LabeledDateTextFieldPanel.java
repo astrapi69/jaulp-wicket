@@ -45,7 +45,7 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	private final DateTextField dateTextField;
 
 	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
+	 * Instantiates a new {@link LabeledDateTextFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -85,15 +85,15 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the DateTextField. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a
-	 * DateTextField.
+	 * Factory method for create the new {@link DateTextField}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link DateTextField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new {@link DateTextField}
 	 */
 	protected DateTextField newDateTextField(final String id, final IModel<T> model)
 	{
@@ -107,6 +107,9 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public Locale getLocale()
 			{
@@ -120,6 +123,9 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected boolean enableMonthYearSelection()
 			{

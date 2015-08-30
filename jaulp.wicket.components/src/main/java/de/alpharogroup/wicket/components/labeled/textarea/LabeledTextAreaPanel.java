@@ -41,7 +41,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	private final TextArea<T> textArea;
 
 	/**
-	 * Instantiates a new labeled text area panel.
+	 * Instantiates a new {@link LabeledTextAreaPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -52,7 +52,7 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Instantiates a new labeled text area panel.
+	 * Instantiates a new {@link LabeledTextAreaPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -93,14 +93,15 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a TextArea.
+	 * Factory method for create the new {@link TextArea}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link TextArea}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text area
+	 * @return the new {@link TextArea}
 	 */
 	protected TextArea<T> newTextArea(final String id, final IModel<T> model)
 	{

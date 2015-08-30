@@ -43,7 +43,7 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	private final DateTimeField dateTimeField;
 
 	/**
-	 * Instantiates a new LabeledDateTextfieldPanel.
+	 * Instantiates a new {@link LabeledDateTimeFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
