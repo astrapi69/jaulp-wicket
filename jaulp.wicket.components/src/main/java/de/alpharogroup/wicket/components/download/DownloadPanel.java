@@ -56,7 +56,7 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 	private AjaxLink<Void> downloadLink;
 
 	/**
-	 * Instantiates a new download panel.
+	 * Instantiates a new {@link DownloadPanel}.
 	 *
 	 * @param id
 	 *            the id

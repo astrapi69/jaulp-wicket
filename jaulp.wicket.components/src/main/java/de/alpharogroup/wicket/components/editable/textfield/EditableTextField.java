@@ -52,7 +52,7 @@ public class EditableTextField extends GenericPanel<String>
 	private final IModel<String> labelModel;
 
 	/**
-	 * Instantiates a new editable text field.
+	 * Instantiates a new {@link EditableTextField}.
 	 *
 	 * @param id
 	 *            the id
@@ -68,7 +68,7 @@ public class EditableTextField extends GenericPanel<String>
 	}
 
 	/**
-	 * Instantiates a new editable text field.
+	 * Instantiates a new {@link EditableTextField}.
 	 *
 	 * @param id
 	 *            the id
@@ -107,9 +107,7 @@ public class EditableTextField extends GenericPanel<String>
 		super.onInitialize();
 		add(this.swapPanel = new SwapComponentsFragmentPanel<String>("swapPanel", getModel())
 		{
-			/**
-			 * The serialVersionUID
-			 */
+			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			/**
@@ -120,10 +118,7 @@ public class EditableTextField extends GenericPanel<String>
 			{
 				return new LabeledTextFieldPanel<String>(id, model, getLabelModel())
 				{
-
-					/**
-					 * The serialVersionUID
-					 */
+					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
 
 					/**
@@ -154,10 +149,7 @@ public class EditableTextField extends GenericPanel<String>
 			{
 				return new LabeledLabelPanel<String>(id, model, getLabelModel())
 				{
-
-					/**
-					 * The serialVersionUID
-					 */
+					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
 
 					/**

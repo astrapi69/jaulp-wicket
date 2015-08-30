@@ -29,8 +29,8 @@ import org.apache.wicket.model.PropertyModel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
- * The Class TwoFormComponentPanel is a container for two FormComponent. Default they are TextField
- * objects but can be overwritten by the factory methods to return any other input field.
+ * The Class {@link TwoFormComponentPanel} is a container for two FormComponent. Default they are
+ * TextField objects but can be overwritten by the factory methods to return any other input field.
  *
  * @param <L>
  *            the generic type of the model from the left FormComponent
@@ -58,7 +58,7 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	private FormComponent<R> rightFormComponent;
 
 	/**
-	 * Instantiates a new two text field panel.
+	 * Instantiates a new {@link TwoFormComponentPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -69,7 +69,7 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	}
 
 	/**
-	 * Instantiates a new two text field panel.
+	 * Instantiates a new {@link TwoFormComponentPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -112,7 +112,8 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	}
 
 	/**
-	 * Factory method for create a new Label for what characters will be between the two components.
+	 * Factory method for create a new {@link IModel} for what characters will be between the two
+	 * components.
 	 *
 	 * @param betweenLabel
 	 *            the characters
@@ -124,28 +125,31 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	}
 
 	/**
-	 * New left text field.
+	 * Factory method for creating the new left {@link FormComponent}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new left {@link FormComponent}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form component
+	 * @return the new left {@link FormComponent}.
 	 */
 	protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
 
-
 	/**
-	 * New right text field.
+	 * Factory method for creating the new right {@link FormComponent}. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new right {@link FormComponent}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form component
+	 * @return the new right {@link FormComponent}.
 	 */
 	protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
 	{

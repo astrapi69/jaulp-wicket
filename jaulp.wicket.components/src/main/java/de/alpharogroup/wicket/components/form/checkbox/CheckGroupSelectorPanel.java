@@ -15,9 +15,6 @@
  */
 package de.alpharogroup.wicket.components.form.checkbox;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
-
 import java.util.Collection;
 
 import lombok.Getter;
@@ -96,7 +93,8 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 
 		add(form = newForm("form"));
 
-		form.add(checkGroup = newCheckGroup("checkGroup", model(from(model).getSelectedItems())));
+		form.add(checkGroup = newCheckGroup("checkGroup", new PropertyModel<>(model,
+			"selectedItems")));
 
 		checkGroup
 			.add(checkGroupSelector = newCheckGroupSelector("checkGroupSelector", checkGroup));
@@ -125,8 +123,12 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 		final CheckGroup<T> checkGroup = ComponentFactory.newCheckGroup(id, model);
 		checkGroup.add(new AjaxFormChoiceComponentUpdatingBehavior()
 		{
+			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onUpdate(final AjaxRequestTarget target)
 			{
@@ -153,7 +155,9 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 	}
 
 	/**
-	 * New check group selector label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
@@ -161,7 +165,7 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 	 *            the for id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newCheckGroupSelectorLabel(final String id, final String forId,
 		final IModel<String> model)
@@ -170,23 +174,26 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 	}
 
 	/**
-	 * New choices.
+	 * Factory method for creating the new {@link ListView} for the choices. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of the new {@link ListView} for the choices.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the list view
+	 * @return the new {@link ListView} for the choices.
 	 */
 	protected ListView<T> newChoices(final String id, final IModel<CheckboxModelBean<T>> model)
 	{
 		final ListView<T> choices = new ListView<T>("choices", model.getObject().getChoices())
 		{
-			/**
-			 * The serialVersionUID.
-			 */
+			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void populateItem(final ListItem<T> item)
 			{
@@ -200,7 +207,8 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 	}
 
 	/**
-	 * New form.
+	 * Factory method for creating the Form. This method is invoked in the constructor from the
+	 * derived classes and can be overridden so users can provide their own version of a Form.
 	 *
 	 * @param id
 	 *            the id
@@ -212,7 +220,7 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 	}
 
 	/**
-	 * On update.
+	 * Callback method that can be overwritten to provide specific action for the update.
 	 *
 	 * @param target
 	 *            the target

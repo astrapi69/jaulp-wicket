@@ -25,20 +25,46 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
+/**
+ * The Class ContentPanel is a container for a header and content area.
+ */
 public class ContentPanel extends BasePanel<ContentModel>
 {
 
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The header.
+	 */
 	@Getter
 	private final Component header;
+
+	/**
+	 * The content.
+	 */
 	@Getter
 	private final Component content;
 
+	/**
+	 * Instantiates a new {@link ContentPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public ContentPanel(final String id)
 	{
 		this(id, null);
 	}
 
+	/**
+	 * Instantiates a new {@link ContentPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public ContentPanel(final String id, final IModel<ContentModel> model)
 	{
 		super(id, model);
@@ -57,31 +83,69 @@ public class ContentPanel extends BasePanel<ContentModel>
 		}
 	}
 
+	/**
+	 * New content label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the component
+	 */
 	protected Component newContentLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newMultiLineLabel(id, model);
 	}
 
+	/**
+	 * New content model.
+	 *
+	 * @return the i model
+	 */
 	protected IModel<String> newContentModel()
 	{
 		return ResourceModelFactory.newResourceModel(newContentResourceKey(), this);
 	}
 
+	/**
+	 * New content resource key.
+	 *
+	 * @return the resource bundle key
+	 */
 	protected ResourceBundleKey newContentResourceKey()
 	{
 		return ResourceBundleKey.builder().key("content.label").build();
 	}
 
+	/**
+	 * New header label.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the component
+	 */
 	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
+	/**
+	 * New header model.
+	 *
+	 * @return the i model
+	 */
 	protected IModel<String> newHeaderModel()
 	{
 		return ResourceModelFactory.newResourceModel(newHeaderResourceKey(), this);
 	}
 
+	/**
+	 * New header resource key.
+	 *
+	 * @return the resource bundle key
+	 */
 	protected ResourceBundleKey newHeaderResourceKey()
 	{
 		return ResourceBundleKey.builder().key("header.label").build();

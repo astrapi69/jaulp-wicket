@@ -27,6 +27,11 @@ import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.locale.ResourceBundleKey;
 
+/**
+ * The Class {@link ContentModel} holds data for the resource bundle keys of the header and content area.
+ *
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -36,9 +41,21 @@ import de.alpharogroup.locale.ResourceBundleKey;
 @Builder
 public class ContentModel implements Serializable
 {
+
+	/**
+	 * The serialVersionUID
+	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * The resource bundle key for the header.
+	 */
 	@NonNull
 	private ResourceBundleKey headerResourceKey;
+	
+	/**
+	 * The resource bundle key for the content.
+	 */
 	@NonNull
 	private ResourceBundleKey contentResourceKey;
 

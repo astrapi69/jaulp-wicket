@@ -62,7 +62,7 @@ public class EditableTextArea extends BasePanel<String>
 	private TextArea<String> textArea;
 
 	/**
-	 * Instantiates a new editable text area.
+	 * Instantiates a new {@link EditableTextArea}.
 	 *
 	 * @param id
 	 *            the id
@@ -78,7 +78,7 @@ public class EditableTextArea extends BasePanel<String>
 	}
 
 	/**
-	 * Instantiates a new editable text area.
+	 * Instantiates a new {@link EditableTextArea}.
 	 *
 	 * @param id
 	 *            the id
@@ -124,6 +124,7 @@ public class EditableTextArea extends BasePanel<String>
 	{
 		final MultiLineLabel multiLineLabel = new MultiLineLabel(id, model)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			/**
@@ -153,6 +154,7 @@ public class EditableTextArea extends BasePanel<String>
 	{
 		final TextArea<String> textArea = new TextArea<String>(id, model)
 		{
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
 			/**
@@ -190,10 +192,7 @@ public class EditableTextArea extends BasePanel<String>
 			{
 				return new LabeledTextAreaPanel<String>(id, model, getLabelModel())
 				{
-
-					/**
-					 * The serialVersionUID
-					 */
+					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
 
 					/**
@@ -224,9 +223,7 @@ public class EditableTextArea extends BasePanel<String>
 			{
 				return new LabeledMultiLineLabelPanel<String>(id, model, getLabelModel())
 				{
-					/**
-					 * The serialVersionUID
-					 */
+					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
 
 					/**

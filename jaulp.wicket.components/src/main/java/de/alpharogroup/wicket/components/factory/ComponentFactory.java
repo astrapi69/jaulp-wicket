@@ -53,20 +53,20 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * A factory for create Component objects. All components are setting
+ * A factory class for create Component objects. All components are setting
  * Component#setOutputMarkupId(boolean) to true, so they are ajaxifiable.
  */
 public class ComponentFactory
 {
 
 	/**
-	 * Factory method for create a new CheckBox.
+	 * Factory method for create a new {@link CheckBox}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the created CheckBox
+	 * @return the new {@link CheckBox}
 	 */
 	public static CheckBox newCheckBox(final String id, final IModel<Boolean> model)
 	{
@@ -131,13 +131,13 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new ComponentFeedbackPanel.
+	 * Factory method for create a new {@link ComponentFeedbackPanel}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param filter
 	 *            the filter
-	 * @return the component feedback panel
+	 * @return the {@link ComponentFeedbackPanel}
 	 */
 	public static ComponentFeedbackPanel newComponentFeedbackPanel(final String id,
 		final Component filter)
@@ -148,13 +148,13 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for creating a new DateTextField.
+	 * Factory method for create a new {@link DateTimeField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the DateTextField.
+	 * @return the {@link DateTimeField}.
 	 */
 	public static DateTimeField newDateTimeField(final String id, final IModel<Date> model)
 	{
@@ -174,7 +174,7 @@ public class ComponentFactory
 	 *            the model
 	 * @param choices
 	 *            The collection of choices in the dropdown
-	 * @return the new {@link DropDownChoice}
+	 * @return the new {@link DropDownChoice}.
 	 */
 	public static <T> DropDownChoice<T> newDropDownChoice(final String id, final IModel<T> model,
 		final List<? extends T> choices)
@@ -197,7 +197,7 @@ public class ComponentFactory
 	 *            The collection of choices in the dropdown
 	 * @param renderer
 	 *            The rendering engine
-	 * @return the new {@link DropDownChoice}
+	 * @return the new {@link DropDownChoice}.
 	 */
 	public static <T> DropDownChoice<T> newDropDownChoice(final String id, final IModel<T> model,
 		final List<? extends T> choices, final IChoiceRenderer<? super T> renderer)
@@ -208,13 +208,13 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for creating a new {@link EmailTextField}.
+	 * Factory method for create a new {@link EmailTextField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new {@link EmailTextField}
+	 * @return the new {@link EmailTextField}.
 	 */
 	public static EmailTextField newEmailTextField(final String id, final IModel<String> model)
 	{
@@ -224,7 +224,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new EnumLabel.
+	 * Factory method for create a new {@link EnumLabel}.
 	 *
 	 * @param <T>
 	 *            the generic type of the model
@@ -232,15 +232,19 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the model of the label
-	 * @return the enum label
+	 * @return the new {@link EnumLabel}.
 	 */
 	public static <T extends Enum<T>> EnumLabel<T> newEnumLabel(final String id,
 		final IModel<T> model)
 	{
 		final EnumLabel<T> enumLabel = new EnumLabel<T>(id, model)
 		{
+			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected String resourceKey(final T value)
 			{
@@ -252,11 +256,11 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new FeedbackPanel.
+	 * Factory method for create a new {@link FeedbackPanel}.
 	 *
 	 * @param id
 	 *            the id
-	 * @return the FeedbackPanel
+	 * @return the {@link FeedbackPanel}.
 	 */
 	public static FeedbackPanel newFeedbackPanel(final String id)
 	{
@@ -266,13 +270,13 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Form.
+	 * Factory method for create a new {@link Form}.
 	 *
 	 * @param <T>
 	 *            the generic type of the form
 	 * @param id
 	 *            the id
-	 * @return the form
+	 * @return the {@link Form}.
 	 */
 	public static <T> Form<T> newForm(final String id)
 	{
@@ -280,7 +284,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Form.
+	 * Factory method for create a new {@link Form}.
 	 *
 	 * @param <T>
 	 *            the generic type of the model
@@ -288,7 +292,7 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form
+	 * @return the {@link Form}.
 	 */
 	public static <T> Form<T> newForm(final String id, final IModel<T> model)
 	{
@@ -298,7 +302,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Fragment.
+	 * Factory method for create a new {@link Fragment}.
 	 * 
 	 * @param id
 	 *            the id
@@ -306,7 +310,7 @@ public class ComponentFactory
 	 *            The associated id of the associated markup fragment
 	 * @param markupProvider
 	 *            The component whose markup contains the fragment's markup
-	 * @return The new Fragment.
+	 * @return The new {@link Fragment}.
 	 */
 	public static Fragment newFragment(final String id, final String markupId,
 		final MarkupContainer markupProvider)
@@ -315,7 +319,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Fragment.
+	 * Factory method for create a new {@link Fragment}.
 	 * 
 	 * @param <T>
 	 *            the generic type
@@ -326,8 +330,8 @@ public class ComponentFactory
 	 * @param markupProvider
 	 *            The component whose markup contains the fragment's markup
 	 * @param model
-	 *            The model for this fragment
-	 * @return The new Fragment.
+	 *            The model for this {@link Fragment}
+	 * @return The new {@link Fragment}.
 	 */
 	public static <T> Fragment newFragment(final String id, final String markupId,
 		final MarkupContainer markupProvider, final IModel<T> model)
@@ -339,11 +343,11 @@ public class ComponentFactory
 
 
 	/**
-	 * Factory method for create a new hidden field.
+	 * Factory method for create a new {@link HiddenField}.
 	 *
 	 * @param id
 	 *            the id
-	 * @return the component
+	 * @return the new {@link HiddenField}.
 	 */
 	public static Component newHiddenField(final String id)
 	{
@@ -353,13 +357,13 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Image.
+	 * Factory method for create a new {@link Image}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param imageResource
 	 *            the IResource object
-	 * @return the created Image
+	 * @return the new {@link Image}.
 	 */
 	public static Image newImage(final String id, final IResource imageResource)
 	{
@@ -406,7 +410,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Label with the for attribute.
+	 * Factory method for create a new {@link Label} with the for attribute.
 	 *
 	 * @param <T>
 	 *            the generic type of the model
@@ -427,7 +431,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Label with the for attribute.
+	 * Factory method for create a new {@link Label} with the for attribute.
 	 *
 	 * @param id
 	 *            the id
@@ -437,7 +441,7 @@ public class ComponentFactory
 	 *            the resource key
 	 * @param component
 	 *            the component to find resource keys
-	 * @return the label
+	 * @return the new {@link Label}.
 	 */
 	public static Label newLabel(final String id, final String forId,
 		final ResourceBundleKey resourceBundleKey, final Component component)
@@ -447,7 +451,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new Label.
+	 * Factory method for create a new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
@@ -456,8 +460,8 @@ public class ComponentFactory
 	 * @param defaultValue
 	 *            the default value
 	 * @param component
-	 *            the component
-	 * @return the label
+	 *            the component to use for resolve the resource key
+	 * @return the new {@link Label}.
 	 */
 	public static Label newLabel(final String id, final String resourceKey,
 		final String defaultValue, final Component component)
@@ -467,15 +471,15 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new MultiLineLabel with a {@link IModel}.
+	 * Factory method for create a new {@link MultiLineLabel}.
 	 *
 	 * @param <T>
 	 *            the generic type of the model
 	 * @param id
 	 *            the id
 	 * @param model
-	 *            the {@link IModel} for the label.
-	 * @return the label
+	 *            the {@link IModel} of the {@link MultiLineLabel}.
+	 * @return the new {@link MultiLineLabel}.
 	 */
 	public static <T> MultiLineLabel newMultiLineLabel(final String id, final IModel<T> model)
 	{
@@ -485,7 +489,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for creating a new {@link PasswordTextField}.
+	 * Factory method for create a new {@link PasswordTextField}.
 	 *
 	 * @param id
 	 *            the id
@@ -567,7 +571,7 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new {@link RadioGroup}
+	 * @return the new {@link RadioGroup}.
 	 */
 	public static <T> RadioGroup<T> newRadioGroup(final String id, final IModel<T> model)
 	{
@@ -585,7 +589,7 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new {@link RequiredTextField}
+	 * @return the new {@link RequiredTextField}.
 	 */
 	public static <T> RequiredTextField<T> newRequiredTextField(final String id,
 		final IModel<T> model)
@@ -596,7 +600,7 @@ public class ComponentFactory
 	}
 
 	/**
-	 * Factory method for create a new TextArea.
+	 * Factory method for create a new {@link TextArea}.
 	 *
 	 * @param <T>
 	 *            the generic type of the model
@@ -604,7 +608,7 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text area
+	 * @return the new {@link TextArea}.
 	 */
 	public static <T> TextArea<T> newTextArea(final String id, final IModel<T> model)
 	{
@@ -620,7 +624,7 @@ public class ComponentFactory
 	 *            the generic type of the model
 	 * @param id
 	 *            the id
-	 * @return the new {@link TextField}
+	 * @return the new {@link TextField}.
 	 */
 	public static <T> TextField<T> newTextField(final String id)
 	{
@@ -636,7 +640,7 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new {@link TextField}
+	 * @return the new {@link TextField}.
 	 */
 	public static <T> TextField<T> newTextField(final String id, final IModel<T> model)
 	{
@@ -650,7 +654,7 @@ public class ComponentFactory
 	 *
 	 * @param id
 	 *            the id
-	 * @return the new {@link WebMarkupContainer}
+	 * @return the new {@link WebMarkupContainer}.
 	 */
 	public static WebMarkupContainer newWebMarkupContainer(final String id)
 	{
@@ -666,7 +670,7 @@ public class ComponentFactory
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new {@link WebMarkupContainer}
+	 * @return the new {@link WebMarkupContainer}.
 	 */
 	public static <T> WebMarkupContainer newWebMarkupContainer(final String id,
 		final IModel<T> model)
