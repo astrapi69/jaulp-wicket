@@ -121,7 +121,7 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 				return null;
 			}
 		};
-		final AjaxLink<Void> downloadLink = new AjaxLink<Void>("downloadLink")
+		final AjaxLink<Void> downloadLink = new AjaxLink<Void>(id)
 		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
