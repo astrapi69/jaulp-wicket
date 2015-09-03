@@ -123,6 +123,11 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 		// If you want to add WicketSource capabilities overwrite this method with a super call and
 		// add the following...
 		// WicketSource.configure(application);
+		
+		application.getMarkupSettings().setStripComments(false);
+		application.getMarkupSettings().setCompressWhitespace(false);
+		application.getMarkupSettings().setStripWicketTags(false);
+
 	}
 
 	/**
