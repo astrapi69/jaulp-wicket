@@ -19,7 +19,6 @@ import java.io.Serializable;
 
 import org.apache.wicket.MetaDataEntry;
 import org.apache.wicket.MetaDataKey;
-import org.apache.wicket.Session;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
 
@@ -72,13 +71,13 @@ public class RequestCycleLocal<T extends Serializable>
 	 * 
 	 * @return the wicket session.
 	 */
-	private Session getRequestCycle()
+	private RequestCycle getRequestCycle()
 	{
-		return Session.get();
+		return RequestCycle.get();
 	}
 
 	/**
-	 * Sets the given object in the MetaDataEntry.
+	 * Sets the given object in the {@link MetaDataEntry}.
 	 * 
 	 * @param value
 	 *            The object to set.
