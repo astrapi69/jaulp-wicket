@@ -18,6 +18,11 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
+			<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
 			<artifactId>randomizer</artifactId>
 		</dependency>
 

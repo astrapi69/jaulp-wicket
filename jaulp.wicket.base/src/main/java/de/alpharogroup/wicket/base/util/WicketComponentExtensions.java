@@ -16,18 +16,13 @@
 package de.alpharogroup.wicket.base.util;
 
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.CssReferenceHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.JavaScriptReferenceHeaderItem;
 import org.apache.wicket.markup.head.StringHeaderItem;
 import org.apache.wicket.protocol.http.RequestUtils;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -38,14 +33,9 @@ import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.CssResourceReference;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.util.time.Time;
 
 import de.alpharogroup.lang.AnnotationUtils;
-import de.alpharogroup.wicket.PackageResourceReferenceWrapper;
-import de.alpharogroup.wicket.PackageResourceReferences;
-import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 
@@ -290,50 +280,6 @@ public final class WicketComponentExtensions
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * Render header response.
-	 * 
-	 * @param response
-	 *            the response
-	 * @param componentClass
-	 *            the component class
-	 */
-	public static void renderHeaderResponse(final IHeaderResponse response,
-		final Class<?> componentClass)
-	{
-		final Set<PackageResourceReferenceWrapper> headerContributors = PackageResourceReferences
-			.getInstance().getPackageResourceReference(componentClass);
-		if ((null != headerContributors) && !headerContributors.isEmpty())
-		{
-			for (final PackageResourceReferenceWrapper packageResourceReference : headerContributors)
-			{
-				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
-				{
-					final JavaScriptResourceReference reference = new JavaScriptResourceReference(
-						componentClass, packageResourceReference.getPackageResourceReference()
-							.getName());
-					if (!response.wasRendered(reference))
-					{
-						final JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem
-							.forReference(reference);
-						response.render(headerItem);
-					}
-				}
-				if (packageResourceReference.getType().equals(ResourceReferenceType.CSS))
-				{
-					final CssResourceReference reference = new CssResourceReference(componentClass,
-						packageResourceReference.getPackageResourceReference().getName());
-					if (!response.wasRendered(reference))
-					{
-						final CssReferenceHeaderItem headerItem = CssHeaderItem
-							.forReference(reference);
-						response.render(headerItem);
-					}
-				}
-			}
-		}
 	}
 
 	/**

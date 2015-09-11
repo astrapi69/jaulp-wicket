@@ -8,6 +8,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.examples.application.WicketSession;
+import de.alpharogroup.wicket.header.contributors.HeaderResponseExtensions;
 
 /**
  * The Class ApplicationBasePanel.
@@ -99,7 +100,7 @@ public abstract class ApplicationBasePanel<T> extends BasePanel<T>
 	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		WicketComponentExtensions.renderHeaderResponse(response, this.getClass());
+		HeaderResponseExtensions.renderHeaderResponse(response, this.getClass());
 	}
 
 

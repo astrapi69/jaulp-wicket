@@ -45,7 +45,6 @@ import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.GenericBasePage;
-import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
@@ -62,6 +61,7 @@ import de.alpharogroup.wicket.components.footer.FooterPanel;
 import de.alpharogroup.wicket.components.i18n.list.LinkListPanel;
 import de.alpharogroup.wicket.components.link.DefaultTargets;
 import de.alpharogroup.wicket.components.link.LinkItem;
+import de.alpharogroup.wicket.header.contributors.HeaderResponseExtensions;
 import de.alpharogroup.wicket.js.addon.sessiontimeout.BootstrapSessionTimeoutResourceReference;
 import de.alpharogroup.wicket.js.addon.sessiontimeout.SessionTimeoutJsGenerator;
 import de.alpharogroup.wicket.js.addon.sessiontimeout.SessionTimeoutSettings;
@@ -378,7 +378,7 @@ public abstract class ApplicationBasePage<T> extends GenericBasePage<T>
 			.getJavaScriptLibrarySettings();
 		response.render(JavaScriptHeaderItem.forReference(javaScriptSettings.getJQueryReference()));
 		Bootstrap.renderHead(response);
-		WicketComponentExtensions.renderHeaderResponse(response, ApplicationBasePage.class);
+		HeaderResponseExtensions.renderHeaderResponse(response, ApplicationBasePage.class);
 		// PackageResourceReference gaqResourceReference = new PackageResourceReference(
 		// ApplicationBasePage.class, "gaq.js");
 		//

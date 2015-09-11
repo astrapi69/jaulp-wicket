@@ -99,10 +99,18 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- LOMBOK version -->
 		<lombok.version>1.16.4</lombok.version>
+
 		<!-- WICKET version -->
-		<wicket.version>${project.version}</wicket.version>
+		<!-- 
+				Means for versions 6.0.0 <= x < 6.99 For more information see
+				https://maven.apache.org/enforcer/enforcer-rules/versionRanges.html
+				and
+				https://docs.oracle.com/middleware/1212/core/MAVEN/maven_version.htm#MAVEN402
+				7.3 Version Range References
+		  -->
+		<wicket.version>[6.0.0,6.99)</wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>${project.version}</wicketstuff.version>
+		<wicketstuff.version>[6.0.0,6.99)</wicketstuff.version>
 		<wiquery-core.version>6.13.0</wiquery-core.version>
 		<wicket-modelfactory.version>0.9.8</wicket-modelfactory.version>
 		<wicket-source.version>6.0.0.8</wicket-source.version>
