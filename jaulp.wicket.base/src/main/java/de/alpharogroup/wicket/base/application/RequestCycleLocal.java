@@ -67,9 +67,9 @@ public class RequestCycleLocal<T extends Serializable>
 	}
 
 	/**
-	 * Gets the wicket session.
+	 * Gets the {@link RequestCycle}.
 	 * 
-	 * @return the wicket session.
+	 * @return the {@link RequestCycle}.
 	 */
 	private RequestCycle getRequestCycle()
 	{
