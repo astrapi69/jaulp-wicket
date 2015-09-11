@@ -110,6 +110,7 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 				item.add(newListComponent("item", item));
 			}
 		};
+		listView.setReuseItems(true);
 		return listView;
 	}
 
