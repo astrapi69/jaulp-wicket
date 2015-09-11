@@ -20,15 +20,16 @@ import java.io.Serializable;
 import org.apache.wicket.MetaDataEntry;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.Session;
+import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * Stores an object with the given key into the wicket {@link Session}. This class is like a
- * ThreadLocal but takes the wicket {@link Session} instead of a local thread as context. When the
- * wicket {@link Session} is timed out than the
- * {@link de.alpharogroup.wicket.base.application.SessionLocal} will be destroyed.
+ * Can store an object with the given key into the {@link RequestCycle}. This class is like a
+ * ThreadLocal but takes the {@link RequestCycle} instead of a local thread as context. When the
+ * {@link Request} is finished than the
+ * {@link de.alpharogroup.wicket.base.application.RequestCycleLocal} will be destroyed.
  */
-public class SessionLocal<T extends Serializable>
+public class RequestCycleLocal<T extends Serializable>
 {
 
 	/**
@@ -43,7 +44,7 @@ public class SessionLocal<T extends Serializable>
 	 * @param key
 	 *            The {@link org.apache.wicket.MetaDataKey} that is used to store an object.
 	 */
-	public SessionLocal(final MetaDataKey<T> key)
+	public RequestCycleLocal(final MetaDataKey<T> key)
 	{
 		this.key = Args.notNull(key, "key");
 	}
@@ -53,7 +54,7 @@ public class SessionLocal<T extends Serializable>
 	 */
 	public void clear()
 	{
-		getSession().setMetaData(key, null);
+		getRequestCycle().setMetaData(key, null);
 	}
 
 	/**
@@ -63,27 +64,27 @@ public class SessionLocal<T extends Serializable>
 	 */
 	public T get()
 	{
-		return getSession().getMetaData(key);
+		return getRequestCycle().getMetaData(key);
 	}
 
 	/**
-	 * Gets the wicket {@link Session}.
+	 * Gets the wicket session.
 	 * 
-	 * @return the wicket {@link Session}.
+	 * @return the wicket session.
 	 */
-	private Session getSession()
+	private Session getRequestCycle()
 	{
 		return Session.get();
 	}
 
 	/**
-	 * Sets the given object in the {@link MetaDataEntry}.
+	 * Sets the given object in the MetaDataEntry.
 	 * 
 	 * @param value
 	 *            The object to set.
 	 */
 	public void set(final T value)
 	{
-		getSession().setMetaData(key, value);
+		getRequestCycle().setMetaData(key, value);
 	}
 }
