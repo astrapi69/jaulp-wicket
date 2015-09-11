@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.labeled.checkbox;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -70,6 +71,15 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Component getFormComponent()
+	{
+		return this.checkBox;
 	}
 
 	/**

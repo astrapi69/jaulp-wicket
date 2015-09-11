@@ -19,6 +19,7 @@ import java.util.List;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.model.IModel;
@@ -78,6 +79,12 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	public void convertInput()
 	{
 		setConvertedInput(dropdownChoice.getConvertedInput());
+	}
+
+	@Override
+	public Component getFormComponent()
+	{
+		return dropdownChoice;
 	}
 
 	/**

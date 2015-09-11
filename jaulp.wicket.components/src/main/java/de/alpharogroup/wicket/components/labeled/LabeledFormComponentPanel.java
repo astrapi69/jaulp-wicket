@@ -62,6 +62,8 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 		setLabel(labelModel);
 	}
 
+	public abstract Component getFormComponent();
+
 	/**
 	 * Gets the label component.
 	 *
@@ -105,5 +107,25 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	protected Component newLabel(final String id, final String forId, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, forId, model);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onModelChanged()
+	{
+		super.onModelChanged();
+		getFormComponent().modelChanged();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onModelChanging()
+	{
+		super.onModelChanging();
+		getFormComponent().modelChanging();
 	}
 }

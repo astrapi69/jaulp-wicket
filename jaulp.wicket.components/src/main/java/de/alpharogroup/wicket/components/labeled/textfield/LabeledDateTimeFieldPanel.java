@@ -19,6 +19,7 @@ import java.util.Date;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -71,6 +72,15 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Component getFormComponent()
+	{
+		return this.dateTimeField;
 	}
 
 	/**

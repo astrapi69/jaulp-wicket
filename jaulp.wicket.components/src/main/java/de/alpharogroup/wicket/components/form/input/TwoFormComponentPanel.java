@@ -156,4 +156,26 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 		return ComponentFactory.newTextField(id, model);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onModelChanged()
+	{
+		super.onModelChanged();
+		leftFormComponent.modelChanged();
+		rightFormComponent.modelChanged();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onModelChanging()
+	{
+		super.onModelChanging();
+		leftFormComponent.modelChanging();
+		rightFormComponent.modelChanging();
+	}
+
 }

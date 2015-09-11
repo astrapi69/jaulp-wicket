@@ -19,6 +19,7 @@ import java.util.List;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -89,6 +90,15 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Component getFormComponent()
+	{
+		return dropdownChoice;
 	}
 
 	/**

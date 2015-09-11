@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -80,6 +81,15 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 		// LOGGER.error("Set password bean failed.", e);
 		// }
 		// setConvertedInput(t);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Component getFormComponent()
+	{
+		return this.passwordTextField;
 	}
 
 	/**

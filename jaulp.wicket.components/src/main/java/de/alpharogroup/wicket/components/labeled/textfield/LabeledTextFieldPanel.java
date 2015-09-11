@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -76,6 +77,15 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * {@inheritDoc}
 	 */
 	@Override
+	public Component getFormComponent()
+	{
+		return this.textField;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String getInput()
 	{
 		return textField.getInput();
@@ -105,4 +115,5 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 		textField.setRequired(isRequired());
 		super.onBeforeRender();
 	}
+
 }

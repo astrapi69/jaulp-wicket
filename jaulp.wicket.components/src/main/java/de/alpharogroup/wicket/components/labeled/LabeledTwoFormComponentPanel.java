@@ -19,6 +19,7 @@ import java.io.Serializable;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -93,6 +94,12 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	protected void convertInput()
 	{
 		setConvertedInput(getModelObject());
+	}
+
+	@Override
+	public Component getFormComponent()
+	{
+		return twoFormComponent;
 	}
 
 	/**
@@ -176,6 +183,27 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 
 		};
 		return twoFormComponentPanel;
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onModelChanged()
+	{
+		super.onModelChanged();
+		getFormComponent().modelChanged();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onModelChanging()
+	{
+		super.onModelChanging();
+		getFormComponent().modelChanging();
 	}
 
 }

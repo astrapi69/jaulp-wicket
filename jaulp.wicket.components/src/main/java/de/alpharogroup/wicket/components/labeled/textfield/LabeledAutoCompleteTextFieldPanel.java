@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.model.IModel;
 
@@ -68,6 +69,15 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	public void convertInput()
 	{
 		setConvertedInput(autoCompleteTextField.getConvertedInput());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Component getFormComponent()
+	{
+		return this.autoCompleteTextField;
 	}
 
 	/**

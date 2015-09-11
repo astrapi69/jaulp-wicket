@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.datetime.StyleDateConverter;
 import org.apache.wicket.datetime.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.yui.calendar.DatePicker;
@@ -73,6 +74,15 @@ public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	public void convertInput()
 	{
 		setConvertedInput(getModel().getObject());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Component getFormComponent()
+	{
+		return this.dateTextField;
 	}
 
 	/**

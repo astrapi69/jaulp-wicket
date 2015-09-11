@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.labeled.textarea;
 
 import lombok.Getter;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -81,6 +82,15 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	public void convertInput()
 	{
 		setConvertedInput(textArea.getConvertedInput());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Component getFormComponent()
+	{
+		return this.textArea;
 	}
 
 	/**
