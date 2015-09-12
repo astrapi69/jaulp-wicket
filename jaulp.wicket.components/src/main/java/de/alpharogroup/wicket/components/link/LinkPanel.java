@@ -23,15 +23,15 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
- * The Class ButtonPanel.
+ * The Class {@link LinkPanel}.
  */
-public abstract class LinkPanel extends GenericPanel<String>
+public abstract class LinkPanel extends BasePanel<String>
 {
 
 	/** The Constant serialVersionUID. */
@@ -50,7 +50,7 @@ public abstract class LinkPanel extends GenericPanel<String>
 	private final Form<?> form;
 
 	/**
-	 * Instantiates a new link panel.
+	 * Instantiates a new {@link LinkPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -63,7 +63,7 @@ public abstract class LinkPanel extends GenericPanel<String>
 	}
 
 	/**
-	 * Instantiates a new link panel.
+	 * Instantiates a new {@link LinkPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -82,14 +82,15 @@ public abstract class LinkPanel extends GenericPanel<String>
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * Factory method for create a new {@link Label}. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final IModel<String> model)
 	{
@@ -97,12 +98,15 @@ public abstract class LinkPanel extends GenericPanel<String>
 	}
 
 	/**
-	 * Factory method for creating a new Link. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a new Link.
+	 * Factory method for create a new {@link AbstractLink}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link AbstractLink}.
 	 *
 	 * @param id
-	 *            the wicket id
-	 * @return the Button
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link AbstractLink}
 	 */
 	protected AbstractLink newLink(final String id)
 	{
@@ -114,6 +118,9 @@ public abstract class LinkPanel extends GenericPanel<String>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onClick(final AjaxRequestTarget target)
 			{
@@ -123,6 +130,12 @@ public abstract class LinkPanel extends GenericPanel<String>
 		};
 	}
 
+	/**
+	 * Abstract callback method that must be overwritten to provide specific action on click.
+	 *
+	 * @param target
+	 *            the target
+	 */
 	public abstract void onClick(final AjaxRequestTarget target);
 
 }

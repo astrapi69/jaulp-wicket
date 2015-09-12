@@ -22,9 +22,12 @@ import java.util.List;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.RefreshingView;
+import org.apache.wicket.markup.repeater.ReuseIfModelsEqualStrategy;
 import org.apache.wicket.markup.repeater.util.ModelIteratorAdapter;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -36,7 +39,7 @@ import org.apache.wicket.util.lang.Args;
  * a generic type.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public abstract class RefreshingViewPanel<T extends Serializable> extends GenericPanel<List<T>>
 {
@@ -44,7 +47,7 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The list view. */
+	/** The {@link RefreshingView}. */
 	@Getter
 	private final RefreshingView<T> refreshingView;
 
@@ -75,30 +78,45 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 		this(id, new ListModel<>(list));
 	}
 
+	/**
+	 * Factory method for creating a new {@link Item}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of the
+	 * new {@link Item}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Item}.
+	 */
 	protected Item<T> newItem(final String id, final int index, final IModel<T> model)
 	{
 		return new Item<T>(id, index, model);
 	}
 
 	/**
-	 * New list component.
+	 * Abstract factory method for creating the new {@link Component} in the list. This method is
+	 * invoked in the {@link ListView#populateItem(ListItem)} from the derived classes and can be
+	 * overridden so users can provide their own version of a new {@link Component} in the list.
 	 *
 	 * @param id
 	 *            the id
 	 * @param item
 	 *            the item
-	 * @return the component
+	 * @return the new {@link Component} in the list.
 	 */
 	protected abstract Component newListComponent(final String id, final Item<T> item);
 
 	/**
-	 * New list view.
+	 * Factory method for creating a new {@link RefreshingView}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of the new {@link RefreshingView}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the list view
+	 * @return the new {@link RefreshingView}.
 	 */
 	protected RefreshingView<T> newRefreshingView(final String id, final IModel<List<T>> model)
 	{
@@ -107,11 +125,18 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected Iterator<IModel<T>> getItemModels()
 			{
 				return new ModelIteratorAdapter<T>(getModelObject().iterator())
 				{
+
+					/**
+					 * {@inheritDoc}
+					 */
 					@Override
 					protected IModel<T> model(final T object)
 					{
@@ -120,12 +145,18 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 				};
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected Item<T> newItem(final String id, final int index, final IModel<T> model)
 			{
 				return RefreshingViewPanel.this.newItem(id, index, model);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void populateItem(final Item<T> item)
 			{
@@ -133,6 +164,7 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 			}
 
 		};
+		listView.setItemReuseStrategy(ReuseIfModelsEqualStrategy.getInstance());
 		return listView;
 	}
 }

@@ -26,16 +26,15 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * The Class MenuUtils.
+ * The Class {@link LinkFactory}.
  * 
  * @author Asterios Raptis
- * @deprecated use instead {@link LinkFactory}.
  */
-public class LinkUtils
+public class LinkFactory
 {
 
 	/**
-	 * Creates the bookmarkable page link.
+	 * Factory method for create a new {@link BookmarkablePageLink}.
 	 * 
 	 * @param linkId
 	 *            the link id
@@ -61,7 +60,7 @@ public class LinkUtils
 	}
 
 	/**
-	 * Creates the bookmarkable page link.
+	 * Factory method for create a new {@link BookmarkablePageLink}.
 	 * 
 	 * @param linkId
 	 *            the link id
@@ -84,7 +83,7 @@ public class LinkUtils
 	}
 
 	/**
-	 * Creates the bookmarkable page link.
+	 * Factory method for create a new {@link BookmarkablePageLink}.
 	 * 
 	 * @param linkId
 	 *            the link id
@@ -115,7 +114,7 @@ public class LinkUtils
 	}
 
 	/**
-	 * Creates the bookmarkable page link.
+	 * Factory method for create a new {@link BookmarkablePageLink}.
 	 * 
 	 * @param linkId
 	 *            the link id
@@ -140,7 +139,7 @@ public class LinkUtils
 	}
 
 	/**
-	 * Creates an external link from the given parameters.
+	 * Factory method for create a new {@link ExternalLink}.
 	 *
 	 * @param linkId
 	 *            the link id
@@ -164,7 +163,7 @@ public class LinkUtils
 	}
 
 	/**
-	 * Creates an external link from the given parameters.
+	 * Factory method for create a new {@link ExternalLink}.
 	 *
 	 * @param linkId
 	 *            the link id
@@ -185,7 +184,7 @@ public class LinkUtils
 	}
 
 	/**
-	 * Creates an external link from the given parameters.
+	 * Factory method for create a new {@link ExternalLink}.
 	 *
 	 * @param linkId
 	 *            the link id
@@ -216,7 +215,7 @@ public class LinkUtils
 	}
 
 	/**
-	 * Creates an external link from the given parameters.
+	 * Factory method for create a new {@link ExternalLink}.
 	 *
 	 * @param linkId
 	 *            the link id

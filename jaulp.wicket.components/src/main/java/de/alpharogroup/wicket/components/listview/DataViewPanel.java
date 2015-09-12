@@ -21,22 +21,24 @@ import java.util.List;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.markup.repeater.ReuseIfModelsEqualStrategy;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
 
+import de.alpharogroup.wicket.base.BasePanel;
+
 /**
  * The Class DataViewPanel takes a {@link org.apache.wicket.markup.repeater.data.DataView} of a
  * generic type.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
-public abstract class DataViewPanel<T extends Serializable> extends GenericPanel<List<T>>
+public abstract class DataViewPanel<T extends Serializable> extends BasePanel<List<T>>
 {
 
 	/** The Constant serialVersionUID. */
@@ -92,14 +94,17 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
 	 */
 	protected abstract IDataProvider<T> newDataProvider(final IModel<List<T>> model);
 
+
 	/**
-	 * New DataView.
+	 * Factory method for create a new {@link DataView}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link DataView}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param dataProvider
 	 *            the data provider
-	 * @return the DataView
+	 * @return the new {@link DataView}
 	 */
 	protected DataView<T> newDataView(final String id, final IDataProvider<T> dataProvider)
 	{
@@ -119,6 +124,7 @@ public abstract class DataViewPanel<T extends Serializable> extends GenericPanel
 
 		};
 		dataView.setItemsPerPage(newItemsPerPage());
+		dataView.setItemReuseStrategy(ReuseIfModelsEqualStrategy.getInstance());
 		return dataView;
 	}
 

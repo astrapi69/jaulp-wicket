@@ -22,18 +22,19 @@ import lombok.Getter;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
+
+import de.alpharogroup.wicket.base.BasePanel;
 
 /**
  * The Class ListViewPanel takes a {@link ListView} of a generic type.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
-public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
+public abstract class ListViewPanel<T> extends BasePanel<List<T>>
 {
 
 	/** The Constant serialVersionUID. */
@@ -84,9 +85,9 @@ public abstract class ListViewPanel<T> extends GenericPanel<List<T>>
 	protected abstract Component newListComponent(final String id, final ListItem<T> item);
 
 	/**
-	 * Factory method for creating the new {@link ListView}. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can provide their own
-	 * version of the new {@link ListView}.
+	 * Factory method for creating a new {@link ListView}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of the
+	 * new {@link ListView}.
 	 *
 	 * @param id
 	 *            the id

@@ -52,7 +52,7 @@ public class MenuItem implements Serializable
 	private final List<MenuItem> children = new ArrayList<MenuItem>();
 
 	/**
-	 * Instantiates a new menu item.
+	 * Instantiates a new {@link MenuItem}.
 	 *
 	 * @param link
 	 *            the link
@@ -61,7 +61,7 @@ public class MenuItem implements Serializable
 	 */
 	public MenuItem(final AbstractLink link, final IModel<String> labelModel)
 	{
-		if (link != null && !link.getId().equals(MenuPanel.LINK_ID))
+		if ((link != null) && !link.getId().equals(MenuPanel.LINK_ID))
 		{
 			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
 		}
@@ -70,7 +70,7 @@ public class MenuItem implements Serializable
 	}
 
 	/**
-	 * Instantiates a new menu item.
+	 * Instantiates a new {@link MenuItem}.
 	 *
 	 * @param link
 	 *            the link
@@ -83,7 +83,7 @@ public class MenuItem implements Serializable
 	}
 
 	/**
-	 * Instantiates a new menu item.
+	 * Instantiates a new {@link MenuItem}.
 	 *
 	 * @param labelModel
 	 *            the model of the label text.
@@ -95,7 +95,7 @@ public class MenuItem implements Serializable
 	}
 
 	/**
-	 * Instantiates a new menu item.
+	 * Instantiates a new {@link MenuItem}.
 	 *
 	 * @param label
 	 *            The label text
@@ -119,14 +119,15 @@ public class MenuItem implements Serializable
 	}
 
 	/**
-	 * Factory method for creating a new Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a new Label.
+	 * Factory method for creating a new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}.
 	 */
 	protected Label newLabel(final String id, final IModel<String> model)
 	{
