@@ -26,10 +26,10 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
- * Convenience class for labeled TextField.
+ * Convenience class for labeled {@link RequiredTextField}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 {
@@ -37,12 +37,12 @@ public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The text field. */
+	/** The {@link RequiredTextField}. */
 	@Getter
 	private final RequiredTextField<T> textField;
 
 	/**
-	 * Instantiates a new LabeledTextfieldPanel.
+	 * Instantiates a new {@link LabeledRequiredTextFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -92,15 +92,15 @@ public class LabeledRequiredTextFieldPanel<T> extends LabeledFormComponentPanel<
 	}
 
 	/**
-	 * Factory method for creating a new RequiredTextField. This method is invoked in the
+	 * Factory method for create the new {@link RequiredTextField}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a RequiredTextField.
+	 * version of a new {@link RequiredTextField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new RequiredTextField
+	 * @return the new {@link RequiredTextField}
 	 */
 	protected RequiredTextField<T> newRequiredTextField(final String id, final IModel<T> model)
 	{

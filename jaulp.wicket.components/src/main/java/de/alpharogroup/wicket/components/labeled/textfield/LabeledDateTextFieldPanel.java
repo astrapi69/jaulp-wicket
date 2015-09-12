@@ -33,7 +33,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
  * Convenience class for labeled DateTextfield.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public class LabeledDateTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 {

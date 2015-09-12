@@ -26,10 +26,10 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
- * Convenience class for labeled TextField.
+ * Convenience class for labeled {@link EmailTextField}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 {
@@ -42,7 +42,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	private final EmailTextField emailTextField;
 
 	/**
-	 * Instantiates a new LabeledEmailTextFieldPanel.
+	 * Instantiates a new {@link LabeledEmailTextFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -53,7 +53,7 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Instantiates a new LabeledEmailTextFieldPanel.
+	 * Instantiates a new {@link LabeledEmailTextFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -103,15 +103,15 @@ public class LabeledEmailTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the EmailTextField. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * EmailTextField.
+	 * Factory method for create the new {@link EmailTextField}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link EmailTextField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new {@link EmailTextField}
 	 */
 	protected EmailTextField newEmailTextField(final String id, final IModel<T> model)
 	{

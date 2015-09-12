@@ -26,10 +26,10 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
- * Convenience class for labeled TextField.
+ * Convenience class for labeled {@link TextField}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 {
@@ -37,12 +37,12 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The text field. */
+	/** The {@link TextField}. */
 	@Getter
 	private final TextField<T> textField;
 
 	/**
-	 * Instantiates a new LabeledTextfieldPanel.
+	 * Instantiates a new {@link LabeledTextFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -92,14 +92,15 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the TextField. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a TextField.
+	 * Factory method for create the new {@link TextField}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link TextField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new {@link TextField}
 	 */
 	protected TextField<T> newTextField(final String id, final IModel<T> model)
 	{

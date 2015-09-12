@@ -272,9 +272,9 @@ public abstract class ImprintPanel extends BasePanel<ImprintModelBean>
 	}
 
 	/**
-	 * Factory method to create a WebMarkupContainer for the imprint content. This method is invoked
-	 * in the constructor from this class and can be overridden so users can provide their own
-	 * version of a imprint content.
+	 * Factory method to create a new {@link WebMarkupContainer} for the imprint content. This
+	 * method is invoked in the constructor from this class and can be overridden so users can
+	 * provide their own version of a new {@link WebMarkupContainer} for the imprint content.
 	 *
 	 * @param id
 	 *            the id

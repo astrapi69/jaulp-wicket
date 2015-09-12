@@ -26,10 +26,10 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
 
 /**
- * Convenience class for labeled PasswordTextField.
+ * Convenience class for labeled {@link PasswordTextField}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  *
  */
 public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<T>
@@ -43,7 +43,7 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	private final PasswordTextField passwordTextField;
 
 	/**
-	 * Instantiates a new LabeledPasswordTextFieldPanel.
+	 * Instantiates a new {@link LabeledPasswordTextFieldPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -102,15 +102,15 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	}
 
 	/**
-	 * Factory method for creating the PasswordTextField. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * PasswordTextField.
+	 * Factory method for create the new {@link PasswordTextField}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link PasswordTextField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new {@link PasswordTextField}
 	 */
 	protected PasswordTextField newPasswordTextField(final String id, final IModel<T> model)
 	{

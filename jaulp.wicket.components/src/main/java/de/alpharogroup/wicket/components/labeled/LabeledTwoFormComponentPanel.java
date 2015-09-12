@@ -53,7 +53,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 
 
 	/**
-	 * Instantiates a new two text field panel.
+	 * Instantiates a new {@link LabeledTwoFormComponentPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -66,7 +66,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	}
 
 	/**
-	 * Instantiates a new two text field panel.
+	 * Instantiates a new {@link LabeledTwoFormComponentPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -96,6 +96,9 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 		setConvertedInput(getModelObject());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Component getFormComponent()
 	{
@@ -103,7 +106,8 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	}
 
 	/**
-	 * Factory method for create a new Label for what characters will be between the two components.
+	 * Factory method for create a new {@link IModel} for the Label of what characters will be
+	 * between the two components.
 	 *
 	 * @param betweenLabel
 	 *            the characters
@@ -115,13 +119,15 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	}
 
 	/**
-	 * New left text field.
+	 * Factory method for create the new left {@link FormComponent}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new left {@link FormComponent}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form component
+	 * @return the new left {@link FormComponent}
 	 */
 	protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
 	{
@@ -129,13 +135,15 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	}
 
 	/**
-	 * New right text field.
+	 * Factory method for create the new right {@link FormComponent}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new right {@link FormComponent}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form component
+	 * @return the new right {@link FormComponent}
 	 */
 	protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
 	{
@@ -143,13 +151,15 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	}
 
 	/**
-	 * New left text field.
+	 * Factory method for create the new {@link TwoFormComponentPanel}. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link TwoFormComponentPanel}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form component
+	 * @return the new {@link TwoFormComponentPanel}
 	 */
 	protected TwoFormComponentPanel<L, R> newTwoFormComponentPanel(final String id,
 		final IModel<TwoFormComponentBean<L, R>> model)
@@ -163,18 +173,27 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected IModel<String> newBetweenLabelModel(final String betweenLabel)
 			{
 				return LabeledTwoFormComponentPanel.this.newBetweenLabelModel(betweenLabel);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
 			{
 				return LabeledTwoFormComponentPanel.this.newLeftFormComponent(id, model);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
 			{
@@ -183,27 +202,6 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 
 		};
 		return twoFormComponentPanel;
-	}
-
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onModelChanged()
-	{
-		super.onModelChanged();
-		getFormComponent().modelChanged();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onModelChanging()
-	{
-		super.onModelChanging();
-		getFormComponent().modelChanging();
 	}
 
 }

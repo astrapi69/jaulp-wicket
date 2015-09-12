@@ -44,7 +44,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -55,7 +55,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -69,7 +69,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -85,7 +85,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -101,7 +101,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -119,7 +119,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -135,7 +135,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -153,7 +153,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -166,7 +166,7 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	}
 
 	/**
-	 * Instantiates a new localed drop down choice.
+	 * Instantiates a new {@link LocalisedDropDownChoice}.
 	 *
 	 * @param id
 	 *            the id

@@ -93,6 +93,7 @@ public abstract class SpanListPanel<T> extends DivListPanel<T>
 			}
 
 		};
+		listView.setReuseItems(true);
 		return listView;
 	}
 

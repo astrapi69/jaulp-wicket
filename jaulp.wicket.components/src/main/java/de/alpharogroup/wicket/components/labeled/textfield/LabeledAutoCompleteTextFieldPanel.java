@@ -27,7 +27,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
  * Convenience class for labeled {@link AutoCompleteTextField}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 {

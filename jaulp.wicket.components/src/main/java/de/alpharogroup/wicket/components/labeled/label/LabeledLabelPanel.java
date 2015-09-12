@@ -18,19 +18,19 @@ package de.alpharogroup.wicket.components.labeled.label;
 import lombok.Getter;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
  * Convenience class for labeled Label for form uneditable components.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
-public class LabeledLabelPanel<T> extends GenericPanel<T>
+public class LabeledLabelPanel<T> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -71,24 +71,6 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the new {@link Label}
-	 */
-	protected Label newViewableLabel(final String id, final IModel<T> model)
-	{
-		final PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(),
-			this.getId());
-		return ComponentFactory.newLabel(id, viewableLabelModel);
-	}
-
-	/**
-	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * new {@link Label}.
-	 *
-	 * @param id
-	 *            the id
 	 * @param forId
 	 *            the for id
 	 * @param model
@@ -98,5 +80,23 @@ public class LabeledLabelPanel<T> extends GenericPanel<T>
 	protected Label newLabel(final String id, final String forId, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, forId, model);
+	}
+
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
+	protected Label newViewableLabel(final String id, final IModel<T> model)
+	{
+		final PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(),
+			this.getId());
+		return ComponentFactory.newLabel(id, viewableLabelModel);
 	}
 }

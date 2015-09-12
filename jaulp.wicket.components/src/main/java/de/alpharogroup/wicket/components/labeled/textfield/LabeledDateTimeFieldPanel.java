@@ -31,7 +31,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
  * Convenience class for labeled DateTextfield.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 {
@@ -93,15 +93,15 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the DateTextField. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a
-	 * DateTextField.
+	 * Factory method for create the new {@link DateTimeField}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link DateTimeField}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new {@link DateTimeField}
 	 */
 	protected DateTimeField newDateTimeField(final String id, final IModel<T> model)
 	{

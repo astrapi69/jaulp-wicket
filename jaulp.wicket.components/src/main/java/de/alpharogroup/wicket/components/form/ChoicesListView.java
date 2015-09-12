@@ -37,6 +37,8 @@ public abstract class ChoicesListView<T> extends ListView<T>
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/** The choice renderer. */
 	private final IChoiceRenderer<T> choiceRenderer;
 
 	/**
@@ -75,7 +77,7 @@ public abstract class ChoicesListView<T> extends ListView<T>
 		final Class<?> objectClass = displayValue == null ? null : displayValue.getClass();
 		// Get label for choice
 		String label = "";
-		if (objectClass != null && objectClass != String.class)
+		if ((objectClass != null) && (objectClass != String.class))
 		{
 			final IConverter converter = getConverter(objectClass);
 			label = converter.convertToString(displayValue, getLocale());

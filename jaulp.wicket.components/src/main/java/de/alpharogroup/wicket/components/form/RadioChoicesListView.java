@@ -127,18 +127,27 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public IModel<String> getLabel()
 			{
 				return Model.of(getChoiceLabel(getModelObject()));
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected boolean getStatelessHint()
 			{
 				return true;
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public String getValue()
 			{

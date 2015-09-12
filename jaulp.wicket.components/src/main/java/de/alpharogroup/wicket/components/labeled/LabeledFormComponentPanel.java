@@ -29,7 +29,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * The LabeledFormComponentPanel is base class for labeled components.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  * @see FormComponentPanel
  */
 public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
@@ -46,7 +46,7 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	protected ComponentFeedbackPanel feedback;
 
 	/**
-	 * Instantiates a new LabeledFormComponentPanel object.
+	 * Instantiates a new {@link LabeledFormComponentPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -62,6 +62,11 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 		setLabel(labelModel);
 	}
 
+	/**
+	 * Abstract method for get the form component.
+	 *
+	 * @return the form component
+	 */
 	public abstract Component getFormComponent();
 
 	/**

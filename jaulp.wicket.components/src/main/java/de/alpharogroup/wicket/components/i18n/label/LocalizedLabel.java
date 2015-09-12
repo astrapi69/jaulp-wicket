@@ -39,7 +39,7 @@ public class LocalizedLabel extends Label
 	private static final long serialVersionUID = 5198063608075182201L;
 
 	/**
-	 * Instantiates a new localized label.
+	 * Instantiates a new {@link LocalizedLabel}.
 	 *
 	 * @param id
 	 *            the id
@@ -53,7 +53,7 @@ public class LocalizedLabel extends Label
 	}
 
 	/**
-	 * Instantiates a new localized label.
+	 * Instantiates a new {@link LocalizedLabel}.
 	 *
 	 * @param id
 	 *            the id
@@ -72,7 +72,7 @@ public class LocalizedLabel extends Label
 	}
 
 	/**
-	 * Instantiates a new localized label.
+	 * Instantiates a new {@link LocalizedLabel}.
 	 *
 	 * @param id
 	 *            the id
@@ -100,7 +100,7 @@ public class LocalizedLabel extends Label
 	}
 
 	/**
-	 * Instantiates a new localized label.
+	 * Instantiates a new {@link LocalizedLabel}.
 	 *
 	 * @param id
 	 *            the id
@@ -124,7 +124,7 @@ public class LocalizedLabel extends Label
 	}
 
 	/**
-	 * Instantiates a new localized label.
+	 * Instantiates a new {@link LocalizedLabel}.
 	 *
 	 * @param id
 	 *            the id
@@ -146,7 +146,7 @@ public class LocalizedLabel extends Label
 	}
 
 	/**
-	 * Instantiates a new localized label.
+	 * Instantiates a new {@link LocalizedLabel}.
 	 *
 	 * @param id
 	 *            the id

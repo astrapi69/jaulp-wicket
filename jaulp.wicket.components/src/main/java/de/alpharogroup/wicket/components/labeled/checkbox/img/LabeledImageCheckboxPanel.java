@@ -71,8 +71,7 @@ public class LabeledImageCheckboxPanel extends BasePanel<LabeledImageCheckboxMod
 	protected CheckBox newCheckBox(final String id,
 		final IModel<LabeledImageCheckboxModelBean> model)
 	{
-		final IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), "checked");
-		return ComponentFactory.newCheckBox(id, propertyModel);
+		return ComponentFactory.newCheckBox(id, new PropertyModel<>(model.getObject(), "checked"));
 	}
 
 	/**

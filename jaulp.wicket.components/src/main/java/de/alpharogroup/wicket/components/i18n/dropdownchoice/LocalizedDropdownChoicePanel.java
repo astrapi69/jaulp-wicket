@@ -81,6 +81,9 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 		setConvertedInput(dropdownChoice.getConvertedInput());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Component getFormComponent()
 	{

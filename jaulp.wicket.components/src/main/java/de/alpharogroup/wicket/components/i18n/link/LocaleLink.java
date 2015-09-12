@@ -24,7 +24,7 @@ import org.apache.wicket.util.lang.Args;
  * The Class {@link LocaleLink} can set a specific {@link Locale}.
  * 
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  * @author Asterios Raptis
  */
 public class LocaleLink<T> extends Link<T>

@@ -29,7 +29,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * Convenience class for labeled MultiLineLabel for form uneditable components.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
 {

@@ -29,7 +29,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
  * Convenience class for labeled checkbox.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of model object
  */
 public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 {
