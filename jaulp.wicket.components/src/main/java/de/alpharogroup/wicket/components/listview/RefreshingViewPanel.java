@@ -85,6 +85,8 @@ public abstract class RefreshingViewPanel<T extends Serializable> extends Generi
 	 *
 	 * @param id
 	 *            the id
+	 * @param index
+	 *            the index
 	 * @param model
 	 *            the model
 	 * @return the new {@link Item}.

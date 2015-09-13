@@ -104,8 +104,6 @@ public abstract class LinkPanel extends BasePanel<String>
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
 	 * @return the new {@link AbstractLink}
 	 */
 	protected AbstractLink newLink(final String id)
