@@ -205,6 +205,7 @@ public class WicketApplication extends WicketBootstrap3Application
 	@Override
 	protected void onBeforeApplicationConfigurations()
 	{
+		// Set security headers...
 		new SecuritySettingsPlugin().install(this);
 		// initialize all header contributors
 		initializeAllHeaderContributors();
