@@ -15,7 +15,6 @@
  */
 package de.alpharogroup.wicket.components.examples;
 
-import org.apache.wicket.util.tester.WicketTester;
 
 
 /**
@@ -23,8 +22,8 @@ import org.apache.wicket.util.tester.WicketTester;
  */
 public class TestHomePage
 {
-	private WicketTester tester;
-
+	// private WicketTester tester;
+	//
 	// @Test
 	// public void homepageRendersSuccessfully()
 	// {
