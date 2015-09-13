@@ -295,6 +295,13 @@ public final class WicketComponentExtensions
 		response.setHeader("X-Permitted-Cross-Domain-Policies", "master-only");
 	}
 
+	/**
+	 * Sets the security headers. You can check your setting on this <a
+	 * href=" http://cyh.herokuapp.com/cyh">link</a>
+	 *
+	 * @param response
+	 *            the new security headers
+	 */
 	public static void setSecurityHeaders(final WebResponse response)
 	{
 		// Category: Framing
@@ -308,7 +315,7 @@ public final class WicketComponentExtensions
 		// Category: XSS
 		response.setHeader("X-XSS-Protection", "1; mode=block");
 		// Category: Caching
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0");
+		response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate,max-age=0");
 		response.setHeader("Pragma", "no-cache");
 		response.setHeader("Expires", "-1");
 	}
