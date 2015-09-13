@@ -183,6 +183,7 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected void onBeforeApplicationConfigurations()
 	{
+		onSecuritySettingsPlugin(this);
 	}
 
 	/**
@@ -206,7 +207,6 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected void onGlobalSettings()
 	{
-		onSecuritySettingsPlugin(this);
 	}
 
 	/**
