@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>wicket.bootstrap3</artifactId>
-			<version>6.20.0</version>
+			<version>6.20.1</version>
 		</dependency>
 
 		<dependency>
