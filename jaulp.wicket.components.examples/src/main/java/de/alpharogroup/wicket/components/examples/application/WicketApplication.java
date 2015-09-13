@@ -30,7 +30,6 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
-import org.apache.wicket.resource.loader.BundleStringResourceLoader;
 
 import de.alpharogroup.collections.ListExtensions;
 import de.alpharogroup.wicket.PackageResourceReferences;
@@ -38,8 +37,6 @@ import de.alpharogroup.wicket.base.application.plugins.ApplicationDebugSettingsP
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.bootstrap3.application.WicketBootstrap3Application;
 import de.alpharogroup.wicket.components.examples.home.HomePage;
-import de.alpharogroup.wicket.components.examples.resource.loading.MessageSource;
-
 
 /**
  * Application object for your web application. If you want to run this application without
@@ -208,8 +205,8 @@ public class WicketApplication extends WicketBootstrap3Application
 		// initialize all header contributors
 		initializeAllHeaderContributors();
 		// Add a custom resource loader for ResourceBundles...
-		getResourceSettings().getStringResourceLoaders().add(
-			new BundleStringResourceLoader(MessageSource.class.getName()));
+		// getResourceSettings().getStringResourceLoaders().add(
+		// new BundleStringResourceLoader(MessageSource.class.getName()));
 	}
 
 	@Override
