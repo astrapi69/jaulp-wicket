@@ -33,6 +33,8 @@ import org.apache.wicket.util.time.Duration;
 import org.apache.wicket.util.time.Time;
 import org.joda.time.DateTime;
 
+import de.alpharogroup.wicket.base.application.plugins.SecuritySettingsPlugin;
+
 /**
  * The Class BaseWebApplication have factory methods for the application settings that should be
  * overwritten from the subclasses to provide they own settings and configurations.
@@ -204,6 +206,19 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected void onGlobalSettings()
 	{
+		onSecuritySettingsPlugin(this);
+	}
+
+	/**
+	 * Callback method that can be overwritten to provide application specific security settings.
+	 * Now the default will be set.
+	 *
+	 * @param application
+	 *            the application
+	 */
+	protected void onSecuritySettingsPlugin(final WebApplication application)
+	{
+		new SecuritySettingsPlugin().install(application);
 	}
 
 }
