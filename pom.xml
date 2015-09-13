@@ -102,6 +102,7 @@
 
 		<!-- WICKET version -->
 		<wicket.version>6.20.0</wicket.version>
+		<jaulp.wicket.version>${project.version}</jaulp.wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
 		<wicketstuff.version>6.20.0</wicketstuff.version>
 		<wiquery-core.version>6.13.0</wiquery-core.version>
@@ -309,43 +310,43 @@
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.annotated.header.contributors</artifactId>
-				<version>${wicket.version}</version>
+				<version>${jaulp.wicket.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.base</artifactId>
-				<version>${wicket.version}</version>
+				<version>${jaulp.wicket.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.components</artifactId>
-				<version>${wicket.version}</version>
+				<version>${jaulp.wicket.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.behaviors</artifactId>
-				<version>${wicket.version}</version>
+				<version>${jaulp.wicket.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.data.provider</artifactId>
-				<version>${wicket.version}</version>
+				<version>${jaulp.wicket.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.dialogs</artifactId>
-				<version>${wicket.version}</version>
+				<version>${jaulp.wicket.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.dropdownchoices</artifactId>
-				<version>${wicket.version}</version>
+				<version>${jaulp.wicket.version}</version>
 			</dependency>
 			<!-- JAULP DEPENDENCIES -->
 			<dependency>
