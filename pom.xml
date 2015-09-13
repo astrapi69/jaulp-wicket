@@ -828,9 +828,18 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
 					<configuration>
-						<suiteXmlFiles>
-							<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-						</suiteXmlFiles>
+						<dependencies>
+							<dependency>
+								<groupId>org.apache.maven.surefire</groupId>
+								<artifactId>surefire-junit47</artifactId>
+								<version>${maven-surefire-plugin.version}</version>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.maven.surefire</groupId>
+								<artifactId>surefire-testng</artifactId>
+								<version>${maven-surefire-plugin.version}</version>
+							</dependency>
+						</dependencies>
 						<threadCount>1</threadCount>
 					</configuration>
 				</plugin>
