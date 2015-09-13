@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.20.0</version>
+		<version>6.20.1</version>
 	</parent>
 
 	<artifactId>wicket.xslt.examples</artifactId>

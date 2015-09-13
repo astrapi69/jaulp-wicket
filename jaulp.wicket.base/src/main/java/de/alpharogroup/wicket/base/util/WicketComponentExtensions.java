@@ -296,8 +296,9 @@ public final class WicketComponentExtensions
 	}
 
 	/**
-	 * Sets the security headers. You can check your setting on this <a
-	 * href=" http://cyh.herokuapp.com/cyh">link</a>
+	 * Sets the security headers. You can check your setting on on the link below.
+	 * 
+	 * @see <a href="http://cyh.herokuapp.com/cyh">check headers</a>
 	 *
 	 * @param response
 	 *            the new security headers
