@@ -315,9 +315,12 @@ public final class WicketComponentExtensions
 		// Category: XSS
 		response.setHeader("X-XSS-Protection", "1; mode=block");
 		// Category: Caching
-		response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate,max-age=0");
+		response.setHeader("Cache-Control", "must-revalidate");
 		response.setHeader("Pragma", "no-cache");
 		response.setHeader("Expires", "-1");
+		// Set-Cookie
+		response.setHeader("Set-Cookie", "secure;httponly;");
+
 	}
 
 	/**
