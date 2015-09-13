@@ -22,7 +22,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
-import de.alpharogroup.wicket.components.link.LinkUtils;
+import de.alpharogroup.wicket.components.link.LinkFactory;
 
 /**
  * The Class MenuUtils.
@@ -51,7 +51,7 @@ public class MenuUtils
 		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,
 		final Component component)
 	{
-		return LinkUtils.newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey,
+		return LinkFactory.newBookmarkablePageLink(linkId, pageClass, labelId, resourceModelKey,
 			component);
 	}
 

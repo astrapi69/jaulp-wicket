@@ -25,7 +25,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.RequestCycle;
 
-import de.alpharogroup.lang.ClassUtils;
+import de.alpharogroup.lang.ClassExtensions;
 
 /**
  * The Class ComponentFinder.
@@ -143,7 +143,7 @@ public final class ComponentFinder
 		Component parent = childComponent.getParent();
 		while (parent != null)
 		{
-			if (ClassUtils.equalsByClassName(parentClass, parent.getClass()))
+			if (ClassExtensions.equalsByClassName(parentClass, parent.getClass()))
 			{
 				break;
 			}

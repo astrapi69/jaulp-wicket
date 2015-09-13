@@ -43,7 +43,7 @@ import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
  * 	protected void init()
  * 	{
  * 		super.init();
- * 		new ApplicationDebugSettingsPlugin().install(this);
+ * 		new SecuritySettingsPlugin().install(this);
  * 	}
  * }
  * </pre>

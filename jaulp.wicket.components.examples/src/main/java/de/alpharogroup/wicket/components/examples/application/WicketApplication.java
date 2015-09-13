@@ -103,15 +103,6 @@ public class WicketApplication extends WicketBootstrap3Application
 	}
 
 	/**
-	 * @see org.apache.wicket.Application#init()
-	 */
-	@Override
-	public void init()
-	{
-		super.init();
-	}
-
-	/**
 	 * Initialize all header contributors.
 	 */
 	private void initializeAllHeaderContributors()
@@ -217,6 +208,7 @@ public class WicketApplication extends WicketBootstrap3Application
 		new SecuritySettingsPlugin().install(this);
 		// initialize all header contributors
 		initializeAllHeaderContributors();
+		// Add a custom resource loader for ResourceBundles...
 		getResourceSettings().getStringResourceLoaders().add(
 			new BundleStringResourceLoader(MessageSource.class.getName()));
 	}

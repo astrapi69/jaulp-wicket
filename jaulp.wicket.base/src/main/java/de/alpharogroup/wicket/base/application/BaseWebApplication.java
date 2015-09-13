@@ -75,7 +75,7 @@ public abstract class BaseWebApplication extends WebApplication
 	 * @see org.apache.wicket.Application#init()
 	 */
 	@Override
-	public void init()
+	public final void init()
 	{
 		this.startupDate = new DateTime();
 		super.init();
