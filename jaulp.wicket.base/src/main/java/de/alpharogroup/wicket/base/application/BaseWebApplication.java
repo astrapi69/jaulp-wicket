@@ -183,6 +183,7 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected void onBeforeApplicationConfigurations()
 	{
+		// Set security headers...
 		onSecuritySettingsPlugin(this);
 	}
 
