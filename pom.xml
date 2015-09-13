@@ -127,7 +127,7 @@
 		<testng.version>6.9.4</testng.version>
 		<junit.version>4.12</junit.version>
 		<!-- JAULP versions -->
-		<jaulp.core.version>4.0.0</jaulp.core.version>
+		<jaulp.core.version>4.1.0</jaulp.core.version>
 		<jaulp.collections.version>${jaulp.core.version}</jaulp.collections.version>
 		<jaulp.design.patterns.version>${jaulp.core.version}</jaulp.design.patterns.version>
 		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
