@@ -321,6 +321,8 @@ public final class WicketComponentExtensions
 		response.setHeader("Expires", "-1");
 		// Set-Cookie
 		response.setHeader("Set-Cookie", "secure;httponly;");
+		// Set header value for 'Content-Security-Policy'
+		response.setHeader("Content-Security-Policy", "default-src 'self'");
 
 	}
 
