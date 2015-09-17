@@ -74,7 +74,7 @@ public class RequestCycleLocal<T extends Serializable>
 	 */
 	private RequestCycle getRequestCycle()
 	{
-		return RequestCycle.get();
+		return Args.notNull(RequestCycle.get(), "RequestCycle.get()");
 	}
 
 	/**
