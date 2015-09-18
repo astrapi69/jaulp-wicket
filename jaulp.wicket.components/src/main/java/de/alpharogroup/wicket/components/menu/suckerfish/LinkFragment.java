@@ -31,7 +31,7 @@ public final class LinkFragment extends Fragment
 	private static final long serialVersionUID = 0L;
 
 	/**
-	 * Instantiates a new link fragment.
+	 * Instantiates a new {@link LinkFragment}.
 	 * 
 	 * @param link
 	 *            the link

@@ -33,14 +33,35 @@ import org.apache.wicket.model.IModel;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
+/**
+ * The Class {@link RadioGroupPanel}.
+ *
+ * @param <T>
+ *            the generic type of model object.
+ */
 public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The group
+	 */
 	@Getter
 	private RadioGroup<T> group;
 
+	/** The form. */
 	Form<?> form;
 
+	/**
+	 * Instantiates a new {@link RadioGroupPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public RadioGroupPanel(final String id, final IModel<RadioGroupModel<T>> model)
 	{
 		super(id, model);
@@ -53,13 +74,15 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	}
 
 	/**
-	 * Factory method for create a new Form.
+	 * Factory method for create the new {@link Form}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Form}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form
+	 * @return the new {@link Form}
 	 */
 	protected Form<RadioGroupModel<T>> newForm(final String id,
 		final IModel<RadioGroupModel<T>> model)
@@ -69,15 +92,17 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	}
 
 	/**
-	 * Factory method for creating a new Label with the for attribute.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param forId
 	 *            the for id
 	 * @param model
-	 *            the list item model
-	 * @return the label
+	 *            the model
+	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final String forId, final IModel<T> model)
 	{
@@ -85,7 +110,9 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	}
 
 	/**
-	 * Factory method for create a new {@link RadioGroup}.
+	 * Factory method for create the new {@link RadioGroup}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link RadioGroup}.
 	 *
 	 * @param id
 	 *            the id
@@ -109,6 +136,17 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 		return group;
 	}
 
+	/**
+	 * Factory method for create the new {@link ListView} for the {@link Radio} objects. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link ListView} for the {@link Radio} objects.
+	 *
+	 * @param group
+	 *            the group
+	 * @param model
+	 *            the model
+	 * @return the new {@link ListView} for the {@link Radio} objects.
+	 */
 	protected ListView<T> newRadioListView(final String id, final IModel<RadioGroupModel<T>> model)
 	{
 		final ListView<T> radioListView = new ListView<T>("choice", model.getObject().getRadios())
@@ -133,11 +171,24 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 		return radioListView;
 	};
 
+	/**
+	 * Factory method for create a new radio name. This method is invoked in the constructor from
+	 * the derived classes and can be overridden so users can provide their own version of a new
+	 * radio name.
+	 *
+	 * @return the new radio name.
+	 */
 	protected String newRadioName()
 	{
 		return "group";
 	}
 
+	/**
+	 * Callback method that can be overwritten to provide specific action for the update.
+	 *
+	 * @param target
+	 *            the target
+	 */
 	protected void onUpdate(final AjaxRequestTarget target)
 	{
 	}

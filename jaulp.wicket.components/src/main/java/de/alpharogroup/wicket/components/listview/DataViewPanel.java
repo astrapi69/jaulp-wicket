@@ -129,9 +129,11 @@ public abstract class DataViewPanel<T extends Serializable> extends BasePanel<Li
 	}
 
 	/**
-	 * New items per page.
+	 * Factory method for create the long of how many items per page will appear. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a long of how many items per page will appear.
 	 *
-	 * @return the long
+	 * @return the long of how many items per page will appear.
 	 */
 	protected long newItemsPerPage()
 	{

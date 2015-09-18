@@ -60,7 +60,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	private RadioGroup<T> radioGroup;
 
 	/**
-	 * Instantiates a new ajax radio panel.
+	 * Instantiates a new {@link AjaxRadioPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -77,7 +77,9 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	}
 
 	/**
-	 * Factory method for creating a new AjaxRadio.
+	 * Factory method for create the new {@link AjaxRadio}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link AjaxRadio}.
 	 *
 	 * @param id
 	 *            the id
@@ -85,7 +87,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	 *            the group
 	 * @param item
 	 *            the item
-	 * @return the ajax radio
+	 * @return the new {@link AjaxRadio}.
 	 */
 	protected AjaxRadio<T> newAjaxRadio(final String id, final RadioGroup<T> group,
 		final ListItem<T> item)
@@ -103,11 +105,15 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	}
 
 	/**
-	 * New form.
+	 * Factory method for create the new {@link Form}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Form}.
 	 *
 	 * @param id
 	 *            the id
-	 * @return the form
+	 * @param model
+	 *            the model
+	 * @return the new {@link Form}
 	 */
 	protected Form<?> newForm(final String id)
 	{
@@ -115,13 +121,15 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	}
 
 	/**
-	 * New radio group.
+	 * Factory method for create the new {@link RadioGroup}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link RadioGroup}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the radio group
+	 * @return the new {@link RadioGroup}
 	 */
 	protected RadioGroup<T> newRadioGroup(final String id, final IModel<T> model)
 	{
@@ -129,13 +137,15 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	}
 
 	/**
-	 * New radios.
+	 * Factory method for create the new {@link ListView} for the {@link AjaxRadio} objects. This
+	 * method is invoked in the constructor from the derived classes and can be overridden so users
+	 * can provide their own version of a new {@link ListView} for the {@link AjaxRadio} objects.
 	 *
 	 * @param group
 	 *            the group
 	 * @param model
 	 *            the model
-	 * @return the component
+	 * @return the new {@link ListView} for the {@link AjaxRadio} objects.
 	 */
 	protected Component newRadios(final RadioGroup<T> group, final IModel<RadioGroupModel<T>> model)
 	{
@@ -157,7 +167,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	}
 
 	/**
-	 * Implement this method to provide special behavior when an radio button is selected.
+	 * Abstract callback method to provide special behavior when an radio button is selected.
 	 *
 	 * @param target
 	 *            the target

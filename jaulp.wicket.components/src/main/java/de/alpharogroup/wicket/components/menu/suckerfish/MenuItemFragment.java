@@ -33,7 +33,7 @@ public final class MenuItemFragment extends Fragment
 	private static final long serialVersionUID = 0L;
 
 	/**
-	 * Instantiates a new menu item fragment.
+	 * Instantiates a new {@link MenuItemFragment}.
 	 *
 	 * @param menuItem
 	 *            the menu item

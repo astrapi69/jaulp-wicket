@@ -31,7 +31,7 @@ class TextFragment extends Fragment
 	private static final long serialVersionUID = 0L;
 
 	/**
-	 * Instantiates a new text fragment.
+	 * Instantiates a new {@link TextFragment}.
 	 * 
 	 * @param label
 	 *            the label

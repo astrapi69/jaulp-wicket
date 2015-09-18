@@ -28,7 +28,7 @@ import de.alpharogroup.wicket.base.examples.velocity.DynamicPage;
 import de.alpharogroup.wicket.base.mainbase.ApplicationBasePanel;
 import de.alpharogroup.wicket.components.menu.suckerfish.MenuItem;
 import de.alpharogroup.wicket.components.menu.suckerfish.MenuPanel;
-import de.alpharogroup.wicket.components.menu.suckerfish.MenuUtils;
+import de.alpharogroup.wicket.components.menu.suckerfish.MenuItemFactory;
 
 
 @ImportResources(resources = { // This css file is currently loaded...
@@ -56,44 +56,44 @@ public class MenubarPanel extends ApplicationBasePanel<Object>
 	private void initializeMenu(final MenuPanel menuBar)
 	{
 
-		final MenuItem miHome = MenuUtils.newMenuItem(HomePage.class, "top.menu.home", this);
+		final MenuItem miHome = MenuItemFactory.newMenuItem(HomePage.class, "top.menu.home", this);
 
 		menuBar.addMenu(miHome);
 
-		final MenuItem miAnother = MenuUtils.newMenuItem(AnotherPage.class, "top.menu.another",
+		final MenuItem miAnother = MenuItemFactory.newMenuItem(AnotherPage.class, "top.menu.another",
 			this);
 
 		menuBar.addMenu(miAnother);
 
-		final MenuItem subMenuFromMiAnother = MenuUtils.newMenuItem(SubmenuPage.class,
+		final MenuItem subMenuFromMiAnother = MenuItemFactory.newMenuItem(SubmenuPage.class,
 			"top.menu.sub.another.overview", this);
 		miAnother.addMenu(subMenuFromMiAnother);
 
-		final MenuItem subMenuDynamic = MenuUtils.newMenuItem(DynamicPage.class,
+		final MenuItem subMenuDynamic = MenuItemFactory.newMenuItem(DynamicPage.class,
 			"top.menu.sub.dynamic.overview", this);
 		miAnother.addMenu(subMenuDynamic);
 
-		final MenuItem textMenu = MenuUtils.newMenuItem(Model.of("Only text"));
+		final MenuItem textMenu = MenuItemFactory.newMenuItem(Model.of("Only text"));
 		miAnother.addMenu(textMenu);
 
-		final MenuItem miViewOrEdit = MenuUtils.newMenuItem(ViewOrEditPage.class,
+		final MenuItem miViewOrEdit = MenuItemFactory.newMenuItem(ViewOrEditPage.class,
 			"top.menu.viewmode", this);
 		menuBar.addMenu(miViewOrEdit);
 
-		final MenuItem miUrls = MenuUtils.newMenuItem(WicketUrlPage.class, "top.menu.urls", this);
+		final MenuItem miUrls = MenuItemFactory.newMenuItem(WicketUrlPage.class, "top.menu.urls", this);
 		menuBar.addMenu(miUrls);
 
-		final MenuItem miLabeled = MenuUtils.newMenuItem(LabeledHomePage.class, "top.menu.labeled",
+		final MenuItem miLabeled = MenuItemFactory.newMenuItem(LabeledHomePage.class, "top.menu.labeled",
 			this);
 
 		menuBar.addMenu(miLabeled);
 
-		final MenuItem miSitemap = MenuUtils.newMenuItem(SiteMapPage.class, "top.menu.sitemap",
+		final MenuItem miSitemap = MenuItemFactory.newMenuItem(SiteMapPage.class, "top.menu.sitemap",
 			this);
 
 		menuBar.addMenu(miSitemap);
 
-		final MenuItem miModel = MenuUtils.newMenuItem(ModelPage.class, "top.menu.model", this);
+		final MenuItem miModel = MenuItemFactory.newMenuItem(ModelPage.class, "top.menu.model", this);
 
 		menuBar.addMenu(miModel);
 	}

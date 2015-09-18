@@ -19,7 +19,8 @@ import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class AjaxEnumRadio extends the class AjaxRadio It restricts the Model to an enum type.
+ * The Class {@link AjaxEnumRadio} extends the class AjaxRadio It restricts the Model to an enum
+ * type.
  * 
  * @param <T>
  *            the generic type that must extends enum.
@@ -34,7 +35,7 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link AjaxEnumRadio}.
 	 * 
 	 * @param id
 	 *            the id
@@ -45,7 +46,7 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T>
 	}
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link AjaxEnumRadio}.
 	 * 
 	 * @param id
 	 *            the id
@@ -58,7 +59,7 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T>
 	}
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link AjaxEnumRadio}.
 	 * 
 	 * @param id
 	 *            the id
@@ -73,7 +74,7 @@ public abstract class AjaxEnumRadio<T extends Enum<?>> extends AjaxRadio<T>
 	}
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link AjaxEnumRadio}.
 	 * 
 	 * @param id
 	 *            the id

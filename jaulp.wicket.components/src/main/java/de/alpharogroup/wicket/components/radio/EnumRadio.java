@@ -35,7 +35,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 	private static final long serialVersionUID = -8391468655460799084L;
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link EnumRadio}.
 	 * 
 	 * @param id
 	 *            the id
@@ -47,7 +47,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 	}
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link EnumRadio}.
 	 * 
 	 * @param id
 	 *            the id
@@ -61,7 +61,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 	}
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link EnumRadio}.
 	 * 
 	 * @param id
 	 *            the id
@@ -77,7 +77,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 	}
 
 	/**
-	 * Instantiates a new enum radio.
+	 * Instantiates a new {@link EnumRadio}.
 	 * 
 	 * @param id
 	 *            the id
@@ -90,6 +90,9 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 		commonInit();
 	}
 
+	/**
+	 * Common init.
+	 */
 	protected void commonInit()
 	{
 		setOutputMarkupId(true);

@@ -24,12 +24,13 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.link.LinkFactory;
 
+
 /**
- * The Class MenuUtils.
+ * A factory for creating MenuItem objects.
  *
  * @author Asterios Raptis
  */
-public class MenuUtils
+public class MenuItemFactory
 {
 
 	/**
@@ -46,6 +47,8 @@ public class MenuUtils
 	 * @param component
 	 *            the component
 	 * @return the bookmarkable page link
+	 * @deprecated use instead
+	 *             {@link LinkFactory#newBookmarkablePageLink(String, Class, String, de.alpharogroup.locale.ResourceBundleKey, Component)}
 	 */
 	public static BookmarkablePageLink<String> newBookmarkablePageLink(final String linkId,
 		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,

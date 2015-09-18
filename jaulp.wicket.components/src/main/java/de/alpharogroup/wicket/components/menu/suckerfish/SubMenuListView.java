@@ -35,7 +35,7 @@ public final class SubMenuListView extends ListView<MenuItem>
 	private final MarkupContainer markupProvider;
 
 	/**
-	 * Instantiates a new sub menu list view.
+	 * Instantiates a new {@link SubMenuListView}.
 	 * 
 	 * @param id
 	 *            the id
@@ -69,11 +69,7 @@ public final class SubMenuListView extends ListView<MenuItem>
 	}
 
 	/**
-	 * {@inheritDoc}.
-	 * 
-	 * @param item
-	 *            the item
-	 * @see org.apache.wicket.markup.html.list.ListView#populateItem(org.apache.wicket.markup.html.list.ListItem)
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected void populateItem(final ListItem<MenuItem> item)

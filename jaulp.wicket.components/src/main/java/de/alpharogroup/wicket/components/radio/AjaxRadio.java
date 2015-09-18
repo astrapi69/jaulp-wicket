@@ -35,7 +35,7 @@ public abstract class AjaxRadio<T> extends Radio<T>
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new ajax radio.
+	 * Instantiates a new {@link AjaxRadio}.
 	 *
 	 * @param id
 	 *            the id
@@ -47,7 +47,7 @@ public abstract class AjaxRadio<T> extends Radio<T>
 	}
 
 	/**
-	 * Instantiates a new ajax radio.
+	 * Instantiates a new {@link AjaxRadio}.
 	 *
 	 * @param id
 	 *            the id
@@ -61,7 +61,7 @@ public abstract class AjaxRadio<T> extends Radio<T>
 	}
 
 	/**
-	 * Instantiates a new ajax radio.
+	 * Instantiates a new {@link AjaxRadio}.
 	 *
 	 * @param id
 	 *            the id
@@ -77,7 +77,7 @@ public abstract class AjaxRadio<T> extends Radio<T>
 	}
 
 	/**
-	 * Instantiates a new ajax radio.
+	 * Instantiates a new {@link AjaxRadio}.
 	 *
 	 * @param id
 	 *            the id

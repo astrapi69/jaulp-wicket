@@ -32,6 +32,9 @@ import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.header.contributors.HeaderResponseExtensions;
 
+/**
+ * The Class {@link MenuPanel}.
+ */
 @ImportResources(resources = { @ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
 public class MenuPanel extends BasePanel<Object>
 {
@@ -56,7 +59,7 @@ public class MenuPanel extends BasePanel<Object>
 	private final List<MenuItem> topMenuItems = new ArrayList<>();
 
 	/**
-	 * Instantiates a new suckerfish menu panel.
+	 * Instantiates a new {@link MenuPanel}.
 	 *
 	 * @param id
 	 *            the id
