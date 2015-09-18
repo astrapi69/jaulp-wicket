@@ -75,7 +75,7 @@ Another way is to start the example application programmaticly with jetty. In ev
 
 #### How to help and improve it ####
 
-Create your own fork of [astrapi69/jaulp.core](https://github.com/astrapi69/jaulp.wicket/fork)
+Create your own fork of [astrapi69/jaulp.wicket/fork](https://github.com/astrapi69/jaulp.wicket/fork)
 
 To share your changes, [submit a pull request](https://github.com/astrapi69/jaulp.wicket/pull/new/master).
 
