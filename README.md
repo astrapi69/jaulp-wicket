@@ -73,6 +73,14 @@ Another way is to start the example application programmaticly with jetty. In ev
   
    [BaseWebApplication]: https://github.com/astrapi69/jaulp.wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
 
+#### How to help and improve it ####
+
+Create your own fork of [astrapi69/jaulp.core](https://github.com/astrapi69/jaulp.wicket/fork)
+
+To share your changes, [submit a pull request](https://github.com/astrapi69/jaulp.wicket/pull/new/master).
+
+Don't forget to add new units tests on your changes.
+
 ## Contacting the Developer
 
 
