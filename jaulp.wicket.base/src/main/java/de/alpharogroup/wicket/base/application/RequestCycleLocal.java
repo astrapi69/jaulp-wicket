@@ -85,6 +85,6 @@ public class RequestCycleLocal<T extends Serializable>
 	 */
 	public void set(final T value)
 	{
-		getRequestCycle().setMetaData(key, value);
+		getRequestCycle().setMetaData(key, Args.notNull(value, "value"));
 	}
 }
