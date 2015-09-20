@@ -177,4 +177,12 @@
 	<entry key="term.of.use.place.of.fulfilment.and.place.of.jurisdiction.and.other.regulations.content.paragraph.firstlabel">
 	Place of fulfilment and of jurisdiction is the city {0}. Every changes, subsidiary agreements, and complements requires the written form.
 	</entry>
+	<entry key="term.of.use.cookies.head.label">
+	11. Cookies
+	</entry>
+	<entry key="term.of.use.cookies.content.paragraph.first.label">
+	Für unsere Qualitätssicherung und Erweiterung des Funktionsumfangs unseres Angebot im Internet verwenden wir auf unsere Webseite sogenannte Cookies. 
+	Es handelt sich dabei um Textdateien, die auf dem Computer des Nutzers gespeichert werden. 
+	Über die Cookies kann die Anzahl der Besuche auf unsere Webseite festgestellt werden. Wir verwenden diese Informationen ausschließlich zur Verbesserung von unsere Webseite.
+	</entry>
 </properties>
