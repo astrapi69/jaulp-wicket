@@ -29,6 +29,11 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.wicket.base.pageparameters.ParameterKeys;
 
+/**
+ * The Class {@link ResetPasswordBean} captures the data for reset the password action.
+ * 
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -49,7 +54,9 @@ public class ResetPasswordBean implements Serializable
 		return bean;
 	}
 
+	/** The username. */
 	private String username;
 
+	/** The confirmation code. */
 	private String confirmationCode;
 }

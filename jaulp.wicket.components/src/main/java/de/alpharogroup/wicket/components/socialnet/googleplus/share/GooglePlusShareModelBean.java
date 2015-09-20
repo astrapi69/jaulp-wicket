@@ -20,53 +20,118 @@ import java.io.Serializable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-public class GooglePlusShareModel implements Serializable
+/**
+ * The Class {@link GooglePlusShareModelBean}.
+ */
+public class GooglePlusShareModelBean implements Serializable
 {
 
+	/**
+	 * The Class {@link Builder}.
+	 */
 	public static class Builder
 	{
+
+		/** The css class. */
 		private String cssClass;
+
+		/** The data annotation. */
 		private String dataAnnotation;
-		private String dataWith;
+
+		/** The data href. */
 		private String dataHref;
-		private String scriptSrc;
+
+		/** The data with. */
+		private String dataWith;
+
+		/** The locale. */
 		private String locale;
 
-		public GooglePlusShareModel build()
+		/** The script src. */
+		private String scriptSrc;
+
+		/**
+		 * Builds the.
+		 *
+		 * @return the google plus share model bean
+		 */
+		public GooglePlusShareModelBean build()
 		{
-			return new GooglePlusShareModel(this);
+			return new GooglePlusShareModelBean(this);
 		}
 
+		/**
+		 * Css class.
+		 *
+		 * @param cssClass
+		 *            the css class
+		 * @return the builder
+		 */
 		public Builder cssClass(final String cssClass)
 		{
 			this.cssClass = cssClass;
 			return this;
 		}
 
+		/**
+		 * Data annotation.
+		 *
+		 * @param dataAnnotation
+		 *            the data annotation
+		 * @return the builder
+		 */
 		public Builder dataAnnotation(final String dataAnnotation)
 		{
 			this.dataAnnotation = dataAnnotation;
 			return this;
 		}
 
+		/**
+		 * Data href.
+		 *
+		 * @param dataHref
+		 *            the data href
+		 * @return the builder
+		 */
 		public Builder dataHref(final String dataHref)
 		{
 			this.dataHref = dataHref;
 			return this;
 		}
 
+		/**
+		 * Data with.
+		 *
+		 * @param dataWith
+		 *            the data with
+		 * @return the builder
+		 */
 		public Builder dataWith(final String dataWith)
 		{
 			this.dataWith = dataWith;
 			return this;
 		}
 
+		/**
+		 * Locale.
+		 *
+		 * @param locale
+		 *            the locale
+		 * @return the builder
+		 */
 		public Builder locale(final String locale)
 		{
 			this.locale = locale;
 			return this;
 		}
 
+		/**
+		 * Script src.
+		 *
+		 * @param scriptSrc
+		 *            the script src
+		 * @return the builder
+		 */
 		public Builder scriptSrc(final String scriptSrc)
 		{
 			this.scriptSrc = scriptSrc;
@@ -74,21 +139,34 @@ public class GooglePlusShareModel implements Serializable
 		}
 	}
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The css class. */
 	private final String cssClass;
 
+	/** The data annotation. */
 	private final String dataAnnotation;
 
-	private final String dataWith;
-
+	/** The data href. */
 	private final String dataHref;
 
-	private final String scriptSrc;
+	/** The data with. */
+	private final String dataWith;
 
+	/** The locale. */
 	private final String locale;
 
-	private GooglePlusShareModel(final Builder builder)
+	/** The script src. */
+	private final String scriptSrc;
+
+	/**
+	 * Instantiates a new {@link GooglePlusShareModelBean}.
+	 *
+	 * @param builder
+	 *            the builder
+	 */
+	private GooglePlusShareModelBean(final Builder builder)
 	{
 		this.cssClass = builder.cssClass;
 		this.dataAnnotation = builder.dataAnnotation;
@@ -98,37 +176,72 @@ public class GooglePlusShareModel implements Serializable
 		this.locale = builder.locale;
 	}
 
+	/**
+	 * Gets the css class.
+	 *
+	 * @return the css class
+	 */
 	public String getCssClass()
 	{
 		return cssClass;
 	}
 
+	/**
+	 * Gets the data annotation.
+	 *
+	 * @return the data annotation
+	 */
 	public String getDataAnnotation()
 	{
 		return dataAnnotation;
 	}
 
+	/**
+	 * Gets the data href.
+	 *
+	 * @return the data href
+	 */
 	public String getDataHref()
 	{
 		return dataHref;
 	}
 
+	/**
+	 * Gets the data with.
+	 *
+	 * @return the data with
+	 */
 	public String getDataWith()
 	{
 		return dataWith;
 	}
 
+	/**
+	 * Gets the locale.
+	 *
+	 * @return the locale
+	 */
 	public String getLocale()
 	{
 		return locale;
 	}
 
+	/**
+	 * Gets the script src.
+	 *
+	 * @return the script src
+	 */
 	public String getScriptSrc()
 	{
 		return scriptSrc;
 	}
 
-	public IModel<GooglePlusShareModel> toModel()
+	/**
+	 * To model.
+	 *
+	 * @return the i model
+	 */
+	public IModel<GooglePlusShareModelBean> toModel()
 	{
 		return Model.of(this);
 	}

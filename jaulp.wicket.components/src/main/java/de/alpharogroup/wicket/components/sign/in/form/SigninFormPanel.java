@@ -205,9 +205,9 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 *            the model
 	 * @return the new {@link SigninPanel} that contains the TextField for the email and password.
 	 */
-	protected Component newSigninPanel(final String id, final IModel<? extends SignInModel> model)
+	protected Component newSigninPanel(final String id, final IModel<T> model)
 	{
-		final Component component = new SigninPanel(id, model);
+		final Component component = new SigninPanel<>(id, model);
 		return component;
 	}
 

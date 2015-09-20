@@ -31,7 +31,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 /**
  * The Class {@link ChangePasswordFormPanel}.
  */
-public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordModel>
+public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordModelBean>
 {
 
 	/**
@@ -59,7 +59,7 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	 * @param model
 	 *            the component model
 	 */
-	public ChangePasswordFormPanel(final String id, final IModel<ChangePasswordModel> model)
+	public ChangePasswordFormPanel(final String id, final IModel<ChangePasswordModelBean> model)
 	{
 		super(id, model);
 		form = newForm("form", model);

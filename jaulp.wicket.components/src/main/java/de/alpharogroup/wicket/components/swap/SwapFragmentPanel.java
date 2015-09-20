@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.swap;
 import lombok.Getter;
 
 import org.apache.log4j.Logger;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Fragment;
@@ -26,7 +27,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * The abstract class SwapFragmentPanel holds to Fragment that can be swapped.
+ * The abstract class {@link SwapFragmentPanel} holds two Fragments that can be swapped.
  *
  * @param <T>
  *            the generic type of the model object.
@@ -55,7 +56,7 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
 
 	/**
-	 * Instantiates a new swap fragment panel.
+	 * Instantiates a new {@link SwapFragmentPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -71,20 +72,26 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Abstract factory method for the edit fragment.
-	 *
+	 * Abstract factory method for creating the new {@link Fragment} for the editable
+	 * {@link Component}. This method is invoked in the constructor from the derived classes and
+	 * must be overridden so users can provide their own version of a new {@link Fragment} for the
+	 * view.
+	 * 
 	 * @param id
 	 *            the id
-	 * @return the edit fragment
+	 * @return the new {@link Fragment} for the view.
 	 */
 	protected abstract Fragment newEditFragment(final String id);
 
 	/**
-	 * Abstract factory method for the view fragment.
-	 *
+	 * Factory method for creating the new {@link Fragment} for the view(not editable)
+	 * {@link Component}. This method is invoked in the constructor from the derived classes and
+	 * must be overridden so users can provide their own version of a new {@link Fragment} for the
+	 * view(not editable) {@link Component}.
+	 * 
 	 * @param id
 	 *            the id
-	 * @return the view fragment
+	 * @return the new {@link Fragment} for the view(not editable) {@link Component}.
 	 */
 	protected abstract Fragment newViewFragment(final String id);
 

@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.termofuse;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
@@ -31,12 +33,12 @@ import de.alpharogroup.wicket.components.termofuse.general.GeneralTermsAndCondit
 import de.alpharogroup.wicket.components.termofuse.legalreferences.LegalReferencesPanel;
 import de.alpharogroup.wicket.components.termofuse.liability.LiabilityPanel;
 import de.alpharogroup.wicket.components.termofuse.modificationsclause.ModificationsClausePanel;
-import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
+import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModelBean;
 import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesPanel;
 import de.alpharogroup.wicket.components.termofuse.salvatoriusclause.SalvatoriusClausePanel;
 
 /**
- * The class TermOfUsePanel.
+ * The class {@link TermOfUsePanel}.
  * 
  * @author Asterios Raptis
  */
@@ -48,36 +50,74 @@ public abstract class TermOfUsePanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** The general terms and conditions panel. */
+	@Getter
 	private Component generalTermsAndConditionsPanel;
 
+	/** The legal references panel. */
+	@Getter
 	private Component legalReferencesPanel;
 
+	/** The contract panel. */
+	@Getter
 	private Component contractPanel;
 
+	/** The data protection panel. */
+	@Getter
 	private Component dataProtectionPanel;
 
+	/** The copyright panel. */
+	@Getter
 	private Component copyrightPanel;
 
+	/** The cancellation panel. */
+	@Getter
 	private Component cancellationPanel;
 
+	/** The liability panel. */
+	@Getter
 	private Component liabilityPanel;
 
+	/** The rights and duties panel. */
+	@Getter
 	private Component rightsAndDutiesPanel;
 
+	/** The modifications clause panel. */
+	@Getter
 	private Component modificationsClausePanel;
 
+	/** The salvatorius clause panel. */
+	@Getter
 	private Component salvatoriusClausePanel;
 
+	/** The fulfilment and jurisdiction place panel. */
+	@Getter
 	private Component fulfilmentAndJurisdictionPlacePanel;
 
+	/** The disclaimer panel. */
+	@Getter
 	private Component disclaimerPanel;
 
+	/**
+	 * Instantiates a new {@link TermOfUsePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public TermOfUsePanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public TermOfUsePanel(final String id, final IModel<TermOfUseModel> model)
+	/**
+	 * Instantiates a new {@link TermOfUsePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public TermOfUsePanel(final String id, final IModel<TermOfUseModelBean> model)
 	{
 		super(id, model);
 
@@ -104,7 +144,7 @@ public abstract class TermOfUsePanel extends Panel
 			Model.of(model.getObject().getLiabilityModel())));
 
 		add(rightsAndDutiesPanel = newRightsAndDutiesPanel("rightsAndDutiesPanel",
-			Model.of(model.getObject().getRightsAndDutiesModel())));
+			Model.of(model.getObject().getRightsAndDutiesModelBean())));
 
 		add(modificationsClausePanel = newModificationsClausePanel("modificationsClausePanel",
 			Model.of(model.getObject().getModificationsClauseModel())));
@@ -121,131 +161,207 @@ public abstract class TermOfUsePanel extends Panel
 
 	}
 
-	public Component getCancellationPanel()
-	{
-		return cancellationPanel;
-	}
-
-	public Component getContractPanel()
-	{
-		return contractPanel;
-	}
-
-	public Component getCopyrightPanel()
-	{
-		return copyrightPanel;
-	}
-
-	public Component getDataProtectionPanel()
-	{
-		return dataProtectionPanel;
-	}
-
-	public Component getDisclaimerPanel()
-	{
-		return disclaimerPanel;
-	}
-
-	public Component getFulfilmentAndJurisdictionPlacePanel()
-	{
-		return fulfilmentAndJurisdictionPlacePanel;
-	}
-
-	public Component getGeneralTermsAndConditionsPanel()
-	{
-		return generalTermsAndConditionsPanel;
-	}
-
-	public Component getLegalReferencesPanel()
-	{
-		return legalReferencesPanel;
-	}
-
-	public Component getLiabilityPanel()
-	{
-		return liabilityPanel;
-	}
-
-	public Component getModificationsClausePanel()
-	{
-		return modificationsClausePanel;
-	}
-
-	public Component getRightsAndDutiesPanel()
-	{
-		return rightsAndDutiesPanel;
-	}
-
-	public Component getSalvatoriusClausePanel()
-	{
-		return salvatoriusClausePanel;
-	}
-
+	/**
+	 * Factory method for creating the new {@link Component} for the cancellation. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the cancellation.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the cancellation
+	 */
 	protected Component newCancellationPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new CancellationPanel(id, Model.of(model.getObject()));
 	}
 
-	protected Component newContractPanel(final String id, final IModel<HeaderContentListModelBean> model)
+	/**
+	 * Factory method for creating the new {@link Component} for the contract. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the contract.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the contract
+	 */
+	protected Component newContractPanel(final String id,
+		final IModel<HeaderContentListModelBean> model)
 	{
 		return new ContractPanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the copyright. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the copyright.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the copyright
+	 */
 	protected Component newCopyrightPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new CopyrightPanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the data protection. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the data protection.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the data protection
+	 */
 	protected Component newDataProtectionPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new DataProtectionPanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the disclaimer. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the disclaimer.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the disclaimer
+	 */
 	protected Component newDisclaimerPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new DisclaimerPanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the fulfilment and jurisdiction
+	 * place. This method is invoked in the constructor from the derived classes and can be
+	 * overridden so users can provide their own version of a new {@link Component} for the
+	 * fulfilment and jurisdiction place.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the fulfilment and jurisdiction place
+	 */
 	protected Component newFulfilmentAndJurisdictionPlacePanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new FulfilmentAndJurisdictionPlacePanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the general terms and conditions.
+	 * This method is invoked in the constructor from the derived classes and can be overridden so
+	 * users can provide their own version of a new {@link Component} for the general terms and
+	 * conditions.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the general terms and conditions
+	 */
 	protected Component newGeneralTermsAndConditionsPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new GeneralTermsAndConditionsPanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the legal references. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the legal references.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the legal references
+	 */
 	protected Component newLegalReferencesPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new LegalReferencesPanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the liability. This method is
+	 * invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the liability.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the liability
+	 */
 	protected Component newLiabilityPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new LiabilityPanel(id, Model.of(model.getObject()));
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the modifications clause. This
+	 * method is invoked in the constructor from the derived classes and can be overridden so users
+	 * can provide their own version of a new {@link Component} for the modifications clause.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the modifications clause
+	 */
 	protected Component newModificationsClausePanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		return new ModificationsClausePanel(id, Model.of(model.getObject()));
 	}
 
+
+	/**
+	 * Factory method for creating the new {@link Component} for the rights and duties. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the rights and duties.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the rights and duties
+	 */
 	protected Component newRightsAndDutiesPanel(final String id,
-		final IModel<RightsAndDutiesModel> model)
+		final IModel<RightsAndDutiesModelBean> model)
 	{
 		return new RightsAndDutiesPanel(id, model);
 	}
 
+	/**
+	 * Factory method for creating the new {@link Component} for the salvatorius clause. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link Component} for the salvatorius clause.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the salvatorius clause
+	 */
 	protected Component newSalvatoriusClausePanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{

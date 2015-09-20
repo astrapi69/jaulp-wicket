@@ -26,13 +26,13 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.base.util.url.WicketUrlExtensions;
-import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndShareModel;
+import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndShareModelBean;
 import de.alpharogroup.wicket.components.socialnet.fb.like.and.share.FacebookLikeAndSharePanel;
-import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusShareModel;
+import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusShareModelBean;
 import de.alpharogroup.wicket.components.socialnet.googleplus.share.GooglePlusSharePanel;
-import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowModel;
+import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowModelBean;
 import de.alpharogroup.wicket.components.socialnet.twitter.follow.TwitterFollowPanel;
-import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterShareModel;
+import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterShareModelBean;
 import de.alpharogroup.wicket.components.socialnet.twitter.share.TwitterSharePanel;
 
 /**
@@ -49,7 +49,7 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 
 	protected Component newFacebookLikeAndSharePanel(final String id)
 	{
-		final FacebookLikeAndShareModel model = new FacebookLikeAndShareModel.Builder().build();
+		final FacebookLikeAndShareModelBean model = new FacebookLikeAndShareModelBean.Builder().build();
 		final FacebookLikeAndSharePanel facebookLikeAndSharePanel = new FacebookLikeAndSharePanel(
 			id, Model.of(model));
 		return facebookLikeAndSharePanel;
@@ -57,7 +57,7 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 
 	protected Component newGooglePlusSharePanel(final String id)
 	{
-		final IModel<GooglePlusShareModel> model = new GooglePlusShareModel.Builder()
+		final IModel<GooglePlusShareModelBean> model = new GooglePlusShareModelBean.Builder()
 			.scriptSrc("https://apis.google.com/js/platform.js")
 			.locale(LocaleUtils.getLocaleFileSuffix(Session.get().getLocale(), false, false, false))
 			.cssClass("g-plusone").dataAnnotation("inline").dataWith("300")
@@ -69,7 +69,7 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 	protected Component newTwitterFollowPanel(final String id)
 	{
 		final String username = "jaulp.wicket";
-		return new TwitterFollowPanel(id, new TwitterFollowModel.Builder().username(username)
+		return new TwitterFollowPanel(id, new TwitterFollowModelBean.Builder().username(username)
 			.urlPrefix("https://twitter.com/").url("https://twitter.com/" + username).build()
 			.toModel());
 	}
@@ -77,7 +77,7 @@ public class SocialNetworksExamplePanel extends BasePanel<SocialNetworkBean>
 	protected Component newTwitterSharePanel(final String id)
 	{
 		final String dataUrl = "http://www.jaulp-wicket-components.com";
-		final IModel<TwitterShareModel> model = new TwitterShareModel.Builder()
+		final IModel<TwitterShareModelBean> model = new TwitterShareModelBean.Builder()
 			.shareUrl("https://twitter.com/share").dataUrl(dataUrl).via(dataUrl).counturl(dataUrl)
 			.build().toModel();
 		return new TwitterSharePanel(id, model);

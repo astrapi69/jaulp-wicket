@@ -25,22 +25,42 @@ import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
 
+/**
+ * The Class {@link SalvatoriusClausePanel}.
+ */
 public class SalvatoriusClausePanel extends HeaderContentListPanel
 {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link SalvatoriusClausePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public SalvatoriusClausePanel(final String id)
 	{
 		this(id, null);
 	}
 
+	/**
+	 * Instantiates a new {@link SalvatoriusClausePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public SalvatoriusClausePanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
@@ -48,6 +68,9 @@ public class SalvatoriusClausePanel extends HeaderContentListPanel
 			new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Component newListComponent(final String id, final ListItem<ResourceBundleKey> item)
 	{

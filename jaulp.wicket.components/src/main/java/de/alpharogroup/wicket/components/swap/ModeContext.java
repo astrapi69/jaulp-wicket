@@ -15,7 +15,13 @@
  */
 package de.alpharogroup.wicket.components.swap;
 
+/**
+ * The Enum {@link ModeContext} indicates in which mode a component is.
+ */
 public enum ModeContext
 {
-	VIEW_MODE, EDIT_MODE;
+	/** The view mode. */
+	VIEW_MODE,
+	/** The edit mode. */
+	EDIT_MODE;
 }

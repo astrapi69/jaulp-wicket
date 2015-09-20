@@ -20,53 +20,118 @@ import java.io.Serializable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-public class TwitterShareModel implements Serializable
+/**
+ * The Class {@link TwitterShareModelBean}.
+ */
+public class TwitterShareModelBean implements Serializable
 {
 
+	/**
+	 * The Class {@link Builder}.
+	 */
 	public static class Builder
 	{
+
+		/** The share url. */
 		private String shareUrl;
+
+		/** The data url. */
 		private String dataUrl;
+
+		/** The via. */
 		private String via;
+
+		/** The counturl. */
 		private String counturl;
+
+		/** The show count. */
 		private Boolean showCount = Boolean.FALSE;
+
+		/** The count align. */
 		private String countAlign;
 
-		public TwitterShareModel build()
+		/**
+		 * Builds the.
+		 *
+		 * @return the twitter share model bean
+		 */
+		public TwitterShareModelBean build()
 		{
-			return new TwitterShareModel(this);
+			return new TwitterShareModelBean(this);
 		}
 
+		/**
+		 * Count align.
+		 *
+		 * @param countAlign
+		 *            the count align
+		 * @return the builder
+		 */
 		public Builder countAlign(final String countAlign)
 		{
 			this.countAlign = countAlign;
 			return this;
 		}
 
+		/**
+		 * Counturl.
+		 *
+		 * @param counturl
+		 *            the counturl
+		 * @return the builder
+		 */
 		public Builder counturl(final String counturl)
 		{
 			this.counturl = counturl;
 			return this;
 		}
 
+		/**
+		 * Data url.
+		 *
+		 * @param dataUrl
+		 *            the data url
+		 * @return the builder
+		 */
 		public Builder dataUrl(final String dataUrl)
 		{
 			this.dataUrl = dataUrl;
 			return this;
 		}
 
+		/**
+		 * Share url.
+		 *
+		 * @param shareUrl
+		 *            the share url
+		 * @return the builder
+		 */
 		public Builder shareUrl(final String shareUrl)
 		{
 			this.shareUrl = shareUrl;
 			return this;
 		}
 
+		/**
+		 * Show count.
+		 *
+		 * @param showCount
+		 *            the show count
+		 * @return the builder
+		 */
 		public Builder showCount(final Boolean showCount)
 		{
 			this.showCount = showCount;
 			return this;
 		}
 
+		/**
+		 * Via.
+		 *
+		 * @param via
+		 *            the via
+		 * @return the builder
+		 */
 		public Builder via(final String via)
 		{
 			this.via = via;
@@ -74,21 +139,34 @@ public class TwitterShareModel implements Serializable
 		}
 	}
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The share url. */
 	private final String shareUrl;
 
+	/** The data url. */
 	private final String dataUrl;
 
+	/** The via. */
 	private final String via;
 
+	/** The counturl. */
 	private final String counturl;
 
+	/** The show count. */
 	private Boolean showCount = Boolean.FALSE;
 
+	/** The count align. */
 	private final String countAlign;
 
-	private TwitterShareModel(final Builder builder)
+	/**
+	 * Instantiates a new {@link TwitterShareModelBean}.
+	 *
+	 * @param builder
+	 *            the builder
+	 */
+	private TwitterShareModelBean(final Builder builder)
 	{
 		this.shareUrl = builder.shareUrl;
 		this.dataUrl = builder.dataUrl;
@@ -98,37 +176,72 @@ public class TwitterShareModel implements Serializable
 		this.countAlign = builder.countAlign;
 	}
 
+	/**
+	 * Gets the count align.
+	 *
+	 * @return the count align
+	 */
 	public String getCountAlign()
 	{
 		return countAlign;
 	}
 
+	/**
+	 * Gets the counturl.
+	 *
+	 * @return the counturl
+	 */
 	public String getCounturl()
 	{
 		return counturl;
 	}
 
+	/**
+	 * Gets the data url.
+	 *
+	 * @return the data url
+	 */
 	public String getDataUrl()
 	{
 		return dataUrl;
 	}
 
+	/**
+	 * Gets the share url.
+	 *
+	 * @return the share url
+	 */
 	public String getShareUrl()
 	{
 		return shareUrl;
 	}
 
+	/**
+	 * Gets the show count.
+	 *
+	 * @return the show count
+	 */
 	public Boolean getShowCount()
 	{
 		return showCount;
 	}
 
+	/**
+	 * Gets the via.
+	 *
+	 * @return the via
+	 */
 	public String getVia()
 	{
 		return via;
 	}
 
-	public IModel<TwitterShareModel> toModel()
+	/**
+	 * To model.
+	 *
+	 * @return the i model
+	 */
+	public IModel<TwitterShareModelBean> toModel()
 	{
 		return Model.of(this);
 	}

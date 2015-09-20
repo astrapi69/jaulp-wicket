@@ -27,6 +27,11 @@ import org.apache.wicket.Page;
 
 import de.alpharogroup.auth.models.UsernameSignInModel;
 
+/**
+ * The Class {@link SignInWithRedirectionBean} captures the data for sign in action with redirection feature.
+ * 
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode

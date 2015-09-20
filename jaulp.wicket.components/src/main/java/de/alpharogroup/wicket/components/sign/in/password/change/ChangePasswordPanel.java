@@ -60,7 +60,7 @@ public class ChangePasswordPanel extends Panel
 	 * @param model
 	 *            the model
 	 */
-	public ChangePasswordPanel(final String id, final IModel<ChangePasswordModel> model)
+	public ChangePasswordPanel(final String id, final IModel<ChangePasswordModelBean> model)
 	{
 		super(id);
 		add(currentPassword = newCurrentPasswordTextField("currentPassword", model));
@@ -80,20 +80,20 @@ public class ChangePasswordPanel extends Panel
 	 * @return the new PasswordTextField for the current password.
 	 */
 	protected Component newCurrentPasswordTextField(final String id,
-		final IModel<ChangePasswordModel> model)
+		final IModel<ChangePasswordModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"change.pw.current.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.current.password.label", this);
-		final LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(
+		final LabeledPasswordTextFieldPanel<ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected PasswordTextField newPasswordTextField(final String id,
-				final IModel<ChangePasswordModel> model)
+				final IModel<ChangePasswordModelBean> model)
 			{
 				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
 					.getCurrentPassword()));
@@ -120,20 +120,20 @@ public class ChangePasswordPanel extends Panel
 	 * @return the new PasswordTextField for the new password.
 	 */
 	protected Component newPasswordTextField(final String id,
-		final IModel<ChangePasswordModel> model)
+		final IModel<ChangePasswordModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"change.pw.new.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.new.password.label", this);
-		final LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(
+		final LabeledPasswordTextFieldPanel<ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected PasswordTextField newPasswordTextField(final String id,
-				final IModel<ChangePasswordModel> model)
+				final IModel<ChangePasswordModelBean> model)
 			{
 				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
 					.getNewPassword()));
@@ -160,20 +160,20 @@ public class ChangePasswordPanel extends Panel
 	 * @return the text field
 	 */
 	protected Component newRepeatPasswordTextField(final String id,
-		final IModel<ChangePasswordModel> model)
+		final IModel<ChangePasswordModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"change.pw.new.password.repeat.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.new.password.repeat.label", this);
-		final LabeledPasswordTextFieldPanel<ChangePasswordModel> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModel>(
+		final LabeledPasswordTextFieldPanel<ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected PasswordTextField newPasswordTextField(final String id,
-				final IModel<ChangePasswordModel> model)
+				final IModel<ChangePasswordModelBean> model)
 			{
 				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
 					.getRepeatNewPassword()));

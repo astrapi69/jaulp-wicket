@@ -15,18 +15,18 @@
  */
 package de.alpharogroup.wicket.components.sign.in.password.reset;
 
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import de.alpharogroup.wicket.base.BasePanel;
 
 /**
- * The class ResetPasswordPanel.
+ * The Class {@link AbstractResetPasswordPanel}.
  * 
  * @author Asterios Raptis
  */
-public abstract class AbstractResetPasswordPanel extends GenericPanel<ResetPasswordBean>
+public abstract class AbstractResetPasswordPanel extends BasePanel<ResetPasswordBean>
 {
 
 	/**
@@ -34,16 +34,41 @@ public abstract class AbstractResetPasswordPanel extends GenericPanel<ResetPassw
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link AbstractResetPasswordPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param parameters
+	 *            the parameters
+	 */
 	public AbstractResetPasswordPanel(final String id, final PageParameters parameters)
 	{
 		this(id, Model.of(ResetPasswordBean.getResetPasswordBean(parameters)));
 	}
 
+	/**
+	 * Instantiates a new {@link AbstractResetPasswordPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public AbstractResetPasswordPanel(final String id, final IModel<ResetPasswordBean> model)
 	{
 		super(id, model);
 		onReset(model.getObject().getUsername(), model.getObject().getConfirmationCode());
 	}
 
+	/**
+	 * Abstract callback method that must be overwritten to provide the action for reset the
+	 * password.
+	 *
+	 * @param username
+	 *            the username
+	 * @param confirmationCode
+	 *            the confirmation code
+	 */
 	protected abstract void onReset(final String username, final String confirmationCode);
 }

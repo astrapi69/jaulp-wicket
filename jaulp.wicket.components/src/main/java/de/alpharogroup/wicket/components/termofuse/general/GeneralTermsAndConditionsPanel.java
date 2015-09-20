@@ -26,11 +26,10 @@ import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
 
 /**
- * The Class GeneralTermsAndConditionsPanel.
+ * The Class {@link GeneralTermsAndConditionsPanel}.
  */
 public class GeneralTermsAndConditionsPanel extends HeaderContentListPanel
 {
-
 
 	/**
 	 * The serialVersionUID.
@@ -38,7 +37,7 @@ public class GeneralTermsAndConditionsPanel extends HeaderContentListPanel
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new general terms and conditions panel.
+	 * Instantiates a new {@link GeneralTermsAndConditionsPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -48,12 +47,23 @@ public class GeneralTermsAndConditionsPanel extends HeaderContentListPanel
 		this(id, null);
 	}
 
+	/**
+	 * Instantiates a new {@link GeneralTermsAndConditionsPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public GeneralTermsAndConditionsPanel(final String id,
 		final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
@@ -61,6 +71,9 @@ public class GeneralTermsAndConditionsPanel extends HeaderContentListPanel
 			new JQueryJsAppenderBehavior("wrap", "<h1></h1>"));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Component newListComponent(final String id, final ListItem<ResourceBundleKey> item)
 	{

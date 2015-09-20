@@ -24,17 +24,35 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 
 import de.alpharogroup.wicket.base.BasePanel;
 
-public class TwitterSharePanel extends BasePanel<TwitterShareModel>
+/**
+ * The Class {@link TwitterSharePanel}.
+ */
+public class TwitterSharePanel extends BasePanel<TwitterShareModelBean>
 {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link TwitterSharePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public TwitterSharePanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public TwitterSharePanel(final String id, final IModel<TwitterShareModel> model)
+	/**
+	 * Instantiates a new {@link TwitterSharePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public TwitterSharePanel(final String id, final IModel<TwitterShareModelBean> model)
 	{
 		super(id, model);
 		final ExternalLink twitterShareLink = new ExternalLink("shareUrl", model.getObject()
@@ -65,6 +83,9 @@ public class TwitterSharePanel extends BasePanel<TwitterShareModel>
 		add(twitterShareLink);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(final IHeaderResponse response)
 	{

@@ -17,17 +17,18 @@ package de.alpharogroup.wicket.components.sign.up;
 
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
+import lombok.Getter;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
@@ -36,7 +37,7 @@ import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 /**
  * The Class SignupPanel.
  */
-public class SignupPanel extends Panel
+public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -46,12 +47,15 @@ public class SignupPanel extends Panel
 	protected static final Logger LOGGER = LoggerFactory.getLogger(SignupPanel.class);
 
 	/** The username. */
+	@Getter
 	private Component username;
 
 	/** The signin panel. */
+	@Getter
 	private Component signinPanel;
 
 	/** The repeat password. */
+	@Getter
 	private Component repeatPassword;
 
 	/**
@@ -63,43 +67,13 @@ public class SignupPanel extends Panel
 	 *            the model
 	 */
 	@SuppressWarnings("unchecked")
-	public SignupPanel(final String id, final IModel<? extends BaseUsernameSignUpModel> model)
+	public SignupPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
-		add(username = newUsernameTextField("username", (IModel<BaseUsernameSignUpModel>)model));
+		add(username = newUsernameTextField("username", model));
 		add(signinPanel = newSigninPanel("signinPanel", model));
 		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
 			(IModel<BaseUsernameSignUpModel>)model));
-	}
-
-	/**
-	 * Gets the repeat password.
-	 *
-	 * @return the repeat password
-	 */
-	public Component getRepeatPassword()
-	{
-		return repeatPassword;
-	}
-
-	/**
-	 * Gets the signin panel.
-	 *
-	 * @return the signin panel
-	 */
-	public Component getSigninPanel()
-	{
-		return signinPanel;
-	}
-
-	/**
-	 * Gets the username.
-	 *
-	 * @return the username
-	 */
-	public Component getUsername()
-	{
-		return username;
 	}
 
 	/**
@@ -154,10 +128,9 @@ public class SignupPanel extends Panel
 	 *            the model
 	 * @return the Component
 	 */
-	protected Component newSigninPanel(final String id,
-		final IModel<? extends BaseUsernameSignUpModel> model)
+	protected Component newSigninPanel(final String id, final IModel<T> model)
 	{
-		return new SigninPanel(id, model);
+		return new SigninPanel<>(id, model);
 	}
 
 	/**
@@ -171,23 +144,21 @@ public class SignupPanel extends Panel
 	 *            the model
 	 * @return the text field
 	 */
-	protected Component newUsernameTextField(final String id,
-		final IModel<BaseUsernameSignUpModel> model)
+	protected Component newUsernameTextField(final String id, final IModel<T> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.username.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.username.label", this);
-		final LabeledTextFieldPanel<BaseUsernameSignUpModel> nameTextField = new LabeledTextFieldPanel<BaseUsernameSignUpModel>(
-			id, model, labelModel)
+		final LabeledTextFieldPanel<T> nameTextField = new LabeledTextFieldPanel<T>(id, model,
+			labelModel)
 		{
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			@SuppressWarnings({ "rawtypes", "unchecked" })
-			protected TextField newTextField(final String id,
-				final IModel<BaseUsernameSignUpModel> modelSuper)
+			protected TextField newTextField(final String id, final IModel<T> modelSuper)
 			{
 				final TextField<String> textField = new TextField<String>(id, model(from(model)
 					.getUsername()));

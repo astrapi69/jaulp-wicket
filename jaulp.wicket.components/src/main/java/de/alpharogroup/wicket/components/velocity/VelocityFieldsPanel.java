@@ -31,7 +31,7 @@ import org.apache.wicket.velocity.markup.html.VelocityPanel;
 import de.alpharogroup.xml.tag.SimpleTag;
 
 /**
- * The Class VelocityFieldsPanel.
+ * The Class {@link VelocityFieldsPanel}.
  */
 public class VelocityFieldsPanel extends Panel
 {
@@ -40,7 +40,7 @@ public class VelocityFieldsPanel extends Panel
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new velocity fields panel.
+	 * Instantiates a new {@link VelocityFieldsPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -58,7 +58,7 @@ public class VelocityFieldsPanel extends Panel
 	}
 
 	/**
-	 * Instantiates a new velocity fields panel.
+	 * Instantiates a new {@link VelocityFieldsPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -82,14 +82,21 @@ public class VelocityFieldsPanel extends Panel
 		final VelocityPanel velocityPanel = new VelocityPanel("velocityPanel", new MapModel<>(map))
 		{
 
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected IResourceStream getTemplateResource()
 			{
 				return template;
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected boolean parseGeneratedMarkup()
 			{
@@ -112,7 +119,7 @@ public class VelocityFieldsPanel extends Panel
 	 */
 	public void addChildComponent(final WicketField<?> parent)
 	{
-		if (parent.getChildren() != null && !parent.getChildren().isEmpty())
+		if ((parent.getChildren() != null) && !parent.getChildren().isEmpty())
 		{
 			for (final SimpleTag iterable_element : parent.getChildren())
 			{

@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.sign.up;
 
+import lombok.Getter;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
@@ -29,49 +31,58 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
+/**
+ * The Class {@link SignupFormPanel}.
+ */
 public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The button label. */
+	@Getter
 	private Label buttonLabel;
 
+	/** The submit button. */
+	@Getter
 	private Button submitButton;
 
+	/** The form. */
+	@Getter
 	private Form<?> form;
 
+	/** The signup panel. */
+	@Getter
 	private Component signupPanel;
 
+	/**
+	 * Instantiates a new {@link SignupFormPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public SignupFormPanel(final String id)
 	{
 		this(id, Model.of(new BaseUsernameSignUpModel()));
 	}
 
+	/**
+	 * Instantiates a new {@link SignupFormPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public SignupFormPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
 		super(id, model);
 	}
 
-	public Label getButtonLabel()
-	{
-		return buttonLabel;
-	}
-
-	public Form<?> getForm()
-	{
-		return form;
-	}
-
-	public Component getSignupPanel()
-	{
-		return signupPanel;
-	}
-
-	public Button getSubmitButton()
-	{
-		return submitButton;
-	}
-
+	/**
+	 * Inits the component.
+	 */
 	protected void initComponent()
 	{
 		getModelObject().setEmail("");
@@ -160,9 +171,12 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 */
 	protected Component newSignupPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
-		return new SignupPanel(id, model);
+		return new SignupPanel<>(id, model);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void onInitialize()
 	{
@@ -170,5 +184,13 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 		initComponent();
 	}
 
+	/**
+	 * Abstract callback method that must be overwritten to provide the action on sign up.
+	 *
+	 * @param target
+	 *            the target
+	 * @param form
+	 *            the form
+	 */
 	protected abstract void onSignup(final AjaxRequestTarget target, final Form<?> form);
 }

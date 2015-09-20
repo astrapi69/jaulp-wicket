@@ -24,6 +24,9 @@ import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 
+/**
+ * The Class {@link DisclaimerPanel}.
+ */
 public class DisclaimerPanel extends Panel
 {
 
@@ -32,11 +35,25 @@ public class DisclaimerPanel extends Panel
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link DisclaimerPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public DisclaimerPanel(final String id)
 	{
 		this(id, null);
 	}
 
+	/**
+	 * Instantiates a new {@link DisclaimerPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public DisclaimerPanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
@@ -46,39 +63,73 @@ public class DisclaimerPanel extends Panel
 			newDisclaimerLinkLabel("disclaimerLinkLabel", newDisclaimerLinkLabelModel()));
 	}
 
+
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
 	protected Label newDisclaimerContentLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**
-	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * disclaimer content.
+	 * Factory method to create a new {@link IModel} for the disclaimer content. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a disclaimer content.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel}
 	 */
 	protected IModel<String> newDisclaimerContentModel()
 	{
 		return newIModel("imprint.disclaimer.content");
 	}
 
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
 	protected Label newDisclaimerLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
 	protected Label newDisclaimerLinkLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
 	/**
-	 * Factory method to create a IModel for the disclaimer content. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * disclaimer content.
+	 * Factory method to create a new {@link IModel} for the disclaimer content. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a disclaimer content.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel}
 	 */
 	protected IModel<String> newDisclaimerLinkLabelModel()
 	{
@@ -86,11 +137,11 @@ public class DisclaimerPanel extends Panel
 	}
 
 	/**
-	 * Factory method to create a IModel for the disclaimer header. This method is invoked in the
-	 * constructor from this class and can be overridden so users can provide their own version of a
-	 * disclaimer header.
+	 * Factory method to create a new {@link IModel} for the disclaimer header. This method is
+	 * invoked in the constructor from this class and can be overridden so users can provide their
+	 * own version of a disclaimer header.
 	 *
-	 * @return the i model
+	 * @return the new {@link IModel}
 	 */
 	protected IModel<String> newDisclaimerModel()
 	{
@@ -98,11 +149,11 @@ public class DisclaimerPanel extends Panel
 	}
 
 	/**
-	 * Creates a new StringResourceModel from the given key.
+	 * Factory method to create a new StringResourceModel from the given key.
 	 *
 	 * @param key
 	 *            the key
-	 * @return the i model
+	 * @return the new {@link IModel}
 	 */
 	protected IModel<String> newIModel(final String key)
 	{

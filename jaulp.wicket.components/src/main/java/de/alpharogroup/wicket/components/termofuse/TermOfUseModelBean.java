@@ -25,8 +25,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
-import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
+import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModelBean;
 
+/**
+ * The Class {@link TermOfUseModelBean} captures the data for the term of use.
+ * 
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -34,33 +39,46 @@ import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDuti
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TermOfUseModel implements Serializable
+public class TermOfUseModelBean implements Serializable
 {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The general terms and conditions model. */
 	private HeaderContentListModelBean generalTermsAndConditionsModel;
 
+	/** The cancellation model. */
 	private HeaderContentListModelBean cancellationModel;
 
+	/** The contract model. */
 	private HeaderContentListModelBean contractModel;
 
+	/** The copyright model. */
 	private HeaderContentListModelBean copyrightModel;
 
+	/** The data protection model. */
 	private HeaderContentListModelBean dataProtectionModel;
 
+	/** The fulfilment and jurisdiction place model. */
 	private HeaderContentListModelBean fulfilmentAndJurisdictionPlaceModel;
 
+	/** The legal references model. */
 	private HeaderContentListModelBean legalReferencesModel;
 
+	/** The liability model. */
 	private HeaderContentListModelBean liabilityModel;
 
+	/** The modifications clause model. */
 	private HeaderContentListModelBean modificationsClauseModel;
 
-	private RightsAndDutiesModel rightsAndDutiesModel;
+	/** The rights and duties model bean. */
+	private RightsAndDutiesModelBean rightsAndDutiesModelBean;
 
+	/** The salvatorius clause model. */
 	private HeaderContentListModelBean salvatoriusClauseModel;
 
+	/** The disclaimer model. */
 	private HeaderContentListModelBean disclaimerModel;
 
 }

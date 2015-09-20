@@ -23,34 +23,48 @@ import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.alpharogroup.auth.models.SignInModel;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
 
-
-public class SigninPanel extends Panel
+/**
+ * The Class {@link SigninPanel}.
+ */
+public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 {
-
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The Constant LOGGER. */
 	protected static final Logger LOGGER = LoggerFactory.getLogger(SigninPanel.class);
+
+	/** The email. */
 	@Getter
 	private final Component email;
+
+	/** The password. */
 	@Getter
 	private final Component password;
 
-	@SuppressWarnings("unchecked")
-	public SigninPanel(final String id, final IModel<? extends SignInModel> model)
+	/**
+	 * Instantiates a new {@link SigninPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public SigninPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
-		add(email = newEmailTextField("email", (IModel<SignInModel>)model));
-		add(password = newPasswordTextField("password", (IModel<SignInModel>)model));
+		add(email = newEmailTextField("email", model));
+		add(password = newPasswordTextField("password", model));
 	}
 
 	/**
@@ -64,20 +78,24 @@ public class SigninPanel extends Panel
 	 *            the model
 	 * @return the text field
 	 */
-	protected Component newEmailTextField(final String id, final IModel<SignInModel> model)
+	protected Component newEmailTextField(final String id, final IModel<T> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.email.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.email.label", this);
-		final LabeledEmailTextFieldPanel<SignInModel> emailTextField = new LabeledEmailTextFieldPanel<SignInModel>(
-			id, model, labelModel)
+		final LabeledEmailTextFieldPanel<T> emailTextField = new LabeledEmailTextFieldPanel<T>(id,
+			model, labelModel)
 		{
 
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			protected EmailTextField newEmailTextField(final String id, final IModel<SignInModel> m)
+			protected EmailTextField newEmailTextField(final String id, final IModel<T> m)
 			{
 				final EmailTextField emailTextField = new EmailTextField(id, model(from(
 					model.getObject()).getEmail()));
@@ -105,20 +123,24 @@ public class SigninPanel extends Panel
 	 *            the model
 	 * @return the text field
 	 */
-	protected Component newPasswordTextField(final String id, final IModel<SignInModel> model)
+	protected Component newPasswordTextField(final String id, final IModel<T> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.password.label", this);
-		final LabeledPasswordTextFieldPanel<SignInModel> pwTextField = new LabeledPasswordTextFieldPanel<SignInModel>(
+		final LabeledPasswordTextFieldPanel<T> pwTextField = new LabeledPasswordTextFieldPanel<T>(
 			id, model, labelModel)
 		{
+
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			protected PasswordTextField newPasswordTextField(final String id,
-				final IModel<SignInModel> model)
+			protected PasswordTextField newPasswordTextField(final String id, final IModel<T> model)
 			{
 				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
 					.getPassword()));

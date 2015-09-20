@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.alpharogroup.wicket.components.termofuse.rightsandduties;
+package de.alpharogroup.wicket.components.sign.in.password.change;
 
 import java.io.Serializable;
 
@@ -24,9 +24,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import de.alpharogroup.wicket.components.i18n.list.ContentListModelBean;
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 
+/**
+ * The Class {@link ChangePasswordModelBean} captures the data for change the password of a user.
+ * 
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -34,15 +37,21 @@ import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RightsAndDutiesModel implements Serializable
+public class ChangePasswordModelBean implements Serializable
 {
 
+	/**
+	 * The serialVersionUID.
+	 */
 	private static final long serialVersionUID = 1L;
 
-	HeaderContentListModelBean introductionModel;
+	/** The current password of a user. */
+	private String currentPassword = "";
 
-	ContentListModelBean listModel;
+	/** The new password of a user. */
+	private String newPassword = "";
 
-	ContentListModelBean summaryModel;
+	/** The repeated new password of a user. */
+	private String repeatNewPassword = "";
 
 }

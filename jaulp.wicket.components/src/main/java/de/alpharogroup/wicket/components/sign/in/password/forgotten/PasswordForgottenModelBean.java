@@ -25,6 +25,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+/**
+ * The Class {@link PasswordForgottenModelBean} captures the data for the password forgotten action.
+ * 
+ * @author Asterios Raptis
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -32,7 +38,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PasswordForgottenModel implements Serializable
+public class PasswordForgottenModelBean implements Serializable
 {
 
 	/**

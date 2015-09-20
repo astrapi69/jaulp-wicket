@@ -26,7 +26,6 @@ import org.apache.wicket.model.IModel;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
 import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
-import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.components.examples.area.publicly.PubliclyBasePage;
@@ -93,7 +92,7 @@ public class SignupExamplesPanel extends Panel
 			protected Component newSignupPanel(final String id,
 				final IModel<BaseUsernameSignUpModel> model)
 			{
-				return new SignupPanel(id, model)
+				return new SignupPanel<BaseUsernameSignUpModel>(id, model)
 				{
 					/**
 					 * The serialVersionUID
@@ -125,9 +124,10 @@ public class SignupExamplesPanel extends Panel
 
 					@Override
 					protected Component newSigninPanel(final String id,
-						final IModel<? extends BaseUsernameSignUpModel> model)
+						final IModel<BaseUsernameSignUpModel> model)
 					{
-						final SigninPanel signinPanel = new SigninPanel(id, model)
+						final SigninPanel<BaseUsernameSignUpModel> signinPanel = new SigninPanel<BaseUsernameSignUpModel>(
+							id, model)
 						{
 							/**
 							 * The serialVersionUID
@@ -137,9 +137,9 @@ public class SignupExamplesPanel extends Panel
 							@SuppressWarnings("unchecked")
 							@Override
 							protected Component newEmailTextField(final String id,
-								final IModel<SignInModel> model)
+								final IModel<BaseUsernameSignUpModel> model)
 							{
-								final LabeledEmailTextFieldPanel<SignInModel> emailTextField = (LabeledEmailTextFieldPanel<SignInModel>)super
+								final LabeledEmailTextFieldPanel<BaseUsernameSignUpModel> emailTextField = (LabeledEmailTextFieldPanel<BaseUsernameSignUpModel>)super
 									.newEmailTextField(id, model);
 								emailTextField.add(new AttributeAppender("class", " form-group"));
 								emailTextField
@@ -161,9 +161,9 @@ public class SignupExamplesPanel extends Panel
 							@SuppressWarnings("unchecked")
 							@Override
 							protected Component newPasswordTextField(final String id,
-								final IModel<SignInModel> model)
+								final IModel<BaseUsernameSignUpModel> model)
 							{
-								final LabeledPasswordTextFieldPanel<SignInModel> pwTextField = (LabeledPasswordTextFieldPanel<SignInModel>)super
+								final LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> pwTextField = (LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel>)super
 									.newPasswordTextField(id, model);
 								pwTextField.add(new AttributeAppender("class", " form-group"));
 								pwTextField

@@ -25,20 +25,42 @@ import de.alpharogroup.wicket.behaviors.JQueryJsAppenderBehavior;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListPanel;
 
+/**
+ * The Class {@link CopyrightPanel}.
+ */
 public class CopyrightPanel extends HeaderContentListPanel
 {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link CopyrightPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public CopyrightPanel(final String id)
 	{
 		this(id, null);
 	}
 
+	/**
+	 * Instantiates a new {@link CopyrightPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
 	public CopyrightPanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
@@ -46,6 +68,9 @@ public class CopyrightPanel extends HeaderContentListPanel
 			new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Component newListComponent(final String id, final ListItem<ResourceBundleKey> item)
 	{

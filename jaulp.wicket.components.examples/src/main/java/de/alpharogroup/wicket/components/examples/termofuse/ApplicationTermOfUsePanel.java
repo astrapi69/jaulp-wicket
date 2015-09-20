@@ -17,7 +17,7 @@ package de.alpharogroup.wicket.components.examples.termofuse;
 
 import org.apache.wicket.model.IModel;
 
-import de.alpharogroup.wicket.components.termofuse.TermOfUseModel;
+import de.alpharogroup.wicket.components.termofuse.TermOfUseModelBean;
 import de.alpharogroup.wicket.components.termofuse.TermOfUsePanel;
 
 
@@ -26,7 +26,7 @@ public class ApplicationTermOfUsePanel extends TermOfUsePanel
 
 	private static final long serialVersionUID = 1L;
 
-	public ApplicationTermOfUsePanel(final String id, final IModel<TermOfUseModel> model)
+	public ApplicationTermOfUsePanel(final String id, final IModel<TermOfUseModelBean> model)
 	{
 		super(id, model);
 	}

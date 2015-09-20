@@ -15,6 +15,7 @@
  */
 package de.alpharogroup.wicket.components.search;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.util.tester.WicketTester;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -38,8 +39,11 @@ public class SimpleSearchPanelTest
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			protected void onSearch()
+			protected void onSearch(final AjaxRequestTarget target)
 			{
 			}
 		};

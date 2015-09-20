@@ -27,17 +27,36 @@ import org.apache.wicket.velocity.markup.html.VelocityPanel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 
-public class FacebookLikeAndSharePanel extends BasePanel<FacebookLikeAndShareModel>
+/**
+ * The Class {@link FacebookLikeAndSharePanel}.
+ */
+public class FacebookLikeAndSharePanel extends BasePanel<FacebookLikeAndShareModelBean>
 {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link FacebookLikeAndSharePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public FacebookLikeAndSharePanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public FacebookLikeAndSharePanel(final String id, final IModel<FacebookLikeAndShareModel> model)
+	/**
+	 * Instantiates a new {@link FacebookLikeAndSharePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public FacebookLikeAndSharePanel(final String id,
+		final IModel<FacebookLikeAndShareModelBean> model)
 	{
 		super(id, model);
 		final HashMap<String, String> values = new HashMap<String, String>();
@@ -51,6 +70,9 @@ public class FacebookLikeAndSharePanel extends BasePanel<FacebookLikeAndShareMod
 		add(VelocityPanel.forTemplateResource("velocityPanel", context, template));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(final IHeaderResponse response)
 	{

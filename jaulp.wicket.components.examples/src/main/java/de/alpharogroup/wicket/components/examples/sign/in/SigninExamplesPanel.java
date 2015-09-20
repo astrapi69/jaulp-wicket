@@ -26,7 +26,6 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
-import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.behaviors.wrappers.Wrappers;
@@ -102,9 +101,10 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 
 			@Override
 			protected Component newSigninPanel(final String id,
-				final IModel<? extends SignInModel> model)
+				final IModel<SignInWithRedirectionBean> model)
 			{
-				final SigninPanel signinPanel = new SigninPanel(id, model)
+				final SigninPanel<SignInWithRedirectionBean> signinPanel = new SigninPanel<SignInWithRedirectionBean>(
+					id, model)
 				{
 					/**
 					 * The serialVersionUID
@@ -112,11 +112,10 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 					private static final long serialVersionUID = 1L;
 
 					@SuppressWarnings("unchecked")
-					@Override
 					protected Component newEmailTextField(final String id,
-						final IModel<SignInModel> model)
+						final IModel<SignInWithRedirectionBean> model)
 					{
-						final LabeledEmailTextFieldPanel<SignInModel> emailTextField = (LabeledEmailTextFieldPanel<SignInModel>)super
+						final LabeledEmailTextFieldPanel<SignInWithRedirectionBean> emailTextField = (LabeledEmailTextFieldPanel<SignInWithRedirectionBean>)super
 							.newEmailTextField(id, model);
 						emailTextField.add(new AttributeAppender("class", " form-group"));
 						emailTextField
@@ -137,9 +136,9 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 					@SuppressWarnings("unchecked")
 					@Override
 					protected Component newPasswordTextField(final String id,
-						final IModel<SignInModel> model)
+						final IModel<SignInWithRedirectionBean> model)
 					{
-						final LabeledPasswordTextFieldPanel<SignInModel> pwTextField = (LabeledPasswordTextFieldPanel<SignInModel>)super
+						final LabeledPasswordTextFieldPanel<SignInWithRedirectionBean> pwTextField = (LabeledPasswordTextFieldPanel<SignInWithRedirectionBean>)super
 							.newPasswordTextField(id, model);
 						pwTextField.add(new AttributeAppender("class", " form-group"));
 						pwTextField

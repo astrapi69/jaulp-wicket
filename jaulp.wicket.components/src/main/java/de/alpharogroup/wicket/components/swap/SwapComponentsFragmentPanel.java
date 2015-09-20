@@ -20,8 +20,8 @@ import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.IModel;
 
 /**
- * The abstract class SwapComponentsFragmentPanel provides the feature to swap components. The
- * components can be created with the abstract factory methods that have to be implemented.
+ * The abstract class {@link SwapComponentsFragmentPanel} provides the feature to swap components.
+ * The components can be created with the abstract factory methods that have to be implemented.
  *
  * @param <T>
  *            the generic type of the model object.
@@ -33,7 +33,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new swap components fragment panel.
+	 * Instantiates a new {@link SwapComponentsFragmentPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -46,11 +46,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	}
 
 	/**
-	 * Creates the fragment for the view.
-	 *
-	 * @param id
-	 *            the id
-	 * @return the fragment
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected Fragment newViewFragment(final String id)
@@ -62,22 +58,20 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	}
 
 	/**
-	 * Abstract factory method for the new view component.
+	 * Abstract factory method for the new {@link Component} for the view. This method is invoked in
+	 * the method {@link SwapComponentsFragmentPanel#newViewFragment(String)} and must be overridden
+	 * so users can provide their own version of a new {@link Component} for the view.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the component
+	 * @return the new {@link Component} for the view.
 	 */
 	protected abstract Component newViewComponent(final String id, final IModel<T> model);
 
 	/**
-	 * Creates the fragment to edit person.
-	 *
-	 * @param id
-	 *            the id
-	 * @return the fragment
+	 * {@inheritDoc}
 	 */
 	@Override
 	protected Fragment newEditFragment(final String id)
@@ -88,14 +82,17 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 		return editFragment;
 	}
 
+
 	/**
-	 * Abstract factory method for the new edit component.
+	 * Abstract factory method for the new editable {@link Component}. This method is invoked in the
+	 * method {@link SwapComponentsFragmentPanel#newEditFragment(String)} and must be overridden so
+	 * users can provide their own version of a new editable {@link Component}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the component
+	 * @return the new editable {@link Component}.
 	 */
 	protected abstract Component newEditComponent(final String id, final IModel<T> model);
 

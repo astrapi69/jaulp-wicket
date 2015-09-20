@@ -26,10 +26,10 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
@@ -39,7 +39,7 @@ import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextField
  * 
  * @author Asterios Raptis
  */
-public abstract class AbstractPasswordForgottenPanel extends Panel
+public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordForgottenModelBean>
 {
 
 	/**
@@ -81,14 +81,14 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 	public AbstractPasswordForgottenPanel(final String id)
 	{
 		super(id);
-		setDefaultModel(new CompoundPropertyModel<>(new PasswordForgottenModel()));
+		setDefaultModel(new CompoundPropertyModel<>(new PasswordForgottenModelBean()));
 
 		add(form = newForm("form", getDefaultModel()));
 
 		form.add(header = newHeaderLabel("header", "password.forgotten.label",
 			"Password forgotten help", this));
 
-		email = newEmailTextField("email", (IModel<PasswordForgottenModel>)getDefaultModel());
+		email = newEmailTextField("email", (IModel<PasswordForgottenModelBean>)getDefaultModel());
 
 		form.add(email);
 
@@ -193,13 +193,13 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 	 * @return the text field
 	 */
 	protected Component newEmailTextField(final String id,
-		final IModel<PasswordForgottenModel> model)
+		final IModel<PasswordForgottenModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"password.forgotten.content.label", this, "Give email in the Textfield");
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.email.label", this, "Enter your email here");
-		final LabeledEmailTextFieldPanel<PasswordForgottenModel> emailTextField = new LabeledEmailTextFieldPanel<PasswordForgottenModel>(
+		final LabeledEmailTextFieldPanel<PasswordForgottenModelBean> emailTextField = new LabeledEmailTextFieldPanel<PasswordForgottenModelBean>(
 			id, model, labelModel)
 		{
 
@@ -213,7 +213,7 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 			 */
 			@Override
 			protected EmailTextField newEmailTextField(final String id,
-				final IModel<PasswordForgottenModel> model)
+				final IModel<PasswordForgottenModelBean> model)
 			{
 				final EmailTextField emailTextField = new EmailTextField(id, model(from(model)
 					.getEmail()));

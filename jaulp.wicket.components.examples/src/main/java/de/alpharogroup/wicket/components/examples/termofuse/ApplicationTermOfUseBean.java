@@ -24,8 +24,8 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
 import de.alpharogroup.wicket.components.i18n.list.ContentListModelBean;
 import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
-import de.alpharogroup.wicket.components.termofuse.TermOfUseModel;
-import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModel;
+import de.alpharogroup.wicket.components.termofuse.TermOfUseModelBean;
+import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModelBean;
 
 
 public final class ApplicationTermOfUseBean implements Serializable
@@ -220,14 +220,14 @@ public final class ApplicationTermOfUseBean implements Serializable
 		return instance;
 	}
 
-	private TermOfUseModel model;
+	private TermOfUseModelBean model;
 
 	private ApplicationTermOfUseBean()
 	{
 		init();
 	}
 
-	public TermOfUseModel getModel()
+	public TermOfUseModelBean getModel()
 	{
 		return model;
 	}
@@ -258,17 +258,19 @@ public final class ApplicationTermOfUseBean implements Serializable
 			.add(
 				ResourceBundleKey.builder()
 					.key("term.of.use.main.head.content.paragraph.second.label").build()).build();
-		model = TermOfUseModel
+		model = TermOfUseModelBean
 			.builder()
 			.cancellationModel(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(CANCELLATION_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(CANCELLATION_CONTENT_RESOURCE_KEYS).build())
 			.contractModel(
-				HeaderContentListModelBean.builder().headerResourceKey(CONTRACT_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder()
+					.headerResourceKey(CONTRACT_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(CONTRACT_CONTENT_RESOURCE_KEYS).build())
 			.copyrightModel(
-				HeaderContentListModelBean.builder().headerResourceKey(COPYRIGHT_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder()
+					.headerResourceKey(COPYRIGHT_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(COPYRIGHT_CONTENT_RESOURCE_KEYS).build())
 			.dataProtectionModel(
 				HeaderContentListModelBean.builder()
@@ -283,16 +285,19 @@ public final class ApplicationTermOfUseBean implements Serializable
 					.headerResourceKey(GENERAL_TERMS_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(generalTermsAndConditionsContentResourceKeys).build())
 			.legalReferencesModel(
-				HeaderContentListModelBean.builder().headerResourceKey(LEGAL_REFS_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder()
+					.headerResourceKey(LEGAL_REFS_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(LEGAL_REFS_CONTENT_RESOURCE_KEYS).build())
 			.liabilityModel(
-				HeaderContentListModelBean.builder().headerResourceKey(LIABILITY_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder()
+					.headerResourceKey(LIABILITY_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(LIABILITY_CONTENT_RESOURCE_KEYS).build())
 			.modificationsClauseModel(
-				HeaderContentListModelBean.builder().headerResourceKey(MOD_CLAUSE_HEADER_RESOURCE_KEY)
+				HeaderContentListModelBean.builder()
+					.headerResourceKey(MOD_CLAUSE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(MOD_CLAUSE_CONTENT_RESOURCE_KEYS).build())
-			.rightsAndDutiesModel(
-				RightsAndDutiesModel
+			.rightsAndDutiesModelBean(
+				RightsAndDutiesModelBean
 					.builder()
 					.introductionModel(
 						HeaderContentListModelBean.builder()

@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.socialnet.googleplus.share;
 
+import lombok.Getter;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -24,48 +26,82 @@ import org.apache.wicket.model.Model;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
-public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModel>
+/**
+ * The Class {@link GooglePlusSharePanel}.
+ */
+public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModelBean>
 {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The google script label. */
+	@Getter
 	private Label googleScriptLabel;
 
+	/** The google plus button. */
+	@Getter
 	private WebMarkupContainer googlePlusButton;
 
+	/**
+	 * Instantiates a new {@link GooglePlusSharePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public GooglePlusSharePanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public GooglePlusSharePanel(final String id, final IModel<GooglePlusShareModel> model)
+	/**
+	 * Instantiates a new {@link GooglePlusSharePanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public GooglePlusSharePanel(final String id, final IModel<GooglePlusShareModelBean> model)
 	{
 		super(id, model);
 		add(googleScriptLabel = newLabel("googleScriptLabel", model));
 		add(googlePlusButton = newWebMarkupContainer("googlePlusButton", model));
 	}
 
-	public WebMarkupContainer getGooglePlusButton()
+	/**
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Label}
+	 */
+	protected Label newLabel(final String id, final IModel<GooglePlusShareModelBean> model)
 	{
-		return googlePlusButton;
-	}
-
-	public Label getGoogleScriptLabel()
-	{
-		return googleScriptLabel;
-	}
-
-	protected Label newLabel(final String id, final IModel<GooglePlusShareModel> model)
-	{
-		final Label googleScriptLabel = new Label(id, Model.of("{lang: '"
-			+ model.getObject().getLocale() + "'}"));
+		final Label googleScriptLabel = ComponentFactory.newLabel(id,
+			Model.of("{lang: '" + model.getObject().getLocale() + "'}"));
 		googleScriptLabel.setEscapeModelStrings(false);
 		googleScriptLabel.add(new AttributeModifier("src", model.getObject().getScriptSrc()));
 		return googleScriptLabel;
 	}
 
+	/**
+	 * Factory method for creating the new {@link WebMarkupContainer}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link WebMarkupContainer}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new {@link WebMarkupContainer}
+	 */
 	protected WebMarkupContainer newWebMarkupContainer(final String id,
-		final IModel<GooglePlusShareModel> model)
+		final IModel<GooglePlusShareModelBean> model)
 	{
 		final WebMarkupContainer googlePlusButton = ComponentFactory.newWebMarkupContainer(id,
 			model);

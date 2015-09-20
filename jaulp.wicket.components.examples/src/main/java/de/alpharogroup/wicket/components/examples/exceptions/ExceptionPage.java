@@ -15,6 +15,7 @@
  */
 package de.alpharogroup.wicket.components.examples.exceptions;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.component.IRequestablePage;
@@ -69,7 +70,7 @@ public class ExceptionPage extends PubliclyBasePage<Exception>
 			}
 
 			@Override
-			protected void onSubmitError()
+			protected void onSubmitError(final AjaxRequestTarget target)
 			{
 				// the description of the user...
 				// Object model = getDefaultModelObject();

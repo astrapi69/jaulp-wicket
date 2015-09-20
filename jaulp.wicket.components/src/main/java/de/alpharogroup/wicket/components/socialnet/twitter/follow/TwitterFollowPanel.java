@@ -25,16 +25,35 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 
 import de.alpharogroup.wicket.base.BasePanel;
 
-public class TwitterFollowPanel extends BasePanel<TwitterFollowModel>
+/**
+ * The Class {@link TwitterFollowPanel}.
+ */
+public class TwitterFollowPanel extends BasePanel<TwitterFollowModelBean>
 {
+
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link TwitterFollowPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public TwitterFollowPanel(final String id)
 	{
 		this(id, null);
 	}
 
-	public TwitterFollowPanel(final String id, final IModel<TwitterFollowModel> model)
+	/**
+	 * Instantiates a new {@link TwitterFollowPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 */
+	public TwitterFollowPanel(final String id, final IModel<TwitterFollowModelBean> model)
 	{
 		super(id, model);
 		final ExternalLink twitterFollowLink = new ExternalLink("url", model.getObject().getUrl());
@@ -46,6 +65,9 @@ public class TwitterFollowPanel extends BasePanel<TwitterFollowModel>
 		twitterFollowLink.add(twitterNameLabel);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(final IHeaderResponse response)
 	{
