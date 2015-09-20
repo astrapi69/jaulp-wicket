@@ -20,6 +20,7 @@ import static org.wicketeer.modelfactory.ModelFactory.model;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -34,7 +35,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 
 /**
- * The class PasswordForgottenPanel.
+ * The class {@link AbstractPasswordForgottenPanel}.
  * 
  * @author Asterios Raptis
  */
@@ -71,7 +72,7 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 	private final Button submitButton;
 
 	/**
-	 * Instantiates a new password forgotten panel.
+	 * Instantiates a new {@link AbstractPasswordForgottenPanel}.
 	 * 
 	 * @param id
 	 *            the id
@@ -116,10 +117,13 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onSubmit()
 			{
-				onSend();
+				onSend(null);
 			}
 		};
 	}
@@ -144,11 +148,13 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 	}
 
 	/**
-	 * New captcha.
+	 * Abstract factory method for create a new {@link Component} of the captcha. This method is
+	 * invoked in the constructor from the derived classes and must be overridden so users can
+	 * provide their own version of a new {@link Component} of the captcha.
 	 * 
 	 * @param id
 	 *            the id
-	 * @return the component
+	 * @return the new {@link Component} of the captcha.
 	 */
 	protected abstract Component newCaptcha(final String id);
 
@@ -197,8 +203,14 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 			id, model, labelModel)
 		{
 
+			/**
+			 * The serialVersionUID.
+			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected EmailTextField newEmailTextField(final String id,
 				final IModel<PasswordForgottenModel> model)
@@ -233,7 +245,9 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 	}
 
 	/**
-	 * New header label.
+	 * Factory method for creating the new header {@link Label}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new header {@link Label}.
 	 * 
 	 * @param id
 	 *            the id
@@ -243,7 +257,7 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 	 *            the default value
 	 * @param component
 	 *            the component
-	 * @return the label
+	 * @return the new header {@link Label}
 	 */
 	protected Label newHeaderLabel(final String id, final String resourceKey,
 		final String defaultValue, final Component component)
@@ -252,10 +266,12 @@ public abstract class AbstractPasswordForgottenPanel extends Panel
 			ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue));
 	}
 
-	// Hook method for implement the action...
 	/**
-	 * On send.
+	 * Abstract callback method that must be overwritten to provide the action for send.
+	 *
+	 * @param target
+	 *            the target
 	 */
-	protected abstract void onSend();
+	protected abstract void onSend(final AjaxRequestTarget target);
 
 }

@@ -18,7 +18,6 @@ package de.alpharogroup.wicket.components.report;
 import lombok.Getter;
 
 import org.apache.log4j.Logger;
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -27,8 +26,8 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.HiddenField;
 import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -36,6 +35,7 @@ import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.exception.ExceptionUtils;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
@@ -43,36 +43,9 @@ import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 /**
  * The Class ReportThrowablePanel can present an exception that is thrown from the application.
  */
-public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
+public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 {
 
-	private static class DisplayNoneBehavior extends AttributeModifier
-	{
-		private static final long serialVersionUID = 1L;
-
-		private DisplayNoneBehavior()
-		{
-			super("style", Model.of("display: none"));
-		}
-
-		@Override
-		public boolean isTemporary(final Component component)
-		{
-			return true;
-		}
-	}
-	private static class Effects
-	{
-
-		private static void replace(final AjaxRequestTarget target, final Component component)
-		{
-			component.add(new DisplayNoneBehavior());
-
-			// target.prependJavaScript("notify|jQuery('#"+component.getMarkupId()+"').slideUp(1000, notify);");
-			target.add(component);
-			target.appendJavaScript("jQuery('#" + component.getMarkupId() + "').slideDown(100);");
-		}
-	}
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -105,7 +78,7 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	private final ReportThrowableModel reportThrowableModel;
 
 	/**
-	 * Instantiates a new report throwable panel.
+	 * Instantiates a new {@link ReportThrowablePanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -151,20 +124,24 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	}
 
 	/**
-	 * New affected username.
+	 * Abstract factory method for create a new {@link String} of the affected username. This method
+	 * is invoked in the constructor from the derived classes and must be overridden so users can
+	 * provide their own version of a new {@link String} of the affected username.
 	 *
-	 * @return the string
+	 * @return the new {@link String} of the affected username.
 	 */
 	protected abstract String newAffectedUsername();
 
 	/**
-	 * New description.
+	 * Factory method for create the new {@link LabeledTextAreaPanel}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link LabeledTextAreaPanel}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the labeled text area panel
+	 * @return the new {@link LabeledTextAreaPanel}
 	 */
 	protected LabeledTextAreaPanel<ReportThrowableModel> newDescription(final String id,
 		final IModel<ReportThrowableModel> model)
@@ -194,14 +171,15 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Form.
+	 * Factory method for create the new {@link Form}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Form}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form
+	 * @return the new {@link Form}
 	 */
 	protected Form<?> newForm(final String id, final IModel<?> model)
 	{
@@ -209,13 +187,15 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	}
 
 	/**
-	 * New header label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newHeaderLabel(final String id, final IModel<String> model)
 	{
@@ -223,11 +203,15 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	}
 
 	/**
-	 * New hidden field.
+	 * Factory method for creating the new {@link HiddenField}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link HiddenField}.
 	 *
 	 * @param id
 	 *            the id
-	 * @return the component
+	 * @param model
+	 *            the model
+	 * @return the new {@link HiddenField}
 	 */
 	protected Component newHiddenField(final String id)
 	{
@@ -235,11 +219,14 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	}
 
 	/**
-	 * New report throwable model.
+	 * Factory method for creating the new {@link ReportThrowableModel} from the given
+	 * {@link Throwable}. This method is invoked in the constructor from the derived classes and can
+	 * be overridden so users can provide their own version of a new {@link ReportThrowableModel}
+	 * from the given {@link Throwable}.
 	 *
 	 * @param throwable
 	 *            the throwable
-	 * @return the report throwable model
+	 * @return the new {@link ReportThrowableModel} from the given {@link Throwable}.
 	 */
 	protected ReportThrowableModel newReportThrowableModel(final Throwable throwable)
 	{
@@ -249,25 +236,32 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 	}
 
 	/**
-	 * New response page class.
+	 * Abstract factory method for create a new {@link Class} of the response page. This method is
+	 * invoked in the constructor from the derived classes and must be overridden so users can
+	 * provide their own version of a new {@link Class} of the response page.
 	 *
-	 * @return the class of the response page
+	 * @return the new {@link Class} of the response page.
 	 */
 	protected abstract Class<? extends IRequestablePage> newResponsePageClass();
 
+
 	/**
-	 * New root username.
+	 * Abstract factory method for create a new {@link String} of the root username. This method is
+	 * invoked in the constructor from the derived classes and must be overridden so users can
+	 * provide their own version of a new {@link String} of the root username.
 	 *
-	 * @return the string
+	 * @return the new {@link String} of the root username.
 	 */
 	protected abstract String newRootUsername();
 
 	/**
-	 * New submit button.
+	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Button}.
 	 *
 	 * @param id
 	 *            the id
-	 * @return the button
+	 * @return the new {@link Button}
 	 */
 	protected Button newSubmitButton(final String id)
 	{
@@ -275,21 +269,26 @@ public abstract class ReportThrowablePanel extends GenericPanel<Throwable>
 		{
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onSubmit()
 			{
 				/**
-				 * Do your stuff here (i.e. Send Email)
+				 * Here comes the action what to do like (i.e. Send Email)
 				 */
-				onSubmitError();
+				onSubmitError(null);
 			}
 		};
 	}
 
 	/**
-	 * Hook method for submitting the error when the submit button is clicked. Implement here
-	 * everything what to do when the user submits the form.
+	 * Abstract callback method that must be overwritten to provide specific action.
+	 *
+	 * @param target
+	 *            the target
 	 */
-	protected abstract void onSubmitError();
+	protected abstract void onSubmitError(final AjaxRequestTarget target);
 
 }

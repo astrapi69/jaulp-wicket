@@ -18,9 +18,11 @@ package de.alpharogroup.wicket.components.search;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
@@ -38,13 +40,25 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	/** The button label. */
 	@Getter
 	private final Label buttonLabel;
+
+	/** The form. */
 	@Getter
 	private final Form<?> form;
+
+	/** The searchtext. */
 	@Getter
 	private final Component searchtext;
+
+	/** The search button. */
 	@Getter
 	private final Button searchButton;
 
+	/**
+	 * Instantiates a new {@link SimpleSearchPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public SimpleSearchPanel(final String id)
 	{
 		super(id);
@@ -58,12 +72,13 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Button}.
+	 *
 	 * @param id
 	 *            the id
-	 * @return the component
+	 * @return the new {@link Button}
 	 */
 	protected Button newButton(final String id)
 	{
@@ -75,15 +90,15 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 			@Override
 			public void onSubmit()
 			{
-				onSearch();
+				onSearch(null);
 			}
 		};
 	}
 
 	/**
-	 * Factory method for creating the button Label. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a button
-	 * Label.
+	 * Factory method for creating the new {@link Label} for the button. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link Label} for the button.
 	 * 
 	 * @param id
 	 *            the id
@@ -91,7 +106,7 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	 *            the resource key
 	 * @param defaultValue
 	 *            the default value
-	 * @return the label
+	 * @return the new {@link Label} for the button.
 	 */
 	protected Label newButtonLabel(final String id, final String resourceKey,
 		final String defaultValue)
@@ -100,14 +115,15 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
+	 * Factory method for create the new {@link Form}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Form}.
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form
+	 * @return the new {@link Form}
 	 */
 	protected Form<?> newForm(final String id, final IModel<? extends SimpleSearchModel> model)
 	{
@@ -115,17 +131,24 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	}
 
 	/**
-	 * Factory method for creating the TextField. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a TextField.
-	 * 
+	 * Factory method for create the new {@link TextField}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link TextField}.
+	 *
 	 * @param id
 	 *            the id
-	 * @return the TextField
+	 * @return the new {@link TextField}
 	 */
 	protected Component newTextField(final String id)
 	{
 		return ComponentFactory.newTextField(id);
 	}
 
-	protected abstract void onSearch();
+	/**
+	 * Abstract callback method that must be overwritten to provide specific action.
+	 *
+	 * @param target
+	 *            the target
+	 */
+	protected abstract void onSearch(final AjaxRequestTarget target);
 }

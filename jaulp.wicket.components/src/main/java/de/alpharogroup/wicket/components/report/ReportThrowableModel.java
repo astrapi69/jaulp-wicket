@@ -27,6 +27,10 @@ import lombok.ToString;
 
 import org.apache.wicket.request.component.IRequestablePage;
 
+/**
+ * Instantiates a new report throwable model that is used to report an exception
+ * or error an a description from the affected user.
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -34,10 +38,6 @@ import org.apache.wicket.request.component.IRequestablePage;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-/**
- * Instantiates a new report throwable model that is used to report an exception
- * or error an a description from the affected user.
- */
 public class ReportThrowableModel implements Serializable
 {
 

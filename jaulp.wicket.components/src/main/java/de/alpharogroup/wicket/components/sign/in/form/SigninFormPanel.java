@@ -24,6 +24,7 @@ import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
@@ -89,12 +90,13 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Button.
+	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Button}.
 	 *
 	 * @param id
-	 *            the wicket id
-	 * @return the Button
+	 *            the id
+	 * @return the new {@link Button}
 	 */
 	protected Button newButton(final String id)
 	{
@@ -117,17 +119,17 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	}
 
 	/**
-	 * Factory method for creating the button Label. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a button
-	 * Label.
-	 *
+	 * Factory method for creating the new {@link Label} for the button. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link Label} for the button.
+	 * 
 	 * @param id
 	 *            the id
 	 * @param resourceKey
 	 *            the resource key
 	 * @param defaultValue
 	 *            the default value
-	 * @return the label
+	 * @return the new {@link Label} for the button.
 	 */
 	protected Label newButtonLabel(final String id, final String resourceKey,
 		final String defaultValue)
@@ -155,13 +157,16 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	}
 
 	/**
-	 * New password forgotten link.
+	 * Factory method for create the new {@link MarkupContainer} of the {@link Link} for the
+	 * password forgotten. This method is invoked in the constructor from the derived classes and
+	 * can be overridden so users can provide their own version of a new {@link MarkupContainer} of
+	 * the {@link Link} for the password forgotten.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the markup container
+	 * @return the new {@link MarkupContainer} of the {@link Link} for the password forgotten.
 	 */
 	protected MarkupContainer newPasswordForgottenLink(final String id, final IModel<T> model)
 	{
@@ -189,16 +194,16 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 
 
 	/**
-	 * Factory method for creating the SigninPanel that contains the TextField for the email and
-	 * password. This method is invoked in the constructor from the derived classes and can be
-	 * overridden so users can provide their own version of a Component that contains the TextField
-	 * for the email and password.
+	 * Factory method for creating the new {@link SigninPanel} that contains the TextField for the
+	 * email and password. This method is invoked in the constructor from the derived classes and
+	 * can be overridden so users can provide their own version of a Component that contains the
+	 * TextField for the email and password.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the Component
+	 * @return the new {@link SigninPanel} that contains the TextField for the email and password.
 	 */
 	protected Component newSigninPanel(final String id, final IModel<? extends SignInModel> model)
 	{
@@ -207,7 +212,8 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	}
 
 	/**
-	 * Callback method that is called on password forgotten.
+	 * Abstract callback method that must be overwritten to provide the action for password
+	 * forgotten.
 	 *
 	 * @param target
 	 *            the target
@@ -217,7 +223,7 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	protected abstract void onPasswordForgotten(final AjaxRequestTarget target, final Form<?> form);
 
 	/**
-	 * Callback method that is called on signin.
+	 * Abstract callback method that must be overwritten to provide the action for signin.
 	 *
 	 * @param target
 	 *            the target

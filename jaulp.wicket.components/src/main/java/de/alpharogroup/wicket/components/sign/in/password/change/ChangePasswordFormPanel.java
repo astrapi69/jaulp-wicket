@@ -27,8 +27,9 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
+
 /**
- * The Class SinginFormPanel.
+ * The Class {@link ChangePasswordFormPanel}.
  */
 public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordModel>
 {
@@ -72,12 +73,13 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	}
 
 	/**
-	 * Factory method for creating the Button. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Button}.
+	 *
 	 * @param id
-	 *            the wicket id
-	 * @return the Button
+	 *            the id
+	 * @return the new {@link Button}
 	 */
 	protected Button newButton(final String id)
 	{
@@ -98,8 +100,9 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	}
 
 	/**
-	 * Factory method for creating the Button Label. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a Label.
+	 * Factory method for creating the new {@link Label} for the button. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new {@link Label} for the button.
 	 * 
 	 * @param id
 	 *            the id
@@ -107,7 +110,7 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	 *            the resource key
 	 * @param defaultValue
 	 *            the default value
-	 * @return the label
+	 * @return the new {@link Label} for the button.
 	 */
 	protected Label newButtonLabel(final String id, final String resourceKey,
 		final String defaultValue)
@@ -117,14 +120,15 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
+	 * Factory method for create the new {@link Form}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Form}.
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form
+	 * @return the new {@link Form}
 	 */
 	protected Form<?> newForm(final String id, final IModel<?> model)
 	{
@@ -132,7 +136,7 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 	}
 
 	/**
-	 * Callback method that is called when the action on changin the password.
+	 * Abstract callback method that is called when the action on changin the password.
 	 *
 	 * @param target
 	 *            the target

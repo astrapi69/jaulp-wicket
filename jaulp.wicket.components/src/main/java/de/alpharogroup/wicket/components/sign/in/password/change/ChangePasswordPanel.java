@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.sign.in.password.change;
 
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
+import lombok.Getter;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -27,10 +28,9 @@ import org.apache.wicket.model.IModel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
 
+
 /**
- * The Class AbstractChangePasswordPanel.
- *
- * @author Asterios Raptis
+ * The Class {@link ChangePasswordPanel}.
  */
 public class ChangePasswordPanel extends Panel
 {
@@ -41,16 +41,19 @@ public class ChangePasswordPanel extends Panel
 	private static final long serialVersionUID = 1L;
 
 	/** The current password. */
+	@Getter
 	private final Component currentPassword;
 
 	/** The new password. */
+	@Getter
 	private final Component newPassword;
 
 	/** The repeat new password. */
+	@Getter
 	private final Component repeatNewPassword;
 
 	/**
-	 * Instantiates a new abstract change password panel.
+	 * Instantiates a new {@link ChangePasswordPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -66,45 +69,15 @@ public class ChangePasswordPanel extends Panel
 	}
 
 	/**
-	 * Gets the current password.
-	 *
-	 * @return the current password
-	 */
-	public Component getCurrentPassword()
-	{
-		return currentPassword;
-	}
-
-	/**
-	 * Gets the new password.
-	 *
-	 * @return the new password
-	 */
-	public Component getNewPassword()
-	{
-		return newPassword;
-	}
-
-	/**
-	 * Gets the repeat new password.
-	 *
-	 * @return the repeat new password
-	 */
-	public Component getRepeatNewPassword()
-	{
-		return repeatNewPassword;
-	}
-
-	/**
-	 * Factory method for creating the PasswordTextField for the current password. This method is
-	 * invoked in the constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a PasswordTextField for the current password.
+	 * Factory method for creating the new PasswordTextField for the current password. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new PasswordTextField for the current password.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new PasswordTextField for the current password.
 	 */
 	protected Component newCurrentPasswordTextField(final String id,
 		final IModel<ChangePasswordModel> model)
@@ -136,15 +109,15 @@ public class ChangePasswordPanel extends Panel
 	}
 
 	/**
-	 * Factory method for creating the PasswordTextField for the new password. This method is
+	 * Factory method for creating the new PasswordTextField for the new password. This method is
 	 * invoked in the constructor from the derived classes and can be overridden so users can
-	 * provide their own version of a PasswordTextField for the new password.
+	 * provide their own version of a new PasswordTextField for the new password.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new PasswordTextField for the new password.
 	 */
 	protected Component newPasswordTextField(final String id,
 		final IModel<ChangePasswordModel> model)
