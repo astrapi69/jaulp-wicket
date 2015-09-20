@@ -46,39 +46,39 @@ public class TermOfUseModelBean implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	/** The general terms and conditions model. */
-	private HeaderContentListModelBean generalTermsAndConditionsModel;
+	private HeaderContentListModelBean generalTermsAndConditionsModelBean;
 
 	/** The cancellation model. */
-	private HeaderContentListModelBean cancellationModel;
+	private HeaderContentListModelBean cancellationModelBean;
 
 	/** The contract model. */
-	private HeaderContentListModelBean contractModel;
+	private HeaderContentListModelBean contractModelBean;
 
 	/** The copyright model. */
-	private HeaderContentListModelBean copyrightModel;
+	private HeaderContentListModelBean copyrightModelBean;
 
 	/** The data protection model. */
-	private HeaderContentListModelBean dataProtectionModel;
+	private HeaderContentListModelBean dataProtectionModelBean;
 
 	/** The fulfilment and jurisdiction place model. */
-	private HeaderContentListModelBean fulfilmentAndJurisdictionPlaceModel;
+	private HeaderContentListModelBean fulfilmentAndJurisdictionPlaceModelBean;
 
 	/** The legal references model. */
-	private HeaderContentListModelBean legalReferencesModel;
+	private HeaderContentListModelBean legalReferencesModelBean;
 
 	/** The liability model. */
-	private HeaderContentListModelBean liabilityModel;
+	private HeaderContentListModelBean liabilityModelBean;
 
 	/** The modifications clause model. */
-	private HeaderContentListModelBean modificationsClauseModel;
+	private HeaderContentListModelBean modificationsClauseModelBean;
 
 	/** The rights and duties model bean. */
 	private RightsAndDutiesModelBean rightsAndDutiesModelBean;
 
 	/** The salvatorius clause model. */
-	private HeaderContentListModelBean salvatoriusClauseModel;
+	private HeaderContentListModelBean salvatoriusClauseModelBean;
 
 	/** The disclaimer model. */
-	private HeaderContentListModelBean disclaimerModel;
+	private HeaderContentListModelBean disclaimerModelBean;
 
 }

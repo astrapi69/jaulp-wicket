@@ -260,39 +260,39 @@ public final class ApplicationTermOfUseBean implements Serializable
 					.key("term.of.use.main.head.content.paragraph.second.label").build()).build();
 		model = TermOfUseModelBean
 			.builder()
-			.cancellationModel(
+			.cancellationModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(CANCELLATION_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(CANCELLATION_CONTENT_RESOURCE_KEYS).build())
-			.contractModel(
+			.contractModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(CONTRACT_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(CONTRACT_CONTENT_RESOURCE_KEYS).build())
-			.copyrightModel(
+			.copyrightModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(COPYRIGHT_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(COPYRIGHT_CONTENT_RESOURCE_KEYS).build())
-			.dataProtectionModel(
+			.dataProtectionModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(DATA_PROTECTION_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(DATA_PROTECTION_CONTENT_RESOURCE_KEYS).build())
-			.fulfilmentAndJurisdictionPlaceModel(
+			.fulfilmentAndJurisdictionPlaceModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(FULFILMENT_PLACE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(fulfilmentPlaceContentResourceKeys).build())
-			.generalTermsAndConditionsModel(
+			.generalTermsAndConditionsModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(GENERAL_TERMS_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(generalTermsAndConditionsContentResourceKeys).build())
-			.legalReferencesModel(
+			.legalReferencesModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(LEGAL_REFS_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(LEGAL_REFS_CONTENT_RESOURCE_KEYS).build())
-			.liabilityModel(
+			.liabilityModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(LIABILITY_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(LIABILITY_CONTENT_RESOURCE_KEYS).build())
-			.modificationsClauseModel(
+			.modificationsClauseModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(MOD_CLAUSE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(MOD_CLAUSE_CONTENT_RESOURCE_KEYS).build())
@@ -311,7 +311,7 @@ public final class ApplicationTermOfUseBean implements Serializable
 						ContentListModelBean.builder()
 							.contentResourceKeys(RIGHTS_AND_DUTIES_CONTENT_SUMMARY_RESOURCE_KEYS)
 							.build()).build())
-			.salvatoriusClauseModel(
+			.salvatoriusClauseModelBean(
 				HeaderContentListModelBean.builder()
 					.headerResourceKey(SALVA_CLAUSE_HEADER_RESOURCE_KEY)
 					.contentResourceKeys(SALVA_CLAUSE_CONTENT_RESOURCE_KEYS).build()).build();

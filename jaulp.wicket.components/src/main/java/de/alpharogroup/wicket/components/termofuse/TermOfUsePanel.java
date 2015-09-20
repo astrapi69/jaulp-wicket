@@ -123,41 +123,41 @@ public abstract class TermOfUsePanel extends Panel
 
 		add(generalTermsAndConditionsPanel = newGeneralTermsAndConditionsPanel(
 			"generalTermsAndConditionsPanel",
-			Model.of(model.getObject().getGeneralTermsAndConditionsModel())));
+			Model.of(model.getObject().getGeneralTermsAndConditionsModelBean())));
 
 		add(legalReferencesPanel = newLegalReferencesPanel("legalReferencesPanel",
-			Model.of(model.getObject().getLegalReferencesModel())));
+			Model.of(model.getObject().getLegalReferencesModelBean())));
 
 		add(contractPanel = newContractPanel("contractPanel",
-			Model.of(model.getObject().getContractModel())));
+			Model.of(model.getObject().getContractModelBean())));
 
 		add(dataProtectionPanel = newDataProtectionPanel("dataProtectionPanel",
-			Model.of(model.getObject().getDataProtectionModel())));
+			Model.of(model.getObject().getDataProtectionModelBean())));
 
 		add(copyrightPanel = newCopyrightPanel("copyrightPanel",
-			Model.of(model.getObject().getCopyrightModel())));
+			Model.of(model.getObject().getCopyrightModelBean())));
 
 		add(cancellationPanel = newCancellationPanel("cancellationPanel",
-			Model.of(model.getObject().getCancellationModel())));
+			Model.of(model.getObject().getCancellationModelBean())));
 
 		add(liabilityPanel = newLiabilityPanel("liabilityPanel",
-			Model.of(model.getObject().getLiabilityModel())));
+			Model.of(model.getObject().getLiabilityModelBean())));
 
 		add(rightsAndDutiesPanel = newRightsAndDutiesPanel("rightsAndDutiesPanel",
 			Model.of(model.getObject().getRightsAndDutiesModelBean())));
 
 		add(modificationsClausePanel = newModificationsClausePanel("modificationsClausePanel",
-			Model.of(model.getObject().getModificationsClauseModel())));
+			Model.of(model.getObject().getModificationsClauseModelBean())));
 
 		add(salvatoriusClausePanel = newSalvatoriusClausePanel("salvatoriusClausePanel",
-			Model.of(model.getObject().getSalvatoriusClauseModel())));
+			Model.of(model.getObject().getSalvatoriusClauseModelBean())));
 
 		add(fulfilmentAndJurisdictionPlacePanel = newFulfilmentAndJurisdictionPlacePanel(
 			"fulfilmentAndJurisdictionPlacePanel",
-			Model.of(model.getObject().getFulfilmentAndJurisdictionPlaceModel())));
+			Model.of(model.getObject().getFulfilmentAndJurisdictionPlaceModelBean())));
 
 		add(disclaimerPanel = newDisclaimerPanel("disclaimerPanel",
-			Model.of(model.getObject().getDisclaimerModel())));
+			Model.of(model.getObject().getDisclaimerModelBean())));
 
 	}
 
