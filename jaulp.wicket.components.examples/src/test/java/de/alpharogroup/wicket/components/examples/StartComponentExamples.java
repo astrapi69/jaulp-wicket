@@ -18,8 +18,6 @@ package de.alpharogroup.wicket.components.examples;
 import java.io.File;
 import java.io.IOException;
 
-import lombok.experimental.ExtensionMethod;
-
 import org.apache.log4j.Logger;
 import org.apache.wicket.protocol.http.ContextParamWebApplicationFactory;
 import org.apache.wicket.protocol.http.WicketFilter;
@@ -41,6 +39,7 @@ import de.alpharogroup.jetty9.runner.factories.DeploymentManagerFactory;
 import de.alpharogroup.jetty9.runner.factories.ServletContextHandlerFactory;
 import de.alpharogroup.jetty9.runner.log.LoggerExtensions;
 import de.alpharogroup.wicket.components.examples.application.WicketApplication;
+import lombok.experimental.ExtensionMethod;
 
 @ExtensionMethod(LoggerExtensions.class)
 public class StartComponentExamples
@@ -78,26 +77,24 @@ public class StartComponentExamples
 		final String absolutePathFromLogfile = logfile.getAbsolutePath();
 		final String filterPath = "/*";
 		// Add a file appender to the logger programatically
-		Logger.getRootLogger().addFileAppender(
+		LoggerExtensions.addFileAppender(Logger.getRootLogger(),
 			LoggerExtensions.newFileAppender(absolutePathFromLogfile));
+
 		final ContextHandlerCollection contexts = new ContextHandlerCollection();
 
 		final ServletContextHandler servletContextHandler = ServletContextHandlerFactory
-			.getNewServletContextHandler(ServletContextHandlerConfiguration
-				.builder()
-				.parent(contexts)
-				.filterHolderConfiguration(
-					FilterHolderConfiguration
-						.builder()
-						.filterClass(WicketFilter.class)
-						.filterPath(filterPath)
+			.getNewServletContextHandler(
+				ServletContextHandlerConfiguration.builder().parent(contexts)
+					.filterHolderConfiguration(FilterHolderConfiguration.builder()
+						.filterClass(WicketFilter.class).filterPath(filterPath)
 						.initParameter(WicketFilter.FILTER_MAPPING_PARAM, filterPath)
 						.initParameter(ContextParamWebApplicationFactory.APP_CLASS_PARAM,
-							WicketApplication.class.getName()).build())
-				.servletHolderConfiguration(
-					ServletHolderConfiguration.builder().servletClass(DefaultServlet.class)
-						.pathSpec(filterPath).build()).contextPath("/").webapp(webapp)
-				.maxInactiveInterval(sessionTimeout).filterPath(filterPath).build());
+							WicketApplication.class.getName())
+						.build())
+				.servletHolderConfiguration(ServletHolderConfiguration.builder()
+					.servletClass(DefaultServlet.class).pathSpec(filterPath).build())
+				.contextPath("/").webapp(webapp).maxInactiveInterval(sessionTimeout)
+				.filterPath(filterPath).build());
 
 		final DeploymentManager deployer = DeploymentManagerFactory.newDeploymentManager(contexts,
 			webapp.getAbsolutePath(), null);
