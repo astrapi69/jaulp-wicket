@@ -22,9 +22,23 @@ import java.util.List;
 
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.IFilterStateLocator;
 
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * The Class {@link AbstractSortFilterDataProvider}.
+ *
+ * @param <T>
+ *            the generic type
+ * @param <S>
+ *            the generic type
+ * @param <F>
+ *            the generic type
+ */
 public class AbstractSortFilterDataProvider<T extends Serializable, S extends Serializable, F extends Serializable>
 	extends
-		AbstractSortableDataProvider<T, S> implements IFilterStateLocator<F>
+		AbstractSortableDataProvider<T, S>
+	implements IFilterStateLocator<F>
 {
 
 	/**
@@ -33,10 +47,12 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	private static final long serialVersionUID = 1L;
 
 	/** The filter. */
+	@Getter
+	@Setter
 	private F filterState;
 
 	/**
-	 * Default constructor.
+	 * Instantiates a new {@link AbstractSortFilterDataProvider}.
 	 */
 	public AbstractSortFilterDataProvider()
 	{
@@ -44,7 +60,7 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	}
 
 	/**
-	 * Instantiates a new AbstractSortFilterDataProvider.
+	 * Instantiates a new {@link AbstractSortFilterDataProvider}.
 	 *
 	 * @param data
 	 *            the data
@@ -70,19 +86,10 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 	 * {@inheritDoc}
 	 */
 	@Override
-	public F getFilterState()
-	{
-		return this.filterState;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
 		List<T> ret = new ArrayList<>(filter(sort()));
-		if (ret.size() > first + count)
+		if (ret.size() > (first + count))
 		{
 			ret = ret.subList((int)first, (int)first + (int)count);
 		}
@@ -91,16 +98,6 @@ public class AbstractSortFilterDataProvider<T extends Serializable, S extends Se
 			ret = ret.subList((int)first, ret.size());
 		}
 		return ret.iterator();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setFilterState(final F filterState)
-	{
-		this.filterState = filterState;
-
 	}
 
 	/**

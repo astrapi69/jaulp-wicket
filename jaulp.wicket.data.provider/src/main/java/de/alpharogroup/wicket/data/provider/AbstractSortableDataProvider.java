@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.ISortableDataProvider;
 import org.apache.wicket.extensions.markup.html.repeater.util.SingleSortState;
@@ -29,9 +28,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.collections.ListExtensions;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * The Class AbstractSortableDataProvider.
+ * The Class {@link AbstractSortableDataProvider}.
  *
  * @param <T>
  *            the generic type of the Model for the DataProvider.
@@ -50,13 +51,15 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	private static final long serialVersionUID = 1L;
 
 	/** The data for this DataProvider. */
+	@Getter @Setter
 	private List<T> data;
 
-	/** The sort state. */
-	private final SingleSortState<S> sortState = new SingleSortState<>();
+	/** The sort state. */	
+	@Getter
+	private final SingleSortState<S> sortState;
 
 	/**
-	 * Default constructor.
+	 * Instantiates a new {@link AbstractSortableDataProvider}.
 	 */
 	public AbstractSortableDataProvider()
 	{
@@ -64,14 +67,27 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	}
 
 	/**
-	 * Instantiates a new abstract data provider.
+	 * Instantiates a new {@link AbstractSortableDataProvider}.
 	 *
 	 * @param data
 	 *            the data
 	 */
 	public AbstractSortableDataProvider(final List<T> data)
 	{
-		this.data = data;
+		setData(data);
+		this.sortState = newSortState();
+	}
+
+	/**
+	 * Factory method for creating the new {@link SingleSortState} for the sort state. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of a new {@link SingleSortState} for the sort state.
+	 *
+	 * @return the new {@link SingleSortState} for the sort state.
+	 */
+	protected SingleSortState<S> newSortState() {
+		return new SingleSortState<>();
+		
 	}
 
 	/**
@@ -81,16 +97,6 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	public void detach()
 	{
 		this.data = null;
-	}
-
-	/**
-	 * Gets the data.
-	 *
-	 * @return the data
-	 */
-	public List<T> getData()
-	{
-		return this.data;
 	}
 
 	/**
@@ -104,25 +110,13 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	}
 
 	/**
-	 * Gets the sort state.
-	 *
-	 * @return the sort state
-	 * @see ISortableDataProvider#getSortState()
-	 */
-	@Override
-	public final ISortState<S> getSortState()
-	{
-		return sortState;
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
 		List<T> result = new ArrayList<>(sort());
-		if (result.size() > first + count)
+		if (result.size() > (first + count))
 		{
 			result = result.subList((int)first, (int)first + (int)count);
 		}
@@ -140,17 +134,6 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	public IModel<T> model(final T object)
 	{
 		return Model.of(object);
-	}
-
-	/**
-	 * Sets the data.
-	 *
-	 * @param data
-	 *            the new data
-	 */
-	protected void setData(final List<T> data)
-	{
-		this.data = data;
 	}
 
 	/**

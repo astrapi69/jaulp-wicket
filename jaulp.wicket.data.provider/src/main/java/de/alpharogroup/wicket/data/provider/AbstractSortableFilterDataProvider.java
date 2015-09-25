@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.ISortableDataProvider;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.filter.IFilterStateLocator;
@@ -30,9 +29,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.collections.ListExtensions;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * The Class AbstractSortableFilterDataProvider is an abstract generic implementation for the
+ * The Class {@link AbstractSortableFilterDataProvider} is an abstract generic implementation for the
  * ISortableDataProvider and the IFilterStateLocator interface.
  *
  * @author Asterios Raptis
@@ -55,16 +56,19 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	private static final long serialVersionUID = 1L;
 
 	/** The filter. */
+	@Getter @Setter
 	private F filterState;
 
 	/** The data. */
+	@Getter @Setter
 	private List<T> data;
 
 	/** The sort state. */
-	private final SingleSortState<S> sortState = new SingleSortState<>();
+	@Getter
+	private final SingleSortState<S> sortState;
 
 	/**
-	 * Default constructor.
+	 * Instantiates a new {@link AbstractSortableFilterDataProvider}.
 	 */
 	public AbstractSortableFilterDataProvider()
 	{
@@ -72,7 +76,7 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	}
 
 	/**
-	 * Instantiates a new abstract data provider.
+	 * Instantiates a new {@link AbstractSortableFilterDataProvider}.
 	 *
 	 * @param data
 	 *            the data
@@ -80,6 +84,19 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	public AbstractSortableFilterDataProvider(final List<T> data)
 	{
 		setData(data);
+		this.sortState = newSortState();
+	}
+
+	/**
+	 * Factory method for creating the new {@link SingleSortState} for the sort state. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of a new {@link SingleSortState} for the sort state.
+	 *
+	 * @return the new {@link SingleSortState} for the sort state.
+	 */
+	protected SingleSortState<S> newSortState() {
+		return new SingleSortState<>();
+		
 	}
 
 	/**
@@ -104,25 +121,6 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	}
 
 	/**
-	 * Gets the data.
-	 *
-	 * @return the data
-	 */
-	public List<T> getData()
-	{
-		return this.data;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public F getFilterState()
-	{
-		return this.filterState;
-	}
-
-	/**
 	 * Returns current sort state.
 	 *
 	 * @return current sort state
@@ -133,25 +131,13 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	}
 
 	/**
-	 * Gets the sort state.
-	 *
-	 * @return the sort state
-	 * @see ISortableDataProvider#getSortState()
-	 */
-	@Override
-	public final ISortState<S> getSortState()
-	{
-		return sortState;
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Iterator<? extends T> iterator(final long first, final long count)
 	{
 		List<T> ret = new ArrayList<>(filter(sort()));
-		if (ret.size() > first + count)
+		if (ret.size() > (first + count))
 		{
 			ret = ret.subList((int)first, (int)first + (int)count);
 		}
@@ -169,27 +155,6 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	public IModel<T> model(final T object)
 	{
 		return Model.of(object);
-	}
-
-	/**
-	 * Sets the data.
-	 *
-	 * @param data
-	 *            the new data
-	 */
-	protected void setData(final List<T> data)
-	{
-		this.data = data;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setFilterState(final F filterState)
-	{
-		this.filterState = filterState;
-
 	}
 
 	/**
@@ -228,7 +193,7 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	/**
 	 * Sorts the given list by getting the {@link SortParam#getProperty()} and if not null the given
 	 * list will be sort.
-	 * 
+	 *
 	 * @return the same list but sorted.
 	 */
 	protected List<T> sort()
