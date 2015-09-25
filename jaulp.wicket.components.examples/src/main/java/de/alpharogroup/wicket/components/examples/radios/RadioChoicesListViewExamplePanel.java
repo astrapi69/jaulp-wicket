@@ -41,15 +41,15 @@ public class RadioChoicesListViewExamplePanel extends BasePanel<Company>
 	public RadioChoicesListViewExamplePanel(final String id, final IModel<Company> model)
 	{
 		super(id, model);
-		// Radio buttons must be part of a Form component.
+		// Radio buttons have to be part of a Form component.
 		final Form<?> form = new Form<>("form");
 		add(form);
 		final RadioGroupModel<Company> radioGroupModel = new RadioGroupModel<>();
 		setModel(model);
 		// create list...
 		final List<Company> comps = Arrays.asList(Company.builder().name("Ferrari").build(),
-			Company.builder().name("Lamborgini").build(), Company.builder().name("Mazerati")
-				.build(), Company.builder().name("Porsche").build());
+			Company.builder().name("Lamborgini").build(),
+			Company.builder().name("Mazerati").build(), Company.builder().name("Porsche").build());
 		// we can set the selected radio from the start or leave it blank...
 		// radioGroupModel.setSelected(comps.get(0));
 		radioGroupModel.setRadios(comps);

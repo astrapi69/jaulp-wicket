@@ -18,8 +18,6 @@ package de.alpharogroup.wicket.components.listview;
 import java.io.Serializable;
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.ReuseIfModelsEqualStrategy;
@@ -30,6 +28,7 @@ import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.wicket.base.BasePanel;
+import lombok.Getter;
 
 /**
  * The Class DataViewPanel takes a {@link org.apache.wicket.markup.repeater.data.DataView} of a
@@ -85,8 +84,8 @@ public abstract class DataViewPanel<T extends Serializable> extends BasePanel<Li
 
 	/**
 	 * Abstract factory method that creates a new {@link IDataProvider}. This method is invoked in
-	 * the constructor from the derived classes and must be implemented so users can provide their
-	 * own version of a {@link IDataProvider}.
+	 * the constructor from the derived classes and have to be implemented so users can provide
+	 * their own version of a {@link IDataProvider}.
 	 *
 	 * @param model
 	 *            the model

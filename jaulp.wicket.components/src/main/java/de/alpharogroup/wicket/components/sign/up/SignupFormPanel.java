@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.up;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
@@ -30,6 +28,7 @@ import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link SignupFormPanel}.
@@ -92,8 +91,8 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 		form.addOrReplace(signupPanel = newSignupPanel("signupPanel", getModel()));
 
 		form.addOrReplace(submitButton = newButton("signupButton"));
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.up.label",
-			"Sign up"));
+		submitButton.add(
+			buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.up.label", "Sign up"));
 		form.add(submitButton);
 	}
 
@@ -153,7 +152,8 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 * @return the form
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected Form<?> newForm(final String id, final IModel<? extends BaseUsernameSignUpModel> model)
+	protected Form<?> newForm(final String id,
+		final IModel<? extends BaseUsernameSignUpModel> model)
 	{
 		return new Form(id, model);
 	}
@@ -185,7 +185,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide the action on sign up.
+	 * Abstract callback method that have to be overwritten to provide the action on sign up.
 	 *
 	 * @param target
 	 *            the target

@@ -40,13 +40,13 @@ public abstract class AbstractActionPanel<T> extends BasePanel<T>
 	public AbstractActionPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
-		add(newActionLink(ACTION_LINK_ID).add(
-			newActionLinkLabel(ACTION_LINK_LABEL_ID, newActionLinkLabelModel())));
+		add(newActionLink(ACTION_LINK_ID)
+			.add(newActionLinkLabel(ACTION_LINK_LABEL_ID, newActionLinkLabelModel())));
 	}
 
 	/**
 	 * Abstract factory method for creating the new action {@link AbstractLink}. This method is
-	 * invoked in the constructor and must be implemented so users can provide their own version of
+	 * invoked in the constructor and have to implemented so users can provide their own version of
 	 * a new action {@link AbstractLink}.
 	 *
 	 * @param id

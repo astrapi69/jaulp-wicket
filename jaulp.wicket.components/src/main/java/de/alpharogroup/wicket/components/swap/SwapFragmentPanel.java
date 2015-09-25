@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.swap;
 
-import lombok.Getter;
-
 import org.apache.log4j.Logger;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -25,6 +23,8 @@ import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+
+import lombok.Getter;
 
 /**
  * The abstract class {@link SwapFragmentPanel} holds two Fragments that can be swapped.
@@ -74,9 +74,9 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	/**
 	 * Abstract factory method for creating the new {@link Fragment} for the editable
 	 * {@link Component}. This method is invoked in the constructor from the derived classes and
-	 * must be overridden so users can provide their own version of a new {@link Fragment} for the
-	 * view.
-	 * 
+	 * have to be overridden so users can provide their own version of a new {@link Fragment} for
+	 * the view.
+	 *
 	 * @param id
 	 *            the id
 	 * @return the new {@link Fragment} for the view.
@@ -86,9 +86,9 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 	/**
 	 * Factory method for creating the new {@link Fragment} for the view(not editable)
 	 * {@link Component}. This method is invoked in the constructor from the derived classes and
-	 * must be overridden so users can provide their own version of a new {@link Fragment} for the
-	 * view(not editable) {@link Component}.
-	 * 
+	 * have to be overridden so users can provide their own version of a new {@link Fragment} for
+	 * the view(not editable) {@link Component}.
+	 *
 	 * @param id
 	 *            the id
 	 * @return the new {@link Fragment} for the view(not editable) {@link Component}.
@@ -113,8 +113,8 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 		}
 		else
 		{
-			LOGGER
-				.error("AjaxRequestTarget is null on method SwapFragmentPanel#onSwapToEdit(AjaxRequestTarget, Form)");
+			LOGGER.error(
+				"AjaxRequestTarget is null on method SwapFragmentPanel#onSwapToEdit(AjaxRequestTarget, Form)");
 		}
 		modeContext = ModeContext.EDIT_MODE;
 	}
@@ -135,8 +135,8 @@ public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
 		}
 		else
 		{
-			LOGGER
-				.error("AjaxRequestTarget is null on method SwapFragmentPanel#onSwapToView(AjaxRequestTarget, Form)");
+			LOGGER.error(
+				"AjaxRequestTarget is null on method SwapFragmentPanel#onSwapToView(AjaxRequestTarget, Form)");
 		}
 		swapFragments();
 		modeContext = ModeContext.VIEW_MODE;

@@ -21,10 +21,10 @@ import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class AbstractModalWindow.
- * 
+ * The Class {@link AbstractModalWindow}.
+ *
  * @param <T>
- *            the generic type
+ *            the generic type of the model object
  *
  */
 public abstract class AbstractModalWindow<T> extends ModalWindow
@@ -36,28 +36,7 @@ public abstract class AbstractModalWindow<T> extends ModalWindow
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new abstract modal window.
-	 *
-	 * @param id
-	 *            the id
-	 * @param title
-	 *            the title
-	 * @param initialWidth
-	 *            the initial width
-	 * @param initialHeight
-	 *            the initial height
-	 * @param component
-	 *            the component
-	 */
-	public AbstractModalWindow(final String id, final String title, final int initialWidth,
-		final int initialHeight, final Component component)
-	{
-		super(id);
-		init(title, initialWidth, initialHeight, component);
-	}
-
-	/**
-	 * Instantiates a new abstract modal window.
+	 * Instantiates a new {@link AbstractModalWindow}.
 	 *
 	 * @param id
 	 *            the id
@@ -80,7 +59,7 @@ public abstract class AbstractModalWindow<T> extends ModalWindow
 	}
 
 	/**
-	 * Instantiates a new abstract modal window.
+	 * Instantiates a new {@link AbstractModalWindow}.
 	 *
 	 * @param id
 	 *            the id
@@ -95,6 +74,27 @@ public abstract class AbstractModalWindow<T> extends ModalWindow
 		final Component component)
 	{
 		this(id, null, initialWidth, initialHeight, component);
+	}
+
+	/**
+	 * Instantiates a new {@link AbstractModalWindow}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param title
+	 *            the title
+	 * @param initialWidth
+	 *            the initial width
+	 * @param initialHeight
+	 *            the initial height
+	 * @param component
+	 *            the component
+	 */
+	public AbstractModalWindow(final String id, final String title, final int initialWidth,
+		final int initialHeight, final Component component)
+	{
+		super(id);
+		init(title, initialWidth, initialHeight, component);
 	}
 
 
@@ -122,6 +122,12 @@ public abstract class AbstractModalWindow<T> extends ModalWindow
 		setContent(component);
 	}
 
+	/**
+	 * Abstract callback method that have to be overwritten to provide specific action.
+	 *
+	 * @param target
+	 *            the target
+	 */
 	/**
 	 * On cancel.
 	 *

@@ -15,11 +15,11 @@
  */
 package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
-import lombok.Getter;
-
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
+
+import lombok.Getter;
 
 
 /**
@@ -43,7 +43,7 @@ public abstract class AbstractContentTab<T> extends CloseableTab
 	 * Instantiates a new {@link AbstractContentTab}.
 	 *
 	 * @param title
-	 *            IModel used to represent the title of the tab. Must contain a string
+	 *            IModel used to represent the title of the tab. Have to contain a string
 	 * @param content
 	 *            IModel used to represent the content of the tab.
 	 * @param closeTitle

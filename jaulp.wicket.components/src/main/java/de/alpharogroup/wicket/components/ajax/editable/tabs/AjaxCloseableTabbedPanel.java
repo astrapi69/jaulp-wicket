@@ -17,8 +17,6 @@ package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -35,6 +33,8 @@ import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.lang.Args;
+
+import lombok.Getter;
 
 /**
  * The Class AjaxCloseableTabbedPanel adds functionality to add or remove tabs from the TabbedPanel.
@@ -165,7 +165,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Instantiates a new {@link AjaxCloseableTabbedPanel}.
-	 * 
+	 *
 	 * @param id
 	 *            component id
 	 * @param tabs
@@ -173,7 +173,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 * @param model
 	 *            model holding the index of the selected tab
 	 */
-	public AjaxCloseableTabbedPanel(final String id, final List<T> tabs, final IModel<Integer> model)
+	public AjaxCloseableTabbedPanel(final String id, final List<T> tabs,
+		final IModel<Integer> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -209,7 +210,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Get the css class of the last tab.
-	 * 
+	 *
 	 * @return the value of css class attribute that will be added to last tab. The default value is
 	 *         <code>last</code>
 	 */
@@ -220,7 +221,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Get the selected tab.
-	 * 
+	 *
 	 * @return index of the selected tab
 	 */
 	public final int getSelectedTab()
@@ -230,7 +231,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Get the css class of the selected tab.
-	 * 
+	 *
 	 * @return the value of css class attribute that will be added to selected tab. The default
 	 *         value is <code>selected</code>
 	 */
@@ -241,7 +242,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Get the css class of the tab container.
-	 * 
+	 *
 	 * @return the value of css class attribute that will be added to a div containing the tabs. The
 	 *         default value is <code>tab-row</code>
 	 */
@@ -252,7 +253,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Gets the list of tabs that can be used by the user to add/remove/reorder tabs in the panel.
-	 * 
+	 *
 	 * @return list of tabs that can be used by the user to add/remove/reorder tabs in the panel
 	 */
 	public final List<T> getTabs()
@@ -279,7 +280,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * Override of the default initModel behaviour. This component <strong>will not</strong> use any
 	 * compound model of a parent.
-	 * 
+	 *
 	 * @see org.apache.wicket.Component#initModel()
 	 */
 	@Override
@@ -290,23 +291,23 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Factory method for links used to close the selected tab.
-	 * 
+	 *
 	 * The created component is attached to the following markup. Label component with id: title
 	 * will be added for you by the tabbed panel.
-	 * 
+	 *
 	 * <pre>
 	 * &lt;a href=&quot;#&quot; wicket:id=&quot;link&quot;&gt;&lt;span wicket:id=&quot;title&quot;&gt;[[tab title]]&lt;/span&gt;&lt;/a&gt;
 	 * </pre>
-	 * 
+	 *
 	 * Example implementation:
-	 * 
+	 *
 	 * <pre>
 	 * protected WebMarkupContainer newCloseLink(String linkId, final int index)
 	 * {
 	 * 	return new Link(linkId)
 	 * 	{
 	 * 		private static final long serialVersionUID = 1L;
-	 * 
+	 *
 	 * 		public void onClick()
 	 * 		{
 	 * 			setSelectedTab(index);
@@ -314,7 +315,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 * 	};
 	 * }
 	 * </pre>
-	 * 
+	 *
 	 * @param linkId
 	 *            component id with which the link should be created
 	 * @param index
@@ -344,7 +345,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * Factory method for tab titles. Returned component can be anything that can attach to span
 	 * tags such as a fragment, panel, or a label
-	 * 
+	 *
 	 * @param titleId
 	 *            id of title component
 	 * @param titleModel
@@ -361,23 +362,23 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Factory method for links used to switch between tabs.
-	 * 
+	 *
 	 * The created component is attached to the following markup. Label component with id: title
 	 * will be added for you by the tabbed panel.
-	 * 
+	 *
 	 * <pre>
 	 * &lt;a href=&quot;#&quot; wicket:id=&quot;link&quot;&gt;&lt;span wicket:id=&quot;title&quot;&gt;[[tab title]]&lt;/span&gt;&lt;/a&gt;
 	 * </pre>
-	 * 
+	 *
 	 * Example implementation:
-	 * 
+	 *
 	 * <pre>
 	 * protected WebMarkupContainer newLink(String linkId, final int index)
 	 * {
 	 * 	return new Link(linkId)
 	 * 	{
 	 * 		private static final long serialVersionUID = 1L;
-	 * 
+	 *
 	 * 		public void onClick()
 	 * 		{
 	 * 			setSelectedTab(index);
@@ -385,7 +386,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 * 	};
 	 * }
 	 * </pre>
-	 * 
+	 *
 	 * @param linkId
 	 *            component id with which the link should be created
 	 * @param index
@@ -431,7 +432,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * Generates a loop item used to represent a specific tab's <code>li</code> element.
-	 * 
+	 *
 	 * @param tabIndex
 	 *            the tab index
 	 * @return new loop item
@@ -484,7 +485,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * Generates the container for all tabs. The default container automatically adds the css
 	 * <code>class</code> attribute based on the return value of {@link #getTabContainerCssClass()}
-	 * 
+	 *
 	 * @param id
 	 *            container id
 	 * @return container
@@ -564,7 +565,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	/**
 	 * Factory method for tab titles. Returned component can be anything that can attach to span
 	 * tags such as a fragment, panel, or a label
-	 * 
+	 *
 	 * @param titleId
 	 *            id of title component
 	 * @param titleModel
@@ -586,7 +587,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 	 * <strong>Note</strong> Since an {@link AjaxFallbackLink} is used to back the ajax update the
 	 * <code>target</code> argument can be null when the client browser does not support ajax and
 	 * the fallback mode is used. See {@link AjaxFallbackLink} for details.
-	 * 
+	 *
 	 * @param target
 	 *            ajax target used to update this component
 	 */
@@ -748,9 +749,8 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 		if (!component.getId().equals(TAB_PANEL_ID))
 		{
 			throw new WicketRuntimeException(
-				"ITab.getPanel() returned a panel with invalid id ["
-					+ component.getId()
-					+ "]. You must always return a panel with id equal to the provided panelId parameter. TabbedPanel ["
+				"ITab.getPanel() returned a panel with invalid id [" + component.getId()
+					+ "]. You always have to return a panel with id equal to the provided panelId parameter. TabbedPanel ["
 					+ getPath() + "] ITab index [" + currentTab + "]");
 		}
 
@@ -760,7 +760,7 @@ public class AjaxCloseableTabbedPanel<T extends ICloseableTab> extends Panel
 
 	/**
 	 * sets the selected tab
-	 * 
+	 *
 	 * @param index
 	 *            index of the tab to select
 	 * @return this for chaining

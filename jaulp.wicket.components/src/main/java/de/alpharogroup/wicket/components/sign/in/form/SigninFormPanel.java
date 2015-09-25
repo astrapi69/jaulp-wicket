@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.in.form;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -34,6 +32,7 @@ import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.link.LinkPanel;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;
+import lombok.Getter;
 
 /**
  * The Class SinginFormPanel.
@@ -81,8 +80,8 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 		form.add(signinPanel = newSigninPanel("signinPanel", model));
 		// Create submit button for the form
 		submitButton = newButton("submitButton");
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label",
-			"Sign In"));
+		submitButton.add(
+			buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label", "Sign In"));
 		form.add(submitButton);
 		passwordForgottenLink = newPasswordForgottenLink("passwordForgottenLink", model);
 		add(passwordForgottenLink);
@@ -122,7 +121,7 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	 * Factory method for creating the new {@link Label} for the button. This method is invoked in
 	 * the constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link Label} for the button.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey
@@ -212,7 +211,7 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide the action for password
+	 * Abstract callback method that have to be overwritten to provide the action for password
 	 * forgotten.
 	 *
 	 * @param target
@@ -223,7 +222,7 @@ public abstract class SigninFormPanel<T extends SignInModel> extends GenericPane
 	protected abstract void onPasswordForgotten(final AjaxRequestTarget target, final Form<?> form);
 
 	/**
-	 * Abstract callback method that must be overwritten to provide the action for signin.
+	 * Abstract callback method that have to be overwritten to provide the action for signin.
 	 *
 	 * @param target
 	 *            the target

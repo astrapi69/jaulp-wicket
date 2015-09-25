@@ -46,29 +46,17 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	}
 
 	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected Fragment newViewFragment(final String id)
-	{
-		final Fragment viewFragment = new Fragment(id, "view", this, getModel());
-		viewFragment.setOutputMarkupPlaceholderTag(true);
-		viewFragment.add(newViewComponent("viewComponent", getModel()));
-		return viewFragment;
-	}
-
-	/**
-	 * Abstract factory method for the new {@link Component} for the view. This method is invoked in
-	 * the method {@link SwapComponentsFragmentPanel#newViewFragment(String)} and must be overridden
-	 * so users can provide their own version of a new {@link Component} for the view.
+	 * Abstract factory method for the new editable {@link Component}. This method is invoked in the
+	 * method {@link SwapComponentsFragmentPanel#newEditFragment(String)} and have to be overridden
+	 * so users can provide their own version of a new editable {@link Component}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new {@link Component} for the view.
+	 * @return the new editable {@link Component}.
 	 */
-	protected abstract Component newViewComponent(final String id, final IModel<T> model);
+	protected abstract Component newEditComponent(final String id, final IModel<T> model);
 
 	/**
 	 * {@inheritDoc}
@@ -82,18 +70,30 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 		return editFragment;
 	}
 
-
 	/**
-	 * Abstract factory method for the new editable {@link Component}. This method is invoked in the
-	 * method {@link SwapComponentsFragmentPanel#newEditFragment(String)} and must be overridden so
-	 * users can provide their own version of a new editable {@link Component}.
+	 * Abstract factory method for the new {@link Component} for the view. This method is invoked in
+	 * the method {@link SwapComponentsFragmentPanel#newViewFragment(String)} and have to be
+	 * overridden so users can provide their own version of a new {@link Component} for the view.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new editable {@link Component}.
+	 * @return the new {@link Component} for the view.
 	 */
-	protected abstract Component newEditComponent(final String id, final IModel<T> model);
+	protected abstract Component newViewComponent(final String id, final IModel<T> model);
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected Fragment newViewFragment(final String id)
+	{
+		final Fragment viewFragment = new Fragment(id, "view", this, getModel());
+		viewFragment.setOutputMarkupPlaceholderTag(true);
+		viewFragment.add(newViewComponent("viewComponent", getModel()));
+		return viewFragment;
+	}
 
 }

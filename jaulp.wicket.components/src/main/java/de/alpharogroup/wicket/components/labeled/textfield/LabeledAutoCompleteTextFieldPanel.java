@@ -15,13 +15,12 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
  * Convenience class for labeled {@link AutoCompleteTextField}.
@@ -91,7 +90,7 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 
 	/**
 	 * Abstract Factory method for create the new {@link AutoCompleteTextField}. This method is
-	 * invoked in the constructor from the derived classes and must be implemented so users can
+	 * invoked in the constructor from the derived classes and have to be implemented so users can
 	 * provide their own version of a new {@link AutoCompleteTextField}.
 	 *
 	 * @param id

@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.link;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -27,6 +25,7 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link LinkPanel}.
@@ -129,7 +128,7 @@ public abstract class LinkPanel extends BasePanel<String>
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide specific action on click.
+	 * Abstract callback method that have to be overwritten to provide specific action on click.
 	 *
 	 * @param target
 	 *            the target

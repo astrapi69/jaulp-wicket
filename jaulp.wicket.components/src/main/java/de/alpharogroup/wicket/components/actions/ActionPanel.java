@@ -56,7 +56,7 @@ public abstract class ActionPanel<T> extends AbstractActionPanel<T>
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide specific action.
+	 * Abstract callback method that have to be overwritten to provide specific action.
 	 *
 	 * @param target
 	 *            the target

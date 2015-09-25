@@ -21,9 +21,9 @@ import org.apache.wicket.model.IModel;
 
 /**
  * The Class EnumRadio extends the class Radio and takes as parameter an enum type.
- * 
+ *
  * @param <T>
- *            the generic type that must extends enum.
+ *            the generic type that have to extends enum.
  * @author Asterios Raptis
  */
 public class EnumRadio<T extends Enum<?>> extends Radio<T>
@@ -36,7 +36,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 
 	/**
 	 * Instantiates a new {@link EnumRadio}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 */
@@ -48,7 +48,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 
 	/**
 	 * Instantiates a new {@link EnumRadio}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -62,7 +62,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 
 	/**
 	 * Instantiates a new {@link EnumRadio}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -78,7 +78,7 @@ public class EnumRadio<T extends Enum<?>> extends Radio<T>
 
 	/**
 	 * Instantiates a new {@link EnumRadio}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param group

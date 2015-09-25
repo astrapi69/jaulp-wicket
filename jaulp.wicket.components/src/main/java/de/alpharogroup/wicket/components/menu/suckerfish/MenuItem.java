@@ -19,14 +19,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * Lightweight menu object that stores a menu and its label.
@@ -63,7 +62,7 @@ public class MenuItem implements Serializable
 	{
 		if ((link != null) && !link.getId().equals(MenuPanel.LINK_ID))
 		{
-			throw new IllegalArgumentException("The id must be SuckerfishMenuPanel.LINK_ID");
+			throw new IllegalArgumentException("The id have to be SuckerfishMenuPanel.LINK_ID");
 		}
 		this.link = link;
 		this.link.add(this.label = newLabel(MenuPanel.LINK_TEXT_ID, labelModel));

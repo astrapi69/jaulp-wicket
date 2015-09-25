@@ -15,10 +15,10 @@
  */
 package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
+
+import lombok.Getter;
 
 /**
  * The Class {@link CloseableTab}. Convenience class that takes care of closable ITab functionality.
@@ -39,9 +39,9 @@ public abstract class CloseableTab implements ICloseableTab
 
 	/**
 	 * Instantiates a new {@link CloseableTab}.
-	 * 
+	 *
 	 * @param title
-	 *            IModel used to represent the title of the tab. Must contain a string
+	 *            IModel used to represent the title of the tab. Have to contain a string
 	 * @param closeTitle
 	 *            title of close
 	 */

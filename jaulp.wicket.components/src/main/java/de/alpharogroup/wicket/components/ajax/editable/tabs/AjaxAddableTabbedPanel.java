@@ -17,8 +17,6 @@ package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -37,6 +35,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class AjaxAddableTabbedPanel adds functionality to add or remove tabs from the TabbedPanel.
@@ -212,7 +211,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 	/**
 	 * Get the css class of the last tab.
-	 * 
+	 *
 	 * @return the value of css class attribute that will be added to last tab. The default value is
 	 *         <code>last</code>
 	 */
@@ -223,7 +222,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 	/**
 	 * Get the selected tab.
-	 * 
+	 *
 	 * @return index of the selected tab
 	 */
 	public final int getSelectedTab()
@@ -233,7 +232,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 	/**
 	 * Get the css class of the selected tab.
-	 * 
+	 *
 	 * @return the value of css class attribute that will be added to selected tab. The default
 	 *         value is <code>selected</code>
 	 */
@@ -244,7 +243,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 	/**
 	 * Get the css class of the tab container.
-	 * 
+	 *
 	 * @return the value of css class attribute that will be added to a div containing the tabs. The
 	 *         default value is <code>tab-row</code>
 	 */
@@ -255,7 +254,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 	/**
 	 * Gets the list of tabs that can be used by the user to add/remove/reorder tabs in the panel.
-	 * 
+	 *
 	 * @return list of tabs that can be used by the user to add/remove/reorder tabs in the panel
 	 */
 	public final List<T> getTabs()
@@ -329,7 +328,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 
 	/**
 	 * Abstract factory method for creating the new {@link IModel} for the add tab label.
-	 * 
+	 *
 	 * @return the new {@link IModel} for the add tab label.
 	 */
 	protected abstract IModel<String> newAddTabLabelModel();
@@ -363,7 +362,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	 * 	return new Link(linkId)
 	 * 	{
 	 * 		private static final long serialVersionUID = 1L;
-	 * 
+	 *
 	 * 		public void onClick()
 	 * 		{
 	 * 			setSelectedTab(index);
@@ -434,7 +433,7 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	 * 	return new Link(linkId)
 	 * 	{
 	 * 		private static final long serialVersionUID = 1L;
-	 * 
+	 *
 	 * 		public void onClick()
 	 * 		{
 	 * 			setSelectedTab(index);
@@ -805,9 +804,8 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 		if (!component.getId().equals(TAB_PANEL_ID))
 		{
 			throw new WicketRuntimeException(
-				"ITab.getPanel() returned a panel with invalid id ["
-					+ component.getId()
-					+ "]. You must always return a panel with id equal to the provided panelId parameter. TabbedPanel ["
+				"ITab.getPanel() returned a panel with invalid id [" + component.getId()
+					+ "]. You always have to return a panel with id equal to the provided panelId parameter. TabbedPanel ["
 					+ getPath() + "] ITab index [" + currentTab + "]");
 		}
 

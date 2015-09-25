@@ -33,9 +33,10 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * built-in {@link org.apache.wicket.markup.html.form.RadioChoice}, because it gives you full
  * control over the markup and is extensible.
  * <p>
- * Your markup must contain the following:
+ * Your markup have to contain the following:
  * <ul>
- * <li>{@code <input type="radio" wicket:id="radio" />} where you want the radio button to appear.</li>
+ * <li>{@code <input type="radio" wicket:id="radio" />} where you want the radio button to appear.
+ * </li>
  * <li>A component with {@code wicket:id="label"} where you want the display value to appear.</li>
  * </ul>
  * <p>
@@ -48,7 +49,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  *     &lt;wicket:container wicket:id="label"&gt;Label&lt;/wicket:container&gt;
  *   &lt;/label&gt;
  * &lt;/wicket:container&gt;
- * 
+ *
  * add(new RadioGroup("group", selectedItemModel)
  *     .add(new RadioChoicesListView("choices", choicesModel, renderer)));
  * </pre>
@@ -57,9 +58,9 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * additional data per radio choice, like a description paragraph.
  *
  * This class is inspired from fiftyfive.wicket.core project. Some changes with the generic types
- * was done. For more information read this blog: <a
- * href="http://blog.55minutes.com/2011/10/how-to-implement-radio-buttons-in-wicket/"
- * >http://blog.55minutes.com/2011/10/how-to-implement-radio-buttons-in-wicket/</a>
+ * was done. For more information read this blog:
+ * <a href="http://blog.55minutes.com/2011/10/how-to-implement-radio-buttons-in-wicket/" >http://
+ * blog.55minutes.com/2011/10/how-to-implement-radio-buttons-in-wicket/</a>
  *
  * @param <T>
  *            the generic type
@@ -74,7 +75,7 @@ public class RadioChoicesListView<T> extends ChoicesListView<T>
 	/**
 	 * Construct a list view for {@link Radio} objects that will expose the specified
 	 * IChoiceRenderer for rendering its list items.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param choices

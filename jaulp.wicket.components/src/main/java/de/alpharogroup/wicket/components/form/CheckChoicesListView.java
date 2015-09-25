@@ -33,14 +33,15 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * built-in {@link org.apache.wicket.markup.html.form.CheckBoxMultipleChoice}, because it gives you
  * full control over the markup and is extensible.
  * <p>
- * Your markup must contain the following:
+ * Your markup have to contain the following:
  * <ul>
- * <li>{@code <input type="checkbox" wicket:id="check" />} where you want the checkbox to appear.</li>
+ * <li>{@code <input type="checkbox" wicket:id="check" />} where you want the checkbox to appear.
+ * </li>
  * <li>A component with {@code wicket:id="label"} where you want the display value to appear.</li>
  * </ul>
  * <p>
  * For example:
- * 
+ *
  * <pre class="example">
  * &lt;wicket:container wicket:id="group"&gt;
  *   &lt;label wicket:id="choices"&gt;
@@ -48,17 +49,17 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  *     &lt;wicket:container wicket:id="label"&gt;Label&lt;/wicket:container&gt;
  *   &lt;/label&gt;
  * &lt;/wicket:container&gt;
- * 
+ *
  * add(new CheckGroup("group", selectedItemsModel)
  *     .add(new CheckChoicesListView("choices", choicesModel, renderer)));
  * </pre>
  * <p>
  * You can also override {@link #populateItem(ListItem) populateItem()} if you want to display
  * additional data per checkbox choice, like a description paragraph.
- * 
+ *
  * This class is inspired from fiftyfive.wicket.core project. Some changes with the generic types
  * was done.
- * 
+ *
  * @param <T>
  *            the generic type
  */
@@ -72,7 +73,7 @@ public class CheckChoicesListView<T> extends ChoicesListView<T>
 	/**
 	 * Construct a list view for {@link Check} objects that will expose the specified
 	 * IChoiceRenderer for rendering its list items.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param choices

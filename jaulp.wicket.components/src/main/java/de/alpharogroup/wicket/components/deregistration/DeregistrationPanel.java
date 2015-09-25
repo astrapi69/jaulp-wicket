@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.deregistration;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -36,6 +34,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.content.ContentModelBean;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
+import lombok.Getter;
 
 /**
  * The Class DeregistrationPanel.
@@ -142,17 +141,19 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 	 */
 	protected Component newContentPanel(final String id)
 	{
-		final ContentPanel contentPanel = new ContentPanel("contentPanel", Model.of(ContentModelBean
-			.builder()
-			.headerResourceKey(
-				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
-					.parameters(ListExtensions.toObjectArray(getDomainName())).build())
-			.contentResourceKey(
-				ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
-					.parameters(ListExtensions.toObjectArray(getDomainName())).build()).build()));
+		final ContentPanel contentPanel = new ContentPanel("contentPanel",
+			Model
+				.of(ContentModelBean.builder()
+					.headerResourceKey(ResourceBundleKey.builder()
+						.key("sem.main.info.frame.deregistration.user.label")
+						.parameters(ListExtensions.toObjectArray(getDomainName())).build())
+				.contentResourceKey(
+					ResourceBundleKey.builder().key("sem.main.info.frame.deregistration.user.label")
+						.parameters(ListExtensions.toObjectArray(getDomainName())).build())
+			.build()));
 		contentPanel.getHeader().add(new JQueryJsAppenderBehavior("wrap", "<h1></h1>"));
-		contentPanel.getContent().add(
-			new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
+		contentPanel.getContent()
+			.add(new JQueryJsAppenderBehavior("wrap", "<p class=\"lead\"></p>"));
 		return contentPanel;
 
 	}
@@ -204,7 +205,8 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			ResourceBundleKey.builder().key("sem.main.feedback.deregistration.user.label")
 				.defaultValue("Please confirm the deregistration")
-				.parameters(ListExtensions.toObjectArray(getDomainName())).build(), this);
+				.parameters(ListExtensions.toObjectArray(getDomainName())).build(),
+			this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.deregistration.motivation.label", this,
 			"Enter here your deregistration motivation.");
@@ -250,7 +252,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide specific action for the
+	 * Abstract callback method that have to be overwritten to provide specific action for the
 	 * deregistration.
 	 *
 	 * @param target

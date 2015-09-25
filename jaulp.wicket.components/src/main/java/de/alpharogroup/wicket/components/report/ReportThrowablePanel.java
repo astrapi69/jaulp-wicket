@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.report;
 
-import lombok.Getter;
-
 import org.apache.log4j.Logger;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -39,6 +37,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
+import lombok.Getter;
 
 /**
  * The Class ReportThrowablePanel can present an exception that is thrown from the application.
@@ -93,8 +92,8 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 		final IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<>(reportThrowableModel);
 		setDefaultModel(cpm);
-		add(header = newHeaderLabel("header",
-			ResourceModelFactory.newResourceModel("header.label", this, "Upps! An error occured.")));
+		add(header = newHeaderLabel("header", ResourceModelFactory.newResourceModel("header.label",
+			this, "Upps! An error occured.")));
 
 		add(form = newForm("form", cpm));
 
@@ -125,7 +124,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 	/**
 	 * Abstract factory method for create a new {@link String} of the affected username. This method
-	 * is invoked in the constructor from the derived classes and must be overridden so users can
+	 * is invoked in the constructor from the derived classes and have to be overridden so users can
 	 * provide their own version of a new {@link String} of the affected username.
 	 *
 	 * @return the new {@link String} of the affected username.
@@ -146,8 +145,8 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	protected LabeledTextAreaPanel<ReportThrowableModel> newDescription(final String id,
 		final IModel<ReportThrowableModel> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"description.label", this, "Please provide here any useful information");
+		final IModel<String> labelModel = ResourceModelFactory.newResourceModel("description.label",
+			this, "Please provide here any useful information");
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.description.label", this, "Enter here any useful information");
 		final LabeledTextAreaPanel<ReportThrowableModel> description = new LabeledTextAreaPanel<ReportThrowableModel>(
@@ -237,7 +236,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 	/**
 	 * Abstract factory method for create a new {@link Class} of the response page. This method is
-	 * invoked in the constructor from the derived classes and must be overridden so users can
+	 * invoked in the constructor from the derived classes and have to be overridden so users can
 	 * provide their own version of a new {@link Class} of the response page.
 	 *
 	 * @return the new {@link Class} of the response page.
@@ -247,7 +246,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 	/**
 	 * Abstract factory method for create a new {@link String} of the root username. This method is
-	 * invoked in the constructor from the derived classes and must be overridden so users can
+	 * invoked in the constructor from the derived classes and have to be overridden so users can
 	 * provide their own version of a new {@link String} of the root username.
 	 *
 	 * @return the new {@link String} of the root username.
@@ -284,7 +283,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide specific action.
+	 * Abstract callback method that have to be overwritten to provide specific action.
 	 *
 	 * @param target
 	 *            the target

@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.search;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
@@ -28,6 +26,7 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 {
@@ -66,8 +65,8 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 		add(form = newForm("form", getModel()));
 		form.add(searchtext = newTextField("searchtext"));
 		searchButton = newButton("searchButton");
-		searchButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.search",
-			"Search"));
+		searchButton
+			.add(buttonLabel = newButtonLabel("buttonLabel", "global.button.search", "Search"));
 		form.add(searchButton);
 	}
 
@@ -99,7 +98,7 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	 * Factory method for creating the new {@link Label} for the button. This method is invoked in
 	 * the constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link Label} for the button.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey
@@ -145,7 +144,7 @@ public abstract class SimpleSearchPanel extends BasePanel<SimpleSearchModel>
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide specific action.
+	 * Abstract callback method that have to be overwritten to provide specific action.
 	 *
 	 * @param target
 	 *            the target

@@ -17,7 +17,6 @@ package de.alpharogroup.wicket.components.sign.in.password.forgotten;
 
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
-import lombok.Getter;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -33,10 +32,11 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
+import lombok.Getter;
 
 /**
  * The class {@link AbstractPasswordForgottenPanel}.
- * 
+ *
  * @author Asterios Raptis
  */
 public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordForgottenModelBean>
@@ -73,7 +73,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 
 	/**
 	 * Instantiates a new {@link AbstractPasswordForgottenPanel}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 */
@@ -103,7 +103,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @return the Button
@@ -132,7 +132,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 	 * Factory method for creating the button Label. This method is invoked in the constructor from
 	 * the derived classes and can be overridden so users can provide their own version of a button
 	 * Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey
@@ -149,9 +149,9 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 
 	/**
 	 * Abstract factory method for create a new {@link Component} of the captcha. This method is
-	 * invoked in the constructor from the derived classes and must be overridden so users can
+	 * invoked in the constructor from the derived classes and have to be overridden so users can
 	 * provide their own version of a new {@link Component} of the captcha.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @return the new {@link Component} of the captcha.
@@ -161,7 +161,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param forId
@@ -197,8 +197,8 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"password.forgotten.content.label", this, "Give email in the Textfield");
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.your.email.label", this, "Enter your email here");
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.your.email.label", this, "Enter your email here");
 		final LabeledEmailTextFieldPanel<PasswordForgottenModelBean> emailTextField = new LabeledEmailTextFieldPanel<PasswordForgottenModelBean>(
 			id, model, labelModel)
 		{
@@ -215,8 +215,8 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 			protected EmailTextField newEmailTextField(final String id,
 				final IModel<PasswordForgottenModelBean> model)
 			{
-				final EmailTextField emailTextField = new EmailTextField(id, model(from(model)
-					.getEmail()));
+				final EmailTextField emailTextField = new EmailTextField(id,
+					model(from(model).getEmail()));
 				emailTextField.setOutputMarkupId(true);
 				emailTextField.setRequired(true);
 				if (placeholderModel != null)
@@ -232,7 +232,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 	/**
 	 * Factory method for creating the Form. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Form.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -248,7 +248,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 	 * Factory method for creating the new header {@link Label}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new header {@link Label}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param resourceKey
@@ -267,7 +267,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide the action for send.
+	 * Abstract callback method that have to be overwritten to provide the action for send.
 	 *
 	 * @param target
 	 *            the target

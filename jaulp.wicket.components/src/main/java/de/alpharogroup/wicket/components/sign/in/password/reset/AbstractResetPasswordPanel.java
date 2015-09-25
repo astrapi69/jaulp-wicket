@@ -23,7 +23,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 
 /**
  * The Class {@link AbstractResetPasswordPanel}.
- * 
+ *
  * @author Asterios Raptis
  */
 public abstract class AbstractResetPasswordPanel extends BasePanel<ResetPasswordBean>
@@ -33,19 +33,6 @@ public abstract class AbstractResetPasswordPanel extends BasePanel<ResetPassword
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Instantiates a new {@link AbstractResetPasswordPanel}.
-	 *
-	 * @param id
-	 *            the id
-	 * @param parameters
-	 *            the parameters
-	 */
-	public AbstractResetPasswordPanel(final String id, final PageParameters parameters)
-	{
-		this(id, Model.of(ResetPasswordBean.getResetPasswordBean(parameters)));
-	}
 
 	/**
 	 * Instantiates a new {@link AbstractResetPasswordPanel}.
@@ -62,7 +49,20 @@ public abstract class AbstractResetPasswordPanel extends BasePanel<ResetPassword
 	}
 
 	/**
-	 * Abstract callback method that must be overwritten to provide the action for reset the
+	 * Instantiates a new {@link AbstractResetPasswordPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param parameters
+	 *            the parameters
+	 */
+	public AbstractResetPasswordPanel(final String id, final PageParameters parameters)
+	{
+		this(id, Model.of(ResetPasswordBean.getResetPasswordBean(parameters)));
+	}
+
+	/**
+	 * Abstract callback method that have to be overwritten to provide the action for reset the
 	 * password.
 	 *
 	 * @param username

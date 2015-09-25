@@ -43,7 +43,7 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	}
 
 	/**
-	 * Callback method that must be implemented from derived classes.
+	 * Callback method that have to be implemented from derived classes.
 	 *
 	 * @return the action
 	 */
@@ -52,7 +52,7 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	/**
 	 * Factory method for creating the Button. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @return the Button

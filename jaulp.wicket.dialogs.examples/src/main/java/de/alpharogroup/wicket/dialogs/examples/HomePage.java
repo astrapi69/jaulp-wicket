@@ -114,7 +114,7 @@ public class HomePage extends WebPage
 		linkToModalWindow.add(linkToModalWindowLabel);
 		// The AjaxLink to open the modal window
 		add(linkToModalWindow);
-		// here we must set the message content from the bean in a repeater...
+		// here we have to set the message content from the bean in a repeater...
 		final ListView<MessageBean> repliesAndNotesListView = new ListView<MessageBean>(
 			"repliesAndNotesListView", noteList)
 		{
