@@ -17,8 +17,6 @@ package de.alpharogroup.wicket.components.radio;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -34,6 +32,7 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class AjaxRadioPanel.
@@ -71,8 +70,8 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	{
 		super(id, model);
 		add(form = newForm("form"));
-		form.add(radioGroup = newRadioGroup("radioGroup", new PropertyModel<T>(model.getObject(),
-			"selected")));
+		form.add(radioGroup = newRadioGroup("radioGroup",
+			new PropertyModel<T>(model.getObject(), "selected")));
 		radioGroup.add(newRadios(radioGroup, model));
 	}
 
@@ -111,8 +110,6 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
 	 * @return the new {@link Form}
 	 */
 	protected Form<?> newForm(final String id)
@@ -158,8 +155,8 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 			{
 				final AjaxRadio<T> radio = newAjaxRadio("radio", group, item);
 				final Label label = ComponentFactory.newLabel("label", radio.getMarkupId(),
-					new PropertyModel<String>(item.getModel(), model.getObject()
-						.getLabelPropertyExpression()));
+					new PropertyModel<String>(item.getModel(),
+						model.getObject().getLabelPropertyExpression()));
 				item.add(radio);
 				item.add(label);
 			}
@@ -183,7 +180,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	public void renderHead(final IHeaderResponse response)
 	{
 		super.renderHead(response);
-		response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(
-			AjaxRadioPanel.class, "AjaxRadioPanel.js")));
+		response.render(JavaScriptHeaderItem.forReference(
+			new JavaScriptResourceReference(AjaxRadioPanel.class, "AjaxRadioPanel.js")));
 	}
 }

@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.dialogs.ajax.modal;
 
-import lombok.Getter;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
@@ -26,9 +24,10 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
- * The Class BaseModalPanel.
+ * The Class {@link BaseModalPanel}.
  *
  * @param <T>
  *            the generic type
@@ -39,15 +38,23 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/** The form. */
 	private Form<T> form;
+
+	/** The note. */
 	private TextArea<String> note;
+
+	/** The cancel. */
 	@Getter
 	private AjaxButton cancel;
+
+	/** The ok. */
 	@Getter
 	private AjaxButton ok;
 
 	/**
-	 * Instantiates a new base modal panel.
+	 * Instantiates a new {@link BaseModalPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -65,13 +72,13 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating a new cancel Button. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * new cancel Button.
+	 * Factory method for creating the new cancel {@link AjaxButton}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new cancel {@link AjaxButton}.
 	 *
 	 * @param id
-	 *            the wicket id
-	 * @return the Button
+	 *            the id
+	 * @return the new cancel {@link AjaxButton}
 	 */
 	protected AjaxButton newCancelButton(final String id)
 	{
@@ -100,28 +107,30 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating the Form. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Form.
+	 * Factory method for create the new {@link Form}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Form}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the form
+	 * @return the new {@link Form}
 	 */
 	protected Form<T> newForm(final String id, final IModel<T> model)
 	{
 		return ComponentFactory.newForm(id, model);
 	}
 
+
 	/**
-	 * Factory method for creating a new ok Button. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a new ok
-	 * Button.
+	 * Factory method for creating the new ok {@link AjaxButton}. This method is invoked in the
+	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new ok {@link AjaxButton}.
 	 *
 	 * @param id
-	 *            the wicket id
-	 * @return the Button
+	 *            the id
+	 * @return the new ok {@link AjaxButton}
 	 */
 	protected AjaxButton newOkButton(final String id)
 	{
@@ -132,6 +141,9 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onError(final AjaxRequestTarget target, final Form<?> form)
 			{
@@ -139,6 +151,9 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 				onSelect(target, obj);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
@@ -150,14 +165,15 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * Factory method for creating a new TextArea. This method is invoked in the constructor from
-	 * this class and can be overridden so users can provide their own version of a new TextArea.
+	 * Factory method for create the new {@link TextArea}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link TextArea}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text area
+	 * @return the new {@link TextArea}
 	 */
 	protected TextArea<String> newTextArea(final String id, final IModel<T> model)
 	{
@@ -165,21 +181,21 @@ public abstract class BaseModalPanel<T> extends GenericPanel<T>
 	}
 
 	/**
-	 * On cancel.
+	 * Abstract callback method that have to be overwritten to provide specific action for cancel.
 	 *
 	 * @param target
 	 *            the target
 	 */
-	abstract void onCancel(final AjaxRequestTarget target);
+	protected abstract void onCancel(final AjaxRequestTarget target);
 
 	/**
-	 * On select.
+	 * Abstract callback method that have to be overwritten to provide specific action for select.
 	 *
 	 * @param target
 	 *            the target
 	 * @param object
 	 *            the object
 	 */
-	abstract void onSelect(final AjaxRequestTarget target, final T object);
+	protected abstract void onSelect(final AjaxRequestTarget target, final T object);
 
 }

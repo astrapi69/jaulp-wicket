@@ -18,7 +18,6 @@ package de.alpharogroup.wicket.components.radio;
 
 import static org.wicketeer.modelfactory.ModelFactory.from;
 import static org.wicketeer.modelfactory.ModelFactory.model;
-import lombok.Getter;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
@@ -32,6 +31,7 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link RadioGroupPanel}.
@@ -68,7 +68,8 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 		setOutputMarkupId(true);
 		add(form = newForm("form", model));
 
-		form.add(group = newRadioGroup(newRadioName(), model(from(model.getObject()).getSelected())));
+		form.add(
+			group = newRadioGroup(newRadioName(), model(from(model.getObject()).getSelected())));
 
 		group.add(newRadioListView("choice", model));
 	}
@@ -141,8 +142,8 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	 * is invoked in the constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a new {@link ListView} for the {@link Radio} objects.
 	 *
-	 * @param group
-	 *            the group
+	 * @param id
+	 *            the id
 	 * @param model
 	 *            the model
 	 * @return the new {@link ListView} for the {@link Radio} objects.
@@ -156,6 +157,9 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void populateItem(final ListItem<T> item)
 			{
@@ -163,8 +167,8 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 					RadioGroupPanel.this.group);
 				radio.setOutputMarkupId(true);
 				item.add(radio);
-				item.add(RadioGroupPanel.this.newLabel("label", radio.getMarkupId(),
-					item.getModel()));
+				item.add(
+					RadioGroupPanel.this.newLabel("label", radio.getMarkupId(), item.getModel()));
 			}
 		};
 		radioListView.setOutputMarkupId(true);

@@ -104,8 +104,13 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 		form.add(toReplace);
 		final AjaxLink<Void> link = new AjaxLink<Void>("link")
 		{
+
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onClick(final AjaxRequestTarget target)
 			{
@@ -152,8 +157,13 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 		final LabeledTextAreaPanel<ReportThrowableModel> description = new LabeledTextAreaPanel<ReportThrowableModel>(
 			id, model, labelModel)
 		{
+
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected TextArea<ReportThrowableModel> newTextArea(final String id,
 				final IModel<ReportThrowableModel> model)
@@ -208,8 +218,6 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	 *
 	 * @param id
 	 *            the id
-	 * @param model
-	 *            the model
 	 * @return the new {@link HiddenField}
 	 */
 	protected Component newHiddenField(final String id)

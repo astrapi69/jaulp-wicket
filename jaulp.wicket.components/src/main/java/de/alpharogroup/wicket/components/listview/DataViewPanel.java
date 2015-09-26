@@ -140,13 +140,16 @@ public abstract class DataViewPanel<T extends Serializable> extends BasePanel<Li
 	}
 
 	/**
-	 * Abstract factory method that creates a new list component.
+	 * Abstract factory method that creates a new item {@link Component} in the {@link DataView}.
+	 * This method is invoked in the constructor from the derived classes and have to be implemented
+	 * so users can provide their own version of a new item {@link Component} in the
+	 * {@link DataView}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param item
 	 *            the item
-	 * @return the new list component.
+	 * @return the new item {@link Component} in the {@link DataView}.
 	 */
 	protected abstract Component newListComponent(final String id, final Item<T> item);
 

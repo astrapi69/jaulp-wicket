@@ -17,8 +17,6 @@ package de.alpharogroup.wicket.data.provider.examples.refreshingview;
 
 import java.util.Iterator;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
@@ -34,6 +32,7 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.data.provider.examples.data.provider.Person;
 import de.alpharogroup.wicket.data.provider.examples.data.provider.PersonDatabaseManager;
+import lombok.Getter;
 
 public class RefreshingViewPanel extends Panel
 {
@@ -167,9 +166,10 @@ public class RefreshingViewPanel extends Panel
 	}
 
 	/**
-	 * sets selected Person
+	 * Sets the selected.
 	 *
 	 * @param selected
+	 *            the new selected
 	 */
 	public void setSelected(final Person selected)
 	{

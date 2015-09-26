@@ -124,7 +124,7 @@ public abstract class HeaderContentListPanel extends Panel
 
 	/**
 	 * Abstract factory method for creating the new {@link Component} in the list. This method is
-	 * invoked in the {@link ListView#populateItem(ListItem)} from the derived classes and can be
+	 * invoked in the {@link ListView#populateItem(ListItem)} from the derived classes and have to be
 	 * overridden so users can provide their own version of a new {@link Component} in the list.
 	 *
 	 * @param id

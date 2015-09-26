@@ -291,7 +291,9 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	}
 
 	/**
-	 * Abstract factory method for creating the new tab component.
+	 * Abstract factory method for creating the new tab {@link Component}. This method is invoked in
+	 * the constructor from the derived classes and have to be implemented so users can provide
+	 * their own version of a new tab {@link Component}.
 	 *
 	 * @param id
 	 *            the id
@@ -316,31 +318,40 @@ public abstract class AjaxAddableTabbedPanel<T extends ICloseableTab> extends Pa
 	}
 
 	/**
-	 * Abstract factory method for creating the new label for the tab component.
+	 * Abstract factory method for creating the new {@link Label} for the tab {@link Component}.
+	 * This method is invoked in the constructor from the derived classes and have to be implemented
+	 * so users can provide their own version of a new {@link Label} for the tab {@link Component}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new label for the tab component.
+	 * @return the new {@link Label} for the tab {@link Component}.
 	 */
 	protected abstract Label newaddTabLabel(final String id, final IModel<String> model);
 
 	/**
-	 * Abstract factory method for creating the new {@link IModel} for the add tab label.
+	 * Abstract factory method for creating the new {@link IModel} for the add tab {@link Label}.
+	 * This method is invoked in the constructor from the derived classes and have to be implemented
+	 * so users can provide their own version of a new new {@link IModel} for the add tab
+	 * {@link Label}.
 	 *
-	 * @return the new {@link IModel} for the add tab label.
+	 * @return the new {@link IModel} for the add tab {@link Label}.
 	 */
 	protected abstract IModel<String> newAddTabLabelModel();
 
 	/**
-	 * Abstract factory method for creating a new modal dialog for create a new tab.
+	 * Abstract factory method for creating a new {@link Component} for the modal dialog for create
+	 * a new {@link Component} for the tab. This method is invoked in the constructor from the
+	 * derived classes and have to be implemented so users can provide their own version of a new
+	 * {@link Component} for the modal dialog for create a new {@link Component} for the tab.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the new modal dialog for create a new tab.
+	 * @return the new {@link Component} for the modal dialog for create a new {@link Component} for
+	 *         the tab.
 	 */
 	protected abstract Component newAddTabModalWindow(final String id, final IModel<String> model);
 

@@ -123,27 +123,21 @@ public abstract class AbstractModalWindow<T> extends ModalWindow
 	}
 
 	/**
-	 * Abstract callback method that have to be overwritten to provide specific action.
+	 * Abstract callback method that have to be overwritten to provide specific action for cancel.
 	 *
 	 * @param target
 	 *            the target
 	 */
-	/**
-	 * On cancel.
-	 *
-	 * @param target
-	 *            the target
-	 */
-	public abstract void onCancel(final AjaxRequestTarget target);
+	protected abstract void onCancel(final AjaxRequestTarget target);
 
 	/**
-	 * On select.
+	 * Abstract callback method that have to be overwritten to provide specific action for select.
 	 *
 	 * @param target
 	 *            the target
 	 * @param object
 	 *            the object
 	 */
-	public abstract void onSelect(final AjaxRequestTarget target, final T object);
+	protected abstract void onSelect(final AjaxRequestTarget target, final T object);
 
 }

@@ -20,11 +20,12 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.model.IModel;
 
+
 /**
- * The Class BaseModalWindow.
+ * The Class {@link BaseModalWindow}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of the model object.
  */
 public abstract class BaseModalWindow<T> extends ModalWindow
 {
@@ -35,32 +36,7 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new base modal window.
-	 *
-	 * @param id
-	 *            the id
-	 * @param title
-	 *            the title
-	 * @param initialWidth
-	 *            the initial width
-	 * @param initialHeight
-	 *            the initial height
-	 * @param model
-	 *            the model
-	 */
-	@Deprecated
-	public BaseModalWindow(final String id, final String title, final int initialWidth,
-		final int initialHeight, final IModel<T> model)
-	{
-		this(id, model, title, initialWidth, initialHeight);
-		setInitialWidth(initialWidth);
-		setInitialHeight(initialHeight);
-		setTitle(title);
-		setContent(newContent(this.getContentId(), model));
-	}
-
-	/**
-	 * Instantiates a new base modal window.
+	 * Instantiates a new {@link BaseModalWindow}.
 	 *
 	 * @param id
 	 *            the id
@@ -83,6 +59,41 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 		setContent(newContent(this.getContentId(), model));
 	}
 
+	/**
+	 * Instantiates a new base modal window.
+	 *
+	 * @param id
+	 *            the id
+	 * @param title
+	 *            the title
+	 * @param initialWidth
+	 *            the initial width
+	 * @param initialHeight
+	 *            the initial height
+	 * @param model
+	 *            the model
+	 */
+	public BaseModalWindow(final String id, final String title, final int initialWidth,
+		final int initialHeight, final IModel<T> model)
+	{
+		this(id, model, title, initialWidth, initialHeight);
+		setInitialWidth(initialWidth);
+		setInitialHeight(initialHeight);
+		setTitle(title);
+		setContent(newContent(this.getContentId(), model));
+	}
+
+	/**
+	 * Factory method for create the new {@link Component} for the content. This method is invoked
+	 * in the constructor from the derived classes and can be overridden so users can provide their
+	 * own version of a new {@link Component} for the content.
+	 *
+	 * @param contentId
+	 *            the content id
+	 * @param model
+	 *            the model
+	 * @return the new {@link Component} for the content.
+	 */
 	protected Component newContent(final String contentId, final IModel<T> model)
 	{
 		return new BaseModalPanel<T>(contentId, model)
@@ -92,14 +103,20 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			void onCancel(final AjaxRequestTarget target)
+			protected void onCancel(final AjaxRequestTarget target)
 			{
 				BaseModalWindow.this.onCancel(target);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			void onSelect(final AjaxRequestTarget target, final T object)
+			protected void onSelect(final AjaxRequestTarget target, final T object)
 			{
 				BaseModalWindow.this.onSelect(target, object);
 			}
@@ -107,7 +124,7 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 	}
 
 	/**
-	 * On cancel.
+	 * Abstract callback method that have to be overwritten to provide specific action for cancel.
 	 *
 	 * @param target
 	 *            the target
@@ -115,7 +132,7 @@ public abstract class BaseModalWindow<T> extends ModalWindow
 	public abstract void onCancel(final AjaxRequestTarget target);
 
 	/**
-	 * On select.
+	 * Abstract callback method that have to be overwritten to provide specific action for select.
 	 *
 	 * @param target
 	 *            the target

@@ -46,8 +46,8 @@ public abstract class AbstractActionPanel<T> extends BasePanel<T>
 
 	/**
 	 * Abstract factory method for creating the new action {@link AbstractLink}. This method is
-	 * invoked in the constructor and have to implemented so users can provide their own version of
-	 * a new action {@link AbstractLink}.
+	 * invoked in the constructor from the derived classes and have to be implemented so users can
+	 * provide their own version of a new {@link AbstractLink}.
 	 *
 	 * @param id
 	 *            the id
