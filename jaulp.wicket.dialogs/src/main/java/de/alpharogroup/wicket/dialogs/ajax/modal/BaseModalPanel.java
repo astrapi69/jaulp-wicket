@@ -19,10 +19,10 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import lombok.Getter;
 
@@ -32,7 +32,7 @@ import lombok.Getter;
  * @param <T>
  *            the generic type
  */
-public abstract class BaseModalPanel<T> extends GenericPanel<T>
+public abstract class BaseModalPanel<T> extends BasePanel<T>
 {
 	/**
 	 * The serialVersionUID.

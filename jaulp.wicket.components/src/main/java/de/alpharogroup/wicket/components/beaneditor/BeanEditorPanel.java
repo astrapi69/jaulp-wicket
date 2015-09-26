@@ -17,8 +17,6 @@ package de.alpharogroup.wicket.components.beaneditor;
 
 import java.lang.reflect.Field;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxFallbackButton;
@@ -26,13 +24,14 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class BeanEditorPanel.
@@ -40,7 +39,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type of the model object.
  */
-public abstract class BeanEditorPanel<T> extends GenericPanel<T>
+public abstract class BeanEditorPanel<T> extends BasePanel<T>
 {
 
 	/**

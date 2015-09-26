@@ -23,11 +23,11 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.auth.models.SignInModel;
 import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.link.LinkPanel;
@@ -40,7 +40,7 @@ import lombok.Getter;
  * @param <T>
  *            the generic type
  */
-public abstract class SigninFormPanel<T extends SignInModel> extends GenericPanel<T>
+public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */

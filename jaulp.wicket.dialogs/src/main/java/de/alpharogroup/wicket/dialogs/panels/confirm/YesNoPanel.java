@@ -15,18 +15,17 @@
  */
 package de.alpharogroup.wicket.dialogs.panels.confirm;
 
-import lombok.Getter;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class YesNoPanel.
@@ -34,7 +33,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type
  */
-public abstract class YesNoPanel<T> extends GenericPanel<T>
+public abstract class YesNoPanel<T> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -73,7 +72,7 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -115,8 +114,8 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 				onNo(target, form, false);
 			}
 		};
-		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-			.builder().key("global.no.label").defaultValue("No").build(), this);
+		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("global.no.label").defaultValue("No").build(), this);
 		ajaxButton.add(newLabel("noLabel", noLabelModel));
 		return ajaxButton;
 	}
@@ -161,7 +160,7 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 
 	/**
 	 * On no.
-	 * 
+	 *
 	 * @param target
 	 *            the target
 	 * @param form
@@ -175,7 +174,7 @@ public abstract class YesNoPanel<T> extends GenericPanel<T>
 
 	/**
 	 * On yes.
-	 * 
+	 *
 	 * @param target
 	 *            the target.
 	 * @param form

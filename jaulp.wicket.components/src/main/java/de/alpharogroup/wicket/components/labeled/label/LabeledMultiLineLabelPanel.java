@@ -15,15 +15,14 @@
  */
 package de.alpharogroup.wicket.components.labeled.label;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * Convenience class for labeled MultiLineLabel for form uneditable components.
@@ -31,7 +30,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <T>
  *            the generic type of model object
  */
-public class LabeledMultiLineLabelPanel<T> extends GenericPanel<T>
+public class LabeledMultiLineLabelPanel<T> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */

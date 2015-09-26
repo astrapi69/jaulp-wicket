@@ -19,12 +19,9 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.RefreshingView;
 import org.apache.wicket.markup.repeater.ReuseIfModelsEqualStrategy;
@@ -34,6 +31,9 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
 
+import de.alpharogroup.wicket.base.BasePanel;
+import lombok.Getter;
+
 /**
  * The Class RefreshingViewPanel takes a {@link org.apache.wicket.markup.repeater.RefreshingView} of
  * a generic type.
@@ -41,7 +41,7 @@ import org.apache.wicket.util.lang.Args;
  * @param <T>
  *            the generic type of model object
  */
-public abstract class RefreshingViewPanel<T extends Serializable> extends GenericPanel<List<T>>
+public abstract class RefreshingViewPanel<T extends Serializable> extends BasePanel<List<T>>
 {
 
 	/** The Constant serialVersionUID. */

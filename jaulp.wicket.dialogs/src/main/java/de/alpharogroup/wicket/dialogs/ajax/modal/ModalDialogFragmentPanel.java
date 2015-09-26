@@ -21,9 +21,9 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.panel.Fragment;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import lombok.Getter;
 
@@ -34,7 +34,7 @@ import lombok.Getter;
  * @param <T>
  *            the generic type of the model object.
  */
-public abstract class ModalDialogFragmentPanel<T> extends GenericPanel<T>
+public abstract class ModalDialogFragmentPanel<T> extends BasePanel<T>
 {
 
 	/**

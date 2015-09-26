@@ -15,26 +15,25 @@
  */
 package de.alpharogroup.wicket.components.editable.textfield;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 import de.alpharogroup.wicket.components.swap.ModeContext;
 import de.alpharogroup.wicket.components.swap.SwapComponentsFragmentPanel;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * An editable TextField that can be switched to a Label.
  */
-public class EditableTextField extends GenericPanel<String>
+public class EditableTextField extends BasePanel<String>
 {
 
 	/** The Constant serialVersionUID. */

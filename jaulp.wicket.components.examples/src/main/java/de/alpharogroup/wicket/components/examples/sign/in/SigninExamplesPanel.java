@@ -21,11 +21,11 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.behaviors.BuildableChainableStatement;
 import de.alpharogroup.wicket.behaviors.JqueryStatementsBehavior;
 import de.alpharogroup.wicket.behaviors.wrappers.Wrappers;
@@ -36,7 +36,7 @@ import de.alpharogroup.wicket.components.sign.in.SignInWithRedirectionBean;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;
 import de.alpharogroup.wicket.components.sign.in.form.SigninFormPanel;
 
-public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
+public class SigninExamplesPanel extends BasePanel<SignInWithRedirectionBean>
 {
 
 	/**
@@ -71,12 +71,14 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 			protected Button newButton(final String id)
 			{
 				final Button button = super.newButton(id);
-				button.add(Wrappers.FORM_GROUP_ELEMENT).add(
-					new JqueryStatementsBehavior().add(new BuildableChainableStatement.Builder()
-						.label("wrap")
-						.args(
-							JsUtils.quotes("<div class=\"col-sm-offset-" + labelSize + " col-sm-"
-								+ inputSize + "\"></div>")).build()));
+				button.add(Wrappers.FORM_GROUP_ELEMENT)
+					.add(
+						new JqueryStatementsBehavior()
+							.add(
+								new BuildableChainableStatement.Builder()
+									.label("wrap").args(JsUtils.quotes("<div class=\"col-sm-offset-"
+										+ labelSize + " col-sm-" + inputSize + "\"></div>"))
+						.build()));
 				button.add(new AttributeAppender("class", " btn btn-default"));
 				return button;
 			}
@@ -115,18 +117,15 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 					protected Component newEmailTextField(final String id,
 						final IModel<SignInWithRedirectionBean> model)
 					{
-						final LabeledEmailTextFieldPanel<SignInWithRedirectionBean> emailTextField = (LabeledEmailTextFieldPanel<SignInWithRedirectionBean>)super
-							.newEmailTextField(id, model);
+						final LabeledEmailTextFieldPanel<SignInWithRedirectionBean> emailTextField = (LabeledEmailTextFieldPanel<SignInWithRedirectionBean>)super.newEmailTextField(
+							id, model);
 						emailTextField.add(new AttributeAppender("class", " form-group"));
-						emailTextField
-							.getEmailTextField()
-							.add(
-								new JqueryStatementsBehavior()
-									.add(new BuildableChainableStatement.Builder()
-										.label("wrap")
-										.args(
-											JsUtils.quotes("<div class=\"col-sm-" + inputSize
-												+ "\"></div>")).build()))
+						emailTextField.getEmailTextField()
+							.add(new JqueryStatementsBehavior()
+								.add(new BuildableChainableStatement.Builder().label("wrap")
+									.args(JsUtils
+										.quotes("<div class=\"col-sm-" + inputSize + "\"></div>"))
+								.build()))
 							.add(new AttributeAppender("class", " form-control"));
 						emailTextField.getLabelComponent().add(
 							new AttributeAppender("class", " control-label col-sm-" + labelSize));
@@ -138,18 +137,15 @@ public class SigninExamplesPanel extends GenericPanel<SignInWithRedirectionBean>
 					protected Component newPasswordTextField(final String id,
 						final IModel<SignInWithRedirectionBean> model)
 					{
-						final LabeledPasswordTextFieldPanel<SignInWithRedirectionBean> pwTextField = (LabeledPasswordTextFieldPanel<SignInWithRedirectionBean>)super
-							.newPasswordTextField(id, model);
+						final LabeledPasswordTextFieldPanel<SignInWithRedirectionBean> pwTextField = (LabeledPasswordTextFieldPanel<SignInWithRedirectionBean>)super.newPasswordTextField(
+							id, model);
 						pwTextField.add(new AttributeAppender("class", " form-group"));
-						pwTextField
-							.getPasswordTextField()
-							.add(
-								new JqueryStatementsBehavior()
-									.add(new BuildableChainableStatement.Builder()
-										.label("wrap")
-										.args(
-											JsUtils.quotes("<div class=\"col-sm-" + inputSize
-												+ "\"></div>")).build()))
+						pwTextField.getPasswordTextField()
+							.add(new JqueryStatementsBehavior()
+								.add(new BuildableChainableStatement.Builder().label("wrap")
+									.args(JsUtils
+										.quotes("<div class=\"col-sm-" + inputSize + "\"></div>"))
+								.build()))
 							.add(new AttributeAppender("class", " form-control"));
 						pwTextField.getLabelComponent().add(
 							new AttributeAppender("class", " control-label col-sm-" + labelSize));

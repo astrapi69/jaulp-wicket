@@ -15,34 +15,38 @@
  */
 package de.alpharogroup.wicket.components.i18n.dropdownchoice.panels;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
-
 import java.util.List;
-
-import lombok.Getter;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
+import lombok.Getter;
 
 /**
- * The Class TwoDropDownChoicesPanel contains two dropdowns with a root and a child dropdown.
+ * The Class {@link TwoDropDownChoicesPanel} contains two dropdowns with a root and a child
+ * dropdown.
  *
  * @author Asterios Raptis
+ * @param <T>
+ *            the generic type
  */
 public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownChoicesModel<T>>
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** The Constant ROOT_CHOICE_ID. */
 	public static final String ROOT_CHOICE_ID = "rootChoice";
+
+	/** The Constant CHILD_CHOICE_ID. */
 	public static final String CHILD_CHOICE_ID = "childChoice";
 
 	/** The root choice. */
@@ -54,7 +58,7 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 	private DropDownChoice<T> childChoice;
 
 	/**
-	 * Instantiates a new two drop down choices panel.
+	 * Instantiates a new {@link TwoDropDownChoicesPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -70,19 +74,15 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 		final IChoiceRenderer<T> rootRenderer, final IChoiceRenderer<T> childRenderer)
 	{
 		super(id, stringTwoDropDownChoicesModel);
-		IModel<T> selectedRootOptionModel = null;
 		getModelObject().getRootChoices();
-		selectedRootOptionModel = model(from(getModel()).getSelectedRootOption());
-		// selectedRootOptionModel = new PropertyModel<T>(stringTwoDropDownChoicesModel,
-		// "selectedRootOption");
-		rootChoice = newRootChoice(ROOT_CHOICE_ID, selectedRootOptionModel, getModelObject()
-			.getRootChoices(), rootRenderer);
-		IModel<T> selectedChildOptionModel = null;
-		selectedChildOptionModel = model(from(getModel()).getSelectedChildOption());
-		// selectedChildOptionModel = new PropertyModel<T>(stringTwoDropDownChoicesModel,
-		// "selectedChildOption");
-		childChoice = newChildChoice(CHILD_CHOICE_ID, selectedChildOptionModel, getModelObject()
-			.getChildChoices(), childRenderer);
+		final IModel<T> selectedRootOptionModel = new PropertyModel<>(stringTwoDropDownChoicesModel,
+			"selectedRootOption");
+		rootChoice = newRootChoice(ROOT_CHOICE_ID, selectedRootOptionModel,
+			getModelObject().getRootChoices(), rootRenderer);
+		final IModel<T> selectedChildOptionModel = new PropertyModel<>(
+			stringTwoDropDownChoicesModel, "selectedChildOption");
+		childChoice = newChildChoice(CHILD_CHOICE_ID, selectedChildOptionModel,
+			getModelObject().getChildChoices(), childRenderer);
 
 		add(rootChoice);
 		add(childChoice);
@@ -104,7 +104,8 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 	 * @return the child choice
 	 */
 	protected DropDownChoice<T> newChildChoice(final String id, final IModel<T> model,
-		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
+		final IModel<? extends List<? extends T>> choices,
+		final IChoiceRenderer<? super T> renderer)
 	{
 		final DropDownChoice<T> cc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
 		cc.setOutputMarkupId(true);
@@ -127,7 +128,8 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 	 * @return the root choice
 	 */
 	protected DropDownChoice<T> newRootChoice(final String id, final IModel<T> model,
-		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
+		final IModel<? extends List<? extends T>> choices,
+		final IChoiceRenderer<? super T> renderer)
 	{
 		final DropDownChoice<T> rc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
 		rc.add(new AjaxFormComponentUpdatingBehavior("onchange")

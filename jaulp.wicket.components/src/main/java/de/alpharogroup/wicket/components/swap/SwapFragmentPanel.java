@@ -20,10 +20,10 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Fragment;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import lombok.Getter;
 
 /**
@@ -32,7 +32,7 @@ import lombok.Getter;
  * @param <T>
  *            the generic type of the model object.
  */
-public abstract class SwapFragmentPanel<T> extends GenericPanel<T>
+public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */

@@ -15,19 +15,18 @@
  */
 package de.alpharogroup.wicket.components.examples.labeled.address;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.form.FormComponent;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.examples.fragment.swapping.HomeAddress;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledTwoFormComponentPanel;
+import lombok.Getter;
 
-public class AddressPanel extends GenericPanel<HomeAddress>
+public class AddressPanel extends BasePanel<HomeAddress>
 {
 
 	/**
@@ -64,16 +63,16 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 			protected FormComponent<String> newLeftFormComponent(final String id,
 				final IModel<String> model)
 			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "street"));
+				return ComponentFactory.newTextField(id,
+					new PropertyModel<String>(AddressPanel.this.getModelObject(), "street"));
 			}
 
 			@Override
 			protected FormComponent<String> newRightFormComponent(final String id,
 				final IModel<String> model)
 			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "localNumber"));
+				return ComponentFactory.newTextField(id,
+					new PropertyModel<String>(AddressPanel.this.getModelObject(), "localNumber"));
 			}
 		};
 		return streetNumberPanel;
@@ -94,16 +93,16 @@ public class AddressPanel extends GenericPanel<HomeAddress>
 			protected FormComponent<String> newLeftFormComponent(final String id,
 				final IModel<String> model02)
 			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "code"));
+				return ComponentFactory.newTextField(id,
+					new PropertyModel<String>(AddressPanel.this.getModelObject(), "code"));
 			}
 
 			@Override
 			protected FormComponent<String> newRightFormComponent(final String id,
 				final IModel<String> model)
 			{
-				return ComponentFactory.newTextField(id, new PropertyModel<String>(
-					AddressPanel.this.getModelObject(), "city"));
+				return ComponentFactory.newTextField(id,
+					new PropertyModel<String>(AddressPanel.this.getModelObject(), "city"));
 			}
 		};
 		return zipcodeCityPanel;

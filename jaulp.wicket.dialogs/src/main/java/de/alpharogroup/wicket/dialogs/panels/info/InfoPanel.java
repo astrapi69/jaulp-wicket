@@ -15,20 +15,19 @@
  */
 package de.alpharogroup.wicket.dialogs.panels.info;
 
-import lombok.Getter;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
-public abstract class InfoPanel<T> extends GenericPanel<T>
+public abstract class InfoPanel<T> extends BasePanel<T>
 {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -72,8 +71,8 @@ public abstract class InfoPanel<T> extends GenericPanel<T>
 				onClose(target, object);
 			}
 		};
-		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-			.builder().key("global.no.label").defaultValue("No").build(), this);
+		final IModel<String> noLabelModel = ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("global.no.label").defaultValue("No").build(), this);
 		ajaxButton.add(newLabel("noLabel", noLabelModel));
 		return ajaxButton;
 	}
@@ -81,7 +80,7 @@ public abstract class InfoPanel<T> extends GenericPanel<T>
 	/**
 	 * Factory method for creating the Label. This method is invoked in the constructor from the
 	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
