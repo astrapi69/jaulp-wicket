@@ -56,7 +56,7 @@ Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search
 
 Example projects are moved to the [wicket-examples](https://github.com/astrapi69/wicket-examples) project.
 
-You can run the every example project by doing following steps. For instance if you want to start the examples for the project jaulp.wicket.components you do this:
+You can run every example project by doing following steps. For instance if you want to start the examples for the project jaulp.wicket.components you do this:
 
 First change to the directory and build the project:
 ```bash
