@@ -41,20 +41,12 @@
 
 	<modules>
 		<module>jaulp.wicket.annotated.header.contributors</module>
-		<module>jaulp.wicket.annotated.header.contributors.examples</module>
 		<module>jaulp.wicket.base</module>
-		<module>jaulp.wicket.base.examples</module>
 		<module>jaulp.wicket.behaviors</module>
-		<module>jaulp.wicket.behaviors.examples</module>
 		<module>jaulp.wicket.components</module>
 		<module>jaulp.wicket.data.provider</module>
-		<module>jaulp.wicket.data.provider.examples</module>
 		<module>jaulp.wicket.dialogs</module>
-		<module>jaulp.wicket.dialogs.examples</module>
 		<module>jaulp.wicket.dropdownchoices</module>
-		<module>jaulp.wicket.dropdownchoices.examples</module>
-		<module>wicket.xslt.examples</module>
-		<module>jaulp.wicket.components.examples</module>
 	</modules>
 
 	<properties>
