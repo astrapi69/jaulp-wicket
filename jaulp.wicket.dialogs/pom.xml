@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.20.1</version>
+		<version>6.20.2</version>
 	</parent>
 
 	<artifactId>jaulp.wicket.dialogs</artifactId>
