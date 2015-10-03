@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.dialogs.ajax.modal;
 
+import lombok.Getter;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.Form;
@@ -24,7 +26,6 @@ import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
-import lombok.Getter;
 
 /**
  * The Class {@link BaseModalPanel}.
@@ -89,6 +90,9 @@ public abstract class BaseModalPanel<T> extends BasePanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onError(final AjaxRequestTarget target, final Form<?> form)
 			{
@@ -96,6 +100,9 @@ public abstract class BaseModalPanel<T> extends BasePanel<T>
 				onCancel(target);
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
