@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.in.password.change;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
@@ -24,6 +22,7 @@ import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
@@ -95,8 +94,8 @@ public class ChangePasswordPanel extends Panel
 			protected PasswordTextField newPasswordTextField(final String id,
 				final IModel<ChangePasswordModelBean> model)
 			{
-				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
-					.getCurrentPassword()));
+				final PasswordTextField pwTextField = new PasswordTextField(id,
+					new PropertyModel<>(model, "currentPassword"));
 				pwTextField.setOutputMarkupId(true);
 				if (placeholderModel != null)
 				{
@@ -135,8 +134,8 @@ public class ChangePasswordPanel extends Panel
 			protected PasswordTextField newPasswordTextField(final String id,
 				final IModel<ChangePasswordModelBean> model)
 			{
-				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
-					.getNewPassword()));
+				final PasswordTextField pwTextField = new PasswordTextField(id,
+					new PropertyModel<>(model, "newPassword"));
 				pwTextField.setOutputMarkupId(true);
 				if (placeholderModel != null)
 				{
@@ -175,8 +174,8 @@ public class ChangePasswordPanel extends Panel
 			protected PasswordTextField newPasswordTextField(final String id,
 				final IModel<ChangePasswordModelBean> model)
 			{
-				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
-					.getRepeatNewPassword()));
+				final PasswordTextField pwTextField = new PasswordTextField(id,
+					new PropertyModel<>(model, "repeatNewPassword"));
 				pwTextField.setOutputMarkupId(true);
 				if (placeholderModel != null)
 				{

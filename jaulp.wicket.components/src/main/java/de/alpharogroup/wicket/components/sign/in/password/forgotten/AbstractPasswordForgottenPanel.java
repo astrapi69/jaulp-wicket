@@ -15,8 +15,7 @@
  */
 package de.alpharogroup.wicket.components.sign.in.password.forgotten;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
+import lombok.Getter;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -27,12 +26,12 @@ import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
-import lombok.Getter;
 
 /**
  * The class {@link AbstractPasswordForgottenPanel}.
@@ -216,7 +215,8 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 				final IModel<PasswordForgottenModelBean> model)
 			{
 				final EmailTextField emailTextField = new EmailTextField(id,
-					model(from(model).getEmail()));
+					new PropertyModel<>(model, "email")
+					);
 				emailTextField.setOutputMarkupId(true);
 				emailTextField.setRequired(true);
 				if (placeholderModel != null)

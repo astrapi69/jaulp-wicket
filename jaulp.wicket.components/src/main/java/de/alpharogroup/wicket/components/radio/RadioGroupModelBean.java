@@ -27,7 +27,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class {@link RadioGroupModel}.
+ * The Class {@link RadioGroupModelBean}.
  *
  * @param <T> the generic type of model object.
  */
@@ -38,7 +38,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RadioGroupModel<T> implements Serializable
+public class RadioGroupModelBean<T> implements Serializable
 {
 
 	/**

@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.menu.suckerfish;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +24,7 @@ import lombok.Getter;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
@@ -68,7 +67,7 @@ public class MenuPanel extends BasePanel<Object>
 	{
 		super(id);
 		// Add the top menus
-		add(new SubMenuListView("topmenuitems", model(from(this).getTopMenuItems()), this));
+		add(new SubMenuListView("topmenuitems", new PropertyModel<>(this, "topMenuItems"), this));
 	}
 
 	/**

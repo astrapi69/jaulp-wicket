@@ -15,14 +15,13 @@
  */
 package de.alpharogroup.wicket.components.captcha.draw;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
 import lombok.Getter;
 
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.resource.IResource;
 
 import de.alpharogroup.wicket.base.BasePanel;
@@ -68,7 +67,7 @@ public class CaptchaPanel extends BasePanel<CaptchaModelBean>
 	 * Factory method for creating a new {@link Image}. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @param model
@@ -84,7 +83,7 @@ public class CaptchaPanel extends BasePanel<CaptchaModelBean>
 	 * Factory method for creating a new {@link Image}. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * Button.
-	 * 
+	 *
 	 * @param id
 	 *            the wicket id
 	 * @param imageResource
@@ -112,7 +111,7 @@ public class CaptchaPanel extends BasePanel<CaptchaModelBean>
 	{
 		// Create an TextField for the input...
 		final RequiredTextField<String> captchaInput = new RequiredTextField<String>(
-			"captchaInput", model(from(model.getObject()).getCaptchaInput()))
+			"captchaInput", new PropertyModel<>(model, "captchaInput"))
 		{
 
 			/**

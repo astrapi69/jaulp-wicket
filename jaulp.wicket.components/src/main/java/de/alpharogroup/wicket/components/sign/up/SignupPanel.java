@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.up;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
@@ -24,6 +22,7 @@ import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -103,8 +102,8 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 			protected PasswordTextField newPasswordTextField(final String id,
 				final IModel<BaseUsernameSignUpModel> modelSuper)
 			{
-				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
-					.getRepeatPassword()));
+				final PasswordTextField pwTextField = new PasswordTextField(id,
+					new PropertyModel<>(model, "repeatPassword"));
 				pwTextField.setOutputMarkupId(true);
 				if (placeholderModel != null)
 				{
@@ -160,8 +159,8 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			protected TextField newTextField(final String id, final IModel<T> modelSuper)
 			{
-				final TextField<String> textField = new TextField<String>(id, model(from(model)
-					.getUsername()));
+				final TextField<String> textField = new TextField<String>(id, new PropertyModel<>(
+					model, "username"));
 				textField.setOutputMarkupId(true);
 				textField.setRequired(true);
 				if (placeholderModel != null)

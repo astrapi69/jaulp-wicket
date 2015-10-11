@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.in;
 
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
 import lombok.Getter;
 
 import org.apache.wicket.Component;
@@ -24,6 +22,7 @@ import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,8 +96,8 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 			@Override
 			protected EmailTextField newEmailTextField(final String id, final IModel<T> m)
 			{
-				final EmailTextField emailTextField = new EmailTextField(id, model(from(
-					model.getObject()).getEmail()));
+				final EmailTextField emailTextField = new EmailTextField(id, new PropertyModel<>(
+					model, "email"));
 				emailTextField.setOutputMarkupId(true);
 				emailTextField.setRequired(true);
 				if (placeholderModel != null)
@@ -142,8 +141,8 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 			@Override
 			protected PasswordTextField newPasswordTextField(final String id, final IModel<T> model)
 			{
-				final PasswordTextField pwTextField = new PasswordTextField(id, model(from(model)
-					.getPassword()));
+				final PasswordTextField pwTextField = new PasswordTextField(id,
+					new PropertyModel<>(model, "password"));
 				pwTextField.setOutputMarkupId(true);
 				if (placeholderModel != null)
 				{

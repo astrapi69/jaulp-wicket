@@ -15,9 +15,7 @@
  */
 package de.alpharogroup.wicket.components.radio;
 
-
-import static org.wicketeer.modelfactory.ModelFactory.from;
-import static org.wicketeer.modelfactory.ModelFactory.model;
+import lombok.Getter;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
@@ -28,10 +26,10 @@ import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
-import lombok.Getter;
 
 /**
  * The Class {@link RadioGroupPanel}.
@@ -39,7 +37,7 @@ import lombok.Getter;
  * @param <T>
  *            the generic type of model object.
  */
-public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
+public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModelBean<T>>
 {
 
 	/** The Constant serialVersionUID. */
@@ -62,14 +60,17 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	 * @param model
 	 *            the model
 	 */
-	public RadioGroupPanel(final String id, final IModel<RadioGroupModel<T>> model)
+	public RadioGroupPanel(final String id, final IModel<RadioGroupModelBean<T>> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
 		add(form = newForm("form", model));
 
 		form.add(
-			group = newRadioGroup(newRadioName(), model(from(model.getObject()).getSelected())));
+			group = newRadioGroup(newRadioName(),
+				new PropertyModel<>(model, "selected")
+				)
+				);
 
 		group.add(newRadioListView("choice", model));
 	}
@@ -85,10 +86,10 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	 *            the model
 	 * @return the new {@link Form}
 	 */
-	protected Form<RadioGroupModel<T>> newForm(final String id,
-		final IModel<RadioGroupModel<T>> model)
+	protected Form<RadioGroupModelBean<T>> newForm(final String id,
+		final IModel<RadioGroupModelBean<T>> model)
 	{
-		final Form<RadioGroupModel<T>> form = ComponentFactory.newForm(id, model);
+		final Form<RadioGroupModelBean<T>> form = ComponentFactory.newForm(id, model);
 		return form;
 	}
 
@@ -148,7 +149,7 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModel<T>>
 	 *            the model
 	 * @return the new {@link ListView} for the {@link Radio} objects.
 	 */
-	protected ListView<T> newRadioListView(final String id, final IModel<RadioGroupModel<T>> model)
+	protected ListView<T> newRadioListView(final String id, final IModel<RadioGroupModelBean<T>> model)
 	{
 		final ListView<T> radioListView = new ListView<T>("choice", model.getObject().getRadios())
 		{

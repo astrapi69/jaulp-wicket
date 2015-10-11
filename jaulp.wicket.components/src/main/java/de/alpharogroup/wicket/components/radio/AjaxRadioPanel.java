@@ -40,7 +40,7 @@ import lombok.Getter;
  * @param <T>
  *            the generic type
  */
-public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<RadioGroupModel<T>>
+public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<RadioGroupModelBean<T>>
 {
 
 	/** The Constant serialVersionUID. */
@@ -66,7 +66,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	 * @param model
 	 *            the model
 	 */
-	public AjaxRadioPanel(final String id, final IModel<RadioGroupModel<T>> model)
+	public AjaxRadioPanel(final String id, final IModel<RadioGroupModelBean<T>> model)
 	{
 		super(id, model);
 		add(form = newForm("form"));
@@ -144,7 +144,7 @@ public abstract class AjaxRadioPanel<T extends Serializable> extends BasePanel<R
 	 *            the model
 	 * @return the new {@link ListView} for the {@link AjaxRadio} objects.
 	 */
-	protected Component newRadios(final RadioGroup<T> group, final IModel<RadioGroupModel<T>> model)
+	protected Component newRadios(final RadioGroup<T> group, final IModel<RadioGroupModelBean<T>> model)
 	{
 		return new ListView<T>("radioButtons", model.getObject().getRadios())
 		{
