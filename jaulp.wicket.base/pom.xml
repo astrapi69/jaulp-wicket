@@ -16,13 +16,18 @@
 	  	This project contains components that can be used widely for wicket applications.
     </description>
 
-	<dependencies>
+	<dependencies>	
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<sc
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-datetime</artifactId>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
@@ -47,6 +52,10 @@
 		<dependency>
 			<groupId>org.wicketstuff</groupId>
 			<artifactId>wicketstuff-annotation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
 	</dependencies>
