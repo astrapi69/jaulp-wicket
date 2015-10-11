@@ -47,7 +47,6 @@
 		<module>jaulp.wicket.data.provider</module>
 		<module>jaulp.wicket.dialogs</module>
 		<module>jaulp.wicket.dropdownchoices</module>
-    <module>jaulp.wicket.prototype</module>
   </modules>
 
 	<properties>
