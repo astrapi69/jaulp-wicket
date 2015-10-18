@@ -6,12 +6,11 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-wicket-parent</artifactId>
-		<version>6.0.0</version>
+		<version>7.0.0</version>
 		<relativePath/>
 	</parent>
 
 	<artifactId>jaulp.wicket</artifactId>
-	<version>6.20.3</version>
 	<packaging>pom</packaging>
 	<inceptionYear>2010</inceptionYear>
 
@@ -51,10 +50,10 @@
 
 	<properties>
 		<!-- WICKET version -->
-		<wicket.version>6.20.0</wicket.version>
+		<wicket.version>7.0.0</wicket.version>
 		<jaulp.wicket.version>${project.version}</jaulp.wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>6.20.0</wicketstuff.version>	
+		<wicketstuff.version>7.0.0</wicketstuff.version>	
 	</properties>
 
 	<dependencyManagement>
@@ -64,13 +63,7 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>wicket-js-addons-core</artifactId>
 				<version>${wicket-js-addons.version}</version>
-			</dependency>			
-			<!-- WICKET-MODELFACTORY DEPENDENCIES -->
-			<dependency>
-				<groupId>org.wicketeer</groupId>
-				<artifactId>wicket-modelfactory</artifactId>
-				<version>${wicket-modelfactory.version}</version>
-			</dependency>
+			</dependency>	
 			<!-- WICKET-JS-ADDONS DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>

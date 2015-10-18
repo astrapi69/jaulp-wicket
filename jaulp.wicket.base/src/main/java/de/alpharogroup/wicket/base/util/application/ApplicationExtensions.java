@@ -38,8 +38,8 @@ import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
-import org.apache.wicket.settings.IExceptionSettings;
-import org.apache.wicket.settings.IResourceSettings;
+import org.apache.wicket.settings.ExceptionSettings;
+import org.apache.wicket.settings.ResourceSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -269,7 +269,7 @@ public final class ApplicationExtensions
 	/**
 	 * Replace the default jquery resource reference from the given application with the given cdn
 	 * url.
-	 * 
+	 *
 	 * @param application
 	 *            the WebApplication
 	 * @param cdnjsUrl
@@ -387,7 +387,7 @@ public final class ApplicationExtensions
 	{
 		// show the exception page from us...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+			ExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
 		// In case of unhandled exception redirect it to a custom page
 		application.getRequestCycleListeners().add(applicationRequestCycleListener);
 	}
@@ -402,7 +402,7 @@ public final class ApplicationExtensions
 	{
 		// show the exception page from wicket...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			IExceptionSettings.SHOW_EXCEPTION_PAGE);
+			ExceptionSettings.SHOW_EXCEPTION_PAGE);
 	}
 
 	/**

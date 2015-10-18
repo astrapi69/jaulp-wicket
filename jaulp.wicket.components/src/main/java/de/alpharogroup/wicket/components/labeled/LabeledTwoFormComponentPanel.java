@@ -91,7 +91,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void convertInput()
+	public void convertInput()
 	{
 		setConvertedInput(getModelObject());
 	}

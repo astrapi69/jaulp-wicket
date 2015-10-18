@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.20.3</version>
+		<version>7.0.0</version>
 	</parent>
 	<artifactId>jaulp.wicket.components</artifactId>
 	<packaging>jar</packaging>
@@ -39,11 +39,6 @@
 		<dependency>
 			<groupId>net.tanesha.recaptcha4j</groupId>
 			<artifactId>recaptcha4j</artifactId>
-		</dependency>
-		<!-- WICKET-MODELFACTORY DEPENDENCIES -->
-		<dependency>
-			<groupId>org.wicketeer</groupId>
-			<artifactId>wicket-modelfactory</artifactId>
 		</dependency>
 	</dependencies>
 

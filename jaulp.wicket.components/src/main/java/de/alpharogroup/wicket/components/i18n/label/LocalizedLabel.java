@@ -25,7 +25,7 @@ import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
  * The Class LocalizedLabel initializes the Label with a StringResourceModel.
- * 
+ *
  * @deprecated use instead Label from wicket and create IModel with the
  *             {@link de.alpharogroup.wicket.base.util.resource.ResourceModelFactory}.
  */
@@ -65,10 +65,7 @@ public class LocalizedLabel extends Label
 	public LocalizedLabel(final String id, final String resourceKey, final Component component)
 	{
 		super(id);
-		// Get the localized model for the label from the properties file
-		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
-			component, null);
-		setDefaultModel(stringResourceModel);
+		setDefaultModel(ResourceModelFactory.newResourceModel(resourceKey, component));
 	}
 
 	/**
@@ -91,12 +88,8 @@ public class LocalizedLabel extends Label
 		final IModel<?> model, final String defaultValue, final Object... parameters)
 	{
 		super(id);
-		// Get the localized model for the label from the properties file with
-		// object parameters
-		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
-			component, model, defaultValue, parameters);
-
-		setDefaultModel(stringResourceModel);
+		setDefaultModel(ResourceModelFactory.newResourceModel(resourceKey, component, model,
+			defaultValue, parameters));
 	}
 
 	/**
@@ -115,12 +108,7 @@ public class LocalizedLabel extends Label
 		final Object... parameters)
 	{
 		super(id);
-		// Get the localized model for the label from the properties file with
-		// object parameters
-		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
-			component, null, parameters);
-
-		setDefaultModel(stringResourceModel);
+		setDefaultModel(ResourceModelFactory.newResourceModel(resourceKey, component, parameters));
 	}
 
 	/**
@@ -139,10 +127,7 @@ public class LocalizedLabel extends Label
 		final String defaultValue)
 	{
 		super(id);
-		// Get the localized model for the label from the properties file
-		final StringResourceModel stringResourceModel = new StringResourceModel(resourceKey,
-			component, null, defaultValue);
-		setDefaultModel(stringResourceModel);
+		setDefaultModel(ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue));
 	}
 
 	/**
