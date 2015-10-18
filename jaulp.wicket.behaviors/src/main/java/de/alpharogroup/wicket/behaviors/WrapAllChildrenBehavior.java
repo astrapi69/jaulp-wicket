@@ -24,16 +24,35 @@ import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
+/**
+ * The Class {@link WrapAllChildrenBehavior}. For instance:
+ *
+ * <pre>
+ * $('#component').children().wrapAll('&lt;fieldset&gt;&lt;/fieldset&gt');
+ * where statementLabel is 'wrapAll'
+ * and statementArgs is '&lt;fieldset&gt;&lt;/fieldset&gt'
+ * </pre>
+ */
 public class WrapAllChildrenBehavior extends Behavior
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The statement label. */
 	CharSequence statementLabel;
 
+	/** The statement args. */
 	CharSequence statementArgs;
 
+	/**
+	 * Instantiates a new {@link WrapAllChildrenBehavior}.
+	 *
+	 * @param statementLabel
+	 *            the statement label
+	 * @param statementArgs
+	 *            the statement args
+	 */
 	public WrapAllChildrenBehavior(final CharSequence statementLabel,
 		final CharSequence statementArgs)
 	{
@@ -44,15 +63,15 @@ public class WrapAllChildrenBehavior extends Behavior
 		this.statementArgs = statementArgs;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
 		final JsStatement statement = new JsQuery(component).$().chain("children")
 			.chain(statementLabel, JsUtils.quotes(statementArgs));
-		// $('#component').children().wrapAll('<fieldset></fieldset>');
-		// where statementLabel is 'wrapAll'
-		// and statementArgs is '<fieldset></fieldset>'
 		response.render(OnDomReadyHeaderItem.forScript(statement.render()));
 	}
 }

@@ -25,6 +25,9 @@ import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 import org.odlabs.wiquery.core.javascript.JsUtils;
 
+/**
+ * The Class {@link JQueryJsAppenderBehavior}.
+ */
 public class JQueryJsAppenderBehavior extends Behavior
 {
 	/** The Constant logger. */
@@ -46,7 +49,14 @@ public class JQueryJsAppenderBehavior extends Behavior
 		this.statementArgs = statementArgs;
 	}
 
-	public CharSequence createRenderedStatement(final Component component)
+	/**
+	 * Factory method to create the rendered statement.
+	 *
+	 * @param component
+	 *            the component
+	 * @return the char sequence
+	 */
+	public CharSequence newRenderedStatement(final Component component)
 	{
 		final JsStatement statement = new JsQuery(component).$().chain(statementLabel,
 			JsUtils.quotes(statementArgs));
@@ -54,11 +64,14 @@ public class JQueryJsAppenderBehavior extends Behavior
 		return statement.render();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
-		final CharSequence renderedStatement = createRenderedStatement(component);
+		final CharSequence renderedStatement = newRenderedStatement(component);
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
 }

@@ -29,6 +29,9 @@ import org.apache.wicket.util.lang.Args;
 import org.odlabs.wiquery.core.javascript.ChainableStatement;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 
+/**
+ * The Class {@link JqueryStatementsBehavior} can create js statements from the given {@link ChainableStatement} objects.
+ */
 public class JqueryStatementsBehavior extends Behavior
 {
 	/** The Constant logger. */
@@ -38,30 +41,59 @@ public class JqueryStatementsBehavior extends Behavior
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The chainable statement. */
 	private List<ChainableStatement> chainableStatement;
+	
+	/**
+	 * the rendered statement.
+	 */
 	@Getter
 	private CharSequence renderedStatement;
+	
+	/**
+	 * Flag if it is rendered.
+	 */
 	@Getter
 	private boolean rendered;
 
+	/**
+	 * Instantiates a new {@link JqueryStatementsBehavior}.
+	 */
 	public JqueryStatementsBehavior()
 	{
 		this.chainableStatement = new ArrayList<>();
 	}
 
-	public JqueryStatementsBehavior(final List<ChainableStatement> chainableStatement)
+	/**
+	 * Instantiates a new {@link JqueryStatementsBehavior}.
+	 *
+	 * @param chainableStatements the chainable statement objects.
+	 */
+	public JqueryStatementsBehavior(final List<ChainableStatement> chainableStatements)
 	{
-		Args.notNull(chainableStatement, "chainableStatement");
-		this.chainableStatement = chainableStatement;
+		Args.notNull(chainableStatements, "chainableStatement");
+		this.chainableStatement = chainableStatements;
 	}
 
-	public JqueryStatementsBehavior add(final ChainableStatement defaultChainableStatement)
+	/**
+	 * Adds the given {@link ChainableStatement} to the list and returns this object.
+	 *
+	 * @param chainableStatement the chainable statement to add
+	 * @return the jquery statements behavior
+	 */
+	public JqueryStatementsBehavior add(final ChainableStatement chainableStatement)
 	{
-		this.chainableStatement.add(defaultChainableStatement);
+		this.chainableStatement.add(chainableStatement);
 		return this;
 	}
 
-	public CharSequence createRenderedStatement(final Component component)
+	/**
+	 * Factory method to create the rendered statement.
+	 *
+	 * @param component the component
+	 * @return the char sequence
+	 */
+	public CharSequence newRenderedStatement(final Component component)
 	{
 		JsStatement statement;
 		if (component != null)
@@ -83,11 +115,14 @@ public class JqueryStatementsBehavior extends Behavior
 		return this.renderedStatement;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
-		final CharSequence renderedStatement = createRenderedStatement(component);
+		final CharSequence renderedStatement = newRenderedStatement(component);
 		response.render(OnDomReadyHeaderItem.forScript(renderedStatement));
 	}
 }

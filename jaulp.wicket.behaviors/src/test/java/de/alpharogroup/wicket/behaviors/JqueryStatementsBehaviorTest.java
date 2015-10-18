@@ -38,7 +38,7 @@ public class JqueryStatementsBehaviorTest
 					.args(JsUtils.quotes("tablefix")).build());
 		// $('').find('table:first-child').addClass('tablefix');
 
-		final CharSequence actual = wiQueryStatementBehavior.createRenderedStatement(null);
+		final CharSequence actual = wiQueryStatementBehavior.newRenderedStatement(null);
 		final String expected = ".find('table:first-child').addClass('tablefix');";
 		Assert.assertEquals(expected, actual);
 	}

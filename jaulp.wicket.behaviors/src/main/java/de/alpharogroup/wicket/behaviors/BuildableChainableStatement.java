@@ -19,25 +19,57 @@ import java.io.Serializable;
 
 import org.odlabs.wiquery.core.javascript.ChainableStatement;
 
+/**
+ * The Class {@link BuildableChainableStatement} is an implementation of the
+ * {@link ChainableStatement} interface.
+ *
+ * @see {@link ChainableStatement}
+ */
 public class BuildableChainableStatement implements ChainableStatement, Serializable
 {
 
+	/**
+	 * The {@link Builder} class for the {@link BuildableChainableStatement}.
+	 */
 	public static class Builder
 	{
+
+		/** The label. */
 		private String label;
+
+		/** The args. */
 		private CharSequence[] args;
 
+		/**
+		 * Args.
+		 *
+		 * @param args
+		 *            the args
+		 * @return the builder
+		 */
 		public Builder args(final CharSequence... args)
 		{
 			this.args = args;
 			return this;
 		}
 
+		/**
+		 * Builds the.
+		 *
+		 * @return the buildable chainable statement
+		 */
 		public BuildableChainableStatement build()
 		{
 			return new BuildableChainableStatement(this);
 		}
 
+		/**
+		 * Label.
+		 *
+		 * @param label
+		 *            the label
+		 * @return the builder
+		 */
 		public Builder label(final String label)
 		{
 			this.label = label;
@@ -45,6 +77,7 @@ public class BuildableChainableStatement implements ChainableStatement, Serializ
 		}
 	}
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -59,6 +92,9 @@ public class BuildableChainableStatement implements ChainableStatement, Serializ
 
 	/**
 	 * Creates a new instance of {@link BuildableChainableStatement}.
+	 *
+	 * @param builder
+	 *            the builder
 	 */
 	private BuildableChainableStatement(final Builder builder)
 	{
@@ -66,12 +102,18 @@ public class BuildableChainableStatement implements ChainableStatement, Serializ
 		this.args = builder.args;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String chainLabel()
 	{
 		return label;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public CharSequence[] statementArgs()
 	{
