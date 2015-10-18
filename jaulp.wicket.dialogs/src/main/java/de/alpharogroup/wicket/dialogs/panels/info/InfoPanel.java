@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.dialogs.panels.info;
 
+import lombok.Getter;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
@@ -25,7 +27,6 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
-import lombok.Getter;
 
 /**
  * The Class {@link InfoPanel}.
@@ -37,11 +38,9 @@ public abstract class InfoPanel<T> extends BasePanel<T>
 {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
-	 * Gets the close button.
-	 *
-	 * @return the close button
+	 * The close button.
 	 */
 	@Getter
 	final AjaxButton closeButton;

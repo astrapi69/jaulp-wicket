@@ -22,8 +22,6 @@ import org.odlabs.wiquery.core.javascript.ChainableStatement;
 /**
  * The Class {@link BuildableChainableStatement} is an implementation of the
  * {@link ChainableStatement} interface.
- *
- * @see {@link ChainableStatement}
  */
 public class BuildableChainableStatement implements ChainableStatement, Serializable
 {

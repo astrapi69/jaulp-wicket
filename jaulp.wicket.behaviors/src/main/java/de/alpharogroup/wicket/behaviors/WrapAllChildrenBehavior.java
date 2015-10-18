@@ -28,10 +28,10 @@ import org.odlabs.wiquery.core.javascript.JsUtils;
  * The Class {@link WrapAllChildrenBehavior}. For instance:
  *
  * <pre>
- * $('#component').children().wrapAll('&lt;fieldset&gt;&lt;/fieldset&gt');
- * where statementLabel is 'wrapAll'
- * and statementArgs is '&lt;fieldset&gt;&lt;/fieldset&gt'
+ * $('#component').children().wrapAll('&lt;fieldset&gt;&lt;/fieldset&gt;');
  * </pre>
+ *
+ * where statementLabel is 'wrapAll' and statementArgs is '&lt;fieldset&gt;&lt;/fieldset&gt;'
  */
 public class WrapAllChildrenBehavior extends Behavior
 {
