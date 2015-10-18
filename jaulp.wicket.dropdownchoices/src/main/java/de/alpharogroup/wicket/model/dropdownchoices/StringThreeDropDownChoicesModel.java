@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The Class StringThreeDropDownChoicesModel.
- * 
+ * The Class {@link StringThreeDropDownChoicesModel}.
+ *
  * @author Asterios Raptis
  */
 public class StringThreeDropDownChoicesModel extends ThreeDropDownChoicesModel<String>
@@ -31,8 +31,8 @@ public class StringThreeDropDownChoicesModel extends ThreeDropDownChoicesModel<S
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new string three drop down choices model.
-	 * 
+	 * Instantiates a new {@link StringThreeDropDownChoicesModel}.
+	 *
 	 * @param selectedTrademark
 	 *            the selected trademark
 	 * @param modelsMap
@@ -45,8 +45,8 @@ public class StringThreeDropDownChoicesModel extends ThreeDropDownChoicesModel<S
 	}
 
 	/**
-	 * Instantiates a new string three drop down choices model.
-	 * 
+	 * Instantiates a new {@link StringThreeDropDownChoicesModel}.
+	 *
 	 * @param selectedTrademark
 	 *            the selected trademark
 	 * @param modelsMap

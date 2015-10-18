@@ -21,10 +21,10 @@ import java.util.Map;
 import lombok.Getter;
 
 /**
- * The Class ThreeDropDownChoicesModel.
+ * The Class {@link ThreeDropDownChoicesModel}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of the model object
  * @author Asterios Raptis
  */
 public class ThreeDropDownChoicesModel<T> extends TwoDropDownChoicesModel<T>
@@ -42,7 +42,7 @@ public class ThreeDropDownChoicesModel<T> extends TwoDropDownChoicesModel<T>
 	private final List<T> selectedValuesChoices;
 
 	/**
-	 * Instantiates a new generic three drop down choices model.
+	 * Instantiates a new {@link ThreeDropDownChoicesModel}.
 	 *
 	 * @param selectedOption
 	 *            the selected option

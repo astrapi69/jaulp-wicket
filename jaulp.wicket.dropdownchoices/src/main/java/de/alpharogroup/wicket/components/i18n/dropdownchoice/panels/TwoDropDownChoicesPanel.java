@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice.panels;
 
 import java.util.List;
 
+import lombok.Getter;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -27,7 +29,6 @@ import org.apache.wicket.model.PropertyModel;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
-import lombok.Getter;
 
 /**
  * The Class {@link TwoDropDownChoicesPanel} contains two dropdowns with a root and a child
@@ -89,9 +90,9 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 	}
 
 	/**
-	 * Factory method for create a new child choice. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a new
-	 * child choice.
+	 * Factory method for creating the new child {@link DropDownChoice}. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new child {@link DropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -101,7 +102,7 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 	 *            the choices
 	 * @param renderer
 	 *            the renderer
-	 * @return the child choice
+	 * @return the new child {@link DropDownChoice}.
 	 */
 	protected DropDownChoice<T> newChildChoice(final String id, final IModel<T> model,
 		final IModel<? extends List<? extends T>> choices,
@@ -112,10 +113,11 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 		return cc;
 	}
 
+
 	/**
-	 * Factory method for create a new root choice. This method is invoked in the constructor from
-	 * the derived classes and can be overridden so users can provide their own version of a new
-	 * root choice.
+	 * Factory method for creating the new root {@link DropDownChoice}. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new root {@link DropDownChoice}.
 	 *
 	 * @param id
 	 *            the id
@@ -125,7 +127,7 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 	 *            the choices
 	 * @param renderer
 	 *            the renderer
-	 * @return the root choice
+	 * @return the new root {@link DropDownChoice}.
 	 */
 	protected DropDownChoice<T> newRootChoice(final String id, final IModel<T> model,
 		final IModel<? extends List<? extends T>> choices,
@@ -137,6 +139,9 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onUpdate(final AjaxRequestTarget target)
 			{

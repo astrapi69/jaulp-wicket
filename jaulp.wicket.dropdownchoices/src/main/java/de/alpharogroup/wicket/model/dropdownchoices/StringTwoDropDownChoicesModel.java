@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The Class StringTwoDropDownChoicesModel.
+ * The Class {@link StringTwoDropDownChoicesModel}.
  *
  * @author Asterios Raptis
  */
@@ -30,7 +30,7 @@ public class StringTwoDropDownChoicesModel extends TwoDropDownChoicesModel<Strin
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new string two drop down choices model.
+	 * Instantiates a new {@link StringTwoDropDownChoicesModel}.
 	 *
 	 * @param selectedTrademark
 	 *            the selected trademark

@@ -25,7 +25,7 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * The Class SelectedValuesChoiceRenderer.
+ * The Class {@link SelectedValuesChoiceRenderer}.
  *
  * @author Asterios Raptis
  */
@@ -42,7 +42,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	private final Class<?> componentClass;
 
 	/**
-	 * Instantiates a new selected values choice renderer.
+	 * Instantiates a new {@link SelectedValuesChoiceRenderer}.
 	 *
 	 * @param component
 	 *            the component
@@ -61,12 +61,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	}
 
 	/**
-	 * {@inheritDoc}.
-	 *
-	 * @param object
-	 *            the object
-	 * @return the display value
-	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getDisplayValue(java.lang.Object)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public Object getDisplayValue(final String object)
@@ -96,14 +91,7 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 	}
 
 	/**
-	 * {@inheritDoc}.
-	 *
-	 * @param object
-	 *            the object
-	 * @param index
-	 *            the index
-	 * @return the id value
-	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getIdValue(java.lang.Object, int)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public String getIdValue(final String object, final int index)
@@ -111,7 +99,15 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 		return object;
 	}
 
-
+	/**
+	 * Gets the object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param choices
+	 *            the choices
+	 * @return the object
+	 */
 	public String getObject(final String id, final IModel<? extends List<? extends String>> choices)
 	{
 		return null;

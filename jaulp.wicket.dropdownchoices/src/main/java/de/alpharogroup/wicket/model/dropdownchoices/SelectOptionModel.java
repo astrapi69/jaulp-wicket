@@ -21,7 +21,7 @@ import lombok.Setter;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
- * The Class SelectOptionModel.
+ * The Class {@link SelectOptionModel}.
  */
 public class SelectOptionModel implements IClusterable
 {
@@ -40,7 +40,7 @@ public class SelectOptionModel implements IClusterable
 	private String value;
 
 	/**
-	 * Instantiates a new select option.
+	 * Instantiates a new {@link SelectOptionModel}.
 	 *
 	 * @param key
 	 *            the key

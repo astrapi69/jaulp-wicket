@@ -25,7 +25,7 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * The Class PropertiesChoiceRenderer.
+ * The Class {@link PropertiesChoiceRenderer}.
  *
  * @author Asterios Raptis
  */
@@ -42,7 +42,7 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
 	private final Class<?> componentClass;
 
 	/**
-	 * Instantiates a new properties choice renderer.
+	 * Instantiates a new {@link PropertiesChoiceRenderer}.
 	 *
 	 * @param component
 	 *            the component
@@ -82,6 +82,15 @@ public class PropertiesChoiceRenderer implements IChoiceRenderer<String>
 		return object;
 	}
 
+	/**
+	 * Gets the object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param choices
+	 *            the choices
+	 * @return the object
+	 */
 	public String getObject(final String id, final IModel<? extends List<? extends String>> choices)
 	{
 		// override this method...

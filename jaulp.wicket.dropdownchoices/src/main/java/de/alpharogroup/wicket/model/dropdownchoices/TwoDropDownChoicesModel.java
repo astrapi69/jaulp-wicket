@@ -30,10 +30,10 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
 
 /**
- * The Class TwoDropDownChoicesModel.
+ * The Class {@link TwoDropDownChoicesModel}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of the model object
  */
 public class TwoDropDownChoicesModel<T> implements IClusterable
 {
@@ -64,7 +64,7 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 	private IModel<List<T>> childChoices;
 
 	/**
-	 * Instantiates a new generic two drop down choices model.
+	 * Instantiates a new {@link TwoDropDownChoicesModel}.
 	 *
 	 * @param selectedOption
 	 *            the selected option
@@ -78,8 +78,12 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 		rootChoices = new AbstractReadOnlyModel<List<T>>()
 		{
 
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public List<T> getObject()
 			{
@@ -108,6 +112,9 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public List<T> getObject()
 			{

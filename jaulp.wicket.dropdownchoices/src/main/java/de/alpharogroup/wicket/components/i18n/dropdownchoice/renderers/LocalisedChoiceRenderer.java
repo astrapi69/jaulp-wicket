@@ -25,7 +25,7 @@ import de.alpharogroup.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
- * The Class LocalisedChoiceRenderer.
+ * The Class {@link LocalisedChoiceRenderer}.
  *
  * @author Asterios Raptis
  */
@@ -45,7 +45,7 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 	private final Class<?> componentClass;
 
 	/**
-	 * Instantiates a new localised choice renderer.
+	 * Instantiates a new {@link LocalisedChoiceRenderer}.
 	 *
 	 * @param propertiesKeyPrefix
 	 *            the properties key prefix
@@ -62,18 +62,18 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 		this.componentClass = componentClass;
 	}
 
+	/**
+	 * Gets the component class.
+	 *
+	 * @return the component class
+	 */
 	public Class<?> getComponentClass()
 	{
 		return componentClass;
 	}
 
 	/**
-	 * {@inheritDoc}.
-	 *
-	 * @param object
-	 *            the object
-	 * @return the display value
-	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getDisplayValue(java.lang.Object)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public Object getDisplayValue(final String object)
@@ -86,16 +86,8 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 
 	}
 
-
 	/**
-	 * {@inheritDoc}.
-	 *
-	 * @param object
-	 *            the object
-	 * @param index
-	 *            the index
-	 * @return the id value
-	 * @see org.apache.wicket.markup.html.form.IChoiceRenderer#getIdValue(java.lang.Object, int)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public String getIdValue(final String object, final int index)
@@ -103,6 +95,13 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 		return object;
 	}
 
+	/**
+	 * Gets the object.
+	 *
+	 * @param id the id
+	 * @param choices the choices
+	 * @return the object
+	 */
 	public String getObject(final String id, final IModel<? extends List<? extends String>> choices)
 	{
 		// override this method...
