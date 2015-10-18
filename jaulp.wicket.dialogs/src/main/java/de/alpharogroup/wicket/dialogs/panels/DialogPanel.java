@@ -21,28 +21,43 @@ import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
+/**
+ * The Class {@link DialogPanel}.
+ *
+ * @param <T>
+ *            the generic type of the model object
+ */
 public abstract class DialogPanel<T> extends Panel
 {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new {@link DialogPanel}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 */
 	public DialogPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
 	{
 		super(id);
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
-	 * 
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final IModel<String> model)
 	{

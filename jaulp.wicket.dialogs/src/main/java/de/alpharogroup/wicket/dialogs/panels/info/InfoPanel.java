@@ -27,13 +27,32 @@ import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import lombok.Getter;
 
+/**
+ * The Class {@link InfoPanel}.
+ *
+ * @param <T>
+ *            the generic type of the model object
+ */
 public abstract class InfoPanel<T> extends BasePanel<T>
 {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Gets the close button.
+	 *
+	 * @return the close button
+	 */
 	@Getter
 	final AjaxButton closeButton;
 
+	/**
+	 * Instantiates a new {@link InfoPanel}.
+	 *
+	 * @param id the id
+	 * @param model the model
+	 * @param labelModel the label model
+	 */
 	public InfoPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
 	{
 		super(id, model);
@@ -59,11 +78,17 @@ public abstract class InfoPanel<T> extends BasePanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onError(final AjaxRequestTarget target, final Form<?> form)
 			{
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
@@ -78,20 +103,29 @@ public abstract class InfoPanel<T> extends BasePanel<T>
 	}
 
 	/**
-	 * Factory method for creating the Label. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Label.
+	 * Factory method for creating the new {@link Label}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * new {@link Label}.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the label
+	 * @return the new {@link Label}
 	 */
 	protected Label newLabel(final String id, final IModel<String> model)
 	{
 		return ComponentFactory.newLabel(id, model);
 	}
 
+
+	/**
+	 * Abstract callback method that have to be overwritten to provide specific action for close.
+	 *
+	 * @param target
+	 *            the target
+	 * @param object the object
+	 */
 	public abstract void onClose(final AjaxRequestTarget target, final T object);
 
 }

@@ -29,10 +29,10 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 
 /**
- * The Class SaveDialogPanel.
+ * The Class {@link SaveDialogPanel}.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of the model object
  */
 public class SaveDialogPanel<T> extends BasePanel<T>
 {
@@ -84,7 +84,7 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 	private final Component textField;
 
 	/**
-	 * Instantiates a new save dialog panel.
+	 * Instantiates a new {@link SaveDialogPanel}.
 	 *
 	 * @param id
 	 *            the id
@@ -131,6 +131,9 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{
@@ -176,7 +179,7 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 	 * Factory method for creating a new {@link Form}. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * {@link Form}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param model
@@ -208,6 +211,9 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 			 */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			protected void onSubmit(final AjaxRequestTarget target, final Form<?> form)
 			{

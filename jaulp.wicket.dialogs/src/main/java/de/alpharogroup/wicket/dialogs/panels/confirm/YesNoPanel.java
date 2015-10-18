@@ -31,7 +31,7 @@ import lombok.Getter;
  * The Class YesNoPanel.
  *
  * @param <T>
- *            the generic type
+ *            the generic type of the model object
  */
 public abstract class YesNoPanel<T> extends BasePanel<T>
 {
