@@ -181,7 +181,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- JAULP DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.file</artifactId>
