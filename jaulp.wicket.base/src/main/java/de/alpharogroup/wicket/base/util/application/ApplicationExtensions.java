@@ -83,7 +83,7 @@ public final class ApplicationExtensions
 	 *            the application
 	 * @param resourcePath
 	 *            the resource path
-	 * @see IResourceSettings#getResourceFinders()
+	 * @see org.apache.wicket.settings.ResourceSettings#getResourceFinders()
 	 */
 	public static void addResourceFinder(final WebApplication application, final String resourcePath)
 	{
