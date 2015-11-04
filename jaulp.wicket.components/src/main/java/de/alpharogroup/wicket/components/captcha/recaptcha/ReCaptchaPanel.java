@@ -102,8 +102,13 @@ public abstract class ReCaptchaPanel extends Panel
 	{
 		return new FormComponent<Serializable>(id, model)
 		{
+			
+			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void onComponentTagBody(final MarkupStream markupStream,
 				final ComponentTag openTag)
@@ -115,6 +120,9 @@ public abstract class ReCaptchaPanel extends Panel
 						"errorText", "clean", null));
 			}
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
 			public void validate()
 			{
