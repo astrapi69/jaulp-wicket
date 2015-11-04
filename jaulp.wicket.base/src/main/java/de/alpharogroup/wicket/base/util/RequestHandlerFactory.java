@@ -26,6 +26,29 @@ public class RequestHandlerFactory {
 	}
 
 	/**
+	 * Schedule the given class of type {@link IRequestablePage}.
+	 *
+	 * @param pageClass the page class
+	 */
+	public static void schedule(final Class<? extends IRequestablePage> pageClass)
+	{
+		RequestHandlerFactory.schedule(PageProviderFactory.newPageProvider(pageClass));
+	}
+
+	/**
+	 * Schedule the given class of type {@link IRequestablePage}.
+	 *
+	 * @param pageClass the page class
+	 * @param parameters
+	 *            the parameters
+	 */
+	public static void schedule(final Class<? extends IRequestablePage> pageClass,
+		final PageParameters parameters)
+	{
+		RequestHandlerFactory.schedule(PageProviderFactory.newPageProvider(pageClass, parameters));
+	}
+
+	/**
 	 * Schedule the given {@link IRequestablePage} object.
 	 *
 	 * @param requestablePage
