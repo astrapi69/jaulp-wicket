@@ -38,7 +38,7 @@ import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
-import org.apache.wicket.settings.ExceptionSettings;
+import org.apache.wicket.settings.IExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -309,7 +309,6 @@ public final class ApplicationExtensions
 		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(true);
 		application.getDebugSettings().setAjaxDebugModeEnabled(true);
 		application.getDebugSettings().setDevelopmentUtilitiesEnabled(true);
-		application.getDebugSettings().setComponentPathAttributeName("data-wicket-path");
 	}
 
 	/**
@@ -367,7 +366,6 @@ public final class ApplicationExtensions
 		application.getDebugSettings().setAjaxDebugModeEnabled(false);
 		application.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
 
-		application.getDebugSettings().setComponentPathAttributeName("");
 		application.getDebugSettings().setOutputMarkupContainerClassName(false);
 		application.getDebugSettings().setLinePreciseReportingOnAddComponentEnabled(false);
 		application.getDebugSettings().setLinePreciseReportingOnNewComponentEnabled(false);
@@ -386,7 +384,7 @@ public final class ApplicationExtensions
 	{
 		// show the exception page from us...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			ExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+			IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
 		// In case of unhandled exception redirect it to a custom page
 		application.getRequestCycleListeners().add(applicationRequestCycleListener);
 	}
@@ -401,7 +399,7 @@ public final class ApplicationExtensions
 	{
 		// show the exception page from wicket...
 		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			ExceptionSettings.SHOW_EXCEPTION_PAGE);
+			IExceptionSettings.SHOW_EXCEPTION_PAGE);
 	}
 
 	/**
