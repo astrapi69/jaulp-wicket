@@ -30,7 +30,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
@@ -102,7 +102,7 @@ public abstract class ReCaptchaPanel extends Panel
 	{
 		return new FormComponent<Serializable>(id, model)
 		{
-			
+
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 

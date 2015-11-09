@@ -49,7 +49,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.IResource;
 
-import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
@@ -303,7 +303,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new {@link Fragment}.
-	 * 
+	 *
 	 * @param id
 	 *            the id
 	 * @param markupId
@@ -320,7 +320,7 @@ public class ComponentFactory
 
 	/**
 	 * Factory method for create a new {@link Fragment}.
-	 * 
+	 *
 	 * @param <T>
 	 *            the generic type
 	 * @param id

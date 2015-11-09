@@ -53,7 +53,9 @@
 		<wicket.version>7.0.0</wicket.version>
 		<jaulp.wicket.version>${project.version}</jaulp.wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>7.0.0</wicketstuff.version>	
+		<wicketstuff.version>7.0.0</wicketstuff.version>
+		<!-- RESOURCEBUNDLE-CORE version -->		
+		<resourcebundle-inspector.version>2.2.0</resourcebundle-inspector.version>	
 	</properties>
 
 	<dependencyManagement>
@@ -136,6 +138,12 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>jaulp.wicket.dropdownchoices</artifactId>
 				<version>${jaulp.wicket.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>resourcebundle-inspector</artifactId>
+				<version>${resourcebundle-inspector.version}</version>
 			</dependency>			
 
 		</dependencies>

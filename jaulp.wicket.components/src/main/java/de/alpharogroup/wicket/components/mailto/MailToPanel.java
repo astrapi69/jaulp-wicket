@@ -18,7 +18,7 @@ package de.alpharogroup.wicket.components.mailto;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
-import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.behaviors.components.MailtoLabel;
 import de.alpharogroup.wicket.behaviors.models.MailtoModel;

@@ -20,8 +20,8 @@ import java.util.List;
 
 import org.apache.wicket.Component;
 
-import de.alpharogroup.locale.PropertiesKeysListResolver;
-import de.alpharogroup.locale.ResourceBundleKey;
+import de.alpharogroup.resourcebundle.locale.PropertiesKeysListResolver;
+import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 
 /**
@@ -44,7 +44,7 @@ public class ComponentPropertiesKeysListResolver
 
 	/**
 	 * Instantiates a new properties list view renderer.
-	 * 
+	 *
 	 * @param propertiesKeyPrefix
 	 *            the properties key prefix
 	 * @param component
@@ -60,7 +60,7 @@ public class ComponentPropertiesKeysListResolver
 
 	/**
 	 * Instantiates a new properties list view renderer.
-	 * 
+	 *
 	 * @param propertiesKeyPrefix
 	 *            the properties key prefix
 	 * @param propertiesKeySuffix
@@ -80,7 +80,7 @@ public class ComponentPropertiesKeysListResolver
 
 	/**
 	 * Gets the display value.
-	 * 
+	 *
 	 * @param resourceBundleKey
 	 *            the {@link ResourceBundleKey} object
 	 * @return the display value
