@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>7.0.0</version>
+		<version>7.1.0</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>jaulp.wicket.base</artifactId>
@@ -40,12 +40,12 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.xml</artifactId>
+			<artifactId>xml-extensions</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.lang</artifactId>
+			<artifactId>jcommons-lang</artifactId>
 		</dependency>
 		<!-- WICKETSTUFF -->
 		<dependency>

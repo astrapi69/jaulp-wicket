@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-wicket-parent</artifactId>
-		<version>7.0.0</version>
+		<version>7.1.0</version>
 		<relativePath/>
 	</parent>
 
@@ -50,12 +50,12 @@
 
 	<properties>
 		<!-- WICKET version -->
-		<wicket.version>7.0.0</wicket.version>
+		<wicket.version>7.1.0</wicket.version>
 		<jaulp.wicket.version>${project.version}</jaulp.wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>7.0.0</wicketstuff.version>
+		<wicketstuff.version>7.1.0</wicketstuff.version>
 		<!-- RESOURCEBUNDLE-CORE version -->		
-		<resourcebundle-inspector.version>2.2.0</resourcebundle-inspector.version>	
+		<resourcebundle-inspector.version>2.4.0</resourcebundle-inspector.version>	
 	</properties>
 
 	<dependencyManagement>
@@ -192,7 +192,7 @@
 		<!-- JAULP DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.file</artifactId>
+			<artifactId>file-worker</artifactId>
 		</dependency>
 
 	</dependencies>

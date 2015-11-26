@@ -17,15 +17,12 @@ package de.alpharogroup.wicket.components.download;
 
 import java.io.IOException;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 
@@ -33,6 +30,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.behaviors.AjaxDownloadBehavior;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The component DownloadPanel have a download link with a download label from the filename.
@@ -68,13 +66,6 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 		super(id, model);
 		Args.notNull(model, "model");
 	}
-
-	/**
-	 * Gets the web application.
-	 *
-	 * @return the web application
-	 */
-	protected abstract WebApplication getWebApplication();
 
 	/**
 	 * Factory method for creating the new {@link AjaxLink} for the download. This method is invoked
