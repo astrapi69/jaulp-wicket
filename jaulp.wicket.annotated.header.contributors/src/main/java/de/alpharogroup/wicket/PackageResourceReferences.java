@@ -31,7 +31,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.PackageResourceReference;
 
 import de.alpharogroup.io.annotations.ImportResource;
-import de.alpharogroup.io.annotations.ImportResourcesUtils;
+import de.alpharogroup.io.annotations.ImportResourcesExtensions;
 import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
 
 /**
@@ -195,7 +195,7 @@ public class PackageResourceReferences
 	public void initializeResources(final String packageName) throws ClassNotFoundException,
 		IOException
 	{
-		final Map<Class<?>, ImportResource[]> resourcesMap = ImportResourcesUtils
+		final Map<Class<?>, ImportResource[]> resourcesMap = ImportResourcesExtensions
 			.getImportResources(packageName);
 
 		for (final Entry<Class<?>, ImportResource[]> entry : resourcesMap.entrySet())

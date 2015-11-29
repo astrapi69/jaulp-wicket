@@ -32,7 +32,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.util.lang.Args;
 
-import de.alpharogroup.exception.ExceptionUtils;
+import de.alpharogroup.exception.ExceptionExtensions;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
@@ -239,7 +239,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	{
 		return ReportThrowableModel.builder().affectedUsername(newAffectedUsername())
 			.responsePage(newResponsePageClass()).rootUsername(newRootUsername())
-			.stackTrace(ExceptionUtils.getStackTraceElements(throwable)).build();
+			.stackTrace(ExceptionExtensions.getStackTraceElements(throwable)).build();
 	}
 
 	/**

@@ -35,7 +35,7 @@ import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.time.Time;
 
-import de.alpharogroup.lang.AnnotationUtils;
+import de.alpharogroup.lang.AnnotationExtensions;
 import de.alpharogroup.wicket.base.util.application.ApplicationExtensions;
 import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 
@@ -274,7 +274,7 @@ public final class WicketComponentExtensions
 	 */
 	public static boolean isSecure(final Component component)
 	{
-		if (AnnotationUtils.isAnnotationPresentInSuperClassesOrInterfaces(component.getClass(),
+		if (AnnotationExtensions.isAnnotationPresentInSuperClassesOrInterfaces(component.getClass(),
 			RequireHttps.class))
 		{
 			return true;

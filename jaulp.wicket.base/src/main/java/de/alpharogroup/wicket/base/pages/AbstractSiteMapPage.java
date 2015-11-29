@@ -31,7 +31,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import de.alpharogroup.lang.AnnotationUtils;
+import de.alpharogroup.lang.AnnotationExtensions;
 import de.alpharogroup.wicket.base.util.url.WicketUrlExtensions;
 
 /**
@@ -88,7 +88,7 @@ public abstract class AbstractSiteMapPage extends WebPage
 		final List<Class<? extends WebPage>> pages = new ArrayList<>();
 		try
 		{
-			final Set<Class<?>> set = AnnotationUtils.getAllAnnotatedClasses(getPackageName(),
+			final Set<Class<?>> set = AnnotationExtensions.getAllAnnotatedClasses(getPackageName(),
 				MountPath.class);
 			for (final Class<?> class1 : set)
 			{
