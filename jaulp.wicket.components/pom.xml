@@ -2,15 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
 		<version>7.1.0</version>
 	</parent>
+
 	<artifactId>jaulp.wicket.components</artifactId>
 	<packaging>jar</packaging>
 	<name>${project.artifactId}</name>
+
 	<dependencies>
+
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.wicket.behaviors</artifactId>
@@ -40,8 +44,8 @@
 			<groupId>net.tanesha.recaptcha4j</groupId>
 			<artifactId>recaptcha4j</artifactId>
 		</dependency>
-	</dependencies>
 
+	</dependencies>
 
 	<build>
 
