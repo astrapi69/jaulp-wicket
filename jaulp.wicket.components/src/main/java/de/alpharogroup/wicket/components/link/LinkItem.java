@@ -61,6 +61,9 @@ public class LinkItem implements Serializable
 	@NonNull
 	private ResourceBundleKey resourceModelKey;
 
+	/** The link id. */
+	private String id;
+
 	/** The url. */
 	private String url;
 
