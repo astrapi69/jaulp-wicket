@@ -30,12 +30,12 @@ import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
 /**
  * If you install the {@link SecuritySettingsPlugin} you enable the appropriate settings for the
  * development mode.
- * 
+ *
  * <h2>Installation</h2>
- * 
+ *
  * You can install the {@link SecuritySettingsPlugin} is very simple. You only have to add a one
  * line to the {@code init} method:
- * 
+ *
  * <pre>
  * public class MyApplication extends WebApplication
  * {
@@ -47,7 +47,7 @@ import de.alpharogroup.wicket.base.util.WicketComponentExtensions;
  * 	}
  * }
  * </pre>
- * 
+ *
  * @author Asterios Raptis
  */
 public class SecuritySettingsPlugin implements Serializable
@@ -127,7 +127,17 @@ public class SecuritySettingsPlugin implements Serializable
 			public void onBeginRequest(final RequestCycle cycle)
 			{
 				super.onBeginRequest(cycle);
-				WicketComponentExtensions.setSecurityHeaders((WebResponse)cycle.getResponse());
+				final WebResponse response = (WebResponse)cycle.getResponse();
+				// Category: Framing
+				WicketComponentExtensions.setSecurityFramingHeaders(response);
+				// Category: Transport
+				WicketComponentExtensions.setSecurityTransportHeaders(response);
+				// Category: XSS
+				WicketComponentExtensions.setSecurityXSSHeaders(response);
+				// Category: Caching
+				WicketComponentExtensions.setSecurityCachingHeaders(response);
+				// Set-Cookie
+				WicketComponentExtensions.setSecurityCookieHeaders(response);
 			}
 		});
 
