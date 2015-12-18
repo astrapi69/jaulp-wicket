@@ -231,8 +231,8 @@ public class PackageResourceReferences
 	/**
 	 * Initialize resources from the given packages.
 	 *
-	 * @param packageName
-	 *            the package name
+	 * @param packageNames
+	 *            the package names
 	 * @throws ClassNotFoundException
 	 *             occurs if a given class cannot be located by the specified class loader
 	 * @throws IOException
@@ -247,8 +247,8 @@ public class PackageResourceReferences
 	/**
 	 * Initialize resources from the given packages.
 	 *
-	 * @param packageName
-	 *            the package name
+	 * @param packageNames
+	 *            the package names
 	 * @throws ClassNotFoundException
 	 *             occurs if a given class cannot be located by the specified class loader
 	 * @throws IOException
