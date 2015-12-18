@@ -16,12 +16,15 @@
 package de.alpharogroup.wicket.base.application;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
 
 import lombok.Getter;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
+import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.core.request.mapper.MountedMapper;
 import org.apache.wicket.pageStore.DiskDataStore;
 import org.apache.wicket.pageStore.IDataStore;
@@ -41,13 +44,15 @@ import de.alpharogroup.wicket.base.application.plugins.SecuritySettingsPlugin;
  */
 public abstract class BaseWebApplication extends WebApplication
 {
+	/** The logger constant. */
+	protected static final Logger LOGGER = Logger.getLogger(BaseWebApplication.class.getName());
 
 	/** The Constant DEFAULT_HTTP_PORT. */
 	public static final int DEFAULT_HTTP_PORT = 9090;
+
 	/** The Constant DEFAULT_HTTPS_PORT. */
 	public static final int DEFAULT_HTTPS_PORT = 9443;
-	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger.getLogger(BaseWebApplication.class.getName());
+
 	/**
 	 * Gets the startup date.
 	 *
@@ -55,6 +60,30 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	@Getter
 	private DateTime startupDate;
+
+	/** The configuration properties. */
+	@Getter
+	private final Properties properties;
+	{properties = loadProperties();}
+
+	/**
+	 * loads all configuration properties from disk.
+	 *
+	 * @return configuration properties
+	 */
+	private Properties loadProperties()
+	{
+		final Properties properties = new Properties();
+		try
+		{
+			properties.load(getClass().getResourceAsStream("/config.properties"));
+		}
+		catch (final IOException e)
+		{
+			throw new WicketRuntimeException(e);
+		}
+		return properties;
+	}
 
 	/**
 	 * Gets the elapsed duration since this application was initialized.
@@ -220,6 +249,16 @@ public abstract class BaseWebApplication extends WebApplication
 	protected void onSecuritySettingsPlugin(final WebApplication application)
 	{
 		new SecuritySettingsPlugin().install(application);
+	}
+
+	/**
+	 * Checks if is on development mode.
+	 *
+	 * @return true, if is on development mode
+	 */
+	public boolean isOnDevelopmentMode()
+	{
+		return getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT);
 	}
 
 }
