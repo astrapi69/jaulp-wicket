@@ -16,8 +16,10 @@
 package de.alpharogroup.wicket;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -46,7 +48,7 @@ public class PackageResourceReferences
 
 	/**
 	 * Adds the given css files to the given response object in the given scope.
-	 * 
+	 *
 	 * @param response
 	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
 	 * @param scope
@@ -67,7 +69,7 @@ public class PackageResourceReferences
 
 	/**
 	 * Adds the given javascript files to the given response object in the given scope.
-	 * 
+	 *
 	 * @param response
 	 *            the {@link org.apache.wicket.markup.head.IHeaderResponse}
 	 * @param scope
@@ -183,12 +185,12 @@ public class PackageResourceReferences
 	}
 
 	/**
-	 * Initialize resources.
+	 * Initialize resources from the given package.
 	 *
 	 * @param packageName
 	 *            the package name
 	 * @throws ClassNotFoundException
-	 *             the class not found exception
+	 *             occurs if a given class cannot be located by the specified class loader
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
@@ -224,7 +226,40 @@ public class PackageResourceReferences
 			PackageResourceReferences.getInstance().getPackageResourceReferenceMap()
 				.put(key, packageResourceReferences);
 		}
+	}
 
+	/**
+	 * Initialize resources from the given packages.
+	 *
+	 * @param packageName
+	 *            the package name
+	 * @throws ClassNotFoundException
+	 *             occurs if a given class cannot be located by the specified class loader
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public void initializeResources(final String[] packageNames) throws ClassNotFoundException,
+		IOException
+	{
+		initializeResources(Arrays.asList(packageNames));
+	}
+
+	/**
+	 * Initialize resources from the given packages.
+	 *
+	 * @param packageName
+	 *            the package name
+	 * @throws ClassNotFoundException
+	 *             occurs if a given class cannot be located by the specified class loader
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public void initializeResources(final List<String> packageNames) throws ClassNotFoundException,
+		IOException
+	{
+		for(final String packageName : packageNames) {
+			initializeResources(packageName);
+		}
 	}
 
 }
