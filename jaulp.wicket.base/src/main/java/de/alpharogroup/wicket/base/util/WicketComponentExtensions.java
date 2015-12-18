@@ -42,7 +42,7 @@ import de.alpharogroup.wicket.base.util.parameter.PageParametersExtensions;
 /**
  * The Class WicketComponentExtensions is a helper class for the migration from wicket-version 1.4.x
  * to 1.5.x or 1.5.x to 6.1.0.
- * 
+ *
  * @author Asterios Raptis
  */
 public final class WicketComponentExtensions
@@ -55,7 +55,7 @@ public final class WicketComponentExtensions
 	 * &nbsp;&nbsp;&nbsp;&nbsp;WicketComponentUtils.disableCaching(response);
 	 * }
 	 * </code>
-	 * 
+	 *
 	 * @param response
 	 *            the response
 	 */
@@ -72,7 +72,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the context path from the given WebApplication.
-	 * 
+	 *
 	 * @param application
 	 *            the WebApplication
 	 * @return the context path
@@ -91,7 +91,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the header contributor for favicon.
-	 * 
+	 *
 	 * @return the header contributor for favicon
 	 */
 	public static Behavior getHeaderContributorForFavicon()
@@ -112,7 +112,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the http servlet request.
-	 * 
+	 *
 	 * @return the http servlet request
 	 */
 	public static HttpServletRequest getHttpServletRequest()
@@ -123,7 +123,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the http servlet request.
-	 * 
+	 *
 	 * @param request
 	 *            the request
 	 * @return the http servlet request
@@ -138,7 +138,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the http servlet response.
-	 * 
+	 *
 	 * @return the http servlet response
 	 */
 	public static HttpServletResponse getHttpServletResponse()
@@ -149,7 +149,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the http servlet response.
-	 * 
+	 *
 	 * @param response
 	 *            the response
 	 * @return the http servlet response
@@ -164,7 +164,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the ip address.
-	 * 
+	 *
 	 * @return the ip address
 	 */
 	public static String getIpAddress()
@@ -175,7 +175,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 * 
+	 *
 	 * @param request
 	 *            the request
 	 * @param parameterName
@@ -191,7 +191,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the parameter value from given parameter name. Looks in the query and post parameters.
-	 * 
+	 *
 	 * @param parameterName
 	 *            the parameter name
 	 * @return the parameter value
@@ -206,7 +206,7 @@ public final class WicketComponentExtensions
 	/**
 	 * Gets a map with all parameters. Looks in the query and post parameters. Migration method from
 	 * 1.4.* to 1.5.*.
-	 * 
+	 *
 	 * @return a map with all parameters.
 	 * @deprecated use instead {@link PageParametersExtensions#getParameterMap()}
 	 */
@@ -219,7 +219,7 @@ public final class WicketComponentExtensions
 	/**
 	 * Gets a map with all parameters. Looks in the query and post parameters. Migration method from
 	 * 1.4.* to 1.5.*.
-	 * 
+	 *
 	 * @param request
 	 *            the request
 	 * @return a map with all parameters.
@@ -233,7 +233,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the remote addr.
-	 * 
+	 *
 	 * @return the remote addr
 	 */
 	public static String getRemoteAddr()
@@ -244,7 +244,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Gets the request url.
-	 * 
+	 *
 	 * @return the request url
 	 */
 	public static String getRequestURL()
@@ -255,7 +255,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Checks if the current request has the scheme 'https'.
-	 * 
+	 *
 	 * @return true if the current request has the scheme 'https', otherwise false
 	 */
 	public static boolean isHttps()
@@ -267,7 +267,7 @@ public final class WicketComponentExtensions
 	/**
 	 * Checks if the given component has as parent a page that is annotated with
 	 * {@link RequireHttps}.
-	 * 
+	 *
 	 * @param component
 	 *            the component to check
 	 * @return true if the component is inside a page that require https, otherwise false
@@ -283,21 +283,23 @@ public final class WicketComponentExtensions
 	}
 
 	/**
-	 * Sets the access control header. Note: This header refers to a policy file. Specifying how
+	 * Sets the security headers for the category access control.
+	 *
+	 * Note: Set this header only if you know what your doing. This header refers to a policy file. Specifying how
 	 * resources should be allowed to be loaded from a different domain. The value 'master only'
 	 * indicates that only the file specified should be considered valid on this domain.
-	 * 
+	 *
 	 * @param response
 	 *            the response to set the header.
 	 */
-	public static void setAccessControlHeader(final WebResponse response)
+	public static void setSecurityAccessControlHeader(final WebResponse response)
 	{
 		response.setHeader("X-Permitted-Cross-Domain-Policies", "master-only");
 	}
 
 	/**
 	 * Sets the security headers. You can check your setting on on the link below.
-	 * 
+	 *
 	 * @see <a href="http://cyh.herokuapp.com/cyh">check headers</a>
 	 *
 	 * @param response
@@ -306,26 +308,98 @@ public final class WicketComponentExtensions
 	public static void setSecurityHeaders(final WebResponse response)
 	{
 		// Category: Framing
-		// see https://www.owasp.org/index.php/Clickjacking#X-FRAME-OPTIONS
-		response.setHeader("X-Frame-Options", "sameorigin");
+		WicketComponentExtensions.setSecurityFramingHeaders(response);
 		// Category: Transport
-		response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
-		// Category: Content
-		response.setHeader("X-Content-Type-Options", "nosniff");
-		response.setHeader("Content-Type", "text/html;charset=utf-8");
+		WicketComponentExtensions.setSecurityTransportHeaders(response);
 		// Category: XSS
-		response.setHeader("X-XSS-Protection", "1; mode=block");
+		WicketComponentExtensions.setSecurityXSSHeaders(response);
 		// Category: Caching
-		response.setHeader("Cache-Control", "must-revalidate;");
-		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Expires", "-1");
+		WicketComponentExtensions.setSecurityCachingHeaders(response);
+		// Set-Cookie
+		WicketComponentExtensions.setSecurityCookieHeaders(response);
+	}
+
+	/**
+	 * Sets the security headers for the category Caching.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityCookieHeaders(final WebResponse response)
+	{
 		// Set-Cookie
 		response.setHeader("Set-Cookie", "secure;httponly;");
 	}
 
 	/**
+	 * Sets the security headers for the category Caching.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityCachingHeaders(final WebResponse response)
+	{
+		// Category: Caching
+		response.setHeader("Cache-Control", "must-revalidate;");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires", "-1");
+	}
+
+	/**
+	 * Sets the security headers for the category XSS.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityXSSHeaders(final WebResponse response)
+	{
+		// Category: XSS
+		response.setHeader("X-XSS-Protection", "1; mode=block");
+	}
+
+	/**
+	 * Sets the security headers for the category Content.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityContentHeaders(final WebResponse response)
+	{
+		// Category: Content
+		response.setHeader("X-Content-Type-Options", "nosniff");
+		response.setHeader("Content-Type", "text/html;charset=utf-8");
+	}
+
+	/**
+	 * Sets the security headers for the category Transport.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityTransportHeaders(final WebResponse response)
+	{
+		// Category: Transport
+		response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+	}
+
+	/**
+	 * Sets the security headers for the category framing.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityFramingHeaders(final WebResponse response)
+	{
+		// Category: Framing
+		// see https://www.owasp.org/index.php/Clickjacking#X-FRAME-OPTIONS
+		response.setHeader("X-Frame-Options", "sameorigin");
+	}
+
+
+
+	/**
 	 * Helper method for the migration from wicket-version 1.5.x to 6.x.
-	 * 
+	 *
 	 * @param relativePagePath
 	 *            the relative page path
 	 * @return the string
@@ -339,7 +413,7 @@ public final class WicketComponentExtensions
 
 	/**
 	 * Converts the given Map to a {@link PageParameters} object.
-	 * 
+	 *
 	 * @param parameters
 	 *            the {@link Map} with the parameters to set.
 	 * @return the {@link PageParameters}
