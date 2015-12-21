@@ -136,8 +136,6 @@ public class SecuritySettingsPlugin implements Serializable
 				WicketComponentExtensions.setSecurityXSSHeaders(response);
 				// Category: Caching
 				WicketComponentExtensions.setSecurityCachingHeaders(response);
-				// Set-Cookie
-				WicketComponentExtensions.setSecurityCookieHeaders(response);
 			}
 		});
 
