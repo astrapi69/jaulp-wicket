@@ -52,7 +52,8 @@ public final class WicketComponentExtensions
 	 * Disables caching from a WebPage. To disable the cache override the WebPage.setHeader() and
 	 * invoke this method. For instance:<code>
 	 * protected void setHeaders(WebResponse response) {
-	 * &nbsp;&nbsp;&nbsp;&nbsp;WicketComponentUtils.disableCaching(response);
+	 * &nbsp;&nbsp;&nbsp;&nbsp;
+	 * WicketComponentExtensions.disableCaching(response);
 	 * }
 	 * </code>
 	 *
@@ -68,6 +69,20 @@ public final class WicketComponentExtensions
 			httpServletResponse.addHeader("Cache-Control", "max-age=0");
 			httpServletResponse.setDateHeader("Expires", 0);
 		}
+	}
+
+	/**
+	 * Sets the security headers for the category Caching.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityCachingHeaders(final WebResponse response)
+	{
+		// Category: Caching
+		response.setHeader("Cache-Control", "must-revalidate;");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires", "-1");
 	}
 
 	/**
@@ -305,7 +320,7 @@ public final class WicketComponentExtensions
 	 * @param response
 	 *            the new security headers
 	 */
-	public static void setSecurityHeaders(final WebResponse response)
+	public static void setDefaultSecurityHeaders(final WebResponse response)
 	{
 		// Category: Framing
 		WicketComponentExtensions.setSecurityFramingHeaders(response);
@@ -315,8 +330,6 @@ public final class WicketComponentExtensions
 		WicketComponentExtensions.setSecurityXSSHeaders(response);
 		// Category: Caching
 		WicketComponentExtensions.setSecurityCachingHeaders(response);
-		// Set-Cookie
-		WicketComponentExtensions.setSecurityCookieHeaders(response);
 	}
 
 	/**
@@ -329,20 +342,6 @@ public final class WicketComponentExtensions
 	{
 		// Set-Cookie
 		response.setHeader("Set-Cookie", "secure;httponly;");
-	}
-
-	/**
-	 * Sets the security headers for the category Caching.
-	 *
-	 * @param response
-	 *            the response to set the security headers
-	 */
-	public static void setSecurityCachingHeaders(final WebResponse response)
-	{
-		// Category: Caching
-		response.setHeader("Cache-Control", "must-revalidate;");
-		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Expires", "-1");
 	}
 
 	/**
