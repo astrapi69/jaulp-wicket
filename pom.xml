@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-wicket-parent</artifactId>
-		<version>7.1.7</version>
+		<version>7.1.10</version>
 		<relativePath/>
 	</parent>
 
@@ -52,50 +52,15 @@
 	<properties>
 		<!-- WICKET version -->
 		<wicket.version>7.1.0</wicket.version>
-		<jaulp.wicket.version>${project.version}</jaulp.wicket.version>
-		<!-- WICKET EXTENSION LIBRARIES versions -->
+		<!-- WICKETSTUFF versions -->
 		<wicketstuff.version>7.1.0</wicketstuff.version>
+		<jaulp.wicket.version>${project.version}</jaulp.wicket.version>
 	</properties>
 
 	<dependencyManagement>
 
 		<dependencies>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-js-addons-core</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<!-- WICKET-JS-ADDONS DEPENDENCIES -->
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-pnotify</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-popupoverlay</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-spin.js</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-toastr</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-tooltipster</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-session-timeout</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
+
 			<!-- JAULP WICKET DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -144,11 +109,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- WICKET DEPENDENCIES -->
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-core</artifactId>
-		</dependency>
 		<!-- EXTENSIONS LIB DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
