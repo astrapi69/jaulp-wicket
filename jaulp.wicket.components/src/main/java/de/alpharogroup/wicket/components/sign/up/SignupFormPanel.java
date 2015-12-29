@@ -20,9 +20,9 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
 import de.alpharogroup.wicket.base.BasePanel;
@@ -76,7 +76,17 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 */
 	public SignupFormPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
-		super(id, model);
+		super(id, Args.notNull(model, "model"));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		initComponent();
 	}
 
 	/**
@@ -84,10 +94,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 */
 	protected void initComponent()
 	{
-		getModelObject().setEmail("");
-		final IModel<BaseUsernameSignUpModel> model = new CompoundPropertyModel<>(getModel());
-		setModel(model);
-		addOrReplace(form = newForm("form", model));
+		addOrReplace(form = newForm("form", getModel()));
 		form.addOrReplace(signupPanel = newSignupPanel("signupPanel", getModel()));
 
 		form.addOrReplace(submitButton = newButton("signupButton"));
@@ -172,16 +179,6 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	protected Component newSignupPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
 		return new SignupPanel<>(id, model);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
-		initComponent();
 	}
 
 	/**
