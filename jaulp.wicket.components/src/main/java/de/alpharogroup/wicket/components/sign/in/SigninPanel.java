@@ -67,15 +67,15 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	}
 
 	/**
-	 * Factory method for creating the EmailTextField for the email. This method is invoked in the
+	 * Factory method for creating a new {@link Component} for the email. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a EmailTextField for the email.
+	 * version of a new {@link Component} for the email.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new {@link Component} for the email.
 	 */
 	protected Component newEmailTextField(final String id, final IModel<T> model)
 	{
