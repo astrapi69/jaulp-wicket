@@ -48,22 +48,22 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 
 	/** The button label. */
 	@Getter
-	private final Label buttonLabel;
+	private  Label buttonLabel;
 	/** The form. */
 	@Getter
-	private final Form<?> form;
+	private  Form<?> form;
 
 	/** The signin panel. */
 	@Getter
-	private final Component signinPanel;
+	private  Component signinPanel;
 
 	/** The submit button. */
 	@Getter
-	private final Button submitButton;
+	private  Button submitButton;
 
 	/** The password forgotten link. */
 	@Getter
-	private final MarkupContainer passwordForgottenLink;
+	private  MarkupContainer passwordForgottenLink;
 
 	/**
 	 * Instantiates a new {@link SigninFormPanel}.
@@ -76,17 +76,24 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 	public SigninFormPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
-		add(form = newForm("form", model));
-		form.add(signinPanel = newSigninPanel("signinPanel", model));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize() {
+		super.onInitialize();
+		add(form = newForm("form", getModel()));
+		form.add(signinPanel = newSigninPanel("signinPanel", getModel()));
 		// Create submit button for the form
 		submitButton = newButton("submitButton");
 		submitButton.add(
 			buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label", "Sign In"));
 		form.add(submitButton);
-		passwordForgottenLink = newPasswordForgottenLink("passwordForgottenLink", model);
+		passwordForgottenLink = newPasswordForgottenLink("passwordForgottenLink", getModel());
 		add(passwordForgottenLink);
-
-	}
+	};
 
 	/**
 	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor

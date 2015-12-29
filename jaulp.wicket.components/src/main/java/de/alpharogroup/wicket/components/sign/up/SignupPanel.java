@@ -65,15 +65,23 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 * @param model
 	 *            the model
 	 */
-	@SuppressWarnings("unchecked")
 	public SignupPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
-		add(username = newUsernameTextField("username", model));
-		add(signinPanel = newSigninPanel("signinPanel", model));
-		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
-			(IModel<BaseUsernameSignUpModel>)model));
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	protected void onInitialize() {
+		super.onInitialize();
+		add(username = newUsernameTextField("username", getModel()));
+		add(signinPanel = newSigninPanel("signinPanel", getModel()));
+		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
+			(IModel<BaseUsernameSignUpModel>)getModel()));
+	};
 
 	/**
 	 * Factory method for creating the EmailTextField for the repeated password. This method is

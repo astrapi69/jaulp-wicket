@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.util.lang.Args;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,11 +46,11 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 
 	/** The email. */
 	@Getter
-	private final Component email;
+	private Component email;
 
 	/** The password. */
 	@Getter
-	private final Component password;
+	private Component password;
 
 	/**
 	 * Instantiates a new {@link SigninPanel}.
@@ -61,10 +62,18 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 */
 	public SigninPanel(final String id, final IModel<T> model)
 	{
-		super(id, model);
-		add(email = newEmailTextField("email", model));
-		add(password = newPasswordTextField("password", model));
+		super(id, Args.notNull(model, "model"));
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize() {
+		super.onInitialize();
+		add(email = newEmailTextField("email", getModel()));
+		add(password = newPasswordTextField("password", getModel()));
+	};
 
 	/**
 	 * Factory method for creating a new {@link Component} for the email. This method is invoked in the
@@ -96,9 +105,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 			@Override
 			protected EmailTextField newEmailTextField(final String id, final IModel<T> m)
 			{
-				final EmailTextField emailTextField = new EmailTextField(id, new PropertyModel<>(
-					model, "email"));
-				emailTextField.setOutputMarkupId(true);
+				final EmailTextField emailTextField = super.newEmailTextField(id, m);
 				emailTextField.setRequired(true);
 				if (placeholderModel != null)
 				{
