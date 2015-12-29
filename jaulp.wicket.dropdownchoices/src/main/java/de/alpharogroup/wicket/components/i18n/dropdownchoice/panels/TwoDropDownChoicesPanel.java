@@ -134,7 +134,7 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 		final IChoiceRenderer<? super T> renderer)
 	{
 		final DropDownChoice<T> rc = new LocalisedDropDownChoice<>(id, model, choices, renderer);
-		rc.add(new AjaxFormComponentUpdatingBehavior("onchange")
+		rc.add(new AjaxFormComponentUpdatingBehavior("change")
 		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
