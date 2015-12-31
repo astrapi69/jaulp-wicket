@@ -25,23 +25,25 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * Model bean for the page SocialNetworksExamplePage.
+ * Model bean for the page SocialNetworks data.
  */
 @Data
 @Builder
 public class SocialNetworkModelBean implements Serializable
 {
 
-	/**
-	 * The serialVersionUID
-	 */
+	/** The serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The  model bean for the google plus share. */
 	private GooglePlusShareModelBean googlePlusShareModelBean;
 
+	/** The  model bean for the twitter share. */
 	private TwitterShareModelBean twitterShareModelBean;
 
+	/** The  model bean for the twitter follow. */
 	private TwitterFollowModelBean twitterFollowModelBean;
 
+	/** The  model bean for the facebook like and share. */
 	private FacebookLikeAndShareModelBean facebookLikeAndShareModelBean;
 }
