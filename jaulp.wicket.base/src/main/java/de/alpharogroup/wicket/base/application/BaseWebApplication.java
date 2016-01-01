@@ -16,15 +16,11 @@
 package de.alpharogroup.wicket.base.application;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Properties;
-
-import lombok.Getter;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
-import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.core.request.mapper.MountedMapper;
 import org.apache.wicket.pageStore.DiskDataStore;
 import org.apache.wicket.pageStore.IDataStore;
@@ -37,6 +33,7 @@ import org.apache.wicket.util.time.Time;
 import org.joda.time.DateTime;
 
 import de.alpharogroup.wicket.base.application.plugins.SecuritySettingsPlugin;
+import lombok.Getter;
 
 /**
  * The Class BaseWebApplication have factory methods for the application settings that should be
@@ -64,25 +61,17 @@ public abstract class BaseWebApplication extends WebApplication
 	/** The configuration properties. */
 	@Getter
 	private final Properties properties;
-	{properties = loadProperties();}
+
+	/** The configuration properties resolver. */
+	@Getter
+	private final ConfigurationPropertiesResolver configurationPropertiesResolver;
 
 	/**
-	 * loads all configuration properties from disk.
-	 *
-	 * @return configuration properties
-	 */
-	private Properties loadProperties()
+	 * Initialization block.
+	 **/
 	{
-		final Properties properties = new Properties();
-		try
-		{
-			properties.load(getClass().getResourceAsStream("/config.properties"));
-		}
-		catch (final IOException e)
-		{
-			throw new WicketRuntimeException(e);
-		}
-		return properties;
+		this.configurationPropertiesResolver = newConfigurationPropertiesResolver(getDefaultHttpPort(), getDefaultHttpsPort(), "config.properties");
+		this.properties = this.configurationPropertiesResolver.getProperties();
 	}
 
 	/**
@@ -165,6 +154,26 @@ public abstract class BaseWebApplication extends WebApplication
 		final File fileStoreFolder = storeSettings.getFileStoreFolder();
 		return new DiskDataStore(this.getName(), fileStoreFolder, maxSizePerSession);
 	}
+	/**
+	 * Gets the default http port.
+	 *
+	 * @return the default http port
+	 */
+	protected int getDefaultHttpPort() {
+		return BaseWebApplication.DEFAULT_HTTP_PORT;
+	}
+
+	/**
+	 *  Factory method to create a new {@link ConfigurationPropertiesResolver}.
+	 *
+	 * @param defaultHttpPort the default http port
+	 * @param defaultHttpsPort the default https port
+	 * @param propertiesFilename the properties filename
+	 * @return the new {@link ConfigurationPropertiesResolver}.
+	 */
+	protected ConfigurationPropertiesResolver newConfigurationPropertiesResolver(final Integer defaultHttpPort, final Integer defaultHttpsPort, final String propertiesFilename) {
+		return new ConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort, propertiesFilename);
+	}
 
 	/**
 	 * Factory method that can be overwritten to provide other http port than the default one.
@@ -173,7 +182,16 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected int newHttpPort()
 	{
-		return BaseWebApplication.DEFAULT_HTTP_PORT;
+		return this.configurationPropertiesResolver.getHttpPort();
+	}
+
+	/**
+	 * Gets the default https port.
+	 *
+	 * @return the default https port
+	 */
+	protected int getDefaultHttpsPort() {
+		return BaseWebApplication.DEFAULT_HTTPS_PORT;
 	}
 
 	/**
@@ -183,7 +201,7 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected int newHttpsPort()
 	{
-		return BaseWebApplication.DEFAULT_HTTPS_PORT;
+		return this.configurationPropertiesResolver.getHttpsPort();
 	}
 
 	/**
