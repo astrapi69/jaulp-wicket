@@ -26,7 +26,7 @@ import org.apache.wicket.request.cycle.RequestCycle;
 
 /**
  * Extends the {@link AbstractApplicationRequestCycleListener} and implement the method
- * {@link AbstractApplicationRequestCycleListener#getExceptionPage(Exception)} that return an
+ * {@link AbstractApplicationRequestCycleListener#newExceptionPage(Exception)} that return an
  * application specific exception page.
  */
 public abstract class AbstractApplicationRequestCycleListener extends AbstractRequestCycleListener
@@ -49,7 +49,7 @@ public abstract class AbstractApplicationRequestCycleListener extends AbstractRe
 	/**
 	 * Abstract factory method for create an application specific exception page.
 	 *
-	 * @param e the exception
+	 * @param exception the exception
 	 * @return the exception page
 	 */
 	public abstract IRequestablePage newExceptionPage(final Exception exception);
