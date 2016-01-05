@@ -15,11 +15,11 @@
  */
 package de.alpharogroup.wicket.components.sign.up;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.lang.Args;
@@ -53,7 +53,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 
 	/** The signup panel. */
 	@Getter
-	private Component signupPanel;
+	private SignupPanel<BaseUsernameSignUpModel> signupPanel;
 
 	/**
 	 * Instantiates a new {@link SignupFormPanel}.
@@ -101,6 +101,8 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 		submitButton.add(
 			buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.up.label", "Sign up"));
 		form.add(submitButton);
+
+		form.add(new EqualPasswordInputValidator(signupPanel.getSigninPanel().getPassword().getPasswordTextField(), signupPanel.getRepeatPassword().getPasswordTextField()));
 	}
 
 	/**
@@ -176,7 +178,7 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 *            the model
 	 * @return the SignupPanel
 	 */
-	protected Component newSignupPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
+	protected SignupPanel<BaseUsernameSignUpModel> newSignupPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
 		return new SignupPanel<>(id, model);
 	}

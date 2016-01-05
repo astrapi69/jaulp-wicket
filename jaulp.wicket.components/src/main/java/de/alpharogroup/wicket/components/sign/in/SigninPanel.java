@@ -50,7 +50,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 
 	/** The password. */
 	@Getter
-	private Component password;
+	private LabeledPasswordTextFieldPanel<T> password;
 
 	/**
 	 * Instantiates a new {@link SigninPanel}.
@@ -127,9 +127,9 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the text fieldLabeledPasswordTextFieldPanel<T>
 	 */
-	protected Component newPasswordTextField(final String id, final IModel<T> model)
+	protected LabeledPasswordTextFieldPanel<T> newPasswordTextField(final String id, final IModel<T> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.password.label", this);
