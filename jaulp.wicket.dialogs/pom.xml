@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>7.1.0</version>
+		<version>6.18.0</version>
 	</parent>
 
 	<artifactId>jaulp.wicket.dialogs</artifactId>
@@ -25,7 +25,7 @@
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-extensions</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>jaulp.wicket.components</artifactId>

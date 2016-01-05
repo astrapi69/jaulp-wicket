@@ -23,6 +23,7 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 
@@ -102,7 +103,7 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 			{
 				try
 				{
-					return ApplicationExtensions.getResourceStream(getWebApplication(), model
+					return ApplicationExtensions.getResourceStream(WebApplication.get(), model
 						.getObject().getPath(), model.getObject().getContentType());
 				}
 				catch (final IOException e)
