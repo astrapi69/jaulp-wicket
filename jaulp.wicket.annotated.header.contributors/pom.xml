@@ -21,11 +21,12 @@
 	</description>
 
 	<dependencies>
-		<!-- JAULP DEPENDENCIES -->
+		<!-- JCOMMONS-LANG DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.lang</artifactId>
+			<artifactId>jcommons-lang</artifactId>
 		</dependency>
+
 	</dependencies>
 
 </project>

@@ -95,7 +95,7 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 		};
 		this.selectedRootOption = selectedOption;
 
-		getChildChoices();
+		this.childChoices = getChildChoices();
 
 	}
 
@@ -106,7 +106,8 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 	 */
 	public IModel<List<T>> getChildChoices()
 	{
-		childChoices = new AbstractReadOnlyModel<List<T>>()
+		final T selectedRootOption = TwoDropDownChoicesModel.this.selectedRootOption;
+		final IModel<List<T>> childChoices = new AbstractReadOnlyModel<List<T>>()
 		{
 
 			/** The Constant serialVersionUID. */
@@ -118,7 +119,7 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 			@Override
 			public List<T> getObject()
 			{
-				List<T> models = getModelsMap().get(getSelectedRootOption());
+				List<T> models = getModelsMap().get(selectedRootOption);
 				if (models == null)
 				{
 					models = Collections.emptyList();

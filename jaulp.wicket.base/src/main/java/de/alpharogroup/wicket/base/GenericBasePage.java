@@ -84,7 +84,7 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	/**
 	 * Factory method that can be overwritten for new meta tag content for description.
 	 *
-	 * @return the new <code>IModel</code>
+	 * @return the new <code>{@link IModel}</code> for the meta tag content for description.
 	 */
 	protected IModel<String> newDescription()
 	{
@@ -96,7 +96,7 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	/**
 	 * Factory method that can be overwritten for new meta tag content for keywords.
 	 *
-	 * @return the new <code>IModel</code>
+	 * @return the new <code>{@link IModel}</code> for the meta tag content for keywords.
 	 */
 	protected IModel<String> newKeywords()
 	{
@@ -107,7 +107,7 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	/**
 	 * Factory method that can be overwritten for new meta tag content for the title.
 	 *
-	 * @return the new <code>IModel</code>
+	 * @return the new <code>{@link IModel}</code> for the meta tag content for title.
 	 */
 	protected IModel<String> newTitle()
 	{

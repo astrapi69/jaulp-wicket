@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -62,42 +62,7 @@
 	<dependencyManagement>
 
 		<dependencies>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-js-addons-core</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>	
-			<!-- WICKET-JS-ADDONS DEPENDENCIES -->
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-pnotify</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-popupoverlay</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-spin.js</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-toastr</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-tooltipster</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>wicket-session-timeout</artifactId>
-				<version>${wicket-js-addons.version}</version>
-			</dependency>
+
 			<!-- JAULP WICKET DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -141,59 +106,15 @@
 				<version>${jaulp.wicket.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>de.alpharogroup</groupId>
-				<artifactId>resourcebundle-inspector</artifactId>
-				<version>${resourcebundle-inspector.version}</version>
-			</dependency>			
-
 		</dependencies>
 
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- LOMBOK DEPENDENCIES -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-		<!-- WICKET DEPENDENCIES -->
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-core</artifactId>
-		</dependency>		
-		<!-- LOGGING DEPENDENCIES -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-		</dependency>
-		<!-- UNIT DEPENDENCY FOR TESTING -->
-		<!-- TESTNG DEPENDENCY FOR TESTING -->
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- JUNIT DEPENDENCY FOR TESTING -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- JAULP DEPENDENCIES -->
+		<!-- EXTENSIONS LIB DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.file</artifactId>
+			<artifactId>file-worker</artifactId>
 		</dependency>
 
 	</dependencies>

@@ -16,8 +16,7 @@
 package de.alpharogroup.wicket.base.application;
 
 import java.io.File;
-
-import lombok.Getter;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.apache.wicket.Page;
@@ -34,6 +33,7 @@ import org.apache.wicket.util.time.Time;
 import org.joda.time.DateTime;
 
 import de.alpharogroup.wicket.base.application.plugins.SecuritySettingsPlugin;
+import lombok.Getter;
 
 /**
  * The Class BaseWebApplication have factory methods for the application settings that should be
@@ -41,13 +41,15 @@ import de.alpharogroup.wicket.base.application.plugins.SecuritySettingsPlugin;
  */
 public abstract class BaseWebApplication extends WebApplication
 {
+	/** The logger constant. */
+	protected static final Logger LOGGER = Logger.getLogger(BaseWebApplication.class.getName());
 
 	/** The Constant DEFAULT_HTTP_PORT. */
 	public static final int DEFAULT_HTTP_PORT = 9090;
+
 	/** The Constant DEFAULT_HTTPS_PORT. */
 	public static final int DEFAULT_HTTPS_PORT = 9443;
-	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger.getLogger(BaseWebApplication.class.getName());
+
 	/**
 	 * Gets the startup date.
 	 *
@@ -55,6 +57,22 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	@Getter
 	private DateTime startupDate;
+
+	/** The configuration properties. */
+	@Getter
+	private final Properties properties;
+
+	/** The configuration properties resolver. */
+	@Getter
+	private final ConfigurationPropertiesResolver configurationPropertiesResolver;
+
+	/**
+	 * Initialization block.
+	 **/
+	{
+		this.configurationPropertiesResolver = newConfigurationPropertiesResolver(getDefaultHttpPort(), getDefaultHttpsPort(), "config.properties");
+		this.properties = this.configurationPropertiesResolver.getProperties();
+	}
 
 	/**
 	 * Gets the elapsed duration since this application was initialized.
@@ -136,6 +154,26 @@ public abstract class BaseWebApplication extends WebApplication
 		final File fileStoreFolder = storeSettings.getFileStoreFolder();
 		return new DiskDataStore(this.getName(), fileStoreFolder, maxSizePerSession);
 	}
+	/**
+	 * Gets the default http port.
+	 *
+	 * @return the default http port
+	 */
+	protected int getDefaultHttpPort() {
+		return BaseWebApplication.DEFAULT_HTTP_PORT;
+	}
+
+	/**
+	 *  Factory method to create a new {@link ConfigurationPropertiesResolver}.
+	 *
+	 * @param defaultHttpPort the default http port
+	 * @param defaultHttpsPort the default https port
+	 * @param propertiesFilename the properties filename
+	 * @return the new {@link ConfigurationPropertiesResolver}.
+	 */
+	protected ConfigurationPropertiesResolver newConfigurationPropertiesResolver(final Integer defaultHttpPort, final Integer defaultHttpsPort, final String propertiesFilename) {
+		return new ConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort, propertiesFilename);
+	}
 
 	/**
 	 * Factory method that can be overwritten to provide other http port than the default one.
@@ -144,7 +182,16 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected int newHttpPort()
 	{
-		return BaseWebApplication.DEFAULT_HTTP_PORT;
+		return this.configurationPropertiesResolver.getHttpPort();
+	}
+
+	/**
+	 * Gets the default https port.
+	 *
+	 * @return the default https port
+	 */
+	protected int getDefaultHttpsPort() {
+		return BaseWebApplication.DEFAULT_HTTPS_PORT;
 	}
 
 	/**
@@ -154,7 +201,7 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected int newHttpsPort()
 	{
-		return BaseWebApplication.DEFAULT_HTTPS_PORT;
+		return this.configurationPropertiesResolver.getHttpsPort();
 	}
 
 	/**
@@ -220,6 +267,16 @@ public abstract class BaseWebApplication extends WebApplication
 	protected void onSecuritySettingsPlugin(final WebApplication application)
 	{
 		new SecuritySettingsPlugin().install(application);
+	}
+
+	/**
+	 * Checks if is on development mode.
+	 *
+	 * @return true, if is on development mode
+	 */
+	public boolean isOnDevelopmentMode()
+	{
+		return getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT);
 	}
 
 }

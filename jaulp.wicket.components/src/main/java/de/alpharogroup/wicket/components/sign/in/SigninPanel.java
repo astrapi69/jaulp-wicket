@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.util.lang.Args;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,11 +46,11 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 
 	/** The email. */
 	@Getter
-	private final Component email;
+	private Component email;
 
 	/** The password. */
 	@Getter
-	private final Component password;
+	private LabeledPasswordTextFieldPanel<T> password;
 
 	/**
 	 * Instantiates a new {@link SigninPanel}.
@@ -61,21 +62,29 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 */
 	public SigninPanel(final String id, final IModel<T> model)
 	{
-		super(id, model);
-		add(email = newEmailTextField("email", model));
-		add(password = newPasswordTextField("password", model));
+		super(id, Args.notNull(model, "model"));
 	}
 
 	/**
-	 * Factory method for creating the EmailTextField for the email. This method is invoked in the
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize() {
+		super.onInitialize();
+		add(email = newEmailTextField("email", getModel()));
+		add(password = newPasswordTextField("password", getModel()));
+	};
+
+	/**
+	 * Factory method for creating a new {@link Component} for the email. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a EmailTextField for the email.
+	 * version of a new {@link Component} for the email.
 	 *
 	 * @param id
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the new {@link Component} for the email.
 	 */
 	protected Component newEmailTextField(final String id, final IModel<T> model)
 	{
@@ -96,9 +105,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 			@Override
 			protected EmailTextField newEmailTextField(final String id, final IModel<T> m)
 			{
-				final EmailTextField emailTextField = new EmailTextField(id, new PropertyModel<>(
-					model, "email"));
-				emailTextField.setOutputMarkupId(true);
+				final EmailTextField emailTextField = super.newEmailTextField(id, m);
 				emailTextField.setRequired(true);
 				if (placeholderModel != null)
 				{
@@ -120,9 +127,9 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text field
+	 * @return the text fieldLabeledPasswordTextFieldPanel<T>
 	 */
-	protected Component newPasswordTextField(final String id, final IModel<T> model)
+	protected LabeledPasswordTextFieldPanel<T> newPasswordTextField(final String id, final IModel<T> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.password.label", this);

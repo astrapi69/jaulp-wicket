@@ -51,13 +51,16 @@ public class LinkItem implements Serializable
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** The link id. */
+	private String id;
+
 	/** The page class. */
 	private Class<? extends Page> pageClass;
 
 	/** The link class. */
 	private Class<? extends Component> linkClass;
 
-	/** The resource model key. */
+	/** The {@link ResourceBundleKey} for the label. */
 	@NonNull
 	private ResourceBundleKey resourceModelKey;
 

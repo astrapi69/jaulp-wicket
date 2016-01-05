@@ -51,11 +51,11 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 
 	/** The signin panel. */
 	@Getter
-	private Component signinPanel;
+	private SigninPanel<T> signinPanel;
 
 	/** The repeat password. */
 	@Getter
-	private Component repeatPassword;
+	private LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> repeatPassword;
 
 	/**
 	 * Instantiates a new signup panel.
@@ -65,15 +65,23 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 * @param model
 	 *            the model
 	 */
-	@SuppressWarnings("unchecked")
 	public SignupPanel(final String id, final IModel<T> model)
 	{
 		super(id, model);
-		add(username = newUsernameTextField("username", model));
-		add(signinPanel = newSigninPanel("signinPanel", model));
-		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
-			(IModel<BaseUsernameSignUpModel>)model));
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	protected void onInitialize() {
+		super.onInitialize();
+		add(username = newUsernameTextField("username", getModel()));
+		add(signinPanel = newSigninPanel("signinPanel", getModel()));
+		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
+			(IModel<BaseUsernameSignUpModel>)getModel()));
+	};
 
 	/**
 	 * Factory method for creating the EmailTextField for the repeated password. This method is
@@ -86,7 +94,7 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 *            the model
 	 * @return the text field
 	 */
-	protected Component newRepeatPasswordTextField(final String id,
+	protected LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> newRepeatPasswordTextField(final String id,
 		final IModel<BaseUsernameSignUpModel> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
@@ -127,7 +135,7 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 *            the model
 	 * @return the Component
 	 */
-	protected Component newSigninPanel(final String id, final IModel<T> model)
+	protected SigninPanel<T> newSigninPanel(final String id, final IModel<T> model)
 	{
 		return new SigninPanel<>(id, model);
 	}
