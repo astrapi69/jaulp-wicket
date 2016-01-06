@@ -127,7 +127,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 *            the id
 	 * @param model
 	 *            the model
-	 * @return the text fieldLabeledPasswordTextFieldPanel<T>
+	 * @return the text field LabeledPasswordTextFieldPanel
 	 */
 	protected LabeledPasswordTextFieldPanel<T> newPasswordTextField(final String id, final IModel<T> model)
 	{
