@@ -113,8 +113,6 @@ public class LocalizedDropdownChoicePanel<T, M> extends LabeledFormComponentPane
 	 *            the model
 	 * @param data
 	 *            the data
-	 * @param renderer
-	 *            the renderer
 	 * @return the new {@link DropDownChoice}
 	 */
 	protected DropDownChoice<T> newDropDownChoice(final String id, final IModel<M> model,
