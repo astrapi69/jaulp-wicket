@@ -89,7 +89,8 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	@Override
 	public void convertInput()
 	{
-		setConvertedInput(getModel().getObject());
+		final M modelObject = getModel().getObject();
+		setConvertedInput(modelObject);
 	}
 
 	/**
