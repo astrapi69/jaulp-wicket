@@ -115,7 +115,7 @@ public class EditableTextField extends BasePanel<String>
 			@Override
 			protected Component newEditComponent(final String id, final IModel<String> model)
 			{
-				return new LabeledTextFieldPanel<String>(id, model, getLabelModel())
+				return new LabeledTextFieldPanel<String, String>(id, model, getLabelModel())
 				{
 					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;

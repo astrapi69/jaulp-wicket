@@ -45,6 +45,9 @@ public class LabeledEnumDropDownPanel extends Panel
 		final IModel<String> labelModel, final IModel<?> choices)
 	{
 		super(id, model);
+
+		setOutputMarkupId(true);
+
 		add(new DropDownChoice("edit", model, choices).setLabel(labelModel));
 	}
 

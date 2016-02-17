@@ -55,7 +55,7 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 
 	/** The repeat password. */
 	@Getter
-	private LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> repeatPassword;
+	private LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel> repeatPassword;
 
 	/**
 	 * Instantiates a new signup panel.
@@ -94,14 +94,14 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 *            the model
 	 * @return the text field
 	 */
-	protected LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> newRepeatPasswordTextField(final String id,
+	protected LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel> newRepeatPasswordTextField(final String id,
 		final IModel<BaseUsernameSignUpModel> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.repeat.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.password.again.label", this);
-		final LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel> pwTextField = new LabeledPasswordTextFieldPanel<BaseUsernameSignUpModel>(
+		final LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel> pwTextField = new LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -157,7 +157,7 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 			"global.username.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.username.label", this);
-		final LabeledTextFieldPanel<T> nameTextField = new LabeledTextFieldPanel<T>(id, model,
+		final LabeledTextFieldPanel<String, T> nameTextField = new LabeledTextFieldPanel<String, T>(id, model,
 			labelModel)
 		{
 

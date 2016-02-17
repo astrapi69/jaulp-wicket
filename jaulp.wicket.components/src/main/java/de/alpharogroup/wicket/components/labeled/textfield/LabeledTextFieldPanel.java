@@ -15,23 +15,24 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
  * Convenience class for labeled {@link TextField}.
  *
  * @param <T>
+ *            the generic type of model object from the {@link TextField}
+ * @param <M>
  *            the generic type of model object
  */
-public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
+public class LabeledTextFieldPanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -51,10 +52,12 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledTextFieldPanel(final String id, final IModel<T> model,
+	public LabeledTextFieldPanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
+
+		setOutputMarkupId(true);
 
 		add(textField = newTextField("textField", model));
 
@@ -62,33 +65,6 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 
 		final String markupId = textField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-		setConvertedInput(textField.getConvertedInput());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Component getFormComponent()
-	{
-		return this.textField;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getInput()
-	{
-		return textField.getInput();
 	}
 
 	/**
@@ -102,7 +78,7 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the new {@link TextField}
 	 */
-	protected TextField<T> newTextField(final String id, final IModel<T> model)
+	protected TextField<T> newTextField(final String id, final IModel<M> model)
 	{
 		return ComponentFactory.newTextField(id, new PropertyModel<T>(model.getObject(), getId()));
 	}
@@ -111,10 +87,9 @@ public class LabeledTextFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onBeforeRender()
+	public FormComponent<T> getFormComponent()
 	{
-		textField.setRequired(isRequired());
-		super.onBeforeRender();
+		return this.textField;
 	}
 
 }

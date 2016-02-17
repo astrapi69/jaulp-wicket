@@ -200,7 +200,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 	 *            the model
 	 * @return the form
 	 */
-	protected LabeledTextAreaPanel<?> newMotivation(final String id,
+	protected LabeledTextAreaPanel<String, DeregistrationModelBean> newMotivation(final String id,
 		final IModel<DeregistrationModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
@@ -211,7 +211,7 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.deregistration.motivation.label", this,
 			"Enter here your deregistration motivation.");
-		final LabeledTextAreaPanel<DeregistrationModelBean> description = new LabeledTextAreaPanel<DeregistrationModelBean>(
+		final LabeledTextAreaPanel<String, DeregistrationModelBean> description = new LabeledTextAreaPanel<String, DeregistrationModelBean>(
 			id, model, labelModel)
 		{
 			/** The Constant serialVersionUID. */
@@ -221,10 +221,10 @@ public abstract class DeregistrationPanel extends BasePanel<DeregistrationModelB
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected TextArea<DeregistrationModelBean> newTextArea(final String id,
+			protected TextArea<String> newTextArea(final String id,
 				final IModel<DeregistrationModelBean> model)
 			{
-				final TextArea<DeregistrationModelBean> textArea = super.newTextArea(id, model);
+				final TextArea<String> textArea = super.newTextArea(id, model);
 				if (placeholderModel != null)
 				{
 					textArea.add(new AttributeAppender("placeholder", placeholderModel));

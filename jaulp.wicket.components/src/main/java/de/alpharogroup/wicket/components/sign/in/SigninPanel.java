@@ -50,7 +50,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 
 	/** The password. */
 	@Getter
-	private LabeledPasswordTextFieldPanel<T> password;
+	private LabeledPasswordTextFieldPanel<String,T> password;
 
 	/**
 	 * Instantiates a new {@link SigninPanel}.
@@ -92,7 +92,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 			"global.email.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.email.label", this);
-		final LabeledEmailTextFieldPanel<T> emailTextField = new LabeledEmailTextFieldPanel<T>(id,
+		final LabeledEmailTextFieldPanel<String, T> emailTextField = new LabeledEmailTextFieldPanel<String, T>(id,
 			model, labelModel)
 		{
 
@@ -129,13 +129,13 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 *            the model
 	 * @return the text field LabeledPasswordTextFieldPanel
 	 */
-	protected LabeledPasswordTextFieldPanel<T> newPasswordTextField(final String id, final IModel<T> model)
+	protected LabeledPasswordTextFieldPanel<String, T> newPasswordTextField(final String id, final IModel<T> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
 			"global.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.password.label", this);
-		final LabeledPasswordTextFieldPanel<T> pwTextField = new LabeledPasswordTextFieldPanel<T>(
+		final LabeledPasswordTextFieldPanel<String, T> pwTextField = new LabeledPasswordTextFieldPanel<String, T>(
 			id, model, labelModel)
 		{
 
