@@ -26,7 +26,7 @@ import org.apache.wicket.pageStore.DiskDataStore;
 import org.apache.wicket.pageStore.IDataStore;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.mapper.parameter.IPageParametersEncoder;
-import org.apache.wicket.settings.StoreSettings;
+import org.apache.wicket.settings.IStoreSettings;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Duration;
 import org.apache.wicket.util.time.Time;
@@ -149,7 +149,7 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected IDataStore newApplicationDataStore()
 	{
-		final StoreSettings storeSettings = getStoreSettings();
+		final IStoreSettings storeSettings = getStoreSettings();
 		final Bytes maxSizePerSession = storeSettings.getMaxSizePerSession();
 		final File fileStoreFolder = storeSettings.getFileStoreFolder();
 		return new DiskDataStore(this.getName(), fileStoreFolder, maxSizePerSession);

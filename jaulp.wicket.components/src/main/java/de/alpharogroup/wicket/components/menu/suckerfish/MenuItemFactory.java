@@ -48,8 +48,9 @@ public class MenuItemFactory
 	 *            the component
 	 * @return the bookmarkable page link
 	 * @deprecated use instead
-	 *             {@link LinkFactory#newBookmarkablePageLink(String, Class, String, de.alpharogroup.locale.ResourceBundleKey, Component)}
+	 *             {@link LinkFactory#newBookmarkablePageLink(String, Class, String, de.alpharogroup.resourcebundle.locale.ResourceBundleKey, Component)}
 	 */
+	@Deprecated
 	public static BookmarkablePageLink<String> newBookmarkablePageLink(final String linkId,
 		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,
 		final Component component)
