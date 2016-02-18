@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.labeled;
 
 import lombok.Getter;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.FormComponent;
@@ -155,6 +156,9 @@ public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel
 	@Override
 	protected void onBeforeRender()
 	{
+		if(isRequired()) {
+			getFormComponent().add(new AttributeModifier("required", "required"));
+		}
 		getFormComponent().setRequired(isRequired());
 		super.onBeforeRender();
 	}

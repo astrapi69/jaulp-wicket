@@ -35,7 +35,7 @@ import lombok.Getter;
  * @param <R>
  *            the generic type of the model from the left FormComponent
  */
-public abstract class LabeledTwoFormComponentPanel<L extends Serializable, R extends Serializable, M>
+public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Serializable, M>
 	extends
 		LabeledFormComponentPanel<TwoFormComponentBean<L, R>, M>
 {
@@ -49,6 +49,9 @@ public abstract class LabeledTwoFormComponentPanel<L extends Serializable, R ext
 	@Getter
 	private TwoFormComponentPanel<L, R> twoFormComponent;
 
+	@Getter
+	private final IModel<TwoFormComponentBean<L, R>> formComponentModel;
+
 	/**
 	 * Instantiates a new {@link LabeledTwoFormComponentPanel}.
 	 *
@@ -60,24 +63,16 @@ public abstract class LabeledTwoFormComponentPanel<L extends Serializable, R ext
 	 *            the model of the label
 	 */
 	public LabeledTwoFormComponentPanel(final String id,
-		final IModel<M> model, final IModel<String> labelModel)
+		final IModel<M> model, final IModel<TwoFormComponentBean<L, R>> formComponentModel, final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
-		add(twoFormComponent = newTwoFormComponentPanel("twoFormComponent", model));
+		this.formComponentModel = formComponentModel;
+		add(twoFormComponent = newTwoFormComponentPanel("twoFormComponent", model, formComponentModel));
 
 		add(feedback = newComponentFeedbackPanel("feedback", twoFormComponent));
 
 		final String markupId = twoFormComponent.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-		setConvertedInput(getModelObject());
 	}
 
 	/**
@@ -113,7 +108,7 @@ public abstract class LabeledTwoFormComponentPanel<L extends Serializable, R ext
 	 *            the model
 	 * @return the new left {@link FormComponent}
 	 */
-	protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
+	public FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
@@ -129,7 +124,7 @@ public abstract class LabeledTwoFormComponentPanel<L extends Serializable, R ext
 	 *            the model
 	 * @return the new right {@link FormComponent}
 	 */
-	protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
+	public FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
@@ -145,7 +140,10 @@ public abstract class LabeledTwoFormComponentPanel<L extends Serializable, R ext
 	 *            the model
 	 * @return the new {@link TwoFormComponentPanel}
 	 */
-	protected abstract TwoFormComponentPanel<L, R> newTwoFormComponentPanel(final String id,
-		final IModel<M> model);
+	protected TwoFormComponentPanel<L, R> newTwoFormComponentPanel(final String id,
+		final IModel<M> model, final IModel<TwoFormComponentBean<L, R>> formComponentModel) {
+		final TwoFormComponentPanel<L, R> twoFormComponent = new TwoFormComponentPanel<L, R>(id, formComponentModel);
+		return twoFormComponent;
+	}
 
 }
