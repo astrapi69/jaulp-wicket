@@ -139,7 +139,8 @@ public final class ResourceModelFactory
 				parameters[i] = parameterValue.getObject();
 			}
 		}
-		return new StringResourceModel(resourceKey, component, model, defaultValue, parameters);
+		return new StringResourceModel(resourceKey, component, model).setDefaultValue(defaultValue)
+			.setParameters(parameters);
 	}
 
 	/**
