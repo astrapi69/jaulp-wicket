@@ -62,7 +62,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 	/** The description. */
 	@Getter
-	private final LabeledTextAreaPanel<ReportThrowableModel> description;
+	private final LabeledTextAreaPanel<String, ReportThrowableModelBean> description;
 
 
 	/** The submit button. */
@@ -73,8 +73,12 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	@Getter
 	private final Component stackTrace;
 
+	/** The {@link MultiLineLabel} label for the expanded stack trace. */
+	@Getter
+	private MultiLineLabel toReplace;
+
 	/** The report model. */
-	private final ReportThrowableModel reportThrowableModel;
+	private final ReportThrowableModelBean reportThrowableModel;
 
 	/**
 	 * Instantiates a new {@link ReportThrowablePanel}.
@@ -90,7 +94,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 		reportThrowableModel = newReportThrowableModel(getModelObject());
 
-		final IModel<ReportThrowableModel> cpm = new CompoundPropertyModel<>(reportThrowableModel);
+		final IModel<ReportThrowableModelBean> cpm = new CompoundPropertyModel<>(reportThrowableModel);
 		setDefaultModel(cpm);
 		add(header = newHeaderLabel("header", ResourceModelFactory.newResourceModel("header.label",
 			this, "Upps! An error occured.")));
@@ -99,9 +103,8 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 		form.add(description = newDescription("description", cpm));
 
-		final MultiLineLabel toReplace = new MultiLineLabel("toReplace", Model.of(""));
-		toReplace.setOutputMarkupId(true);
-		form.add(toReplace);
+		form.add(toReplace = newToReplace("toReplace", Model.of("")));
+
 		final AjaxLink<Void> link = new AjaxLink<Void>("link")
 		{
 
@@ -119,12 +122,18 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 			}
 		};
+
 		form.add(link);
 
 		form.add(submitButton = newSubmitButton("submitButton"));
 
 		form.add(stackTrace = newHiddenField("stackTrace"));
 		LOGGER.error(reportThrowableModel.getStackTrace());
+	}
+
+	protected MultiLineLabel newToReplace(final String id, final IModel<String> model) {
+		final MultiLineLabel multiLineLabel = ComponentFactory.newMultiLineLabel(id, model);
+		return multiLineLabel;
 	}
 
 	/**
@@ -147,14 +156,14 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	 *            the model
 	 * @return the new {@link LabeledTextAreaPanel}
 	 */
-	protected LabeledTextAreaPanel<ReportThrowableModel> newDescription(final String id,
-		final IModel<ReportThrowableModel> model)
+	protected LabeledTextAreaPanel<String, ReportThrowableModelBean> newDescription(final String id,
+		final IModel<ReportThrowableModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel("description.label",
 			this, "Please provide here any useful information");
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.description.label", this, "Enter here any useful information");
-		final LabeledTextAreaPanel<ReportThrowableModel> description = new LabeledTextAreaPanel<ReportThrowableModel>(
+		final LabeledTextAreaPanel<String, ReportThrowableModelBean> description = new LabeledTextAreaPanel<String, ReportThrowableModelBean>(
 			id, model, labelModel)
 		{
 
@@ -165,10 +174,10 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected TextArea<ReportThrowableModel> newTextArea(final String id,
-				final IModel<ReportThrowableModel> model)
+			protected TextArea<String> newTextArea(final String id,
+				final IModel<ReportThrowableModelBean> model)
 			{
-				final TextArea<ReportThrowableModel> textArea = super.newTextArea(id, model);
+				final TextArea<String> textArea = super.newTextArea(id, model);
 				if (placeholderModel != null)
 				{
 					textArea.add(new AttributeAppender("placeholder", placeholderModel));
@@ -226,18 +235,18 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	}
 
 	/**
-	 * Factory method for creating the new {@link ReportThrowableModel} from the given
+	 * Factory method for creating the new {@link ReportThrowableModelBean} from the given
 	 * {@link Throwable}. This method is invoked in the constructor from the derived classes and can
-	 * be overridden so users can provide their own version of a new {@link ReportThrowableModel}
+	 * be overridden so users can provide their own version of a new {@link ReportThrowableModelBean}
 	 * from the given {@link Throwable}.
 	 *
 	 * @param throwable
 	 *            the throwable
-	 * @return the new {@link ReportThrowableModel} from the given {@link Throwable}.
+	 * @return the new {@link ReportThrowableModelBean} from the given {@link Throwable}.
 	 */
-	protected ReportThrowableModel newReportThrowableModel(final Throwable throwable)
+	protected ReportThrowableModelBean newReportThrowableModel(final Throwable throwable)
 	{
-		return ReportThrowableModel.builder().affectedUsername(newAffectedUsername())
+		return ReportThrowableModelBean.builder().affectedUsername(newAffectedUsername())
 			.responsePage(newResponsePageClass()).rootUsername(newRootUsername())
 			.stackTrace(ExceptionExtensions.getStackTraceElements(throwable)).build();
 	}

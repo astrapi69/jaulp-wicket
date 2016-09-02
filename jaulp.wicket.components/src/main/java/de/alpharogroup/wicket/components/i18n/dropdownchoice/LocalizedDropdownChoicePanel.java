@@ -17,23 +17,24 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice;
 
 import java.util.List;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
  * The Class LocalizedDropdownChoicePanel.
  *
  * @param <T>
+ *            the generic type of the dropdown
+ * @param <M>
  *            the generic type of the model
  */
-public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T>
+public class LocalizedDropdownChoicePanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -55,10 +56,11 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	 * @param values
 	 *            the values
 	 */
-	public LocalizedDropdownChoicePanel(final String id, final IModel<T> model,
+	public LocalizedDropdownChoicePanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel, final List<T> values)
 	{
 		super(id, model, labelModel);
+		setDefaultModel(model);
 
 		add(dropdownChoice = newDropDownChoice("dropdownChoice", model, values));
 
@@ -78,14 +80,15 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	@Override
 	public void convertInput()
 	{
-		setConvertedInput(dropdownChoice.getConvertedInput());
+		final M modelObject = getModel().getObject();
+		setConvertedInput(modelObject);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Component getFormComponent()
+	public FormComponent<T> getFormComponent()
 	{
 		return dropdownChoice;
 	}
@@ -112,7 +115,7 @@ public class LocalizedDropdownChoicePanel<T> extends LabeledFormComponentPanel<T
 	 *            the data
 	 * @return the new {@link DropDownChoice}
 	 */
-	protected DropDownChoice<T> newDropDownChoice(final String id, final IModel<T> model,
+	protected DropDownChoice<T> newDropDownChoice(final String id, final IModel<M> model,
 		final List<? extends T> data)
 	{
 		final PropertyModel<T> pm = new PropertyModel<>(model.getObject(), this.getId());

@@ -43,10 +43,10 @@ public class LabeledComponentFactory
 	 *            the label model
 	 * @return the new {@link LabeledCheckboxPanel}
 	 */
-	public static <T> LabeledCheckboxPanel<T> newLabeledCheckboxPanel(final String id,
-		final IModel<T> model, final IModel<String> labelModel)
+	public static <T, M> LabeledCheckboxPanel<T, M> newLabeledCheckboxPanel(final String id,
+		final IModel<M> model, final IModel<String> labelModel)
 	{
-		final LabeledCheckboxPanel<T> labeledCheckboxPanel = new LabeledCheckboxPanel<T>(id, model,
+		final LabeledCheckboxPanel<T, M> labeledCheckboxPanel = new LabeledCheckboxPanel<>(id, model,
 			labelModel);
 		labeledCheckboxPanel.setOutputMarkupId(true);
 		return labeledCheckboxPanel;
@@ -66,10 +66,10 @@ public class LabeledComponentFactory
 	 *            the label model
 	 * @return the new {@link LabeledTextFieldPanel}
 	 */
-	public static <T> LabeledTextFieldPanel<T> newLabeledTextFieldPanel(final String id,
-		final IModel<T> model, final IModel<String> labelModel)
+	public static <T, M> LabeledTextFieldPanel<T, M> newLabeledTextFieldPanel(final String id,
+		final IModel<M> model, final IModel<String> labelModel)
 	{
-		final LabeledTextFieldPanel<T> labeledTextField = new LabeledTextFieldPanel<T>(id, model,
+		final LabeledTextFieldPanel<T, M> labeledTextField = new LabeledTextFieldPanel<>(id, model,
 			labelModel);
 		labeledTextField.setOutputMarkupId(true);
 		return labeledTextField;

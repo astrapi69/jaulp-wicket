@@ -15,23 +15,24 @@
  */
 package de.alpharogroup.wicket.components.labeled.textarea;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
  * Convenience class for labeled TextArea.
  *
  * @param <T>
+ *            the generic type of model object from the {@link TextArea}
+ * @param <M>
  *            the generic type of model object
  */
-public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
+public class LabeledTextAreaPanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -46,23 +47,12 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	 *
 	 * @param id
 	 *            the id
-	 */
-	public LabeledTextAreaPanel(final String id)
-	{
-		this(id, null, null);
-	}
-
-	/**
-	 * Instantiates a new {@link LabeledTextAreaPanel}.
-	 *
-	 * @param id
-	 *            the id
 	 * @param model
 	 *            the model
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledTextAreaPanel(final String id, final IModel<T> model,
+	public LabeledTextAreaPanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
@@ -79,27 +69,9 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void convertInput()
-	{
-		setConvertedInput(textArea.getConvertedInput());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Component getFormComponent()
+	public FormComponent<T> getFormComponent()
 	{
 		return this.textArea;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getInput()
-	{
-		return textArea.getInput();
 	}
 
 	/**
@@ -113,19 +85,10 @@ public class LabeledTextAreaPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the new {@link TextArea}
 	 */
-	protected TextArea<T> newTextArea(final String id, final IModel<T> model)
+	protected TextArea<T> newTextArea(final String id, final IModel<M> model)
 	{
 		final IModel<T> textAreaModel = new PropertyModel<>(model.getObject(), getId());
 		return ComponentFactory.newTextArea(id, textAreaModel);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onBeforeRender()
-	{
-		textArea.setRequired(isRequired());
-		super.onBeforeRender();
-	}
 }

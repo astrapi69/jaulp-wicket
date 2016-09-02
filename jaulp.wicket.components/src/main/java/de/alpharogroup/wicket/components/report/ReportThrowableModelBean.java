@@ -38,7 +38,7 @@ import org.apache.wicket.request.component.IRequestablePage;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ReportThrowableModel implements Serializable
+public class ReportThrowableModelBean implements Serializable
 {
 
 	/** The Constant serialVersionUID. */

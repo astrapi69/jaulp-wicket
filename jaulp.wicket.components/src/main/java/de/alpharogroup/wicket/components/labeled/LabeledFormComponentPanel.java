@@ -17,8 +17,10 @@ package de.alpharogroup.wicket.components.labeled;
 
 import lombok.Getter;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.model.IModel;
@@ -29,10 +31,13 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * The LabeledFormComponentPanel is base class for labeled components.
  *
  * @param <T>
+ *            the generic type of model object from the {@link FormComponent}
+ * @param <M>
  *            the generic type of model object
- * @see FormComponentPanel
+ *
+ * @see {@link FormComponentPanel}
  */
-public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
+public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel<M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -55,7 +60,7 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledFormComponentPanel(final String id, final IModel<T> model,
+	public LabeledFormComponentPanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel)
 	{
 		super(id, model);
@@ -67,7 +72,7 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	 *
 	 * @return the form component
 	 */
-	public abstract Component getFormComponent();
+	public abstract FormComponent<T> getFormComponent();
 
 	/**
 	 * Gets the label component.
@@ -132,5 +137,38 @@ public abstract class LabeledFormComponentPanel<T> extends FormComponentPanel<T>
 	{
 		super.onModelChanging();
 		getFormComponent().modelChanging();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void convertInput()
+	{
+
+		final M modelObject = getModel().getObject();
+		setConvertedInput(modelObject);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onBeforeRender()
+	{
+		if(isRequired()) {
+			getFormComponent().add(new AttributeModifier("required", "required"));
+		}
+		getFormComponent().setRequired(isRequired());
+		super.onBeforeRender();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getInput()
+	{
+		return getFormComponent().getInput();
 	}
 }

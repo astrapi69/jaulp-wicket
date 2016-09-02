@@ -15,23 +15,24 @@
  */
 package de.alpharogroup.wicket.components.labeled.checkbox;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
- * Convenience class for labeled checkbox.
+ * Convenience class for labeled {@link CheckBox}.
  *
  * @param <T>
+ *            the generic type of model object from the {@link CheckBox}
+ * @param <M>
  *            the generic type of model object
  */
-public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
+public class LabeledCheckboxPanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -51,10 +52,13 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the model of the label
 	 */
-	public LabeledCheckboxPanel(final String id, final IModel<T> model,
+	public LabeledCheckboxPanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
+
+		setOutputMarkupId(true);
+
 		add(checkBox = newCheckBox("checkBox", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", checkBox));
@@ -62,33 +66,6 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 		final String markupId = checkBox.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
 
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-		setConvertedInput(getModel().getObject());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Component getFormComponent()
-	{
-		return this.checkBox;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getInput()
-	{
-		return checkBox.getInput();
 	}
 
 	/**
@@ -102,7 +79,7 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the new {@link CheckBox}.
 	 */
-	protected CheckBox newCheckBox(final String id, final IModel<T> model)
+	protected CheckBox newCheckBox(final String id, final IModel<M> model)
 	{
 		final IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), this.getId());
 		return ComponentFactory.newCheckBox(id, propertyModel);
@@ -111,11 +88,11 @@ public class LabeledCheckboxPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	protected void onBeforeRender()
+	public FormComponent<T> getFormComponent()
 	{
-		checkBox.setRequired(isRequired());
-		super.onBeforeRender();
+		return (FormComponent<T>)this.checkBox;
 	}
 
 }

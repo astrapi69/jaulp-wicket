@@ -85,7 +85,7 @@ public class ChangePasswordPanel extends Panel
 			"change.pw.current.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.current.password.label", this);
-		final LabeledPasswordTextFieldPanel<ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModelBean>(
+		final LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -125,7 +125,7 @@ public class ChangePasswordPanel extends Panel
 			"change.pw.new.password.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.new.password.label", this);
-		final LabeledPasswordTextFieldPanel<ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModelBean>(
+		final LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;
@@ -165,7 +165,7 @@ public class ChangePasswordPanel extends Panel
 			"change.pw.new.password.repeat.label", this);
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.new.password.repeat.label", this);
-		final LabeledPasswordTextFieldPanel<ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<ChangePasswordModelBean>(
+		final LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
 			private static final long serialVersionUID = 1L;

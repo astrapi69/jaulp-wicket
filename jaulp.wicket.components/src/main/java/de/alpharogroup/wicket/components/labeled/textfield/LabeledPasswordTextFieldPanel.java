@@ -15,24 +15,25 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
  * Convenience class for labeled {@link PasswordTextField}.
  *
  * @param <T>
+ *            the generic type of model object from the {@link PasswordTextField}
+ * @param <M>
  *            the generic type of model object
  *
  */
-public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<T>
+public class LabeledPasswordTextFieldPanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -52,10 +53,12 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledPasswordTextFieldPanel(final String id, final IModel<T> model,
+	public LabeledPasswordTextFieldPanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
+
+		setOutputMarkupId(true);
 
 		add(passwordTextField = newPasswordTextField("passwordTextField", model));
 
@@ -63,42 +66,6 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 
 		final String markupId = passwordTextField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-		setConvertedInput(getModel().getObject());
-		// final IModel<T> m = getModel();
-		// final T t = m.getObject();
-		// try {
-		// String input = getInput();
-		// BeanUtils.setProperty(t, getId(), input);
-		// } catch (IllegalAccessException | InvocationTargetException e) {
-		// LOGGER.error("Set password bean failed.", e);
-		// }
-		// setConvertedInput(t);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Component getFormComponent()
-	{
-		return this.passwordTextField;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getInput()
-	{
-		return passwordTextField.getInput();
 	}
 
 	/**
@@ -112,7 +79,7 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	 *            the model
 	 * @return the new {@link PasswordTextField}
 	 */
-	protected PasswordTextField newPasswordTextField(final String id, final IModel<T> model)
+	protected PasswordTextField newPasswordTextField(final String id, final IModel<M> model)
 	{
 		return ComponentFactory.newPasswordTextField(id,
 			new PropertyModel<String>(model.getObject(), getId()));
@@ -121,10 +88,11 @@ public class LabeledPasswordTextFieldPanel<T> extends LabeledFormComponentPanel<
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	protected void onBeforeRender()
+	public FormComponent<T> getFormComponent()
 	{
-		passwordTextField.setRequired(isRequired());
-		super.onBeforeRender();
+		return ((FormComponent<T>)this.passwordTextField);
 	}
+
 }

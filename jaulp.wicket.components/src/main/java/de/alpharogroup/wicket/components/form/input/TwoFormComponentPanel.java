@@ -17,16 +17,14 @@ package de.alpharogroup.wicket.components.form.input;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link TwoFormComponentPanel} is a container for two FormComponent. Default they are
@@ -82,10 +80,11 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 		setOutputMarkupId(true);
 		setType(TwoFormComponentBean.class);
 		add(
-			leftFormComponent = newLeftFormComponent("leftTextField", new PropertyModel<L>(model,
-				"leftContent"))).add(
-			rightFormComponent = newRightFormComponent("rightTextField", new PropertyModel<R>(
-				model, "rightContent")));
+			leftFormComponent = newLeftFormComponent("leftTextField",
+				model.getObject().getLeftContent()));
+		add(
+			rightFormComponent = newRightFormComponent("rightTextField",
+				model.getObject().getRightContent()));
 	}
 
 	/**

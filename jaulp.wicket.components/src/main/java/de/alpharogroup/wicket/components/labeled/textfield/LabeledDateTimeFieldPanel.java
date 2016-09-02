@@ -17,23 +17,24 @@ package de.alpharogroup.wicket.components.labeled.textfield;
 
 import java.util.Date;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
  * Convenience class for labeled DateTextfield.
  *
  * @param <T>
+ *            the generic type of model object from the {@link DateTimeField}
+ * @param <M>
  *            the generic type of model object
  */
-public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
+public class LabeledDateTimeFieldPanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -53,43 +54,19 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledDateTimeFieldPanel(final String id, final IModel<T> model,
+	public LabeledDateTimeFieldPanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
+
+		setOutputMarkupId(true);
+
 		add(dateTimeField = newDateTimeField("dateTimeField", model));
 
 		add(feedback = newComponentFeedbackPanel("feedback", dateTimeField));
 
 		final String markupId = dateTimeField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-		setConvertedInput(getModel().getObject());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Component getFormComponent()
-	{
-		return this.dateTimeField;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getInput()
-	{
-		return dateTimeField.getInput();
 	}
 
 	/**
@@ -103,7 +80,7 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	 *            the model
 	 * @return the new {@link DateTimeField}
 	 */
-	protected DateTimeField newDateTimeField(final String id, final IModel<T> model)
+	protected DateTimeField newDateTimeField(final String id, final IModel<M> model)
 	{
 		final IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
 		return ComponentFactory.newDateTimeField(id, textFieldModel);
@@ -112,10 +89,11 @@ public class LabeledDateTimeFieldPanel<T> extends LabeledFormComponentPanel<T>
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	protected void onBeforeRender()
+	public FormComponent<T> getFormComponent()
 	{
-		dateTimeField.setRequired(isRequired());
-		super.onBeforeRender();
+		return (FormComponent<T>)this.dateTimeField;
 	}
+
 }

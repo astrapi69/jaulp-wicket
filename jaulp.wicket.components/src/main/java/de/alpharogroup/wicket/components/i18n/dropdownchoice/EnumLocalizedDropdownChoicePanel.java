@@ -17,17 +17,16 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice;
 
 import java.util.List;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
+import lombok.Getter;
 
 /**
  * The Class EnumLocalizedDropdownChoicePanel.
@@ -39,7 +38,7 @@ import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
  */
 public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	extends
-		LabeledFormComponentPanel<M>
+		LabeledFormComponentPanel<T, M>
 {
 
 	/** The serialVersionUID. */
@@ -89,14 +88,15 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	@Override
 	public void convertInput()
 	{
-		setConvertedInput(getModel().getObject());
+		final M modelObject = getModel().getObject();
+		setConvertedInput(modelObject);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Component getFormComponent()
+	public FormComponent<T> getFormComponent()
 	{
 		return dropdownChoice;
 	}
@@ -139,7 +139,7 @@ public class EnumLocalizedDropdownChoicePanel<T extends Enum<T>, M>
 	@Override
 	protected void onBeforeRender()
 	{
-		dropdownChoice.setRequired(isRequired());
+		getFormComponent().setRequired(isRequired());
 		super.onBeforeRender();
 	}
 

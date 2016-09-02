@@ -198,7 +198,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 			"password.forgotten.content.label", this, "Give email in the Textfield");
 		final IModel<String> placeholderModel = ResourceModelFactory
 			.newResourceModel("global.enter.your.email.label", this, "Enter your email here");
-		final LabeledEmailTextFieldPanel<PasswordForgottenModelBean> emailTextField = new LabeledEmailTextFieldPanel<PasswordForgottenModelBean>(
+		final LabeledEmailTextFieldPanel<String, PasswordForgottenModelBean> emailTextField = new LabeledEmailTextFieldPanel<String, PasswordForgottenModelBean>(
 			id, model, labelModel)
 		{
 
