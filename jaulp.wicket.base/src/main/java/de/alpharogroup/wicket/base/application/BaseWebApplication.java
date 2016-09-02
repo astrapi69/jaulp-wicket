@@ -26,7 +26,7 @@ import org.apache.wicket.pageStore.DiskDataStore;
 import org.apache.wicket.pageStore.IDataStore;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.mapper.parameter.IPageParametersEncoder;
-import org.apache.wicket.settings.IStoreSettings;
+import org.apache.wicket.settings.StoreSettings;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.time.Duration;
 import org.apache.wicket.util.time.Time;
@@ -70,7 +70,8 @@ public abstract class BaseWebApplication extends WebApplication
 	 * Initialization block.
 	 **/
 	{
-		this.configurationPropertiesResolver = newConfigurationPropertiesResolver(getDefaultHttpPort(), getDefaultHttpsPort(), "config.properties");
+		this.configurationPropertiesResolver = newConfigurationPropertiesResolver(
+			getDefaultHttpPort(), getDefaultHttpsPort(), "config.properties");
 		this.properties = this.configurationPropertiesResolver.getProperties();
 	}
 
@@ -149,30 +150,39 @@ public abstract class BaseWebApplication extends WebApplication
 	 */
 	protected IDataStore newApplicationDataStore()
 	{
-		final IStoreSettings storeSettings = getStoreSettings();
+		final StoreSettings storeSettings = getStoreSettings();
 		final Bytes maxSizePerSession = storeSettings.getMaxSizePerSession();
 		final File fileStoreFolder = storeSettings.getFileStoreFolder();
 		return new DiskDataStore(this.getName(), fileStoreFolder, maxSizePerSession);
 	}
+
 	/**
 	 * Gets the default http port.
 	 *
 	 * @return the default http port
 	 */
-	protected int getDefaultHttpPort() {
+	protected int getDefaultHttpPort()
+	{
 		return BaseWebApplication.DEFAULT_HTTP_PORT;
 	}
 
 	/**
-	 *  Factory method to create a new {@link ConfigurationPropertiesResolver}.
+	 * Factory method to create a new {@link ConfigurationPropertiesResolver}.
 	 *
-	 * @param defaultHttpPort the default http port
-	 * @param defaultHttpsPort the default https port
-	 * @param propertiesFilename the properties filename
+	 * @param defaultHttpPort
+	 *            the default http port
+	 * @param defaultHttpsPort
+	 *            the default https port
+	 * @param propertiesFilename
+	 *            the properties filename
 	 * @return the new {@link ConfigurationPropertiesResolver}.
 	 */
-	protected ConfigurationPropertiesResolver newConfigurationPropertiesResolver(final Integer defaultHttpPort, final Integer defaultHttpsPort, final String propertiesFilename) {
-		return new ConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort, propertiesFilename);
+	protected ConfigurationPropertiesResolver newConfigurationPropertiesResolver(
+		final Integer defaultHttpPort, final Integer defaultHttpsPort,
+		final String propertiesFilename)
+	{
+		return new ConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort,
+			propertiesFilename);
 	}
 
 	/**
@@ -190,7 +200,8 @@ public abstract class BaseWebApplication extends WebApplication
 	 *
 	 * @return the default https port
 	 */
-	protected int getDefaultHttpsPort() {
+	protected int getDefaultHttpsPort()
+	{
 		return BaseWebApplication.DEFAULT_HTTPS_PORT;
 	}
 

@@ -38,7 +38,7 @@ import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
-import org.apache.wicket.settings.IExceptionSettings;
+import org.apache.wicket.settings.ExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -85,7 +85,8 @@ public final class ApplicationExtensions
 	 *            the resource path
 	 * @see org.apache.wicket.settings.IResourceSettings#getResourceFinders()
 	 */
-	public static void addResourceFinder(final WebApplication application, final String resourcePath)
+	public static void addResourceFinder(final WebApplication application,
+		final String resourcePath)
 	{
 		application.getResourceSettings().getResourceFinders()
 			.add(new WebApplicationPath(application.getServletContext(), resourcePath));
@@ -261,8 +262,8 @@ public final class ApplicationExtensions
 	 */
 	public static void initializeSpring(final WebApplication application)
 	{
-		application.getComponentInstantiationListeners().add(
-			new SpringComponentInjector(application));
+		application.getComponentInstantiationListeners()
+			.add(new SpringComponentInjector(application));
 	}
 
 	/**
@@ -277,8 +278,8 @@ public final class ApplicationExtensions
 	public static void replaceJQueryReference(final WebApplication application,
 		final String cdnjsUrl)
 	{
-		application.getJavaScriptLibrarySettings().setJQueryReference(
-			new UrlResourceReference(Url.parse(cdnjsUrl)));
+		application.getJavaScriptLibrarySettings()
+			.setJQueryReference(new UrlResourceReference(Url.parse(cdnjsUrl)));
 	}
 
 	/**
@@ -383,8 +384,8 @@ public final class ApplicationExtensions
 		final AbstractRequestCycleListener applicationRequestCycleListener)
 	{
 		// show the exception page from us...
-		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
+		application.getExceptionSettings()
+			.setUnexpectedExceptionDisplay(ExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
 		// In case of unhandled exception redirect it to a custom page
 		application.getRequestCycleListeners().add(applicationRequestCycleListener);
 	}
@@ -398,8 +399,8 @@ public final class ApplicationExtensions
 	public static void setExceptionSettingsForDevelopment(final Application application)
 	{
 		// show the exception page from wicket...
-		application.getExceptionSettings().setUnexpectedExceptionDisplay(
-			IExceptionSettings.SHOW_EXCEPTION_PAGE);
+		application.getExceptionSettings()
+			.setUnexpectedExceptionDisplay(ExceptionSettings.SHOW_EXCEPTION_PAGE);
 	}
 
 	/**
