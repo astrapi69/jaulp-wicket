@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-wicket-parent</artifactId>
-		<version>7.1.21</version>
-		<relativePath/>
+		<version>7.4.0</version>
+		<relativePath />
 	</parent>
 
 	<artifactId>jaulp.wicket</artifactId>
-	<version>7.1.0</version>
 	<packaging>pom</packaging>
 	<inceptionYear>2010</inceptionYear>
 
@@ -47,14 +47,14 @@
 		<module>jaulp.wicket.data.provider</module>
 		<module>jaulp.wicket.dialogs</module>
 		<module>jaulp.wicket.dropdownchoices</module>
-  </modules>
+	</modules>
 
 	<properties>
 		<!-- WICKET version -->
-		<wicket.version>7.1.0</wicket.version>
+		<wicket.version>7.4.0</wicket.version>
 		<jaulp.wicket.version>${project.version}</jaulp.wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>7.1.0</wicketstuff.version>
+		<wicketstuff.version>7.4.0</wicketstuff.version>
 	</properties>
 
 	<dependencyManagement>
@@ -116,5 +116,59 @@
 		</dependency>
 
 	</dependencies>
+	
+	
+	<profiles>
+
+		<profile>
+			<id>oss-sonatype-org-staged-release-without-javadoc-plugin</id>
+			<!-- This is the profile to use for releasing into the staged release
+				repo. We need to sign the artifacts. -->
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+
+					<plugin>
+						<inherited>true</inherited>
+						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+
+					<plugin>
+						<inherited>true</inherited>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+					</plugin>
+
+					<plugin>
+						<inherited>true</inherited>
+						<artifactId>maven-gpg-plugin</artifactId>
+					</plugin>
+
+				</plugins>
+			</build>
+
+			<distributionManagement>
+				<snapshotRepository>
+					<id>ossrh</id>
+					<name>Sonatype Nexus Snapshots</name>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+				</snapshotRepository>
+				<repository>
+					<id>ossrh</id>
+					<name>Nexus Release Repository</name>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+
+		</profile>
+
+	</profiles>
+	
 
 </project>
