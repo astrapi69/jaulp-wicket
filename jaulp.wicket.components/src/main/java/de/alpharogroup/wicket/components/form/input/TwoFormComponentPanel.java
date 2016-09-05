@@ -33,7 +33,7 @@ import lombok.Getter;
  * @param <L>
  *            the generic type of the model from the left FormComponent
  * @param <R>
- *            the generic type of the model from the left FormComponent
+ *            the generic type of the model from the right FormComponent
  */
 public class TwoFormComponentPanel<L extends Serializable, R extends Serializable>
 	extends
@@ -79,12 +79,10 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 		super(id, model);
 		setOutputMarkupId(true);
 		setType(TwoFormComponentBean.class);
-		add(
-			leftFormComponent = newLeftFormComponent("leftTextField",
-				model.getObject().getLeftContent()));
-		add(
-			rightFormComponent = newRightFormComponent("rightTextField",
-				model.getObject().getRightContent()));
+		add(this.leftFormComponent = newLeftFormComponent("leftTextField",
+			model.getObject().getLeftContent()));
+		add(this.rightFormComponent = newRightFormComponent("rightTextField",
+			model.getObject().getRightContent()));
 	}
 
 	/**
@@ -162,8 +160,8 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	protected void onModelChanged()
 	{
 		super.onModelChanged();
-		leftFormComponent.modelChanged();
-		rightFormComponent.modelChanged();
+		this.leftFormComponent.modelChanged();
+		this.rightFormComponent.modelChanged();
 	}
 
 	/**
@@ -173,8 +171,8 @@ public class TwoFormComponentPanel<L extends Serializable, R extends Serializabl
 	protected void onModelChanging()
 	{
 		super.onModelChanging();
-		leftFormComponent.modelChanging();
-		rightFormComponent.modelChanging();
+		this.leftFormComponent.modelChanging();
+		this.rightFormComponent.modelChanging();
 	}
 
 }
