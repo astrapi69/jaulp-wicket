@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.labeled;
 
-import lombok.Getter;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
@@ -26,6 +24,7 @@ import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The LabeledFormComponentPanel is base class for labeled components.
@@ -35,7 +34,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
  * @param <M>
  *            the generic type of model object
  *
- * @see {@link FormComponentPanel}
+ * @see org.apache.wicket.markup.html.form.FormComponentPanel
  */
 public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel<M>
 {
@@ -81,7 +80,7 @@ public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel
 	 */
 	public Component getLabelComponent()
 	{
-		return label;
+		return this.label;
 	}
 
 	/**
@@ -156,7 +155,8 @@ public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel
 	@Override
 	protected void onBeforeRender()
 	{
-		if(isRequired()) {
+		if (isRequired())
+		{
 			getFormComponent().add(new AttributeModifier("required", "required"));
 		}
 		getFormComponent().setRequired(isRequired());

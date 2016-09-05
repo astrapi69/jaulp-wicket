@@ -59,20 +59,24 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param formComponentModel
+	 *            the form component model for the left and right component
 	 * @param labelModel
 	 *            the model of the label
 	 */
-	public LabeledTwoFormComponentPanel(final String id,
-		final IModel<M> model, final IModel<TwoFormComponentBean<L, R>> formComponentModel, final IModel<String> labelModel)
+	public LabeledTwoFormComponentPanel(final String id, final IModel<M> model,
+		final IModel<TwoFormComponentBean<L, R>> formComponentModel,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
 		this.formComponentModel = formComponentModel;
-		add(twoFormComponent = newTwoFormComponentPanel("twoFormComponent", model, formComponentModel));
+		add(this.twoFormComponent = newTwoFormComponentPanel("twoFormComponent", model,
+			formComponentModel));
 
-		add(feedback = newComponentFeedbackPanel("feedback", twoFormComponent));
+		add(this.feedback = newComponentFeedbackPanel("feedback", this.twoFormComponent));
 
-		final String markupId = twoFormComponent.getMarkupId();
-		add(label = newLabel("label", markupId, getLabel()));
+		final String markupId = this.twoFormComponent.getMarkupId();
+		add(this.label = newLabel("label", markupId, getLabel()));
 	}
 
 	/**
@@ -81,7 +85,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	@Override
 	public FormComponent<TwoFormComponentBean<L, R>> getFormComponent()
 	{
-		return twoFormComponent;
+		return this.twoFormComponent;
 	}
 
 	/**
@@ -138,11 +142,15 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param formComponentModel
+	 *            the form component model for the left and right component
 	 * @return the new {@link TwoFormComponentPanel}
 	 */
 	protected TwoFormComponentPanel<L, R> newTwoFormComponentPanel(final String id,
-		final IModel<M> model, final IModel<TwoFormComponentBean<L, R>> formComponentModel) {
-		final TwoFormComponentPanel<L, R> twoFormComponent = new TwoFormComponentPanel<L, R>(id, formComponentModel);
+		final IModel<M> model, final IModel<TwoFormComponentBean<L, R>> formComponentModel)
+	{
+		final TwoFormComponentPanel<L, R> twoFormComponent = new TwoFormComponentPanel<>(id,
+			formComponentModel);
 		return twoFormComponent;
 	}
 
