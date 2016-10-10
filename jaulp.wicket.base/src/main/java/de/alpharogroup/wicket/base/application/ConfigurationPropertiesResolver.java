@@ -83,7 +83,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 		this.defaultHttpPort = Args.notNull(defaultHttpPort, "defaultHttpPort");
 		this.defaultHttpsPort = Args.notNull(defaultHttpsPort, "defaultHttpsPort");
 		this.propertiesFilename =  Args.notNull(propertiesFilename, "propertiesFilename");
-		properties = loadProperties();
+		this.properties = loadProperties();
 		this.httpPort = resolveHttpPort();
 		this.httpsPort = resolveHttpsPort();
 	}
@@ -107,7 +107,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 * @return the optional http port
 	 */
 	private Optional<Integer> getOptionalHttpPort() {
-		if (getProperties().containsKey("application.http.port"))
+		if (getProperties()!= null && getProperties().containsKey("application.http.port"))
 		{
 			final String httpPortString = getProperties().getProperty("application.http.port");
 			try
@@ -144,7 +144,7 @@ public class ConfigurationPropertiesResolver implements Serializable
 	 * @return the optional https port
 	 */
 	private Optional<Integer> getOptionalHttpsPort() {
-		if (getProperties().containsKey("application.https.port"))
+		if (getProperties()!= null && getProperties().containsKey("application.https.port"))
 		{
 			final String httpsPortString = getProperties().getProperty("application.https.port");
 			try
