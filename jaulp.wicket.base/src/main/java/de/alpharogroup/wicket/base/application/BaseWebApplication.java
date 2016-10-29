@@ -64,7 +64,7 @@ public abstract class BaseWebApplication extends WebApplication
 
 	/** The configuration properties resolver. */
 	@Getter
-	private final ConfigurationPropertiesResolver configurationPropertiesResolver;
+	private final WicketConfigurationPropertiesResolver configurationPropertiesResolver;
 
 	/**
 	 * Initialization block.
@@ -167,7 +167,7 @@ public abstract class BaseWebApplication extends WebApplication
 	}
 
 	/**
-	 * Factory method to create a new {@link ConfigurationPropertiesResolver}.
+	 * Factory method to create a new {@link WicketConfigurationPropertiesResolver}.
 	 *
 	 * @param defaultHttpPort
 	 *            the default http port
@@ -175,13 +175,13 @@ public abstract class BaseWebApplication extends WebApplication
 	 *            the default https port
 	 * @param propertiesFilename
 	 *            the properties filename
-	 * @return the new {@link ConfigurationPropertiesResolver}.
+	 * @return the new {@link WicketConfigurationPropertiesResolver}.
 	 */
-	protected ConfigurationPropertiesResolver newConfigurationPropertiesResolver(
+	protected WicketConfigurationPropertiesResolver newConfigurationPropertiesResolver(
 		final Integer defaultHttpPort, final Integer defaultHttpsPort,
 		final String propertiesFilename)
 	{
-		return new ConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort,
+		return new WicketConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort,
 			propertiesFilename);
 	}
 
