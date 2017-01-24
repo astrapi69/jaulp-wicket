@@ -75,6 +75,8 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 			this.modelObject = currentModelObject;
 			if (ajaxRequestTarget != null)
 			{
+				component.modelChanging();
+				component.modelChanged();
 				ajaxRequestTarget.add(component);
 			}
 		}
