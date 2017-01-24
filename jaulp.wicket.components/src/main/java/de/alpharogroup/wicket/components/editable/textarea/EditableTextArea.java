@@ -190,7 +190,7 @@ public class EditableTextArea extends BasePanel<String>
 			@Override
 			protected Component newEditComponent(final String id, final IModel<String> model)
 			{
-				return new LabeledTextAreaPanel<String>(id, model, getLabelModel())
+				return new LabeledTextAreaPanel<String, String>(id, model, getLabelModel())
 				{
 					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;

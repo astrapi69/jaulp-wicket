@@ -62,7 +62,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 	/** The description. */
 	@Getter
-	private final LabeledTextAreaPanel<ReportThrowableModelBean> description;
+	private final LabeledTextAreaPanel<String, ReportThrowableModelBean> description;
 
 
 	/** The submit button. */
@@ -156,14 +156,14 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	 *            the model
 	 * @return the new {@link LabeledTextAreaPanel}
 	 */
-	protected LabeledTextAreaPanel<ReportThrowableModelBean> newDescription(final String id,
+	protected LabeledTextAreaPanel<String, ReportThrowableModelBean> newDescription(final String id,
 		final IModel<ReportThrowableModelBean> model)
 	{
 		final IModel<String> labelModel = ResourceModelFactory.newResourceModel("description.label",
 			this, "Please provide here any useful information");
 		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
 			"global.enter.your.description.label", this, "Enter here any useful information");
-		final LabeledTextAreaPanel<ReportThrowableModelBean> description = new LabeledTextAreaPanel<ReportThrowableModelBean>(
+		final LabeledTextAreaPanel<String, ReportThrowableModelBean> description = new LabeledTextAreaPanel<String, ReportThrowableModelBean>(
 			id, model, labelModel)
 		{
 
@@ -174,10 +174,10 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected TextArea<ReportThrowableModelBean> newTextArea(final String id,
+			protected TextArea<String> newTextArea(final String id,
 				final IModel<ReportThrowableModelBean> model)
 			{
-				final TextArea<ReportThrowableModelBean> textArea = super.newTextArea(id, model);
+				final TextArea<String> textArea = super.newTextArea(id, model);
 				if (placeholderModel != null)
 				{
 					textArea.add(new AttributeAppender("placeholder", placeholderModel));

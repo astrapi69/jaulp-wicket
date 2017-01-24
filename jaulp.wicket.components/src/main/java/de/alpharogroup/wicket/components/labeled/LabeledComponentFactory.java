@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.labeled;
 
 import java.io.Serializable;
 
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.form.input.TwoFormComponentBean;
@@ -34,7 +36,9 @@ public class LabeledComponentFactory
 	 * Factory method for create a new {@link LabeledCheckboxPanel}.
 	 *
 	 * @param <T>
-	 *            the generic type
+	 *            the generic type of model object from the {@link CheckBox}
+	 * @param <M>
+	 *            the generic type of model object
 	 * @param id
 	 *            the id
 	 * @param model
@@ -43,11 +47,11 @@ public class LabeledComponentFactory
 	 *            the label model
 	 * @return the new {@link LabeledCheckboxPanel}
 	 */
-	public static <T> LabeledCheckboxPanel<T> newLabeledCheckboxPanel(final String id,
-		final IModel<T> model, final IModel<String> labelModel)
+	public static <T, M> LabeledCheckboxPanel<T, M> newLabeledCheckboxPanel(final String id,
+		final IModel<M> model, final IModel<String> labelModel)
 	{
-		final LabeledCheckboxPanel<T> labeledCheckboxPanel = new LabeledCheckboxPanel<T>(id, model,
-			labelModel);
+		final LabeledCheckboxPanel<T, M> labeledCheckboxPanel = new LabeledCheckboxPanel<>(id,
+			model, labelModel);
 		labeledCheckboxPanel.setOutputMarkupId(true);
 		return labeledCheckboxPanel;
 
@@ -57,7 +61,9 @@ public class LabeledComponentFactory
 	 * Factory method for create a new {@link LabeledTextFieldPanel}.
 	 *
 	 * @param <T>
-	 *            the generic type
+	 *            the generic type of model object from the {@link TextField}
+	 * @param <M>
+	 *            the generic type of model object
 	 * @param id
 	 *            the id
 	 * @param model
@@ -66,10 +72,10 @@ public class LabeledComponentFactory
 	 *            the label model
 	 * @return the new {@link LabeledTextFieldPanel}
 	 */
-	public static <T> LabeledTextFieldPanel<T> newLabeledTextFieldPanel(final String id,
-		final IModel<T> model, final IModel<String> labelModel)
+	public static <T, M> LabeledTextFieldPanel<T, M> newLabeledTextFieldPanel(final String id,
+		final IModel<M> model, final IModel<String> labelModel)
 	{
-		final LabeledTextFieldPanel<T> labeledTextField = new LabeledTextFieldPanel<T>(id, model,
+		final LabeledTextFieldPanel<T, M> labeledTextField = new LabeledTextFieldPanel<>(id, model,
 			labelModel);
 		labeledTextField.setOutputMarkupId(true);
 		return labeledTextField;
@@ -91,8 +97,8 @@ public class LabeledComponentFactory
 	public static <L extends Serializable, R extends Serializable> TwoFormComponentPanel<L, R> newTwoFormComponentPanel(
 		final String id, final IModel<TwoFormComponentBean<L, R>> model)
 	{
-		final TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(
-			id, model);
+		final TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<>(id,
+			model);
 		return twoFormComponentPanel;
 	}
 

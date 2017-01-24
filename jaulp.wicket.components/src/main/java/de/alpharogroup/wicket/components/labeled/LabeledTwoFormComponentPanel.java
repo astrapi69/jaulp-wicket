@@ -17,9 +17,6 @@ package de.alpharogroup.wicket.components.labeled;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-
-import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -27,6 +24,7 @@ import org.apache.wicket.model.Model;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.form.input.TwoFormComponentBean;
 import de.alpharogroup.wicket.components.form.input.TwoFormComponentPanel;
+import lombok.Getter;
 
 /**
  * The Class LabeledTwoFormComponentPanel is a container for two FormComponent. Default they are
@@ -37,9 +35,9 @@ import de.alpharogroup.wicket.components.form.input.TwoFormComponentPanel;
  * @param <R>
  *            the generic type of the model from the left FormComponent
  */
-public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Serializable>
+public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Serializable, M>
 	extends
-		LabeledFormComponentPanel<TwoFormComponentBean<L, R>>
+		LabeledFormComponentPanel<TwoFormComponentBean<L, R>, M>
 {
 
 	/** The serialVersionUID. */
@@ -51,19 +49,8 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	@Getter
 	private TwoFormComponentPanel<L, R> twoFormComponent;
 
-
-	/**
-	 * Instantiates a new {@link LabeledTwoFormComponentPanel}.
-	 *
-	 * @param id
-	 *            the id
-	 * @param labelModel
-	 *            the model for the label
-	 */
-	public LabeledTwoFormComponentPanel(final String id, final IModel<String> labelModel)
-	{
-		this(id, Model.of(new TwoFormComponentBean<L, R>()), labelModel);
-	}
+	@Getter
+	private final IModel<TwoFormComponentBean<L, R>> formComponentModel;
 
 	/**
 	 * Instantiates a new {@link LabeledTwoFormComponentPanel}.
@@ -72,37 +59,33 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param formComponentModel
+	 *            the form component model for the left and right component
 	 * @param labelModel
 	 *            the model of the label
 	 */
-	public LabeledTwoFormComponentPanel(final String id,
-		final IModel<TwoFormComponentBean<L, R>> model, final IModel<String> labelModel)
+	public LabeledTwoFormComponentPanel(final String id, final IModel<M> model,
+		final IModel<TwoFormComponentBean<L, R>> formComponentModel,
+		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
-		add(twoFormComponent = newTwoFormComponentPanel("twoFormComponent", model));
+		this.formComponentModel = formComponentModel;
+		add(this.twoFormComponent = newTwoFormComponentPanel("twoFormComponent", model,
+			formComponentModel));
 
-		add(feedback = newComponentFeedbackPanel("feedback", twoFormComponent));
+		add(this.feedback = newComponentFeedbackPanel("feedback", this.twoFormComponent));
 
-		final String markupId = twoFormComponent.getMarkupId();
-		add(label = newLabel("label", markupId, getLabel()));
+		final String markupId = this.twoFormComponent.getMarkupId();
+		add(this.label = newLabel("label", markupId, getLabel()));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void convertInput()
+	public FormComponent<TwoFormComponentBean<L, R>> getFormComponent()
 	{
-		setConvertedInput(getModelObject());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Component getFormComponent()
-	{
-		return twoFormComponent;
+		return this.twoFormComponent;
 	}
 
 	/**
@@ -129,7 +112,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 *            the model
 	 * @return the new left {@link FormComponent}
 	 */
-	protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
+	public FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
@@ -145,7 +128,7 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 *            the model
 	 * @return the new right {@link FormComponent}
 	 */
-	protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
+	public FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
 	{
 		return ComponentFactory.newTextField(id, model);
 	}
@@ -159,49 +142,16 @@ public class LabeledTwoFormComponentPanel<L extends Serializable, R extends Seri
 	 *            the id
 	 * @param model
 	 *            the model
+	 * @param formComponentModel
+	 *            the form component model for the left and right component
 	 * @return the new {@link TwoFormComponentPanel}
 	 */
 	protected TwoFormComponentPanel<L, R> newTwoFormComponentPanel(final String id,
-		final IModel<TwoFormComponentBean<L, R>> model)
+		final IModel<M> model, final IModel<TwoFormComponentBean<L, R>> formComponentModel)
 	{
-		final TwoFormComponentPanel<L, R> twoFormComponentPanel = new TwoFormComponentPanel<L, R>(
-			id, model)
-		{
-
-			/**
-			 * The serialVersionUID
-			 */
-			private static final long serialVersionUID = 1L;
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			protected IModel<String> newBetweenLabelModel(final String betweenLabel)
-			{
-				return LabeledTwoFormComponentPanel.this.newBetweenLabelModel(betweenLabel);
-			}
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			protected FormComponent<L> newLeftFormComponent(final String id, final IModel<L> model)
-			{
-				return LabeledTwoFormComponentPanel.this.newLeftFormComponent(id, model);
-			}
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			protected FormComponent<R> newRightFormComponent(final String id, final IModel<R> model)
-			{
-				return LabeledTwoFormComponentPanel.this.newRightFormComponent(id, model);
-			}
-
-		};
-		return twoFormComponentPanel;
+		final TwoFormComponentPanel<L, R> twoFormComponent = new TwoFormComponentPanel<>(id,
+			formComponentModel);
+		return twoFormComponent;
 	}
 
 }

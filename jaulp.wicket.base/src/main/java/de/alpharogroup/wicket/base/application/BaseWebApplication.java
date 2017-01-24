@@ -64,7 +64,7 @@ public abstract class BaseWebApplication extends WebApplication
 
 	/** The configuration properties resolver. */
 	@Getter
-	private final ConfigurationPropertiesResolver configurationPropertiesResolver;
+	private final WicketConfigurationPropertiesResolver configurationPropertiesResolver;
 
 	/**
 	 * Initialization block.
@@ -171,8 +171,8 @@ public abstract class BaseWebApplication extends WebApplication
 	 * @param propertiesFilename the properties filename
 	 * @return the new {@link ConfigurationPropertiesResolver}.
 	 */
-	protected ConfigurationPropertiesResolver newConfigurationPropertiesResolver(final Integer defaultHttpPort, final Integer defaultHttpsPort, final String propertiesFilename) {
-		return new ConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort, propertiesFilename);
+	protected WicketConfigurationPropertiesResolver newConfigurationPropertiesResolver(final Integer defaultHttpPort, final Integer defaultHttpsPort, final String propertiesFilename) {
+		return new WicketConfigurationPropertiesResolver(defaultHttpPort, defaultHttpsPort, propertiesFilename);
 	}
 
 	/**

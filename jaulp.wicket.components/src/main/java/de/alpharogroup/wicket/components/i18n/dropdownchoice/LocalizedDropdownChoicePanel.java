@@ -17,9 +17,9 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice;
 
 import java.util.List;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
@@ -34,7 +34,7 @@ import lombok.Getter;
  * @param <M>
  *            the generic type of the model
  */
-public class LocalizedDropdownChoicePanel<T, M> extends LabeledFormComponentPanel<M>
+public class LocalizedDropdownChoicePanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -88,7 +88,7 @@ public class LocalizedDropdownChoicePanel<T, M> extends LabeledFormComponentPane
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Component getFormComponent()
+	public FormComponent<T> getFormComponent()
 	{
 		return dropdownChoice;
 	}

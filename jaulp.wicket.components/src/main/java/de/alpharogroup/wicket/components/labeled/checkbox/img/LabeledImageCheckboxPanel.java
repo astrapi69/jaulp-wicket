@@ -53,7 +53,11 @@ public class LabeledImageCheckboxPanel extends BasePanel<LabeledImageCheckboxMod
 		final IModel<LabeledImageCheckboxModelBean> model)
 	{
 		super(id, model);
+
+		setOutputMarkupId(true);
+
 		add(checkBox = newCheckBox("checkBox", model));
+
 		add(image = newImage("image", model));
 	}
 

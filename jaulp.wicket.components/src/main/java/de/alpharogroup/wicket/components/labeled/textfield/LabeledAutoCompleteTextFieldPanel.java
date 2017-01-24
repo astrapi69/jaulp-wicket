@@ -15,8 +15,8 @@
  */
 package de.alpharogroup.wicket.components.labeled.textfield;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteTextField;
+import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.components.labeled.LabeledFormComponentPanel;
@@ -26,9 +26,11 @@ import lombok.Getter;
  * Convenience class for labeled {@link AutoCompleteTextField}.
  *
  * @param <T>
+ *            the generic type of model object from the {@link AutoCompleteTextField}
+ * @param <M>
  *            the generic type of model object
  */
-public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormComponentPanel<T>
+public abstract class LabeledAutoCompleteTextFieldPanel<T, M> extends LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */
@@ -48,10 +50,12 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledAutoCompleteTextFieldPanel(final String id, final IModel<T> model,
+	public LabeledAutoCompleteTextFieldPanel(final String id, final IModel<M> model,
 		final IModel<String> labelModel)
 	{
 		super(id, model, labelModel);
+
+		setOutputMarkupId(true);
 
 		add(autoCompleteTextField = newAutoCompleteTextField("autoCompleteTextField", model));
 
@@ -59,33 +63,6 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 
 		final String markupId = autoCompleteTextField.getMarkupId();
 		add(label = newLabel("label", markupId, getLabel()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-		setConvertedInput(autoCompleteTextField.getConvertedInput());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Component getFormComponent()
-	{
-		return this.autoCompleteTextField;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getInput()
-	{
-		return autoCompleteTextField.getInput();
 	}
 
 	/**
@@ -100,15 +77,15 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T> extends LabeledFormCo
 	 * @return the new {@link AutoCompleteTextField}.
 	 */
 	protected abstract AutoCompleteTextField<T> newAutoCompleteTextField(final String id,
-		final IModel<T> model);
+		final IModel<M> model);
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onBeforeRender()
+	public FormComponent<T> getFormComponent()
 	{
-		autoCompleteTextField.setRequired(isRequired());
-		super.onBeforeRender();
+		return this.autoCompleteTextField;
 	}
+
 }

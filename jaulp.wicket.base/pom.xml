@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp.wicket</artifactId>
-		<version>6.21.0</version>
+		<version>6.25.0</version>
 		<relativePath>..</relativePath>
 	</parent>
 
@@ -63,6 +63,7 @@
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>resourcebundle-inspector</artifactId>
+			<version>2.11.0</version>
 		</dependency>
 
 	</dependencies>
