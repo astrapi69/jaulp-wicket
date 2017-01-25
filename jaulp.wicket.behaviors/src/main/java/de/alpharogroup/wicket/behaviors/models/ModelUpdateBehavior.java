@@ -28,7 +28,7 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 	private IModel<T> model;
 
 	/** The model object. */
-	private T modelObject;
+	private T previousModelObject;
 
 	/**
 	 * Instantiates a new {@link ModelUpdateBehavior}.
@@ -58,7 +58,7 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 	public void onConfigure(final Component component)
 	{
 		super.onConfigure(component);
-		this.modelObject = this.model.getObject();
+		this.previousModelObject = this.model.getObject();
 	}
 
 	/**
@@ -68,15 +68,15 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 	public void onEvent(final Component component, final IEvent<?> event)
 	{
 		super.onEvent(component, event);
-		final AjaxRequestTarget ajaxRequestTarget = ComponentFinder.findAjaxRequestTarget();
 		final T currentModelObject = this.model.getObject();
-		if (!Objects.equals(currentModelObject, this.modelObject))
+		if (!Objects.equals(currentModelObject, this.previousModelObject))
 		{
-			this.modelObject = currentModelObject;
+			this.previousModelObject = currentModelObject;	
+			component.modelChanging();
+			component.modelChanged();			
+			final AjaxRequestTarget ajaxRequestTarget = ComponentFinder.findAjaxRequestTarget();
 			if (ajaxRequestTarget != null)
 			{
-				component.modelChanging();
-				component.modelChanged();
 				ajaxRequestTarget.add(component);
 			}
 		}
