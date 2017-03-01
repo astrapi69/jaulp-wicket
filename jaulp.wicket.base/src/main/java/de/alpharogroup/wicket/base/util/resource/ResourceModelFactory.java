@@ -150,15 +150,18 @@ public final class ResourceModelFactory
 		final Component component, final IModel<?> model, final String defaultValue,
 		final Object... parameters)
 	{
-		for (int i = 0; i < parameters.length; i++)
+		if ((parameters != null) && (parameters.length > 0))
 		{
-			if ((parameters[i] != null) && (parameters[i] instanceof ResourceBundleKey))
-			{
-				final ResourceBundleKey parameter = (ResourceBundleKey)parameters[i];
-				final IModel<String> parameterValue = newResourceModel(parameter, component);
-				parameters[i] = parameterValue.getObject();
-			}
-		}
+            for (int i = 0; i < parameters.length; i++)
+            {
+                if ((parameters[i] != null) && (parameters[i] instanceof ResourceBundleKey))
+                {
+                    final ResourceBundleKey parameter = (ResourceBundleKey)parameters[i];
+                    final IModel<String> parameterValue = newResourceModel(parameter, component);
+                    parameters[i] = parameterValue.getObject();
+                }
+            }
+        }
 		return new StringResourceModel(resourceKey, component, model).setDefaultValue(defaultValue)
 			.setParameters(parameters);
 	}
