@@ -65,6 +65,26 @@ public final class ResourceModelFactory
 	}
 
 	/**
+	 * Factory method to create a new {@link StringResourceModel} from the given parameters.
+	 *
+	 * @param resourceBundleKey
+	 *            the resource bundle key
+	 * @param component
+	 *            the component
+	 * @param model
+	 *            the model
+	 * @return a new {@link StringResourceModel} as an {@link IModel}
+	 */
+	public static IModel<String> newResourceModel(final ResourceBundleKey resourceBundleKey,
+		final Component component, IModel<?> model)
+	{
+		IModel<String> resourceModel;
+		resourceModel = newResourceModel(resourceBundleKey.getKey(), component, model, 
+				resourceBundleKey.getDefaultValue(), resourceBundleKey.getParameters());
+		return resourceModel;
+	}
+
+	/**
 	 * Factory method to create a new {@link StringResourceModel} from the given ResourceBundleKey.
 	 *
 	 * @param resourceBundleKey
