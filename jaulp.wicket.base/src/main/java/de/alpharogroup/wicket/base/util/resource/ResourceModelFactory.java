@@ -65,6 +65,26 @@ public final class ResourceModelFactory
 	}
 
 	/**
+	 * Factory method to create a new {@link StringResourceModel} from the given parameters.
+	 *
+	 * @param resourceBundleKey
+	 *            the resource bundle key
+	 * @param component
+	 *            the component
+	 * @param model
+	 *            the model
+	 * @return a new {@link StringResourceModel} as an {@link IModel}
+	 */
+	public static IModel<String> newResourceModel(final ResourceBundleKey resourceBundleKey,
+		final Component component, IModel<?> model)
+	{
+		IModel<String> resourceModel;
+		resourceModel = newResourceModel(resourceBundleKey.getKey(), component, model, 
+				resourceBundleKey.getDefaultValue(), resourceBundleKey.getParameters());
+		return resourceModel;
+	}
+
+	/**
 	 * Factory method to create a new {@link StringResourceModel} from the given ResourceBundleKey.
 	 *
 	 * @param resourceBundleKey
@@ -130,15 +150,18 @@ public final class ResourceModelFactory
 		final Component component, final IModel<?> model, final String defaultValue,
 		final Object... parameters)
 	{
-		for (int i = 0; i < parameters.length; i++)
+		if ((parameters != null) && (parameters.length > 0))
 		{
-			if ((parameters[i] != null) && (parameters[i] instanceof ResourceBundleKey))
-			{
-				final ResourceBundleKey parameter = (ResourceBundleKey)parameters[i];
-				final IModel<String> parameterValue = newResourceModel(parameter, component);
-				parameters[i] = parameterValue.getObject();
-			}
-		}
+            for (int i = 0; i < parameters.length; i++)
+            {
+                if ((parameters[i] != null) && (parameters[i] instanceof ResourceBundleKey))
+                {
+                    final ResourceBundleKey parameter = (ResourceBundleKey)parameters[i];
+                    final IModel<String> parameterValue = newResourceModel(parameter, component);
+                    parameters[i] = parameterValue.getObject();
+                }
+            }
+        }
 		return new StringResourceModel(resourceKey, component, model).setDefaultValue(defaultValue)
 			.setParameters(parameters);
 	}
