@@ -16,13 +16,13 @@
 package de.alpharogroup.wicket.components.editable.checkbox;
 
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
-import de.alpharogroup.wicket.components.editable.textarea.EditableTextArea;
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;
 import de.alpharogroup.wicket.components.swap.ModeContext;
@@ -31,11 +31,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * An editable Checkbox that can be switched to a MultilineLabel.
+ * An editable Checkbox that can be switched to a Label.
  *
  * @author Asterios Raptis
  */
-public class EditableCheckbox extends BasePanel<Boolean>
+public class EditableCheckbox<T> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -47,18 +47,10 @@ public class EditableCheckbox extends BasePanel<Boolean>
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
 	/** The swap panel. */
 	@Getter
-	private SwapComponentsFragmentPanel<Boolean> swapPanel;
+	private SwapComponentsFragmentPanel<T> swapPanel;
 	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
-
-	/** TheLabel. */
-	@Getter
-	private Label label;
-
-	/** The checkbox. */
-	@Getter
-	private CheckBox checkbox;
 
 	/**
 	 * Instantiates a new {@link EditableCheckbox}.
@@ -70,14 +62,14 @@ public class EditableCheckbox extends BasePanel<Boolean>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public EditableCheckbox(final String id, final IModel<Boolean> model,
+	public EditableCheckbox(final String id, final IModel<T> model,
 		final IModel<String> labelModel)
 	{
 		this(id, model, labelModel, ModeContext.EDIT_MODE);
 	}
 
 	/**
-	 * Instantiates a new {@link EditableTextArea}.
+	 * Instantiates a new {@link EditableCheckbox}.
 	 *
 	 * @param id
 	 *            the id
@@ -88,7 +80,7 @@ public class EditableCheckbox extends BasePanel<Boolean>
 	 * @param modeContext
 	 *            the editable flag
 	 */
-	public EditableCheckbox(final String id, final IModel<Boolean> model,
+	public EditableCheckbox(final String id, final IModel<T> model,
 		final IModel<String> labelModel, final ModeContext modeContext)
 	{
 		super(id, model);
@@ -114,7 +106,7 @@ public class EditableCheckbox extends BasePanel<Boolean>
 	protected void onInitialize()
 	{
 		super.onInitialize();
-		add(this.swapPanel = new SwapComponentsFragmentPanel<Boolean>("swapPanel", getModel())
+		add(this.swapPanel = new SwapComponentsFragmentPanel<T>("swapPanel", getModel())
 		{
 			/**
 			 * The serialVersionUID
@@ -125,16 +117,31 @@ public class EditableCheckbox extends BasePanel<Boolean>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected Component newEditComponent(final String id, final IModel<Boolean> model)
+			protected Component newEditComponent(final String id, final IModel<T> model)
 			{
-				return new LabeledCheckboxPanel<String, Boolean>(id, model, getLabelModel());
+				return new LabeledCheckboxPanel<String, T>(id, model, getLabelModel()){
+					/**
+					 *
+					 */
+					private static final long serialVersionUID = 1L;
+
+					/**
+					 * {@inheritDoc}
+					 */
+					@Override
+					protected CheckBox newCheckBox(final String id, final IModel<T> model)
+					{
+						final IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), EditableCheckbox.this.getId());
+						return ComponentFactory.newCheckBox(id, propertyModel);
+					}
+				};
 			}
 
 			/**
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected Component newViewComponent(final String id, final IModel<Boolean> model)
+			protected Component newViewComponent(final String id, final IModel<T> model)
 			{
 				return new LabeledLabelPanel<>(id, model, getLabelModel());
 			}
