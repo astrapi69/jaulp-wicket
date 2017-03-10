@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.components.editable.checkbox;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -143,7 +144,18 @@ public class EditableCheckbox<T> extends BasePanel<T>
 			@Override
 			protected Component newViewComponent(final String id, final IModel<T> model)
 			{
-				return new LabeledLabelPanel<>(id, model, getLabelModel());
+				return new LabeledLabelPanel<T>(id, model, getLabelModel()){
+
+					private static final long serialVersionUID = 1L;
+					@Override
+					protected Label newViewableLabel(final String id, final IModel<T> model)
+					{
+						final PropertyModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(),
+							EditableCheckbox.this.getId());
+						return ComponentFactory.newLabel(id, viewableLabelModel);
+					}
+
+				};
 			}
 		});
 		if (modeContext.equals(ModeContext.EDIT_MODE))

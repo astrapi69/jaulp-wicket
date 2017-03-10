@@ -19,6 +19,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
@@ -33,7 +34,7 @@ import lombok.Setter;
 /**
  * An editable TextField that can be switched to a Label.
  */
-public class EditableTextField extends BasePanel<String>
+public class EditableTextField<T> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -45,7 +46,7 @@ public class EditableTextField extends BasePanel<String>
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
 	/** The swap panel. */
 	@Getter
-	private SwapComponentsFragmentPanel<String> swapPanel;
+	private SwapComponentsFragmentPanel<T> swapPanel;
 	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
@@ -60,7 +61,7 @@ public class EditableTextField extends BasePanel<String>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public EditableTextField(final String id, final IModel<String> model,
+	public EditableTextField(final String id, final IModel<T> model,
 		final IModel<String> labelModel)
 	{
 		this(id, model, labelModel, ModeContext.EDIT_MODE);
@@ -78,7 +79,7 @@ public class EditableTextField extends BasePanel<String>
 	 * @param modeContext
 	 *            the editable flag
 	 */
-	public EditableTextField(final String id, final IModel<String> model,
+	public EditableTextField(final String id, final IModel<T> model,
 		final IModel<String> labelModel, final ModeContext modeContext)
 	{
 		super(id, model);
@@ -104,7 +105,7 @@ public class EditableTextField extends BasePanel<String>
 	protected void onInitialize()
 	{
 		super.onInitialize();
-		add(this.swapPanel = new SwapComponentsFragmentPanel<String>("swapPanel", getModel())
+		add(this.swapPanel = new SwapComponentsFragmentPanel<T>("swapPanel", getModel())
 		{
 			/** The serialVersionUID. */
 			private static final long serialVersionUID = 1L;
@@ -113,9 +114,9 @@ public class EditableTextField extends BasePanel<String>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected Component newEditComponent(final String id, final IModel<String> model)
+			protected Component newEditComponent(final String id, final IModel<T> model)
 			{
-				return new LabeledTextFieldPanel<String, String>(id, model, getLabelModel())
+				return new LabeledTextFieldPanel<String, T>(id, model, getLabelModel())
 				{
 					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
@@ -133,9 +134,9 @@ public class EditableTextField extends BasePanel<String>
 					 */
 					@Override
 					protected TextField<String> newTextField(final String id,
-						final IModel<String> model)
+						final IModel<T> model)
 					{
-						return ComponentFactory.newTextField(id, model);
+						return ComponentFactory.newTextField(id, new PropertyModel<String>(model.getObject(), EditableTextField.this.getId()));
 					}
 				};
 			}
@@ -144,9 +145,9 @@ public class EditableTextField extends BasePanel<String>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected Component newViewComponent(final String id, final IModel<String> model)
+			protected Component newViewComponent(final String id, final IModel<T> model)
 			{
-				return new LabeledLabelPanel<String>(id, model, getLabelModel())
+				return new LabeledLabelPanel<T>(id, model, getLabelModel())
 				{
 					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
@@ -155,9 +156,11 @@ public class EditableTextField extends BasePanel<String>
 					 * {@inheritDoc}
 					 */
 					@Override
-					protected Label newViewableLabel(final String id, final IModel<String> model)
+					protected Label newViewableLabel(final String id, final IModel<T> model)
 					{
-						return ComponentFactory.newLabel(id, model);
+						final PropertyModel<T> viewableLabelModel = new PropertyModel<>(model,
+							EditableTextField.this.getId());
+						return ComponentFactory.newLabel(id, viewableLabelModel);
 					}
 				};
 			}
