@@ -19,6 +19,8 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.IModel;
 
+import de.alpharogroup.wicket.components.factory.ComponentFactory;
+
 /**
  * The abstract class {@link SwapComponentsFragmentPanel} provides the feature to swap components.
  * The components can be created with the abstract factory methods that have to be implemented.
@@ -64,8 +66,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	@Override
 	protected Fragment newEditFragment(final String id)
 	{
-		final Fragment editFragment = new Fragment(id, "edit", this, getDefaultModel());
-		editFragment.setOutputMarkupPlaceholderTag(true);
+		final Fragment editFragment = ComponentFactory.newFragment(id, "edit", this, getModel());
 		editFragment.add(newEditComponent("editComponent", getModel()));
 		return editFragment;
 	}
@@ -90,8 +91,7 @@ public abstract class SwapComponentsFragmentPanel<T> extends SwapFragmentPanel<T
 	@Override
 	protected Fragment newViewFragment(final String id)
 	{
-		final Fragment viewFragment = new Fragment(id, "view", this, getModel());
-		viewFragment.setOutputMarkupPlaceholderTag(true);
+		final Fragment viewFragment = ComponentFactory.newFragment(id, "view", this, getModel());
 		viewFragment.add(newViewComponent("viewComponent", getModel()));
 		return viewFragment;
 	}
