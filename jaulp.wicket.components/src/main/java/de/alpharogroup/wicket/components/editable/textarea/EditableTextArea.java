@@ -22,7 +22,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.label.LabeledMultiLineLabelPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
@@ -45,21 +44,13 @@ public class EditableTextArea<T> extends BasePanel<T>
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	@Setter
-	private ModeContext modeContext = ModeContext.VIEW_MODE;
+	private ModeContext modeContext = ModeContext.EDIT_MODE;
 	/** The swap panel. */
 	@Getter
 	private SwapComponentsFragmentPanel<T> swapPanel;
 	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
-
-	/** The MultiLineLabel. */
-	@Getter
-	private MultiLineLabel label;
-
-	/** The text area. */
-	@Getter
-	private TextArea<String> textArea;
 
 	/**
 	 * Instantiates a new {@link EditableTextArea}.
@@ -186,10 +177,6 @@ public class EditableTextArea<T> extends BasePanel<T>
 				};
 			}
 		});
-		if (modeContext.equals(ModeContext.EDIT_MODE))
-		{
-			this.swapPanel.onSwapToEdit(ComponentFinder.findOrCreateNewAjaxRequestTarget(), null);
-		}
 	}
 
 	/**
@@ -205,6 +192,43 @@ public class EditableTextArea<T> extends BasePanel<T>
 		{
 			modeContext = ModeContext.VIEW_MODE;
 		}
+	}
+
+	/**
+	 * Factory method for create a new {@link EditableTextArea} object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @return the new created {@link EditableTextArea} object.
+	 */
+	public static<T> EditableTextArea<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
+	{
+		return EditableTextArea.of(id, model, labelModel, ModeContext.EDIT_MODE);
+	}
+
+	/**
+	 * Factory method for create a new {@link EditableTextArea} object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @param modeContext
+	 *            the editable flag
+	 * @return the new created {@link EditableTextArea} object.
+	 */
+	public static<T> EditableTextArea<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel, final ModeContext modeContext)
+	{
+		final EditableTextArea<T> editableTextArea = new EditableTextArea<>(id, model, labelModel, modeContext);
+		return editableTextArea;
 	}
 
 }

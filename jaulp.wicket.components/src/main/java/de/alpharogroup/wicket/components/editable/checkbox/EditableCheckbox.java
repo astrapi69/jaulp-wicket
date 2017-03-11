@@ -22,7 +22,6 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.checkbox.LabeledCheckboxPanel;
 import de.alpharogroup.wicket.components.labeled.label.LabeledLabelPanel;
@@ -45,7 +44,7 @@ public class EditableCheckbox<T> extends BasePanel<T>
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	@Setter
-	private ModeContext modeContext = ModeContext.VIEW_MODE;
+	private ModeContext modeContext = ModeContext.EDIT_MODE;
 	/** The swap panel. */
 	@Getter
 	private SwapComponentsFragmentPanel<T> swapPanel;
@@ -158,10 +157,6 @@ public class EditableCheckbox<T> extends BasePanel<T>
 				};
 			}
 		});
-		if (modeContext.equals(ModeContext.EDIT_MODE))
-		{
-			this.swapPanel.onSwapToEdit(ComponentFinder.findOrCreateNewAjaxRequestTarget(), null);
-		}
 	}
 
 	/**
@@ -177,6 +172,43 @@ public class EditableCheckbox<T> extends BasePanel<T>
 		{
 			modeContext = ModeContext.VIEW_MODE;
 		}
+	}
+
+	/**
+	 * Factory method for create a new {@link EditableCheckbox} object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @return the new created {@link EditableCheckbox} object.
+	 */
+	public static<T> EditableCheckbox<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
+	{
+		return EditableCheckbox.of(id, model, labelModel, ModeContext.EDIT_MODE);
+	}
+
+	/**
+	 * Factory method for create a new {@link EditableCheckbox} object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @param modeContext
+	 *            the editable flag
+	 * @return the new created {@link EditableCheckbox} object.
+	 */
+	public static<T> EditableCheckbox<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel, final ModeContext modeContext)
+	{
+		final EditableCheckbox<T> editableCheckbox = new EditableCheckbox<>(id, model, labelModel, modeContext);
+		return editableCheckbox;
 	}
 
 }
