@@ -21,7 +21,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnLoadHeaderItem;
 
 /**
- * The Class FocusRequestBehavior set the focus on a component when the page is load.
+ * The class {@link FocusRequestBehavior} set the focus on a component when the page is load.
  */
 public class FocusRequestBehavior extends Behavior
 {
@@ -29,16 +29,70 @@ public class FocusRequestBehavior extends Behavior
 	/**
 	 * The serialVersionUID.
 	 */
-	private static final long serialVersionUID = -7062497938107173959L;
+	private static final long serialVersionUID = 1L;
 
-	/** The Constant DEFAULT_ID is the default id that will be set if the id is not set explicit. */
+	/**
+	 * The Constant DEFAULT_ID is the default id that will be set if the id is not set explicit.
+	 */
 	public static final String DEFAULT_ID = FocusRequestBehavior.class.getSimpleName();
 
+	/**
+	 * Factory method to create a new {@link FocusRequestBehavior} object for the component that is
+	 * added.
+	 *
+	 * @return the new {@link FocusRequestBehavior} object
+	 */
+	public static FocusRequestBehavior of()
+	{
+		return new FocusRequestBehavior();
+	}
+
+	/**
+	 * Factory method to create a new {@link FocusRequestBehavior} object from the given clearValue
+	 * parameter for the component that is added.
+	 *
+	 * @param clearValue
+	 *            the clear value
+	 * @return the new {@link FocusRequestBehavior} object
+	 */
+	public static FocusRequestBehavior of(final boolean clearValue)
+	{
+		return new FocusRequestBehavior(clearValue);
+	}
+
+	/**
+	 * Factory method to create a new {@link FocusRequestBehavior} object from the given clearValue
+	 * and delay parameter for the component that is added.
+	 *
+	 * @param clearValue
+	 *            the clear value
+	 * @param delay
+	 *            the delay
+	 * @return the new {@link FocusRequestBehavior} object
+	 */
+	public static FocusRequestBehavior of(final boolean clearValue, final Integer delay)
+	{
+		return new FocusRequestBehavior(clearValue, delay);
+	}
+
+	/**
+	 * Factory method to create a new {@link FocusRequestBehavior} object from the given delay
+	 * parameter for the component that is added.
+	 *
+	 * @param delay
+	 *            the delay
+	 * @return the new {@link FocusRequestBehavior} object
+	 */
+	public static FocusRequestBehavior of(final Integer delay)
+	{
+		return new FocusRequestBehavior(delay);
+	}
+
 	/** The flag if the value may be clear. */
-	private boolean clearValue;
-	
+	private final boolean clearValue;
+
 	/** The delay that is set in the setTimeout method. */
-	private int delay;
+	private final int delay;
 
 	/**
 	 * Instantiates a new request focus behavior.
@@ -64,13 +118,24 @@ public class FocusRequestBehavior extends Behavior
 	 *
 	 * @param clearValue
 	 *            The flag if the value may be clear.
-	 * @param delay 
-	 * 			  the delay
+	 * @param delay
+	 *            the delay
 	 */
 	public FocusRequestBehavior(final boolean clearValue, final Integer delay)
 	{
 		this.clearValue = clearValue;
 		this.delay = delay;
+	}
+
+	/**
+	 * Instantiates a new {@link FocusRequestBehavior} object.
+	 *
+	 * @param delay
+	 *            the delay
+	 */
+	public FocusRequestBehavior(final Integer delay)
+	{
+		this(false, delay);
 	}
 
 	/**
@@ -91,7 +156,7 @@ public class FocusRequestBehavior extends Behavior
 		}
 		sb.append("component.focus();");
 		sb.append("component.select();");
-		sb.append("}, "	+ this.delay + ")");
+		sb.append("}, " + this.delay + ")");
 		return sb.toString();
 	}
 
@@ -106,4 +171,5 @@ public class FocusRequestBehavior extends Behavior
 		response.render(OnLoadHeaderItem.forScript(newJavaScript(component)));
 		super.renderHead(component, response);
 	}
+
 }
