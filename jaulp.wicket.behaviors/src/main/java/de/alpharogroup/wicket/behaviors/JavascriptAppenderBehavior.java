@@ -34,8 +34,14 @@ import org.apache.wicket.util.lang.Args;
  */
 public class JavascriptAppenderBehavior extends Behavior
 {
+	
+	/**
+	 * The enum {@link JavascriptBindEvent} describes when the js will be bind.
+	 */
 	public enum JavascriptBindEvent { ONDOMREADY, ONEVENT, ONLOAD};
-	JavascriptBindEvent DEFAULT_BIND_EVENT = JavascriptBindEvent.ONDOMREADY;
+	
+	/** The default bind event. */
+	private JavascriptBindEvent DEFAULT_BIND_EVENT = JavascriptBindEvent.ONDOMREADY;
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -50,8 +56,7 @@ public class JavascriptAppenderBehavior extends Behavior
 	
 	/** The bind event for the javascript. */
 	@Setter
-	private JavascriptBindEvent bindEvent = DEFAULT_BIND_EVENT;
-	
+	private JavascriptBindEvent bindEvent = DEFAULT_BIND_EVENT;	
 
 	/**
 	 * The unique id for the javascript element. This can be null, however in that case the ajax
@@ -83,7 +88,25 @@ public class JavascriptAppenderBehavior extends Behavior
 	 */
 	public JavascriptAppenderBehavior(final String id, final CharSequence javascript)
 	{
+		this(id, javascript, null);
+	}
+
+	/**
+	 * Instantiates a new {@link JavascriptAppenderBehavior}.
+	 *
+	 * @param javascript
+	 *            javascript content to be add.
+	 * @param id
+	 *            unique id for the javascript element.
+	 * @param bindEvent 
+	 *            the bind event
+	 */
+	public JavascriptAppenderBehavior(final String id, final CharSequence javascript, JavascriptBindEvent bindEvent)
+	{
 		this.javascript = Args.notNull(javascript, "javascript");
+		if(bindEvent != null) {
+			this.bindEvent = bindEvent;
+		}
 		if (id == null)
 		{
 			this.id = String.valueOf(UUID.randomUUID());
