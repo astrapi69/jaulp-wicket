@@ -51,6 +51,12 @@ public abstract class BaseWebApplication extends WebApplication
 	public static final int DEFAULT_HTTPS_PORT = 9443;
 
 	/**
+	 * The Constant FOOTER_FILTER_NAME.
+	 * @see http://www.wicket-library.com/wicket-examples/resourceaggregation/wicket/bookmarkable/org.apache.wicket.examples.source.SourcesPage?0&SourcesPage_class=org.apache.wicket.examples.resourcedecoration.HomePage&source=HomePage.java
+	 **/
+	public static final String FOOTER_FILTER_NAME = "footer-container";
+
+	/**
 	 * Gets the startup date.
 	 *
 	 * @return the startup date
