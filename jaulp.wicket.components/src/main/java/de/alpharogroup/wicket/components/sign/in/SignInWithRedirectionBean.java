@@ -15,6 +15,9 @@
  */
 package de.alpharogroup.wicket.components.sign.in;
 
+import org.apache.wicket.Page;
+
+import de.alpharogroup.auth.models.UsernameSignInModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -23,14 +26,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import org.apache.wicket.Page;
-
-import de.alpharogroup.auth.models.UsernameSignInModel;
-
 /**
  * The Class {@link SignInWithRedirectionBean} captures the data for sign in action with redirection feature.
- * 
+ *
  * @author Asterios Raptis
+ * @deprecated use instead SignInWithRedirectionModel from auth-security
  */
 @Getter
 @Setter
@@ -39,6 +39,7 @@ import de.alpharogroup.auth.models.UsernameSignInModel;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Deprecated
 public class SignInWithRedirectionBean implements UsernameSignInModel
 {
 	/**
