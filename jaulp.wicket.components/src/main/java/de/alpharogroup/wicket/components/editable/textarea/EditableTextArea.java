@@ -15,28 +15,27 @@
  */
 package de.alpharogroup.wicket.components.editable.textarea;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.MultiLineLabel;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.label.LabeledMultiLineLabelPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
 import de.alpharogroup.wicket.components.swap.ModeContext;
 import de.alpharogroup.wicket.components.swap.SwapComponentsFragmentPanel;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * An editable TextArea that can be switched to a MultilineLabel.
  *
  * @author Asterios Raptis
  */
-public class EditableTextArea extends BasePanel<String>
+public class EditableTextArea<T> extends BasePanel<T>
 {
 
 	/** The Constant serialVersionUID. */
@@ -45,21 +44,13 @@ public class EditableTextArea extends BasePanel<String>
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	@Setter
-	private ModeContext modeContext = ModeContext.VIEW_MODE;
+	private ModeContext modeContext = ModeContext.EDIT_MODE;
 	/** The swap panel. */
 	@Getter
-	private SwapComponentsFragmentPanel<String> swapPanel;
+	private SwapComponentsFragmentPanel<T> swapPanel;
 	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
-
-	/** The MultiLineLabel. */
-	@Getter
-	private MultiLineLabel label;
-
-	/** The text area. */
-	@Getter
-	private TextArea<String> textArea;
 
 	/**
 	 * Instantiates a new {@link EditableTextArea}.
@@ -71,7 +62,7 @@ public class EditableTextArea extends BasePanel<String>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public EditableTextArea(final String id, final IModel<String> model,
+	public EditableTextArea(final String id, final IModel<T> model,
 		final IModel<String> labelModel)
 	{
 		this(id, model, labelModel, ModeContext.EDIT_MODE);
@@ -89,7 +80,7 @@ public class EditableTextArea extends BasePanel<String>
 	 * @param modeContext
 	 *            the editable flag
 	 */
-	public EditableTextArea(final String id, final IModel<String> model,
+	public EditableTextArea(final String id, final IModel<T> model,
 		final IModel<String> labelModel, final ModeContext modeContext)
 	{
 		super(id, model);
@@ -108,68 +99,6 @@ public class EditableTextArea extends BasePanel<String>
 		return modeContext.equals(ModeContext.EDIT_MODE);
 	}
 
-
-	/**
-	 * Factory method for creating the MultiLineLabel. This method is invoked in the constructor
-	 * from the derived classes and can be overridden so users can provide their own version of a
-	 * MultiLineLabel.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the MultiLineLabel
-	 */
-	protected MultiLineLabel newMultiLineLabel(final String id, final IModel<String> model)
-	{
-		final MultiLineLabel multiLineLabel = new MultiLineLabel(id, model)
-		{
-			/** The Constant serialVersionUID. */
-			private static final long serialVersionUID = 1L;
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			protected void onConfigure()
-			{
-				setVisibilityAllowed(!isEditable());
-			}
-		};
-		multiLineLabel.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		return multiLineLabel;
-	}
-
-	/**
-	 * Factory method for creating the TextArea. This method is invoked in the constructor from this
-	 * class and can be overridden so users can provide their own version of a TextArea.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the text area
-	 */
-	protected TextArea<String> newTextArea(final String id, final IModel<String> model)
-	{
-		final TextArea<String> textArea = new TextArea<String>(id, model)
-		{
-			/** The Constant serialVersionUID. */
-			private static final long serialVersionUID = 1L;
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			protected void onConfigure()
-			{
-				setVisibilityAllowed(isEditable());
-			}
-		};
-		textArea.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		return textArea;
-	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -177,7 +106,7 @@ public class EditableTextArea extends BasePanel<String>
 	protected void onInitialize()
 	{
 		super.onInitialize();
-		add(this.swapPanel = new SwapComponentsFragmentPanel<String>("swapPanel", getModel())
+		add(this.swapPanel = new SwapComponentsFragmentPanel<T>("swapPanel", getModel())
 		{
 			/**
 			 * The serialVersionUID
@@ -188,9 +117,9 @@ public class EditableTextArea extends BasePanel<String>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected Component newEditComponent(final String id, final IModel<String> model)
+			protected Component newEditComponent(final String id, final IModel<T> model)
 			{
-				return new LabeledTextAreaPanel<String, String>(id, model, getLabelModel())
+				return new LabeledTextAreaPanel<String, T>(id, model, getLabelModel())
 				{
 					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
@@ -208,9 +137,10 @@ public class EditableTextArea extends BasePanel<String>
 					 */
 					@Override
 					protected TextArea<String> newTextArea(final String id,
-						final IModel<String> model)
+						final IModel<T> model)
 					{
-						return ComponentFactory.newTextArea(id, model);
+						final IModel<String> textAreaModel = new PropertyModel<>(model.getObject(), EditableTextArea.this.getId());
+						return ComponentFactory.newTextArea(id, textAreaModel);
 					}
 				};
 			}
@@ -219,9 +149,9 @@ public class EditableTextArea extends BasePanel<String>
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected Component newViewComponent(final String id, final IModel<String> model)
+			protected Component newViewComponent(final String id, final IModel<T> model)
 			{
-				return new LabeledMultiLineLabelPanel<String>(id, model, getLabelModel())
+				return new LabeledMultiLineLabelPanel<T>(id, model, getLabelModel())
 				{
 					/** The serialVersionUID. */
 					private static final long serialVersionUID = 1L;
@@ -239,17 +169,14 @@ public class EditableTextArea extends BasePanel<String>
 					 */
 					@Override
 					protected MultiLineLabel newMultiLineLabelLabel(final String id,
-						final IModel<String> model)
+						final IModel<T> model)
 					{
-						return ComponentFactory.newMultiLineLabel(id, model);
+						final IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), EditableTextArea.this.getId());
+						return ComponentFactory.newMultiLineLabel(id, viewableLabelModel);
 					}
 				};
 			}
 		});
-		if (modeContext.equals(ModeContext.EDIT_MODE))
-		{
-			this.swapPanel.onSwapToEdit(ComponentFinder.findOrCreateNewAjaxRequestTarget(), null);
-		}
 	}
 
 	/**
@@ -265,6 +192,43 @@ public class EditableTextArea extends BasePanel<String>
 		{
 			modeContext = ModeContext.VIEW_MODE;
 		}
+	}
+
+	/**
+	 * Factory method for create a new {@link EditableTextArea} object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @return the new created {@link EditableTextArea} object.
+	 */
+	public static<T> EditableTextArea<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
+	{
+		return EditableTextArea.of(id, model, labelModel, ModeContext.EDIT_MODE);
+	}
+
+	/**
+	 * Factory method for create a new {@link EditableTextArea} object.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @param modeContext
+	 *            the editable flag
+	 * @return the new created {@link EditableTextArea} object.
+	 */
+	public static<T> EditableTextArea<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel, final ModeContext modeContext)
+	{
+		final EditableTextArea<T> editableTextArea = new EditableTextArea<>(id, model, labelModel, modeContext);
+		return editableTextArea;
 	}
 
 }

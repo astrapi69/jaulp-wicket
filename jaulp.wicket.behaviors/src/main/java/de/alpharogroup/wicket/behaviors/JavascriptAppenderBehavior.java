@@ -26,6 +26,7 @@ import org.apache.wicket.markup.head.OnEventHeaderItem;
 import org.apache.wicket.markup.head.OnLoadHeaderItem;
 import org.apache.wicket.util.lang.Args;
 
+import lombok.Builder;
 import lombok.Setter;
 
 /**
@@ -174,13 +175,14 @@ public class JavascriptAppenderBehavior extends Behavior
 	/**
 	 * Instantiates a new {@link JavascriptAppenderBehavior}.
 	 *
-	 * @param javascript
-	 *            javascript content to be add.
 	 * @param id
 	 *            unique id for the javascript element.
+	 * @param javascript
+	 *            javascript content to be add.
 	 * @param bindEvent
 	 *            the bind event
 	 */
+	@Builder
 	public JavascriptAppenderBehavior(final String id, final CharSequence javascript,
 		final JavascriptBindEvent bindEvent)
 	{

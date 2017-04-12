@@ -53,6 +53,9 @@ import de.alpharogroup.wicket.base.util.resource.ByteArrayResourceStreamWriter;
 public final class ApplicationExtensions
 {
 
+	/** The Constant DEFAULT_PACKAGE_RESOURCE_GUARD_PATTERNS. */
+	public static final String[] DEFAULT_PACKAGE_RESOURCE_GUARD_PATTERNS = {"UTF-8", "+*.css", "+*.png", "+*.woff2", "+*.js.map"};
+
 	/**
 	 * Adds the given file patterns to package resource guard from the given application.
 	 *
