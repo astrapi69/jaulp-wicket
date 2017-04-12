@@ -179,7 +179,7 @@ public class ComponentFactory
 	public static <T> DropDownChoice<T> newDropDownChoice(final String id, final IModel<T> model,
 		final List<? extends T> choices)
 	{
-		final DropDownChoice<T> dropDownChoice = new DropDownChoice<T>(id, model, choices);
+		final DropDownChoice<T> dropDownChoice = new DropDownChoice<>(id, model, choices);
 		dropDownChoice.setOutputMarkupId(true);
 		return dropDownChoice;
 	}
@@ -202,7 +202,7 @@ public class ComponentFactory
 	public static <T> DropDownChoice<T> newDropDownChoice(final String id, final IModel<T> model,
 		final List<? extends T> choices, final IChoiceRenderer<? super T> renderer)
 	{
-		final DropDownChoice<T> dropDownChoice = new DropDownChoice<T>(id, model, choices, renderer);
+		final DropDownChoice<T> dropDownChoice = new DropDownChoice<>(id, model, choices, renderer);
 		dropDownChoice.setOutputMarkupId(true);
 		return dropDownChoice;
 	}
@@ -535,7 +535,7 @@ public class ComponentFactory
 	public static <T> RadioChoice<T> newRadioChoice(final String id, final IModel<T> model,
 		final List<? extends T> choices)
 	{
-		final RadioChoice<T> radioChoice = new RadioChoice<T>(id, model, choices);
+		final RadioChoice<T> radioChoice = new RadioChoice<>(id, model, choices);
 		radioChoice.setOutputMarkupId(true);
 		return radioChoice;
 	}
@@ -558,7 +558,7 @@ public class ComponentFactory
 	public static <T> RadioChoice<T> newRadioChoice(final String id, final IModel<T> model,
 		final List<? extends T> choices, final IChoiceRenderer<? super T> renderer)
 	{
-		final RadioChoice<T> radioChoice = new RadioChoice<T>(id, model, choices, renderer);
+		final RadioChoice<T> radioChoice = new RadioChoice<>(id, model, choices, renderer);
 		radioChoice.setOutputMarkupId(true);
 		return radioChoice;
 	}
@@ -609,7 +609,7 @@ public class ComponentFactory
 	public static <T> RequiredTextField<T> newRequiredTextField(final String id,
 		final IModel<T> model)
 	{
-		final RequiredTextField<T> requiredTextField = new RequiredTextField<T>(id, model);
+		final RequiredTextField<T> requiredTextField = new RequiredTextField<>(id, model);
 		requiredTextField.setOutputMarkupId(true);
 		return requiredTextField;
 	}
