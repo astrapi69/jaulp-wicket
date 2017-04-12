@@ -105,6 +105,11 @@ Do not hesitate to contact the jaulp.wicket developers with your questions, conc
 
 - Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/jaulp.wicket/issues).
 
+
+## Note
+
+No animals were harmed in the making of this library.
+
 # Donate
 
 If you like this library, please consider a donation through
