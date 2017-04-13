@@ -5,12 +5,11 @@
 
 	<parent>
 		<groupId>de.alpharogroup</groupId>
-		<artifactId>jaulp.wicket</artifactId>
-		<version>7.3.1</version>
-		<relativePath>..</relativePath>
+		<artifactId>jaulp-wicket</artifactId>
+		<version>7.5.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaulp.wicket.base</artifactId>
+	<artifactId>jaulp-wicket-base</artifactId>
 
 	<name>${project.artifactId}</name>
 

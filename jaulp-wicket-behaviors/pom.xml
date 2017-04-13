@@ -5,11 +5,11 @@
 
 	<parent>
 		<groupId>de.alpharogroup</groupId>
-		<artifactId>jaulp.wicket</artifactId>
-		<version>7.3.1</version>
+		<artifactId>jaulp-wicket</artifactId>
+		<version>7.5.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>jaulp.wicket.behaviors</artifactId>
+	<artifactId>jaulp-wicket-behaviors</artifactId>
 	<packaging>jar</packaging>
 
 	<name>${project.artifactId}</name>
@@ -18,7 +18,7 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.wicket.base</artifactId>
+			<artifactId>jaulp-wicket-base</artifactId>
 		</dependency>
 		<!-- WIQUERY DEPENDENCIES -->
 		<dependency>
