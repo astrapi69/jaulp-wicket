@@ -16,7 +16,6 @@
 package de.alpharogroup.wicket.components.form.checkbox.image;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -45,13 +44,13 @@ public class ImageChoicesModelBean implements Serializable
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The choices. */
 	private List<ImageCheckboxModelBean> choices;
-	
+
 	/** The selected items. */
-	private List<ImageCheckboxModelBean> selectedItems = new ArrayList<>();
-	
+	private List<ImageCheckboxModelBean> selectedItems;
+
 	/** The label property expression. */
 	private String labelPropertyExpression;
 }

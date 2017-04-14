@@ -27,7 +27,7 @@ import lombok.ToString;
 
 /**
  * The Class {@link ChangePasswordModelBean} captures the data for change the password of a user.
- * 
+ *
  * @author Asterios Raptis
  */
 @Getter
@@ -46,12 +46,15 @@ public class ChangePasswordModelBean implements Serializable
 	private static final long serialVersionUID = 1L;
 
 	/** The current password of a user. */
+	@Builder.Default
 	private String currentPassword = "";
 
 	/** The new password of a user. */
+	@Builder.Default
 	private String newPassword = "";
 
 	/** The repeated new password of a user. */
+	@Builder.Default
 	private String repeatNewPassword = "";
 
 }
