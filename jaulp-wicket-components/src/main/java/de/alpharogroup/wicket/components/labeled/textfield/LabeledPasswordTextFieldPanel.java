@@ -69,6 +69,16 @@ public class LabeledPasswordTextFieldPanel<T, M> extends LabeledFormComponentPan
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public FormComponent<T> getFormComponent()
+	{
+		return ((FormComponent<T>)this.passwordTextField);
+	}
+
+	/**
 	 * Factory method for create the new {@link PasswordTextField}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link PasswordTextField}.
@@ -83,16 +93,6 @@ public class LabeledPasswordTextFieldPanel<T, M> extends LabeledFormComponentPan
 	{
 		return ComponentFactory.newPasswordTextField(id,
 			new PropertyModel<String>(model.getObject(), getId()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public FormComponent<T> getFormComponent()
-	{
-		return ((FormComponent<T>)this.passwordTextField);
 	}
 
 }

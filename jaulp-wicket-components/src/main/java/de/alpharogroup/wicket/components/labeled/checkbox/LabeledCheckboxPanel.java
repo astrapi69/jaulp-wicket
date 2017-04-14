@@ -69,6 +69,16 @@ public class LabeledCheckboxPanel<T, M> extends LabeledFormComponentPanel<T, M>
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public FormComponent<T> getFormComponent()
+	{
+		return (FormComponent<T>)this.checkBox;
+	}
+
+	/**
 	 * Factory method for create a new {@link CheckBox}. This method is invoked in the constructor
 	 * from this class and can be overridden so users can provide their own version of a new
 	 * {@link CheckBox}.
@@ -83,16 +93,6 @@ public class LabeledCheckboxPanel<T, M> extends LabeledFormComponentPanel<T, M>
 	{
 		final IModel<Boolean> propertyModel = new PropertyModel<>(model.getObject(), this.getId());
 		return ComponentFactory.newCheckBox(id, propertyModel);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public FormComponent<T> getFormComponent()
-	{
-		return (FormComponent<T>)this.checkBox;
 	}
 
 }

@@ -24,8 +24,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import lombok.NoArgsConstructor;
-
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -35,6 +33,7 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResourcesExtensions;
 import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
+import lombok.NoArgsConstructor;
 
 /**
  * The Class PackageResourceReferences.
@@ -61,8 +60,8 @@ public class PackageResourceReferences
 	{
 		for (final String cssFilename : cssFilenames)
 		{
-			final HeaderItem item = CssHeaderItem.forReference(new PackageResourceReference(scope,
-				cssFilename));
+			final HeaderItem item = CssHeaderItem
+				.forReference(new PackageResourceReference(scope, cssFilename));
 			response.render(item);
 		}
 	}
@@ -82,8 +81,8 @@ public class PackageResourceReferences
 	{
 		for (final String jsFilename : jsFilenames)
 		{
-			final HeaderItem item = JavaScriptHeaderItem.forReference(new PackageResourceReference(
-				scope, jsFilename));
+			final HeaderItem item = JavaScriptHeaderItem
+				.forReference(new PackageResourceReference(scope, jsFilename));
 			response.render(item);
 		}
 	}
@@ -151,8 +150,8 @@ public class PackageResourceReferences
 		final Class<?>[] interfaces = searchClass.getInterfaces();
 		for (final Class<?> iface : interfaces)
 		{
-			packageResourceReferences = addFoundPackageResourceReferences(
-				packageResourceReferences, iface);
+			packageResourceReferences = addFoundPackageResourceReferences(packageResourceReferences,
+				iface);
 		}
 		return packageResourceReferences;
 	}
@@ -185,6 +184,25 @@ public class PackageResourceReferences
 	}
 
 	/**
+	 * Initialize resources from the given packages.
+	 *
+	 * @param packageNames
+	 *            the package names
+	 * @throws ClassNotFoundException
+	 *             occurs if a given class cannot be located by the specified class loader
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	public void initializeResources(final List<String> packageNames)
+		throws ClassNotFoundException, IOException
+	{
+		for (final String packageName : packageNames)
+		{
+			initializeResources(packageName);
+		}
+	}
+
+	/**
 	 * Initialize resources from the given package.
 	 *
 	 * @param packageName
@@ -194,8 +212,8 @@ public class PackageResourceReferences
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void initializeResources(final String packageName) throws ClassNotFoundException,
-		IOException
+	public void initializeResources(final String packageName)
+		throws ClassNotFoundException, IOException
 	{
 		final Map<Class<?>, ImportResource[]> resourcesMap = ImportResourcesExtensions
 			.getImportResources(packageName);
@@ -212,19 +230,19 @@ public class PackageResourceReferences
 					final PackageResourceReference t = new PackageResourceReference(key,
 						importResource.resourceName());
 
-					packageResourceReferences.add(new PackageResourceReferenceWrapper(t,
-						ResourceReferenceType.JS));
+					packageResourceReferences
+						.add(new PackageResourceReferenceWrapper(t, ResourceReferenceType.JS));
 				}
 				else if (importResource.resourceType().equalsIgnoreCase("css"))
 				{
 					final PackageResourceReference t = new PackageResourceReference(key,
 						importResource.resourceName());
-					packageResourceReferences.add(new PackageResourceReferenceWrapper(t,
-						ResourceReferenceType.CSS));
+					packageResourceReferences
+						.add(new PackageResourceReferenceWrapper(t, ResourceReferenceType.CSS));
 				}
 			}
-			PackageResourceReferences.getInstance().getPackageResourceReferenceMap()
-				.put(key, packageResourceReferences);
+			PackageResourceReferences.getInstance().getPackageResourceReferenceMap().put(key,
+				packageResourceReferences);
 		}
 	}
 
@@ -238,28 +256,10 @@ public class PackageResourceReferences
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public void initializeResources(final String[] packageNames) throws ClassNotFoundException,
-		IOException
+	public void initializeResources(final String[] packageNames)
+		throws ClassNotFoundException, IOException
 	{
 		initializeResources(Arrays.asList(packageNames));
-	}
-
-	/**
-	 * Initialize resources from the given packages.
-	 *
-	 * @param packageNames
-	 *            the package names
-	 * @throws ClassNotFoundException
-	 *             occurs if a given class cannot be located by the specified class loader
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	public void initializeResources(final List<String> packageNames) throws ClassNotFoundException,
-		IOException
-	{
-		for(final String packageName : packageNames) {
-			initializeResources(packageName);
-		}
 	}
 
 }

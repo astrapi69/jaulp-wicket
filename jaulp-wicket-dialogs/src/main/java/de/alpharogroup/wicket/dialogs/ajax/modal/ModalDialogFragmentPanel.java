@@ -46,8 +46,8 @@ public abstract class ModalDialogFragmentPanel<T> extends BasePanel<T>
 	 * The constant for the javascript to prevent to show confirmation dialog from browser(IE and
 	 * Firefox). This is how to prevent IE and Firefox dialog popup when trying to setResponsePage()
 	 * or set an info message from a wicket modalWindow per below. Dialog popup demands an answer
-	 * to:
-	 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
+	 * to: "This page is asking you to confirm that you want to leave - data you have entered may
+	 * not be saved."
 	 **/
 	public static final String WICKET_WINDOW_UNLOAD_CONFIRMATION_FALSE_JS = "Wicket.Window.unloadConfirmation = false;";
 
@@ -194,8 +194,8 @@ public abstract class ModalDialogFragmentPanel<T> extends BasePanel<T>
 		/**
 		 * This is how to prevent IE and Firefox dialog popup when trying to setResponsePage() or
 		 * set an info message from a wicket modalWindow per below. Dialog popup demands an answer
-		 * to:
-		 * "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
+		 * to: "This page is asking you to confirm that you want to leave - data you have entered
+		 * may not be saved."
 		 **/
 		target.prependJavaScript(WICKET_WINDOW_UNLOAD_CONFIRMATION_FALSE_JS);
 		getModalWindow().show(target);

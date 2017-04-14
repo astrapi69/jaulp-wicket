@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.i18n.list;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -28,6 +26,7 @@ import org.apache.wicket.model.Model;
 import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class HeaderContentListPanel takes a header resource key and a list of content resource keys

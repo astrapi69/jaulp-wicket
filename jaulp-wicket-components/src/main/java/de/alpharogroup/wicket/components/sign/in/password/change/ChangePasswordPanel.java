@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.in.password.change;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -26,6 +24,7 @@ import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
+import lombok.Getter;
 
 
 /**

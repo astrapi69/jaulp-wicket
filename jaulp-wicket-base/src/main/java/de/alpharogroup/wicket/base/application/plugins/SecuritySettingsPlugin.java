@@ -83,7 +83,8 @@ public class SecuritySettingsPlugin implements Serializable
 		final Application app = Application.get();
 		if (null == app)
 		{
-			throw new IllegalStateException("No wicket application is bound to the current thread.");
+			throw new IllegalStateException(
+				"No wicket application is bound to the current thread.");
 		}
 		final SecuritySettingsPlugin plugin = app.getMetaData(SECURITY_SETTINGS_PLUGIN_KEY);
 		if (null == plugin)

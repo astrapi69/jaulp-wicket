@@ -31,11 +31,10 @@ public class JqueryStatementsBehaviorTest
 	public void testBehavior()
 	{
 		final JqueryStatementsBehavior wiQueryStatementBehavior = new JqueryStatementsBehavior()
-			.add(
-				new BuildableChainableStatement.Builder().label("find")
-					.args(JsUtils.quotes("table:first-child")).build()).add(
-				new BuildableChainableStatement.Builder().label("addClass")
-					.args(JsUtils.quotes("tablefix")).build());
+			.add(new BuildableChainableStatement.Builder().label("find")
+				.args(JsUtils.quotes("table:first-child")).build())
+			.add(new BuildableChainableStatement.Builder().label("addClass")
+				.args(JsUtils.quotes("tablefix")).build());
 		// $('').find('table:first-child').addClass('tablefix');
 
 		final CharSequence actual = wiQueryStatementBehavior.newRenderedStatement(null);
@@ -83,9 +82,9 @@ public class JqueryStatementsBehaviorTest
 		});
 		final CharSequence charSequence = jsQuery.render();
 		// @formatter:off
-		//		$('.foo').each(function() {
-		//			$(this).css(border, 1px solid red);
-		//		});
+		// $('.foo').each(function() {
+		// $(this).css(border, 1px solid red);
+		// });
 		// @formatter:on
 		System.out.println(charSequence);
 
@@ -107,7 +106,7 @@ public class JqueryStatementsBehaviorTest
 		CharSequence charSequence = scope.render();
 		// @formatter:off
 		// function(event){
-		//      alert('b with event:' + event);
+		// alert('b with event:' + event);
 		// }
 		// @formatter:on
 		System.out.println(charSequence);

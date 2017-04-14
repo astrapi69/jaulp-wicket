@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.base;
 
-import lombok.Getter;
-
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
@@ -24,6 +22,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
+import lombok.Getter;
 
 /**
  * The Class GenericBasePage.
@@ -88,9 +87,9 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	 */
 	protected IModel<String> newDescription()
 	{
-		return ResourceModelFactory
-			.newResourceModel(ResourceBundleKey.builder().key("page.meta.description")
-				.defaultValue("").build(), this);
+		return ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("page.meta.description").defaultValue("").build(),
+			this);
 	}
 
 	/**
@@ -111,8 +110,8 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 	 */
 	protected IModel<String> newTitle()
 	{
-		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key("page.title")
-			.defaultValue("Home page").build(), this);
+		return ResourceModelFactory.newResourceModel(
+			ResourceBundleKey.builder().key("page.title").defaultValue("Home page").build(), this);
 	}
 
 	/**
@@ -125,10 +124,10 @@ public abstract class GenericBasePage<T> extends AbstractGenericBasePage<T>
 		// set content of the <title> tag
 		addOrReplace(new Label("title", title = newTitle()));
 		// set content attribute of the <meta name="keywords"> tag
-		addOrReplace(new Label("keywords", "").add(new AttributeAppender("content",
-			keywords = newKeywords(), " ")));
+		addOrReplace(new Label("keywords", "")
+			.add(new AttributeAppender("content", keywords = newKeywords(), " ")));
 		// set content attribute of the <meta name="description"> tag
-		addOrReplace(new Label("description", "").add(new AttributeAppender("content",
-			description = newDescription(), " ")));
+		addOrReplace(new Label("description", "")
+			.add(new AttributeAppender("content", description = newDescription(), " ")));
 	}
 }

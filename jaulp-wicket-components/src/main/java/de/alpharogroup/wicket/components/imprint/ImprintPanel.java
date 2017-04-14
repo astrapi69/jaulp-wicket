@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.imprint;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
@@ -27,6 +25,7 @@ import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.mailto.MailToPanel;
 import de.alpharogroup.wicket.components.termofuse.disclaimer.DisclaimerPanel;
+import lombok.Getter;
 
 /**
  * The Class ImprintPanel.

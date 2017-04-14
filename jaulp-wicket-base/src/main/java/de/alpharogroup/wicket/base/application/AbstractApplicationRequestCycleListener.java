@@ -38,6 +38,15 @@ public abstract class AbstractApplicationRequestCycleListener extends AbstractRe
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Abstract factory method for create an application specific exception page.
+	 *
+	 * @param exception
+	 *            the exception
+	 * @return the exception page
+	 */
+	public abstract IRequestablePage newExceptionPage(final Exception exception);
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -45,13 +54,5 @@ public abstract class AbstractApplicationRequestCycleListener extends AbstractRe
 	{
 		return new RenderPageRequestHandler(new PageProvider(newExceptionPage(exception)));
 	}
-
-	/**
-	 * Abstract factory method for create an application specific exception page.
-	 *
-	 * @param exception the exception
-	 * @return the exception page
-	 */
-	public abstract IRequestablePage newExceptionPage(final Exception exception);
 
 }

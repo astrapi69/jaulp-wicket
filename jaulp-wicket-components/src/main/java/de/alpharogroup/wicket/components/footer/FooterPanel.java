@@ -15,12 +15,11 @@
  */
 package de.alpharogroup.wicket.components.footer;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
+import lombok.Getter;
 
 /**
  * A component that can be used for the footer area.

@@ -15,10 +15,10 @@
  */
 package de.alpharogroup.wicket.model.dropdownchoices;
 
+import org.apache.wicket.util.io.IClusterable;
+
 import lombok.Getter;
 import lombok.Setter;
-
-import org.apache.wicket.util.io.IClusterable;
 
 /**
  * The Class {@link SelectOptionModel}.

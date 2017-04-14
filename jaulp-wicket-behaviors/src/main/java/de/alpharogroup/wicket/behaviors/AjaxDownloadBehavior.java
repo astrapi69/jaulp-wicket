@@ -58,6 +58,20 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 	}
 
 	/**
+	 * Hook method for a file name which will let the browser prompt with a save/open dialog.
+	 * 
+	 * @return the file name
+	 */
+	protected abstract String getFileName();
+
+	/**
+	 * Hook method providing the actual resource stream.
+	 * 
+	 * @return the resource stream.
+	 */
+	protected abstract IResourceStream getResourceStream();
+
+	/**
 	 * Call this method to initiate the download.
 	 * 
 	 * @param target
@@ -87,18 +101,4 @@ public abstract class AjaxDownloadBehavior extends AbstractAjaxBehavior
 		handler.setContentDisposition(ContentDisposition.ATTACHMENT);
 		getComponent().getRequestCycle().scheduleRequestHandlerAfterCurrent(handler);
 	}
-
-	/**
-	 * Hook method for a file name which will let the browser prompt with a save/open dialog.
-	 * 
-	 * @return the file name
-	 */
-	protected abstract String getFileName();
-
-	/**
-	 * Hook method providing the actual resource stream.
-	 * 
-	 * @return the resource stream.
-	 */
-	protected abstract IResourceStream getResourceStream();
 }

@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.in;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.EmailTextField;
@@ -32,6 +30,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
+import lombok.Getter;
 
 /**
  * The Class {@link SigninPanel}.
@@ -64,16 +63,6 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	{
 		super(id, Args.notNull(model, "model"));
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitialize() {
-		super.onInitialize();
-		add(email = newEmailTextField("email", getModel()));
-		add(password = newPasswordTextField("password", getModel()));
-	};
 
 	/**
 	 * Factory method for creating a new {@link Component} for the email. This method is invoked in the
@@ -116,7 +105,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 		};
 
 		return emailTextField;
-	}
+	};
 
 	/**
 	 * Factory method for creating the EmailTextField for the password. This method is invoked in
@@ -159,6 +148,16 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 			}
 		};
 		return pwTextField;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize() {
+		super.onInitialize();
+		add(email = newEmailTextField("email", getModel()));
+		add(password = newPasswordTextField("password", getModel()));
 	}
 
 }

@@ -130,8 +130,8 @@ public class LinkBehavior extends Behavior
 		tag.put("onmouseover", "this.style.backgroundColor = '" + onmouseoverColor
 			+ "';this.style.cursor = 'pointer';");
 
-		tag.put("onmouseout", "this.style.backgroundColor = '" + onmouseoutColor
-			+ "';this.style.cursor ='default';");
+		tag.put("onmouseout",
+			"this.style.backgroundColor = '" + onmouseoutColor + "';this.style.cursor ='default';");
 
 		tag.put("onclick", "document.location.href = '" + absolutePath + "';");
 

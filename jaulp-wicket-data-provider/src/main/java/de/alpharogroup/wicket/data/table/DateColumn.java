@@ -58,6 +58,22 @@ public class DateColumn<T> extends PropertyColumn<T, Void>
 	}
 
 	/**
+	 * Callback method for provide specific behavior on method
+	 * {@link AbstractReadOnlyModel#getObject()}.
+	 *
+	 * @param rowModel
+	 *            the row model
+	 * @return the string
+	 */
+	protected String onGetObject(final IModel<T> rowModel)
+	{
+		final IModel<?> propertyModel = DateColumn.this.getDataModel(rowModel);
+		final Date value = (Date)propertyModel.getObject();
+		final SimpleDateFormat format = new SimpleDateFormat(dateFormat);
+		return format.format(value);
+	}
+
+	/**
 	 * {@inheritDoc}
 	 **/
 	@Override
@@ -75,19 +91,5 @@ public class DateColumn<T> extends PropertyColumn<T, Void>
 				return onGetObject(rowModel);
 			}
 		}));
-	}
-
-	/**
-	 * Callback method for provide specific behavior on method {@link AbstractReadOnlyModel#getObject()}.
-	 *
-	 * @param rowModel the row model
-	 * @return the string
-	 */
-	protected String onGetObject(final IModel<T> rowModel)
-	{
-		final IModel<?> propertyModel = DateColumn.this.getDataModel(rowModel);
-		final Date value = (Date)propertyModel.getObject();
-		final SimpleDateFormat format = new SimpleDateFormat(dateFormat);
-		return format.format(value);
 	}
 }

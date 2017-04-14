@@ -131,11 +131,6 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 		LOGGER.error(reportThrowableModel.getStackTrace());
 	}
 
-	protected MultiLineLabel newToReplace(final String id, final IModel<String> model) {
-		final MultiLineLabel multiLineLabel = ComponentFactory.newMultiLineLabel(id, model);
-		return multiLineLabel;
-	}
-
 	/**
 	 * Abstract factory method for create a new {@link String} of the affected username. This method
 	 * is invoked in the constructor from the derived classes and have to be overridden so users can
@@ -260,7 +255,6 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	 */
 	protected abstract Class<? extends IRequestablePage> newResponsePageClass();
 
-
 	/**
 	 * Abstract factory method for create a new {@link String} of the root username. This method is
 	 * invoked in the constructor from the derived classes and have to be overridden so users can
@@ -269,6 +263,7 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	 * @return the new {@link String} of the root username.
 	 */
 	protected abstract String newRootUsername();
+
 
 	/**
 	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
@@ -297,6 +292,11 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 				onSubmitError(null);
 			}
 		};
+	}
+
+	protected MultiLineLabel newToReplace(final String id, final IModel<String> model) {
+		final MultiLineLabel multiLineLabel = ComponentFactory.newMultiLineLabel(id, model);
+		return multiLineLabel;
 	}
 
 	/**

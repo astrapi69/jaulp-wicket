@@ -22,12 +22,14 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 /**
  * A factory for creating PageProvider objects.
  */
-public class PageProviderFactory {
+public class PageProviderFactory
+{
 
 	/**
 	 * Factory method to create a new Page provider with the given page.
 	 *
-	 * @param pageClass the page class
+	 * @param pageClass
+	 *            the page class
 	 * @return the page provider
 	 */
 	public static PageProvider newPageProvider(final Class<? extends IRequestablePage> pageClass)
@@ -38,11 +40,14 @@ public class PageProviderFactory {
 	/**
 	 * Factory method to create a new Page provider with the given page.
 	 *
-	 * @param pageClass the page class
-	 * @param pageParameters the page parameters
+	 * @param pageClass
+	 *            the page class
+	 * @param pageParameters
+	 *            the page parameters
 	 * @return the page provider
 	 */
-	public static PageProvider newPageProvider(final Class<? extends IRequestablePage> pageClass, final PageParameters pageParameters)
+	public static PageProvider newPageProvider(final Class<? extends IRequestablePage> pageClass,
+		final PageParameters pageParameters)
 	{
 		return new PageProvider(pageClass, pageParameters);
 	}
@@ -50,7 +55,8 @@ public class PageProviderFactory {
 	/**
 	 * Factory method to create a new Page provider with the given page.
 	 *
-	 * @param page            the page
+	 * @param page
+	 *            the page
 	 * @return the page provider
 	 */
 	public static PageProvider newPageProvider(final IRequestablePage page)

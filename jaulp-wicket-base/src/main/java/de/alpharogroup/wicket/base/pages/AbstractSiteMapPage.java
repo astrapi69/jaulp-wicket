@@ -97,18 +97,18 @@ public abstract class AbstractSiteMapPage extends WebPage
 		}
 		catch (final ClassCastException e)
 		{
-			LOGGER.error(e.getClass().getName()
-				+ " occured while scanning for MountPath annotations.", e);
+			LOGGER.error(
+				e.getClass().getName() + " occured while scanning for MountPath annotations.", e);
 		}
 		catch (final ClassNotFoundException e)
 		{
-			LOGGER.error(e.getClass().getName()
-				+ " occured while scanning for MountPath annotations.", e);
+			LOGGER.error(
+				e.getClass().getName() + " occured while scanning for MountPath annotations.", e);
 		}
 		catch (final IOException e)
 		{
-			LOGGER.error(e.getClass().getName()
-				+ " occured while scanning for MountPath annotations.", e);
+			LOGGER.error(
+				e.getClass().getName() + " occured while scanning for MountPath annotations.", e);
 		}
 		return pages;
 	}

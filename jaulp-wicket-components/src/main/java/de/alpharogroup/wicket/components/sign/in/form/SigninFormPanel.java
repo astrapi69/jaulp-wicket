@@ -79,23 +79,6 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 	}
 
 	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitialize() {
-		super.onInitialize();
-		add(form = newForm("form", getModel()));
-		form.add(signinPanel = newSigninPanel("signinPanel", getModel()));
-		// Create submit button for the form
-		submitButton = newButton("submitButton");
-		submitButton.add(
-			buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label", "Sign In"));
-		form.add(submitButton);
-		passwordForgottenLink = newPasswordForgottenLink("passwordForgottenLink", getModel());
-		add(passwordForgottenLink);
-	};
-
-	/**
 	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
 	 * new {@link Button}.
@@ -114,16 +97,6 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 			private static final long serialVersionUID = 1L;
 
 			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
-			{
-				SigninFormPanel.this.onSignin(target, SigninFormPanel.this.form);
-			}
-
-
-			/**
 			 * Listener method invoked on form submit with errors
 			 *
 			 * @param target
@@ -134,8 +107,18 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 			{
 				SigninFormPanel.this.onSignin(target, SigninFormPanel.this.form);
 			}
+
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void onSubmit(final AjaxRequestTarget target, final Form<?> form)
+			{
+				SigninFormPanel.this.onSignin(target, SigninFormPanel.this.form);
+			}
 		};
-	}
+	};
 
 	/**
 	 * Factory method for creating the new {@link Label} for the button. This method is invoked in
@@ -211,7 +194,6 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 		return linkPanel;
 	}
 
-
 	/**
 	 * Factory method for creating the new {@link SigninPanel} that contains the TextField for the
 	 * email and password. This method is invoked in the constructor from the derived classes and
@@ -228,6 +210,34 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 	{
 		final Component component = new SigninPanel<>(id, model);
 		return component;
+	}
+
+
+	/**
+	 * Abstract callback method that have to be overwritten to provide the action for signin.
+	 *
+	 * @param target
+	 *            the target
+	 * @param form
+	 *            the form
+	 */
+	protected abstract void onError(final AjaxRequestTarget target, final Form<?> form);
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize() {
+		super.onInitialize();
+		add(form = newForm("form", getModel()));
+		form.add(signinPanel = newSigninPanel("signinPanel", getModel()));
+		// Create submit button for the form
+		submitButton = newButton("submitButton");
+		submitButton.add(
+			buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.in.label", "Sign In"));
+		form.add(submitButton);
+		passwordForgottenLink = newPasswordForgottenLink("passwordForgottenLink", getModel());
+		add(passwordForgottenLink);
 	}
 
 	/**
@@ -250,15 +260,5 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 	 *            the form
 	 */
 	protected abstract void onSignin(final AjaxRequestTarget target, final Form<?> form);
-
-	/**
-	 * Abstract callback method that have to be overwritten to provide the action for signin.
-	 *
-	 * @param target
-	 *            the target
-	 * @param form
-	 *            the form
-	 */
-	protected abstract void onError(final AjaxRequestTarget target, final Form<?> form);
 
 }

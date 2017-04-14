@@ -58,8 +58,8 @@ public final class HeaderResponseExtensions
 				if (packageResourceReference.getType().equals(ResourceReferenceType.JS))
 				{
 					final JavaScriptResourceReference reference = new JavaScriptResourceReference(
-						componentClass, packageResourceReference.getPackageResourceReference()
-							.getName());
+						componentClass,
+						packageResourceReference.getPackageResourceReference().getName());
 					if (!response.wasRendered(reference))
 					{
 						final JavaScriptReferenceHeaderItem headerItem = JavaScriptHeaderItem

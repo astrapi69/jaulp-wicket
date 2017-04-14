@@ -38,7 +38,8 @@ import lombok.Setter;
 public class AbstractSortFilterDataProvider<T extends Serializable, S extends Serializable, F extends Serializable>
 	extends
 		AbstractSortableDataProvider<T, S>
-	implements IFilterStateLocator<F>
+	implements
+		IFilterStateLocator<F>
 {
 
 	/**

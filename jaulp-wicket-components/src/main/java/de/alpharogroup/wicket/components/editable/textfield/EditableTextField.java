@@ -42,13 +42,55 @@ public class EditableTextField<T> extends BasePanel<T>
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Factory method for create a new {@link EditableTextField} object.
+	 *
+	 * @param <T>
+	 *            the generic type of model object
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @return the new created {@link EditableTextField} object.
+	 */
+	public static <T> EditableTextField<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
+	{
+		return EditableTextField.of(id, model, labelModel, ModeContext.EDIT_MODE);
+	}
+	/**
+	 * Factory method for create a new {@link EditableTextField} object.
+	 *
+	 * @param <T>
+	 *            the generic type of model object
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @param modeContext
+	 *            the editable flag
+	 * @return the new created {@link EditableTextField} object.
+	 */
+	public static <T> EditableTextField<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel, final ModeContext modeContext)
+	{
+		final EditableTextField<T> editableTextField = new EditableTextField<>(id, model,
+			labelModel, modeContext);
+		return editableTextField;
+	}
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	@Setter
 	private ModeContext modeContext = ModeContext.EDIT_MODE;
+
 	/** The swap panel. */
 	@Getter
 	private SwapComponentsFragmentPanel<T> swapPanel;
+
 	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
@@ -182,48 +224,6 @@ public class EditableTextField<T> extends BasePanel<T>
 		{
 			modeContext = ModeContext.VIEW_MODE;
 		}
-	}
-
-	/**
-	 * Factory method for create a new {@link EditableTextField} object.
-	 *
-	 * @param <T>
-	 *            the generic type of model object
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @param labelModel
-	 *            the label model
-	 * @return the new created {@link EditableTextField} object.
-	 */
-	public static <T> EditableTextField<T> of(final String id, final IModel<T> model,
-		final IModel<String> labelModel)
-	{
-		return EditableTextField.of(id, model, labelModel, ModeContext.EDIT_MODE);
-	}
-
-	/**
-	 * Factory method for create a new {@link EditableTextField} object.
-	 *
-	 * @param <T>
-	 *            the generic type of model object
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @param labelModel
-	 *            the label model
-	 * @param modeContext
-	 *            the editable flag
-	 * @return the new created {@link EditableTextField} object.
-	 */
-	public static <T> EditableTextField<T> of(final String id, final IModel<T> model,
-		final IModel<String> labelModel, final ModeContext modeContext)
-	{
-		final EditableTextField<T> editableTextField = new EditableTextField<>(id, model,
-			labelModel, modeContext);
-		return editableTextField;
 	}
 
 }

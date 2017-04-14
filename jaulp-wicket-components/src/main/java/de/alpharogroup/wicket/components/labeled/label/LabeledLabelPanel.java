@@ -15,14 +15,13 @@
  */
 package de.alpharogroup.wicket.components.labeled.label;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * Convenience class for labeled Label for form uneditable components.

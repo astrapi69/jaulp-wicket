@@ -86,9 +86,9 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 		final T currentModelObject = this.model.getObject();
 		if (!Objects.equals(currentModelObject, this.previousModelObject))
 		{
-			this.previousModelObject = currentModelObject;	
+			this.previousModelObject = currentModelObject;
 			component.modelChanging();
-			component.modelChanged();			
+			component.modelChanged();
 			final AjaxRequestTarget ajaxRequestTarget = ComponentFinder.findAjaxRequestTarget();
 			if (ajaxRequestTarget != null)
 			{

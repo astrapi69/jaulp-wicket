@@ -67,11 +67,31 @@ public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void convertInput()
+	{
+
+		final M modelObject = getModel().getObject();
+		setConvertedInput(modelObject);
+	}
+
+	/**
 	 * Abstract method for get the form component.
 	 *
 	 * @return the form component
 	 */
 	public abstract FormComponent<T> getFormComponent();
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getInput()
+	{
+		return getFormComponent().getInput();
+	}
 
 	/**
 	 * Gets the label component.
@@ -122,37 +142,6 @@ public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onModelChanged()
-	{
-		super.onModelChanged();
-		getFormComponent().modelChanged();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onModelChanging()
-	{
-		super.onModelChanging();
-		getFormComponent().modelChanging();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void convertInput()
-	{
-
-		final M modelObject = getModel().getObject();
-		setConvertedInput(modelObject);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	protected void onBeforeRender()
 	{
 		if (isRequired())
@@ -167,8 +156,19 @@ public abstract class LabeledFormComponentPanel<T, M> extends FormComponentPanel
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getInput()
+	protected void onModelChanged()
 	{
-		return getFormComponent().getInput();
+		super.onModelChanged();
+		getFormComponent().modelChanged();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onModelChanging()
+	{
+		super.onModelChanging();
+		getFormComponent().modelChanging();
 	}
 }

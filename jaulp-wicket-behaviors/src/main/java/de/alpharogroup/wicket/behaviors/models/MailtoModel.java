@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.behaviors.models;
 
 import java.io.Serializable;
 
+import org.apache.wicket.model.IModel;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -24,8 +26,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import org.apache.wicket.model.IModel;
 
 /**
  * The Class MailtoModel.

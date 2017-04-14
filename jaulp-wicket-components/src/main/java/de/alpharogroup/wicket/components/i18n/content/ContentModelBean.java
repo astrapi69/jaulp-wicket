@@ -17,6 +17,7 @@ package de.alpharogroup.wicket.components.i18n.content;
 
 import java.io.Serializable;
 
+import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -25,7 +26,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 
 /**
  * The Class {@link ContentModelBean} holds data for the resource bundle keys of the header and content area.

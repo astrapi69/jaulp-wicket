@@ -15,9 +15,9 @@
  */
 package de.alpharogroup.wicket.base.util.resource;
 
-import lombok.Getter;
-
 import org.apache.wicket.request.resource.ByteArrayResource;
+
+import lombok.Getter;
 
 /**
  * The Class DatabaseImageResource.

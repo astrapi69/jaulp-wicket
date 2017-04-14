@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.termofuse.rightsandduties;
 
 import java.io.Serializable;
 
+import de.alpharogroup.wicket.components.i18n.list.ContentListModelBean;
+import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -24,8 +26,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import de.alpharogroup.wicket.components.i18n.list.ContentListModelBean;
-import de.alpharogroup.wicket.components.i18n.list.HeaderContentListModelBean;
 
 /**
  * The Class {@link RightsAndDutiesModelBean} captures the data for the rights and duties.

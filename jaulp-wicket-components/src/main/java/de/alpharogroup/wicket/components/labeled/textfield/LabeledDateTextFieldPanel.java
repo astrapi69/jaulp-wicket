@@ -72,6 +72,16 @@ public class LabeledDateTextFieldPanel<T, M> extends LabeledFormComponentPanel<T
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public FormComponent<T> getFormComponent()
+	{
+		return (FormComponent<T>)this.dateTextField;
+	}
+
+	/**
 	 * Factory method for create the new {@link DateTextField}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link DateTextField}.
@@ -123,16 +133,6 @@ public class LabeledDateTextFieldPanel<T, M> extends LabeledFormComponentPanel<T
 		dateTextField.add(datePicker);
 		dateTextField.setOutputMarkupId(true);
 		return dateTextField;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public FormComponent<T> getFormComponent()
-	{
-		return (FormComponent<T>)this.dateTextField;
 	}
 
 }

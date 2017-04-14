@@ -15,13 +15,12 @@
  */
 package de.alpharogroup.wicket;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
-
 import org.apache.wicket.request.resource.PackageResourceReference;
 
 import de.alpharogroup.wicket.base.enums.ResourceReferenceType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
  * The Class PackageResourceReferenceWrapper.

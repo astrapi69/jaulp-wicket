@@ -17,13 +17,12 @@ package de.alpharogroup.wicket.components.captcha.draw;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.apache.wicket.extensions.markup.html.captcha.CaptchaImageResource;
 
 import de.alpharogroup.random.Constants;
 import de.alpharogroup.random.RandomExtensions;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The Class {@link CaptchaModelBean} holds captcha data.

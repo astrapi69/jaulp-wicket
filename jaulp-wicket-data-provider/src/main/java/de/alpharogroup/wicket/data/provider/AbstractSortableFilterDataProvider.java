@@ -33,8 +33,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * The Class {@link AbstractSortableFilterDataProvider} is an abstract generic implementation for the
- * ISortableDataProvider and the IFilterStateLocator interface.
+ * The Class {@link AbstractSortableFilterDataProvider} is an abstract generic implementation for
+ * the ISortableDataProvider and the IFilterStateLocator interface.
  *
  * @author Asterios Raptis
  * @param <T>
@@ -56,11 +56,13 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	private static final long serialVersionUID = 1L;
 
 	/** The filter. */
-	@Getter @Setter
+	@Getter
+	@Setter
 	private F filterState;
 
 	/** The data. */
-	@Getter @Setter
+	@Getter
+	@Setter
 	private List<T> data;
 
 	/** The sort state. */
@@ -85,18 +87,6 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	{
 		setData(data);
 		this.sortState = newSortState();
-	}
-
-	/**
-	 * Factory method for creating the new {@link SingleSortState} for the sort state. This method is invoked
-	 * in the constructor from the derived classes and can be overridden so users can provide their
-	 * own version of a new {@link SingleSortState} for the sort state.
-	 *
-	 * @return the new {@link SingleSortState} for the sort state.
-	 */
-	protected SingleSortState<S> newSortState() {
-		return new SingleSortState<>();
-		
 	}
 
 	/**
@@ -155,6 +145,19 @@ public abstract class AbstractSortableFilterDataProvider<T extends Serializable,
 	public IModel<T> model(final T object)
 	{
 		return Model.of(object);
+	}
+
+	/**
+	 * Factory method for creating the new {@link SingleSortState} for the sort state. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link SingleSortState} for the sort state.
+	 *
+	 * @return the new {@link SingleSortState} for the sort state.
+	 */
+	protected SingleSortState<S> newSortState()
+	{
+		return new SingleSortState<>();
+
 	}
 
 	/**

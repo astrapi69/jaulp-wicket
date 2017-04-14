@@ -17,10 +17,10 @@ package de.alpharogroup.wicket.base.request.mapper;
 
 import java.io.Serializable;
 
-import lombok.Getter;
-
 import org.apache.wicket.request.IRequestMapper;
 import org.apache.wicket.util.lang.Args;
+
+import lombok.Getter;
 
 /**
  * Bean that holds the {@link IRequestMapper} and the compatibility score of it.

@@ -80,16 +80,6 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	}
 
 	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
-		initComponent();
-	}
-
-	/**
 	 * Inits the component.
 	 */
 	protected void initComponent()
@@ -181,6 +171,16 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	protected SignupPanel<BaseUsernameSignUpModel> newSignupPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
 		return new SignupPanel<>(id, model);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		initComponent();
 	}
 
 	/**

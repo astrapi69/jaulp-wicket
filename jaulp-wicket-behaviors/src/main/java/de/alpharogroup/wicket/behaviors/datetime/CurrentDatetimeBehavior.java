@@ -18,8 +18,6 @@ package de.alpharogroup.wicket.behaviors.datetime;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.NoArgsConstructor;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -30,6 +28,8 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.template.PackageTextTemplate;
 import org.apache.wicket.util.template.TextTemplate;
+
+import lombok.NoArgsConstructor;
 
 /**
  * This behavior adds the current time to a component.
@@ -90,10 +90,10 @@ public class CurrentDatetimeBehavior extends Behavior
 	public void renderHead(final Component component, final IHeaderResponse response)
 	{
 		super.renderHead(component, response);
-		response.render(JavaScriptHeaderItem.forReference(Application.get()
-			.getJavaScriptLibrarySettings().getJQueryReference()));
 		response.render(JavaScriptHeaderItem
-			.forReference(CurrentDatetimeBehavior.DATETIME_PLUGIN_REFERENCE));
+			.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
+		response.render(
+			JavaScriptHeaderItem.forReference(CurrentDatetimeBehavior.DATETIME_PLUGIN_REFERENCE));
 		final String js = generateJS(datetimeTemplate);
 		System.out.println(js);
 		response.render(OnLoadHeaderItem.forScript(generateJS(datetimeTemplate)));
