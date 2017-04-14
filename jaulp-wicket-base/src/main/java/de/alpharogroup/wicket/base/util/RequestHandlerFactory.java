@@ -1,3 +1,18 @@
+/**
+ * Copyright (C) 2010 Asterios Raptis
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.alpharogroup.wicket.base.util;
 
 import org.apache.wicket.core.request.handler.PageProvider;
@@ -11,24 +26,28 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  * A factory for creating RequestHandler objects and schedule the request handler to be executed
  * after the current one.
  */
-public class RequestHandlerFactory {
+public class RequestHandlerFactory
+{
 
 	/**
 	 * New request handler.
 	 *
-	 * @param pageProvider the page provider
+	 * @param pageProvider
+	 *            the page provider
 	 * @return the i request handler
 	 */
 	public static IRequestHandler newRequestHandler(final PageProvider pageProvider)
 	{
-		final RenderPageRequestHandler renderPageRequestHandler = new RenderPageRequestHandler(pageProvider);
+		final RenderPageRequestHandler renderPageRequestHandler = new RenderPageRequestHandler(
+			pageProvider);
 		return renderPageRequestHandler;
 	}
 
 	/**
 	 * Schedule the given class of type {@link IRequestablePage}.
 	 *
-	 * @param pageClass the page class
+	 * @param pageClass
+	 *            the page class
 	 */
 	public static void schedule(final Class<? extends IRequestablePage> pageClass)
 	{
@@ -38,7 +57,8 @@ public class RequestHandlerFactory {
 	/**
 	 * Schedule the given class of type {@link IRequestablePage}.
 	 *
-	 * @param pageClass the page class
+	 * @param pageClass
+	 *            the page class
 	 * @param parameters
 	 *            the parameters
 	 */

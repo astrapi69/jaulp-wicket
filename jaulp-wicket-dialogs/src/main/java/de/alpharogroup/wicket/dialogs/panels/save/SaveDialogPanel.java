@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.dialogs.panels.save;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -27,6 +25,7 @@ import org.apache.wicket.model.IModel;
 import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link SaveDialogPanel}.
@@ -96,19 +95,18 @@ public class SaveDialogPanel<T> extends BasePanel<T>
 		super(id, model);
 		setOutputMarkupId(true);
 		add(form = newForm("form", model));
-		form.add(descriptionLabel = newDescriptionLabel("descriptionLabel", ResourceBundleKey
-			.builder().key("save.description.label").build()));
-		form.add(textFieldLabel = newTextFieldLabel("textFieldLabel", ResourceBundleKey.builder()
-			.key("main.global.form.textfield.label").build()));
+		form.add(descriptionLabel = newDescriptionLabel("descriptionLabel",
+			ResourceBundleKey.builder().key("save.description.label").build()));
+		form.add(textFieldLabel = newTextFieldLabel("textFieldLabel",
+			ResourceBundleKey.builder().key("main.global.form.textfield.label").build()));
 		form.add(textField = newTextField("textField", model));
 
 		form.add(cancelButton = newCancelButton("cancelButton", form));
 		cancelButton.add(cancelLabel = newCancelLabel("cancelLabel", ResourceBundleKey.builder()
 			.key("main.global.cancel.button.label").defaultValue("Cancel").build()));
 		form.add(saveButton = newSaveButton("saveButton", form));
-		saveButton.add(saveLabel = newSaveLabel("saveLabel",
-			ResourceBundleKey.builder().key("main.global.save.button.label").defaultValue("Save")
-				.build()));
+		saveButton.add(saveLabel = newSaveLabel("saveLabel", ResourceBundleKey.builder()
+			.key("main.global.save.button.label").defaultValue("Save").build()));
 	}
 
 	/**

@@ -19,6 +19,11 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.Page;
+import org.apache.wicket.behavior.Behavior;
+
+import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -28,12 +33,6 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.Singular;
 import lombok.ToString;
-
-import org.apache.wicket.Component;
-import org.apache.wicket.Page;
-import org.apache.wicket.behavior.Behavior;
-
-import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 
 /**
  * The LinkItem is a bean that holds the data for building a link component.

@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.labeled.checkbox.img;
 
 import java.io.Serializable;
 
+import org.apache.wicket.request.resource.IResource;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -24,8 +26,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import org.apache.wicket.request.resource.IResource;
 
 /**
  * The Class {@link LabeledImageCheckboxModelBean} holds the image resource and the value if it checked.
@@ -49,7 +49,8 @@ public class LabeledImageCheckboxModelBean implements Serializable
 	 * The image resource
 	 */
 	private IResource imageResource;
-	
+
 	/** The checked flag. */
+	@Builder.Default
 	private Boolean checked = Boolean.FALSE;
 }

@@ -17,8 +17,6 @@ package de.alpharogroup.wicket.components.i18n.dropdownchoice.panels;
 
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -29,6 +27,7 @@ import org.apache.wicket.model.PropertyModel;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownChoice;
 import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesModel;
+import lombok.Getter;
 
 /**
  * The Class {@link TwoDropDownChoicesPanel} contains two dropdowns with a root and a child

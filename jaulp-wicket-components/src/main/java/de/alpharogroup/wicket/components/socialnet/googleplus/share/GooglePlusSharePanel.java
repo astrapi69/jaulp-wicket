@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.socialnet.googleplus.share;
 
-import lombok.Getter;
-
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -25,6 +23,7 @@ import org.apache.wicket.model.Model;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link GooglePlusSharePanel}.

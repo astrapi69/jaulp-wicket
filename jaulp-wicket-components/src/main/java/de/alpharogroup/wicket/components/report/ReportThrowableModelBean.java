@@ -17,6 +17,8 @@ package de.alpharogroup.wicket.components.report;
 
 import java.io.Serializable;
 
+import org.apache.wicket.request.component.IRequestablePage;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -24,8 +26,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import org.apache.wicket.request.component.IRequestablePage;
 
 /**
  * Instantiates a new report throwable model that is used to report an exception

@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.labeled.checkbox.img;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.model.IModel;
@@ -24,6 +22,7 @@ import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class LabeledImageCheckboxPanel.

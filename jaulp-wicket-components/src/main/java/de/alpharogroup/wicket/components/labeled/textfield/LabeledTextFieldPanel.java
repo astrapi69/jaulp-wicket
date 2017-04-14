@@ -68,6 +68,15 @@ public class LabeledTextFieldPanel<T, M> extends LabeledFormComponentPanel<T, M>
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public FormComponent<T> getFormComponent()
+	{
+		return this.textField;
+	}
+
+	/**
 	 * Factory method for create the new {@link TextField}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link TextField}.
@@ -81,15 +90,6 @@ public class LabeledTextFieldPanel<T, M> extends LabeledFormComponentPanel<T, M>
 	protected TextField<T> newTextField(final String id, final IModel<M> model)
 	{
 		return ComponentFactory.newTextField(id, new PropertyModel<T>(model.getObject(), getId()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public FormComponent<T> getFormComponent()
-	{
-		return this.textField;
 	}
 
 }

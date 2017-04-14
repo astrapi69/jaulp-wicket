@@ -66,6 +66,15 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T, M> extends LabeledFor
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public FormComponent<T> getFormComponent()
+	{
+		return this.autoCompleteTextField;
+	}
+
+	/**
 	 * Abstract Factory method for create the new {@link AutoCompleteTextField}. This method is
 	 * invoked in the constructor from the derived classes and have to be implemented so users can
 	 * provide their own version of a new {@link AutoCompleteTextField}.
@@ -78,14 +87,5 @@ public abstract class LabeledAutoCompleteTextFieldPanel<T, M> extends LabeledFor
 	 */
 	protected abstract AutoCompleteTextField<T> newAutoCompleteTextField(final String id,
 		final IModel<M> model);
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public FormComponent<T> getFormComponent()
-	{
-		return this.autoCompleteTextField;
-	}
 
 }

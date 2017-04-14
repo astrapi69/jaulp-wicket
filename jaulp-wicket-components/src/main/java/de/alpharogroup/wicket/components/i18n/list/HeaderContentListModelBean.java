@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.i18n.list;
 import java.io.Serializable;
 import java.util.List;
 
+import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -26,7 +27,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 
 
 /**

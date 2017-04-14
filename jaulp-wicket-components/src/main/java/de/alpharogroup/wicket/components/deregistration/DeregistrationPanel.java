@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.deregistration;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -36,6 +34,7 @@ import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.i18n.content.ContentModelBean;
 import de.alpharogroup.wicket.components.i18n.content.ContentPanel;
 import de.alpharogroup.wicket.components.labeled.textarea.LabeledTextAreaPanel;
+import lombok.Getter;
 
 /**
  * The Class DeregistrationPanel.

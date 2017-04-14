@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.radio;
 
-import lombok.Getter;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.basic.Label;
@@ -30,6 +28,7 @@ import org.apache.wicket.model.PropertyModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link RadioGroupPanel}.

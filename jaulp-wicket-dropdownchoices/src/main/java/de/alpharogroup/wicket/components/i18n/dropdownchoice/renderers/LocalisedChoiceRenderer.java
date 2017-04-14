@@ -78,9 +78,8 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 	@Override
 	public Object getDisplayValue(final String object)
 	{
-		final IModel<String> resourceModel = ResourceModelFactory.newResourceModel(
-			ResourceBundleKey.builder().key(propertiesKeyPrefix + "." + object).defaultValue("")
-				.build(), component);
+		final IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
+			.builder().key(propertiesKeyPrefix + "." + object).defaultValue("").build(), component);
 		final String value = resourceModel.getObject();
 		return value;
 
@@ -98,8 +97,10 @@ public class LocalisedChoiceRenderer implements IChoiceRenderer<String>
 	/**
 	 * Gets the object.
 	 *
-	 * @param id the id
-	 * @param choices the choices
+	 * @param id
+	 *            the id
+	 * @param choices
+	 *            the choices
 	 * @return the object
 	 */
 	public String getObject(final String id, final IModel<? extends List<? extends String>> choices)

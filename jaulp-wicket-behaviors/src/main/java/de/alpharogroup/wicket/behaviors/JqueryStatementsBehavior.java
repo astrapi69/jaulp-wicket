@@ -18,8 +18,6 @@ package de.alpharogroup.wicket.behaviors;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.log4j.Logger;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
@@ -29,27 +27,30 @@ import org.apache.wicket.util.lang.Args;
 import org.odlabs.wiquery.core.javascript.ChainableStatement;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 
+import lombok.Getter;
+
 /**
- * The Class {@link JqueryStatementsBehavior} can create js statements from the given {@link ChainableStatement} objects.
+ * The Class {@link JqueryStatementsBehavior} can create js statements from the given
+ * {@link ChainableStatement} objects.
  */
 public class JqueryStatementsBehavior extends Behavior
 {
 	/** The Constant logger. */
-	protected static final Logger LOGGER = Logger.getLogger(JqueryStatementsBehavior.class
-		.getName());
+	protected static final Logger LOGGER = Logger
+		.getLogger(JqueryStatementsBehavior.class.getName());
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The chainable statement. */
 	private List<ChainableStatement> chainableStatement;
-	
+
 	/**
 	 * the rendered statement.
 	 */
 	@Getter
 	private CharSequence renderedStatement;
-	
+
 	/**
 	 * Flag if it is rendered.
 	 */
@@ -67,7 +68,8 @@ public class JqueryStatementsBehavior extends Behavior
 	/**
 	 * Instantiates a new {@link JqueryStatementsBehavior}.
 	 *
-	 * @param chainableStatements the chainable statement objects.
+	 * @param chainableStatements
+	 *            the chainable statement objects.
 	 */
 	public JqueryStatementsBehavior(final List<ChainableStatement> chainableStatements)
 	{
@@ -78,7 +80,8 @@ public class JqueryStatementsBehavior extends Behavior
 	/**
 	 * Adds the given {@link ChainableStatement} to the list and returns this object.
 	 *
-	 * @param chainableStatement the chainable statement to add
+	 * @param chainableStatement
+	 *            the chainable statement to add
 	 * @return the jquery statements behavior
 	 */
 	public JqueryStatementsBehavior add(final ChainableStatement chainableStatement)
@@ -90,7 +93,8 @@ public class JqueryStatementsBehavior extends Behavior
 	/**
 	 * Factory method to create the rendered statement.
 	 *
-	 * @param component the component
+	 * @param component
+	 *            the component
 	 * @return the char sequence
 	 */
 	public CharSequence newRenderedStatement(final Component component)

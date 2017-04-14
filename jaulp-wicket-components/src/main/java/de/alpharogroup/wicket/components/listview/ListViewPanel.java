@@ -17,8 +17,6 @@ package de.alpharogroup.wicket.components.listview;
 
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -27,6 +25,7 @@ import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.wicket.base.BasePanel;
+import lombok.Getter;
 
 /**
  * The Class ListViewPanel takes a {@link ListView} of a generic type.

@@ -51,10 +51,11 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	private static final long serialVersionUID = 1L;
 
 	/** The data for this DataProvider. */
-	@Getter @Setter
+	@Getter
+	@Setter
 	private List<T> data;
 
-	/** The sort state. */	
+	/** The sort state. */
 	@Getter
 	private final SingleSortState<S> sortState;
 
@@ -76,18 +77,6 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	{
 		setData(data);
 		this.sortState = newSortState();
-	}
-
-	/**
-	 * Factory method for creating the new {@link SingleSortState} for the sort state. This method is invoked
-	 * in the constructor from the derived classes and can be overridden so users can provide their
-	 * own version of a new {@link SingleSortState} for the sort state.
-	 *
-	 * @return the new {@link SingleSortState} for the sort state.
-	 */
-	protected SingleSortState<S> newSortState() {
-		return new SingleSortState<>();
-		
 	}
 
 	/**
@@ -134,6 +123,19 @@ public class AbstractSortableDataProvider<T extends Serializable, S extends Seri
 	public IModel<T> model(final T object)
 	{
 		return Model.of(object);
+	}
+
+	/**
+	 * Factory method for creating the new {@link SingleSortState} for the sort state. This method
+	 * is invoked in the constructor from the derived classes and can be overridden so users can
+	 * provide their own version of a new {@link SingleSortState} for the sort state.
+	 *
+	 * @return the new {@link SingleSortState} for the sort state.
+	 */
+	protected SingleSortState<S> newSortState()
+	{
+		return new SingleSortState<>();
+
 	}
 
 	/**

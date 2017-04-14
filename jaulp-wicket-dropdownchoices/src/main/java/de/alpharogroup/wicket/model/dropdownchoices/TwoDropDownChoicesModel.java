@@ -22,12 +22,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The Class {@link TwoDropDownChoicesModel}.
@@ -61,6 +61,7 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 	private final IModel<List<T>> rootChoices;
 
 	/** The child choices. */
+	@SuppressWarnings("unused")
 	private IModel<List<T>> childChoices;
 
 	/**

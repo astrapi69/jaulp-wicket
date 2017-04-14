@@ -15,10 +15,10 @@
  */
 package de.alpharogroup.wicket.components.deregistration;
 
+import org.apache.wicket.util.io.IClusterable;
+
 import lombok.Getter;
 import lombok.Setter;
-
-import org.apache.wicket.util.io.IClusterable;
 
 /**
  * The Class {@link DeregistrationModelBean} holds data for the deregistration.

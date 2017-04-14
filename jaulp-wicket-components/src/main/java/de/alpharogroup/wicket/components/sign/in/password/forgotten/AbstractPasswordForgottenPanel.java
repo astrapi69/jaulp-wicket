@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.in.password.forgotten;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -32,6 +30,7 @@ import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledEmailTextFieldPanel;
+import lombok.Getter;
 
 /**
  * The class {@link AbstractPasswordForgottenPanel}.

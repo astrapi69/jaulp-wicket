@@ -72,20 +72,6 @@ public final class WicketComponentExtensions
 	}
 
 	/**
-	 * Sets the security headers for the category Caching.
-	 *
-	 * @param response
-	 *            the response to set the security headers
-	 */
-	public static void setSecurityCachingHeaders(final WebResponse response)
-	{
-		// Category: Caching
-		response.setHeader("Cache-Control", "must-revalidate;");
-		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Expires", "-1");
-	}
-
-	/**
 	 * Gets the context path from the given WebApplication.
 	 *
 	 * @param application
@@ -298,21 +284,6 @@ public final class WicketComponentExtensions
 	}
 
 	/**
-	 * Sets the security headers for the category access control.
-	 *
-	 * Note: Set this header only if you know what your doing. This header refers to a policy file. Specifying how
-	 * resources should be allowed to be loaded from a different domain. The value 'master only'
-	 * indicates that only the file specified should be considered valid on this domain.
-	 *
-	 * @param response
-	 *            the response to set the header.
-	 */
-	public static void setSecurityAccessControlHeader(final WebResponse response)
-	{
-		response.setHeader("X-Permitted-Cross-Domain-Policies", "master-only");
-	}
-
-	/**
 	 * Sets the security headers. You can check your setting on on the link below.
 	 *
 	 * @see <a href="http://cyh.herokuapp.com/cyh">check headers</a>
@@ -333,27 +304,33 @@ public final class WicketComponentExtensions
 	}
 
 	/**
+	 * Sets the security headers for the category access control.
+	 *
+	 * Note: Set this header only if you know what your doing. This header refers to a policy file.
+	 * Specifying how resources should be allowed to be loaded from a different domain. The value
+	 * 'master only' indicates that only the file specified should be considered valid on this
+	 * domain.
+	 *
+	 * @param response
+	 *            the response to set the header.
+	 */
+	public static void setSecurityAccessControlHeader(final WebResponse response)
+	{
+		response.setHeader("X-Permitted-Cross-Domain-Policies", "master-only");
+	}
+
+	/**
 	 * Sets the security headers for the category Caching.
 	 *
 	 * @param response
 	 *            the response to set the security headers
 	 */
-	public static void setSecurityCookieHeaders(final WebResponse response)
+	public static void setSecurityCachingHeaders(final WebResponse response)
 	{
-		// Set-Cookie
-		response.setHeader("Set-Cookie", "secure;httponly;");
-	}
-
-	/**
-	 * Sets the security headers for the category XSS.
-	 *
-	 * @param response
-	 *            the response to set the security headers
-	 */
-	public static void setSecurityXSSHeaders(final WebResponse response)
-	{
-		// Category: XSS
-		response.setHeader("X-XSS-Protection", "1; mode=block");
+		// Category: Caching
+		response.setHeader("Cache-Control", "must-revalidate;");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires", "-1");
 	}
 
 	/**
@@ -370,15 +347,15 @@ public final class WicketComponentExtensions
 	}
 
 	/**
-	 * Sets the security headers for the category Transport.
+	 * Sets the security headers for the category Caching.
 	 *
 	 * @param response
 	 *            the response to set the security headers
 	 */
-	public static void setSecurityTransportHeaders(final WebResponse response)
+	public static void setSecurityCookieHeaders(final WebResponse response)
 	{
-		// Category: Transport
-		response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+		// Set-Cookie
+		response.setHeader("Set-Cookie", "secure;httponly;");
 	}
 
 	/**
@@ -394,6 +371,29 @@ public final class WicketComponentExtensions
 		response.setHeader("X-Frame-Options", "sameorigin");
 	}
 
+	/**
+	 * Sets the security headers for the category Transport.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityTransportHeaders(final WebResponse response)
+	{
+		// Category: Transport
+		response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+	}
+
+	/**
+	 * Sets the security headers for the category XSS.
+	 *
+	 * @param response
+	 *            the response to set the security headers
+	 */
+	public static void setSecurityXSSHeaders(final WebResponse response)
+	{
+		// Category: XSS
+		response.setHeader("X-XSS-Protection", "1; mode=block");
+	}
 
 
 	/**

@@ -237,8 +237,9 @@ public class WicketUrlExtensions
 		final boolean withSlashAtTheEnd)
 	{
 		return newDomainUrl(ssl ? Scheme.HTTPS.urlName() : Scheme.HTTP.urlName(),
-			WicketUrlExtensions.getServerName(), WicketComponentExtensions.getHttpServletRequest()
-				.getServerPort(), withServerPort, withSlashAtTheEnd);
+			WicketUrlExtensions.getServerName(),
+			WicketComponentExtensions.getHttpServletRequest().getServerPort(), withServerPort,
+			withSlashAtTheEnd);
 	}
 
 

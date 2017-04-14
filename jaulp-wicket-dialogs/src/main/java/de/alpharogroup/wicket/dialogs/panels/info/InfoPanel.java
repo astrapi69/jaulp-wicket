@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.dialogs.panels.info;
 
-import lombok.Getter;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.basic.Label;
@@ -27,6 +25,7 @@ import de.alpharogroup.resourcebundle.locale.ResourceBundleKey;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The Class {@link InfoPanel}.
@@ -48,9 +47,12 @@ public abstract class InfoPanel<T> extends BasePanel<T>
 	/**
 	 * Instantiates a new {@link InfoPanel}.
 	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param labelModel the label model
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
 	 */
 	public InfoPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
 	{
@@ -123,7 +125,8 @@ public abstract class InfoPanel<T> extends BasePanel<T>
 	 *
 	 * @param target
 	 *            the target
-	 * @param object the object
+	 * @param object
+	 *            the object
 	 */
 	public abstract void onClose(final AjaxRequestTarget target, final T object);
 

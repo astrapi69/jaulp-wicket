@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.sign.up;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -32,6 +30,7 @@ import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledTextFieldPanel;
 import de.alpharogroup.wicket.components.sign.in.SigninPanel;
+import lombok.Getter;
 
 /**
  * The Class SignupPanel.
@@ -71,19 +70,6 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	}
 
 	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	protected void onInitialize() {
-		super.onInitialize();
-		add(username = newUsernameTextField("username", getModel()));
-		add(signinPanel = newSigninPanel("signinPanel", getModel()));
-		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
-			(IModel<BaseUsernameSignUpModel>)getModel()));
-	};
-
-	/**
 	 * Factory method for creating the EmailTextField for the repeated password. This method is
 	 * invoked in the constructor from the derived classes and can be overridden so users can
 	 * provide their own version of a EmailTextField for the repeated password.
@@ -121,7 +107,7 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 			}
 		};
 		return pwTextField;
-	}
+	};
 
 	/**
 	 * Factory method for creating the SigninPanel that contains the TextField for the email and
@@ -179,6 +165,19 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 			}
 		};
 		return nameTextField;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	protected void onInitialize() {
+		super.onInitialize();
+		add(username = newUsernameTextField("username", getModel()));
+		add(signinPanel = newSigninPanel("signinPanel", getModel()));
+		add(repeatPassword = newRepeatPasswordTextField("repeatPassword",
+			(IModel<BaseUsernameSignUpModel>)getModel()));
 	}
 
 }

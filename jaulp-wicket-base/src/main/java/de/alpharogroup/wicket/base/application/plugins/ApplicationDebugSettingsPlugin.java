@@ -80,7 +80,8 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 		final Application app = Application.get();
 		if (null == app)
 		{
-			throw new IllegalStateException("No wicket application is bound to the current thread.");
+			throw new IllegalStateException(
+				"No wicket application is bound to the current thread.");
 		}
 		final ApplicationDebugSettingsPlugin plugin = app.getMetaData(DEBUG_SETTINGS_PLUGIN_KEY);
 		if (null == plugin)
@@ -123,7 +124,7 @@ public class ApplicationDebugSettingsPlugin implements Serializable
 		// If you want to add WicketSource capabilities overwrite this method with a super call and
 		// add the following...
 		// WicketSource.configure(application);
-		
+
 		application.getMarkupSettings().setStripComments(false);
 		application.getMarkupSettings().setCompressWhitespace(false);
 		application.getMarkupSettings().setStripWicketTags(false);

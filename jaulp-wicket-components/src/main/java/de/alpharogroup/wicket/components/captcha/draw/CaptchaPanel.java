@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.captcha.draw;
 
-import lombok.Getter;
-
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.image.Image;
@@ -26,6 +24,7 @@ import org.apache.wicket.request.resource.IResource;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
+import lombok.Getter;
 
 /**
  * The class {@link CaptchaPanel}.

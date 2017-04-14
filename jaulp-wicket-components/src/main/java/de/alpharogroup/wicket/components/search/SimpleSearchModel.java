@@ -15,6 +15,8 @@
  */
 package de.alpharogroup.wicket.components.search;
 
+import org.apache.wicket.util.io.IClusterable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -22,8 +24,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-import org.apache.wicket.util.io.IClusterable;
 
 /**
  * The Class SimpleSearchModel.
@@ -45,6 +45,7 @@ public class SimpleSearchModel implements IClusterable
 	private static final long serialVersionUID = 1L;
 
 	/** The searchtext. What im looking for. */
+	@Builder.Default
 	private String searchtext = "";
 
 

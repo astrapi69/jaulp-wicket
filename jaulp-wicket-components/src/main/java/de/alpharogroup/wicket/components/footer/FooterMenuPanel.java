@@ -17,14 +17,13 @@ package de.alpharogroup.wicket.components.footer;
 
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.util.ListModel;
 
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.components.link.LinkItem;
+import lombok.Getter;
 
 /**
  * The Class FooterMenuPanel have a listview with the footer menu.

@@ -88,8 +88,9 @@ public class ComponentPropertiesKeysListResolver
 	@Override
 	public String getDisplayValue(final ResourceBundleKey resourceBundleKey)
 	{
-		return ResourceModelFactory.newResourceModel(getPropertiesKey(resourceBundleKey.getKey()),
-			resourceBundleKey.getParameters(), component, resourceBundleKey.getDefaultValue())
+		return ResourceModelFactory
+			.newResourceModel(getPropertiesKey(resourceBundleKey.getKey()),
+				resourceBundleKey.getParameters(), component, resourceBundleKey.getDefaultValue())
 			.getObject();
 	}
 

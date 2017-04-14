@@ -52,7 +52,10 @@ public abstract class BaseWebApplication extends WebApplication
 
 	/**
 	 * The Constant FOOTER_FILTER_NAME.
-	 * @see http://www.wicket-library.com/wicket-examples/resourceaggregation/wicket/bookmarkable/org.apache.wicket.examples.source.SourcesPage?0&SourcesPage_class=org.apache.wicket.examples.resourcedecoration.HomePage&source=HomePage.java
+	 * 
+	 * @see <a href=
+	 *      "http://www.wicket-library.com/wicket-examples/resourceaggregation/wicket/bookmarkable/org.apache.wicket.examples.source.SourcesPage?0&SourcesPage_class=org.apache.wicket.examples.resourcedecoration.HomePage&source=HomePage.java">Example
+	 *      reference</a>
 	 **/
 	public static final String FOOTER_FILTER_NAME = "footer-container";
 
@@ -82,6 +85,26 @@ public abstract class BaseWebApplication extends WebApplication
 	}
 
 	/**
+	 * Gets the default http port.
+	 *
+	 * @return the default http port
+	 */
+	protected int getDefaultHttpPort()
+	{
+		return BaseWebApplication.DEFAULT_HTTP_PORT;
+	}
+
+	/**
+	 * Gets the default https port.
+	 *
+	 * @return the default https port
+	 */
+	protected int getDefaultHttpsPort()
+	{
+		return BaseWebApplication.DEFAULT_HTTPS_PORT;
+	}
+
+	/**
 	 * Gets the elapsed duration since this application was initialized.
 	 *
 	 * @return the uptime
@@ -108,6 +131,16 @@ public abstract class BaseWebApplication extends WebApplication
 		super.init();
 		// set application configuration...
 		onApplicationConfigurations();
+	}
+
+	/**
+	 * Checks if is on development mode.
+	 *
+	 * @return true, if is on development mode
+	 */
+	public boolean isOnDevelopmentMode()
+	{
+		return getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT);
 	}
 
 	/**
@@ -163,16 +196,6 @@ public abstract class BaseWebApplication extends WebApplication
 	}
 
 	/**
-	 * Gets the default http port.
-	 *
-	 * @return the default http port
-	 */
-	protected int getDefaultHttpPort()
-	{
-		return BaseWebApplication.DEFAULT_HTTP_PORT;
-	}
-
-	/**
 	 * Factory method to create a new {@link WicketConfigurationPropertiesResolver}.
 	 *
 	 * @param defaultHttpPort
@@ -199,16 +222,6 @@ public abstract class BaseWebApplication extends WebApplication
 	protected int newHttpPort()
 	{
 		return this.configurationPropertiesResolver.getHttpPort();
-	}
-
-	/**
-	 * Gets the default https port.
-	 *
-	 * @return the default https port
-	 */
-	protected int getDefaultHttpsPort()
-	{
-		return BaseWebApplication.DEFAULT_HTTPS_PORT;
 	}
 
 	/**
@@ -284,16 +297,6 @@ public abstract class BaseWebApplication extends WebApplication
 	protected void onSecuritySettingsPlugin(final WebApplication application)
 	{
 		new SecuritySettingsPlugin().install(application);
-	}
-
-	/**
-	 * Checks if is on development mode.
-	 *
-	 * @return true, if is on development mode
-	 */
-	public boolean isOnDevelopmentMode()
-	{
-		return getConfigurationType().equals(RuntimeConfigurationType.DEVELOPMENT);
 	}
 
 }

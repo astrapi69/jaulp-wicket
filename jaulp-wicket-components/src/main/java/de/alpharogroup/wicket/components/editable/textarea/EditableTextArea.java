@@ -33,6 +33,9 @@ import lombok.Setter;
 /**
  * An editable TextArea that can be switched to a MultilineLabel.
  *
+ * @param <T>
+ *            the generic type of model object
+ *
  * @author Asterios Raptis
  */
 public class EditableTextArea<T> extends BasePanel<T>
@@ -41,13 +44,55 @@ public class EditableTextArea<T> extends BasePanel<T>
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Factory method for create a new {@link EditableTextArea} object.
+	 *
+	 * @param <T>
+	 *            the generic type of model object
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @return the new created {@link EditableTextArea} object.
+	 */
+	public static <T> EditableTextArea<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
+	{
+		return EditableTextArea.of(id, model, labelModel, ModeContext.EDIT_MODE);
+	}
+	/**
+	 * Factory method for create a new {@link EditableTextArea} object.
+	 *
+	 * @param <T>
+	 *            the generic type of model object
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param labelModel
+	 *            the label model
+	 * @param modeContext
+	 *            the editable flag
+	 * @return the new created {@link EditableTextArea} object.
+	 */
+	public static <T> EditableTextArea<T> of(final String id, final IModel<T> model,
+		final IModel<String> labelModel, final ModeContext modeContext)
+	{
+		final EditableTextArea<T> editableTextArea = new EditableTextArea<>(id, model, labelModel,
+			modeContext);
+		return editableTextArea;
+	}
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	@Setter
 	private ModeContext modeContext = ModeContext.EDIT_MODE;
+
 	/** The swap panel. */
 	@Getter
 	private SwapComponentsFragmentPanel<T> swapPanel;
+
 	/** The model of the label. */
 	@Getter
 	private final IModel<String> labelModel;
@@ -62,8 +107,7 @@ public class EditableTextArea<T> extends BasePanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public EditableTextArea(final String id, final IModel<T> model,
-		final IModel<String> labelModel)
+	public EditableTextArea(final String id, final IModel<T> model, final IModel<String> labelModel)
 	{
 		this(id, model, labelModel, ModeContext.EDIT_MODE);
 	}
@@ -80,8 +124,8 @@ public class EditableTextArea<T> extends BasePanel<T>
 	 * @param modeContext
 	 *            the editable flag
 	 */
-	public EditableTextArea(final String id, final IModel<T> model,
-		final IModel<String> labelModel, final ModeContext modeContext)
+	public EditableTextArea(final String id, final IModel<T> model, final IModel<String> labelModel,
+		final ModeContext modeContext)
 	{
 		super(id, model);
 		this.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
@@ -136,10 +180,10 @@ public class EditableTextArea<T> extends BasePanel<T>
 					 * @return the text area
 					 */
 					@Override
-					protected TextArea<String> newTextArea(final String id,
-						final IModel<T> model)
+					protected TextArea<String> newTextArea(final String id, final IModel<T> model)
 					{
-						final IModel<String> textAreaModel = new PropertyModel<>(model.getObject(), EditableTextArea.this.getId());
+						final IModel<String> textAreaModel = new PropertyModel<>(model.getObject(),
+							EditableTextArea.this.getId());
 						return ComponentFactory.newTextArea(id, textAreaModel);
 					}
 				};
@@ -171,7 +215,8 @@ public class EditableTextArea<T> extends BasePanel<T>
 					protected MultiLineLabel newMultiLineLabelLabel(final String id,
 						final IModel<T> model)
 					{
-						final IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(), EditableTextArea.this.getId());
+						final IModel<T> viewableLabelModel = new PropertyModel<>(model.getObject(),
+							EditableTextArea.this.getId());
 						return ComponentFactory.newMultiLineLabel(id, viewableLabelModel);
 					}
 				};
@@ -192,43 +237,6 @@ public class EditableTextArea<T> extends BasePanel<T>
 		{
 			modeContext = ModeContext.VIEW_MODE;
 		}
-	}
-
-	/**
-	 * Factory method for create a new {@link EditableTextArea} object.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @param labelModel
-	 *            the label model
-	 * @return the new created {@link EditableTextArea} object.
-	 */
-	public static<T> EditableTextArea<T> of(final String id, final IModel<T> model,
-		final IModel<String> labelModel)
-	{
-		return EditableTextArea.of(id, model, labelModel, ModeContext.EDIT_MODE);
-	}
-
-	/**
-	 * Factory method for create a new {@link EditableTextArea} object.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @param labelModel
-	 *            the label model
-	 * @param modeContext
-	 *            the editable flag
-	 * @return the new created {@link EditableTextArea} object.
-	 */
-	public static<T> EditableTextArea<T> of(final String id, final IModel<T> model,
-		final IModel<String> labelModel, final ModeContext modeContext)
-	{
-		final EditableTextArea<T> editableTextArea = new EditableTextArea<>(id, model, labelModel, modeContext);
-		return editableTextArea;
 	}
 
 }

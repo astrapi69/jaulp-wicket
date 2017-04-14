@@ -15,8 +15,6 @@
  */
 package de.alpharogroup.wicket.components.termofuse;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
@@ -36,6 +34,7 @@ import de.alpharogroup.wicket.components.termofuse.modificationsclause.Modificat
 import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesModelBean;
 import de.alpharogroup.wicket.components.termofuse.rightsandduties.RightsAndDutiesPanel;
 import de.alpharogroup.wicket.components.termofuse.salvatoriusclause.SalvatoriusClausePanel;
+import lombok.Getter;
 
 /**
  * The class {@link TermOfUsePanel}.

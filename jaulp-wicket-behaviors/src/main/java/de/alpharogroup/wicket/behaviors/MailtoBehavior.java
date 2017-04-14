@@ -72,8 +72,8 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior
 	public void beforeRender(final Component component)
 	{
 		super.beforeRender(component);
-		component.getResponse().write(
-			"<a href=\"mailto:" + mailtoModel.getMailtoAddresModel().getObject() + "\">");
+		component.getResponse()
+			.write("<a href=\"mailto:" + mailtoModel.getMailtoAddresModel().getObject() + "\">");
 	}
 
 	/**

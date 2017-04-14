@@ -16,7 +16,6 @@
 package de.alpharogroup.wicket.components.form.checkbox;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -46,7 +45,7 @@ public class CheckboxModelBean<T> implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	/** The selected items. */
-	private List<T> selectedItems = new ArrayList<T>();
+	private List<T> selectedItems;
 	/** The choices. */
 	private List<T> choices;
 	/** The label property expression. */

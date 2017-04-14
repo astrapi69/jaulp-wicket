@@ -118,8 +118,8 @@ public class HighScoreRequestMapper extends CompoundRequestMapper
 		final Set<RequestMapperBean> mapperBeans = new TreeSet<>(getComparator());
 		for (final IRequestMapper requestMapper : this.requestMappers)
 		{
-			mapperBeans.add(new RequestMapperBean(requestMapper, requestMapper
-				.getCompatibilityScore(request)));
+			mapperBeans.add(
+				new RequestMapperBean(requestMapper, requestMapper.getCompatibilityScore(request)));
 		}
 		return mapperBeans;
 	}

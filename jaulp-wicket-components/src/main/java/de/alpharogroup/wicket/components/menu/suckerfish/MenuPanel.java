@@ -19,8 +19,6 @@ package de.alpharogroup.wicket.components.menu.suckerfish;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Getter;
-
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.model.Model;
@@ -30,6 +28,7 @@ import de.alpharogroup.io.annotations.ImportResource;
 import de.alpharogroup.io.annotations.ImportResources;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.header.contributors.HeaderResponseExtensions;
+import lombok.Getter;
 
 /**
  * The Class {@link MenuPanel}.

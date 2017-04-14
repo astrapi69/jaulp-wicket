@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>jaulp-wicket</artifactId>
-		<version>7.5.0-SNAPSHOT</version>
+		<version>7.3.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>jaulp-wicket-components</artifactId>

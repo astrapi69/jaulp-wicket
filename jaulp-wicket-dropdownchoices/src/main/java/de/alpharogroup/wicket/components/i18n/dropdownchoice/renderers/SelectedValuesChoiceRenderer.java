@@ -78,8 +78,9 @@ public class SelectedValuesChoiceRenderer implements IChoiceRenderer<String>
 		}
 		else
 		{
-			IModel<String> resourceModel = ResourceModelFactory.newResourceModel(ResourceBundleKey
-				.builder().key(splittedValue[0]).defaultValue("").build(), component);
+			IModel<String> resourceModel = ResourceModelFactory.newResourceModel(
+				ResourceBundleKey.builder().key(splittedValue[0]).defaultValue("").build(),
+				component);
 			sb.append(resourceModel.getObject());
 			sb.append(splitString);
 			resourceModel = ResourceModelFactory.newResourceModel(

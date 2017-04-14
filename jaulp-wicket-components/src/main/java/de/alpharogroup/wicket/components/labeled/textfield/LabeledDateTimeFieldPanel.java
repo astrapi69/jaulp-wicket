@@ -70,6 +70,16 @@ public class LabeledDateTimeFieldPanel<T, M> extends LabeledFormComponentPanel<T
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public FormComponent<T> getFormComponent()
+	{
+		return (FormComponent<T>)this.dateTimeField;
+	}
+
+	/**
 	 * Factory method for create the new {@link DateTimeField}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link DateTimeField}.
@@ -84,16 +94,6 @@ public class LabeledDateTimeFieldPanel<T, M> extends LabeledFormComponentPanel<T
 	{
 		final IModel<Date> textFieldModel = new PropertyModel<>(model.getObject(), getId());
 		return ComponentFactory.newDateTimeField(id, textFieldModel);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public FormComponent<T> getFormComponent()
-	{
-		return (FormComponent<T>)this.dateTimeField;
 	}
 
 }

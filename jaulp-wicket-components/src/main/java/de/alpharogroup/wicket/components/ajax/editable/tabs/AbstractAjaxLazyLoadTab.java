@@ -15,13 +15,13 @@
  */
 package de.alpharogroup.wicket.components.ajax.editable.tabs;
 
-import lombok.Getter;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.ajax.markup.html.AjaxLazyLoadPanel;
 import org.apache.wicket.extensions.markup.html.tabs.ITab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
+
+import lombok.Getter;
 
 /**
  * Convenience class that takes care of lazy load ITab functionality.

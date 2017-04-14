@@ -68,6 +68,15 @@ public class LabeledRequiredTextFieldPanel<T, M> extends LabeledFormComponentPan
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public FormComponent<T> getFormComponent()
+	{
+		return this.textField;
+	}
+
+	/**
 	 * Factory method for create the new {@link RequiredTextField}. This method is invoked in the
 	 * constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link RequiredTextField}.
@@ -82,15 +91,6 @@ public class LabeledRequiredTextFieldPanel<T, M> extends LabeledFormComponentPan
 	{
 		return ComponentFactory.newRequiredTextField(id, new PropertyModel<T>(model.getObject(),
 			getId()));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public FormComponent<T> getFormComponent()
-	{
-		return this.textField;
 	}
 
 }
