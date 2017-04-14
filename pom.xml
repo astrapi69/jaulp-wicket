@@ -18,7 +18,7 @@
 	<name>${project.artifactId}</name>
 
 	<description>
-		Parent project for the projects in the jaulp.wicket.
+		Parent project for the projects in the jaulp-wicket.
 	</description>
 
 	<url>https://github.com/astrapi69/jaulp.wicket</url>
