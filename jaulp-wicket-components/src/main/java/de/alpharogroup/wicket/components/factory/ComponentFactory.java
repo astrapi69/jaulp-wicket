@@ -349,9 +349,26 @@ public class ComponentFactory
 	 *            the id
 	 * @return the new {@link HiddenField}.
 	 */
-	public static Component newHiddenField(final String id)
+	public static <T> HiddenField<T> newHiddenField(final String id)
 	{
-		final HiddenField<String> hiddenField = new HiddenField<>(id);
+		final HiddenField<T> hiddenField = new HiddenField<>(id);
+		hiddenField.setOutputMarkupId(true);
+		return hiddenField;
+	}
+
+
+	/**
+	 * Factory method for create a new {@link HiddenField}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the {@link IModel} with the value for the {@link HiddenField}.
+	 * @return the new {@link HiddenField}.
+	 */
+	public static <T> HiddenField<T> newHiddenField(final String id, final IModel<T> model)
+	{
+		final HiddenField<T> hiddenField = new HiddenField<>(id, model);
 		hiddenField.setOutputMarkupId(true);
 		return hiddenField;
 	}

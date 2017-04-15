@@ -18,6 +18,7 @@ package de.alpharogroup.wicket.components.report;
 import java.io.Serializable;
 
 import org.apache.wicket.request.component.IRequestablePage;
+import org.apache.wicket.request.cycle.RequestCycle;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,7 +29,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * Instantiates a new report throwable model that is used to report an exception
+ * Instantiates a new report throwable bean for the wicket model that is used to report an exception
  * or error an a description from the affected user.
  */
 @Getter
@@ -58,5 +59,11 @@ public class ReportThrowableModelBean implements Serializable
 
 	/** The response page. */
 	private Class<? extends IRequestablePage> responsePage;
+
+	/** The throwable. */
+	private Throwable throwable;
+
+	/** The original response as {@link String} object from the {@link RequestCycle}. */
+	private String originalResponse;
 
 }

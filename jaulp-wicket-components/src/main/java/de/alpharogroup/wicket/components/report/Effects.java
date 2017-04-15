@@ -18,9 +18,13 @@ package de.alpharogroup.wicket.components.report;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 
+import de.alpharogroup.wicket.behaviors.DisplayNoneBehavior;
+import lombok.experimental.UtilityClass;
+
 /**
  * The Class {@link Effects}.
  */
+@UtilityClass
 public class Effects
 {
 
@@ -35,7 +39,6 @@ public class Effects
 	public static void replace(final AjaxRequestTarget target, final Component component)
 	{
 		component.add(new DisplayNoneBehavior());
-		// target.prependJavaScript("notify|jQuery('#"+component.getMarkupId()+"').slideUp(1000, notify);");
 		target.add(component);
 		target.appendJavaScript("jQuery('#" + component.getMarkupId() + "').slideDown(100);");
 	}

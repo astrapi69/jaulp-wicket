@@ -16,7 +16,6 @@
 package de.alpharogroup.wicket.components.report;
 
 import org.apache.log4j.Logger;
-import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.behavior.AttributeAppender;
@@ -26,11 +25,10 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.HiddenField;
 import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.component.IRequestablePage;
-import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.exception.ExceptionExtensions;
 import de.alpharogroup.wicket.base.BasePanel;
@@ -42,7 +40,7 @@ import lombok.Getter;
 /**
  * The Class ReportThrowablePanel can present an exception that is thrown from the application.
  */
-public abstract class ReportThrowablePanel extends BasePanel<Throwable>
+public abstract class ReportThrowablePanel extends BasePanel<ReportThrowableModelBean>
 {
 
 
@@ -54,81 +52,44 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 
 	/** The header. */
 	@Getter
-	private final Label header;
+	private Label header;
 
 	/** The form. */
 	@Getter
-	private final Form<?> form;
+	private Form<?> form;
 
 	/** The description. */
 	@Getter
-	private final LabeledTextAreaPanel<String, ReportThrowableModelBean> description;
+	private LabeledTextAreaPanel<String, ReportThrowableModelBean> description;
 
 
 	/** The submit button. */
 	@Getter
-	private final Button submitButton;
+	private Button submitButton;
 
 	/** The stack trace. */
 	@Getter
-	private final Component stackTrace;
+	private HiddenField<String> stackTrace;
 
 	/** The {@link MultiLineLabel} label for the expanded stack trace. */
 	@Getter
 	private MultiLineLabel toReplace;
 
 	/** The report model. */
-	private final ReportThrowableModelBean reportThrowableModel;
+	private ReportThrowableModelBean reportThrowableModel;
 
 	/**
 	 * Instantiates a new {@link ReportThrowablePanel}.
 	 *
 	 * @param id
 	 *            the id
-	 * @param throwable
-	 *            the throwable
+	 * @param model
+	 *            the model
 	 */
-	public ReportThrowablePanel(final String id, final Throwable throwable)
+	public ReportThrowablePanel(final String id, final IModel<ReportThrowableModelBean> model)
 	{
-		super(id, Model.of(Args.notNull(throwable, "throwable")));
-
-		reportThrowableModel = newReportThrowableModel(getModelObject());
-
-		final IModel<ReportThrowableModelBean> cpm = new CompoundPropertyModel<>(reportThrowableModel);
-		setDefaultModel(cpm);
-		add(header = newHeaderLabel("header", ResourceModelFactory.newResourceModel("header.label",
-			this, "Upps! An error occured.")));
-
-		add(form = newForm("form", cpm));
-
-		form.add(description = newDescription("description", cpm));
-
-		form.add(toReplace = newToReplace("toReplace", Model.of("")));
-
-		final AjaxLink<Void> link = new AjaxLink<Void>("link")
-		{
-
-			/** The Constant serialVersionUID. */
-			private static final long serialVersionUID = 1L;
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			public void onClick(final AjaxRequestTarget target)
-			{
-				toReplace.setDefaultModelObject(reportThrowableModel.getStackTrace());
-				Effects.replace(target, toReplace);
-
-			}
-		};
-
-		form.add(link);
-
-		form.add(submitButton = newSubmitButton("submitButton"));
-
-		form.add(stackTrace = newHiddenField("stackTrace"));
-		LOGGER.error(reportThrowableModel.getStackTrace());
+		super(id, model);
+		reportThrowableModel = model.getObject();
 	}
 
 	/**
@@ -224,16 +185,16 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	 *            the id
 	 * @return the new {@link HiddenField}
 	 */
-	protected Component newHiddenField(final String id)
+	protected HiddenField<String> newHiddenField(final String id, final IModel<String> model)
 	{
-		return ComponentFactory.newHiddenField(id);
+		return ComponentFactory.newHiddenField(id, model);
 	}
 
 	/**
 	 * Factory method for creating the new {@link ReportThrowableModelBean} from the given
 	 * {@link Throwable}. This method is invoked in the constructor from the derived classes and can
-	 * be overridden so users can provide their own version of a new {@link ReportThrowableModelBean}
-	 * from the given {@link Throwable}.
+	 * be overridden so users can provide their own version of a new
+	 * {@link ReportThrowableModelBean} from the given {@link Throwable}.
 	 *
 	 * @param throwable
 	 *            the throwable
@@ -264,7 +225,6 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 	 */
 	protected abstract String newRootUsername();
 
-
 	/**
 	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
 	 * from the derived classes and can be overridden so users can provide their own version of a
@@ -294,9 +254,51 @@ public abstract class ReportThrowablePanel extends BasePanel<Throwable>
 		};
 	}
 
-	protected MultiLineLabel newToReplace(final String id, final IModel<String> model) {
+
+	protected MultiLineLabel newToReplace(final String id, final IModel<String> model)
+	{
 		final MultiLineLabel multiLineLabel = ComponentFactory.newMultiLineLabel(id, model);
 		return multiLineLabel;
+	}
+
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		add(header = newHeaderLabel("header", ResourceModelFactory.newResourceModel("header.label",
+			this, "Upps! An error occured.")));
+
+		add(form = newForm("form", getModel()));
+
+		form.add(description = newDescription("description", getModel()));
+
+		form.add(toReplace = newToReplace("toReplace", Model.of("")));
+
+		final AjaxLink<Void> link = new AjaxLink<Void>("link")
+		{
+
+			/** The Constant serialVersionUID. */
+			private static final long serialVersionUID = 1L;
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void onClick(final AjaxRequestTarget target)
+			{
+				toReplace.setDefaultModelObject(reportThrowableModel.getStackTrace());
+				Effects.replace(target, toReplace);
+
+			}
+		};
+
+		form.add(link);
+
+		form.add(submitButton = newSubmitButton("submitButton"));
+
+		form.add(stackTrace = newHiddenField("stackTrace",
+			PropertyModel.<String> of(getModel(), "stackTrace")));
+		LOGGER.error(reportThrowableModel.getStackTrace());
 	}
 
 	/**
