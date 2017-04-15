@@ -72,10 +72,10 @@ public class ContentPanel extends BasePanel<ContentModelBean>
 		setOutputMarkupId(true);
 		if (model != null)
 		{
-			add(header = newHeaderLabel("header", ResourceModelFactory.newResourceModel(model
-				.getObject().getHeaderResourceKey(), this)));
-			add(content = newContentLabel("content", ResourceModelFactory.newResourceModel(model
-				.getObject().getContentResourceKey(), this)));
+			add(header = newHeaderLabel("header", ResourceModelFactory
+				.newResourceModel(model.getObject().getHeaderResourceKey(), this)));
+			add(content = newContentLabel("content", ResourceModelFactory
+				.newResourceModel(model.getObject().getContentResourceKey(), this)));
 		}
 		else
 		{

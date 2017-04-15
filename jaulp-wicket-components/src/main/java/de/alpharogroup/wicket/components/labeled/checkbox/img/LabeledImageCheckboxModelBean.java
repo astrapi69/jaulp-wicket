@@ -28,7 +28,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class {@link LabeledImageCheckboxModelBean} holds the image resource and the value if it checked.
+ * The Class {@link LabeledImageCheckboxModelBean} holds the image resource and the value if it
+ * checked.
  *
  * @author Asterios Raptis
  */

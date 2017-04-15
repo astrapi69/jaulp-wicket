@@ -112,11 +112,9 @@ public abstract class ReCaptchaPanel extends Panel
 			public void onComponentTagBody(final MarkupStream markupStream,
 				final ComponentTag openTag)
 			{
-				replaceComponentTagBody(
-					markupStream,
-					openTag,
-					newReCaptcha(getPublicKey(), getPrivateKey(), false).createRecaptchaHtml(
-						"errorText", "clean", null));
+				replaceComponentTagBody(markupStream, openTag,
+					newReCaptcha(getPublicKey(), getPrivateKey(), false)
+						.createRecaptchaHtml("errorText", "clean", null));
 			}
 
 			/**
@@ -142,10 +140,11 @@ public abstract class ReCaptchaPanel extends Panel
 
 				if (!reCaptchaResponse.isValid())
 				{
-					error(ResourceModelFactory.newResourceModel(
-						ResourceBundleKey.builder().key("kaptcha.invalid.label")
+					error(ResourceModelFactory
+						.newResourceModel(ResourceBundleKey.builder().key("kaptcha.invalid.label")
 							.defaultValue("Incorrect answer, type the words from the image again!")
-							.build(), this).getObject());
+							.build(), this)
+						.getObject());
 				}
 			}
 		};

@@ -60,6 +60,7 @@ public class EditableTextField<T> extends BasePanel<T>
 	{
 		return EditableTextField.of(id, model, labelModel, ModeContext.EDIT_MODE);
 	}
+
 	/**
 	 * Factory method for create a new {@link EditableTextField} object.
 	 *
@@ -82,6 +83,7 @@ public class EditableTextField<T> extends BasePanel<T>
 			labelModel, modeContext);
 		return editableTextField;
 	}
+
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	@Setter

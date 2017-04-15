@@ -30,7 +30,8 @@ import lombok.ToString;
 
 
 /**
- * The Class {@link HeaderContentListModelBean} holds data for the resource key of header and a list of content objects.
+ * The Class {@link HeaderContentListModelBean} holds data for the resource key of header and a list
+ * of content objects.
  *
  * @author Asterios Raptis
  */
@@ -47,13 +48,13 @@ public class HeaderContentListModelBean implements Serializable
 	/**
 	 * The serialVersionUID
 	 */
-	private static final long serialVersionUID = 1L;	
+	private static final long serialVersionUID = 1L;
 	/**
 	 * The resource bundle key for the header.
 	 */
 	@NonNull
 	private ResourceBundleKey headerResourceKey;
-	
+
 	/**
 	 * The list of resource bundle keys for the content.
 	 */

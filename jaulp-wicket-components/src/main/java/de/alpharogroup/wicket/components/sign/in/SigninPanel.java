@@ -49,7 +49,7 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 
 	/** The password. */
 	@Getter
-	private LabeledPasswordTextFieldPanel<String,T> password;
+	private LabeledPasswordTextFieldPanel<String, T> password;
 
 	/**
 	 * Instantiates a new {@link SigninPanel}.
@@ -65,8 +65,8 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	}
 
 	/**
-	 * Factory method for creating a new {@link Component} for the email. This method is invoked in the
-	 * constructor from the derived classes and can be overridden so users can provide their own
+	 * Factory method for creating a new {@link Component} for the email. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
 	 * version of a new {@link Component} for the email.
 	 *
 	 * @param id
@@ -77,12 +77,12 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 */
 	protected Component newEmailTextField(final String id, final IModel<T> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"global.email.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.your.email.label", this);
-		final LabeledEmailTextFieldPanel<String, T> emailTextField = new LabeledEmailTextFieldPanel<String, T>(id,
-			model, labelModel)
+		final IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel("global.email.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.your.email.label", this);
+		final LabeledEmailTextFieldPanel<String, T> emailTextField = new LabeledEmailTextFieldPanel<String, T>(
+			id, model, labelModel)
 		{
 
 			/** The Constant serialVersionUID. */
@@ -118,12 +118,13 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 *            the model
 	 * @return the text field LabeledPasswordTextFieldPanel
 	 */
-	protected LabeledPasswordTextFieldPanel<String, T> newPasswordTextField(final String id, final IModel<T> model)
+	protected LabeledPasswordTextFieldPanel<String, T> newPasswordTextField(final String id,
+		final IModel<T> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"global.password.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.your.password.label", this);
+		final IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel("global.password.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.your.password.label", this);
 		final LabeledPasswordTextFieldPanel<String, T> pwTextField = new LabeledPasswordTextFieldPanel<String, T>(
 			id, model, labelModel)
 		{
@@ -154,7 +155,8 @@ public class SigninPanel<T extends SignInModel> extends BasePanel<T>
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onInitialize() {
+	protected void onInitialize()
+	{
 		super.onInitialize();
 		add(email = newEmailTextField("email", getModel()));
 		add(password = newPasswordTextField("password", getModel()));

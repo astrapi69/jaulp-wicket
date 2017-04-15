@@ -28,7 +28,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class {@link ContentModelBean} holds data for the resource bundle keys of the header and content area.
+ * The Class {@link ContentModelBean} holds data for the resource bundle keys of the header and
+ * content area.
  *
  * @author Asterios Raptis
  */
@@ -46,13 +47,13 @@ public class ContentModelBean implements Serializable
 	 * The serialVersionUID
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * The resource bundle key for the header.
 	 */
 	@NonNull
 	private ResourceBundleKey headerResourceKey;
-	
+
 	/**
 	 * The resource bundle key for the content.
 	 */

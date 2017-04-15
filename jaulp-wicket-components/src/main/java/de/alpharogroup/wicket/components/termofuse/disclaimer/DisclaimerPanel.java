@@ -58,9 +58,9 @@ public class DisclaimerPanel extends Panel
 	{
 		super(id, model);
 
-		add(newDisclaimerLabel("disclaimerLbl", newDisclaimerModel())).add(
-			newDisclaimerContentLabel("disclaimerContentLbl", newDisclaimerContentModel())).add(
-			newDisclaimerLinkLabel("disclaimerLinkLabel", newDisclaimerLinkLabelModel()));
+		add(newDisclaimerLabel("disclaimerLbl", newDisclaimerModel()))
+			.add(newDisclaimerContentLabel("disclaimerContentLbl", newDisclaimerContentModel()))
+			.add(newDisclaimerLinkLabel("disclaimerLinkLabel", newDisclaimerLinkLabelModel()));
 	}
 
 
@@ -157,8 +157,8 @@ public class DisclaimerPanel extends Panel
 	 */
 	protected IModel<String> newIModel(final String key)
 	{
-		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
-			.defaultValue("").build(), this);
+		return ResourceModelFactory
+			.newResourceModel(ResourceBundleKey.builder().key(key).defaultValue("").build(), this);
 	}
 
 }

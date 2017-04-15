@@ -83,14 +83,14 @@ public abstract class ImprintPanel extends BasePanel<ImprintModelBean>
 
 		imprintContainer.add(new Label("authRepresentContent", newAuthRepresentContentModel()));
 
-		imprintContainer.add(new Label("companyRegisterEntryHeader",
-			newCompanyRegisterEntryHeaderModel()));
+		imprintContainer
+			.add(new Label("companyRegisterEntryHeader", newCompanyRegisterEntryHeaderModel()));
 
-		imprintContainer.add(new Label("companyRegisterEntryContent",
-			newCompanyRegisterEntryContentModel()));
+		imprintContainer
+			.add(new Label("companyRegisterEntryContent", newCompanyRegisterEntryContentModel()));
 
-		imprintContainer.add(new Label("companyRegisterEntryNumber",
-			newCompanyRegisterEntryNumberModel()));
+		imprintContainer
+			.add(new Label("companyRegisterEntryNumber", newCompanyRegisterEntryNumberModel()));
 
 		imprintContainer.add(new Label("companyRegisterIndedificationHeader",
 			newCompanyRegisterIndedificationHeaderModel()));
@@ -98,26 +98,23 @@ public abstract class ImprintPanel extends BasePanel<ImprintModelBean>
 		imprintContainer.add(new Label("companyRegisterIndedificationContent",
 			newCompanyRegisterIndedificationContentModel()));
 
-		imprintContainer.add(new Label("companyRegisterIndedificationNumber",
-			newCompanyRegisterEntryNumberModel()));
+		imprintContainer.add(
+			new Label("companyRegisterIndedificationNumber", newCompanyRegisterEntryNumberModel()));
 
-		imprintContainer.add(new Label("companyEntryCommercialRegisterHeader", ResourceModelFactory
-			.newResourceModel(
-				ResourceBundleKey.builder()
-					.key("main.global.company.entry.commercial.register.header.label")
-					.defaultValue("").build(), this)));
+		imprintContainer.add(new Label("companyEntryCommercialRegisterHeader",
+			ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+				.key("main.global.company.entry.commercial.register.header.label").defaultValue("")
+				.build(), this)));
 
 		imprintContainer.add(new Label("companyEntryCommercialRegisterContent",
-			ResourceModelFactory.newResourceModel(
-				ResourceBundleKey.builder()
-					.key("main.global.company.entry.commercial.register.label").defaultValue("")
-					.build(), this)));
+			ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+				.key("main.global.company.entry.commercial.register.label").defaultValue("")
+				.build(), this)));
 
-		imprintContainer.add(new Label("companyEntryCommercialRegisterNumber", ResourceModelFactory
-			.newResourceModel(
-				ResourceBundleKey.builder()
-					.key("main.global.company.entry.commercial.register.number").defaultValue("")
-					.build(), this)));
+		imprintContainer.add(new Label("companyEntryCommercialRegisterNumber",
+			ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+				.key("main.global.company.entry.commercial.register.number").defaultValue("")
+				.build(), this)));
 
 		disclaimerContainer = newDisclaimerContainer("disclaimerContainer");
 		add(disclaimerContainer);
@@ -266,8 +263,8 @@ public abstract class ImprintPanel extends BasePanel<ImprintModelBean>
 	 */
 	protected IModel<String> newIModel(final String key)
 	{
-		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder().key(key)
-			.defaultValue("").build(), this);
+		return ResourceModelFactory
+			.newResourceModel(ResourceBundleKey.builder().key(key).defaultValue("").build(), this);
 	}
 
 	/**
@@ -321,7 +318,8 @@ public abstract class ImprintPanel extends BasePanel<ImprintModelBean>
 	{
 		return ResourceModelFactory.newResourceModel(
 			ResourceBundleKey.builder().key("main.global.company.url.and.slogan.label")
-				.parameters(domainNameParams).defaultValue("").build(), this);
+				.parameters(domainNameParams).defaultValue("").build(),
+			this);
 	}
 
 	/**

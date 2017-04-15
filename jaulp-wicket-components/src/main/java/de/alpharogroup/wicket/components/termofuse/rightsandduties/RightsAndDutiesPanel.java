@@ -61,8 +61,8 @@ public class RightsAndDutiesPanel extends Panel
 	{
 		super(id, model);
 
-		add(new HeaderContentListPanel("introduction", Model.of(model.getObject()
-			.getIntroductionModel()))
+		add(new HeaderContentListPanel("introduction",
+			Model.of(model.getObject().getIntroductionModel()))
 		{
 
 			/** The Constant serialVersionUID. */
@@ -74,8 +74,8 @@ public class RightsAndDutiesPanel extends Panel
 			@Override
 			protected Component newHeaderLabel(final String id, final IModel<String> model)
 			{
-				return super.newHeaderLabel(id, model).add(
-					new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
+				return super.newHeaderLabel(id, model)
+					.add(new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
 			}
 
 			/**
@@ -85,13 +85,13 @@ public class RightsAndDutiesPanel extends Panel
 			protected Component newListComponent(final String id,
 				final ListItem<ResourceBundleKey> item)
 			{
-				return ComponentFactory.newLabel(id, newContentResourceModel(item.getModel())).add(
-					new JQueryJsAppenderBehavior("wrap", "<p></p>"));
+				return ComponentFactory.newLabel(id, newContentResourceModel(item.getModel()))
+					.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
 			}
 		});
 
-		add(new UnorderedListPanel("list", model.getObject().getListModel()
-			.getContentResourceKeys())
+		add(new UnorderedListPanel("list",
+			model.getObject().getListModel().getContentResourceKeys())
 		{
 
 			/** The Constant serialVersionUID. */
@@ -109,8 +109,8 @@ public class RightsAndDutiesPanel extends Panel
 			}
 		});
 
-		add(new ResourceBundleKeysPanel("summary", model.getObject().getSummaryModel()
-			.getContentResourceKeys())
+		add(new ResourceBundleKeysPanel("summary",
+			model.getObject().getSummaryModel().getContentResourceKeys())
 		{
 
 			/** The Constant serialVersionUID. */
@@ -123,9 +123,10 @@ public class RightsAndDutiesPanel extends Panel
 			protected Component newListComponent(final String id,
 				final ListItem<ResourceBundleKey> item)
 			{
-				return ComponentFactory.newLabel(id,
-					ResourceModelFactory.newResourceModel(item.getModel().getObject(), this)).add(
-					new JQueryJsAppenderBehavior("wrap", "<p></p>"));
+				return ComponentFactory
+					.newLabel(id,
+						ResourceModelFactory.newResourceModel(item.getModel().getObject(), this))
+					.add(new JQueryJsAppenderBehavior("wrap", "<p></p>"));
 			}
 		});
 

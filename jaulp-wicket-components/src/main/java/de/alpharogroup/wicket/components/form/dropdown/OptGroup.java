@@ -21,10 +21,10 @@ package de.alpharogroup.wicket.components.form.dropdown;
  */
 public interface OptGroup
 {
-    /**
-     * Gets the label of the optgroup.
-     *
-     * @return the label of the optgroup.
-     */
-    public String getLabel();
+	/**
+	 * Gets the label of the optgroup.
+	 *
+	 * @return the label of the optgroup.
+	 */
+	public String getLabel();
 }

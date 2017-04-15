@@ -62,6 +62,7 @@ public class EditableTextArea<T> extends BasePanel<T>
 	{
 		return EditableTextArea.of(id, model, labelModel, ModeContext.EDIT_MODE);
 	}
+
 	/**
 	 * Factory method for create a new {@link EditableTextArea} object.
 	 *
@@ -84,6 +85,7 @@ public class EditableTextArea<T> extends BasePanel<T>
 			modeContext);
 		return editableTextArea;
 	}
+
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	@Setter

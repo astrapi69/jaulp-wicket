@@ -48,22 +48,22 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 
 	/** The button label. */
 	@Getter
-	private  Label buttonLabel;
+	private Label buttonLabel;
 	/** The form. */
 	@Getter
-	private  Form<?> form;
+	private Form<?> form;
 
 	/** The signin panel. */
 	@Getter
-	private  Component signinPanel;
+	private Component signinPanel;
 
 	/** The submit button. */
 	@Getter
-	private  Button submitButton;
+	private Button submitButton;
 
 	/** The password forgotten link. */
 	@Getter
-	private  MarkupContainer passwordForgottenLink;
+	private MarkupContainer passwordForgottenLink;
 
 	/**
 	 * Instantiates a new {@link SigninFormPanel}.
@@ -227,7 +227,8 @@ public abstract class SigninFormPanel<T extends SignInModel> extends BasePanel<T
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onInitialize() {
+	protected void onInitialize()
+	{
 		super.onInitialize();
 		add(form = newForm("form", getModel()));
 		form.add(signinPanel = newSigninPanel("signinPanel", getModel()));

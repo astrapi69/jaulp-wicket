@@ -29,7 +29,8 @@ import lombok.ToString;
 /**
  * The Class {@link RadioGroupModelBean}.
  *
- * @param <T> the generic type of model object.
+ * @param <T>
+ *            the generic type of model object.
  */
 @Getter
 @Setter
@@ -45,13 +46,13 @@ public class RadioGroupModelBean<T> implements Serializable
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The selected model object. */
 	private T selected;
-	
+
 	/** The available radios. */
 	private List<T> radios;
-	
+
 	/** The label property expression. */
 	private String labelPropertyExpression;
 

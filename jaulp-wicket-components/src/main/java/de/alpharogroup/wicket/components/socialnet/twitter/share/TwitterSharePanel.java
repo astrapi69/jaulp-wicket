@@ -55,8 +55,8 @@ public class TwitterSharePanel extends BasePanel<TwitterShareModelBean>
 	public TwitterSharePanel(final String id, final IModel<TwitterShareModelBean> model)
 	{
 		super(id, model);
-		final ExternalLink twitterShareLink = new ExternalLink("shareUrl", model.getObject()
-			.getShareUrl());
+		final ExternalLink twitterShareLink = new ExternalLink("shareUrl",
+			model.getObject().getShareUrl());
 		if (model.getObject().getDataUrl() != null)
 		{
 			twitterShareLink.add(new AttributeModifier("data-url", model.getObject().getDataUrl()));
@@ -67,18 +67,18 @@ public class TwitterSharePanel extends BasePanel<TwitterShareModelBean>
 		}
 		if (model.getObject().getCounturl() != null)
 		{
-			twitterShareLink.add(new AttributeModifier("data-counturl", model.getObject()
-				.getCounturl()));
+			twitterShareLink
+				.add(new AttributeModifier("data-counturl", model.getObject().getCounturl()));
 		}
-		twitterShareLink.add(new AttributeModifier("data-show-count", model.getObject()
-			.getShowCount().toString()));
+		twitterShareLink.add(
+			new AttributeModifier("data-show-count", model.getObject().getShowCount().toString()));
 
 		if (model.getObject().getCountAlign() != null)
 		{
 			// if the count should go at the top of the twitter icon use "vertical"...
 			// twitterShareLink.add(new AttributeModifier("data-count", "vertical"));
-			twitterShareLink.add(new AttributeModifier("data-count", model.getObject()
-				.getCountAlign()));
+			twitterShareLink
+				.add(new AttributeModifier("data-count", model.getObject().getCountAlign()));
 		}
 		add(twitterShareLink);
 	}

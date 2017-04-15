@@ -33,7 +33,8 @@ import lombok.Getter;
 /**
  * The Class {@link MenuPanel}.
  */
-@ImportResources(resources = { @ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
+@ImportResources(resources = {
+		@ImportResource(resourceName = "MenuPanel.js", resourceType = "js") })
 public class MenuPanel extends BasePanel<Object>
 {
 

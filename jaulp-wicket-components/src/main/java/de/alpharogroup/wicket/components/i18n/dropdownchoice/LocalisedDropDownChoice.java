@@ -79,7 +79,8 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	 *            the renderer
 	 */
 	public LocalisedDropDownChoice(final String id,
-		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
+		final IModel<? extends List<? extends T>> choices,
+		final IChoiceRenderer<? super T> renderer)
 	{
 		super(id, choices, renderer);
 	}
@@ -113,7 +114,8 @@ public class LocalisedDropDownChoice<T> extends DropDownChoice<T>
 	 *            the renderer
 	 */
 	public LocalisedDropDownChoice(final String id, final IModel<T> model,
-		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
+		final IModel<? extends List<? extends T>> choices,
+		final IChoiceRenderer<? super T> renderer)
 	{
 		super(id, model, choices, renderer);
 	}

@@ -105,8 +105,8 @@ public class GooglePlusSharePanel extends BasePanel<GooglePlusShareModelBean>
 		final WebMarkupContainer googlePlusButton = ComponentFactory.newWebMarkupContainer(id,
 			model);
 		googlePlusButton.add(new AttributeModifier("class", model.getObject().getCssClass()));
-		googlePlusButton.add(new AttributeModifier("data-annotation", model.getObject()
-			.getDataAnnotation()));
+		googlePlusButton
+			.add(new AttributeModifier("data-annotation", model.getObject().getDataAnnotation()));
 		googlePlusButton.add(new AttributeModifier("data-width", model.getObject().getDataWith()));
 		googlePlusButton.add(new AttributeModifier("data-href", model.getObject().getDataHref()));
 		return googlePlusButton;

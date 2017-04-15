@@ -66,8 +66,8 @@ public abstract class ChangePasswordFormPanel extends BasePanel<ChangePasswordMo
 		form.add(new ChangePasswordPanel("changePasswordPanel", model));
 		// Create submit button for the form
 		submitButton = newButton("submitButton");
-		submitButton.add(buttonLabel = newButtonLabel("buttonLabel", "global.update.button.label",
-			"Update"));
+		submitButton.add(
+			buttonLabel = newButtonLabel("buttonLabel", "global.update.button.label", "Update"));
 		form.add(submitButton);
 	}
 

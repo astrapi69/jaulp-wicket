@@ -80,10 +80,10 @@ public class ChangePasswordPanel extends Panel
 	protected Component newCurrentPasswordTextField(final String id,
 		final IModel<ChangePasswordModelBean> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"change.pw.current.password.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.current.password.label", this);
+		final IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel("change.pw.current.password.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.current.password.label", this);
 		final LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
@@ -120,10 +120,10 @@ public class ChangePasswordPanel extends Panel
 	protected Component newPasswordTextField(final String id,
 		final IModel<ChangePasswordModelBean> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"change.pw.new.password.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.new.password.label", this);
+		final IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel("change.pw.new.password.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.new.password.label", this);
 		final LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean>(
 			id, model, labelModel)
 		{
@@ -160,10 +160,10 @@ public class ChangePasswordPanel extends Panel
 	protected Component newRepeatPasswordTextField(final String id,
 		final IModel<ChangePasswordModelBean> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"change.pw.new.password.repeat.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.new.password.repeat.label", this);
+		final IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel("change.pw.new.password.repeat.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.new.password.repeat.label", this);
 		final LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean> pwTextField = new LabeledPasswordTextFieldPanel<String, ChangePasswordModelBean>(
 			id, model, labelModel)
 		{

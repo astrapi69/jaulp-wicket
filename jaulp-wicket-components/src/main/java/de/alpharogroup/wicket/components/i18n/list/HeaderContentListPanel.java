@@ -68,12 +68,10 @@ public abstract class HeaderContentListPanel extends Panel
 	public HeaderContentListPanel(final String id, final IModel<HeaderContentListModelBean> model)
 	{
 		super(id, model);
-		add(header = newHeaderLabel("header", newHeaderModel(model.getObject()
-			.getHeaderResourceKey())));
-		add(listPanel = newListPanel(
-			"listPanel",
-			Model.of(ContentListModelBean.builder()
-				.contentResourceKeys(model.getObject().getContentResourceKeys()).build())));
+		add(header = newHeaderLabel("header",
+			newHeaderModel(model.getObject().getHeaderResourceKey())));
+		add(listPanel = newListPanel("listPanel", Model.of(ContentListModelBean.builder()
+			.contentResourceKeys(model.getObject().getContentResourceKeys()).build())));
 	}
 
 	/**
@@ -123,8 +121,8 @@ public abstract class HeaderContentListPanel extends Panel
 
 	/**
 	 * Abstract factory method for creating the new {@link Component} in the list. This method is
-	 * invoked in the {@link ListView#populateItem(ListItem)} from the derived classes and have to be
-	 * overridden so users can provide their own version of a new {@link Component} in the list.
+	 * invoked in the {@link ListView#populateItem(ListItem)} from the derived classes and have to
+	 * be overridden so users can provide their own version of a new {@link Component} in the list.
 	 *
 	 * @param id
 	 *            the id

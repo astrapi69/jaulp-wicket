@@ -59,11 +59,11 @@ public final class MenuItemFragment extends Fragment
 		// Add a down or right arrow icon if there are children
 		if (menuItem.getChildren().size() > 0)
 		{
-			menuItem.getLabel().add(
-				new AttributeAppender("class", Model.of("menu-has-submenu"), " "));
+			menuItem.getLabel()
+				.add(new AttributeAppender("class", Model.of("menu-has-submenu"), " "));
 		}
 		// Add the submenus
-		menuitemlist.add(new SubMenuListView("menuitemlinks", menuItem.getChildren(),
-			markupProvider));
+		menuitemlist
+			.add(new SubMenuListView("menuitemlinks", menuItem.getChildren(), markupProvider));
 	}
 }

@@ -52,10 +52,10 @@ public class LinkFactory
 		final Class<? extends Page> pageClass, final String labelId,
 		final ResourceBundleKey resourceModelKey, final Component component)
 	{
-		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(
-			linkId, pageClass);
-		bookmarkablePageLink.add(new Label(labelId, ResourceModelFactory.newResourceModel(
-			resourceModelKey, component)));
+		final BookmarkablePageLink<String> bookmarkablePageLink = new BookmarkablePageLink<>(linkId,
+			pageClass);
+		bookmarkablePageLink.add(
+			new Label(labelId, ResourceModelFactory.newResourceModel(resourceModelKey, component)));
 		return bookmarkablePageLink;
 	}
 
@@ -105,12 +105,9 @@ public class LinkFactory
 		final Class<? extends Page> pageClass, final String labelId, final String resourceModelKey,
 		final Object[] parameters, final String defaultValue, final Component component)
 	{
-		return newBookmarkablePageLink(
-			linkId,
-			pageClass,
-			labelId,
-			ResourceBundleKey.builder().key(resourceModelKey).parameters(parameters)
-				.defaultValue(defaultValue).build(), component);
+		return newBookmarkablePageLink(linkId, pageClass, labelId, ResourceBundleKey.builder()
+			.key(resourceModelKey).parameters(parameters).defaultValue(defaultValue).build(),
+			component);
 	}
 
 	/**
@@ -157,8 +154,8 @@ public class LinkFactory
 		final String labelId, final ResourceBundleKey resourceBundleKey, final Component component)
 	{
 		final ExternalLink externalLink = new ExternalLink(linkId, Model.of(url));
-		externalLink.add(new Label(labelId, ResourceModelFactory.newResourceModel(
-			resourceBundleKey, component)));
+		externalLink.add(new Label(labelId,
+			ResourceModelFactory.newResourceModel(resourceBundleKey, component)));
 		return externalLink;
 	}
 
@@ -206,12 +203,9 @@ public class LinkFactory
 		final String labelId, final String resourceModelKey, final Object[] parameters,
 		final String defaultValue, final Component component)
 	{
-		return newExternalLink(
-			linkId,
-			url,
-			labelId,
-			ResourceBundleKey.builder().key(resourceModelKey).parameters(parameters)
-				.defaultValue(defaultValue).build(), component);
+		return newExternalLink(linkId, url, labelId, ResourceBundleKey.builder()
+			.key(resourceModelKey).parameters(parameters).defaultValue(defaultValue).build(),
+			component);
 	}
 
 	/**

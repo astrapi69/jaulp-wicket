@@ -30,7 +30,9 @@ import lombok.Getter;
  * @param <M>
  *            the generic type of model object
  */
-public abstract class LabeledAutoCompleteTextFieldPanel<T, M> extends LabeledFormComponentPanel<T, M>
+public abstract class LabeledAutoCompleteTextFieldPanel<T, M>
+	extends
+		LabeledFormComponentPanel<T, M>
 {
 
 	/** The Constant serialVersionUID. */

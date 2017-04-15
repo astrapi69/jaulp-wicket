@@ -92,15 +92,15 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 
 		add(form = newForm("form"));
 
-		form.add(checkGroup = newCheckGroup("checkGroup", new PropertyModel<>(model,
-			"selectedItems")));
+		form.add(
+			checkGroup = newCheckGroup("checkGroup", new PropertyModel<>(model, "selectedItems")));
 
 		checkGroup
 			.add(checkGroupSelector = newCheckGroupSelector("checkGroupSelector", checkGroup));
 
-		checkGroup.add(checkGroupSelectorLabel = newCheckGroupSelectorLabel(
-			"checkGroupSelectorLabel", checkGroupSelector.getMarkupId(),
-			Model.of("check/uncheck all")));
+		checkGroup
+			.add(checkGroupSelectorLabel = newCheckGroupSelectorLabel("checkGroupSelectorLabel",
+				checkGroupSelector.getMarkupId(), Model.of("check/uncheck all")));
 
 		checkGroup.add(choices = newChoices("choices", model));
 	}
@@ -197,8 +197,8 @@ public class CheckGroupSelectorPanel<T> extends BasePanel<CheckboxModelBean<T>>
 			protected void populateItem(final ListItem<T> item)
 			{
 				item.add(new Check<>("checkbox", item.getModel()));
-				item.add(new Label("label", new PropertyModel<String>(item.getDefaultModel(), model
-					.getObject().getLabelPropertyExpression())));
+				item.add(new Label("label", new PropertyModel<String>(item.getDefaultModel(),
+					model.getObject().getLabelPropertyExpression())));
 			}
 		};
 		choices.setReuseItems(true);

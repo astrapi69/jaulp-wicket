@@ -50,8 +50,9 @@ public abstract class ActionButtonPanel extends ButtonPanel
 	protected abstract Action<?> getAction();
 
 	/**
-	 * Factory method for creating a new {@link Button}. This method is invoked in the constructor from the
-	 * derived classes and can be overridden so users can provide their own version of a Button.
+	 * Factory method for creating a new {@link Button}. This method is invoked in the constructor
+	 * from the derived classes and can be overridden so users can provide their own version of a
+	 * Button.
 	 *
 	 * @param id
 	 *            the wicket id

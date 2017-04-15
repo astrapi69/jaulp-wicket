@@ -27,7 +27,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * The Class {@link ImageChoicesModelBean} holds data for a list of checkbox with image and the selected items.
+ * The Class {@link ImageChoicesModelBean} holds data for a list of checkbox with image and the
+ * selected items.
  *
  * @author Asterios Raptis
  */

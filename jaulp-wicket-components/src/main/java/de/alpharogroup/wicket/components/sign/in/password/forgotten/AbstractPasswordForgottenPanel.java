@@ -214,8 +214,7 @@ public abstract class AbstractPasswordForgottenPanel extends BasePanel<PasswordF
 				final IModel<PasswordForgottenModelBean> model)
 			{
 				final EmailTextField emailTextField = new EmailTextField(id,
-					new PropertyModel<>(model, "email")
-					);
+					new PropertyModel<>(model, "email"));
 				emailTextField.setOutputMarkupId(true);
 				emailTextField.setRequired(true);
 				if (placeholderModel != null)

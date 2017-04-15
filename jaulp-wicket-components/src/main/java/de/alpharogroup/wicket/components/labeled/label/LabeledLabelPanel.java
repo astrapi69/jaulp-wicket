@@ -53,7 +53,8 @@ public class LabeledLabelPanel<T> extends BasePanel<T>
 	 * @param labelModel
 	 *            the label model
 	 */
-	public LabeledLabelPanel(final String id, final IModel<T> model, final IModel<String> labelModel)
+	public LabeledLabelPanel(final String id, final IModel<T> model,
+		final IModel<String> labelModel)
 	{
 		super(id, model);
 		setOutputMarkupId(true);

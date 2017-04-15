@@ -99,9 +99,8 @@ public abstract class MailToPanel extends Panel
 	 */
 	protected IModel<String> newMailToViewModel(final Object[] params)
 	{
-		return ResourceModelFactory.newResourceModel(
-			ResourceBundleKey.builder().key("global.compamy.mailto.view").parameters(params)
-				.build(), this);
+		return ResourceModelFactory.newResourceModel(ResourceBundleKey.builder()
+			.key("global.compamy.mailto.view").parameters(params).build(), this);
 	}
 
 }

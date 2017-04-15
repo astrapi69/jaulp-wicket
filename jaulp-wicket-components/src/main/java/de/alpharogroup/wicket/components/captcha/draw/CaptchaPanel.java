@@ -109,8 +109,8 @@ public class CaptchaPanel extends BasePanel<CaptchaModelBean>
 		final IModel<CaptchaModelBean> model)
 	{
 		// Create an TextField for the input...
-		final RequiredTextField<String> captchaInput = new RequiredTextField<String>(
-			"captchaInput", new PropertyModel<>(model, "captchaInput"))
+		final RequiredTextField<String> captchaInput = new RequiredTextField<String>("captchaInput",
+			new PropertyModel<>(model, "captchaInput"))
 		{
 
 			/**

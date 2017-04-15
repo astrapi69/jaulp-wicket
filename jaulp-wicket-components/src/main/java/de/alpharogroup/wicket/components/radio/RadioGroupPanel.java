@@ -65,11 +65,7 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModelBean<T
 		setOutputMarkupId(true);
 		add(form = newForm("form", model));
 
-		form.add(
-			group = newRadioGroup(newRadioName(),
-				new PropertyModel<>(model, "selected")
-				)
-				);
+		form.add(group = newRadioGroup(newRadioName(), new PropertyModel<>(model, "selected")));
 
 		group.add(newRadioListView("choice", model));
 	}
@@ -148,7 +144,8 @@ public abstract class RadioGroupPanel<T> extends BasePanel<RadioGroupModelBean<T
 	 *            the model
 	 * @return the new {@link ListView} for the {@link Radio} objects.
 	 */
-	protected ListView<T> newRadioListView(final String id, final IModel<RadioGroupModelBean<T>> model)
+	protected ListView<T> newRadioListView(final String id,
+		final IModel<RadioGroupModelBean<T>> model)
 	{
 		final ListView<T> radioListView = new ListView<T>("choice", model.getObject().getRadios())
 		{

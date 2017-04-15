@@ -60,7 +60,8 @@ public abstract class OptGroupDropDownChoice<T extends OptGroup> extends DropDow
 	 * @param choices
 	 *            the choices
 	 */
-	public OptGroupDropDownChoice(final String id, final IModel<? extends List<? extends T>> choices)
+	public OptGroupDropDownChoice(final String id,
+		final IModel<? extends List<? extends T>> choices)
 	{
 		super(id, choices);
 	}
@@ -76,7 +77,8 @@ public abstract class OptGroupDropDownChoice<T extends OptGroup> extends DropDow
 	 *            the renderer
 	 */
 	public OptGroupDropDownChoice(final String id,
-		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
+		final IModel<? extends List<? extends T>> choices,
+		final IChoiceRenderer<? super T> renderer)
 	{
 		super(id, choices, renderer);
 	}
@@ -110,7 +112,8 @@ public abstract class OptGroupDropDownChoice<T extends OptGroup> extends DropDow
 	 *            the renderer
 	 */
 	public OptGroupDropDownChoice(final String id, final IModel<T> model,
-		final IModel<? extends List<? extends T>> choices, final IChoiceRenderer<? super T> renderer)
+		final IModel<? extends List<? extends T>> choices,
+		final IChoiceRenderer<? super T> renderer)
 	{
 		super(id, model, choices, renderer);
 	}

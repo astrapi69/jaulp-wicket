@@ -57,11 +57,11 @@ public class TwitterFollowPanel extends BasePanel<TwitterFollowModelBean>
 	{
 		super(id, model);
 		final ExternalLink twitterFollowLink = new ExternalLink("url", model.getObject().getUrl());
-		twitterFollowLink.add(new AttributeModifier("data-show-count", model.getObject()
-			.getShowCount().toString()));
+		twitterFollowLink.add(
+			new AttributeModifier("data-show-count", model.getObject().getShowCount().toString()));
 		add(twitterFollowLink);
-		final Label twitterNameLabel = new Label("twitterNameLabel", model.getObject()
-			.getUsername());
+		final Label twitterNameLabel = new Label("twitterNameLabel",
+			model.getObject().getUsername());
 		twitterFollowLink.add(twitterNameLabel);
 	}
 

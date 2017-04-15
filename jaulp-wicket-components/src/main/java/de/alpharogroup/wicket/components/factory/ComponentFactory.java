@@ -529,7 +529,8 @@ public class ComponentFactory
 	 *            the model
 	 * @return the new {@link PasswordTextField}
 	 */
-	public static PasswordTextField newPasswordTextField(final String id, final IModel<String> model)
+	public static PasswordTextField newPasswordTextField(final String id,
+		final IModel<String> model)
 	{
 		final PasswordTextField passwordTextField = new PasswordTextField(id, model);
 		passwordTextField.setOutputMarkupId(true);

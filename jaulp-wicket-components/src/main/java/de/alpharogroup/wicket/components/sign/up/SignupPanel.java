@@ -80,13 +80,13 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 *            the model
 	 * @return the text field
 	 */
-	protected LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel> newRepeatPasswordTextField(final String id,
-		final IModel<BaseUsernameSignUpModel> model)
+	protected LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel> newRepeatPasswordTextField(
+		final String id, final IModel<BaseUsernameSignUpModel> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"global.repeat.password.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.your.password.again.label", this);
+		final IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel("global.repeat.password.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.your.password.again.label", this);
 		final LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel> pwTextField = new LabeledPasswordTextFieldPanel<String, BaseUsernameSignUpModel>(
 			id, model, labelModel)
 		{
@@ -139,12 +139,12 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 */
 	protected Component newUsernameTextField(final String id, final IModel<T> model)
 	{
-		final IModel<String> labelModel = ResourceModelFactory.newResourceModel(
-			"global.username.label", this);
-		final IModel<String> placeholderModel = ResourceModelFactory.newResourceModel(
-			"global.enter.your.username.label", this);
-		final LabeledTextFieldPanel<String, T> nameTextField = new LabeledTextFieldPanel<String, T>(id, model,
-			labelModel)
+		final IModel<String> labelModel = ResourceModelFactory
+			.newResourceModel("global.username.label", this);
+		final IModel<String> placeholderModel = ResourceModelFactory
+			.newResourceModel("global.enter.your.username.label", this);
+		final LabeledTextFieldPanel<String, T> nameTextField = new LabeledTextFieldPanel<String, T>(
+			id, model, labelModel)
 		{
 
 			private static final long serialVersionUID = 1L;
@@ -153,8 +153,8 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 			@SuppressWarnings({ "rawtypes", "unchecked" })
 			protected TextField newTextField(final String id, final IModel<T> modelSuper)
 			{
-				final TextField<String> textField = new TextField<String>(id, new PropertyModel<>(
-					model, "username"));
+				final TextField<String> textField = new TextField<String>(id,
+					new PropertyModel<>(model, "username"));
 				textField.setOutputMarkupId(true);
 				textField.setRequired(true);
 				if (placeholderModel != null)
@@ -172,7 +172,8 @@ public class SignupPanel<T extends BaseUsernameSignUpModel> extends BasePanel<T>
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	protected void onInitialize() {
+	protected void onInitialize()
+	{
 		super.onInitialize();
 		add(username = newUsernameTextField("username", getModel()));
 		add(signinPanel = newSigninPanel("signinPanel", getModel()));

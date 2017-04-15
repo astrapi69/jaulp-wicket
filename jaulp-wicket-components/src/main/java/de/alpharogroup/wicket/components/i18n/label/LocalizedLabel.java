@@ -127,7 +127,8 @@ public class LocalizedLabel extends Label
 		final String defaultValue)
 	{
 		super(id);
-		setDefaultModel(ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue));
+		setDefaultModel(
+			ResourceModelFactory.newResourceModel(resourceKey, component, defaultValue));
 	}
 
 	/**

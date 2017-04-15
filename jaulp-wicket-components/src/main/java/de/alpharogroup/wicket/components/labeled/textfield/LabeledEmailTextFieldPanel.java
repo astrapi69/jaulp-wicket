@@ -101,8 +101,8 @@ public class LabeledEmailTextFieldPanel<T, M> extends LabeledFormComponentPanel<
 	 */
 	protected EmailTextField newEmailTextField(final String id, final IModel<M> model)
 	{
-		return ComponentFactory.newEmailTextField(id, new PropertyModel<String>(model.getObject(),
-			getId()));
+		return ComponentFactory.newEmailTextField(id,
+			new PropertyModel<String>(model.getObject(), getId()));
 	}
 
 }

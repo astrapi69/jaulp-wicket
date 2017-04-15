@@ -53,8 +53,8 @@ public class ContractPanel extends HeaderContentListPanel
 	@Override
 	protected Component newHeaderLabel(final String id, final IModel<String> model)
 	{
-		return super.newHeaderLabel(id, model).add(
-			new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
+		return super.newHeaderLabel(id, model)
+			.add(new JQueryJsAppenderBehavior("wrap", "<h2></h2>"));
 	}
 
 	/**

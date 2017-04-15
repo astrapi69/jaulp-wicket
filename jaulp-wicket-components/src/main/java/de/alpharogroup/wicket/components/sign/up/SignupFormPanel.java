@@ -92,7 +92,9 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 			buttonLabel = newButtonLabel("buttonLabel", "global.button.sign.up.label", "Sign up"));
 		form.add(submitButton);
 
-		form.add(new EqualPasswordInputValidator(signupPanel.getSigninPanel().getPassword().getPasswordTextField(), signupPanel.getRepeatPassword().getPasswordTextField()));
+		form.add(new EqualPasswordInputValidator(
+			signupPanel.getSigninPanel().getPassword().getPasswordTextField(),
+			signupPanel.getRepeatPassword().getPasswordTextField()));
 	}
 
 	/**
@@ -168,7 +170,8 @@ public abstract class SignupFormPanel extends BasePanel<BaseUsernameSignUpModel>
 	 *            the model
 	 * @return the SignupPanel
 	 */
-	protected SignupPanel<BaseUsernameSignUpModel> newSignupPanel(final String id, final IModel<BaseUsernameSignUpModel> model)
+	protected SignupPanel<BaseUsernameSignUpModel> newSignupPanel(final String id,
+		final IModel<BaseUsernameSignUpModel> model)
 	{
 		return new SignupPanel<>(id, model);
 	}

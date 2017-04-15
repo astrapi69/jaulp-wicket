@@ -22,8 +22,8 @@ import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 
 /**
- * The class {@link UpdateModelVisitor} can be added to a form for update the
- * component models even if an validation error occurs in the given form.
+ * The class {@link UpdateModelVisitor} can be added to a form for update the component models even
+ * if an validation error occurs in the given form.
  *
  * <pre>
  * Form form = new Form()
@@ -49,7 +49,8 @@ public class UpdateModelVisitor implements IVisitor<FormComponent<?>, Void>
 	 * @param form
 	 *            the form
 	 */
-	public UpdateModelVisitor(final Form<?> form) {
+	public UpdateModelVisitor(final Form<?> form)
+	{
 		this.form = form;
 	}
 
@@ -57,15 +58,22 @@ public class UpdateModelVisitor implements IVisitor<FormComponent<?>, Void>
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void component(final FormComponent<?> formComponent, final IVisit<Void> visit) {
-		if (formComponent instanceof IFormModelUpdateListener) {
+	public void component(final FormComponent<?> formComponent, final IVisit<Void> visit)
+	{
+		if (formComponent instanceof IFormModelUpdateListener)
+		{
 			final Form<?> form = Form.findForm(formComponent);
-			if (form != null) {
-				if (this.form == null || this.form == form) {
-					if (form.isEnabledInHierarchy()) {
-						if (formComponent.isVisibleInHierarchy() && formComponent.isEnabledInHierarchy()) {
+			if (form != null)
+			{
+				if (this.form == null || this.form == form)
+				{
+					if (form.isEnabledInHierarchy())
+					{
+						if (formComponent.isVisibleInHierarchy()
+							&& formComponent.isEnabledInHierarchy())
+						{
 							formComponent.modelChanging();
-							((IFormModelUpdateListener) formComponent).updateModel();
+							((IFormModelUpdateListener)formComponent).updateModel();
 							formComponent.modelChanged();
 						}
 					}

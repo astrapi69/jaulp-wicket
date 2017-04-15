@@ -103,8 +103,8 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 			{
 				try
 				{
-					return ApplicationExtensions.getResourceStream(WebApplication.get(), model
-						.getObject().getPath(), model.getObject().getContentType());
+					return ApplicationExtensions.getResourceStream(WebApplication.get(),
+						model.getObject().getPath(), model.getObject().getContentType());
 				}
 				catch (final IOException e)
 				{
@@ -154,8 +154,8 @@ public abstract class DownloadPanel extends BasePanel<DownloadModelBean>
 	protected void onInitialize()
 	{
 		super.onInitialize();
-		fileNameLabel = newFileNameLabel("fileName", new PropertyModel<String>(getModelObject(),
-			"filename"));
+		fileNameLabel = newFileNameLabel("fileName",
+			new PropertyModel<String>(getModelObject(), "filename"));
 		downloadLink = newDownloadLink("downloadLink", getModel());
 		downloadLink.addOrReplace(fileNameLabel);
 		addOrReplace(downloadLink);

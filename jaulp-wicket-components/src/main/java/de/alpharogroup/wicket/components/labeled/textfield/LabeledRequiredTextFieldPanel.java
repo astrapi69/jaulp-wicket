@@ -89,8 +89,8 @@ public class LabeledRequiredTextFieldPanel<T, M> extends LabeledFormComponentPan
 	 */
 	protected RequiredTextField<T> newRequiredTextField(final String id, final IModel<M> model)
 	{
-		return ComponentFactory.newRequiredTextField(id, new PropertyModel<T>(model.getObject(),
-			getId()));
+		return ComponentFactory.newRequiredTextField(id,
+			new PropertyModel<T>(model.getObject(), getId()));
 	}
 
 }

@@ -51,13 +51,13 @@ public class DownloadModelBean implements Serializable
 	 */
 	@NonNull
 	private String filename;
-	
+
 	/**
 	 * The path of the file.
 	 */
 	@NonNull
 	private String path;
-	
+
 	/**
 	 * The content type of the file.
 	 */
