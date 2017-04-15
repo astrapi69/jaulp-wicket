@@ -57,7 +57,7 @@ public class ReportThrowableModelBean implements Serializable
 	/** The stack trace. */
 	private String description;
 
-	/** The response page. */
+	/** The response page. This page will be used to redirect on with setResponsePage method. */
 	private Class<? extends IRequestablePage> responsePage;
 
 	/** The throwable. */

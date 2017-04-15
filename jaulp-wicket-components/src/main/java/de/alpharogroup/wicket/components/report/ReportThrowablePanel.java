@@ -28,9 +28,7 @@ import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.request.component.IRequestablePage;
 
-import de.alpharogroup.exception.ExceptionExtensions;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.factory.ComponentFactory;
@@ -91,15 +89,6 @@ public abstract class ReportThrowablePanel extends BasePanel<ReportThrowableMode
 		super(id, model);
 		reportThrowableModel = model.getObject();
 	}
-
-	/**
-	 * Abstract factory method for create a new {@link String} of the affected username. This method
-	 * is invoked in the constructor from the derived classes and have to be overridden so users can
-	 * provide their own version of a new {@link String} of the affected username.
-	 *
-	 * @return the new {@link String} of the affected username.
-	 */
-	protected abstract String newAffectedUsername();
 
 	/**
 	 * Factory method for create the new {@link LabeledTextAreaPanel}. This method is invoked in the
@@ -189,41 +178,6 @@ public abstract class ReportThrowablePanel extends BasePanel<ReportThrowableMode
 	{
 		return ComponentFactory.newHiddenField(id, model);
 	}
-
-	/**
-	 * Factory method for creating the new {@link ReportThrowableModelBean} from the given
-	 * {@link Throwable}. This method is invoked in the constructor from the derived classes and can
-	 * be overridden so users can provide their own version of a new
-	 * {@link ReportThrowableModelBean} from the given {@link Throwable}.
-	 *
-	 * @param throwable
-	 *            the throwable
-	 * @return the new {@link ReportThrowableModelBean} from the given {@link Throwable}.
-	 */
-	protected ReportThrowableModelBean newReportThrowableModel(final Throwable throwable)
-	{
-		return ReportThrowableModelBean.builder().affectedUsername(newAffectedUsername())
-			.responsePage(newResponsePageClass()).rootUsername(newRootUsername())
-			.stackTrace(ExceptionExtensions.getStackTraceElements(throwable)).build();
-	}
-
-	/**
-	 * Abstract factory method for create a new {@link Class} of the response page. This method is
-	 * invoked in the constructor from the derived classes and have to be overridden so users can
-	 * provide their own version of a new {@link Class} of the response page.
-	 *
-	 * @return the new {@link Class} of the response page.
-	 */
-	protected abstract Class<? extends IRequestablePage> newResponsePageClass();
-
-	/**
-	 * Abstract factory method for create a new {@link String} of the root username. This method is
-	 * invoked in the constructor from the derived classes and have to be overridden so users can
-	 * provide their own version of a new {@link String} of the root username.
-	 *
-	 * @return the new {@link String} of the root username.
-	 */
-	protected abstract String newRootUsername();
 
 	/**
 	 * Factory method for creating the new {@link Button}. This method is invoked in the constructor
