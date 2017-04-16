@@ -25,6 +25,7 @@ import java.util.Set;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.io.IClusterable;
+import org.apache.wicket.util.lang.Args;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -74,7 +75,7 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 	 */
 	public TwoDropDownChoicesModel(final T selectedOption, final Map<T, List<T>> modelsMap)
 	{
-		this.modelsMap = modelsMap;
+		this.modelsMap = Args.notNull(modelsMap, "modelsMap");
 
 		rootChoices = new AbstractReadOnlyModel<List<T>>()
 		{
@@ -94,7 +95,7 @@ public class TwoDropDownChoicesModel<T> implements IClusterable
 			}
 
 		};
-		this.selectedRootOption = selectedOption;
+		this.selectedRootOption = Args.notNull(selectedOption, "selectedOption");
 
 		this.childChoices = getChildChoices();
 
