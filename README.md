@@ -77,8 +77,16 @@ Another way is to start the example application programmaticly with jetty. In ev
 
 
   * [BaseWebApplication][BaseWebApplication]
+  * [Counting online users with wicket][Counting online users with wicket]
+  * [Internationalization with ResourceModelFactory][Internationalization with ResourceModelFactory]
+  * [Wicket and I18n][Wicket and I18n]
+  * [Replacing wicket panels with ajax][Replacing wicket panels with ajax]
   
-   [BaseWebApplication]: https://github.com/astrapi69/jaulp-wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
+  [Replacing wicket panels with ajax]: https://github.com/astrapi69/jaulp.wicket/wiki/Replacing-wicket-panels-with-ajax "Replacing wicket panels with ajax"
+  [Wicket and I18n]: https://github.com/astrapi69/jaulp.wicket/wiki/Wicket-and-I18n "Wicket and I18n"  
+  [Internationalization with ResourceModelFactory]: https://github.com/astrapi69/jaulp.wicket/wiki/Internationalization-with-StringResourceModel-and-ResourceModelFactory "Internationalization with ResourceModelFactory"
+  [Counting online users with wicket]: https://github.com/astrapi69/jaulp.wicket/wiki/Counting-online-users-with-wicket "Counting online users with wicket"
+   [BaseWebApplication]: https://github.com/astrapi69/jaulp.wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
 
 ## Want to Help and improve it? ###
 
