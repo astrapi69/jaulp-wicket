@@ -25,7 +25,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 <dependency>
    <groupId>de.alpharogroup</groupId>
    <artifactId>jaulp.wicket.components</artifactId>
-   <version>7.1.0</version>
+   <version>7.3.0</version>
 </dependency>
 ```
 
@@ -35,7 +35,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 <dependency>
    <groupId>de.alpharogroup</groupId>
    <artifactId>jaulp.wicket.base</artifactId>
-   <version>7.1.0</version>
+   <version>7.3.0</version>
 </dependency>
 ```
 
@@ -45,7 +45,7 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 <dependency>
    <groupId>de.alpharogroup</groupId>
    <artifactId>jaulp.wicket.behaviors</artifactId>
-   <version>7.1.0</version>
+   <version>7.3.0</version>
 </dependency>
 ```
 
