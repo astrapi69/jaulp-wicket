@@ -21,22 +21,22 @@
 		Parent project for the projects in the jaulp-wicket.
 	</description>
 
-	<url>https://github.com/astrapi69/jaulp.wicket</url>
+	<url>https://github.com/astrapi69/jaulp-wicket</url>
 
 	<scm>
-		<connection>scm:git:git:@github.com:astrapi69/jaulp.wicket.git</connection>
-		<developerConnection>scm:git:git@github.com:astrapi69/jaulp.wicket.git</developerConnection>
-		<url>git:@github.com:astrapi69/jaulp.wicket.git</url>
+		<connection>scm:git:git:@github.com:astrapi69/jaulp-wicket.git</connection>
+		<developerConnection>scm:git:git@github.com:astrapi69/jaulp-wicket.git</developerConnection>
+		<url>git:@github.com:astrapi69/jaulp-wicket.git</url>
 	</scm>
 
 	<ciManagement>
 		<system>travis-ci</system>
-		<url>https://travis-ci.org/astrapi69/jaulp.wicket</url>
+		<url>https://travis-ci.org/astrapi69/jaulp-wicket</url>
 	</ciManagement>
 
 	<issueManagement>
 		<system>github</system>
-		<url>https://github.com/astrapi69/jaulp.wicket/issues</url>
+		<url>https://github.com/astrapi69/jaulp-wicket/issues</url>
 	</issueManagement>
 
 	<modules>

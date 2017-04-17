@@ -17,7 +17,7 @@
 	<description>
 		Adds the functionality to add HeaderContributors
 		to Pages and Panels through java annotations. To see how it works see
-		the 'jaulp.wicket.annotated.header.contributors.examples' project.
+		the 'jaulp-wicket-annotated-header-contributors-examples' project.
 	</description>
 
 	<dependencies>

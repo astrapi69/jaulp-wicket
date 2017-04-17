@@ -59,7 +59,7 @@ You can run every example project by doing following steps. For instance if you 
 
 First change to the directory and build the project:
 ```bash
-cd jaulp.wicket.components.examples
+cd jaulp-wicket-components-examples
 mvn clean install
 ```
 Running the example:
@@ -71,31 +71,31 @@ Call then http://localhost:8080/
 Another way is to start the example application programmaticly with jetty. In every example project there exists a start class with a main method that have the prefix Start**** and the suffix ****Examples. 
  
 ## Open Issues
-[![Open Issues](https://img.shields.io/github/issues/astrapi69/jaulp-wicket.svg?style=flat)](https://github.com/astrapi69/jaulp.wicket/issues) 
+[![Open Issues](https://img.shields.io/github/issues/astrapi69/jaulp-wicket.svg?style=flat)](https://github.com/astrapi69/jaulp-wicket/issues) 
 
 ## Documentation
 
 
   * [BaseWebApplication][BaseWebApplication]
   
-   [BaseWebApplication]: https://github.com/astrapi69/jaulp.wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
+   [BaseWebApplication]: https://github.com/astrapi69/jaulp-wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
 
 ## Want to Help and improve it? ###
 
-The source code of jaulp.wicket are on GitHub. Please feel free to fork and send pull requests!
+The source code of jaulp-wicket are on GitHub. Please feel free to fork and send pull requests!
 
-Create your own fork of [astrapi69/jaulp.wicket/fork](https://github.com/astrapi69/jaulp.wicket/fork)
+Create your own fork of [astrapi69/jaulp-wicket/fork](https://github.com/astrapi69/jaulp-wicket/fork)
 
-To share your changes, [submit a pull request](https://github.com/astrapi69/jaulp.wicket/pull/new/master).
+To share your changes, [submit a pull request](https://github.com/astrapi69/jaulp-wicket/pull/new/master).
 
 Don't forget to add new units tests on your changes.
 
 ## Contacting the Developer
 
 
-Do not hesitate to contact the jaulp.wicket developers with your questions, concerns, comments, bug reports, or feature requests.
+Do not hesitate to contact the jaulp-wicket developers with your questions, concerns, comments, bug reports, or feature requests.
 
-- Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/jaulp.wicket/issues).
+- Feature requests, questions and bug reports can be reported at the [issues page](https://github.com/astrapi69/jaulp-wicket/issues).
 
 ## Note
 

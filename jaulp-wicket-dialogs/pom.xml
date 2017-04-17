@@ -16,7 +16,7 @@
 
 	<description>
 		Abstracts the dialogs from wicket. To see how it works see
-		the 'jaulp.wicket.dialogs.examples' project.
+		the 'jaulp-wicket-dialogs-examples' project.
 	</description>
 
 	<dependencies>
