@@ -13,9 +13,9 @@ The source code comes under the liberal Apache License V2.0, making jaulp-wicket
 
 # Build status and latest maven version
 
-[![Build Status](https://travis-ci.org/astrapi69/jaulp-wicket.svg?branch=master)](https://travis-ci.org/astrapi69/jaulp-wicket)
+[![Build Status](https://travis-ci.org/astrapi69/jaulp.wicket.svg?branch=master)](https://travis-ci.org/astrapi69/jaulp.wicket)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp-wicket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp-wicket)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp-wicket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp.wicket)
 
 ## Maven projects and install
 
@@ -24,8 +24,8 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 ```xml
 <dependency>
    <groupId>de.alpharogroup</groupId>
-   <artifactId>jaulp-wicket-components</artifactId>
-   <version>7.5.0</version>
+   <artifactId>jaulp.wicket.components</artifactId>
+   <version>7.1.0</version>
 </dependency>
 ```
 
@@ -34,8 +34,8 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 ```xml
 <dependency>
    <groupId>de.alpharogroup</groupId>
-   <artifactId>jaulp-wicket-base</artifactId>
-   <version>7.5.0</version>
+   <artifactId>jaulp.wicket.base</artifactId>
+   <version>7.1.0</version>
 </dependency>
 ```
 
@@ -44,12 +44,12 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 ```xml
 <dependency>
    <groupId>de.alpharogroup</groupId>
-   <artifactId>jaulp-wicket-behaviors</artifactId>
-   <version>7.5.0</version>
+   <artifactId>jaulp.wicket.behaviors</artifactId>
+   <version>7.1.0</version>
 </dependency>
 ```
 
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;quick~jaulp-wicket-components) for latest snapshots and releases.
+Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;quick~jaulp.wicket.components) for latest snapshots and releases.
 
 ## Run Examples 
 
