@@ -91,7 +91,7 @@ public class TwoDropDownChoicesBean<T> implements Serializable
 	public List<T> getChildChoices()
 	{
 		final List<T> childChoices = getModelsMap().get(getSelectedRootOption());
-		if(ListExtensions.isEmpty(childChoices))
+		if (ListExtensions.isEmpty(childChoices))
 		{
 			return Collections.emptyList();
 		}

@@ -40,12 +40,6 @@ public class ListModelUpdateBehavior<T extends Serializable> extends Behavior
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The model. */
-	private ListModel<T> model;
-
-	/** The model object. */
-	private List<T> previousModelObject;
-
 	/**
 	 * Factory method to create a new {@link ListModelUpdateBehavior} object.
 	 *
@@ -55,6 +49,12 @@ public class ListModelUpdateBehavior<T extends Serializable> extends Behavior
 	{
 		return new ListModelUpdateBehavior<>(model);
 	}
+
+	/** The model. */
+	private ListModel<T> model;
+
+	/** The model object. */
+	private List<T> previousModelObject;
 
 	/**
 	 * Instantiates a new {@link ListModelUpdateBehavior}.
