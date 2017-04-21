@@ -37,6 +37,7 @@ public class DisplayNoneBehavior extends AttributeModifier
 	{
 		return new DisplayNoneBehavior();
 	}
+
 	/**
 	 * Instantiates a new {@link DisplayNoneBehavior}.
 	 */

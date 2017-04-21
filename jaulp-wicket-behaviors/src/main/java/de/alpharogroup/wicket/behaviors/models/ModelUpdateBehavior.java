@@ -39,12 +39,6 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** The model. */
-	private IModel<T> model;
-
-	/** The model object. */
-	private T previousModelObject;
-
 	/**
 	 * Factory method to create a new {@link ModelUpdateBehavior} object.
 	 *
@@ -54,6 +48,12 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 	{
 		return new ModelUpdateBehavior<>(model);
 	}
+
+	/** The model. */
+	private IModel<T> model;
+
+	/** The model object. */
+	private T previousModelObject;
 
 	/**
 	 * Instantiates a new {@link ModelUpdateBehavior}.

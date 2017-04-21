@@ -55,63 +55,10 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onInitialize()
+	public void convertInput()
 	{
-		super.onInitialize();
-		add(rootChoice = newRootChoice(ROOT_CHOICE_ID, getModel()));
-		add(childChoice = newChildChoice(CHILD_CHOICE_ID, getModel()));
-	}
-
-	/**
-	 * Factory method for creating the new root {@link DropDownChoice}. This method is invoked in
-	 * the constructor from the derived classes and can be overridden so users can provide their own
-	 * version of a new root {@link DropDownChoice}.
-	 *
-	 * @param id
-	 *            the id
-	 * @param model
-	 *            the model
-	 * @return the new root {@link DropDownChoice}.
-	 */
-	protected DropDownChoice<T> newRootChoice(final String id,
-		final IModel<TwoDropDownChoicesBean<T>> model)
-	{
-		final IModel<T> selectedRootOptionModel = PropertyModel.of(model, "selectedRootOption");
-		final IModel<List<T>> rootChoicesModel = PropertyModel.of(model, "rootChoices");
-
-		final DropDownChoice<T> rc = new LocalisedDropDownChoice<T>(id, selectedRootOptionModel,
-			rootChoicesModel, this.rootRenderer) {
-		    @Override
-	        protected boolean wantOnSelectionChangedNotifications() {
-	            return true;
-	        }
-
-	        @Override
-	        protected void onSelectionChanged(Object newSelection) {
-	        	DoubleDropDownPanel.this.onRootSelectionChanged(newSelection);
-	        }
-		};
-		rc.add(new AjaxFormComponentUpdatingBehavior("change")
-		{
-			/** The Constant serialVersionUID. */
-			private static final long serialVersionUID = 1L;
-
-			/**
-			 * {@inheritDoc}
-			 */
-			@Override
-			protected void onUpdate(final AjaxRequestTarget target)
-			{
-				DoubleDropDownPanel.this.onRootChoiceUpdate(target);
-			}
-
-			@Override
-			protected void onError(AjaxRequestTarget target, RuntimeException e)
-			{
-				DoubleDropDownPanel.this.onRootChoiceError(target, e);
-			}
-		});
-		return rc;
+		final TwoDropDownChoicesBean<T> modelObject = getModelObject();
+		setConvertedInput(modelObject);
 	}
 
 	/**
@@ -132,22 +79,31 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 			"selectedChildOption");
 		final IModel<List<T>> childChoicesModel = PropertyModel.of(model, "childChoices");
 		final DropDownChoice<T> cc = new LocalisedDropDownChoice<T>(id, selectedChildOptionModel,
-			childChoicesModel, this.childRenderer) {
-		    @Override
-	        protected boolean wantOnSelectionChangedNotifications() {
-	            return true;
-	        }
+			childChoicesModel, this.childRenderer)
+		{
+			@Override
+			protected void onSelectionChanged(Object newSelection)
+			{
+				DoubleDropDownPanel.this.onChildSelectionChanged(newSelection);
+			}
 
-	        @Override
-	        protected void onSelectionChanged(Object newSelection) {
-	        	DoubleDropDownPanel.this.onChildSelectionChanged(newSelection);
-	        }
+			@Override
+			protected boolean wantOnSelectionChangedNotifications()
+			{
+				return true;
+			}
 		};
 		cc.setOutputMarkupId(true);
 		cc.add(new AjaxFormComponentUpdatingBehavior("change")
 		{
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onError(AjaxRequestTarget target, RuntimeException e)
+			{
+				DoubleDropDownPanel.this.onChildChoiceError(target, e);
+			}
 
 			/**
 			 * {@inheritDoc}
@@ -157,24 +113,94 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 			{
 				DoubleDropDownPanel.this.onChildChoiceUpdate(target);
 			}
+		});
+		return cc;
+	}
+
+	/**
+	 * Factory method for creating the new root {@link DropDownChoice}. This method is invoked in
+	 * the constructor from the derived classes and can be overridden so users can provide their own
+	 * version of a new root {@link DropDownChoice}.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @return the new root {@link DropDownChoice}.
+	 */
+	protected DropDownChoice<T> newRootChoice(final String id,
+		final IModel<TwoDropDownChoicesBean<T>> model)
+	{
+		final IModel<T> selectedRootOptionModel = PropertyModel.of(model, "selectedRootOption");
+		final IModel<List<T>> rootChoicesModel = PropertyModel.of(model, "rootChoices");
+
+		final DropDownChoice<T> rc = new LocalisedDropDownChoice<T>(id, selectedRootOptionModel,
+			rootChoicesModel, this.rootRenderer)
+		{
+			@Override
+			protected void onSelectionChanged(Object newSelection)
+			{
+				DoubleDropDownPanel.this.onRootSelectionChanged(newSelection);
+			}
+
+			@Override
+			protected boolean wantOnSelectionChangedNotifications()
+			{
+				return true;
+			}
+		};
+		rc.add(new AjaxFormComponentUpdatingBehavior("change")
+		{
+			/** The Constant serialVersionUID. */
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void onError(AjaxRequestTarget target, RuntimeException e)
 			{
-				DoubleDropDownPanel.this.onChildChoiceError(target, e);
+				DoubleDropDownPanel.this.onRootChoiceError(target, e);
+			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected void onUpdate(final AjaxRequestTarget target)
+			{
+				DoubleDropDownPanel.this.onRootChoiceUpdate(target);
 			}
 		});
-		return cc;
+		return rc;
+	}
+
+	protected void onChildChoiceError(AjaxRequestTarget target, RuntimeException e)
+	{
+		System.err.println("onChildChoiceError:");
+	}
+
+	protected void onChildChoiceUpdate(final AjaxRequestTarget target)
+	{
+		target.add(DoubleDropDownPanel.this.childChoice);
+	}
+
+	protected void onChildSelectionChanged(Object newSelection)
+	{
+		System.err.println("onChildSelectionChanged:" + newSelection);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void convertInput()
+	protected void onInitialize()
 	{
-		final TwoDropDownChoicesBean<T> modelObject = getModelObject();
-		setConvertedInput(modelObject);
+		super.onInitialize();
+		add(rootChoice = newRootChoice(ROOT_CHOICE_ID, getModel()));
+		add(childChoice = newChildChoice(CHILD_CHOICE_ID, getModel()));
+	}
+
+	protected void onRootChoiceError(AjaxRequestTarget target, RuntimeException e)
+	{
+		System.err.println("onRootChoiceError:");
 	}
 
 	protected void onRootChoiceUpdate(final AjaxRequestTarget target)
@@ -184,28 +210,8 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 		DoubleDropDownPanel.this.childChoice.modelChanged();
 	}
 
-	protected void onRootChoiceError(AjaxRequestTarget target, RuntimeException e)
-	{
-		System.err.println("onRootChoiceError:");
-	}
-
-	protected void onChildChoiceUpdate(final AjaxRequestTarget target)
-	{
-		target.add(DoubleDropDownPanel.this.childChoice);
-	}
-
-	protected void onChildChoiceError(AjaxRequestTarget target, RuntimeException e)
-	{
-		System.err.println("onChildChoiceError:");
-	}
-
 	protected void onRootSelectionChanged(Object newSelection)
 	{
-		System.err.println("onRootSelectionChanged:"+newSelection);
-	}
-
-	protected void onChildSelectionChanged(Object newSelection)
-	{
-		System.err.println("onChildSelectionChanged:"+newSelection);
+		System.err.println("onRootSelectionChanged:" + newSelection);
 	}
 }
