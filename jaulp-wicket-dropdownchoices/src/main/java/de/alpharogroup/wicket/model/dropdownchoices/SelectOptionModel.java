@@ -15,42 +15,36 @@
  */
 package de.alpharogroup.wicket.model.dropdownchoices;
 
-import org.apache.wicket.util.io.IClusterable;
+import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * The Class {@link SelectOptionModel}.
  */
-public class SelectOptionModel implements IClusterable
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
+public class SelectOptionModel implements Serializable
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7091799192618838124L;
 
 	/** The key. */
-	@Getter
-	@Setter
 	private String key;
 
 	/** The value. */
-	@Getter
-	@Setter
 	private String value;
-
-	/**
-	 * Instantiates a new {@link SelectOptionModel}.
-	 *
-	 * @param key
-	 *            the key
-	 * @param value
-	 *            the value
-	 */
-	public SelectOptionModel(final String key, final String value)
-	{
-		this.key = key;
-		this.value = value;
-	}
 
 }

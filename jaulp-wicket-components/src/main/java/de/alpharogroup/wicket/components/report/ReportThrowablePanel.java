@@ -172,6 +172,8 @@ public abstract class ReportThrowablePanel extends BasePanel<ReportThrowableMode
 	 *
 	 * @param id
 	 *            the id
+	 * @param model
+	 *            the model
 	 * @return the new {@link HiddenField}
 	 */
 	protected HiddenField<String> newHiddenField(final String id, final IModel<String> model)

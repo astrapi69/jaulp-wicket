@@ -16,56 +16,57 @@
 package de.alpharogroup.wicket.behaviors.models;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.event.IEvent;
-import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 
 /**
- * The class {@link ModelUpdateBehavior}.
+ * The class {@link ListModelUpdateBehavior}.
  *
  * @param <T>
  *            the generic type of the model
  */
-public class ModelUpdateBehavior<T extends Serializable> extends Behavior
+public class ListModelUpdateBehavior<T extends Serializable> extends Behavior
 {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Factory method to create a new {@link ModelUpdateBehavior} object.
+	 * Factory method to create a new {@link ListModelUpdateBehavior} object.
 	 *
 	 * @param <T>
 	 *            the generic type of the model
 	 * @param model
-	 *            the model
-	 * @return the new {@link ModelUpdateBehavior} object
+	 *            the list model
+	 * @return the new {@link ListModelUpdateBehavior} object
 	 */
-	public static <T extends Serializable> ModelUpdateBehavior<T> of(final IModel<T> model)
+	public static <T extends Serializable> ListModelUpdateBehavior<T> of(final ListModel<T> model)
 	{
-		return new ModelUpdateBehavior<>(model);
+		return new ListModelUpdateBehavior<>(model);
 	}
 
 	/** The model. */
-	private IModel<T> model;
+	private ListModel<T> model;
 
 	/** The model object. */
-	private T previousModelObject;
+	private List<T> previousModelObject;
 
 	/**
-	 * Instantiates a new {@link ModelUpdateBehavior}.
+	 * Instantiates a new {@link ListModelUpdateBehavior}.
 	 *
 	 * @param model
 	 *            the model
 	 */
-	public ModelUpdateBehavior(final IModel<T> model)
+	public ListModelUpdateBehavior(final ListModel<T> model)
 	{
 		this.model = Args.notNull(model, "model");
 	}
@@ -97,7 +98,7 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 	public void onEvent(final Component component, final IEvent<?> event)
 	{
 		super.onEvent(component, event);
-		final T currentModelObject = this.model.getObject();
+		final List<T> currentModelObject = this.model.getObject();
 		if (!Objects.equals(currentModelObject, this.previousModelObject))
 		{
 			this.previousModelObject = currentModelObject;
