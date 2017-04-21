@@ -42,6 +42,10 @@ public class ModelUpdateBehavior<T extends Serializable> extends Behavior
 	/**
 	 * Factory method to create a new {@link ModelUpdateBehavior} object.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
+	 * @param model
+	 *            the model
 	 * @return the new {@link ModelUpdateBehavior} object
 	 */
 	public static <T extends Serializable> ModelUpdateBehavior<T> of(final IModel<T> model)

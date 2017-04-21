@@ -43,6 +43,10 @@ public class ListModelUpdateBehavior<T extends Serializable> extends Behavior
 	/**
 	 * Factory method to create a new {@link ListModelUpdateBehavior} object.
 	 *
+	 * @param <T>
+	 *            the generic type of the model
+	 * @param model
+	 *            the list model
 	 * @return the new {@link ListModelUpdateBehavior} object
 	 */
 	public static <T extends Serializable> ListModelUpdateBehavior<T> of(final ListModel<T> model)
