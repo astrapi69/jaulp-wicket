@@ -29,6 +29,15 @@ public class DisplayNoneBehavior extends AttributeModifier
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Factory method to create a new {@link DisplayNoneBehavior} object.
+	 *
+	 * @return the new {@link DisplayNoneBehavior} object.
+	 */
+	public static DisplayNoneBehavior of()
+	{
+		return new DisplayNoneBehavior();
+	}
+	/**
 	 * Instantiates a new {@link DisplayNoneBehavior}.
 	 */
 	public DisplayNoneBehavior()

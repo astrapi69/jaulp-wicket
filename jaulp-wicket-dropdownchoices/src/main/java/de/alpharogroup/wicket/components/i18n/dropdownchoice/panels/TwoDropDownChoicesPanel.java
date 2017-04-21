@@ -150,13 +150,4 @@ public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownCh
 		return rc;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void onInitialize()
-	{
-		super.onInitialize();
-	}
-
 }
