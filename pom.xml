@@ -51,10 +51,10 @@
 
 	<properties>
 		<!-- WICKET version -->
-		<wicket.version>7.3.0</wicket.version>
+		<wicket.version>6.25.0</wicket.version>
 		<jaulp-wicket.version>${project.version}</jaulp-wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>7.3.0</wicketstuff.version>
+		<wicketstuff.version>${wicket.version}</wicketstuff.version>
 	</properties>
 
 	<dependencyManagement>
