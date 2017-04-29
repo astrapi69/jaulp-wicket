@@ -24,7 +24,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.wicket.base.BasePanel;
-import de.alpharogroup.wicket.behaviors.DisplayNoneBehavior;
+import de.alpharogroup.wicket.behaviors.animations.Animate;
 import lombok.Getter;
 
 /**
@@ -76,11 +76,11 @@ public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 		edit = newEditFragment(FRAGMENT_ID);
 		swapAnimation = newSwapAnimation();
 	}
-	
+
 	public SwapAnimation newSwapAnimation() {
-		return SwapAnimation.builder().editDuration(300).viewDuration(300).build();		
+		return SwapAnimation.builder().editDuration(300).viewDuration(300).build();
 	}
-    
+
 	/**
 	 * Abstract factory method for creating the new {@link Fragment} for the editable
 	 * {@link Component}. This method is invoked in the constructor from the derived classes and
@@ -119,12 +119,7 @@ public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 		swapFragments();
 		if (target != null)
 		{
-			view.add(new DisplayNoneBehavior());
-			target.prependJavaScript("notify|jQuery('#" + view.getMarkupId() + "')." + "slideUp("
-					+ swapAnimation.getViewDuration() + ", notify);");
-			target.add(view);
-			target.appendJavaScript(
-					"jQuery('#" + view.getMarkupId() + "')." + "slideDown(" + swapAnimation.getViewDuration() + ");");
+			Animate.slideUpAndDown(view, target);
 		}
 		else
 		{
@@ -146,12 +141,7 @@ public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 	{
 		if (target != null)
 		{
-			edit.add(new DisplayNoneBehavior());
-			target.prependJavaScript("notify|jQuery('#" + edit.getMarkupId() + "').slideUp("
-					+ swapAnimation.getEditDuration() + ", notify);");
-			target.add(edit);
-			target.appendJavaScript(
-					"jQuery('#" + edit.getMarkupId() + "').slideDown(" + swapAnimation.getEditDuration() + ");");
+			Animate.slideUpAndDown(edit, target);
     	}
 		else
 		{

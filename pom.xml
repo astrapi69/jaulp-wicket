@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-wicket-parent</artifactId>
-		<version>6.25.2</version>
+		<version>6.21.3</version>
 		<relativePath/>
 	</parent>
 
@@ -51,10 +51,10 @@
 
 	<properties>
 		<!-- WICKET version -->
-		<wicket.version>7.3.0</wicket.version>
+		<wicket.version>6.21.0</wicket.version>
 		<jaulp-wicket.version>${project.version}</jaulp-wicket.version>
 		<!-- WICKET EXTENSION LIBRARIES versions -->
-		<wicketstuff.version>7.3.0</wicketstuff.version>
+		<wicketstuff.version>6.21.0</wicketstuff.version>
 	</properties>
 
 	<dependencyManagement>

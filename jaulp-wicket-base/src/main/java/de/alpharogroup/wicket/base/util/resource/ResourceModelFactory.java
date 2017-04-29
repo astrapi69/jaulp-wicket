@@ -162,8 +162,7 @@ public final class ResourceModelFactory
 				}
 			}
 		}
-		return new StringResourceModel(resourceKey, component, model).setDefaultValue(defaultValue)
-			.setParameters(parameters);
+		return new StringResourceModel(resourceKey, component, model, defaultValue, parameters);
 	}
 
 	/**
