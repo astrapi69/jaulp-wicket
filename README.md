@@ -11,9 +11,11 @@ The components are also designed to be customised so the user can provide they o
 The source code comes under the liberal Apache License V2.0, making jaulp-wicket great for all types of wicket applications.
 
 
-# Build status and latest maven version
+# Build status
 
 [![Build Status](https://travis-ci.org/astrapi69/jaulp.wicket.svg?branch=master)](https://travis-ci.org/astrapi69/jaulp.wicket)
+
+## Maven Central
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp-wicket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp.wicket)
 
