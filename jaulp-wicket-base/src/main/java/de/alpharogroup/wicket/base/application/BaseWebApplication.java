@@ -52,7 +52,7 @@ public abstract class BaseWebApplication extends WebApplication
 
 	/**
 	 * The Constant FOOTER_FILTER_NAME.
-	 *
+	 * 
 	 * @see <a href=
 	 *      "http://www.wicket-library.com/wicket-examples/resourceaggregation/wicket/bookmarkable/org.apache.wicket.examples.source.SourcesPage?0&SourcesPage_class=org.apache.wicket.examples.resourcedecoration.HomePage&source=HomePage.java">Example
 	 *      reference</a>

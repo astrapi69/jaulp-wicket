@@ -39,7 +39,6 @@ import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.UrlResourceReference;
 import org.apache.wicket.settings.IExceptionSettings;
-import org.apache.wicket.settings.def.ExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.file.Files;
@@ -405,7 +404,7 @@ public final class ApplicationExtensions
 	{
 		// show the exception page from wicket...
 		application.getExceptionSettings()
-			.setUnexpectedExceptionDisplay(ExceptionSettings.SHOW_EXCEPTION_PAGE);
+			.setUnexpectedExceptionDisplay(IExceptionSettings.SHOW_EXCEPTION_PAGE);
 	}
 
 	/**
