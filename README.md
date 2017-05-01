@@ -1,4 +1,4 @@
-## jaulp-wicket
+## Overview
 
 The library jaulp-wicket is a collection of Apache Wicket components and utilities. 
 
@@ -9,7 +9,6 @@ The components are also designed to be customised so the user can provide they o
 ## License
 
 The source code comes under the liberal Apache License V2.0, making jaulp-wicket great for all types of wicket applications.
-
 
 # Build status
 
