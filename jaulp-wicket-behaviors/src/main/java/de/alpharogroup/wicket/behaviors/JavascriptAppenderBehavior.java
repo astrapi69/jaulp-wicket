@@ -36,14 +36,6 @@ import lombok.Setter;
 public class JavascriptAppenderBehavior extends Behavior
 {
 
-	/**
-	 * The enum {@link JavascriptBindEvent} describes when the js will be bind.
-	 */
-	public enum JavascriptBindEvent
-	{
-		ONDOMREADY, ONEVENT, ONLOAD
-	}
-
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
