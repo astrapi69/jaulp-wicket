@@ -107,6 +107,25 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 			{
 				return true;
 			}
+			
+			@Override
+			public void convertInput() {
+				T convertedInput = getConvertedInput();
+				if(convertedInput == null) {
+					String[] inputArray = getInputAsArray();
+					convertedInput = convertChoiceValue(inputArray);
+					DoubleDropDownPanel.this.getModelObject().setSelectedChildOption(convertedInput);
+					setConvertedInput(DoubleDropDownPanel.this.getModelObject().getSelectedChildOption());				
+				} else {
+					setConvertedInput(convertedInput);
+				}
+			}
+			
+			@SuppressWarnings("unchecked")
+			protected T convertChoiceValue(String[] value) 
+			{
+				return (T)(value != null && value.length > 0 && value[0] != null ? trim(value[0]) : null);
+			}
 		};
 		cc.setOutputMarkupId(true);
 		cc.add(new AjaxFormComponentUpdatingBehavior("change")
@@ -162,6 +181,25 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 			protected boolean wantOnSelectionChangedNotifications()
 			{
 				return true;
+			}
+			
+			@Override
+			public void convertInput() {
+				T convertedInput = getConvertedInput();
+				if(convertedInput == null) {
+					String[] inputArray = getInputAsArray();
+					convertedInput = convertChoiceValue(inputArray);
+					DoubleDropDownPanel.this.getModelObject().setSelectedRootOption(convertedInput);
+					setConvertedInput(DoubleDropDownPanel.this.getModelObject().getSelectedRootOption());				
+				} else {
+					setConvertedInput(convertedInput);
+				}
+			}
+			
+			@SuppressWarnings("unchecked")
+			protected T convertChoiceValue(String[] value) 
+			{
+				return (T)(value != null && value.length > 0 && value[0] != null ? trim(value[0]) : null);
 			}
 		};
 		rc.add(new AjaxFormComponentUpdatingBehavior("change")
