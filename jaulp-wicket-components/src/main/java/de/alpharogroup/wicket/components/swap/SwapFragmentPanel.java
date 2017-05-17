@@ -24,6 +24,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 
 import de.alpharogroup.wicket.base.BasePanel;
+import de.alpharogroup.wicket.behaviors.animations.Animate;
 import lombok.Getter;
 
 /**
@@ -51,6 +52,10 @@ public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 	@Getter
 	private Fragment edit;
 
+	/** The swap animation. */
+	@Getter
+	private SwapAnimation swapAnimation;
+
 	/** The ModeContext shows if the view mode or edit mode is visible. */
 	@Getter
 	private ModeContext modeContext = ModeContext.VIEW_MODE;
@@ -69,6 +74,19 @@ public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 		setOutputMarkupPlaceholderTag(true);
 		add(view = newViewFragment(FRAGMENT_ID));
 		edit = newEditFragment(FRAGMENT_ID);
+		swapAnimation = newSwapAnimation();
+	}
+
+	/**
+	 * Factory method for creating the new {@link SwapAnimation} for the animations when swapping.
+	 * This method is invoked in the constructor from the derived classes and have to be overridden
+	 * so users can provide their own version of a new {@link SwapAnimation} for the animations when swapping.
+	 *
+	 * @return the new {@link SwapAnimation} object.
+	 */
+	public SwapAnimation newSwapAnimation()
+	{
+		return SwapAnimation.builder().editDuration(300).viewDuration(300).build();
 	}
 
 	/**
@@ -109,7 +127,7 @@ public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 		swapFragments();
 		if (target != null)
 		{
-			target.add(view);
+			Animate.slideUpAndDown(view, target);
 		}
 		else
 		{
@@ -131,7 +149,7 @@ public abstract class SwapFragmentPanel<T> extends BasePanel<T>
 	{
 		if (target != null)
 		{
-			target.add(edit);
+			Animate.slideUpAndDown(edit, target);
 		}
 		else
 		{

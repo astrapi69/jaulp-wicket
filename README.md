@@ -1,4 +1,4 @@
-## jaulp-wicket
+## Overview
 
 The library jaulp-wicket is a collection of Apache Wicket components and utilities. 
 
@@ -10,47 +10,105 @@ The components are also designed to be customised so the user can provide they o
 
 The source code comes under the liberal Apache License V2.0, making jaulp-wicket great for all types of wicket applications.
 
+# Build status
 
-# Build status and latest maven version
+[![Build Status](https://travis-ci.org/astrapi69/jaulp-wicket.svg?branch=master)](https://travis-ci.org/astrapi69/jaulp-wicket)
 
-[![Build Status](https://travis-ci.org/astrapi69/jaulp.wicket.svg?branch=master)](https://travis-ci.org/astrapi69/jaulp.wicket)
+## Maven Central
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp-wicket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp.wicket)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp-wicket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.alpharogroup/jaulp-wicket)
 
 ## Maven projects and install
+
+You can add the following maven dependencies to your project `pom.xml` if you want to import the library. 
+
+You can first define the version properties:
+
+```
+<properties>
+	...
+	<!-- JAULP-WICKET version -->
+	<jaulp-wicket.version>7.6.0</jaulp-wicket.version>
+	<jaulp-wicket-annotated-header-contributors.version>${jaulp-wicket.version}</jaulp-wicket-annotated-header-contributors.version>
+	<jaulp-wicket-base.version>${jaulp-wicket.version}</jaulp-wicket-base.version>
+	<jaulp-wicket-behaviors.version>${jaulp-wicket.version}</jaulp-wicket-behaviors.version>
+	<jaulp-wicket-components.version>${jaulp-wicket.version}</jaulp-wicket-components.version>
+	<jaulp-wicket-data-provider.version>${jaulp-wicket.version}</jaulp-wicket-data-provider.version>
+	<jaulp-wicket-dialogs.version>${jaulp-wicket.version}</jaulp-wicket-dialogs.version>
+	<jaulp-wicket-dropdownchoices.version>${jaulp-wicket.version}</jaulp-wicket-dropdownchoices.version>
+	...
+</properties>
+```
+
+Add the following maven dependency to your project `pom.xml` if you want to import annotated-header-contributors:
+
+```xml
+<dependency>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>jaulp-wicket-annotated-header-contributors</artifactId>
+	<version>${jaulp-wicket-annotated-header-contributors.version}</version>
+</dependency>
+```
+
+Add the following maven dependency to your project `pom.xml` if you want to import base:
+
+```xml
+<dependency>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>jaulp-wicket-base</artifactId>
+	<version>${jaulp-wicket-base.version}</version>
+</dependency>
+```
+
+Add the following maven dependency to your project `pom.xml` if you want to import behaviors:
+
+```xml
+<dependency>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>jaulp-wicket-behaviors</artifactId>
+	<version>${jaulp-wicket-behaviors.version}</version>
+</dependency>
+```
 
 Add the following maven dependency to your project `pom.xml` if you want to import components:
 
 ```xml
 <dependency>
-   <groupId>de.alpharogroup</groupId>
-   <artifactId>jaulp.wicket.components</artifactId>
-   <version>7.3.0</version>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>jaulp-wicket-components</artifactId>
+	<version>${jaulp-wicket-components.version}</version>
 </dependency>
 ```
 
-Add the following maven dependency to your project `pom.xml` if you want to import base stuff like base application, panel, pages etc.:
+Add the following maven dependency to your project `pom.xml` if you want to import data-provider:
 
 ```xml
 <dependency>
-   <groupId>de.alpharogroup</groupId>
-   <artifactId>jaulp.wicket.base</artifactId>
-   <version>7.3.0</version>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>jaulp-wicket-data-provider</artifactId>
+	<version>${jaulp-wicket-data-provider.version}</version>
 </dependency>
 ```
 
-Add the following maven dependency to your project `pom.xml` if you want to import behaviors etc.:
+Add the following maven dependency to your project `pom.xml` if you want to import dialogs:
 
 ```xml
 <dependency>
-   <groupId>de.alpharogroup</groupId>
-   <artifactId>jaulp.wicket.behaviors</artifactId>
-   <version>7.3.0</version>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>jaulp-wicket-dialogs</artifactId>
+	<version>${jaulp-wicket-dialogs.version}</version>
 </dependency>
 ```
 
-Check out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;quick~jaulp.wicket.components) for latest snapshots and releases.
+Add the following maven dependency to your project `pom.xml` if you want to import dropdownchoices:
 
+```xml
+<dependency>
+	<groupId>de.alpharogroup</groupId>
+	<artifactId>jaulp-wicket-dropdownchoices</artifactId>
+	<version>${jaulp-wicket-dropdownchoices.version}</version>
+</dependency>
+```
 ## Run Examples 
 
 Example projects are moved to the [wicket-examples](https://github.com/astrapi69/wicket-examples) project.
@@ -75,18 +133,17 @@ Another way is to start the example application programmaticly with jetty. In ev
 
 ## Documentation
 
-
   * [BaseWebApplication][BaseWebApplication]
   * [Counting online users with wicket][Counting online users with wicket]
   * [Internationalization with ResourceModelFactory][Internationalization with ResourceModelFactory]
   * [Wicket and I18n][Wicket and I18n]
   * [Replacing wicket panels with ajax][Replacing wicket panels with ajax]
   
-  [Replacing wicket panels with ajax]: https://github.com/astrapi69/jaulp.wicket/wiki/Replacing-wicket-panels-with-ajax "Replacing wicket panels with ajax"
-  [Wicket and I18n]: https://github.com/astrapi69/jaulp.wicket/wiki/Wicket-and-I18n "Wicket and I18n"  
-  [Internationalization with ResourceModelFactory]: https://github.com/astrapi69/jaulp.wicket/wiki/Internationalization-with-StringResourceModel-and-ResourceModelFactory "Internationalization with ResourceModelFactory"
-  [Counting online users with wicket]: https://github.com/astrapi69/jaulp.wicket/wiki/Counting-online-users-with-wicket "Counting online users with wicket"
-   [BaseWebApplication]: https://github.com/astrapi69/jaulp.wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
+  [Replacing wicket panels with ajax]: https://github.com/astrapi69/jaulp-wicket/wiki/Replacing-wicket-panels-with-ajax "Replacing wicket panels with ajax"
+  [Wicket and I18n]: https://github.com/astrapi69/jaulp-wicket/wiki/Wicket-and-I18n "Wicket and I18n"  
+  [Internationalization with ResourceModelFactory]: https://github.com/astrapi69/jaulp-wicket/wiki/Internationalization-with-StringResourceModel-and-ResourceModelFactory "Internationalization with ResourceModelFactory"
+  [Counting online users with wicket]: https://github.com/astrapi69/jaulp-wicket/wiki/Counting-online-users-with-wicket "Counting online users with wicket"
+   [BaseWebApplication]: https://github.com/astrapi69/jaulp-wicket/wiki/Extending-from-BaseWebApplication "Extending from BaseWebApplication"
 
 ## Want to Help and improve it? ###
 
@@ -99,7 +156,6 @@ To share your changes, [submit a pull request](https://github.com/astrapi69/jaul
 Don't forget to add new units tests on your changes.
 
 ## Contacting the Developer
-
 
 Do not hesitate to contact the jaulp-wicket developers with your questions, concerns, comments, bug reports, or feature requests.
 
