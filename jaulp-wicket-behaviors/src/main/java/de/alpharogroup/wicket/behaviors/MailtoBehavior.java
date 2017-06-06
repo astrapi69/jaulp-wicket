@@ -15,19 +15,20 @@
  */
 package de.alpharogroup.wicket.behaviors;
 
-import org.apache.wicket.Component;
-import org.apache.wicket.behavior.Behavior;
-
 import de.alpharogroup.wicket.behaviors.models.MailtoModel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
 
 /**
- * The Class MailtoBehavior adds the email address to the a-tag.
+ * The class {@link MailtoBehavior} adds the email address and optional a subject and body to the a-tag.
  *
  * @param <T>
  *            the generic type
  * @author Asterios Raptis
  */
-public class MailtoBehavior<T extends MailtoModel> extends Behavior
+@AllArgsConstructor
+public class MailtoBehavior<T extends MailtoModel> extends ComponentDecoratorBehavior
 {
 
 	/**
@@ -36,54 +37,23 @@ public class MailtoBehavior<T extends MailtoModel> extends Behavior
 	private static final long serialVersionUID = 1L;
 
 	/** The mailto model. */
+	@Getter @NonNull
 	private final T mailtoModel;
 
 	/**
-	 * Instantiates a new mailto behavior.
-	 * 
-	 * @param mailtoModel
-	 *            The mailto model.
-	 */
-	public MailtoBehavior(final T mailtoModel)
-	{
-		this.mailtoModel = mailtoModel;
-	}
-
-	/**
-	 * On rendered.
-	 *
-	 * @param component
-	 *            the component
+	 * {@inheritDoc}
 	 */
 	@Override
-	public void afterRender(final Component component)
-	{
-		super.afterRender(component);
-		component.getResponse().write("</a>");
+	protected String onWriteBeforeRender() {
+		return "</a>";
 	}
 
 	/**
-	 * Before render.
-	 *
-	 * @param component
-	 *            the component
+	 * {@inheritDoc}
 	 */
 	@Override
-	public void beforeRender(final Component component)
-	{
-		super.beforeRender(component);
-		component.getResponse()
-			.write("<a href=\"mailto:" + mailtoModel.getMailtoAddresModel().getObject() + "\">");
-	}
-
-	/**
-	 * Gets the mailto model.
-	 *
-	 * @return the mailto model
-	 */
-	public T getMailtoModel()
-	{
-		return mailtoModel;
+	protected String onWriteAfterRender() {
+		return "<a href=\"mailto:" + mailtoModel.getMailtoAddresModel().getObject() + "\">";
 	}
 
 }
