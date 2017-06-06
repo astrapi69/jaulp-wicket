@@ -40,19 +40,45 @@ public abstract class ComponentDecoratorBehavior extends Behavior {
 	}
 
 	/**
-	 * Abstract factory callback method to hook after render.
+	 * Factory callback method to hook after render.
 	 *
 	 * @param component
 	 *            the component
 	 */
-	protected abstract void onAfterRender(Component component);
+	protected void onAfterRender(Component component) {
+		Response response = component.getResponse();
+		response.write(onWriteAfterRender());
+	}
 
 	/**
-	 * Abstract factory callback method to hook before render.
+	 * Factory callback method to hook before render.
 	 *
 	 * @param component
 	 *            the component
 	 */
-	protected abstract void onBeforeRender(Component component);
-	
+	protected void onBeforeRender(Component component) {
+		Response response = component.getResponse();
+		response.write(onWriteBeforeRender());
+	}
+
+	/**
+	 * Abstract factory callback method that have to be overwritten. The
+	 * returned result will be written in the response before the rendering
+	 * process starts.
+	 *
+	 * @return the {@link String} that will be written in the response before
+	 *         the rendering process starts.
+	 */
+	protected abstract String onWriteBeforeRender();
+
+	/**
+	 * Abstract factory callback method that have to be overwritten. The
+	 * returned result will be written in the response after the rendering
+	 * process finishes.
+	 *
+	 * @return the {@link String} that will be written in the response after the
+	 *         rendering process finishes.
+	 */
+	protected abstract String onWriteAfterRender();
+    
 }
