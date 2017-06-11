@@ -69,6 +69,9 @@ public class DateColumn<T> extends PropertyColumn<T, Void>
 	{
 		final IModel<?> propertyModel = DateColumn.this.getDataModel(rowModel);
 		final Date value = (Date)propertyModel.getObject();
+		if (value == null) {
+			return "";
+		}
 		final SimpleDateFormat format = new SimpleDateFormat(dateFormat);
 		return format.format(value);
 	}
