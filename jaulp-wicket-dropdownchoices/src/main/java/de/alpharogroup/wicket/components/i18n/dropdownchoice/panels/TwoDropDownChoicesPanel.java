@@ -35,7 +35,8 @@ import lombok.Getter;
  *
  * @author Asterios Raptis
  * @param <T>
- *            the generic type
+ *            the generic type of the model object
+ *            @deprecated since wicket version 7. Use instead new class {@link DoubleDropDownPanel}
  */
 public abstract class TwoDropDownChoicesPanel<T> extends BasePanel<TwoDropDownChoicesModel<T>>
 {

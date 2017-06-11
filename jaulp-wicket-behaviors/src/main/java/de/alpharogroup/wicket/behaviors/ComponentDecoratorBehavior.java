@@ -2,6 +2,7 @@ package de.alpharogroup.wicket.behaviors;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.request.Response;
 
 /**
  * The abstract class {@link ComponentDecoratorBehavior} provides callback
@@ -17,7 +18,7 @@ public abstract class ComponentDecoratorBehavior extends Behavior {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void bind(Component component) {
+	public void bind(final Component component) {
 		component.setOutputMarkupId(true);
 	}
 
@@ -25,7 +26,7 @@ public abstract class ComponentDecoratorBehavior extends Behavior {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void beforeRender(Component component) {
+	public void beforeRender(final Component component) {
 		onBeforeRender(component);
 		super.beforeRender(component);
 	}
@@ -34,7 +35,7 @@ public abstract class ComponentDecoratorBehavior extends Behavior {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void afterRender(Component component) {
+	public void afterRender(final Component component) {
 		super.afterRender(component);
 		onAfterRender(component);
 	}
@@ -45,8 +46,8 @@ public abstract class ComponentDecoratorBehavior extends Behavior {
 	 * @param component
 	 *            the component
 	 */
-	protected void onAfterRender(Component component) {
-		Response response = component.getResponse();
+	protected void onAfterRender(final Component component) {
+		final Response response = component.getResponse();
 		response.write(onWriteAfterRender());
 	}
 
@@ -56,8 +57,8 @@ public abstract class ComponentDecoratorBehavior extends Behavior {
 	 * @param component
 	 *            the component
 	 */
-	protected void onBeforeRender(Component component) {
-		Response response = component.getResponse();
+	protected void onBeforeRender(final Component component) {
+		final Response response = component.getResponse();
 		response.write(onWriteBeforeRender());
 	}
 
@@ -80,5 +81,5 @@ public abstract class ComponentDecoratorBehavior extends Behavior {
 	 *         rendering process finishes.
 	 */
 	protected abstract String onWriteAfterRender();
-    
+
 }

@@ -30,6 +30,14 @@ import de.alpharogroup.wicket.components.i18n.dropdownchoice.LocalisedDropDownCh
 import de.alpharogroup.wicket.model.dropdownchoices.TwoDropDownChoicesBean;
 import lombok.Getter;
 
+/**
+ * The class {@link DoubleDropDownPanel} is a {@link FormComponentPanel} that encapsulates two
+ * dropdowns with a root and a child dropdown.
+ *
+ * @author Asterios Raptis
+ * @param <T>
+ *            the generic type of the model object
+ */
 public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoicesBean<T>>
 {
 
@@ -58,12 +66,35 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 	@Getter
 	private final IChoiceRenderer<T> childRenderer;
 
-	public DoubleDropDownPanel(String id, IModel<TwoDropDownChoicesBean<T>> model,
+	/**
+	 * Instantiates a new {@link DoubleDropDownPanel} component.
+	 *
+	 * @param id
+	 *            the id
+	 * @param model
+	 *            the model
+	 * @param rootRenderer
+	 *            the root renderer
+	 * @param childRenderer
+	 *            the child renderer
+	 */
+	public DoubleDropDownPanel(final String id, final IModel<TwoDropDownChoicesBean<T>> model,
 		final IChoiceRenderer<T> rootRenderer, final IChoiceRenderer<T> childRenderer)
 	{
 		super(id, Args.notNull(model, "model"));
 		this.rootRenderer = Args.notNull(rootRenderer, "rootRenderer");
 		this.childRenderer = Args.notNull(childRenderer, "childRenderer");
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onInitialize()
+	{
+		super.onInitialize();
+		add(rootChoice = newRootChoice(ROOT_CHOICE_ID, getModel()));
+		add(childChoice = newChildChoice(CHILD_CHOICE_ID, getModel()));
 	}
 
 	/**
@@ -96,16 +127,45 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 		final DropDownChoice<T> cc = new LocalisedDropDownChoice<T>(id, selectedChildOptionModel,
 			childChoicesModel, this.childRenderer)
 		{
+
+			/** The Constant serialVersionUID. */
+			private static final long serialVersionUID = 1L;
+
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			protected void onSelectionChanged(Object newSelection)
+			public void convertInput()
 			{
-				DoubleDropDownPanel.this.onChildSelectionChanged(newSelection);
+				T convertedInput = getConvertedInput();
+				if (convertedInput == null)
+				{
+					final String[] inputArray = getInputAsArray();
+					convertedInput = convertChoiceValue(inputArray);
+					DoubleDropDownPanel.this.getModelObject()
+						.setSelectedChildOption(convertedInput);
+					setConvertedInput(
+						DoubleDropDownPanel.this.getModelObject().getSelectedChildOption());
+				}
+				else
+				{
+					setConvertedInput(convertedInput);
+				}
 			}
 
-			@Override
-			protected boolean wantOnSelectionChangedNotifications()
+			/**
+			 * Converts the given choice value array to the specific type.
+			 *
+			 * @param value
+			 *            the value
+			 * @return the converted value to the specific type
+			 */
+			@SuppressWarnings("unchecked")
+			protected T convertChoiceValue(final String[] value)
 			{
-				return true;
+				return (T)(value != null && value.length > 0 && value[0] != null
+					? trim(value[0])
+					: null);
 			}
 		};
 		cc.setOutputMarkupId(true);
@@ -114,8 +174,11 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			protected void onError(AjaxRequestTarget target, RuntimeException e)
+			protected void onError(final AjaxRequestTarget target, final RuntimeException e)
 			{
 				DoubleDropDownPanel.this.onChildChoiceError(target, e);
 			}
@@ -152,16 +215,44 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 		final DropDownChoice<T> rc = new LocalisedDropDownChoice<T>(id, selectedRootOptionModel,
 			rootChoicesModel, this.rootRenderer)
 		{
+
+			/** The Constant serialVersionUID. */
+			private static final long serialVersionUID = 1L;
+
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			protected void onSelectionChanged(Object newSelection)
+			public void convertInput()
 			{
-				DoubleDropDownPanel.this.onRootSelectionChanged(newSelection);
+				T convertedInput = getConvertedInput();
+				if (convertedInput == null)
+				{
+					final String[] inputArray = getInputAsArray();
+					convertedInput = convertChoiceValue(inputArray);
+					DoubleDropDownPanel.this.getModelObject().setSelectedRootOption(convertedInput);
+					setConvertedInput(
+						DoubleDropDownPanel.this.getModelObject().getSelectedRootOption());
+				}
+				else
+				{
+					setConvertedInput(convertedInput);
+				}
 			}
 
-			@Override
-			protected boolean wantOnSelectionChangedNotifications()
+			/**
+			 * Converts the given choice value array to the specific type.
+			 *
+			 * @param value
+			 *            the value
+			 * @return the converted value to the specific type
+			 */
+			@SuppressWarnings("unchecked")
+			protected T convertChoiceValue(final String[] value)
 			{
-				return true;
+				return (T)(value != null && value.length > 0 && value[0] != null
+					? trim(value[0])
+					: null);
 			}
 		};
 		rc.add(new AjaxFormComponentUpdatingBehavior("change")
@@ -169,8 +260,11 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * {@inheritDoc}
+			 */
 			@Override
-			protected void onError(AjaxRequestTarget target, RuntimeException e)
+			protected void onError(final AjaxRequestTarget target, final RuntimeException e)
 			{
 				DoubleDropDownPanel.this.onRootChoiceError(target, e);
 			}
@@ -187,46 +281,55 @@ public class DoubleDropDownPanel<T> extends FormComponentPanel<TwoDropDownChoice
 		return rc;
 	}
 
-	protected void onChildChoiceError(AjaxRequestTarget target, RuntimeException e)
+	/**
+	 * Callback method that can be overwritten to handle any error resulting from updating the child
+	 * choice.
+	 *
+	 * @param target
+	 *            the current request handler
+	 * @param e
+	 *            the {@link RuntimeException} error that occurred during the update of the
+	 *            component.
+	 */
+	protected void onChildChoiceError(final AjaxRequestTarget target, final RuntimeException e)
 	{
-		System.err.println("onChildChoiceError:");
-	}
-
-	protected void onChildChoiceUpdate(final AjaxRequestTarget target)
-	{
-		target.add(DoubleDropDownPanel.this.childChoice);
-	}
-
-	protected void onChildSelectionChanged(Object newSelection)
-	{
-		System.err.println("onChildSelectionChanged:" + newSelection);
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Callback method that can be overwritten to provide an additional action when child choice has
+	 * updated.
+	 *
+	 * @param target
+	 *            the current request handler
 	 */
-	@Override
-	protected void onInitialize()
+	protected void onChildChoiceUpdate(final AjaxRequestTarget target)
 	{
-		super.onInitialize();
-		add(rootChoice = newRootChoice(ROOT_CHOICE_ID, getModel()));
-		add(childChoice = newChildChoice(CHILD_CHOICE_ID, getModel()));
 	}
 
-	protected void onRootChoiceError(AjaxRequestTarget target, RuntimeException e)
+	/**
+	 * Callback method that can be overwritten to handle any error resulting from updating the root
+	 * choice.
+	 *
+	 * @param target
+	 *            the current request handler
+	 * @param e
+	 *            the {@link RuntimeException} error that occurred during the update of the
+	 *            component.
+	 */
+	protected void onRootChoiceError(final AjaxRequestTarget target, final RuntimeException e)
 	{
-		System.err.println("onRootChoiceError:");
 	}
 
+	/**
+	 * Callback method that can be overwritten to provide an additional action when root choice has
+	 * updated.
+	 *
+	 * @param target
+	 *            the current request handler
+	 */
 	protected void onRootChoiceUpdate(final AjaxRequestTarget target)
 	{
-		DoubleDropDownPanel.this.childChoice.modelChanging();
 		target.add(DoubleDropDownPanel.this.childChoice);
-		DoubleDropDownPanel.this.childChoice.modelChanged();
 	}
 
-	protected void onRootSelectionChanged(Object newSelection)
-	{
-		System.err.println("onRootSelectionChanged:" + newSelection);
-	}
 }
