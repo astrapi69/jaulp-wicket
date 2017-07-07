@@ -177,5 +177,6 @@ Here is a list of awesome projects that use wicket, extends or decorate it.
 
 - [wicket-matchers](https://github.com/NitorCreations/wicket-matchers) Wicket 6 / Hamcrest 1.3 utility matchers
 - [wicket-utils](https://github.com/NitorCreations/wicket-utils) Useful components, models and other stuff for Wicket (mainly 6) projects
+- [awesome-wicket](https://github.com/PhantomYdn/awesome-wicket) A curated list of awesome projects powered by Apache Wicket
 
 
