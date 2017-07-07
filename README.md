@@ -171,3 +171,11 @@ If you like this library, please consider a donation through
 
 <a href="http://flattr.com/thing/4067687/astrapi69jaulp-wicket-on-GitHub" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 
+## Similar projects
+
+Here is a list of awesome projects that use wicket, extends or decorate it.
+
+- [wicket-matchers](https://github.com/NitorCreations/wicket-matchers) Wicket 6 / Hamcrest 1.3 utility matchers
+- [wicket-utils](https://github.com/NitorCreations/wicket-utils) Useful components, models and other stuff for Wicket (mainly 6) projects
+
+
