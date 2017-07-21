@@ -18,6 +18,14 @@ jaulp-wicket-base [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/jaulp
 
 jaulp-wicket-behaviors [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/jaulp-wicket-behaviors.svg)](http://www.javadoc.io/doc/de.alpharogroup/jaulp-wicket-behaviors)
 
+jaulp-wicket-components [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/jaulp-wicket-components.svg)](http://www.javadoc.io/doc/de.alpharogroup/jaulp-wicket-components)
+
+jaulp-wicket-data-provider [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/jaulp-wicket-data-provider.svg)](http://www.javadoc.io/doc/de.alpharogroup/jaulp-wicket-data-provider)
+
+jaulp-wicket-dialogs [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/jaulp-wicket-dialogs.svg)](http://www.javadoc.io/doc/de.alpharogroup/jaulp-wicket-dialogs)
+
+jaulp-wicket-dropdownchoices [![Javadocs](http://www.javadoc.io/badge/de.alpharogroup/jaulp-wicket-dropdownchoices.svg)](http://www.javadoc.io/doc/de.alpharogroup/jaulp-wicket-dropdownchoices)
+
 # Build status
 
 [![Build Status](https://travis-ci.org/astrapi69/jaulp-wicket.svg?branch=master)](https://travis-ci.org/astrapi69/jaulp-wicket)
