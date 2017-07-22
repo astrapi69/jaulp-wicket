@@ -19,8 +19,8 @@ import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
 /**
- * The Class BasePanel.
- * 
+ * The class {@link BasePanel}.
+ *
  * @param <T>
  *            the generic type of the model
  */
