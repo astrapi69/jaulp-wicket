@@ -167,7 +167,7 @@ The source code of jaulp-wicket are on GitHub. Please feel free to fork and send
 
 Create your own fork of [astrapi69/jaulp-wicket/fork](https://github.com/astrapi69/jaulp-wicket/fork)
 
-To share your changes, [submit a pull request](https://github.com/astrapi69/jaulp-wicket/pull/new/master).
+To share your changes, [submit a pull request](https://github.com/astrapi69/jaulp-wicket/pull/new/develop).
 
 Don't forget to add new units tests on your changes.
 
