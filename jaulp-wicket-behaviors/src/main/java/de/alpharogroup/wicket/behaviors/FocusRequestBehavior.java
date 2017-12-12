@@ -155,7 +155,6 @@ public class FocusRequestBehavior extends Behavior
 			sb.append("component.value = \"\";");
 		}
 		sb.append("component.focus();");
-		sb.append("component.select();");
 		sb.append("}, " + this.delay + ")");
 		return sb.toString();
 	}
