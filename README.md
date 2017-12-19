@@ -181,9 +181,18 @@ Do not hesitate to contact the jaulp-wicket developers with your questions, conc
 
 No animals were harmed in the making of this library.
 
-# Donate
 
-If you like this library, please consider a donation through
+# Donations
+
+If you like this library, please consider a donation through bitcoin or over bitcoin-cash with:
+
+1Jzso5h7U82QCNmgxxSCya1yUK7UVcSXsW
+
+or over ether with:
+
+0xaB6EaE10F352268B0CA672Dd6e999C86344D49D8
+
+or over flattr:
 
 <a href="http://flattr.com/thing/4067687/astrapi69jaulp-wicket-on-GitHub" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 
