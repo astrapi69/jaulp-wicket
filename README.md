@@ -184,7 +184,11 @@ No animals were harmed in the making of this library.
 
 # Donations
 
-If you like this library, please consider a donation through bitcoin or over bitcoin-cash with:
+If you like this library, please consider a donation through paypal: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MJ7V43GU2H386" target="_blank">
+<img src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" alt="PayPal this" title="PayPal – The safer, easier way to pay online!" border="0" />
+</a>
+
+or over bitcoin or bitcoin-cash with:
 
 1Jzso5h7U82QCNmgxxSCya1yUK7UVcSXsW
 
@@ -193,7 +197,7 @@ or over ether with:
 0xaB6EaE10F352268B0CA672Dd6e999C86344D49D8
 
 or over flattr:
-
+  
 <a href="http://flattr.com/thing/4067687/astrapi69jaulp-wicket-on-GitHub" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 
 ## Similar projects
