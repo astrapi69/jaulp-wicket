@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -192,9 +193,11 @@ public class PackageResourceReferences
 	 *             occurs if a given class cannot be located by the specified class loader
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws URISyntaxException
+	 *             is thrown if a string could not be parsed as a URI reference.
 	 */
 	public void initializeResources(final List<String> packageNames)
-		throws ClassNotFoundException, IOException
+		throws ClassNotFoundException, IOException, URISyntaxException
 	{
 		for (final String packageName : packageNames)
 		{
@@ -210,10 +213,12 @@ public class PackageResourceReferences
 	 * @throws ClassNotFoundException
 	 *             occurs if a given class cannot be located by the specified class loader
 	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 *             Signals that an I/O exception has occurred. 
+	 * @throws URISyntaxException
+	 *             is thrown if a string could not be parsed as a URI reference.
 	 */
 	public void initializeResources(final String packageName)
-		throws ClassNotFoundException, IOException
+		throws ClassNotFoundException, IOException, URISyntaxException
 	{
 		final Map<Class<?>, ImportResource[]> resourcesMap = ImportResourcesExtensions
 			.getImportResources(packageName);
@@ -255,9 +260,11 @@ public class PackageResourceReferences
 	 *             occurs if a given class cannot be located by the specified class loader
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
+	 * @throws URISyntaxException
+	 *             is thrown if a string could not be parsed as a URI reference.
 	 */
 	public void initializeResources(final String[] packageNames)
-		throws ClassNotFoundException, IOException
+		throws ClassNotFoundException, IOException, URISyntaxException
 	{
 		initializeResources(Arrays.asList(packageNames));
 	}

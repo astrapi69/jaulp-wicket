@@ -44,7 +44,7 @@ You can first define the version properties:
 <properties>
 	...
 	<!-- JAULP-WICKET version -->
-	<jaulp-wicket.version>7.6.0</jaulp-wicket.version>
+	<jaulp-wicket.version>7.8.0</jaulp-wicket.version>
 	<jaulp-wicket-annotated-header-contributors.version>${jaulp-wicket.version}</jaulp-wicket-annotated-header-contributors.version>
 	<jaulp-wicket-base.version>${jaulp-wicket.version}</jaulp-wicket-base.version>
 	<jaulp-wicket-behaviors.version>${jaulp-wicket.version}</jaulp-wicket-behaviors.version>

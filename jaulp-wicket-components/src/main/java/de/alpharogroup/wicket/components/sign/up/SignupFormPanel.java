@@ -24,7 +24,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.lang.Args;
 
-import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
+import de.alpharogroup.auth.sign.up.BaseUsernameSignUpModel;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.ComponentFinder;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;

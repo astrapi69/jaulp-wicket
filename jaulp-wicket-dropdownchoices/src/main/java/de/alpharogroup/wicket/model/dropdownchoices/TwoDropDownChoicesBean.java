@@ -24,7 +24,7 @@ import java.util.Map;
 
 import org.apache.wicket.util.lang.Args;
 
-import de.alpharogroup.collections.ListExtensions;
+import de.alpharogroup.collections.CollectionExtensions;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -91,7 +91,7 @@ public class TwoDropDownChoicesBean<T> implements Serializable
 	public List<T> getChildChoices()
 	{
 		final List<T> childChoices = getModelsMap().get(getSelectedRootOption());
-		if (ListExtensions.isEmpty(childChoices))
+		if (CollectionExtensions.isEmpty(childChoices))
 		{
 			return Collections.emptyList();
 		}

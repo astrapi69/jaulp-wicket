@@ -24,7 +24,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.alpharogroup.auth.models.BaseUsernameSignUpModel;
+import de.alpharogroup.auth.sign.up.BaseUsernameSignUpModel;
 import de.alpharogroup.wicket.base.BasePanel;
 import de.alpharogroup.wicket.base.util.resource.ResourceModelFactory;
 import de.alpharogroup.wicket.components.labeled.textfield.LabeledPasswordTextFieldPanel;

@@ -16,6 +16,7 @@
 package de.alpharogroup.wicket.base.pages;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -109,6 +110,9 @@ public abstract class AbstractSiteMapPage extends WebPage
 		{
 			LOGGER.error(
 				e.getClass().getName() + " occured while scanning for MountPath annotations.", e);
+		} catch (URISyntaxException e) {
+			LOGGER.error(
+					e.getClass().getName() + " occured while scanning for MountPath annotations.", e);
 		}
 		return pages;
 	}

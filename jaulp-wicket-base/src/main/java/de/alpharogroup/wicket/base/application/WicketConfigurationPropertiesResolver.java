@@ -15,13 +15,9 @@
  */
 package de.alpharogroup.wicket.base.application;
 
-import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.wicket.WicketRuntimeException;
-
 import de.alpharogroup.resourcebundle.config.ConfigurationPropertiesResolver;
-import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 
 /**
  * The class {@link WicketConfigurationPropertiesResolver} resolves the configuration properties for
@@ -66,14 +62,8 @@ public class WicketConfigurationPropertiesResolver extends ConfigurationProperti
 	protected Properties loadProperties()
 	{
 		final Properties properties;
-		try
-		{
-			properties = PropertiesExtensions.loadProperties(getPropertiesFilename());
-		}
-		catch (final IOException e)
-		{
-			throw new WicketRuntimeException(e);
-		}
+		properties = null;
+//					TODO PropertiesExtensions.loadProperties(getPropertiesFilename());
 		return properties;
 	}
 
