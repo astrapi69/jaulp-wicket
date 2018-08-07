@@ -42,8 +42,8 @@ import lombok.Getter;
 /**
  * The class {@link DropdownAutocompleteTextFieldPanel}.
  *
- * @param <String>
- *            the generic type
+ * @param <T>
+ *            the generic type of the model
  */
 public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponentPanel<TwoDropDownChoicesBean<T>> {
 
@@ -97,8 +97,6 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 	 *            the root label model
 	 * @param childLabelModel
 	 *            the child label model
-	 * @param locationModel
-	 *            the location model
 	 */
 	public DropdownAutocompleteTextFieldPanel(final String id, final IModel<TwoDropDownChoicesBean<T>> model,
 			final IChoiceRenderer<T> rootRenderer, final IModel<String> rootLabelModel,
@@ -132,13 +130,13 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 	 *            the model
 	 * @return the new child {@link AutoCompleteTextField}.
 	 */
-	protected AutoCompleteTextField<T> newAutoCompleteTextField(final String id, final IModel<TwoDropDownChoicesBean<T>> model) {
+	protected AutoCompleteTextField<T> newAutoCompleteTextField(final String id,
+			final IModel<TwoDropDownChoicesBean<T>> model) {
 
-		final IModel<T> selectedChildOptionModel = new PropertyModel<>(model,
-			"selectedChildOption");
+		final IModel<T> selectedChildOptionModel = new PropertyModel<>(model, "selectedChildOption");
 
-		final DefaultCssAutoCompleteTextField<T> autoCompleteTextField = new DefaultCssAutoCompleteTextField<T>(
-				id, selectedChildOptionModel) {
+		final DefaultCssAutoCompleteTextField<T> autoCompleteTextField = new DefaultCssAutoCompleteTextField<T>(id,
+				selectedChildOptionModel) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -151,8 +149,7 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 
 				final List<T> choices = new ArrayList<>(20);
 
-				final List<T> childChoices = DropdownAutocompleteTextFieldPanel.this.getModelObject()
-						.getChildChoices();
+				final List<T> childChoices = DropdownAutocompleteTextFieldPanel.this.getModelObject().getChildChoices();
 				for (final T choice : childChoices) {
 					onProcessChildChoice(input, childChoices, choice);
 				}
@@ -185,7 +182,7 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 			 */
 			@SuppressWarnings("unchecked")
 			protected T convertChoiceValue(final String[] value) {
-				return value != null && value.length > 0 && value[0] != null ? (T)value[0] : null;
+				return value != null && value.length > 0 && value[0] != null ? (T) value[0] : null;
 			}
 		};
 		autoCompleteTextField.setOutputMarkupId(true);
@@ -212,13 +209,17 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 		return autoCompleteTextField;
 	}
 
-
 	/**
-	 * Abstracr callback method that must be overwritten to provide an additional action
-	 * when child choice has updated.
+	 * Abstracr callback method that must be overwritten to provide an
+	 * additional action when child choice has updated.
 	 *
+	 * @param input
+	 *            the input
+	 * @param choices
+	 *            the choices
 	 * @param choice
 	 *            the current choice to process
+	 * @return true, if successful
 	 */
 	protected abstract boolean onProcessChildChoice(final String input, final List<T> choices, final T choice);
 
@@ -264,15 +265,12 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 	 *            the model
 	 * @return the new root {@link DropDownChoice}.
 	 */
-	protected DropDownChoice<T> newRootChoice(final String id,
-		final IModel<TwoDropDownChoicesBean<T>> model)
-	{
+	protected DropDownChoice<T> newRootChoice(final String id, final IModel<TwoDropDownChoicesBean<T>> model) {
 		final IModel<T> selectedRootOptionModel = PropertyModel.of(model, "selectedRootOption");
 		final IModel<List<T>> rootChoicesModel = PropertyModel.of(model, "rootChoices");
 
-		final DropDownChoice<T> rc = new LocalisedDropDownChoice<T>(id, selectedRootOptionModel,
-			rootChoicesModel, this.rootRenderer)
-		{
+		final DropDownChoice<T> rc = new LocalisedDropDownChoice<T>(id, selectedRootOptionModel, rootChoicesModel,
+				this.rootRenderer) {
 
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
@@ -281,19 +279,14 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 			 * {@inheritDoc}
 			 */
 			@Override
-			public void convertInput()
-			{
+			public void convertInput() {
 				T convertedInput = getConvertedInput();
-				if (convertedInput == null)
-				{
+				if (convertedInput == null) {
 					final String[] inputArray = getInputAsArray();
 					convertedInput = convertChoiceValue(inputArray);
 					DropdownAutocompleteTextFieldPanel.this.getModelObject().setSelectedRootOption(convertedInput);
-					setConvertedInput(
-						DropdownAutocompleteTextFieldPanel.this.getModelObject().getSelectedRootOption());
-				}
-				else
-				{
+					setConvertedInput(DropdownAutocompleteTextFieldPanel.this.getModelObject().getSelectedRootOption());
+				} else {
 					setConvertedInput(convertedInput);
 				}
 			}
@@ -306,15 +299,11 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 			 * @return the converted value to the specific type
 			 */
 			@SuppressWarnings("unchecked")
-			protected T convertChoiceValue(final String[] value)
-			{
-				return (T)(value != null && value.length > 0 && value[0] != null
-					? trim(value[0])
-					: null);
+			protected T convertChoiceValue(final String[] value) {
+				return (T) (value != null && value.length > 0 && value[0] != null ? trim(value[0]) : null);
 			}
 		};
-		rc.add(new AjaxFormComponentUpdatingBehavior("change")
-		{
+		rc.add(new AjaxFormComponentUpdatingBehavior("change") {
 			/** The Constant serialVersionUID. */
 			private static final long serialVersionUID = 1L;
 
@@ -322,8 +311,7 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected void onError(final AjaxRequestTarget target, final RuntimeException e)
-			{
+			protected void onError(final AjaxRequestTarget target, final RuntimeException e) {
 				DropdownAutocompleteTextFieldPanel.this.onRootChoiceError(target, e);
 			}
 
@@ -331,8 +319,7 @@ public abstract class DropdownAutocompleteTextFieldPanel<T> extends FormComponen
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected void onUpdate(final AjaxRequestTarget target)
-			{
+			protected void onUpdate(final AjaxRequestTarget target) {
 				DropdownAutocompleteTextFieldPanel.this.onRootChoiceUpdate(target);
 			}
 		});
